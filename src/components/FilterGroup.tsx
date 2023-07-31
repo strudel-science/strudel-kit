@@ -41,9 +41,11 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
   return (
     <Box {...rest}>
       <Button
+        color='neutral'
         onClick={handleClick}
         sx={{
           display: 'block',
+          p: 0,
           textAlign: 'left',
           textTransform: 'none',
           width: '100%'
@@ -52,7 +54,7 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
         <Stack direction="row" alignItems="center">
           {!isOpenState && <ArrowRightIcon fontSize="large" />}
           {isOpenState && <ArrowDropDownIcon fontSize="large" />}
-          <Typography variant="h5" component="h2" flex={1}>{name}</Typography>
+          <Typography flex={1}>{name}</Typography>
         </Stack>
       </Button>
       {isOpenState && (

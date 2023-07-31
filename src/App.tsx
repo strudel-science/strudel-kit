@@ -2,7 +2,9 @@ import React from 'react';
 import './App.css';
 import { ExploringEntities } from './task-flows/ExploringEntities';
 import { AnalyticsProvider } from './components/Analytics/AnalyticsProvider';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { CssBaseline } from '@mui/material';
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 90 },
@@ -45,11 +47,48 @@ const rows = [
   { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
+const theme = createTheme({
+  palette: {
+    background: {
+      default: '#F5F5F6'
+    },
+    neutral: {
+      main: '#bdbdbd',
+      light: '#e0e0e0',
+      dark: '#757575'
+    }
+  },
+  components: {
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#fff',
+        },
+      },
+    },
+    MuiButton: {
+      variants: [
+        {
+          props: { color: 'neutral' },
+          style: {
+            backgroundColor: 'white',
+            borderColor: '#bdbdbd',
+            color: '#757575'
+          },
+        },
+      ],
+    },
+  },
+});
+
 const App: React.FC = () => {
   return (
-    <AnalyticsProvider data={rows} columns={columns}>
-      <ExploringEntities />
-    </AnalyticsProvider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <AnalyticsProvider data={rows} columns={columns}>
+        <ExploringEntities />
+      </AnalyticsProvider>
+    </ThemeProvider>
   );
 }
 

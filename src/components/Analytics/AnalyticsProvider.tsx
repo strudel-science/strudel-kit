@@ -22,6 +22,7 @@ export interface AnalyticsState {
   filteredData?: any[];
   activeFilters: DataFilter[];
   filterValues?: object;
+  previewItem?: any;
   searchTerm?: string;
   showFiltersPanel?: boolean;
 }
@@ -79,6 +80,12 @@ function analyticsReducer(state: AnalyticsState, action: AnalyticsAction): Analy
       return {
         ...state,
         activeFilters
+      }
+    }
+    case AnalyticsActionType.SET_PREVIEW_ITEM: {
+      return {
+        ...state,
+        previewItem: action.payload
       }
     }
     default: {
