@@ -11,13 +11,11 @@ interface CheckboxOption {
 
 interface CheckboxListProps extends Omit<FormGroupProps, 'onChange'> {
   options: CheckboxOption[];
-  listLabel?: ReactNode;
   onChange?: (values: CheckboxOptionValue[] | null) => any;
 }
 
 export const CheckboxList: React.FC<CheckboxListProps> = ({
   options = [],
-  listLabel,
   onChange,
   ...rest
 }) => {
@@ -44,7 +42,6 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
 
   return (
     <FormGroup {...rest}>
-      {listLabel && <FormLabel>{listLabel}</FormLabel>}
       {options.map((option, i) => (
         <FormControlLabel
           control={<Checkbox value={option.value} onChange={(e, checked) => handleChange(checked, option.value)}/>}

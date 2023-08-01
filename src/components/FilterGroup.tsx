@@ -4,6 +4,7 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { CheckboxList } from './CheckboxList';
 import { useAnalytics } from './Analytics/AnalyticsProvider';
+import { Collapsible, CollapsibleProps } from './Collapsible';
 
 enum FilterType {
   CHECKBOX_LIST = 'CHECKBOX_LIST',
@@ -17,17 +18,15 @@ interface Filter {
   defaultValue: any;
 }
 
-interface FilterGroupProps extends BoxProps {
+interface FilterGroupProps extends CollapsibleProps {
   name: string;
-  isOpen?: boolean;
 }
 
-export const FilterGroup: React.FC<FilterGroupProps> = ({ 
-  name,
-  children,
+export const FilterGroup: React.FC<CollapsibleProps> = ({ 
   isOpen = false,
   ...rest
 }) => {
+  const props = { isOpen, ...rest };
   const [isOpenState, setIsOpenState] = useState<boolean>(isOpen);
 
   const handleClick = () => {
@@ -39,29 +38,6 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
   }, [isOpen]);
 
   return (
-    <Box {...rest}>
-      <Button
-        color='neutral'
-        onClick={handleClick}
-        sx={{
-          display: 'block',
-          p: 0,
-          textAlign: 'left',
-          textTransform: 'none',
-          width: '100%'
-        }}
-      >
-        <Stack direction="row" alignItems="center">
-          {!isOpenState && <ArrowRightIcon fontSize="large" />}
-          {isOpenState && <ArrowDropDownIcon fontSize="large" />}
-          <Typography flex={1}>{name}</Typography>
-        </Stack>
-      </Button>
-      {isOpenState && (
-        <Box>
-          {children}
-        </Box>
-      )}
-    </Box>
+    <Collapsible {...props} />
   )
 }

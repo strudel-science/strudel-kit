@@ -16,8 +16,12 @@ export const AnalyticsDataTable: React.FC<DataGridPropsWithComplexDefaultValueBe
   return (
     <DataGrid
       rows={state.filteredData || []}
+      getRowId={(row) => row[state.dataIdField]}
       columns={state.columns}
       disableColumnSelector
+      initialState={{
+        pagination: { paginationModel: { page: state.tablePage, pageSize: state.tablePageSize } }
+      }}
       {...props}
       onRowClick={handleRowClick}
       sx={{

@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useContext } from 'react';
-import { AnalyticsAction, AnalyticsActionType, setFilteredData } from './actions';
+import { AnalyticsAction, AnalyticsActionType, setData, setFilteredData } from './actions';
 import { filterData } from './utils';
 
 export enum FilterOperator {
@@ -19,16 +19,26 @@ export interface AnalyticsState {
   columns: any[];
   count?: number;
   data?: any[];
+  dataIdField: string;
   filteredData?: any[];
   activeFilters: DataFilter[];
   filterValues?: object;
   previewItem?: any;
   searchTerm?: string;
   showFiltersPanel?: boolean;
+  tablePage: number,
+  tablePageSize: number
 }
 
-interface AnalyticsProviderProps extends Omit<AnalyticsState, 'activeFilters'> {
+/**
+ * AnalyticsProvider props are the same as the State except
+ * some of the required props in the State are optional props.
+ * These props have default values set in the initialState object.
+ */
+interface AnalyticsProviderProps extends Omit<AnalyticsState, 'activeFilters' | 'tablePage' | 'tablePageSize'> {
   activeFilters?: DataFilter[];
+  tablePage?: number,
+  tablePageSize?: number
   children: React.ReactNode 
 }
 
@@ -38,7 +48,10 @@ const initialState: AnalyticsState = {
   data: [],
   columns: [],
   filterValues: {},
-  activeFilters: []
+  activeFilters: [],
+  dataIdField: 'id',
+  tablePage: 0,
+  tablePageSize: 25
 }
 
 const initState = (initialState: AnalyticsState, props: AnalyticsProviderProps) => {
@@ -51,6 +64,12 @@ const initState = (initialState: AnalyticsState, props: AnalyticsProviderProps) 
 
 function analyticsReducer(state: AnalyticsState, action: AnalyticsAction): AnalyticsState {
   switch (action.type) {
+    case AnalyticsActionType.SET_DATA: {
+      return {
+        ...state,
+        data: action.payload
+      }
+    }
     case AnalyticsActionType.SET_SEARCH: {
       return {
         ...state,
@@ -99,17 +118,16 @@ export const AnalyticsProvider: React.FC<AnalyticsProviderProps> = (props) => {
   const value = { state, dispatch };
 
   useEffect(() => {
-    if (!state.filteredData) {
-      dispatch(setFilteredData(state.data));
-    }
-  }, []);
+    console.log(props.data);
+    dispatch(setData(props.data));
+  }, [props.data]);
 
   useEffect(() => {
     if (state.data) {
       const filteredData = filterData(state.data, state.activeFilters, state.searchTerm);
       dispatch(setFilteredData(filteredData));
     }
-  }, [state.searchTerm, JSON.stringify(state.activeFilters)]);
+  }, [state.data, state.searchTerm, JSON.stringify(state.activeFilters)]);
 
   return (
     <AnalyticsContext.Provider value={value}>

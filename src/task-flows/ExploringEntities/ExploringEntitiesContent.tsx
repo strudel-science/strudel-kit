@@ -3,13 +3,17 @@ import CloseIcon from '@mui/icons-material/Close';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { DataGrid, GridColDef, GridToolbar, GridValueGetterParams } from '@mui/x-data-grid';
 import React, { useState } from 'react';
-import { AnalyticsProvider, useAnalytics } from '../components/Analytics/AnalyticsProvider';
-import { AnalyticsDataTable } from '../components/Analytics/AnalyticsDataTable';
-import { AnalyticsSearchField } from '../components/Analytics/AnalyticsSearchField';
-import { FiltersPanel } from '../components/FiltersPanel';
-import { CheckboxList } from '../components/CheckboxList';
-import { setFilter, setPreviewItem } from '../components/Analytics/actions';
-import { FilterGroup } from '../components/FilterGroup';
+import { AnalyticsProvider, useAnalytics } from '../../components/Analytics/AnalyticsProvider';
+import { AnalyticsDataTable } from '../../components/Analytics/AnalyticsDataTable';
+import { AnalyticsSearchField } from '../../components/Analytics/AnalyticsSearchField';
+import { FiltersPanel } from '../../components/FiltersPanel';
+import { CheckboxList } from '../../components/CheckboxList';
+import { setFilter, setPreviewItem } from '../../components/Analytics/actions';
+import { FilterGroup } from '../../components/FilterGroup';
+import { Collapsible } from '../../components/Collapsible';
+import { FilterField } from '../../components/FilterField';
+import { EEFiltersPanel } from './EEFiltersPanel';
+import { EEPreviewPanel } from './EEPreviewPanel';
 
 const getMainColumnSize = (showFiltersPanel: boolean, showPreviewPanel: boolean) => {
   if (!showFiltersPanel && !showPreviewPanel) {
@@ -23,7 +27,7 @@ const getMainColumnSize = (showFiltersPanel: boolean, showPreviewPanel: boolean)
   }
 }
   
-export const ExploringEntities: React.FC = () => {
+export const ExploringEntitiesContent: React.FC = () => {
   const {state, dispatch} = useAnalytics();
   const [showFiltersPanel, setShowFiltersPanel] = useState(true);
 
@@ -55,37 +59,7 @@ export const ExploringEntities: React.FC = () => {
       <Grid container>
         {showFiltersPanel && (
           <Grid item xs={2}>
-            <FiltersPanel
-              onClose={handleCloseFilters}
-              sx={{
-                backgroundColor: 'white',
-                pt: 3,
-                pb: 3,
-                pl: 2,
-                pr: 2
-              }}
-            >
-              <FilterGroup name="Category 1">
-                <CheckboxList
-                  listLabel="First Name"
-                  options={[
-                    { label: 'Arya', value: 'Arya' },
-                    { label: 'Cersei', value: 'Cersei' },
-                    { label: 'Jon', value: 'Jon' }
-                  ]}
-                  onChange={(values) => dispatch(setFilter({ field: 'firstName', value: values, operator: 'contains one of' }))}
-                />
-                <CheckboxList
-                  listLabel="Last Name"
-                  options={[
-                    { label: 'Lannister', value: 'Lannister' },
-                    { label: 'Snow', value: 'Snow' },
-                    { label: 'Targaryen', value: 'Targaryen' }
-                  ]}
-                  onChange={(values) => dispatch(setFilter({ field: 'lastName', value: values, operator: 'contains one of' }))}
-                />
-              </FilterGroup>
-            </FiltersPanel>
+            <EEFiltersPanel onClose={handleCloseFilters} />
           </Grid>
         )}
         <Grid item xs={getMainColumnSize(showFiltersPanel, !!state.previewItem)}>
@@ -116,18 +90,7 @@ export const ExploringEntities: React.FC = () => {
         </Grid>
         {state.previewItem && (
           <Grid item xs={4}>
-            <Box
-              sx={{
-                backgroundColor: 'white',
-                height: '100%',
-                p: 2
-              }}
-            >
-              <Stack direction="row">
-                <Typography variant="h5" component="h2" flex={1}>{state.previewItem.id}</Typography>
-                <IconButton onClick={handleClosePreview}><CloseIcon /></IconButton>
-              </Stack>
-            </Box>
+            <EEPreviewPanel onClose={handleClosePreview} />
           </Grid>
         )}
       </Grid>
