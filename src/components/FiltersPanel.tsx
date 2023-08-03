@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { CheckboxList } from './CheckboxList';
-import { useAnalytics } from './Analytics/AnalyticsProvider';
+import { useAnalytics } from './contexts/analytics/AnalyticsProvider';
 
 enum FilterType {
   CHECKBOX_LIST = 'CHECKBOX_LIST',

@@ -1,43 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { CheckboxList } from './CheckboxList';
-import { useAnalytics } from './Analytics/AnalyticsProvider';
 import { Collapsible, CollapsibleProps } from './Collapsible';
 
-enum FilterType {
-  CHECKBOX_LIST = 'CHECKBOX_LIST',
-  RANGE_SLIDER = 'RANGE_SLIDER',
-}
-
-interface Filter {
-  label: string;
-  field: string;
-  type: FilterType;
-  defaultValue: any;
-}
-
 interface FilterGroupProps extends CollapsibleProps {
-  name: string;
+  isCollapsible?: boolean;
 }
 
-export const FilterGroup: React.FC<CollapsibleProps> = ({ 
-  isOpen = false,
-  ...rest
-}) => {
-  const props = { isOpen, ...rest };
-  const [isOpenState, setIsOpenState] = useState<boolean>(isOpen);
-
-  const handleClick = () => {
-    setIsOpenState(!isOpenState);
-  }
-
-  useEffect(() => {
-    setIsOpenState(isOpen);
-  }, [isOpen]);
+export const FilterGroup: React.FC<FilterGroupProps> = (props) => {
+  const defaultLabel = (
+    <Typography 
+      color="neutral.dark"
+      sx={{
+        fontWeight: 'medium'
+      }}
+    >
+      {props.label}
+    </Typography>
+  );
+  const label = typeof props.label === 'string' ? defaultLabel : props.label;
 
   return (
-    <Collapsible {...props} />
+    <>
+      {props.isCollapsible ? (
+        <Collapsible
+          {...props}
+          color="neutral.dark"
+          label={label}
+          sx={{
+            '&:not(:last-child)': {
+              mb: 2
+            }
+          }}
+        >
+          <Box ml={2} mt={2}>
+            {props.children}
+          </Box>
+        </Collapsible>
+      ): (
+        <Box 
+          {...props}
+          sx={{
+            '&:not(:last-child)': {
+              mb: 2
+            }
+          }}
+        >
+          {label}
+          <Box ml={2} mt={2}>
+            {props.children}
+          </Box>
+        </Box>
+      )}
+    </>
+
   )
 }

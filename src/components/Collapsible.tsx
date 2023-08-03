@@ -1,9 +1,7 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { Box, BoxProps, Button, ButtonProps, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { CheckboxList } from './CheckboxList';
-import { useAnalytics } from './Analytics/AnalyticsProvider';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 enum FilterType {
   CHECKBOX_LIST = 'CHECKBOX_LIST',
@@ -18,16 +16,20 @@ interface Filter {
 }
 
 export interface CollapsibleProps extends BoxProps {
+  color?: string;
   label: ReactNode;
   isOpen?: boolean;
   buttonProps?: ButtonProps;
 }
 
-export const Collapsible: React.FC<CollapsibleProps> = ({ 
+export const Collapsible: React.FC<CollapsibleProps> = ({
+  color,
+  label,
   isOpen = false,
+  buttonProps,
+  children,
   ...rest
 }) => {
-  const props = { isOpen, ...rest };
   const [isOpenState, setIsOpenState] = useState<boolean>(isOpen);
 
   const handleClick = () => {
@@ -41,11 +43,10 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
   return (
     <Box {...rest}>
       <Button
-        color='neutral'
         disableRipple
         onClick={handleClick}
         sx={{
-          color: 'black',
+          color: color,
           display: 'block',
           p: 0,
           textAlign: 'left',
@@ -56,17 +57,33 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
             opacity: 0.7
           }
         }}
-        {...props.buttonProps}
+        {...buttonProps}
       >
         <Stack direction="row" alignItems="center">
-          {!isOpenState && <ArrowRightIcon fontSize="large" />}
-          {isOpenState && <ArrowDropDownIcon fontSize="large" />}
-          <Box flex={1}>{props.label}</Box>
+          {!isOpenState && (
+            <KeyboardArrowRightIcon 
+              sx={{ 
+                ml: '-0.5rem',
+                mt: '-0.5rem',
+                mb: '-0.5rem'
+              }} 
+            />
+          )}
+          {isOpenState && (
+            <KeyboardArrowDownIcon 
+              sx={{ 
+                ml: '-0.5rem',
+                mt: '-0.5rem',
+                mb: '-0.5rem'
+              }} 
+            />
+          )}
+          <Box flex={1}>{label}</Box>
         </Stack>
       </Button>
       {isOpenState && (
-        <Box>
-          {props.children}
+        <Box mt={1}>
+          {children}
         </Box>
       )}
     </Box>

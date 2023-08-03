@@ -44,8 +44,24 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
     <FormGroup {...rest}>
       {options.map((option, i) => (
         <FormControlLabel
-          control={<Checkbox value={option.value} onChange={(e, checked) => handleChange(checked, option.value)}/>}
           label={option.label}
+          control={
+            <Checkbox 
+              value={option.value}
+              onChange={(e, checked) => handleChange(checked, option.value)}
+              sx={{
+                pr: 1,
+                pl: 0,
+                pb: 0,
+                pt: 0
+              }}
+            />
+          }
+          sx={{
+            '&:not(:last-child)': {
+              mb: 1
+            }
+          }}
         />
       ))}
     </FormGroup>

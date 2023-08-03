@@ -4,8 +4,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import { FiltersPanel } from '../../components/FiltersPanel';
 import { FilterField } from '../../components/FilterField';
 import { CheckboxList } from '../../components/CheckboxList';
-import { useAnalytics } from '../../components/Analytics/AnalyticsProvider';
-import { setFilter } from '../../components/Analytics/actions';
+import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
+import { setFilter } from '../../components/contexts/analytics/actions';
+import { FilterGroup } from '../../components/FilterGroup';
 
 enum FilterType {
   CHECKBOX_LIST = 'CHECKBOX_LIST',
@@ -44,32 +45,72 @@ export const EEFiltersPanel: React.FC<EEFiltersPanelProps> = (props) => {
         pr: 2
       }}
     >
-      <FilterField
-        label="First Name"
-        filter={
-          <CheckboxList
-            options={[
-              { label: 'Arya', value: 'Arya' },
-              { label: 'Cersei', value: 'Cersei' },
-              { label: 'Jon', value: 'Jon' }
-            ]}
-            onChange={(values) => dispatch(setFilter({ field: 'firstName', value: values, operator: 'contains one of' }))}
-          />
-        }
-      />
-      <FilterField
-        label="Last Name"
-        filter={
-          <CheckboxList
-            options={[
-              { label: 'Lannister', value: 'Lannister' },
-              { label: 'Snow', value: 'Snow' },
-              { label: 'Targaryen', value: 'Targaryen' }
-            ]}
-            onChange={(values) => dispatch(setFilter({ field: 'lastName', value: values, operator: 'contains one of' }))}
-          />
-        }
-      />
+      <FilterGroup 
+        label="Group 1"
+        isCollapsible
+      >
+        <FilterField
+          label="First Name"
+          isCollapsible
+          filter={
+            <CheckboxList
+              options={[
+                { label: 'Arya', value: 'Arya' },
+                { label: 'Cersei', value: 'Cersei' },
+                { label: 'Jon', value: 'Jon' }
+              ]}
+              onChange={(values) => dispatch(setFilter({ field: 'firstName', value: values, operator: 'contains one of' }))}
+            />
+          }
+        />
+        <FilterField
+          label="Last Name"
+          isCollapsible
+          filter={
+            <CheckboxList
+              options={[
+                { label: 'Lannister', value: 'Lannister' },
+                { label: 'Snow', value: 'Snow' },
+                { label: 'Targaryen', value: 'Targaryen' }
+              ]}
+              onChange={(values) => dispatch(setFilter({ field: 'lastName', value: values, operator: 'contains one of' }))}
+            />
+          }
+        />
+      </FilterGroup>
+      <FilterGroup 
+        label="Group 1"
+        isCollapsible
+      >
+        <FilterField
+          label="First Name"
+          isCollapsible
+          filter={
+            <CheckboxList
+              options={[
+                { label: 'Arya', value: 'Arya' },
+                { label: 'Cersei', value: 'Cersei' },
+                { label: 'Jon', value: 'Jon' }
+              ]}
+              onChange={(values) => dispatch(setFilter({ field: 'firstName', value: values, operator: 'contains one of' }))}
+            />
+          }
+        />
+        <FilterField
+          label="Last Name"
+          isCollapsible
+          filter={
+            <CheckboxList
+              options={[
+                { label: 'Lannister', value: 'Lannister' },
+                { label: 'Snow', value: 'Snow' },
+                { label: 'Targaryen', value: 'Targaryen' }
+              ]}
+              onChange={(values) => dispatch(setFilter({ field: 'lastName', value: values, operator: 'contains one of' }))}
+            />
+          }
+        />
+      </FilterGroup>
     </FiltersPanel>
   )
 }

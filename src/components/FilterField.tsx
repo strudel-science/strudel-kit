@@ -2,7 +2,7 @@ import React, { ReactNode, useState } from 'react';
 import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { CheckboxList } from './CheckboxList';
-import { useAnalytics } from './Analytics/AnalyticsProvider';
+import { useAnalytics } from './contexts/analytics/AnalyticsProvider';
 import { Collapsible } from './Collapsible';
 
 enum FilterType {
@@ -10,26 +10,55 @@ enum FilterType {
   RANGE_SLIDER = 'RANGE_SLIDER',
 }
 
-interface Filter {
-  label: string;
-  field: string;
-  type: FilterType;
-  defaultValue: any;
-}
-
 interface FilterFieldProps extends BoxProps {
-  label: string;
-  filter: ReactNode
+  label: ReactNode;
+  filter: ReactNode;
+  isCollapsible?: boolean;
 }
 
-export const FilterField: React.FC<FilterFieldProps> = (props) => { 
-  return (
-    <Collapsible 
-      label={<Typography>{props.label}</Typography>}
+export const FilterField: React.FC<FilterFieldProps> = (props) => {
+  const defaultLabel = (
+    <Typography 
+      variant="body2" 
+      color="neutral.dark"
     >
-      <Box ml={2}>
-        {props.filter}
-      </Box>
-    </Collapsible>
+      {props.label}
+    </Typography>
+  );
+  const label = typeof props.label === 'string' ? defaultLabel : props.label;
+  
+  return (
+    <>
+      {props.isCollapsible ? (
+        <Collapsible
+          {...props}
+          color="neutral.dark"
+          label={label}
+          sx={{
+            '&:not(:last-child)': {
+              mb: 2
+            }
+          }}
+        >
+          <Box ml={2}>
+            {props.filter}
+          </Box>
+        </Collapsible>
+      ): (
+        <Box 
+          {...props}
+          sx={{
+            '&:not(:last-child)': {
+              mb: 2
+            }
+          }}
+        >
+          {label}
+          <Box ml={2} mt={1}>
+            {props.filter}
+          </Box>
+        </Box>
+      )}
+    </>
   )
 }
