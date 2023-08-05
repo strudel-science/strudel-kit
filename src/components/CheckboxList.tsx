@@ -4,7 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 type CheckboxOptionValue = string | number;
 
-interface CheckboxOption {
+export interface CheckboxOption {
   label: string;
   value: CheckboxOptionValue;
 }
@@ -44,6 +44,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
     <FormGroup {...rest}>
       {options.map((option, i) => (
         <FormControlLabel
+          key={`${option}-${i}`}
           label={option.label}
           control={
             <Checkbox 

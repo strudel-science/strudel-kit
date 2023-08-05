@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import { Box, BoxProps, Button, ButtonProps, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
+import { Box, Button, ButtonProps, Stack, StackProps } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
@@ -15,7 +15,7 @@ interface Filter {
   defaultValue: any;
 }
 
-export interface CollapsibleProps extends BoxProps {
+export interface CollapsibleProps extends StackProps {
   color?: string;
   label: ReactNode;
   isOpen?: boolean;
@@ -41,7 +41,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
   }, [isOpen]);
 
   return (
-    <Box {...rest}>
+    <Stack spacing={1} {...rest}>
       <Button
         disableRipple
         onClick={handleClick}
@@ -59,7 +59,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
         }}
         {...buttonProps}
       >
-        <Stack direction="row" alignItems="center">
+        <Stack spacing={1} direction="row" alignItems="center">
           {!isOpenState && (
             <KeyboardArrowRightIcon 
               sx={{ 
@@ -82,10 +82,10 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
         </Stack>
       </Button>
       {isOpenState && (
-        <Box mt={1}>
+        <Box>
           {children}
         </Box>
       )}
-    </Box>
+    </Stack>
   )
 }

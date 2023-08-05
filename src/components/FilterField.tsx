@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
+import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Stack, StackProps, TextField, TextFieldProps, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { CheckboxList } from './CheckboxList';
 import { useAnalytics } from './contexts/analytics/AnalyticsProvider';
@@ -10,54 +10,44 @@ enum FilterType {
   RANGE_SLIDER = 'RANGE_SLIDER',
 }
 
-interface FilterFieldProps extends BoxProps {
+interface FilterFieldProps extends StackProps {
   label: ReactNode;
   filter: ReactNode;
   isCollapsible?: boolean;
 }
 
-export const FilterField: React.FC<FilterFieldProps> = (props) => {
+export const FilterField: React.FC<FilterFieldProps> = ({
+  label,
+  filter,
+  isCollapsible,
+  ...rest
+}) => {
   const defaultLabel = (
-    <Typography 
-      variant="body2" 
-      color="neutral.dark"
-    >
-      {props.label}
+    <Typography color="black">
+      {label}
     </Typography>
   );
-  const label = typeof props.label === 'string' ? defaultLabel : props.label;
+  const labelComponent = typeof label === 'string' ? defaultLabel : label;
   
   return (
     <>
-      {props.isCollapsible ? (
+      {isCollapsible ? (
         <Collapsible
-          {...props}
-          color="neutral.dark"
-          label={label}
-          sx={{
-            '&:not(:last-child)': {
-              mb: 2
-            }
-          }}
+          {...rest}
+          color="black"
+          label={labelComponent}
         >
-          <Box ml={2}>
-            {props.filter}
+          <Box pl={4}>
+            {filter}
           </Box>
         </Collapsible>
       ): (
-        <Box 
-          {...props}
-          sx={{
-            '&:not(:last-child)': {
-              mb: 2
-            }
-          }}
-        >
-          {label}
-          <Box ml={2} mt={1}>
-            {props.filter}
+        <Stack spacing={1} {...rest}>
+          {labelComponent}
+          <Box>
+            {filter}
           </Box>
-        </Box>
+        </Stack>
       )}
     </>
   )

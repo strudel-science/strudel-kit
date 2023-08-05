@@ -1,19 +1,13 @@
-import { Box, Button, Grid, IconButton, Paper, Stack, TextField, Typography } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import { DataGrid, GridColDef, GridToolbar, GridValueGetterParams } from '@mui/x-data-grid';
+import { AppBar, Box, Button, Grid, IconButton, Paper, Stack, TextField, Toolbar, Typography } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import React, { useState } from 'react';
-import { AnalyticsProvider, useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
-import { AnalyticsDataTable } from '../../components/contexts/analytics/AnalyticsDataTable';
-import { AnalyticsSearchField } from '../../components/contexts/analytics/AnalyticsSearchField';
-import { FiltersPanel } from '../../components/FiltersPanel';
-import { CheckboxList } from '../../components/CheckboxList';
-import { setFilter, setPreviewItem } from '../../components/contexts/analytics/actions';
-import { FilterGroup } from '../../components/FilterGroup';
-import { Collapsible } from '../../components/Collapsible';
-import { FilterField } from '../../components/FilterField';
+import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
+import { setPreviewItem } from '../../components/contexts/analytics/actions';
 import { EEFiltersPanel } from './EEFiltersPanel';
 import { EEPreviewPanel } from './EEPreviewPanel';
+import { EEDataPanel } from './EEDataPanel';
+import { PageHeader } from '../../components/PageHeader';
 
 const getMainColumnSize = (showFiltersPanel: boolean, showPreviewPanel: boolean) => {
   if (!showFiltersPanel && !showPreviewPanel) {
@@ -45,7 +39,33 @@ export const ExploringEntitiesContent: React.FC = () => {
 
   return (
     <Box>
-      <Box 
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar color="default" position="static">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Project name
+            </Typography>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+            >
+              <AccountCircleIcon />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+      </Box>
+      {/* <Stack
+        direction="row"
         component="nav"
         sx={{
           backgroundColor: 'white',
@@ -54,39 +74,25 @@ export const ExploringEntitiesContent: React.FC = () => {
           padding: 1.5
         }}
       >
-        <Typography variant="h6" component="h1">Project name</Typography>
-      </Box>
-      <Grid container>
+        
+      </Stack> */}
+      <PageHeader
+        pageTitle="Genome Releases"
+        description="All gene sets have been annotated with KOG, KEGG, ENZYME, Pathway and the InterPro family of protein analysis tools."
+        mb={1}
+        p={2}
+        sx={{
+          backgroundColor: 'white'
+        }}
+      />
+      <Grid container spacing={1}>
         {showFiltersPanel && (
           <Grid item xs={2}>
             <EEFiltersPanel onClose={handleCloseFilters} />
           </Grid>
         )}
         <Grid item xs={getMainColumnSize(showFiltersPanel, !!state.previewItem)}>
-          <Paper
-            sx={{
-              margin: 1
-            }}
-          >
-            <Stack
-              direction="row"
-              spacing={2}
-              alignItems="center"
-              sx={{
-                padding: 2
-              }}
-            >
-              <Typography variant="h6" component="h1" flex={1}>Entity List</Typography>
-              <Button
-                startIcon={<FilterListIcon />}
-                onClick={handleToggleFilters}
-              >
-                Filters
-              </Button>
-              <AnalyticsSearchField />
-            </Stack>
-            <AnalyticsDataTable />
-          </Paper>
+          <EEDataPanel onToggleFiltersPanel={handleToggleFilters} />
         </Grid>
         {state.previewItem && (
           <Grid item xs={4}>

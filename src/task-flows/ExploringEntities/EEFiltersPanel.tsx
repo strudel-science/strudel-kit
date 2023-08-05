@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
+import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Slider, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { FiltersPanel } from '../../components/FiltersPanel';
 import { FilterField } from '../../components/FilterField';
-import { CheckboxList } from '../../components/CheckboxList';
+import { CheckboxList, CheckboxOption } from '../../components/CheckboxList';
 import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
 import { setFilter } from '../../components/contexts/analytics/actions';
 import { FilterGroup } from '../../components/FilterGroup';
@@ -34,6 +34,13 @@ const initFilterValues = (filters: Filter[]) => {
 export const EEFiltersPanel: React.FC<EEFiltersPanelProps> = (props) => { 
   const {state, dispatch} = useAnalytics();
   
+  const assmeblyOptions: CheckboxOption[] = [];
+  state.data?.forEach((d) => {
+    if (d['Assembly'] && assmeblyOptions.filter((o) => o.value === d['Assembly']).length === 0) {
+      assmeblyOptions.push({ label: d['Assembly'], value: d['Assembly'] });
+    }
+  });
+
   return (
     <FiltersPanel
       onClose={props.onClose}
@@ -45,72 +52,51 @@ export const EEFiltersPanel: React.FC<EEFiltersPanelProps> = (props) => {
         pr: 2
       }}
     >
-      <FilterGroup 
-        label="Group 1"
+      <FilterField
+        label="Assembly"
         isCollapsible
-      >
-        <FilterField
-          label="First Name"
-          isCollapsible
-          filter={
-            <CheckboxList
-              options={[
-                { label: 'Arya', value: 'Arya' },
-                { label: 'Cersei', value: 'Cersei' },
-                { label: 'Jon', value: 'Jon' }
-              ]}
-              onChange={(values) => dispatch(setFilter({ field: 'firstName', value: values, operator: 'contains one of' }))}
-            />
-          }
-        />
-        <FilterField
-          label="Last Name"
-          isCollapsible
-          filter={
-            <CheckboxList
-              options={[
-                { label: 'Lannister', value: 'Lannister' },
-                { label: 'Snow', value: 'Snow' },
-                { label: 'Targaryen', value: 'Targaryen' }
-              ]}
-              onChange={(values) => dispatch(setFilter({ field: 'lastName', value: values, operator: 'contains one of' }))}
-            />
-          }
-        />
-      </FilterGroup>
-      <FilterGroup 
-        label="Group 1"
+        filter={
+          <CheckboxList
+            options={assmeblyOptions}
+            onChange={(values) => dispatch(setFilter({ field: 'Assembly', value: values, operator: 'contains one of' }))}
+          />
+        }
+      />
+      <FilterField
+        label="Data Usage Policy"
         isCollapsible
-      >
-        <FilterField
-          label="First Name"
-          isCollapsible
-          filter={
-            <CheckboxList
-              options={[
-                { label: 'Arya', value: 'Arya' },
-                { label: 'Cersei', value: 'Cersei' },
-                { label: 'Jon', value: 'Jon' }
-              ]}
-              onChange={(values) => dispatch(setFilter({ field: 'firstName', value: values, operator: 'contains one of' }))}
-            />
-          }
-        />
-        <FilterField
-          label="Last Name"
-          isCollapsible
-          filter={
-            <CheckboxList
-              options={[
-                { label: 'Lannister', value: 'Lannister' },
-                { label: 'Snow', value: 'Snow' },
-                { label: 'Targaryen', value: 'Targaryen' }
-              ]}
-              onChange={(values) => dispatch(setFilter({ field: 'lastName', value: values, operator: 'contains one of' }))}
-            />
-          }
-        />
-      </FilterGroup>
+        filter={
+          <CheckboxList
+            options={[
+              { label: 'restricted', value: 'restricted' },
+              { label: 'unrestricted', value: 'unrestricted' },
+            ]}
+            onChange={(values) => dispatch(setFilter({ field: 'Data Usage Policy', value: values, operator: 'contains one of' }))}
+          />
+        }
+      />
+      <FilterField
+        label="Euk. BUSCO %"
+        isCollapsible
+        filter={
+          <Slider
+            getAriaLabel={() => 'Euk. BUSCO % range'}
+            value={[0, 100]}
+            valueLabelDisplay="auto"
+          />
+        }
+      />
+      <FilterField
+        label="Emb. BUSCO %"
+        isCollapsible
+        filter={
+          <Slider
+            getAriaLabel={() => 'Emb. BUSCO % range'}
+            value={[0, 100]}
+            valueLabelDisplay="auto"
+          />
+        }
+      />
     </FiltersPanel>
   )
 }

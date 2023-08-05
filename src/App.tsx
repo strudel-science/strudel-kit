@@ -35,6 +35,11 @@ const theme = createTheme({
         },
       ],
     },
+    MuiStack: {
+      defaultProps: {
+        spacing: 2
+      },
+    },
   },
 });
 

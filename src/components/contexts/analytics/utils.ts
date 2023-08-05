@@ -33,7 +33,7 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
               if (Array.isArray(f.value)) {
                 f.value.forEach((v) => {
                   if (!match) {
-                    if (d[f.field].indexOf(v) > -1) {
+                    if (d[f.field] === v) {
                       match = true;
                     }
                   }

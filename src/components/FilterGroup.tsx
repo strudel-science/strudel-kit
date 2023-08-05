@@ -6,50 +6,43 @@ interface FilterGroupProps extends CollapsibleProps {
   isCollapsible?: boolean;
 }
 
-export const FilterGroup: React.FC<FilterGroupProps> = (props) => {
+export const FilterGroup: React.FC<FilterGroupProps> = ({
+  label,
+  isCollapsible,
+  children,
+  ...rest
+}) => {
   const defaultLabel = (
     <Typography 
-      color="neutral.dark"
+      color="black"
       sx={{
         fontWeight: 'medium'
       }}
     >
-      {props.label}
+      {label}
     </Typography>
   );
-  const label = typeof props.label === 'string' ? defaultLabel : props.label;
+  const labelComponent = typeof label === 'string' ? defaultLabel : label;
 
   return (
     <>
-      {props.isCollapsible ? (
+      {isCollapsible ? (
         <Collapsible
-          {...props}
-          color="neutral.dark"
-          label={label}
-          sx={{
-            '&:not(:last-child)': {
-              mb: 2
-            }
-          }}
+          {...rest}
+          color="black"
+          label={labelComponent}
         >
-          <Box ml={2} mt={2}>
-            {props.children}
-          </Box>
+          <Stack pl={2}>
+            {children}
+          </Stack>
         </Collapsible>
       ): (
-        <Box 
-          {...props}
-          sx={{
-            '&:not(:last-child)': {
-              mb: 2
-            }
-          }}
-        >
-          {label}
-          <Box ml={2} mt={2}>
-            {props.children}
-          </Box>
-        </Box>
+        <Stack spacing={1} {...rest}>
+          {labelComponent}
+          <Stack pl={2}>
+            {children}
+          </Stack>
+        </Stack>
       )}
     </>
 

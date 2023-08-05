@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
+import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Stack, StackProps, TextField, TextFieldProps, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { CheckboxList } from './CheckboxList';
 import { useAnalytics } from './contexts/analytics/AnalyticsProvider';
@@ -16,7 +16,7 @@ interface Filter {
   defaultValue: any;
 }
 
-interface FilterPanelProps extends BoxProps {
+interface FilterPanelProps extends StackProps {
   filters?: Filter[];
   onChange?: () => any;
   onClose?: () => any;
@@ -35,14 +35,14 @@ export const FiltersPanel: React.FC<FilterPanelProps> = ({
   ...rest
 }) => { 
   return (
-    <Box {...rest}>
+    <Stack {...rest}>
       <Stack direction="row" alignItems="center">
         <Typography variant="h6" component="h2" flex={1}>FILTERS</Typography>
         <IconButton onClick={onClose}><CloseIcon /></IconButton>
       </Stack>
-      <Box>
+      <Stack>
         {children}
-      </Box>
-    </Box>
+      </Stack>
+    </Stack>
   )
 }
