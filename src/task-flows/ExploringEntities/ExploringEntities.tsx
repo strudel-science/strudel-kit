@@ -36,16 +36,7 @@ const columns: GridColDef[] = [
     headerName: 'Emb. BUSCO %',
     type: 'number',
     width: 110,
-  },
-  // {
-  //   field: 'fullName',
-  //   headerName: 'Full name',
-  //   description: 'This column has a value getter and is not sortable.',
-  //   sortable: false,
-  //   width: 160,
-  //   valueGetter: (params: GridValueGetterParams) =>
-  //     `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-  // },
+  }
 ];
 
 export const ExploringEntities: React.FC = () => {

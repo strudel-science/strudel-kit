@@ -33,6 +33,12 @@ const initFilterValues = (filters: Filter[]) => {
 
 export const EEFiltersPanel: React.FC<EEFiltersPanelProps> = (props) => { 
   const {state, dispatch} = useAnalytics();
+  const [eukRange, setEukRange] = useState([0, 100]);
+  const [embRange, setEmbRange] = useState([0, 100]);
+  // TODO: add markers to sliders
+  const eukMarks = [
+    {}
+  ]
   
   const assmeblyOptions: CheckboxOption[] = [];
   state.data?.forEach((d) => {
@@ -40,6 +46,14 @@ export const EEFiltersPanel: React.FC<EEFiltersPanelProps> = (props) => {
       assmeblyOptions.push({ label: d['Assembly'], value: d['Assembly'] });
     }
   });
+
+  const handleEukChange = (event: Event, newValue: number | number[]) => {
+    setEukRange(newValue as number[]);
+  };
+
+  const handleEmbChange = (event: Event, newValue: number | number[]) => {
+    setEmbRange(newValue as number[]);
+  };
 
   return (
     <FiltersPanel
@@ -81,8 +95,10 @@ export const EEFiltersPanel: React.FC<EEFiltersPanelProps> = (props) => {
         filter={
           <Slider
             getAriaLabel={() => 'Euk. BUSCO % range'}
-            value={[0, 100]}
+            value={eukRange}
             valueLabelDisplay="auto"
+            onChange={handleEukChange}
+            onChangeCommitted={(event, values) => dispatch(setFilter({ field: 'Euk. BUSCO %', value: values, operator: 'range' }))}
           />
         }
       />
@@ -92,8 +108,10 @@ export const EEFiltersPanel: React.FC<EEFiltersPanelProps> = (props) => {
         filter={
           <Slider
             getAriaLabel={() => 'Emb. BUSCO % range'}
-            value={[0, 100]}
+            value={embRange}
             valueLabelDisplay="auto"
+            onChange={handleEmbChange}
+            onChangeCommitted={(event, values) => dispatch(setFilter({ field: 'Emb. BUSCO %', value: values, operator: 'range' }))}
           />
         }
       />

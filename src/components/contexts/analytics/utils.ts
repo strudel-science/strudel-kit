@@ -41,6 +41,16 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
               }
               break;
             }
+            case 'range': {
+              if (Array.isArray(f.value)) {
+                const min = f.value[0];
+                const max = f.value[1];
+                if (d[f.field] >= min && d[f.field] <= max) {
+                  match = true;
+                }
+              }
+              break;
+            }
             default:
               break;
           }
@@ -58,3 +68,13 @@ export const filterData = (allData: any[], filters: DataFilter[], searchText?: s
   const filteredByTextAndDataFilters = filterByDataFilters(filteredByText, filters);
   return filteredByTextAndDataFilters;
 }
+
+export const initSliderTicks = (ticks: number | null, domain: number[], scale?: any) => {
+  if (ticks === 2) {
+    return domain;
+  } else if (ticks !== null) {
+    return scale.ticks(ticks);
+  } else {
+    return;
+  }
+};
