@@ -1,7 +1,8 @@
-import { AppBar, Box, Button, Grid, IconButton, Paper, Stack, TextField, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Link, Grid, IconButton, Paper, Stack, TextField, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import React, { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
 import { setPreviewItem } from '../../components/contexts/analytics/actions';
 import { EEFiltersPanel } from './EEFiltersPanel';
@@ -49,7 +50,9 @@ export const ExploringEntitiesContent: React.FC = () => {
               aria-label="menu"
               sx={{ mr: 2 }}
             >
-              <MenuIcon />
+              <Link component={RouterLink} to="/">
+                <MenuIcon />
+              </Link>
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Project name
