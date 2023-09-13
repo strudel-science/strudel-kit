@@ -10,6 +10,7 @@ import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvi
 import { setPreviewItem } from '../../components/contexts/analytics/actions';
 import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { DataGrid } from '../../components/DataGrid';
+import { NewScenarioModal } from './NewScenarioModal';
 
 const scenarios = [
   {
@@ -88,9 +89,10 @@ const columns: GridColDef[] = [
 export const Optimization: React.FC = () => {
   const {state, dispatch} = useAnalytics();
   const [showFiltersPanel, setShowFiltersPanel] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  const handleCloseFilters = () => {
-    setShowFiltersPanel(false);
+  const handleNewScenario = () => {
+    setModalOpen(true);
   };
   
   const handleToggleFilters = () => {
@@ -162,32 +164,21 @@ export const Optimization: React.FC = () => {
             
             <Button
               variant="contained"
+              onClick={handleNewScenario}
             >
               New Scenario
             </Button>
+            <NewScenarioModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
           </Stack>
           <DataGrid
             rows={scenarios}
             getRowId={(row) => row.id}
             columns={columns}
             disableColumnSelector
-            initialState={{
-              pagination: { paginationModel: { page: state.tablePage, pageSize: state.tablePageSize } }
-            }}
-            // {...props}
-            // onRowClick={handleRowClick}
-            sx={{
-              '& .MuiDataGrid-cell:focus-within': {
-                outline: 'none'
-              },
-              '& .MuiDataGrid-overlayWrapper': {
-                minHeight: '4rem'
-              }
-            }}
+            disableRowSelectionOnClick
           />
         </Paper>  
       </Container>
-        
     </Box>
   )
 }

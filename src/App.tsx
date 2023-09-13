@@ -7,6 +7,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Optimization } from './task-flows/Optimization';
 import { TaskFlowsPage } from './pages/TaskFlowsPage';
 import { OptimizationPage } from './pages/OptimizationPage';
+import { DataInputs } from './task-flows/Optimization/DataInputs';
+import { Scenario } from './task-flows/Optimization/Scenario';
+import { OptimizationSettings } from './task-flows/Optimization/OptimizationSettings';
 
 const theme = createTheme({
   palette: {
@@ -59,6 +62,20 @@ const router = createBrowserRouter([
   {
     path: "/optimization",
     element: <OptimizationPage />,
+  },
+  {
+    path: "/optimization/scenario",
+    element: <Scenario />,
+    children: [
+      {
+        path: 'data-inputs',
+        element: <DataInputs />
+      },
+      {
+        path: 'settings',
+        element: <OptimizationSettings />
+      }
+    ]
   },
 ]);
 
