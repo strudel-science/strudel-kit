@@ -1,9 +1,5 @@
 import { AppBar, Box, Button, Container, Grid, IconButton, Link, Paper, Stack, Step, StepLabel, Stepper, TextField, Toolbar, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import Plot from 'react-plotly.js';
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
@@ -85,7 +81,7 @@ const columns: GridColDef[] = [
   },
 ];
 
-export const DataInputs: React.FC = () => {
+export const Results: React.FC = () => {
   return (
     <Stack spacing={0} flex={1}>
       <Box
@@ -96,7 +92,7 @@ export const DataInputs: React.FC = () => {
           borderColor: 'neutral.main'
         }}
       >
-        <Stepper activeStep={0} sx={{ maxWidth: 850 }}>
+        <Stepper activeStep={2} sx={{ maxWidth: 850 }}>
           <Step key="Data Inputs">
             <StepLabel>
               <Link component={RouterLink} to="/optimization/scenario/data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
@@ -153,7 +149,7 @@ export const DataInputs: React.FC = () => {
               marginRight: '-2rem !important'
             }}
           >
-            Input Units
+            Summary
           </Typography>
           <Typography 
             component="li"
@@ -163,7 +159,7 @@ export const DataInputs: React.FC = () => {
               marginRight: '-2rem !important'
             }}
           >
-            Input Streams
+            System Costing
           </Typography>
           <Typography 
             component="li" 
@@ -173,7 +169,7 @@ export const DataInputs: React.FC = () => {
               marginRight: '-2rem !important'
             }}
           >
-            Unit Costing
+            System Metrics
           </Typography>
         </Stack>
         <Box flex={1}>
@@ -183,15 +179,59 @@ export const DataInputs: React.FC = () => {
               mt: 4
             }}
           >
-            <Paper>
-              <DataGrid
-                rows={inputUnits}
-                getRowId={(row) => row.id}
-                columns={columns}
-                disableColumnSelector
-                disableRowSelectionOnClick
-              />
-            </Paper>  
+            <Grid container spacing={4}>
+              <Grid item sm={6}>
+                <Paper>
+                  <Plot
+                    data={[
+                      {
+                        x: [1, 2, 3, 4],
+                        y: [10, 15, 13, 17],
+                        type: 'scatter'
+                      },
+                      {
+                        x: [1, 2, 3, 4],
+                        y: [16, 5, 11, 9],
+                        type: 'scatter'
+                      },
+                    ]}
+                    layout={{}}
+                  />
+                </Paper>
+              </Grid>
+              <Grid item sm={6}>
+                <Paper>
+                  <Plot
+                      data={[
+                        {
+                          x: ['giraffes', 'orangutans', 'monkeys'],
+                          y: [20, 14, 23],
+                          name: 'SF Zoo',
+                          type: 'bar'
+                        },
+                        {
+                          x: ['giraffes', 'orangutans', 'monkeys'],
+                          y: [12, 18, 29],
+                          name: 'LA Zoo',
+                          type: 'bar'
+                        },
+                      ]}
+                      layout={{}}
+                    />
+                </Paper>
+              </Grid>
+              <Grid item xs={12}>
+                <Paper>
+                  <DataGrid
+                    rows={inputUnits}
+                    getRowId={(row) => row.id}
+                    columns={columns}
+                    disableColumnSelector
+                    disableRowSelectionOnClick
+                  />
+                </Paper>
+              </Grid>
+            </Grid>  
           </Container>
         </Box>
       </Stack>
@@ -201,11 +241,10 @@ export const DataInputs: React.FC = () => {
           borderTop: '1px solid',
           borderColor: 'neutral.main',
           padding: 2,
-          textAlign: 'right'
         }}
       >
         <Link component={RouterLink} to="/optimization/scenario/settings">
-          <Button variant="contained">Continue to optimization settings</Button>
+          <Button variant="contained">Back to optimization settings</Button>
         </Link>
       </Box>
     </Stack>

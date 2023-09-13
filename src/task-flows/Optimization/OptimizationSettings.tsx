@@ -31,13 +31,25 @@ export const OptimizationSettings: React.FC = () => {
       >
         <Stepper activeStep={1} sx={{ maxWidth: 850 }}>
           <Step key="Data Inputs">
-            <StepLabel>Data Inputs</StepLabel>
+            <StepLabel>
+              <Link component={RouterLink} to="/optimization/scenario/data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                Data Inputs
+              </Link>
+            </StepLabel>
           </Step>
           <Step key="Optimization Settings">
-            <StepLabel>Optimization Settings</StepLabel>
+            <StepLabel>
+              <Link component={RouterLink} to="/optimization/scenario/settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                Optimization Settings
+              </Link>
+            </StepLabel>
           </Step>
           <Step key="Results">
-            <StepLabel>Results</StepLabel>
+            <StepLabel>
+              <Link component={RouterLink} to="/optimization/scenario/results" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                Results
+              </Link>
+            </StepLabel>
           </Step>
         </Stepper>
       </Box>
@@ -116,7 +128,7 @@ export const OptimizationSettings: React.FC = () => {
               </Grid>
             )}
             <Box textAlign="right">
-              <Link component={RouterLink} to="/optimization/scenario/loading">
+              <Link component={RouterLink} to="/optimization/scenario/running">
                 <Button variant="contained" sx={{ marginTop: 4 }}>
                   Run optimization
                 </Button>

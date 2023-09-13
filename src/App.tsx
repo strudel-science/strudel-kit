@@ -10,6 +10,8 @@ import { OptimizationPage } from './pages/OptimizationPage';
 import { DataInputs } from './task-flows/Optimization/DataInputs';
 import { Scenario } from './task-flows/Optimization/Scenario';
 import { OptimizationSettings } from './task-flows/Optimization/OptimizationSettings';
+import { RunningOptimization } from './task-flows/Optimization/RunningOptimization';
+import { Results } from './task-flows/Optimization/Results';
 
 const theme = createTheme({
   palette: {
@@ -74,6 +76,14 @@ const router = createBrowserRouter([
       {
         path: 'settings',
         element: <OptimizationSettings />
+      },
+      {
+        path: 'running',
+        element: <RunningOptimization />
+      },
+      {
+        path: 'results',
+        element: <Results />
       }
     ]
   },
