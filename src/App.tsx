@@ -12,6 +12,7 @@ import { Scenario } from './task-flows/Optimization/Scenario';
 import { OptimizationSettings } from './task-flows/Optimization/OptimizationSettings';
 import { RunningOptimization } from './task-flows/Optimization/RunningOptimization';
 import { Results } from './task-flows/Optimization/Results';
+import { ExploringDatasetsPage } from './pages/ExploringDatasetsPage';
 
 const theme = createTheme({
   palette: {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <TaskFlowsPage />,
+  },
+  {
+    path: "/exploring-datasets",
+    element: <ExploringDatasetsPage />,
   },
   {
     path: "/exploring-entities",

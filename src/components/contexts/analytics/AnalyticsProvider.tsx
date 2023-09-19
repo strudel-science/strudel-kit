@@ -35,8 +35,9 @@ export interface AnalyticsState {
  * some of the required props in the State are optional props.
  * These props have default values set in the initialState object.
  */
-interface AnalyticsProviderProps extends Omit<AnalyticsState, 'activeFilters' | 'tablePage' | 'tablePageSize'> {
+interface AnalyticsProviderProps extends Omit<AnalyticsState, 'activeFilters' | 'columns' | 'tablePage' | 'tablePageSize'> {
   activeFilters?: DataFilter[];
+  columns?: any[];
   tablePage?: number,
   tablePageSize?: number
   children: React.ReactNode 

@@ -7,6 +7,8 @@ import { setPreviewItem } from '../../components/contexts/analytics/actions';
 import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { DataGrid } from '../../components/DataGrid';
 import { NewScenarioModal } from './NewScenarioModal';
+import { chart } from './chart';
+import { Data } from 'plotly.js';
 
 const inputUnits = [
   {
@@ -201,7 +203,11 @@ export const Results: React.FC = () => {
               </Grid>
               <Grid item sm={6}>
                 <Paper>
-                  <Plot
+                <Plot
+                      data={chart.data as Data[]}
+                      layout={chart.layout as any}
+                    />
+                  {/* <Plot
                       data={[
                         {
                           x: ['giraffes', 'orangutans', 'monkeys'],
@@ -217,7 +223,7 @@ export const Results: React.FC = () => {
                         },
                       ]}
                       layout={{}}
-                    />
+                    /> */}
                 </Paper>
               </Grid>
               <Grid item xs={12}>

@@ -7,6 +7,9 @@ import { Link as RouterLink } from 'react-router-dom';
 export const TaskFlowsPage: React.FC = () => {
   return (
     <Stack p={2}>
+      <Link component={RouterLink} to="exploring-datasets">
+        Exploring Datasets
+      </Link>
       <Link component={RouterLink} to="exploring-entities">
         Exploring Entities
       </Link>
