@@ -9,32 +9,17 @@ interface EEPreviewPanelProps {
   onClose: () => any
 }
 
-const relatedColumns = [
+const attachedFilesColumns = [
   { 
-    field: 'id', 
-    headerName: 'ID', 
-    width: 50 
+    field: 'file_name', 
+    headerName: 'File Name',
+    flex: 1
   },
   { 
-    field: 'genome', 
-    headerName: 'Genome', 
+    field: 'file_size', 
+    headerName: 'Size', 
     width: 150 
-  },
-  { 
-    field: 'attr1', 
-    headerName: 'Attribute 1', 
-    width: 100 
-  },
-  { 
-    field: 'attr2', 
-    headerName: 'Attribute 2', 
-    width: 100 
-  },
-  { 
-    field: 'attr3', 
-    headerName: 'Attribute 3', 
-    width: 100 
-  },
+  }
 ];
 
 export const PreviewPanel: React.FC<EEPreviewPanelProps> = (props) => {
@@ -57,7 +42,7 @@ export const PreviewPanel: React.FC<EEPreviewPanelProps> = (props) => {
           <Stack direction="row">
             <Typography variant="h6" component="h3" flex={1}>
               <Link href="#" underline="hover">
-                {state.previewItem['Organism']}
+                {state.previewItem['title']}
               </Link>
             </Typography>
             <IconButton size="small" onClick={props.onClose}><CloseIcon /></IconButton>
@@ -65,29 +50,41 @@ export const PreviewPanel: React.FC<EEPreviewPanelProps> = (props) => {
           <Typography variant="body2">(Optional) Entity description or helper text.</Typography>
         </Stack>
         <Box>
-          <Typography fontWeight="medium" mb={1}>Attributes</Typography>
+          <Typography fontWeight="medium" mb={1}>Dates</Typography>
           <LabelValueTable 
             rows={[
-              { label: 'Commong Name', value: state.previewItem['Common Name'] },
-              { label: 'Assembly', value: state.previewItem['Assembly'] },
-              { label: 'Data Usage Policy', value: state.previewItem['Data Usage Policy'] },
+              { label: 'Publication Date', value: state.previewItem['publication_date'] },
+              { label: 'Start Date', value: state.previewItem['start_date'] },
+              { label: 'End Date', value: state.previewItem['end_date'] },
             ]}
           />
         </Box>
         <Box>
-          <Typography fontWeight="medium" mb={1}>Metrics</Typography>
-          <LabelValueTable 
-            rows={[
-              { label: 'Euk. BUSCO %', value: state.previewItem['Euk. BUSCO %'] },
-              { label: 'Emb. BUSCO %', value: state.previewItem['Emb. BUSCO %'] },
-            ]}
-          />
+          <Typography fontWeight="medium" mb={1}>Citation</Typography>
+          <Typography>{state.previewItem['citation']}</Typography>
         </Box>
         <Box>
-          <Typography fontWeight="medium" mb={1}>Related Data</Typography>
+          <Typography fontWeight="medium" mb={1}>Summary</Typography>
+          <Typography>{state.previewItem['summary']}</Typography>
+        </Box>
+        <Box>
+          <Typography fontWeight="medium" mb={1}>Tags</Typography>
+          <Typography>
+            {state.previewItem['tags'].map((tag: string, i: number) => {
+              if (i < state.previewItem['tags'].length - 1) {
+                return <span>{`${tag}, `}</span>
+              } else {
+                return <span>{tag}</span>
+              }
+            })
+          }</Typography>
+        </Box>
+        <Box>
+          <Typography fontWeight="medium" mb={1}>Attached Files</Typography>
           <DataGrid
-            rows={relatedRows}
-            columns={relatedColumns}
+            getRowId={(row) => row['file_id']}
+            rows={state.previewItem['attached_files']}
+            columns={attachedFilesColumns}
             disableRowSelectionOnClick
             initialState={{
               pagination: { paginationModel: { pageSize: 5 } }
@@ -96,10 +93,10 @@ export const PreviewPanel: React.FC<EEPreviewPanelProps> = (props) => {
         </Box>
         <Stack direction="row">
             <Button variant="contained">
-              View entity
+              View datasets
             </Button>
             <Button variant="outlined">
-              Export entity data
+              Download files
             </Button>
         </Stack>
       </Stack>

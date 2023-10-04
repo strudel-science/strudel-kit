@@ -13,6 +13,11 @@ import { OptimizationSettings } from './task-flows/Optimization/OptimizationSett
 import { RunningOptimization } from './task-flows/Optimization/RunningOptimization';
 import { Results } from './task-flows/Optimization/Results';
 import { ExploringDatasetsPage } from './pages/ExploringDatasetsPage';
+import { ExploringDatasets } from './task-flows/ExploringDatasets';
+import { DatasetExplorer } from './task-flows/ExploringDatasets/DatasetExplorer';
+import { DatasetDetail } from './task-flows/ExploringDatasets/DatasetDetail';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 const theme = createTheme({
   palette: {
@@ -59,7 +64,20 @@ const router = createBrowserRouter([
     element: <TaskFlowsPage />,
   },
   {
-    path: "/exploring-datasets",
+    element: <ExploringDatasets />,
+    children: [
+      {
+        path: "/exploring-datasets",
+        element: <DatasetExplorer />
+      },
+      {
+        path: '/exploring-datasets/:datasetId',
+        element: <DatasetDetail />
+      }
+    ]
+  },
+  {
+    path: "/exploring-datasets/:datasetId",
     element: <ExploringDatasetsPage />,
   },
   {
@@ -96,10 +114,13 @@ const router = createBrowserRouter([
 
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </LocalizationProvider>
+    
   );
 }
 

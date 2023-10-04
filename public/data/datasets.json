@@ -8,8 +8,8 @@
     "citation": "Lindsey, B.D., Johnson, T.D., and Belitz, Kenneth, 2018, Data from Decadal Change in Groundwater Quality Web Site, 1988-2012: U.S. Geological Survey data release, https://doi.org/10.5066/F7PC30WD.",
     "doi": "10.5066/F7PC30WD",
     "summary": "Groundwater quality data were collected in 5,000 wells between 1988-2001 by the National Water-Quality Assessment Project. About 1,500 of these wells were sampled again between 2002-2012 to evaluate decadal changes in groundwater quality. Monitoring wells, domestic supply wells, and some public supply wells were included in this study.",
-    "tags": [ "NAWQA", "National Water Quality Program", "USGS Science Data Catalog (SDC)", "Cycle 3", "groundwater quality", "trends", "water quality"
-    ],
+    "tags": [ "NAWQA", "National Water Quality Program", "USGS Science Data Catalog (SDC)", "Cycle 3", "groundwater quality", "trends", "water quality"],
+    "category": "Groundwater",
     "purpose": "Data were collected as a part of the NAWQA Land use studies or Major aquifer studies. Initially data were collected to characterize the quality of shallow and medium depths of groundwater in the nation. Subsequent samples were collected to evaluate changes in concentrations over a decadal time span. Mapping criteria and benchmarks: The NAWQA Project has developed an interactive mapping tool that displays decadal changes in concentrations.",
     "point_of_contact": "Bruce  D. Lindsey",
     "originator": "Bruce  D. Lindsey, Tyler D Johnson",
@@ -32,6 +32,20 @@
         "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
       }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
+      }
     ]
   },
   {
@@ -44,6 +58,7 @@
     "doi": "0000000000",
     "summary": "Geospatial data were developed to characterize pre-fire biomass, burn severity, and biomass consumed for the Black Dragon Fire that burned in northern China in 1987. Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["Boreal forest", "Carbon and greenhouse gas emissions", "China", "Ecology", "Forestry"],
+    "category": "Fires",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -63,8 +78,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -78,6 +107,7 @@
     "doi": "0000000000",
     "summary": "Heavy rainfall occurred across Louisiana, Texas, Arkansas, and Mississippi in March 2016 as a result of a slow-moving southward dip in the jetstream , funneling tropical moisture into Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["Louisiana", "Mississippi", "Texas", "Floods"," USGS Data Catalog (SDC)"],
+    "category": "Floods",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -97,8 +127,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -112,6 +156,7 @@
     "doi": "0000000000",
     "summary": "Bathymetric survey data of the Brandon Road Dam spillway was collected on May 27 and May 28, 2015 by the US Geological Survey (USGS) using Trimble Real-Time Kinematic Global Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["Dam", "GPS measurement", "Brandon Road Lock and Dam", "Floods", "USGS Data Catalog (SDC)"],
+    "category": "Groundwater",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -131,8 +176,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -146,6 +205,7 @@
     "doi": "0000000000",
     "summary": "This data set presents the results of conducting Mercury Intrusion Porosimetry on core samples of the mudstone underlying the Naval Air Warfare Center, West Trenton, New Jersey Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["Sedimentary rock", "porosity", "West Trenton",  "USGS Data Catalog (SDC)"],
+    "category": "Groundwater",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -165,8 +225,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -180,6 +254,7 @@
     "doi": "0000000000",
     "summary": "Acetylene fermentation assays, nitrogen fixation assays, and growth studies were performed with Pelobacter sp. strain SFB93 and Pelobacter acetylenicus DSM3246. Data includes concentrations of acetylene and ethylene over time, and growth measured with OD680 and cell counts.",
     "tags": ["Genetics", "Ecology", "Environmental health", "Geo Chemistry",  "USGS Data Catalog (SDC)"],
+    "category": "Biology",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -199,8 +274,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -214,6 +303,7 @@
     "doi": "0000000000",
     "summary": "The spring 2017 mainland sea otter count began on April 30, and although the shore-based counts were completed by May 12, 2017, the aerial counts were not completed until July 12. Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["California", "Sea Otters", "Census", "Coastal", "USGS Data Catalog (SDC)"],
+    "category": "Biology",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -233,8 +323,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -248,6 +352,7 @@
     "doi": "0000000000",
     "summary": "Est deserunt elit aliquip labore duis nostrud mollit sunt proident cillum. Mollit nisi sint laboris esse labore velit laboris. Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["Boreal forest", "Carbon and greenhouse gas emissions", "China", "Ecology", "Forestry"],
+    "category": "Earthquakes",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -267,8 +372,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -282,6 +401,7 @@
     "doi": "0000000000",
     "summary": "Est deserunt elit aliquip labore duis nostrud mollit sunt proident cillum. Mollit nisi sint laboris esse labore velit laboris. Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["Boreal forest", "Carbon and greenhouse gas emissions", "China", "Ecology", "Forestry"],
+    "category": "Fires",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -301,8 +421,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -316,6 +450,7 @@
     "doi": "0000000000",
     "summary": "Est deserunt elit aliquip labore duis nostrud mollit sunt proident cillum. Mollit nisi sint laboris esse labore velit laboris. Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["Boreal forest", "Carbon and greenhouse gas emissions", "China", "Ecology", "Forestry"],
+    "category": "Fires",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -335,8 +470,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -350,6 +499,7 @@
     "doi": "0000000000",
     "summary": "Est deserunt elit aliquip labore duis nostrud mollit sunt proident cillum. Mollit nisi sint laboris esse labore velit laboris. Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["Boreal forest", "Carbon and greenhouse gas emissions", "China", "Ecology", "Forestry"],
+    "category": "Groundwater",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -369,8 +519,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -384,6 +548,7 @@
     "doi": "0000000000",
     "summary": "Est deserunt elit aliquip labore duis nostrud mollit sunt proident cillum. Mollit nisi sint laboris esse labore velit laboris. Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["Boreal forest", "Carbon and greenhouse gas emissions", "China", "Ecology", "Forestry"],
+    "category": "Floods",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -403,8 +568,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -418,6 +597,7 @@
     "doi": "0000000000",
     "summary": "Est deserunt elit aliquip labore duis nostrud mollit sunt proident cillum. Mollit nisi sint laboris esse labore velit laboris. Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["Boreal forest", "Carbon and greenhouse gas emissions", "China", "Ecology", "Forestry"],
+    "category": "Biology",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -437,8 +617,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -452,6 +646,7 @@
     "doi": "0000000000",
     "summary": "Est deserunt elit aliquip labore duis nostrud mollit sunt proident cillum. Mollit nisi sint laboris esse labore velit laboris. Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["Boreal forest", "Carbon and greenhouse gas emissions", "China", "Ecology", "Forestry"],
+    "category": "Earthquakes",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -471,8 +666,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -486,6 +695,7 @@
     "doi": "0000000000",
     "summary": "Est deserunt elit aliquip labore duis nostrud mollit sunt proident cillum. Mollit nisi sint laboris esse labore velit laboris. Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["Boreal forest", "Carbon and greenhouse gas emissions", "China", "Ecology", "Forestry"],
+    "category": "Fires",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -505,8 +715,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -520,6 +744,7 @@
     "doi": "0000000000",
     "summary": "Est deserunt elit aliquip labore duis nostrud mollit sunt proident cillum. Mollit nisi sint laboris esse labore velit laboris. Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["Boreal forest", "Carbon and greenhouse gas emissions", "China", "Ecology", "Forestry"],
+    "category": "Floods",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -539,8 +764,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -554,6 +793,7 @@
     "doi": "0000000000",
     "summary": "Est deserunt elit aliquip labore duis nostrud mollit sunt proident cillum. Mollit nisi sint laboris esse labore velit laboris. Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["Boreal forest", "Carbon and greenhouse gas emissions", "China", "Ecology", "Forestry"],
+    "category": "Earthquakes",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -573,8 +813,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -588,6 +842,7 @@
     "doi": "0000000000",
     "summary": "Est deserunt elit aliquip labore duis nostrud mollit sunt proident cillum. Mollit nisi sint laboris esse labore velit laboris. Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["Boreal forest", "Carbon and greenhouse gas emissions", "China", "Ecology", "Forestry"],
+    "category": "Groundwater",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -607,8 +862,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   },
@@ -622,6 +891,7 @@
     "doi": "0000000000",
     "summary": "Est deserunt elit aliquip labore duis nostrud mollit sunt proident cillum. Mollit nisi sint laboris esse labore velit laboris. Ipsum id laborum et dolor laboris ut sint officia voluptate. Ipsum consectetur fugiat laboris sit Lorem duis minim fugiat.",
     "tags": ["Boreal forest", "Carbon and greenhouse gas emissions", "China", "Ecology", "Forestry"],
+    "category": "Fires",
     "purpose": "Nostrud ullamco ea id consequat ex. Tempor deserunt laborum amet ex quis culpa laborum Lorem Lorem sunt do sit excepteur. Sunt ea velit non magna ut Lorem magna eu aute aliquip.",
     "point_of_contact": "Ernest O. Lawrence",
     "originator": "Darleane C. Hoffman",
@@ -641,8 +911,22 @@
     ],
     "associated_projects": [
       {
-        "title": "Est officia ullamco deserunt irure enim laboris sit id occaecat qui in.",
+        "title": "Data from Decadal Change in Groundwater Quality Web Site, 1988-2016",
         "url": "#"
+      }
+    ],
+    "attached_files": [
+      {
+        "file_id": 0,
+        "file_name": "Laborum-velit-in-minim.zip",
+        "file_size": "42.7 MB",
+        "description": "Ad qui Lorem ea voluptate"
+      },
+      {
+        "file_id": 1,
+        "file_name": "Duis-qui-consectetur.xml",
+        "file_size": "8 KB",
+        "description": "Adipisicing deserunt anim reprehenderit"
       }
     ]
   }

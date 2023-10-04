@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Slider, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Radio, RadioGroup, Slider, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { FiltersPanel as Filters } from '../../components/FiltersPanel';
 import { FilterField } from '../../components/FilterField';
@@ -7,6 +7,8 @@ import { CheckboxList, CheckboxOption } from '../../components/CheckboxList';
 import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
 import { setFilter } from '../../components/contexts/analytics/actions';
 import { FilterGroup } from '../../components/FilterGroup';
+import { DatePicker } from '@mui/x-date-pickers';
+import dayjs from 'dayjs';
 
 enum FilterType {
   CHECKBOX_LIST = 'CHECKBOX_LIST',
@@ -35,15 +37,16 @@ export const FiltersPanel: React.FC<EEFiltersPanelProps> = (props) => {
   const {state, dispatch} = useAnalytics();
   const [eukRange, setEukRange] = useState([0, 100]);
   const [embRange, setEmbRange] = useState([0, 100]);
+  const [dateRange, setDateRange] = useState([null, dayjs()]);
   // TODO: add markers to sliders
   const eukMarks = [
     {}
   ]
   
-  const assmeblyOptions: CheckboxOption[] = [];
+  const categoryOptions: CheckboxOption[] = [];
   state.data?.forEach((d) => {
-    if (d['Assembly'] && assmeblyOptions.filter((o) => o.value === d['Assembly']).length === 0) {
-      assmeblyOptions.push({ label: d['Assembly'], value: d['Assembly'] });
+    if (d['category'] && categoryOptions.filter((o) => o.value === d['category']).length === 0) {
+      categoryOptions.push({ label: d['category'], value: d['category'] });
     }
   });
 
@@ -54,6 +57,10 @@ export const FiltersPanel: React.FC<EEFiltersPanelProps> = (props) => {
   const handleEmbChange = (event: Event, newValue: number | number[]) => {
     setEmbRange(newValue as number[]);
   };
+
+  useEffect(() => {
+    dispatch(setFilter({ field: 'publication_date', value: dateRange, operator: 'date range'}))
+  }, [dateRange]);
 
   return (
     <Filters
@@ -67,26 +74,41 @@ export const FiltersPanel: React.FC<EEFiltersPanelProps> = (props) => {
       }}
     >
       <FilterField
-        label="Assembly"
+        label="Category"
         isCollapsible
         filter={
           <CheckboxList
-            options={assmeblyOptions}
-            onChange={(values) => dispatch(setFilter({ field: 'Assembly', value: values, operator: 'contains one of' }))}
+            options={categoryOptions}
+            onChange={(values) => dispatch(setFilter({ field: 'category', value: values, operator: 'contains one of' }))}
           />
         }
       />
       <FilterField
-        label="Data Usage Policy"
+        label="Date Range"
         isCollapsible
         filter={
-          <CheckboxList
-            options={[
-              { label: 'restricted', value: 'restricted' },
-              { label: 'unrestricted', value: 'unrestricted' },
-            ]}
-            onChange={(values) => dispatch(setFilter({ field: 'Data Usage Policy', value: values, operator: 'contains one of' }))}
-          />
+          <Stack>
+            <DatePicker 
+              value={dateRange[0]} 
+              label="From"
+              slotProps={{
+                actionBar: {
+                  actions: ['clear', 'today']
+                }
+              }}
+              onChange={(value) => setDateRange([value, dateRange[1]])}
+            />
+            <DatePicker 
+              value={dateRange[1]} 
+              label="To"
+              slotProps={{
+                actionBar: {
+                  actions: ['clear', 'today']
+                }
+              }}
+              onChange={(value) => setDateRange([dateRange[0], value])}
+            />
+          </Stack>
         }
       />
       <FilterField

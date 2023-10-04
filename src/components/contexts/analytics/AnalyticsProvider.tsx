@@ -11,7 +11,7 @@ export enum FilterOperator {
 
 export interface DataFilter {
   field: string;
-  value: string | number | (string | number)[] | null;
+  value: string | number | any[] | null;
   operator: string;
 }
 
@@ -22,7 +22,7 @@ export interface AnalyticsState {
   dataIdField: string;
   filteredData?: any[];
   activeFilters: DataFilter[];
-  filterValues?: object;
+  filterValues?: any;
   previewItem?: any;
   searchTerm?: string;
   showFiltersPanel?: boolean;

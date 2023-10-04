@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { DataFilter } from "./AnalyticsProvider";
 
 export const filterBySearchText = (allData: any[], searchText?: string) => {
@@ -48,6 +49,26 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
                 if (d[f.field] >= min && d[f.field] <= max) {
                   match = true;
                 }
+              }
+              break;
+            }
+            case 'date range': {
+              if (
+                typeof d[f.field] === 'string' 
+                && Array.isArray(f.value)
+                && f.value[0]
+                && f.value[1]
+              ) {
+                console.log(d[f.field]);
+                console.log(f.value);
+                console.log(dayjs(d[f.field]));
+                const dateValue = dayjs(d[f.field]);
+                if (dateValue.isAfter(f.value[0]) && dateValue.isBefore(f.value[1])) {
+                  console.log('match');
+                  match = true;
+                }
+              } else {
+                match = true;
               }
               break;
             }
