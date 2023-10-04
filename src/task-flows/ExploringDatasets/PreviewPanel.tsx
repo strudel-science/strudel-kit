@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { Box, Button, Checkbox, FormControlLabel, FormGroup, FormGroupProps, FormLabel, IconButton, Link, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { Link as RouterLink } from 'react-router-dom';
 import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
 import { LabelValueTable } from '../../components/LabelValueTable';
 import { DataGrid } from '../../components/DataGrid';
@@ -41,7 +42,7 @@ export const PreviewPanel: React.FC<EEPreviewPanelProps> = (props) => {
         <Stack spacing={1}>
           <Stack direction="row">
             <Typography variant="h6" component="h3" flex={1}>
-              <Link href="#" underline="hover">
+              <Link component={RouterLink} to={`./${state.previewItem['id']}`} underline="hover">
                 {state.previewItem['title']}
               </Link>
             </Typography>

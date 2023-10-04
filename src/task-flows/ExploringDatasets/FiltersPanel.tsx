@@ -49,6 +49,19 @@ export const FiltersPanel: React.FC<EEFiltersPanelProps> = (props) => {
       categoryOptions.push({ label: d['category'], value: d['category'] });
     }
   });
+  categoryOptions.sort((a, b) => a.label < b.label ? -1 : 1);
+
+  const tagOptions: CheckboxOption[] = [];
+  state.data?.forEach((d) => {
+    if (d['tags']) {
+      d['tags'].forEach((t: string) => {
+        if (tagOptions.filter((o) => o.value === t).length === 0) {
+          tagOptions.push({ label: t, value: t });
+        }
+      });
+    }
+  });
+  tagOptions.sort((a, b) => a.label < b.label ? -1 : 1);
 
   const handleEukChange = (event: Event, newValue: number | number[]) => {
     setEukRange(newValue as number[]);
@@ -112,28 +125,12 @@ export const FiltersPanel: React.FC<EEFiltersPanelProps> = (props) => {
         }
       />
       <FilterField
-        label="Euk. BUSCO %"
+        label="Tags"
         isCollapsible
         filter={
-          <Slider
-            getAriaLabel={() => 'Euk. BUSCO % range'}
-            value={eukRange}
-            valueLabelDisplay="auto"
-            onChange={handleEukChange}
-            onChangeCommitted={(event, values) => dispatch(setFilter({ field: 'Euk. BUSCO %', value: values, operator: 'range' }))}
-          />
-        }
-      />
-      <FilterField
-        label="Emb. BUSCO %"
-        isCollapsible
-        filter={
-          <Slider
-            getAriaLabel={() => 'Emb. BUSCO % range'}
-            value={embRange}
-            valueLabelDisplay="auto"
-            onChange={handleEmbChange}
-            onChangeCommitted={(event, values) => dispatch(setFilter({ field: 'Emb. BUSCO %', value: values, operator: 'range' }))}
+          <CheckboxList
+            options={tagOptions}
+            onChange={(values) => dispatch(setFilter({ field: 'tags', value: values, operator: 'contains one of' }))}
           />
         }
       />

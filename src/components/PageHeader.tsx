@@ -4,11 +4,13 @@ import HomeIcon from '@mui/icons-material/Home';
 
 interface PageHeaderProps extends BoxProps {
   pageTitle: string;
+  breadcrumbTitle?: string;
   description?: string;
 }
 
 export const PageHeader: React.FC<PageHeaderProps> = ({
   pageTitle,
+  breadcrumbTitle,
   description,
   ...rest
 }) => {
@@ -25,7 +27,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
           >
             ...
           </Link>
-          <Typography color="text.primary">{pageTitle}</Typography>
+          <Typography color="text.primary">{breadcrumbTitle || pageTitle}</Typography>
         </Breadcrumbs>
         <Typography variant="h4" component="h1">{pageTitle}</Typography>
         <Typography variant="body2">{description}</Typography>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Pagination, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
+import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, Link, Pagination, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
 import SortIcon from '@mui/icons-material/Sort';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
@@ -78,9 +79,24 @@ export const DataListPanel: React.FC<EEDataPanelProps> = (props) => {
                 }
               }}
             >
-              <Box sx={{ bgcolor: "neutral.dark", textAlign: "center", height: 50, width: 50 }}>Image</Box>
+              <Box 
+                sx={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: "center", 
+                  bgcolor: "neutral.dark", 
+                  height: 70,
+                  width: 70 
+                }}
+              >
+                <Typography fontSize="small">{'<Image>'}</Typography>
+              </Box>
               <Box flex={1}>
-                <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>{item.title}</Typography>
+                <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>
+                  <Link component={RouterLink} to={`./${item['id']}`} underline="hover">
+                    {item.title}
+                  </Link>
+                </Typography>
                 <Typography
                   sx={{
                     '-webkit-box-orient': 'vertical',
@@ -113,7 +129,20 @@ export const DataListPanel: React.FC<EEDataPanelProps> = (props) => {
             </Stack>
           ))}
         </Stack>
-        {!state.previewItem && <Box sx={{ bgcolor: "neutral.dark", textAlign: "center", height: 700, width: 400 }}>Map</Box>}
+        {!state.previewItem && (
+          <Box 
+            sx={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: "center", 
+              bgcolor: "neutral.dark", 
+              height: 700,
+              width: 400 
+            }}
+          >
+            <Typography>{'<Map>'}</Typography>
+          </Box>
+        )}
       </Stack>
       <Pagination count={10} />
     </Paper>      
