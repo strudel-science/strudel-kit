@@ -93,12 +93,14 @@ export const PreviewPanel: React.FC<EEPreviewPanelProps> = (props) => {
           />
         </Box>
         <Stack direction="row">
+          <Link component={RouterLink} to={`./${state.previewItem['id']}`}>
             <Button variant="contained">
-              View datasets
+            View datasets
             </Button>
-            <Button variant="outlined">
-              Download files
-            </Button>
+          </Link>
+          <Button variant="outlined">
+            Download files
+          </Button>
         </Stack>
       </Stack>
     </Box>
