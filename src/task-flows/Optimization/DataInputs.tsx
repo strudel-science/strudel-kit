@@ -176,7 +176,7 @@ export const DataInputs: React.FC = () => {
             Unit Costing
           </Typography>
         </Stack>
-        <Box flex={1}>
+        <Box flex={1} sx={{ overflow: 'hidden' }}>
           <Container
             maxWidth="xl"
             sx={{
