@@ -5,14 +5,16 @@ import React, { useEffect, useState } from 'react';
 import { Outlet, Link as RouterLink } from 'react-router-dom';
 import { AnalyticsProvider, useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
 import * as d3 from 'd3-fetch';
+import { basename } from '../../App';
   
 export const ExploringDatasets: React.FC = () => {
   const [datasets, setDatasets] = useState<any[]>([]);
   console.log('datasets page')
   useEffect(() => {
+    console.log(datasets);
     if (datasets.length === 0) {
       const getData = async () => {
-        const data: any = await d3.json('/data/datasets.json');
+        const data: any = await d3.json(`${basename}/data/datasets.json`);
         console.log(data);
         setDatasets(data);
       }

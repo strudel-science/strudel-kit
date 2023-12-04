@@ -87,21 +87,11 @@ const columns: GridColDef[] = [
 ];
   
 export const Optimization: React.FC = () => {
-  const {state, dispatch} = useAnalytics();
-  const [showFiltersPanel, setShowFiltersPanel] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleNewScenario = () => {
     setModalOpen(true);
   };
-  
-  const handleToggleFilters = () => {
-    setShowFiltersPanel(!showFiltersPanel);
-  }
-
-  const handleClosePreview = () => {
-    dispatch(setPreviewItem(null));
-  }
 
   return (
     <Box>

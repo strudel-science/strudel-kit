@@ -3,6 +3,7 @@ import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import * as d3 from 'd3-fetch';
 import { ExploringDatasets } from '../task-flows/ExploringDatasets/ExploringDatasets';
 import { AnalyticsProvider } from '../components/contexts/analytics/AnalyticsProvider';
+import { basename } from '../App';
 
 export const ExploringDatasetsPage: React.FC = () => {
   const [datasets, setDatasets] = useState<any[]>([]);
@@ -10,7 +11,7 @@ export const ExploringDatasetsPage: React.FC = () => {
   useEffect(() => {
     if (datasets.length === 0) {
       const getData = async () => {
-        const data: any = await d3.json('/data/datasets.json');
+        const data: any = await d3.json(`${basename}/data/datasets.json`);
         console.log(data);
         setDatasets(data);
       }

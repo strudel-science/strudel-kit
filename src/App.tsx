@@ -3,10 +3,9 @@ import './App.css';
 import { ExploringEntities } from './task-flows/ExploringEntities/ExploringEntities';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import { Optimization } from './task-flows/Optimization';
 import { TaskFlowsPage } from './pages/TaskFlowsPage';
-import { OptimizationPage } from './pages/OptimizationPage';
 import { DataInputs } from './task-flows/Optimization/DataInputs';
 import { Scenario } from './task-flows/Optimization/Scenario';
 import { OptimizationSettings } from './task-flows/Optimization/OptimizationSettings';
@@ -58,6 +57,8 @@ const theme = createTheme({
   },
 });
 
+export const basename = document.querySelector('base')?.getAttribute('href') ?? '/';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -86,7 +87,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/optimization",
-    element: <OptimizationPage />,
+    element: <Optimization />,
   },
   {
     path: "/optimization/scenario",
@@ -110,7 +111,11 @@ const router = createBrowserRouter([
       }
     ]
   },
-]);
+  {
+    path: '*',
+    element: <Navigate to="/" replace />
+  }
+], {basename: basename});
 
 const App: React.FC = () => {
   return (
@@ -120,7 +125,6 @@ const App: React.FC = () => {
         <RouterProvider router={router} />
       </ThemeProvider>
     </LocalizationProvider>
-    
   );
 }
 

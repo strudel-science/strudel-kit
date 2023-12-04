@@ -3,6 +3,7 @@ import { AnalyticsProvider } from '../../components/contexts/analytics/Analytics
 import { ExploringEntitiesContent } from './ExploringEntitiesContent';
 import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import * as d3 from 'd3-fetch';
+import { basename } from '../../App';
 
 const columns: GridColDef[] = [
   { 
@@ -45,7 +46,7 @@ export const ExploringEntities: React.FC = () => {
   useEffect(() => {
     if (entities.length === 0) {
       const getData = async () => {
-        const data = await d3.tsv('/data/Current_Genomes.tsv');
+        const data = await d3.tsv(`${basename}/data/Current_Genomes.tsv`);
         setEntities(data);
       }
       getData();

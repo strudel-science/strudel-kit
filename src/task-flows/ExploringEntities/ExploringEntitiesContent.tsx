@@ -67,18 +67,6 @@ export const ExploringEntitiesContent: React.FC = () => {
           </Toolbar>
         </AppBar>
       </Box>
-      {/* <Stack
-        direction="row"
-        component="nav"
-        sx={{
-          backgroundColor: 'white',
-          borderBottom: 'solid 1px',
-          borderColor: 'neutral.main',
-          padding: 1.5
-        }}
-      >
-        
-      </Stack> */}
       <PageHeader
         pageTitle="Genome Releases"
         description="All gene sets have been annotated with KOG, KEGG, ENZYME, Pathway and the InterPro family of protein analysis tools."
