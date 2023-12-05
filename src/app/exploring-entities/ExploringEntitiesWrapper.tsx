@@ -3,7 +3,7 @@ import { AnalyticsProvider } from '../../components/contexts/analytics/Analytics
 import { ExploringEntitiesContent } from './ExploringEntitiesContent';
 import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import * as d3 from 'd3-fetch';
-import { basename } from '../../App';
+import { basename } from '../App';
 
 const columns: GridColDef[] = [
   { 
@@ -40,7 +40,7 @@ const columns: GridColDef[] = [
   }
 ];
 
-export const ExploringEntities: React.FC = () => {
+export const ExploringEntitiesWrapper: React.FC = () => {
   const [entities, setEntities] = useState<any[]>([]);
 
   useEffect(() => {

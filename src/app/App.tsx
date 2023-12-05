@@ -1,22 +1,21 @@
 import React from 'react';
 import './App.css';
-import { ExploringEntities } from './task-flows/ExploringEntities/ExploringEntities';
+import { ExploringEntitiesWrapper } from './exploring-entities/ExploringEntitiesWrapper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
-import { Optimization } from './task-flows/Optimization';
-import { TaskFlowsPage } from './pages/TaskFlowsPage';
-import { DataInputs } from './task-flows/Optimization/DataInputs';
-import { Scenario } from './task-flows/Optimization/Scenario';
-import { OptimizationSettings } from './task-flows/Optimization/OptimizationSettings';
-import { RunningOptimization } from './task-flows/Optimization/RunningOptimization';
-import { Results } from './task-flows/Optimization/Results';
-import { ExploringDatasetsPage } from './pages/ExploringDatasetsPage';
-import { ExploringDatasets } from './task-flows/ExploringDatasets';
-import { DatasetExplorer } from './task-flows/ExploringDatasets/DatasetExplorer';
-import { DatasetDetail } from './task-flows/ExploringDatasets/DatasetDetail';
+import { TaskFlowsPage } from './home/TaskFlowsPage';
+import { ExploringDatasetsWrapper } from './exploring-datasets/ExploringDatasetsWrapper';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { DatasetExplorer } from './exploring-datasets/DatasetExplorer';
+import { DatasetDetail } from './exploring-datasets/DatasetDetail';
+import { OptimizationWrapper } from './optimization/OptimizationWrapper';
+import { Scenario } from './optimization/Scenario';
+import { DataInputs } from './optimization/DataInputs';
+import { OptimizationSettings } from './optimization/OptimizationSettings';
+import { RunningOptimization } from './optimization/RunningOptimization';
+import { Results } from './optimization/Results';
 
 const theme = createTheme({
   palette: {
@@ -65,50 +64,52 @@ const router = createBrowserRouter([
     element: <TaskFlowsPage />,
   },
   {
-    element: <ExploringDatasets />,
+    path: "/exploring-datasets",
+    element: <ExploringDatasetsWrapper />,
     children: [
       {
-        path: "/exploring-datasets",
+        index: true,
         element: <DatasetExplorer />
       },
       {
-        path: '/exploring-datasets/:datasetId',
+        path: ':datasetId',
         element: <DatasetDetail />
       }
     ]
   },
   {
-    path: "/exploring-datasets/:datasetId",
-    element: <ExploringDatasetsPage />,
-  },
-  {
     path: "/exploring-entities",
-    element: <ExploringEntities />,
+    element: <ExploringEntitiesWrapper />,
   },
   {
     path: "/optimization",
-    element: <Optimization />,
-  },
-  {
-    path: "/optimization/scenario",
-    element: <Scenario />,
     children: [
       {
-        path: 'data-inputs',
-        element: <DataInputs />
+        index: true,
+        element: <OptimizationWrapper />
       },
       {
-        path: 'settings',
-        element: <OptimizationSettings />
+        path: "scenario",
+        element: <Scenario />,
+        children: [
+          {
+            path: 'data-inputs',
+            element: <DataInputs />
+          },
+          {
+            path: 'settings',
+            element: <OptimizationSettings />
+          },
+          {
+            path: 'running',
+            element: <RunningOptimization />
+          },
+          {
+            path: 'results',
+            element: <Results />
+          }
+        ]
       },
-      {
-        path: 'running',
-        element: <RunningOptimization />
-      },
-      {
-        path: 'results',
-        element: <Results />
-      }
     ]
   },
   {

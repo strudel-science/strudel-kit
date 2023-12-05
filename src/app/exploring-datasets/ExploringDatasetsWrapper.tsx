@@ -5,9 +5,9 @@ import React, { useEffect, useState } from 'react';
 import { Outlet, Link as RouterLink } from 'react-router-dom';
 import { AnalyticsProvider, useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
 import * as d3 from 'd3-fetch';
-import { basename } from '../../App';
+import { basename } from '../App';
   
-export const ExploringDatasets: React.FC = () => {
+export const ExploringDatasetsWrapper: React.FC = () => {
   const [datasets, setDatasets] = useState<any[]>([]);
   console.log('datasets page')
   useEffect(() => {

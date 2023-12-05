@@ -10,7 +10,6 @@ import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvi
 import { setPreviewItem } from '../../components/contexts/analytics/actions';
 import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { DataGrid } from '../../components/DataGrid';
-import { NewScenarioModal } from './NewScenarioModal';
 
 export const OptimizationSettings: React.FC = () => {
   const [showAdvanced, setShowAdvanced] = useState(false);
