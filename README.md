@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Installation
+
+You need to download the JavaScript dependencies before you can run the demonstration app.
+To do this, run:
+
+### `npm install`
+
+It is normal for this to take a few minutes and print a bunch of warnings.
+
 ## Available Scripts
 
 In the project directory, you can run:
