@@ -45,7 +45,7 @@ import { Results } from './task-flows/Optimization/Results';
 import { MyDataInputs } from './task-flows/MyAnalysis/DataInputs';
 import { MyScenario } from './task-flows/MyAnalysis/Scenario';
 import { MyResults } from './task-flows/MyAnalysis/Results';
-// change filename as well:
+// changed filename as well:
 import { MyAnalysisSettings } from './task-flows/MyAnalysis/MyAnalysisSettings';
 import { RunningMyAnalysis } from './task-flows/MyAnalysis/Running';
 ```
