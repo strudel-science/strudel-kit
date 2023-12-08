@@ -10,11 +10,12 @@ Make a new copy of one of the task flows:
 cp -r Optimization MyAnalysis
 ```
 
-In the new directory you created, rename the main task flow and settings file
+In the new directory you created, rename the main task flow and settings file and, in this case, one other file with the word _Optimization_ in it (to avoid confusion).
 ```
 cd MyAnalysis
 mv Optimization.tsx MyAnalysisPage.tsx
 mv OptimizationSettings.tsx MyAnalysisSettings.tsx
+mv RunningOptimization.tsx Running.tsx
 ```
 
 In that directory, edit _index.tsx_ to export your new task flow:
