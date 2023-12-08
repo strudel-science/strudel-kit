@@ -1,5 +1,10 @@
 # Customizing a task flow (notes)
 
+## Create a copy of an existing task flow
+
+To make changes non-destructively, and understand some basics of the framework, we will start by creating our own app by making a copy of an existing task flow. 
+The new app will be called "MyAnalysis" and will be a copy of the "Optimization" task flow.
+
 In _strudel-ui_, change to the taskflows directory
 ```
 cd src/taskflows
@@ -118,6 +123,8 @@ Add the page to the _pages/TaskFlowsPage.tsx_ file.
 </Link>
 ```
 
+## Make a simple change
+
 Now, finally, you can edit MyAnalysis!
 Let's start by changing the project name.
 In _MyAnalysis.tsx_ under the _task-flows/MyAnalysis_ directory, edit
@@ -134,3 +141,33 @@ npm start
 ```
 
 The server will check files for changes, so if you leave it running while you continue to make  edits to the files, you can make 'live' edits. For example, if you edited the _MyAnalysis.tsx_ file to change  the project name to "My Amazing Analysis", that would almost immediately show up in the page.
+
+## Change the task flow
+
+Instead of just changing the name, we will now change the task flow itself.
+Let's say that you want to just do the analysis without bothering with the "scenarios" part.
+In other words, you want to start the task flow with the "Data Inputs" page.
+
+To do that, we will _MyAnalysis.tsx_, the main page for the task flow.
+Right now, it lists the scenarios and provides a button to a dialog box for creating a new one.
+Instead we will replace the body of the page with the _DataInputs_ component.
+To do this, find the `return` statement that contains all the JSX (HTML-looking) code.
+In that statement, cut out the entire `<Paper>` component inside the `<Container>` component. In other words, cut all the lines from, and including, `<Paper>` up to, and including, the matching tag `</Paper>`.
+
+Now, to get a new body for the page, put `<DataInputs />` where the `<Paper> ... </Paper>` section just was. When you're done, the new section should look like this:
+```typescript jsx
+      <Container 
+        maxWidth="xl"
+        sx={{
+          mt: 4
+        }}
+      >
+      <DataInputs />
+      </Container>
+```
+
+Believe it or not, this does the trick. Reload the page (or start the server) and you should now see the data inputs as the first page.
+
+## Connect to back-end functionality
+
+TBD!!

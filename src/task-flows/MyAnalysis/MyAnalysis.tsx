@@ -11,6 +11,7 @@ import { setPreviewItem } from '../../components/contexts/analytics/actions';
 import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { DataGrid } from '../../components/DataGrid';
 import { NewScenarioModal } from './NewScenarioModal';
+import {DataInputs} from "../Optimization/DataInputs";
 
 const scenarios = [
   {
@@ -139,6 +140,18 @@ export const MyAnalysis: React.FC = () => {
           mt: 4
         }}
       >
+      <DataInputs />
+      </Container>
+    </Box>
+  )
+}
+/*
+      <Container
+        maxWidth="xl"
+        sx={{
+          mt: 4
+        }}
+      >
         <Paper>
           <Stack
             direction="row"
@@ -149,20 +162,20 @@ export const MyAnalysis: React.FC = () => {
             }}
           >
             <Box flex={1}>
-              <Typography 
-                variant="h6" 
-                component="h2" 
+              <Typography
+                variant="h6"
+                component="h2"
               >
                 Scenario List
               </Typography>
-              <Typography 
-                variant="subtitle1" 
-                component="p" 
+              <Typography
+                variant="subtitle1"
+                component="p"
               >
-                Scenarios represent a set of analysis inputs / parameters / settings and the results of that analysis. 
+                Scenarios represent a set of analysis inputs / parameters / settings and the results of that analysis.
               </Typography>
             </Box>
-            
+
             <Button
               variant="contained"
               onClick={handleNewScenario}
@@ -178,8 +191,7 @@ export const MyAnalysis: React.FC = () => {
             disableColumnSelector
             disableRowSelectionOnClick
           />
-        </Paper>  
+        </Paper>
       </Container>
     </Box>
-  )
-}
+ */

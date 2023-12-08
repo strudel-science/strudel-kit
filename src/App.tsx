@@ -121,11 +121,11 @@ const router = createBrowserRouter([
 
     // My Analysis
   {
-    path: "/myanalysis",
-    element: <MyAnalysisPage />,
+     path: "/myanalysis",
+     element: <MyAnalysisPage />,
   },
   {
-    path: "/myanalysis/scenario",
+    path: "/myanalysis",
     element: <MyScenario />,
     children: [
       {
