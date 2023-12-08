@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import { ExploringEntities } from './task-flows/ExploringEntities/ExploringEntities';
+import { ExploringEntities } from './task-flows/ExploringEntities';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Optimization } from './task-flows/Optimization';
+// import { Optimization } from './task-flows/Optimization';
 import { TaskFlowsPage } from './pages/TaskFlowsPage';
 import { OptimizationPage } from './pages/OptimizationPage';
 import { DataInputs } from './task-flows/Optimization/DataInputs';
@@ -18,6 +18,14 @@ import { DatasetExplorer } from './task-flows/ExploringDatasets/DatasetExplorer'
 import { DatasetDetail } from './task-flows/ExploringDatasets/DatasetDetail';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+
+// import { MyAnalysis } from './task-flows/MyAnalysis';
+import { MyDataInputs } from './task-flows/MyAnalysis/DataInputs';
+import { MyScenario } from './task-flows/MyAnalysis/Scenario';
+import { MyAnalysisSettings } from './task-flows/MyAnalysis/MyAnalysisSettings';
+import { RunningMyAnalysis } from './task-flows/MyAnalysis/Running';
+import { MyResults } from './task-flows/MyAnalysis/Results';
+import { MyAnalysisPage } from './pages/MyAnalysisPage';
 
 const theme = createTheme({
   palette: {
@@ -110,6 +118,37 @@ const router = createBrowserRouter([
       }
     ]
   },
+
+    // My Analysis
+  {
+    path: "/myanalysis",
+    element: <MyAnalysisPage />,
+  },
+  {
+    path: "/myanalysis/scenario",
+    element: <MyScenario />,
+    children: [
+      {
+        path: 'data-inputs',
+        element: <MyDataInputs />
+      },
+      {
+        path: 'settings',
+        element: <MyAnalysisSettings />
+      },
+      {
+        path: 'running',
+        element: <RunningMyAnalysis />
+      },
+      {
+        path: 'results',
+        element: <MyResults />
+      }
+    ]
+  },
+
+
+
 ]);
 
 const App: React.FC = () => {

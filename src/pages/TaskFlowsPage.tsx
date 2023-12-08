@@ -16,6 +16,9 @@ export const TaskFlowsPage: React.FC = () => {
       <Link component={RouterLink} to="optimization">
         Optimization
       </Link>
+      <Link component={RouterLink} to="myanalysis">
+        My Analysis
+      </Link>
     </Stack>
   )
 }
