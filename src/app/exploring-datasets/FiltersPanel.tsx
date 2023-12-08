@@ -35,13 +35,7 @@ const initFilterValues = (filters: Filter[]) => {
 
 export const FiltersPanel: React.FC<EEFiltersPanelProps> = (props) => { 
   const {state, dispatch} = useAnalytics();
-  const [eukRange, setEukRange] = useState([0, 100]);
-  const [embRange, setEmbRange] = useState([0, 100]);
   const [dateRange, setDateRange] = useState([null, dayjs()]);
-  // TODO: add markers to sliders
-  const eukMarks = [
-    {}
-  ]
   
   const categoryOptions: CheckboxOption[] = [];
   state.data?.forEach((d) => {
@@ -62,14 +56,6 @@ export const FiltersPanel: React.FC<EEFiltersPanelProps> = (props) => {
     }
   });
   tagOptions.sort((a, b) => a.label < b.label ? -1 : 1);
-
-  const handleEukChange = (event: Event, newValue: number | number[]) => {
-    setEukRange(newValue as number[]);
-  };
-
-  const handleEmbChange = (event: Event, newValue: number | number[]) => {
-    setEmbRange(newValue as number[]);
-  };
 
   useEffect(() => {
     dispatch(setFilter({ field: 'publication_date', value: dateRange, operator: 'date range'}))

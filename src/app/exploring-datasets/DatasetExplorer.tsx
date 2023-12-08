@@ -9,18 +9,6 @@ import { FiltersPanel } from './FiltersPanel';
 import { PreviewPanel } from './PreviewPanel';
 import { DataListPanel } from './DataListPanel';
 import { PageHeader } from '../../components/PageHeader';
-
-const getMainColumnSize = (showFiltersPanel: boolean, showPreviewPanel: boolean) => {
-  if (!showFiltersPanel && !showPreviewPanel) {
-    return 12;
-  } else if (showFiltersPanel && !showPreviewPanel) {
-    return 10;
-  } else if (!showFiltersPanel && showPreviewPanel) {
-    return 8;
-  } else if (showFiltersPanel && showPreviewPanel) {
-    return 6;
-  }
-}
   
 export const DatasetExplorer: React.FC = () => {
   const {state, dispatch} = useAnalytics();
@@ -66,4 +54,16 @@ export const DatasetExplorer: React.FC = () => {
       </Grid>
     </Box>
   )
-}
+};
+
+const getMainColumnSize = (showFiltersPanel: boolean, showPreviewPanel: boolean) => {
+  if (!showFiltersPanel && !showPreviewPanel) {
+    return 12;
+  } else if (showFiltersPanel && !showPreviewPanel) {
+    return 10;
+  } else if (!showFiltersPanel && showPreviewPanel) {
+    return 8;
+  } else if (showFiltersPanel && showPreviewPanel) {
+    return 6;
+  }
+};

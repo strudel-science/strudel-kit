@@ -8,20 +8,17 @@ import { DataGrid } from '../../components/DataGrid';
 import { GridEventListener } from '@mui/x-data-grid';
 import { blue } from '@mui/material/colors';
 import { setPreviewItem, setSearch } from '../../components/contexts/analytics/actions';
+import { DataListCard } from './DataListCard';
 
-interface EEDataPanelProps {
+interface DataListPanelProps {
   onToggleFiltersPanel: () => any
 }
 
-export const DataListPanel: React.FC<EEDataPanelProps> = (props) => { 
+export const DataListPanel: React.FC<DataListPanelProps> = (props) => { 
   const {state, dispatch} = useAnalytics();
 
   const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (evt) => {
     dispatch(setSearch(evt.target.value));
-  };
-
-  const handleItemClick = (item: any) => {
-    dispatch(setPreviewItem(item))
   };
   
   return (
@@ -64,69 +61,7 @@ export const DataListPanel: React.FC<EEDataPanelProps> = (props) => {
       >
         <Stack flex={1}>
           {state.filteredData?.map((item, i) => (
-            <Stack 
-              className={state.previewItem?.id === item.id ? 'selected' : ''}
-              direction="row" 
-              onClick={() => handleItemClick(item)}
-              sx={{
-                padding: 1,
-                transition: '0.25s',
-                '&:hover': {
-                  bgcolor: 'neutral.light'
-                },
-                '&.selected': {
-                  bgcolor: blue[50]
-                }
-              }}
-            >
-              <Box 
-                sx={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: "center", 
-                  bgcolor: "neutral.dark", 
-                  height: 70,
-                  width: 70 
-                }}
-              >
-                <Typography fontSize="small">{'<Image>'}</Typography>
-              </Box>
-              <Box flex={1}>
-                <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>
-                  <Link component={RouterLink} to={`./${item['id']}`} underline="hover">
-                    {item.title}
-                  </Link>
-                </Typography>
-                <Typography
-                  sx={{
-                    '-webkit-box-orient': 'vertical',
-                    '-webkit-line-clamp': '2',
-                    display: '-webkit-box',
-                    overflow: 'hidden'
-                  }}
-                >
-                  {item.summary}
-                </Typography>
-                <Typography
-                  sx={{
-                    '-webkit-box-orient': 'vertical',
-                    '-webkit-line-clamp': '1',
-                    display: '-webkit-box',
-                    fontStyle: 'italic',
-                    overflow: 'hidden'
-                  }}
-                >
-                  <Typography component="span" sx={{ fontSize: 'small', fontWeight: 'bold', marginRight: 0.5 }}>Tags:</Typography>
-                  {item.tags.map((tag: string, i: number) => {
-                    if (i < item.tags.length -1) {
-                      return <Typography component="span" sx={{ fontSize: 'small', marginRight: 0.5 }}>{tag},</Typography>
-                    } else {
-                      return <Typography component="span" sx={{ fontSize: 'small' }}>{tag}</Typography>
-                    }
-                  })}
-                </Typography>                
-              </Box>
-            </Stack>
+            <DataListCard item={item} />
           ))}
         </Stack>
         {!state.previewItem && (
