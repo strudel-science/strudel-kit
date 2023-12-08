@@ -31,26 +31,31 @@ export const MyAnalysis: React.FC = () => {
 ```
 
 Look at the `App.tsx` in the root directory.
-Any of the imports in that file from the task flow you copied need to be  renamed to use the new name. Then you need to rename the files and exports in your new task flow directory.
+For each of the imports from the task flow you
+copied (i.e., _task-flows/Optimization_), you will need
+to do two things:
+1) In the copy of the file (i.e. the corresponding file in _task-flows/MyAnalysis_), modify the line beginning with `export` to export a new, unique, name for the component (in this example, we just add the prefix "My").
+2) Add a new import in `App.tsx` that imports that component, under the new name, from the copied file.
+
+When you are done, the _App.tsx_ file will look something like this:
 ```typescript
-/*
-import { TaskFlowsPage } from './pages/TaskFlowsPage';
+// Optimization task-flow imports (leave these untouched):
+import { OptimizationPage } from './pages/OptimizationPage';
 import { DataInputs } from './task-flows/Optimization/DataInputs';
 import { Scenario } from './task-flows/Optimization/Scenario';
 import { OptimizationSettings } from './task-flows/Optimization/OptimizationSettings';
 import { RunningOptimization } from './task-flows/Optimization/RunningOptimization';
 import { Results } from './task-flows/Optimization/Results';
- */
-// Edit all these files to export the new names.
+// New, added, imports
+import { MyAnalysisPage } from './pages/MyAnalysisPage';
 import { MyDataInputs } from './task-flows/MyAnalysis/DataInputs';
 import { MyScenario } from './task-flows/MyAnalysis/Scenario';
-import { MyResults } from './task-flows/MyAnalysis/Results';
-// changed filename as well:
 import { MyAnalysisSettings } from './task-flows/MyAnalysis/MyAnalysisSettings';
 import { RunningMyAnalysis } from './task-flows/MyAnalysis/Running';
+import { MyResults } from './task-flows/MyAnalysis/Results';
 ```
 
-Then add a new set of routes under `createBrowserRouter` that
+Next, add a new set of routes under `createBrowserRouter` that
 point to the renamed components from the previous step.
 ```typescript jsx
 const router = createBrowserRouter([
@@ -106,7 +111,7 @@ export const MyAnalysisPage: React.FC = () => {
   )
 ```
 
-Add the page to the _TaskFlowsPage.tsx_ in the _pages_ subdirectory
+Add the page to the _pages/TaskFlowsPage.tsx_ file.
 ```typescript jsx
 <Link component={RouterLink} to="myanalysis">
     My Analysis
@@ -119,6 +124,13 @@ In _MyAnalysis.tsx_ under the _task-flows/MyAnalysis_ directory, edit
 the section with the project name.
 ```typescript jsx
 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-  My Amazing Analysis
+  My Analysis
 </Typography>
 ```
+
+To see your changes, start the server from the root directory:
+```shell
+npm start
+```
+
+The server will check files for changes, so if you leave it running while you continue to make  edits to the files, you can make 'live' edits. For example, if you edited the _MyAnalysis.tsx_ file to change  the project name to "My Amazing Analysis", that would almost immediately show up in the page.
