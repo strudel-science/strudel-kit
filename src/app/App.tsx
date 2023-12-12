@@ -17,7 +17,13 @@ import { OptimizationSettings } from './optimization/OptimizationSettings';
 import { RunningOptimization } from './optimization/RunningOptimization';
 import { Results } from './optimization/Results';
 
+/**
+ * TODO: Add more comments...
+ * Maybe even for every attribute
+ * TODO: Add link to MUI docs
+ */
 const theme = createTheme({
+  /** What is palette? */
   palette: {
     background: {
       default: '#F5F5F6'
@@ -28,6 +34,7 @@ const theme = createTheme({
       dark: '#828282'
     }
   },
+  /** What are components? */
   components: {
     MuiPaper: {
       styleOverrides: {
@@ -58,6 +65,9 @@ const theme = createTheme({
 
 export const basename = document.querySelector('base')?.getAttribute('href') ?? '/';
 
+/**
+ * TODO: comment
+ */
 const router = createBrowserRouter([
   {
     path: "/",

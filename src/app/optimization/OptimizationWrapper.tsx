@@ -95,6 +95,7 @@ export const OptimizationWrapper: React.FC = () => {
 
   return (
     <Box>
+      {/** Shrink this down into a single TopBar component */}
       <Box sx={{ flexGrow: 1 }}>
         <AppBar color="default" position="static">
           <Toolbar>
@@ -138,6 +139,7 @@ export const OptimizationWrapper: React.FC = () => {
             }}
           >
             <Box flex={1}>
+              {/** TODO: Add stuff to the theme to make this less confusing */}
               <Typography 
                 variant="h6" 
                 component="h2" 
@@ -151,7 +153,6 @@ export const OptimizationWrapper: React.FC = () => {
                 Scenarios represent a set of analysis inputs / parameters / settings and the results of that analysis. 
               </Typography>
             </Box>
-            
             <Button
               variant="contained"
               onClick={handleNewScenario}
