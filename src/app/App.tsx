@@ -16,6 +16,9 @@ import { DataInputs } from './optimization/DataInputs';
 import { OptimizationSettings } from './optimization/OptimizationSettings';
 import { RunningOptimization } from './optimization/RunningOptimization';
 import { Results } from './optimization/Results';
+import { ContributingDataWrapper } from './contributing-data/ContributingDataWrapper';
+import { Register } from './contributing-data/Register';
+import { ContributorPortal } from './contributing-data/ContributorPortal';
 
 /**
  * TODO: Add more comments...
@@ -120,6 +123,24 @@ const router = createBrowserRouter([
           }
         ]
       },
+    ]
+  },
+  {
+    path: "/contributing-data",
+    element: <ContributingDataWrapper />,
+    children: [
+      {
+        index: true,
+        element: <Register />
+      },
+      {
+        path: 'register',
+        element: <Register />
+      },
+      {
+        path: 'portal',
+        element: <ContributorPortal />
+      }
     ]
   },
   {

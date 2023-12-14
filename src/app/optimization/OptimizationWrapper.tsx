@@ -142,7 +142,7 @@ export const OptimizationWrapper: React.FC = () => {
               {/** TODO: Add stuff to the theme to make this less confusing */}
               <Typography 
                 variant="h6" 
-                component="h2" 
+                component="h1" 
               >
                 Scenario List
               </Typography>
