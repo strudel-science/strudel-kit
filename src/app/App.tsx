@@ -19,6 +19,12 @@ import { Results } from './optimization/Results';
 import { ContributingDataWrapper } from './contributing-data/ContributingDataWrapper';
 import { Register } from './contributing-data/Register';
 import { ContributorPortal } from './contributing-data/ContributorPortal';
+import { MyAnalysisPage } from './my-analysis/MyAnalysisPage';
+import { MyScenario } from './my-analysis/Scenario';
+import { MyDataInputs } from './my-analysis/DataInputs';
+import { MyAnalysisSettings } from './my-analysis/MyAnalysisSettings';
+import { RunningMyAnalysis } from './my-analysis/Running';
+import { MyResults } from './my-analysis/Results';
 
 /**
  * TODO: Add more comments...
@@ -143,6 +149,33 @@ const router = createBrowserRouter([
       }
     ]
   },
+  // My Analysis
+  {
+    path: "/myanalysis",
+    element: <MyAnalysisPage />,
+   },
+   {
+     path: "/myanalysis",
+     element: <MyScenario />,
+     children: [
+       {
+         path: 'data-inputs',
+         element: <MyDataInputs />
+       },
+       {
+         path: 'settings',
+         element: <MyAnalysisSettings />
+       },
+       {
+         path: 'running',
+         element: <RunningMyAnalysis />
+       },
+       {
+         path: 'results',
+         element: <MyResults />
+       }
+     ]
+   },
   {
     path: '*',
     element: <Navigate to="/" replace />
