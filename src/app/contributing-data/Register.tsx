@@ -61,47 +61,17 @@ export const Register: React.FC = () => {
               />
             </Box>
             <Box>
-              <Typography fontWeight="medium" mb={1}>
+              <Typography fontWeight="medium" mb={2}>
                 Registration Form
               </Typography>
-              <Grid container rowSpacing={2} alignItems="center">
-                <Grid item md={2}>
-                  <Typography>Email</Typography>
-                </Grid>
-                <Grid item md={9}>
-                  <TextField id="email" variant="outlined" fullWidth />
-                </Grid>
-                <Grid item md={2}>
-                  <Typography>First name</Typography>
-                </Grid>
-                <Grid item md={9}>
-                  <TextField id="first-name" variant="outlined" fullWidth />
-                </Grid>
-                <Grid item md={2}>
-                  <Typography>Last name</Typography>
-                </Grid>
-                <Grid item md={9}>
-                  <TextField id="last-name" variant="outlined" fullWidth />
-                </Grid>
-                <Grid item md={2}>
-                  <Typography>Organization</Typography>
-                </Grid>
-                <Grid item md={9}>
-                  <TextField id="organization" variant="outlined" fullWidth />
-                </Grid>
-                <Grid item md={2}>
-                  <Typography>Project name</Typography>
-                </Grid>
-                <Grid item md={9}>
-                  <TextField id="project-name" variant="outlined" fullWidth />
-                </Grid>
-                <Grid item md={2}>
-                  <Typography>Project brief</Typography>
-                </Grid>
-                <Grid item md={9}>
-                  <TextField id="project-brief" variant="outlined" fullWidth multiline />
-                </Grid>
-              </Grid>
+              <Stack>
+                <TextField id="email" label="Email" variant="outlined" fullWidth />
+                <TextField id="first-name" label="First Name" variant="outlined" fullWidth />
+                <TextField id="last-name" label="Last Name" variant="outlined" fullWidth />
+                <TextField id="organization" label="Organization" variant="outlined" fullWidth />
+                <TextField id="project-title" label="Project Title" variant="outlined" fullWidth />
+                <TextField id="project-brief" label="Project Brief" variant="outlined" fullWidth multiline minRows={4} />
+              </Stack>
             </Box>
             <Box>
               <Link component={RouterLink} to="/contributing-data/portal">

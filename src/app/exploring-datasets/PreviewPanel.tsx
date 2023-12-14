@@ -95,7 +95,7 @@ export const PreviewPanel: React.FC<EEPreviewPanelProps> = (props) => {
         <Stack direction="row">
           <Link component={RouterLink} to={`./${state.previewItem['id']}`}>
             <Button variant="contained">
-            View datasets
+              View datasets
             </Button>
           </Link>
           <Button variant="outlined">

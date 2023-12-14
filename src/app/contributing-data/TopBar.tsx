@@ -20,7 +20,7 @@ export const TopBar: React.FC = () => {
           </Link>
         </IconButton>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Contributing Data Project
+          Project Name
         </Typography>
         <IconButton
           size="large"
