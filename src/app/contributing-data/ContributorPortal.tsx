@@ -30,12 +30,12 @@ export const ContributorPortal: React.FC = () => {
     >
       <Stack>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
-          <Typography>
+          <Typography variant="h6" component="h1">
             Your Dataset Uploads
           </Typography>
-          <Link component={RouterLink} to="/contributing-data/portal">
+          <Link component={RouterLink} to="/contributing-data/new">
             <Button variant="contained">
-              Upload Dataset
+              New Dataset
             </Button>
           </Link>
         </Stack>

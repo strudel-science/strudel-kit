@@ -25,6 +25,7 @@ import { MyDataInputs } from './my-analysis/DataInputs';
 import { MyAnalysisSettings } from './my-analysis/MyAnalysisSettings';
 import { RunningMyAnalysis } from './my-analysis/Running';
 import { MyResults } from './my-analysis/Results';
+import { NewDataset } from './contributing-data/NewDataset';
 
 /**
  * TODO: Add more comments...
@@ -146,6 +147,10 @@ const router = createBrowserRouter([
       {
         path: 'portal',
         element: <ContributorPortal />
+      },
+      {
+        path: 'new',
+        element: <NewDataset />
       }
     ]
   },
