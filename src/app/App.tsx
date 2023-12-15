@@ -26,6 +26,7 @@ import { MyAnalysisSettings } from './my-analysis/MyAnalysisSettings';
 import { RunningMyAnalysis } from './my-analysis/Running';
 import { MyResults } from './my-analysis/Results';
 import { NewDataset } from './contributing-data/NewDataset';
+import { ReviewDataset } from './contributing-data/ReviewDataset';
 
 /**
  * TODO: Add more comments...
@@ -151,6 +152,10 @@ const router = createBrowserRouter([
       {
         path: 'new',
         element: <NewDataset />
+      },
+      {
+        path: 'review',
+        element: <ReviewDataset />
       }
     ]
   },

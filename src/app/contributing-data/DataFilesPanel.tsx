@@ -40,7 +40,7 @@ export const DataFilesPanel: React.FC = () => {
   );
 }
 
-const files = [
+export const files = [
   {
     id: 0,
     filename: 'xx',

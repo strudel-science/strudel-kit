@@ -13,7 +13,7 @@ import { MetadataPanel } from './MetadataPanel';
 export const NewDataset: React.FC = () => {  
   return (
     <Container
-      maxWidth="lg"
+      maxWidth="xl"
       sx={{
         mt: 4
       }}
@@ -28,20 +28,29 @@ export const NewDataset: React.FC = () => {
               Mention the data contribution steps in brief, and also major requirements if any. Also give links to detailed documentation of steps, requirements and guidelines. Link to documentation.
             </Typography>
           </Stack>
-          <Box>
-            <Link component={RouterLink} to="/contributing-data/portal">
-              <Button variant="contained" sx={{ whiteSpace: 'nowrap' }}>
-                Save Dataset
-              </Button>
-            </Link>
-          </Box>
+          <Stack direction="row">
+            <Box>
+              <Link component={RouterLink} to="/contributing-data/portal">
+                <Button variant="contained" color="warning">
+                  Cancel
+                </Button>
+              </Link>
+            </Box>
+            <Box>
+              <Link component={RouterLink} to="/contributing-data/review">
+                <Button variant="contained" sx={{ whiteSpace: 'nowrap' }}>
+                  Save Dataset
+                </Button>
+              </Link>
+            </Box>
+          </Stack>
         </Stack>
         <Box>
           <Grid container spacing={2}>
-            <Grid item md={6}>
+            <Grid item lg={7} md={12}>
               <MetadataPanel />
             </Grid>
-            <Grid item md={6}>
+            <Grid item lg={5} md={12}>
               <DataFilesPanel />
             </Grid>
           </Grid>

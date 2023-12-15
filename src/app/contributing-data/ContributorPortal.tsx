@@ -23,7 +23,7 @@ export const ContributorPortal: React.FC = () => {
   
   return (
     <Container
-      maxWidth="lg"
+      maxWidth="xl"
       sx={{
         mt: 4
       }}
@@ -67,6 +67,11 @@ const columns: GridColDef[] = [
   { 
     field: 'summary', 
     headerName: 'Summary', 
+    width: 200 
+  },
+  { 
+    field: 'doi', 
+    headerName: 'DOI', 
     width: 200 
   },
   { 

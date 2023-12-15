@@ -1,7 +1,17 @@
-import { AppBar, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button, ListItem, List } from '@mui/material';
+import { Select, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button, ListItem, List, FormControl, InputLabel, MenuItem, FormHelperText, SelectChangeEvent } from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers';
 import React, { useEffect, useState } from 'react';
+import dayjs from 'dayjs';
   
-export const MetadataPanel: React.FC = () => {  
+export const MetadataPanel: React.FC = () => {
+  const [category, setCategory] = useState<string>();
+  const [startDate, setStartDate] = useState<dayjs.Dayjs | null>(null);
+  const [endDate, setEndDate] = useState<dayjs.Dayjs | null>(null);
+  
+  const handleCategoryChange = (event: SelectChangeEvent) => {
+    setCategory(event.target.value);
+  };
+
   return (
     <Paper>
       <Box
@@ -18,7 +28,7 @@ export const MetadataPanel: React.FC = () => {
           Metadata
         </Typography>
       </Box>
-      <Stack direction="row">
+      <Stack direction="row" spacing={0}>
         <Box
           component="aside"
           sx={{
@@ -29,14 +39,123 @@ export const MetadataPanel: React.FC = () => {
         >
           <List>
             <ListItem>Overview</ListItem>
-            <ListItem>Overview</ListItem>
-            <ListItem>Overview</ListItem>
-            <ListItem>Overview</ListItem>
+            <ListItem>Dates</ListItem>
+            <ListItem>Locations</ListItem>
+            <ListItem>Methods</ListItem>
           </List>
         </Box>
-        <Box>
+        <Box
+          sx={{
+            padding: 2
+          }}
+        >
           <Stack>
-            Overview
+            <Stack 
+              spacing={3}
+              sx={{
+                borderBottom: '1px solid',
+                borderBottomColor: 'neutral.main',
+                paddingBottom: 2,
+              }}
+            >
+              <Typography color="neutral.dark" fontWeight="bold">Overview</Typography>
+              <TextField
+                label="Dataset Title"
+                variant="outlined"
+                helperText="A brief, meaningful title for dataset including topic, dates and location. Ex: Sapflow and Soil Moisture Raw sensor data. Jan 2023-Apr 2023. San Diego, CA."
+                fullWidth
+              />
+              <TextField
+                label="DOI"
+                variant="outlined"
+                helperText="Digital object identifier for the dataset"
+                fullWidth
+              />
+              <FormControl>
+                <InputLabel id="demo-simple-select-helper-label">Category</InputLabel>
+                <Select
+                  labelId="demo-simple-select-helper-label"
+                  id="demo-simple-select-helper"
+                  value={category}
+                  label="Category"
+                  onChange={handleCategoryChange}
+                >
+                  <MenuItem value="Fires">Fires</MenuItem>
+                  <MenuItem value="Floods">Floods</MenuItem>
+                  <MenuItem value="Groundwater">Groundwater</MenuItem>
+                </Select>
+                <FormHelperText>Select the category most closely associeted with your dataset.</FormHelperText>
+              </FormControl>
+              <TextField
+                label="Dataset Summary"
+                variant="outlined"
+                helperText="Briefly describe the dataset."
+                fullWidth
+                multiline
+                minRows={4}
+              />
+            </Stack>
+            <Stack 
+              spacing={3}
+              sx={{
+                borderBottom: '1px solid',
+                borderBottomColor: 'neutral.main',
+                paddingBottom: 2,
+              }}
+            >
+              <Typography color="neutral.dark" fontWeight="bold">Dates</Typography>
+              <Stack direction="row">
+                <DatePicker 
+                  value={startDate} 
+                  label="Start Date"
+                  slotProps={{
+                    actionBar: {
+                      actions: ['clear', 'today']
+                    }
+                  }}
+                  onChange={(value) => setStartDate(value)}
+                />
+                <DatePicker 
+                  value={endDate} 
+                  label="End Date"
+                  slotProps={{
+                    actionBar: {
+                      actions: ['clear', 'today']
+                    }
+                  }}
+                  onChange={(value) => setEndDate(value)}
+                />
+              </Stack>
+            </Stack>
+            <Stack 
+              spacing={3}
+            >
+              <Typography color="neutral.dark" fontWeight="bold">Contacts</Typography>
+              <TextField
+                label="Point of Contact"
+                variant="outlined"
+                helperText="Primary contact person for the dataset"
+                fullWidth
+              />
+              <TextField
+                label="Originator"
+                variant="outlined"
+                helperText="Primary originators for the dataset"
+                fullWidth
+              />
+              <TextField
+                label="Metadata Contact"
+                variant="outlined"
+                helperText="Contact person about metadata"
+                fullWidth
+              />
+              <TextField
+                label="Publisher"
+                variant="outlined"
+                helperText="Organization responsible for publishing for the dataset"
+                fullWidth
+              />
+            </Stack>
           </Stack>
         </Box>
       </Stack>
