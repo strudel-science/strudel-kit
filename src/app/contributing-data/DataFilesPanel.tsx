@@ -2,52 +2,41 @@ import { AppBar, Link, IconButton, Toolbar, Typography, Container, Paper, Stack,
 import React, { useEffect, useState } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Link as RouterLink } from 'react-router-dom';
-import * as d3 from 'd3-fetch';
-import { basename } from '../App';
 import { DataGrid } from '../../components/DataGrid';
 import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
-import { DataFilesPanel } from './DataFilesPanel';
-import { MetadataPanel } from './MetadataPanel';
   
-export const NewDataset: React.FC = () => {  
+export const DataFilesPanel: React.FC = () => {  
   return (
-    <Container
-      maxWidth="lg"
-      sx={{
-        mt: 4
-      }}
-    >
-      <Stack>
-        <Stack direction="row" justifyContent="space-between">
-          <Stack>
-            <Typography variant="h6" component="h1">
-              Upload a new dataset
-            </Typography>
-            <Typography>
-              Mention the data contribution steps in brief, and also major requirements if any. Also give links to detailed documentation of steps, requirements and guidelines. Link to documentation.
-            </Typography>
-          </Stack>
-          <Box>
-            <Link component={RouterLink} to="/contributing-data/portal">
-              <Button variant="contained" sx={{ whiteSpace: 'nowrap' }}>
-                Save Dataset
-              </Button>
-            </Link>
-          </Box>
-        </Stack>
-        <Box>
-          <Grid container spacing={2}>
-            <Grid item md={6}>
-              <MetadataPanel />
-            </Grid>
-            <Grid item md={6}>
-              <DataFilesPanel />
-            </Grid>
-          </Grid>
-        </Box>
+    <Paper>
+      <Stack
+        direction="row"
+        spacing={2}
+        alignItems="center"
+        justifyContent="space-between"
+        sx={{
+          padding: 2
+        }}
+      >
+        <Typography
+          fontWeight="bold"
+          component="h2" 
+        >
+          Dataset Files
+        </Typography>
+        <Button
+          variant="contained"
+        >
+          Add Files
+        </Button>
       </Stack>
-    </Container>
+      <DataGrid
+        rows={files}
+        getRowId={(row) => row.id}
+        columns={columns}
+        disableColumnSelector
+        disableRowSelectionOnClick
+      />
+    </Paper>
   );
 }
 
