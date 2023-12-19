@@ -20,14 +20,16 @@ const TASK_FLOWS_DIR = 'app';
 
 const DEFAULT_CONFIG = 'app.yaml';
 
+let verbosity = 0;  // global flag for print()
+
 /**
  * Simple wrapper to output to console.
  */
 function print(s, err = false) {
     if (err)
         console.error(`ERROR: ${s}`);
-    else
-        console.info(s);
+    else if (verbosity > 0)
+        console.info(`INFO: ${s}`);
 }
 
 /**
@@ -57,7 +59,7 @@ class StrudelApp {
     /**
      * Create new app.
      */
-    create() {
+    async create() {
         debug(`create app`);
         const appFilename = this.appName
             .replace(/[^a-zA-Z0-9_\-.]|\s+/g, '-') // - replace weird chars with dash
@@ -69,7 +71,7 @@ class StrudelApp {
         debug(`flows = ${JSON.stringify(this.config.flows)}`);
         for (const name in this.config.flows) {
             this.config.flows[name] ??= {};
-            this._addFlow(name, this.config.flows[name]);
+            await this._addFlow(name, this.config.flows[name]);
         }
     }
 
@@ -95,7 +97,7 @@ class StrudelApp {
     /**
      * Add a task flow.
      */
-    _addFlow(flowName, config) {
+    async _addFlow(flowName, config) {
         const doForce = this.config.options.force;
 
         let newName = '', renamed = false;
@@ -112,9 +114,11 @@ class StrudelApp {
         debug(`add-flow app=${this.appName} flow=${flowName} src=${this.srcRoot} dst=${this.dstRoot}`);
 
         // check for input directory
+        let tmpd;
         const srcDir = path.join(this.srcRoot, SRC_DIR, TASK_FLOWS_DIR, flowName);
         try {
-            const tmpd = opendirSync(srcDir);
+            tmpd = opendirSync(srcDir);
+            await tmpd.close();
         }
         catch(error) {
             print(`Failed to open source task flow '${flowName}' in '${srcDir}'`);
@@ -127,8 +131,9 @@ class StrudelApp {
         const dstAppDir = path.join(dstDir, newName);
         if (!doForce) {
             try {
-                const tmpd = opendirSync(dstAppDir);
+                tmpd = opendirSync(dstAppDir);
                 print(`Output directory '${dstAppDir}' exists and -f (force) not specified`, true);
+                await tmpd.close();
                 return;
             }
             catch(error) {
@@ -184,8 +189,8 @@ class StrudelApp {
      *
      * @param p Relative path to directory to be created
      */
-    mkdir(p) {
-        mkdir(path.join(this.dstRoot, path.normalize(p)), {recursive: true}, (err) => {
+    async mkdir(p) {
+        await mkdir(path.join(this.dstRoot, path.normalize(p)), {recursive: true}, (err) => {
             if (err) throw new Error(`Making target directories: ${err}`);
         });
     }
@@ -276,20 +281,29 @@ async function main() {
         return 1;
     }
 
+    // set global verbosity flag
+    if (VB_FLAG in options) {
+        verbosity = 1;
+    }
+
     // Extract filename
     const posArgs = options[POS_OPT];
     const filename = posArgs.length === 1 ? posArgs[0] : DEFAULT_CONFIG;
     let config;
 
     // Parse config
+    let configFile;
     try {
-        const configFile = await open(filename);
+        configFile = await open(filename);
         const data = await configFile.readFile({encoding: 'utf-8'});
         config = YAML.parse(data);
     }
     catch (error) {
         print(`Cannot parse configuration file, '${filename}`, true);
         return 2;
+    }
+    finally {
+        await configFile.close();
     }
     // add options
     config.options = {
@@ -302,7 +316,7 @@ async function main() {
     // run
     const app = new StrudelApp(config);
     try {
-        app.create();
+        await app.create();
     }
     catch (err) {
         if (err.code === 'ERR_FS_EISDIR') {
@@ -318,6 +332,9 @@ async function main() {
         }
         return 2;
     }
+
+    console.log(`\nSuccess! New application is in '${app.dstRoot}/'`);
+
     debug('main program :: end');
     return 0;
 }

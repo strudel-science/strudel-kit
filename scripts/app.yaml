@@ -1,8 +1,0 @@
-# Application global configuration
-application:
-    name: "my application"
-# Which task flows to copy, and configuration for each
-flows:
-    exploring-datasets:
-    exploring-entities:
-        name: explorer  # rename the task flow
