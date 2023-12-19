@@ -1,14 +1,19 @@
-import { AppBar, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button } from '@mui/material';
+import { AppBar, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button, LinearProgress, linearProgressClasses } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link as RouterLink } from 'react-router-dom';
+import { useContributingData } from './context/ContextProvider';
+import { LinearMeter } from '../../components/LinearMeter';
   
 export const ValidationChecks: React.FC = () => {  
+  const { state, dispatch } = useContributingData();
+
   return (
     <Paper
       sx={{
-        padding: 2
+        height: '100%',
+        padding: 2,
       }}
     >
       <Stack>
@@ -27,34 +32,92 @@ export const ValidationChecks: React.FC = () => {
         <Typography>
           We run checks to gauge the following aspects of uploaded dataset.
         </Typography>
+        {state.runningChecks && (
+          <Box>
+            <Stack sx={{ marginBottom: 2, marginTop: 2, }}>
+              <LinearProgress />
+              <Typography variant="body2">Running validation checks</Typography>
+            </Stack>
+          </Box>
+        )}
+        {!state.runningChecks && state.checksComplete && (
+          <Box>
+            <Stack sx={{ marginBottom: 2, marginTop: 2, }}>
+              <LinearMeter value={90} />
+              <Stack direction="row">
+                <Typography 
+                  variant="body2"
+                  color="success.main"
+                >
+                  Passed: 22 checks
+                </Typography>
+                <Typography 
+                  variant="body2"
+                  color="neutral.dark"
+                >
+                  Warning: 2 checks
+                </Typography>
+              </Stack>
+            </Stack>
+          </Box>
+        )}
         <Box>
-          <Typography fontWeight="bold">
-            Findability
-          </Typography>
+          <Stack direction="row" alignItems="center" justifyContent="space-between">
+            <Typography fontWeight="bold">
+              Findability
+            </Typography>
+            {!state.runningChecks && state.checksComplete && (
+              <Box sx={{ width: '60%' }}>
+                <LinearMeter value={100} />
+              </Box>
+            )}
+          </Stack>
           <Typography>
             Occaecat commodo velit aliqua consectetur id tempor amet aliqua.
           </Typography>
+          {state.runningChecks && <Box>Test</Box>}
         </Box>
         <Box>
-          <Typography fontWeight="bold">
-            Accessibility
-          </Typography>
+          <Stack direction="row" alignItems="center" justifyContent="space-between">
+            <Typography fontWeight="bold">
+              Accessibility
+            </Typography>
+            {!state.runningChecks && state.checksComplete && (
+              <Box sx={{ width: '60%' }}>
+                <LinearMeter value={100} />
+              </Box>
+            )}
+          </Stack>
           <Typography>
             Et labore aliqua proident velit exercitation ullamco ad deserunt velit commodo aliquip esse consectetur.
           </Typography>
         </Box>
         <Box>
-          <Typography fontWeight="bold">
-            Interoperability
-          </Typography>
+          <Stack direction="row" alignItems="center" justifyContent="space-between">
+            <Typography fontWeight="bold">
+              Interoperability
+            </Typography>
+            {!state.runningChecks && state.checksComplete && (
+              <Box sx={{ width: '60%' }}>
+                <LinearMeter value={90} />
+              </Box>
+            )}
+          </Stack>
           <Typography>
             Ex deserunt Lorem enim adipisicing dolor esse voluptate exercitation.
           </Typography>
         </Box>
         <Box>
-          <Typography fontWeight="bold">
-            Reusability
-          </Typography>
+          <Stack direction="row" alignItems="center" justifyContent="space-between">
+            <Typography fontWeight="bold">
+              Reusability
+            </Typography>
+            {!state.runningChecks && state.checksComplete && (
+              <Box sx={{ width: '60%' }}>
+                <LinearMeter value={90} />
+              </Box>
+            )}
+          </Stack>
           <Typography>
             Nulla sint amet ullamco laborum cillum cupidatat irure excepteur mollit ut amet.
           </Typography>

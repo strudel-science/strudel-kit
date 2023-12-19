@@ -1,10 +1,10 @@
 import { Box } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { AnalyticsProvider } from '../../components/contexts/analytics/AnalyticsProvider';
 import * as d3 from 'd3-fetch';
 import { basename } from '../App';
 import { TopBar } from './TopBar';
+import { ContributingDataProvider } from './context/ContextProvider';
   
 export const ContributingDataWrapper: React.FC = () => {
   const [datasets, setDatasets] = useState<any[]>([]);
@@ -25,9 +25,9 @@ export const ContributingDataWrapper: React.FC = () => {
         <TopBar />
       </Box>
       <Box>
-        <AnalyticsProvider data={datasets} dataIdField='id'>
+        <ContributingDataProvider>
           <Outlet />
-        </AnalyticsProvider>
+        </ContributingDataProvider>
       </Box>
     </Box>
   )

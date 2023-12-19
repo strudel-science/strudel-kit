@@ -16,7 +16,8 @@ export const DatasetView: React.FC = () => {
   return (
     <Paper
       sx={{
-        padding: 2
+        height: '100%',
+        padding: 2,
       }}
     >
       <Stack>

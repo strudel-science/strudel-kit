@@ -10,10 +10,21 @@ import { DataFilesPanel } from './DataFilesPanel';
 import { MetadataPanel } from './MetadataPanel';
 import { DatasetView } from './DatasetView';
 import { ValidationChecks } from './ValidationChecks';
+import { useContributingData } from './context/ContextProvider';
+import { finishChecks, runChecks } from './context/actions';
   
 export const ReviewDataset: React.FC = () => {
   const [alertOpen, setAlertOpen] = useState(true);
-  // TODO: use context for dataset state
+    // TODO: use context for dataset state
+  const { state, dispatch } = useContributingData();
+
+  const startRunChecks = () => {
+    dispatch(runChecks());
+    setTimeout(() => {
+      dispatch(finishChecks());
+    }, 5000)
+  }
+
   return (
     <Box>
       <Collapse in={alertOpen}>
@@ -42,8 +53,8 @@ export const ReviewDataset: React.FC = () => {
       <Container
         maxWidth="xl"
         sx={{
-          marginBottom: 4,
-          marginTop: 4,
+          marginBottom: 3,
+          marginTop: 3,
         }}
       >
         <Stack>
@@ -55,19 +66,30 @@ export const ReviewDataset: React.FC = () => {
             </Stack>
             <Stack direction="row">
               <Box>
-                <Link component={RouterLink} to="/contributing-data/portal">
+                <Link component={RouterLink} to="/contributing-data/new">
                   <Button variant="contained" sx={{ whiteSpace: 'nowrap' }}>
                     Edit Dataset
                   </Button>
                 </Link>
               </Box>
               <Box>
-                <Link component={RouterLink} to="/contributing-data/portal">
-                  <Button variant="contained" sx={{ whiteSpace: 'nowrap' }}>
-                    Run Checks
-                  </Button>
-                </Link>
+                <Button
+                  variant="contained"
+                  onClick={() => startRunChecks()}
+                  sx={{ whiteSpace: 'nowrap' }}
+                >
+                  Run Checks
+                </Button>
               </Box>
+              {state.checksComplete && (
+                <Box>
+                  <Link component={RouterLink} to="/contributing-data/portal">
+                    <Button variant="contained" sx={{ whiteSpace: 'nowrap' }}>
+                      Publish Dataset
+                    </Button>
+                  </Link>
+                </Box>
+              )}
             </Stack>
           </Stack>
           <Box>

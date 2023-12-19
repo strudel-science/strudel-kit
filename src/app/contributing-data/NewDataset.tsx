@@ -15,7 +15,8 @@ export const NewDataset: React.FC = () => {
     <Container
       maxWidth="xl"
       sx={{
-        mt: 4
+        marginBottom: 3,
+        marginTop: 3,
       }}
     >
       <Stack>
