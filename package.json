@@ -33,7 +33,7 @@
     "yaml": "^2.3.4"
   },
   "scripts": {
-    "start": "PUBLIC_URL=/ react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
