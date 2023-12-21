@@ -1,173 +1,83 @@
 # Customizing a task flow (notes)
 
-## Create a copy of an existing task flow
+Before you get started, clone the repo and follow install instructions in the README.md file in the top directory.
 
-To make changes non-destructively, and understand some basics of the framework, we will start by creating our own app by making a copy of an existing task flow. 
-The new app will be called "MyAnalysis" and will be a copy of the "Optimization" task flow.
+## Configure your new app
 
-In _strudel-ui_, change to the taskflows directory
-```
-cd src/taskflows
-```
+Modify the configuration file app.yaml (see https://yaml.org or one of the many guides like https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html for YAML syntax).
 
-Make a new copy of one of the task flows:
-```
-cp -r Optimization MyAnalysis
-```
-
-In the new directory you created, rename the main task flow and settings file and, in this case, one other file with the word _Optimization_ in it (to avoid confusion).
-```
-cd MyAnalysis
-mv Optimization.tsx MyAnalysisPage.tsx
-mv OptimizationSettings.tsx MyAnalysisSettings.tsx
-mv RunningOptimization.tsx Running.tsx
+For this example, just uncomment the line "exploring-datasets:", which will add the task flow by that name.
+The resulting file (without comments) will be:
+```yaml
+application:
+    name: "my application"
+flows:
+    exploring-entities:
 ```
 
-In that directory, edit _index.tsx_ to export your new task flow:
-```typescript jsx
-export { MyAnalysis } from './MyAnalysis';
-```
+## Run the strudel script to create the app
 
-Next edit the new task flow file, _MyAnalysis.tsx_, to export the new name
-
-```typescript jsx
-// export const Optimization: React.FC = () => {
-export const MyAnalysis: React.FC = () => {
-```
-
-Look at the `App.tsx` in the root directory.
-For each of the imports from the task flow you
-copied (i.e., _task-flows/Optimization_), you will need
-to do two things:
-1) In the copy of the file (i.e. the corresponding file in _task-flows/MyAnalysis_), modify the line beginning with `export` to export a new, unique, name for the component (in this example, we just add the prefix "My").
-2) Add a new import in `App.tsx` that imports that component, under the new name, from the copied file.
-
-When you are done, the _App.tsx_ file will look something like this:
-```typescript
-// Optimization task-flow imports (leave these untouched):
-import { OptimizationPage } from './pages/OptimizationPage';
-import { DataInputs } from './task-flows/Optimization/DataInputs';
-import { Scenario } from './task-flows/Optimization/Scenario';
-import { OptimizationSettings } from './task-flows/Optimization/OptimizationSettings';
-import { RunningOptimization } from './task-flows/Optimization/RunningOptimization';
-import { Results } from './task-flows/Optimization/Results';
-// New, added, imports
-import { MyAnalysisPage } from './pages/MyAnalysisPage';
-import { MyDataInputs } from './task-flows/MyAnalysis/DataInputs';
-import { MyScenario } from './task-flows/MyAnalysis/Scenario';
-import { MyAnalysisSettings } from './task-flows/MyAnalysis/MyAnalysisSettings';
-import { RunningMyAnalysis } from './task-flows/MyAnalysis/Running';
-import { MyResults } from './task-flows/MyAnalysis/Results';
-```
-
-Next, add a new set of routes under `createBrowserRouter` that
-point to the renamed components from the previous step.
-```typescript jsx
-const router = createBrowserRouter([
-    // ... other routes here ...
-    // My Analysis
-  {
-    path: "/myanalysis",
-    element: <MyAnalysisPage />,
-  },
-  {
-    path: "/myanalysis/scenario",
-    element: <MyScenario />,
-    children: [
-      {
-        path: 'data-inputs',
-        element: <MyDataInputs />
-      },
-      {
-        path: 'settings',
-        element: <MyAnalysisSettings />
-      },
-      {
-        path: 'running',
-        element: <RunningMyAnalysis />
-      },
-      {
-        path: 'results',
-        element: <MyResults />
-      }
-    ]
-  },
-])
-```
-
-You also need to create a new page in the _pages_ subdirectory.
+Run:
 ```shell
-cp src/pages/OptimizationPage.tsx src/pages/MyAnalysisPage.tsx
+npm run strudel
 ```
 
-Edit the page to point to your new task flow
-```typescript jsx
-// import { Optimization } from '../task-flows/Optimization';
-import { MyAnalysis } from '../task-flows/MyAnalysis';
-// ...
-//export const OptimizationPage: React.FC = () => {
-export const MyAnalysisPage: React.FC = () => {
-// ...
-  return (
-    <AnalyticsProvider data={scenarios} columns={columns} dataIdField='Proteome_ID'> 
-      {/* <Optimization /> */}
-      <MyAnalysis />
-    </AnalyticsProvider>
-  )
+This makes a copy of necessary files, including any task flows you have configured in the configuration file described previously.
+
+By default, the files are copied into a directory named after your application,
+with spaces and other special characters changed to dashes.
+In this example, the new directory will be called `my-application`.
+You should change to this directory before continuing.
+
+```shell
+cd my-application
 ```
 
-Add the page to the _pages/TaskFlowsPage.tsx_ file.
-```typescript jsx
-<Link component={RouterLink} to="myanalysis">
-    My Analysis
-</Link>
+## Install and run
+
+The new application directory is itself a package, so you need to run the same install steps you did for STRUDEL itself (make sure you changed to this directory first!):
+
+```shell
+npm install
 ```
 
-## Make a simple change
+You can't run the build until you go through and remove references to all the task flows that you did NOT copy into this directory
 
-Now, finally, you can edit MyAnalysis!
-Let's start by changing the project name.
-In _MyAnalysis.tsx_ under the _task-flows/MyAnalysis_ directory, edit
-the section with the project name.
-```typescript jsx
-<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-  My Analysis
-</Typography>
+These are in the following files:
+
+* src/app/App.tsx
+* src//app/home/TaskFlowsPage.tsx
+
+```shell
+npm build
 ```
 
-To see your changes, start the server from the root directory:
+If this succeeds, you can run the app
 ```shell
 npm start
 ```
 
-The server will check files for changes, so if you leave it running while you continue to make  edits to the files, you can make 'live' edits. For example, if you edited the _MyAnalysis.tsx_ file to change  the project name to "My Amazing Analysis", that would almost immediately show up in the page.
+## Customizing the app
 
-## Change the task flow
+### Set project name
 
-Instead of just changing the name, we will now change the task flow itself.
-Let's say that you want to just do the analysis without bothering with the "scenarios" part.
-In other words, you want to start the task flow with the "Data Inputs" page.
-
-To do that, we will _MyAnalysis.tsx_, the main page for the task flow.
-Right now, it lists the scenarios and provides a button to a dialog box for creating a new one.
-Instead we will replace the body of the page with the _DataInputs_ component.
-To do this, find the `return` statement that contains all the JSX (HTML-looking) code.
-In that statement, cut out the entire `<Paper>` component inside the `<Container>` component. In other words, cut all the lines from, and including, `<Paper>` up to, and including, the matching tag `</Paper>`.
-
-Now, to get a new body for the page, put `<DataInputs />` where the `<Paper> ... </Paper>` section just was. When you're done, the new section should look like this:
-```typescript jsx
-      <Container 
-        maxWidth="xl"
-        sx={{
-          mt: 4
-        }}
-      >
-      <DataInputs />
-      </Container>
+Open the main page, _ExploringEntitiesContent.tsx_, of your copied task flow in an editor.
+```shell
+cd my-application/src/app/exploring-entities
+edit ExploringEntititesContent.tsx
 ```
 
-Believe it or not, this does the trick. Reload the page (or start the server) and you should now see the data inputs as the first page.
+In that directory find the section that looks like this:
+```typescript jsx
+<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+    Project name
+</Typography>
+```
+Change the 'Project name' to something else, e.g., 'My Very Nice Project'.
+If you are still running the application the name should refresh
+automatically.
+If not, just run `npm start` at the top-level again to show the new version.
 
-## Connect to back-end functionality
 
-TBD!!
+## Load your own data
+

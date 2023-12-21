@@ -1,6 +1,6 @@
 // const readline = require('node:readline');
 const { argv } = require('node:process');
-const { mkdir, cpSync, opendirSync } = require('node:fs');
+const { mkdir, cpSync, opendirSync, openSync, readFileSync, writeFileSync } = require('node:fs');
 const { open } = require('node:fs/promises')
 const path = require('node:path');
 const debug = require('debug')('strudel');
@@ -78,20 +78,30 @@ class StrudelApp {
     /**
      * Copy application
      */
-    _copyApp() {
+    async _copyApp() {
         debug(`(create)app app=${this.appName} src=${this.srcRoot} dst=${this.dstRoot}`);
 
         const overwrite = this.config.options.force;
 
         // make empty task-flows dir
-        this.mkdir(path.join(SRC_DIR, TASK_FLOWS_DIR));
+        this.mkdir(path.join(SRC_DIR, TASK_FLOWS_DIR)).then((x) => {});
 
         // copy directories
         const srcDirs = ['public', path.join(SRC_DIR, 'components')]; // skips src/app
         srcDirs.map((d) => this.copyNode(d, d, true, overwrite));
 
-        // copy selected top-level files
+        // copy more files
         ['package.json', 'tsconfig.json'].map((p) => this.copyNode(p, p, false));
+        ['App.css', 'App.tsx', 'App.test.tsx'].map((p) => this.copyNode(
+            path.join('src', 'app', p), path.join('src', 'app', p), false
+        ));
+        ['declarations.d.ts', 'index.css', 'index.tsx', 'logo.svg',
+        'react-app-env.d.ts', 'reportWebVitals.ts', 'setupTests.ts'].map((p) => this.copyNode(
+            path.join('src', p), path.join('src', p), false
+        ));
+
+        const homeDir = path.join(SRC_DIR, TASK_FLOWS_DIR, 'home');
+        this.mkdir(homeDir).then((x) => {});
     }
 
     /**
@@ -104,13 +114,11 @@ class StrudelApp {
         if ('name' in config) {
             newName = config.name;
             renamed = true;
-        }
-        else {
+        } else {
             newName = flowName;
             renamed = false;
         }
         debug(`Copying to appname = ${newName}`)
-
         debug(`add-flow app=${this.appName} flow=${flowName} src=${this.srcRoot} dst=${this.dstRoot}`);
 
         // check for input directory
@@ -119,8 +127,7 @@ class StrudelApp {
         try {
             tmpd = opendirSync(srcDir);
             await tmpd.close();
-        }
-        catch(error) {
+        } catch (error) {
             print(`Failed to open source task flow '${flowName}' in '${srcDir}'`);
             print(`Failure details: ${error.message}`);
             return;
@@ -135,8 +142,7 @@ class StrudelApp {
                 print(`Output directory '${dstAppDir}' exists and -f (force) not specified`, true);
                 await tmpd.close();
                 return;
-            }
-            catch(error) {
+            } catch (error) {
                 debug(`Output dir does not exist (expected): ${error}`);
             }
         }
@@ -146,18 +152,14 @@ class StrudelApp {
             const src = path.join(SRC_DIR, TASK_FLOWS_DIR, flowName);
             const dst = path.join(SRC_DIR, TASK_FLOWS_DIR, newName);
             this.copyNode(src, dst, true, doForce);
-        }
-        catch (e) {
+        } catch (e) {
             print(`abort on copy error: ${e.message}`, true);
             return;
         }
 
-        // rename task flow in copied area
-        if (renamed) {
-            print(`new task flow ${newName} created in ${dstAppDir}`);
-        }
-    }
+        print(`task flow ${newName} created in ${dstAppDir}`);
 
+    }
 
     /**
      * Copy file or directory.
@@ -328,7 +330,7 @@ async function main() {
             print(`Cannot overwrite existing file in '${app.dstRoot}', use -f flag to force`, true);
         }
         else {
-            print(`Application error: ${err}`);
+            print(`Application error: ${err}`, true);
         }
         return 2;
     }
