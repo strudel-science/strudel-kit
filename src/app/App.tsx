@@ -27,6 +27,10 @@ import { RunningMyAnalysis } from './my-analysis/Running';
 import { MyResults } from './my-analysis/Results';
 import { NewDataset } from './contributing-data/NewDataset';
 import { ReviewDataset } from './contributing-data/ReviewDataset';
+import { MonitorTasksWrapper } from './monitor-tasks/MonitorTasksWrapper';
+import { ExperimentCalendar } from './monitor-tasks/ExperimentCalendar';
+import { ExperimentList } from './monitor-tasks/ExperimentList';
+import { ExperimentDetail } from './monitor-tasks/ExperimentDetail';
 
 /**
  * TODO: Add more comments...
@@ -157,6 +161,29 @@ const router = createBrowserRouter([
         path: 'review',
         element: <ReviewDataset />
       }
+    ]
+  },
+  {
+    path: "/monitor-tasks",
+    element: <MonitorTasksWrapper />,
+    children: [
+      {
+        index: true,
+        element: <ExperimentCalendar />
+      },
+      {
+        path: 'list',
+        children: [
+          {
+            index: true,
+            element: <ExperimentList />,
+          },
+          {
+            path: 'detail',
+            element: <ExperimentDetail />
+          },
+        ]
+      },
     ]
   },
   // My Analysis
