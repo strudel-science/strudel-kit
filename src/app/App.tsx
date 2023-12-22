@@ -167,9 +167,13 @@ const router = createBrowserRouter([
     path: "/monitor-tasks",
     element: <MonitorTasksWrapper />,
     children: [
+      // {
+      //   index: true,
+      //   element: <ExperimentCalendar />
+      // },
       {
         index: true,
-        element: <ExperimentCalendar />
+        element: <ExperimentList />,
       },
       {
         path: 'list',
