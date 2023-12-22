@@ -22,6 +22,9 @@ export const TaskFlowsPage: React.FC = () => {
       <Link component={RouterLink} to="monitor-tasks">
         Monitor Tasks
       </Link>
+      <Link component={RouterLink} to="compare-scenarios">
+        Compare Scenarios
+      </Link>
       <Link component={RouterLink} to="myanalysis">
         My Analysis
       </Link>

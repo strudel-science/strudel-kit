@@ -31,6 +31,9 @@ import { MonitorTasksWrapper } from './monitor-tasks/MonitorTasksWrapper';
 import { ExperimentCalendar } from './monitor-tasks/ExperimentCalendar';
 import { ExperimentList } from './monitor-tasks/ExperimentList';
 import { ExperimentDetail } from './monitor-tasks/ExperimentDetail';
+import { CompareScenariosWrapper } from './compare-scenarios/CompareScenariosWrapper';
+import { ScenarioList } from './compare-scenarios/ScenarioList';
+import { ScenarioComparison } from './compare-scenarios/ScenarioComparison';
 
 /**
  * TODO: Add more comments...
@@ -187,6 +190,20 @@ const router = createBrowserRouter([
             element: <ExperimentDetail />
           },
         ]
+      },
+    ]
+  },
+  {
+    path: "/compare-scenarios",
+    element: <CompareScenariosWrapper />,
+    children: [
+      {
+        index: true,
+        element: <ScenarioList />
+      },
+      {
+        path: 'compare',
+        element: <ScenarioComparison />
       },
     ]
   },
