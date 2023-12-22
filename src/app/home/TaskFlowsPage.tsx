@@ -19,6 +19,9 @@ export const TaskFlowsPage: React.FC = () => {
       <Link component={RouterLink} to="contributing-data">
         Contributing Data
       </Link>
+      <Link component={RouterLink} to="monitor-tasks">
+        Monitor Tasks
+      </Link>
       <Link component={RouterLink} to="myanalysis">
         My Analysis
       </Link>

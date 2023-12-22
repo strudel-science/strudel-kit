@@ -7,7 +7,8 @@ interface LabelValuePair {
 }
 
 export interface LabelValueTableProps extends TableProps {
-  rows?: LabelValuePair[]
+  rows?: LabelValuePair[];
+  labelWidth?: number;
 }
 
 /**
@@ -16,6 +17,7 @@ export interface LabelValueTableProps extends TableProps {
  */
 export const LabelValueTable: React.FC<LabelValueTableProps> = ({
   rows,
+  labelWidth = 150,
   ...rest
 }) => {
   return (
@@ -31,7 +33,7 @@ export const LabelValueTable: React.FC<LabelValueTableProps> = ({
             sx={{ border: 0 }}
           >
             <TableCell
-              width={150}
+              width={labelWidth}
               component="th" 
               scope="row" 
               sx={{ 

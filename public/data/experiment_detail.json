@@ -1,0 +1,92 @@
+{
+  "id": 45,
+  "experiment_name": "Experiment Cricket",
+  "start_time": "12/16/2023, 3:01:07 PM",
+  "end_time": null,
+  "status": "Running",
+  "events": [
+    {
+      "id": 10,
+      "event_type": "Chirp",
+      "event_time": "12/17/2023, 9:09:15 PM",
+      "confidence": 97
+    },
+    {
+      "id": 9,
+      "event_type": "Chirp",
+      "event_time": "12/17/2023, 8:11:19 PM",
+      "confidence": 98
+    },
+    {
+      "id": 8,
+      "event_type": "Hop",
+      "event_time": "12/17/2023, 4:33:53 PM",
+      "confidence": 64
+    },
+    {
+      "id": 7,
+      "event_type": "Hop",
+      "event_time": "12/17/2023, 11:09:15 AM",
+      "confidence": 97
+    },
+    {
+      "id": 6,
+      "event_type": "Hop",
+      "event_time": "12/17/2023, 11:02:05 AM",
+      "confidence": 99
+    },
+    {
+      "id": 5,
+      "event_type": "Hop",
+      "event_time": "12/17/2023, 7:23:32 AM",
+      "confidence": 75
+    },
+    {
+      "id": 4,
+      "event_type": "Chirp",
+      "event_time": "12/17/2023, 7:03:44 PM",
+      "confidence": 99
+    },
+    {
+      "id": 3,
+      "event_type": "Chirp",
+      "event_time": "12/17/2023, 3:26:42 PM",
+      "confidence": 97
+    },
+    {
+      "id": 2,
+      "event_type": "Chirp",
+      "event_time": "12/16/2023, 11:55:21 PM",
+      "confidence": 97
+    },
+    {
+      "id": 1,
+      "event_type": "Chirp",
+      "event_time": "12/16/2023, 10:08:10 PM",
+      "confidence": 98
+    },
+    {
+      "id": 0,
+      "event_type": "Chirp",
+      "event_time": "12/16/2023, 9:45:10 PM",
+      "confidence": 97
+    }
+  ],
+  "notes": [
+    {
+      "id": 2,
+      "created_time": "12/17/2023, 4:00:29 PM",
+      "content": "Aute amet aute irure in consectetur enim incididunt aute consectetur."
+    },
+    {
+      "id": 1,
+      "created_time": "12/17/2023, 7:00:25 AM",
+      "content": "Labore elit cupidatat eiusmod sunt aliquip pariatur quis."
+    },
+    {
+      "id": 0,
+      "created_time": "12/16/2023, 11:59:20 PM",
+      "content": "Culpa id officia laborum cupidatat dolor mollit."
+    }
+  ]
+}
