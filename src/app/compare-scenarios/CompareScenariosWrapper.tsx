@@ -34,7 +34,11 @@ export const CompareScenariosWrapper: React.FC = () => {
   )
 }
 
-const columns: GridColDef[] = [
+export type CompareScenariosGridColDef = GridColDef & {
+  isComparisonMetric?: boolean;
+}
+
+const columns: CompareScenariosGridColDef[] = [
   { 
     field: 'name', 
     headerName: 'Scenario Name', 
@@ -48,31 +52,66 @@ const columns: GridColDef[] = [
   { 
     field: 'analysis_type', 
     headerName: 'Analysis Type', 
-    width: 200 
+    width: 200,
   },
   { 
     field: 'volumetric_flow_rate', 
     headerName: 'Volumetric Flow Rate', 
-    width: 200 
+    width: 200,
+    isComparisonMetric: true
   },
   { 
     field: 'tss_concentration', 
     headerName: 'TSS Concentration', 
-    width: 200 
+    width: 200,
+    isComparisonMetric: true,
   },
   { 
     field: 'cod_concentration', 
     headerName: 'COD Concentration', 
-    width: 200 
+    width: 200,
+    isComparisonMetric: true,
   },
   { 
     field: 'tkn_concentration', 
     headerName: 'TKN Concentration', 
-    width: 200 
+    width: 200,
+    isComparisonMetric: true,
   },
   { 
     field: 'acetic_acid_concentration', 
     headerName: 'Acetic Acid Concentration', 
-    width: 200 
+    width: 200,
+    isComparisonMetric: true,
+  },
+  { 
+    field: 'metric6', 
+    headerName: 'metric6', 
+    width: 200,
+    isComparisonMetric: true,
+  },
+  { 
+    field: 'metric7', 
+    headerName: 'metric7', 
+    width: 200,
+    isComparisonMetric: true,
+  },
+  { 
+    field: 'metric8', 
+    headerName: 'metric8', 
+    width: 200,
+    isComparisonMetric: true,
+  },
+  { 
+    field: 'metric9', 
+    headerName: 'metric9', 
+    width: 200,
+    isComparisonMetric: true,
+  },
+  { 
+    field: 'metric10', 
+    headerName: 'metric10', 
+    width: 200,
+    isComparisonMetric: true,
   },
 ];

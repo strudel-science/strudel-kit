@@ -16,31 +16,34 @@ export const ScenarioList: React.FC = () => {
     <Box>
       <PageHeader
         pageTitle="Scenarios"
-        description="Collection of various scenarios saved from simulations/ optimizations/ calculations"
+        description="Collection of various scenarios saved from simulations, optimizations, or calculations."
         actions={
           <Stack direction="row">
             <Box>
-              {state.selectedRows.length === 0 && (
-                <Button 
-                  variant="outlined"
-                >
-                  Compare Scenarios
-                </Button>
-              )}
-              {state.selectedRows.length > 0 && (
-                <Button 
-                  variant={state.selectedRows.length > 1 ? 'contained' : 'outlined' }
-                >
-                  Compare Scenarios ({state.selectedRows.length})
-                </Button>
-              )}
+              <Link component={RouterLink} to="/compare-scenarios/compare">
+                {state.selectedRows.length === 0 && (
+                  <Button 
+                    variant="outlined"
+                  >
+                    Compare Scenarios
+                  </Button>
+                )}
+                {state.selectedRows.length > 0 && (
+                  <Button 
+                    variant={state.selectedRows.length > 1 ? 'contained' : 'outlined' }
+                  >
+                    Compare Scenarios ({state.selectedRows.length})
+                  </Button>
+                )}
+              </Link>
             </Box>
-            <Link component={RouterLink} to="/contributing-data/new">
-              <Button variant="contained">
-                New Scenario
-              </Button>
-            </Link>
-
+            <Box>
+              <Link component={RouterLink} to="/compare-scenarios/new">
+                <Button variant="contained">
+                  New Scenario
+                </Button>
+              </Link>
+            </Box>
           </Stack>
         }
         sx={{
@@ -51,7 +54,8 @@ export const ScenarioList: React.FC = () => {
       <Container
         maxWidth="xl"
         sx={{
-          mt: 4
+          marginTop: 3,
+          marginBottom: 3,
         }}
       >
         <Paper>

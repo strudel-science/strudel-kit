@@ -34,6 +34,7 @@ import { ExperimentDetail } from './monitor-tasks/ExperimentDetail';
 import { CompareScenariosWrapper } from './compare-scenarios/CompareScenariosWrapper';
 import { ScenarioList } from './compare-scenarios/ScenarioList';
 import { ScenarioComparison } from './compare-scenarios/ScenarioComparison';
+import { NewScenario } from './compare-scenarios/NewScenario';
 
 /**
  * TODO: Add more comments...
@@ -204,6 +205,10 @@ const router = createBrowserRouter([
       {
         path: 'compare',
         element: <ScenarioComparison />
+      },
+      {
+        path: 'new',
+        element: <NewScenario />
       },
     ]
   },
