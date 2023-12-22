@@ -17,8 +17,9 @@ export const ExperimentCalendar: React.FC = () => {
       }}
     >
       <Typography variant="h6" component="h1">
-        2023 Experiments
+        2023 Experiments (Work in Progress)
       </Typography>
+      {/* TODO: calendar visualization */}
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar readOnly />
       </LocalizationProvider>
