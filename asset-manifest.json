@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/strudel-kit/static/css/main.d44b4b23.css",
-    "main.js": "/strudel-kit/static/js/main.5964e622.js",
+    "main.js": "/strudel-kit/static/js/main.9c28dac6.js",
     "static/js/787.666d7345.chunk.js": "/strudel-kit/static/js/787.666d7345.chunk.js",
     "static/media/roboto-latin-500-normal.woff2": "/strudel-kit/static/media/roboto-latin-500-normal.f25d774ecfe0996f8eb5.woff2",
     "static/media/roboto-latin-700-normal.woff2": "/strudel-kit/static/media/roboto-latin-700-normal.227c93190fe7f82de3f8.woff2",
@@ -61,11 +61,11 @@
     "static/media/roboto-greek-ext-700-normal.woff": "/strudel-kit/static/media/roboto-greek-ext-700-normal.249853776d22a271b2b5.woff",
     "index.html": "/strudel-kit/index.html",
     "main.d44b4b23.css.map": "/strudel-kit/static/css/main.d44b4b23.css.map",
-    "main.5964e622.js.map": "/strudel-kit/static/js/main.5964e622.js.map",
+    "main.9c28dac6.js.map": "/strudel-kit/static/js/main.9c28dac6.js.map",
     "787.666d7345.chunk.js.map": "/strudel-kit/static/js/787.666d7345.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d44b4b23.css",
-    "static/js/main.5964e622.js"
+    "static/js/main.9c28dac6.js"
   ]
 }
