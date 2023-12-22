@@ -67,12 +67,23 @@ class StrudelApp {
             .replace(/^-/, '')                     // - strip leading dash
             .replace(/-$/, '');
         this.dstRoot = path.join(this.config.options.directory, appFilename);
-        this._copyApp();
+        await this._copyApp();
         debug(`flows = ${JSON.stringify(this.config.flows)}`);
         for (const name in this.config.flows) {
             this.config.flows[name] ??= {};
-            await this._addFlow(name, this.config.flows[name]);
+            const flow = this.config.flows[name];
+            if (flow.name !== undefined) {
+                // XXX: do this
+                this._renameFlow(name, flow.name);
+            }
         }
+    }
+
+    /**
+     * Rename a flow
+     */
+    _renameFlow(curName, newName) {
+
     }
 
     /**
@@ -87,7 +98,7 @@ class StrudelApp {
         this.mkdir(path.join(SRC_DIR, TASK_FLOWS_DIR)).then((x) => {});
 
         // copy directories
-        const srcDirs = ['public', path.join(SRC_DIR, 'components')]; // skips src/app
+        const srcDirs = ['public', path.join(SRC_DIR, 'components'), path.join(SRC_DIR, 'app')];
         srcDirs.map((d) => this.copyNode(d, d, true, overwrite));
 
         // copy more files
@@ -102,63 +113,6 @@ class StrudelApp {
 
         const homeDir = path.join(SRC_DIR, TASK_FLOWS_DIR, 'home');
         this.mkdir(homeDir).then((x) => {});
-    }
-
-    /**
-     * Add a task flow.
-     */
-    async _addFlow(flowName, config) {
-        const doForce = this.config.options.force;
-
-        let newName = '', renamed = false;
-        if ('name' in config) {
-            newName = config.name;
-            renamed = true;
-        } else {
-            newName = flowName;
-            renamed = false;
-        }
-        debug(`Copying to appname = ${newName}`)
-        debug(`add-flow app=${this.appName} flow=${flowName} src=${this.srcRoot} dst=${this.dstRoot}`);
-
-        // check for input directory
-        let tmpd;
-        const srcDir = path.join(this.srcRoot, SRC_DIR, TASK_FLOWS_DIR, flowName);
-        try {
-            tmpd = opendirSync(srcDir);
-            await tmpd.close();
-        } catch (error) {
-            print(`Failed to open source task flow '${flowName}' in '${srcDir}'`);
-            print(`Failure details: ${error.message}`);
-            return;
-        }
-
-        // check for output directory (if no overwrite)
-        const dstDir = path.join(this.dstRoot, SRC_DIR, TASK_FLOWS_DIR);
-        const dstAppDir = path.join(dstDir, newName);
-        if (!doForce) {
-            try {
-                tmpd = opendirSync(dstAppDir);
-                print(`Output directory '${dstAppDir}' exists and -f (force) not specified`, true);
-                await tmpd.close();
-                return;
-            } catch (error) {
-                debug(`Output dir does not exist (expected): ${error}`);
-            }
-        }
-
-        // copy task flow directory
-        try {
-            const src = path.join(SRC_DIR, TASK_FLOWS_DIR, flowName);
-            const dst = path.join(SRC_DIR, TASK_FLOWS_DIR, newName);
-            this.copyNode(src, dst, true, doForce);
-        } catch (e) {
-            print(`abort on copy error: ${e.message}`, true);
-            return;
-        }
-
-        print(`task flow ${newName} created in ${dstAppDir}`);
-
     }
 
     /**
