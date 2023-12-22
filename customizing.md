@@ -11,6 +11,7 @@ The resulting file (without comments) will be:
 ```yaml
 application:
     name: "my application"
+    dir: ~/src/my-project
 flows:
     exploring-entities:
 ```
@@ -64,7 +65,7 @@ npm start
 Open the main page, _ExploringEntitiesContent.tsx_, of your copied task flow in an editor.
 ```shell
 cd my-application/src/app/exploring-entities
-edit ExploringEntititesContent.tsx
+# edit ExploringEntititesContent.tsx
 ```
 
 In that directory find the section that looks like this:
@@ -80,4 +81,10 @@ If not, just run `npm start` at the top-level again to show the new version.
 
 
 ## Load your own data
+
+### Put the data in a file
+
+### Put the file name into the UI
+
+### Refresh the UI and look at the data
 
