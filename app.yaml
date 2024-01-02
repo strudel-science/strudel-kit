@@ -1,0 +1,11 @@
+# Application global configuration
+# Minimal information is a name for the application
+application:
+    name: bar
+
+# Which task flows to copy, and configuration for each
+flows:
+    exploring-entities:
+#    exploring-datasets:
+# Add exploring-entities task flow, renaming to 'landing-page'
+#        name: landing-page
