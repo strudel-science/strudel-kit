@@ -243,7 +243,7 @@ const router = createHashRouter([
     path: '*',
     element: <Navigate to="/" replace />
   }
-], {basename: basename});
+]);
 
 const App: React.FC = () => {
   return (
