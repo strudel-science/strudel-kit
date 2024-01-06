@@ -3,7 +3,7 @@ import './App.css';
 import { ExploringEntitiesWrapper } from './exploring-entities/ExploringEntitiesWrapper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
-import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
+import { Navigate, RouterProvider, createHashRouter } from 'react-router-dom';
 import { TaskFlowsPage } from './home/TaskFlowsPage';
 import { ExploringDatasetsWrapper } from './exploring-datasets/ExploringDatasetsWrapper';
 import { LocalizationProvider } from '@mui/x-date-pickers';
@@ -87,7 +87,7 @@ export const basename = document.querySelector('base')?.getAttribute('href') ?? 
 /**
  * TODO: comment
  */
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <TaskFlowsPage />,
