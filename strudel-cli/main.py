@@ -7,7 +7,10 @@ app = typer.Typer()
 
 
 @app.command()
-def create_app(config: Annotated[str, typer.Option("--config", "-c")] = ""):
+def create_app(
+  config: Annotated[str, typer.Option("--config", "-c")] = "",
+  output_dir: Annotated[str, typer.Option("--output_dir", "-o")] = ""
+):
   """
   Create a base strudel web application.
   """
@@ -23,12 +26,18 @@ def create_app(config: Annotated[str, typer.Option("--config", "-c")] = ""):
     "feature/cli",
     "--directory", 
     "strudel-cookiecutter/base",
+    "--output-dir",
+    output_dir,
     "--no-input",
   ] + extra_args)
 
 
 @app.command()
-def add_taskflow(name: str, output_dir: Annotated[str, typer.Option("--output_dir", "-o")] = "src/app", config: Annotated[str, typer.Option("--config", "-c")] = ""):
+def add_taskflow(
+  name: str, 
+  config: Annotated[str, typer.Option("--config", "-c")] = "",
+  output_dir: Annotated[str, typer.Option("--output_dir", "-o")] = "src/app", 
+):
   """
   Add a new task flow section to an existing strudel web application.
   """
@@ -45,8 +54,9 @@ def add_taskflow(name: str, output_dir: Annotated[str, typer.Option("--output_di
     "--directory", 
     f"strudel-cookiecutter/{name}",
     "--output-dir",
-    output_dir
-  ])
+    output_dir,
+    "--no-input",
+  ] + extra_args)
 
 
 if __name__ == "__main__":
