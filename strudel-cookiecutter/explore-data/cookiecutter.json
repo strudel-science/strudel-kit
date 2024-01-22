@@ -1,0 +1,4 @@
+{
+  "taskflow_name": "My Explore Data",
+  "taskflow_slug": "{{ cookiecutter.taskflow_name.lower().replace(' ', '-').replace('_', '-') }}"
+}
