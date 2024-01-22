@@ -1,30 +1,21 @@
 import typer
 import subprocess
-import json
+from typing_extensions import Annotated
+from utils import parse_json_to_args
 
 app = typer.Typer()
 
 
 @app.command()
-def create_app(config: str = ""):
+def create_app(config: Annotated[str, typer.Option("--config", "-c")] = ""):
   """
   Create a base strudel web application.
   """
 
   print("Creating your app...")
 
-  # A JSON config file can be passed to the command
-  # to override the default cookiecutter.json and surpass
-  # the cookiecutter command-line prompts. This file is parsed
-  # and added as extra_context args to cookiecutter.
-  extra_args = []
-  if config:
-    f = open(config)
-    data = json.load(f)
-    for d in data:
-      extra_args.append(f"{d}={data[d]}")
-    f.close()
-
+  extra_args = parse_json_to_args(config)
+  
   subprocess.run([
     "cookiecutter", 
     "gh:strudel-science/strudel-kit",
@@ -37,12 +28,15 @@ def create_app(config: str = ""):
 
 
 @app.command()
-def add_taskflow(name: str, output_dir: str = "src/app"):
+def add_taskflow(name: str, output_dir: Annotated[str, typer.Option("--output_dir", "-o")] = "src/app", config: Annotated[str, typer.Option("--config", "-c")] = ""):
   """
   Add a new task flow section to an existing strudel web application.
   """
 
   print("Adding task flow to your app...")
+  
+  extra_args = parse_json_to_args(config)
+
   subprocess.run([
     "cookiecutter", 
     "gh:strudel-science/strudel-kit", 
