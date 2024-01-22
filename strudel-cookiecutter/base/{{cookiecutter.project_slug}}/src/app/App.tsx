@@ -36,6 +36,8 @@ import { ScenarioList } from './compare-scenarios/ScenarioList';
 import { ScenarioComparison } from './compare-scenarios/ScenarioComparison';
 import { NewScenario } from './compare-scenarios/NewScenario';
 
+const json = {{ cookiecutter.project_json }}
+
 /**
  * TODO: Add more comments...
  * Maybe even for every attribute
