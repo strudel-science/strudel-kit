@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { AnalyticsProvider } from '../../components/contexts/analytics/AnalyticsProvider';
-import { ExploringEntitiesContent } from './ExploringEntitiesContent';
+import { DataExplorer } from './DataExplorer';
 import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import * as d3 from 'd3-fetch';
 import { basename } from '../App';
@@ -55,7 +55,7 @@ export const ExploreDataWrapper: React.FC = () => {
 
   return (
     <AnalyticsProvider data={entities} columns={columns} dataIdField='Proteome_ID'>
-      <ExploringEntitiesContent />
+      <DataExplorer />
     </AnalyticsProvider>
   )
 }

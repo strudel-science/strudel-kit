@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Radio, RadioGroup, Slider, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { FiltersPanel as Filters } from '../../components/FiltersPanel';
+import { Filters } from '../../components/Filters';
 import { FilterField } from '../../components/FilterField';
 import { CheckboxList, CheckboxOption } from '../../components/CheckboxList';
 import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
@@ -22,7 +22,7 @@ interface Filter {
   defaultValue: any;
 }
 
-interface EEFiltersPanelProps {
+interface FiltersPanelProps {
   onClose: () => any
 }
 
@@ -33,7 +33,7 @@ const initFilterValues = (filters: Filter[]) => {
   })
 };
 
-export const FiltersPanel: React.FC<EEFiltersPanelProps> = (props) => { 
+export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => { 
   const {state, dispatch} = useAnalytics();
   const [dateRange, setDateRange] = useState([null, dayjs()]);
   

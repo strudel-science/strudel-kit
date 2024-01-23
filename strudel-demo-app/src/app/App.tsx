@@ -35,6 +35,8 @@ import { CompareDataWrapper } from './compare-data/CompareDataWrapper';
 import { ScenarioList } from './compare-data/ScenarioList';
 import { ScenarioComparison } from './compare-data/ScenarioComparison';
 import { NewScenario } from './compare-data/NewScenario';
+import { DataExplorer } from './explore-data/DataExplorer';
+import { DataDetailPage } from './explore-data/DataDetailPage';
 
 /**
  * TODO: Add more comments...
@@ -109,6 +111,16 @@ const router = createHashRouter([
   {
     path: "/explore-data",
     element: <ExploreDataWrapper />,
+    children: [
+      {
+        index: true,
+        element: <DataExplorer />
+      },
+      {
+        path: ':datasetId',
+        element: <DataDetailPage />
+      }
+    ]
   },
   {
     path: "/run-computation",

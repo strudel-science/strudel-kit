@@ -5,7 +5,7 @@ import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvi
 import { LabelValueTable } from '../../components/LabelValueTable';
 import { DataGrid } from '../../components/DataGrid';
 
-interface EEPreviewPanelProps {
+interface PreviewPanelProps {
   onClose: () => any
 }
 
@@ -37,7 +37,7 @@ const relatedColumns = [
   },
 ];
 
-export const EEPreviewPanel: React.FC<EEPreviewPanelProps> = (props) => {
+export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
   const {state, dispatch} = useAnalytics();
   const emptyRows = Array(25).fill(0);
   const relatedRows = emptyRows.map((d, i) => {
