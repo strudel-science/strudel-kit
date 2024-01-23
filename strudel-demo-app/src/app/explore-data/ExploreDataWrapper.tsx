@@ -40,7 +40,7 @@ const columns: GridColDef[] = [
   }
 ];
 
-export const ExploringEntitiesWrapper: React.FC = () => {
+export const ExploreDataWrapper: React.FC = () => {
   const [entities, setEntities] = useState<any[]>([]);
 
   useEffect(() => {

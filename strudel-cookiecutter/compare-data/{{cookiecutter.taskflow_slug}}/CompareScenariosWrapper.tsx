@@ -4,10 +4,10 @@ import { Outlet } from 'react-router-dom';
 import * as d3 from 'd3-fetch';
 import { basename } from '../App';
 import { TopBar } from './TopBar';
-import { CompareScenariosProvider } from './context/ContextProvider';
+import { CompareDataProvider } from './context/ContextProvider';
 import { GridColDef } from '@mui/x-data-grid';
   
-export const CompareScenariosWrapper: React.FC = () => {
+export const CompareDataWrapper: React.FC = () => {
   const [scenarios, setScenarios] = useState<any[]>([]);
 
   useEffect(() => {
@@ -26,19 +26,19 @@ export const CompareScenariosWrapper: React.FC = () => {
         <TopBar />
       </Box>
       <Box>
-        <CompareScenariosProvider data={scenarios} columns={columns}>
+        <CompareDataProvider data={scenarios} columns={columns}>
           <Outlet />
-        </CompareScenariosProvider>
+        </CompareDataProvider>
       </Box>
     </Box>
   )
 }
 
-export type CompareScenariosGridColDef = GridColDef & {
+export type CompareDataGridColDef = GridColDef & {
   isComparisonMetric?: boolean;
 }
 
-const columns: CompareScenariosGridColDef[] = [
+const columns: CompareDataGridColDef[] = [
   { 
     field: 'name', 
     headerName: 'Scenario Name', 

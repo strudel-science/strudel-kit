@@ -4,11 +4,11 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Link as RouterLink } from 'react-router-dom';
 import { DataGrid } from '../../components/DataGrid';
 import { PageHeader } from '../../components/PageHeader';
-import { useCompareScenarios } from './context/ContextProvider';
+import { useCompareData } from './context/ContextProvider';
 import { setComparing, setSelectedRows } from './context/actions';
   
 export const NewScenario: React.FC = () => {
-  const { state, dispatch } = useCompareScenarios();
+  const { state, dispatch } = useCompareData();
 
   /**
    * Set comparing to true whenever this page renders.
@@ -29,14 +29,14 @@ export const NewScenario: React.FC = () => {
         actions={
           <Stack direction="row">
             <Box>
-              <Link component={RouterLink} to="/compare-scenarios">
+              <Link component={RouterLink} to="/compare-data">
                 <Button variant="contained" color="warning">
                   Cancel
                 </Button>
               </Link>
             </Box>
             <Box>
-              <Link component={RouterLink} to="/compare-scenarios">
+              <Link component={RouterLink} to="/compare-data">
                 <Button variant="contained">
                   Save Scenario
                 </Button>

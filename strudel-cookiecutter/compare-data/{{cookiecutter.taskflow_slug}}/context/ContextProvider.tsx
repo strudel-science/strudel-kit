@@ -1,23 +1,23 @@
 import React, { useEffect, useReducer, useContext } from 'react';
-import { CompareScenariosAction, CompareScenariosActionType, setComparisonData, setData } from './actions';
-import { CompareScenariosGridColDef } from '../CompareScenariosWrapper';
+import { CompareDataAction, CompareDataActionType, setComparisonData, setData } from './actions';
+import { CompareDataGridColDef } from '../CompareDataWrapper';
 
 interface ComparisonRow {
   [key: string]: number | string | null | undefined;
 }
 
-export interface CompareScenariosState {
+export interface CompareDataState {
   data: any[];
   selectedRows: any[];
-  columns: CompareScenariosGridColDef[];
-  comparisonColumns: CompareScenariosGridColDef[];
+  columns: CompareDataGridColDef[];
+  comparisonColumns: CompareDataGridColDef[];
   dataIdField: string;
   comparing?: boolean;
   comparisonData: ComparisonRow[]
 }
 
 /**
- * CompareScenariosProvider props are the same as the State except
+ * CompareDataProvider props are the same as the State except
  * some of the required props in the State are optional props.
  * These props have default values set in the initialState object.
  * 
@@ -26,15 +26,15 @@ export interface CompareScenariosState {
  * optional when initiating a Provider component. But it is simpler.
  * Not sure yet which to stick with going forward.
  */
-interface CompareScenariosProviderProps extends Partial<CompareScenariosState> {
-  data?: CompareScenariosState['data'];
-  comparisonColumns?: CompareScenariosState['comparisonColumns'];
+interface CompareDataProviderProps extends Partial<CompareDataState> {
+  data?: CompareDataState['data'];
+  comparisonColumns?: CompareDataState['comparisonColumns'];
   children: React.ReactNode;
 }
 
-const CompareScenariosContext = React.createContext<{state: CompareScenariosState; dispatch: React.Dispatch<CompareScenariosAction>} | undefined>(undefined);
+const CompareDataContext = React.createContext<{state: CompareDataState; dispatch: React.Dispatch<CompareDataAction>} | undefined>(undefined);
 
-const initialState: CompareScenariosState = {
+const initialState: CompareDataState = {
   data: [],
   columns: [],
   selectedRows: [],
@@ -44,7 +44,7 @@ const initialState: CompareScenariosState = {
   comparisonColumns: [],
 }
 
-const initState = (initialState: CompareScenariosState, props: CompareScenariosProviderProps) => {
+const initState = (initialState: CompareDataState, props: CompareDataProviderProps) => {
   const {children, ...rest} = props;
   return {
     ...initialState,
@@ -52,28 +52,28 @@ const initState = (initialState: CompareScenariosState, props: CompareScenariosP
   }
 };
 
-function compareScenariosReducer(state: CompareScenariosState, action: CompareScenariosAction): CompareScenariosState {
+function CompareDataReducer(state: CompareDataState, action: CompareDataAction): CompareDataState {
   switch (action.type) {
-    case CompareScenariosActionType.SET_DATA: {
+    case CompareDataActionType.SET_DATA: {
       return {
         ...state,
         data: action.payload
       }
     }
-    case CompareScenariosActionType.SET_SELECTED_ROWS: {
+    case CompareDataActionType.SET_SELECTED_ROWS: {
       return {
         ...state,
         selectedRows: action.payload
       }
     }
-    case CompareScenariosActionType.SET_COMPARISON_DATA: {
+    case CompareDataActionType.SET_COMPARISON_DATA: {
       return {
         ...state,
         comparisonData: action.payload.data,
         comparisonColumns: action.payload.columns,
       }
     }
-    case CompareScenariosActionType.SET_COMPARING: {
+    case CompareDataActionType.SET_COMPARING: {
       return {
         ...state,
         comparing: action.payload
@@ -85,8 +85,8 @@ function compareScenariosReducer(state: CompareScenariosState, action: CompareSc
   }
 }
 
-export const CompareScenariosProvider: React.FC<CompareScenariosProviderProps> = (props) => {
-  const [state, dispatch] = React.useReducer(compareScenariosReducer, initState(initialState, props));
+export const CompareDataProvider: React.FC<CompareDataProviderProps> = (props) => {
+  const [state, dispatch] = React.useReducer(CompareDataReducer, initState(initialState, props));
   const value = { state, dispatch };
 
   useEffect(() => {
@@ -104,12 +104,12 @@ export const CompareScenariosProvider: React.FC<CompareScenariosProviderProps> =
     if (state.comparing && state.selectedRows.length > 1) {
       const metrics = state.columns.filter((c) => c.isComparisonMetric);
       const scenarios = state.data.filter((d) => state.selectedRows.indexOf(d.id) > -1);
-      const comparisonColumns: CompareScenariosGridColDef[] = [
+      const comparisonColumns: CompareDataGridColDef[] = [
         {
           field: 'metric',
           headerName: 'Metric',
           width: 200,
-          cellClassName: 'compare-scenarios--metric',
+          cellClassName: 'compare-data--metric',
         }
       ];
       const comparisonData = metrics.map((m, i) => {
@@ -136,16 +136,16 @@ export const CompareScenariosProvider: React.FC<CompareScenariosProviderProps> =
   }, [state.comparing]);
 
   return (
-    <CompareScenariosContext.Provider value={value}>
+    <CompareDataContext.Provider value={value}>
       {props.children}
-    </CompareScenariosContext.Provider>
+    </CompareDataContext.Provider>
   )
 }
 
-export const useCompareScenarios = () => {
-  const context = useContext(CompareScenariosContext)
+export const useCompareData = () => {
+  const context = useContext(CompareDataContext)
   if (context === undefined) {
-    throw new Error('useCompareScenarios must be used within an CompareScenariosProvider')
+    throw new Error('useCompareData must be used within an CompareDataProvider')
   }
   return context
 }

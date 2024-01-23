@@ -33,7 +33,7 @@ export const ContributorPortal: React.FC = () => {
           <Typography variant="h6" component="h1">
             Your Dataset Uploads
           </Typography>
-          <Link component={RouterLink} to="/contributing-data/new">
+          <Link component={RouterLink} to="/contribute-data/new">
             <Button variant="contained">
               New Dataset
             </Button>

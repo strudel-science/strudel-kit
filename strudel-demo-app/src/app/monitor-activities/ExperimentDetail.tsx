@@ -41,7 +41,7 @@ export const ExperimentDetail: React.FC = () => {
     >
       <Stack>
         <Stack direction="row" alignItems="center">
-          <Link component={RouterLink} to="/monitor-tasks/list">
+          <Link component={RouterLink} to="/monitor-activities/list">
             <IconButton>
               <ArrowBackIcon />
             </IconButton>

@@ -6,11 +6,11 @@ import { Link as RouterLink } from 'react-router-dom';
 import { DataGrid } from '../../components/DataGrid';
 import { GridToolbar } from '@mui/x-data-grid';
 import { PageHeader } from '../../components/PageHeader';
-import { useCompareScenarios } from './context/ContextProvider';
+import { useCompareData } from './context/ContextProvider';
 import { setSelectedRows } from './context/actions';
   
 export const ScenarioList: React.FC = () => {
-  const { state, dispatch } = useCompareScenarios();
+  const { state, dispatch } = useCompareData();
   
   return (
     <Box>
@@ -20,7 +20,7 @@ export const ScenarioList: React.FC = () => {
         actions={
           <Stack direction="row">
             <Box>
-              <Link component={RouterLink} to="/compare-scenarios/compare">
+              <Link component={RouterLink} to="/compare-data/compare">
                 {state.selectedRows.length === 0 && (
                   <Button 
                     variant="outlined"
@@ -38,7 +38,7 @@ export const ScenarioList: React.FC = () => {
               </Link>
             </Box>
             <Box>
-              <Link component={RouterLink} to="/compare-scenarios/new">
+              <Link component={RouterLink} to="/compare-data/new">
                 <Button variant="contained">
                   New Scenario
                 </Button>

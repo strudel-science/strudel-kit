@@ -155,7 +155,7 @@ export const NewScenarioModal: React.FC<Props> = ({
           rows={4}
         />
         <Box textAlign="right">
-          <Link component={RouterLink} to="/optimization/scenario/data-inputs">
+          <Link component={RouterLink} to="/run-computation/scenario/data-inputs">
             <Button variant="contained" >
               Create
             </Button>

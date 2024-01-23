@@ -27,12 +27,12 @@ export const TaskFlowsPage: React.FC = () => {
         >
           <List>
             <NavListItem>
-              <Link component={RouterLink} to="exploring-datasets">
+              <Link component={RouterLink} to="search-data-repositories">
                 Exploring Datasets
               </Link>
             </NavListItem>
             <NavListItem>
-              <Link component={RouterLink} to="exploring-entities">
+              <Link component={RouterLink} to="explore-data">
                 Exploring Entities
               </Link>
             </NavListItem>
@@ -42,17 +42,17 @@ export const TaskFlowsPage: React.FC = () => {
               </Link> 
             </NavListItem>
             <NavListItem>
-              <Link component={RouterLink} to="contributing-data">
+              <Link component={RouterLink} to="contribute-data">
                 Contributing Data
               </Link>
             </NavListItem>
             <NavListItem>
-              <Link component={RouterLink} to="monitor-tasks">
+              <Link component={RouterLink} to="monitor-activities">
                 Monitor Tasks
               </Link> 
             </NavListItem>
             <NavListItem>
-              <Link component={RouterLink} to="compare-scenarios">
+              <Link component={RouterLink} to="compare-data">
                 Compare Scenarios
               </Link>
             </NavListItem>

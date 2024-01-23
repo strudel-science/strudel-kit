@@ -97,21 +97,21 @@ export const Results: React.FC = () => {
         <Stepper activeStep={2} sx={{ maxWidth: 850 }}>
           <Step key="Data Inputs">
             <StepLabel>
-              <Link component={RouterLink} to="/optimization/scenario/data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="/run-computation/scenario/data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
                 Data Inputs
               </Link>
             </StepLabel>
           </Step>
           <Step key="Optimization Settings">
             <StepLabel>
-              <Link component={RouterLink} to="/optimization/scenario/settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="/run-computation/scenario/settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
                 Optimization Settings
               </Link>
             </StepLabel>
           </Step>
           <Step key="Results">
             <StepLabel>
-              <Link component={RouterLink} to="/optimization/scenario/results" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="/run-computation/scenario/results" sx={{ color: 'inherit', textDecoration: 'none' }}>
                 Results
               </Link>
             </StepLabel>
@@ -249,7 +249,7 @@ export const Results: React.FC = () => {
           padding: 2,
         }}
       >
-        <Link component={RouterLink} to="/optimization/scenario/settings">
+        <Link component={RouterLink} to="/run-computation/scenario/settings">
           <Button variant="contained">Back to optimization settings</Button>
         </Link>
       </Box>

@@ -1,1 +1,1 @@
-export { ExploringEntitiesWrapper } from './ExploringEntitiesWrapper';
+export { ExploreDataWrapper } from './ExploreDataWrapper';

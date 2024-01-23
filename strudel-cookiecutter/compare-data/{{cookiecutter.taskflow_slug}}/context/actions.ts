@@ -1,36 +1,36 @@
-import { CompareScenariosState } from './ContextProvider';
+import { CompareDataState } from './ContextProvider';
 
-export enum CompareScenariosActionType {
+export enum CompareDataActionType {
   SET_DATA = 'SET_DATA',
   SET_SELECTED_ROWS = 'SET_SELECTED_ROWS',
   SET_COMPARISON_DATA = 'SET_COMPARISON_DATA',
   SET_COMPARING = 'SET_COMPARING',
 }
 
-export interface CompareScenariosAction {
-  type: CompareScenariosActionType;
+export interface CompareDataAction {
+  type: CompareDataActionType;
   payload?: any;
 }
 
-export const setData = (data: CompareScenariosState['data']): CompareScenariosAction => ({
-  type: CompareScenariosActionType.SET_DATA,
+export const setData = (data: CompareDataState['data']): CompareDataAction => ({
+  type: CompareDataActionType.SET_DATA,
   payload: data
 });
 
-export const setSelectedRows = (rows: CompareScenariosState['selectedRows']): CompareScenariosAction => ({
-  type: CompareScenariosActionType.SET_SELECTED_ROWS,
+export const setSelectedRows = (rows: CompareDataState['selectedRows']): CompareDataAction => ({
+  type: CompareDataActionType.SET_SELECTED_ROWS,
   payload: rows
 });
 
 export const setComparisonData = (
-  data: CompareScenariosState['comparisonData'], 
-  columns: CompareScenariosState['comparisonColumns']
-): CompareScenariosAction => ({
-  type: CompareScenariosActionType.SET_COMPARISON_DATA,
+  data: CompareDataState['comparisonData'], 
+  columns: CompareDataState['comparisonColumns']
+): CompareDataAction => ({
+  type: CompareDataActionType.SET_COMPARISON_DATA,
   payload: { data, columns }
 });
 
-export const setComparing = (comparing: CompareScenariosState['comparing']): CompareScenariosAction => ({
-  type: CompareScenariosActionType.SET_COMPARING,
+export const setComparing = (comparing: CompareDataState['comparing']): CompareDataAction => ({
+  type: CompareDataActionType.SET_COMPARING,
   payload: comparing
 });

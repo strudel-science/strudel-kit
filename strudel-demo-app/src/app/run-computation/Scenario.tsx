@@ -41,7 +41,7 @@ export const Scenario: React.FC = () => {
                 Project name
               </Typography>
               <Breadcrumbs aria-label="breadcrumb" separator={<ChevronRightIcon fontSize="small" />}>
-                <Link underline="hover" color="inherit" to="/optimization" component={RouterLink}>
+                <Link underline="hover" color="inherit" to="/run-computation" component={RouterLink}>
                   Scenario List
                 </Link>
                 <Typography color="text.primary">Optimization Scenario 1</Typography>
