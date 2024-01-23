@@ -22,8 +22,6 @@ def create_app(
   subprocess.run([
     "cookiecutter", 
     "gh:strudel-science/strudel-kit",
-    "--checkout", 
-    "feature/cli",
     "--directory", 
     "strudel-cookiecutter/base",
     "--output-dir",
@@ -49,8 +47,6 @@ def add_taskflow(
   subprocess.run([
     "cookiecutter", 
     "gh:strudel-science/strudel-kit", 
-    "--checkout", 
-    "feature/cli",
     "--directory", 
     f"strudel-cookiecutter/{name}",
     "--output-dir",

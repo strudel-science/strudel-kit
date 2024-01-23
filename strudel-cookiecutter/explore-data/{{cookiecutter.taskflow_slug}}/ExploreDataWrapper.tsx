@@ -4,6 +4,9 @@ import { DataExplorer } from './DataExplorer';
 import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import * as d3 from 'd3-fetch';
 import { basename } from '../App';
+import { Box } from '@mui/material';
+import { Outlet } from 'react-router';
+import { TopBar } from './TopBar';
 
 const columns: GridColDef[] = [
   { 
@@ -54,8 +57,15 @@ export const ExploreDataWrapper: React.FC = () => {
   }, []);
 
   return (
-    <AnalyticsProvider data={entities} columns={columns} dataIdField='Proteome_ID'>
-      <DataExplorer />
-    </AnalyticsProvider>
+    <Box>
+      <Box sx={{ "{{" }} flexGrow: 1 {{ "}}" }}>
+        <TopBar />
+      </Box>
+      <Box>
+        <AnalyticsProvider data={entities} columns={columns} dataIdField='Proteome_ID'>
+          <Outlet />
+        </AnalyticsProvider>
+      </Box>
+    </Box>
   )
 }
