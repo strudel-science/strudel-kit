@@ -9,7 +9,7 @@ import { DataGrid } from '../../components/DataGrid';
 import { GridActionsCellItem, GridColDef, GridComparatorFn, GridRowParams } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
   
-export const ExperimentList: React.FC = () => {
+export const ActivityList: React.FC = () => {
   const [experiments, setExperiments] = useState<any[]>([]);
   const navigate = useNavigate();
 

@@ -5,7 +5,7 @@ import * as d3 from 'd3-fetch';
 import { basename } from '../App';
 import { TopBar } from './TopBar';
   
-export const MonitorTasksWrapper: React.FC = () => {
+export const MonitorActivitiesWrapper: React.FC = () => {
   const [datasets, setDatasets] = useState<any[]>([]);
 
   return (

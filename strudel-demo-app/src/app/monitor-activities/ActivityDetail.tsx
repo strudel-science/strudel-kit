@@ -10,7 +10,7 @@ import { basename } from '../App';
 import dayjs from 'dayjs';
 import Plot from 'react-plotly.js';
   
-export const ExperimentDetail: React.FC = () => {
+export const ActivityDetail: React.FC = () => {
   const [experiment, setExperiment] = useState<any>();
 
   const getNoteRows = (notes: any[]) => {

@@ -27,10 +27,10 @@ import { RunningMyAnalysis } from './my-analysis/Running';
 import { MyResults } from './my-analysis/Results';
 import { NewDataset } from './contribute-data/NewDataset';
 import { ReviewDataset } from './contribute-data/ReviewDataset';
-import { MonitorTasksWrapper } from './monitor-activities/MonitorTasksWrapper';
-import { ExperimentCalendar } from './monitor-activities/ExperimentCalendar';
-import { ExperimentList } from './monitor-activities/ExperimentList';
-import { ExperimentDetail } from './monitor-activities/ExperimentDetail';
+import { MonitorActivitiesWrapper } from './monitor-activities/MonitorActivitiesWrapper';
+import { ActivityCalendar } from './monitor-activities/ActivityCalendar';
+import { ActivityList } from './monitor-activities/ActivityList';
+import { ActivityDetail } from './monitor-activities/ActivityDetail';
 import { CompareDataWrapper } from './compare-data/CompareDataWrapper';
 import { ScenarioList } from './compare-data/ScenarioList';
 import { ScenarioComparison } from './compare-data/ScenarioComparison';
@@ -181,26 +181,26 @@ const router = createHashRouter([
   },
   {
     path: "/monitor-activities",
-    element: <MonitorTasksWrapper />,
+    element: <MonitorActivitiesWrapper />,
     children: [
       // {
       //   index: true,
-      //   element: <ExperimentCalendar />
+      //   element: <ActivityCalendar />
       // },
       {
         index: true,
-        element: <ExperimentList />,
+        element: <ActivityList />,
       },
       {
         path: 'list',
         children: [
           {
             index: true,
-            element: <ExperimentList />,
+            element: <ActivityList />,
           },
           {
             path: 'detail',
-            element: <ExperimentDetail />
+            element: <ActivityDetail />
           },
         ]
       },

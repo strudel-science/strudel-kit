@@ -7,7 +7,7 @@ import { LabelValueTable } from '../../components/LabelValueTable';
 import { DateCalendar, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
   
-export const ExperimentCalendar: React.FC = () => {
+export const ActivityCalendar: React.FC = () => {
   return (
     <Container
       maxWidth="md"
