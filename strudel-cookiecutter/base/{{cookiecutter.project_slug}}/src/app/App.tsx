@@ -5,7 +5,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { Navigate, RouterProvider, createHashRouter } from 'react-router-dom';
 import { TaskFlowsPage } from './home/TaskFlowsPage';
-import { ExploringDatasetsWrapper } from './search-data-repositories/ExploringDatasetsWrapper';
+import { SearchDataRepositoriesWrapper } from './search-data-repositories/SearchDataRepositoriesWrapper';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatasetExplorer } from './search-data-repositories/DatasetExplorer';
@@ -96,7 +96,7 @@ const router = createHashRouter([
   },
   {
     path: "/search-data-repositories",
-    element: <ExploringDatasetsWrapper />,
+    element: <SearchDataRepositoriesWrapper />,
     children: [
       {
         index: true,

@@ -6,7 +6,7 @@ import * as d3 from 'd3-fetch';
 import { basename } from '../App';
 import { TopBar } from './TopBar';
   
-export const ExploringDatasetsWrapper: React.FC = () => {
+export const SearchDataRepositoriesWrapper: React.FC = () => {
   const [datasets, setDatasets] = useState<any[]>([]);
 
   useEffect(() => {
