@@ -10,13 +10,13 @@ import { DataFilesPanel } from './DataFilesPanel';
 import { MetadataPanel } from './MetadataPanel';
 import { DatasetView } from './DatasetView';
 import { ValidationChecks } from './ValidationChecks';
-import { useContributingData } from './context/ContextProvider';
+import { useContributeData } from './context/ContextProvider';
 import { finishChecks, runChecks } from './context/actions';
   
 export const ReviewDataset: React.FC = () => {
   const [alertOpen, setAlertOpen] = useState(true);
     // TODO: use context for dataset state
-  const { state, dispatch } = useContributingData();
+  const { state, dispatch } = useContributeData();
 
   const startRunChecks = () => {
     dispatch(runChecks());

@@ -1,19 +1,19 @@
-import { ContributingDataState } from './ContextProvider';
+import { ContributeDataState } from './ContextProvider';
 
-export enum ContributingDataActionType {
+export enum ContributeDataActionType {
   RUN_CHECKS = 'RUN_CHECKS',
   FINISH_CHECKS = 'FINISH_CHECKS',
 }
 
-export interface ContributingDataAction {
-  type: ContributingDataActionType;
+export interface ContributeDataAction {
+  type: ContributeDataActionType;
   payload?: any;
 }
 
-export const runChecks = (): ContributingDataAction => ({
-  type: ContributingDataActionType.RUN_CHECKS,
+export const runChecks = (): ContributeDataAction => ({
+  type: ContributeDataActionType.RUN_CHECKS,
 });
 
-export const finishChecks = (): ContributingDataAction => ({
-  type: ContributingDataActionType.FINISH_CHECKS,
+export const finishChecks = (): ContributeDataAction => ({
+  type: ContributeDataActionType.FINISH_CHECKS,
 });

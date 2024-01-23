@@ -16,7 +16,7 @@ import { DataInputs } from './run-computation/DataInputs';
 import { OptimizationSettings } from './run-computation/OptimizationSettings';
 import { RunningOptimization } from './run-computation/RunningOptimization';
 import { Results } from './run-computation/Results';
-import { ContributingDataWrapper } from './contribute-data/ContributingDataWrapper';
+import { ContributeDataWrapper } from './contribute-data/ContributeDataWrapper';
 import { Register } from './contribute-data/Register';
 import { ContributorPortal } from './contribute-data/ContributorPortal';
 import { MyAnalysisPage } from './my-analysis/MyAnalysisPage';
@@ -155,7 +155,7 @@ const router = createHashRouter([
   },
   {
     path: "/contribute-data",
-    element: <ContributingDataWrapper />,
+    element: <ContributeDataWrapper />,
     children: [
       {
         index: true,

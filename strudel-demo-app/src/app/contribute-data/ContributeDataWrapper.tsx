@@ -4,9 +4,9 @@ import { Outlet } from 'react-router-dom';
 import * as d3 from 'd3-fetch';
 import { basename } from '../App';
 import { TopBar } from './TopBar';
-import { ContributingDataProvider } from './context/ContextProvider';
+import { ContributeDataProvider } from './context/ContextProvider';
   
-export const ContributingDataWrapper: React.FC = () => {
+export const ContributeDataWrapper: React.FC = () => {
   const [datasets, setDatasets] = useState<any[]>([]);
 
   useEffect(() => {
@@ -25,9 +25,9 @@ export const ContributingDataWrapper: React.FC = () => {
         <TopBar />
       </Box>
       <Box>
-        <ContributingDataProvider>
+        <ContributeDataProvider>
           <Outlet />
-        </ContributingDataProvider>
+        </ContributeDataProvider>
       </Box>
     </Box>
   )

@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useContext } from 'react';
-import { ContributingDataAction, ContributingDataActionType } from './actions';
+import { ContributeDataAction, ContributeDataActionType } from './actions';
 import { filterData } from './utils';
 
 export interface DataFilter {
@@ -8,36 +8,36 @@ export interface DataFilter {
   operator: string;
 }
 
-export interface ContributingDataState {
+export interface ContributeDataState {
   runningChecks?: boolean;
   checksComplete?: boolean;
 }
 
 /**
- * ContributingDataProvider props are the same as the State except
+ * ContributeDataProvider props are the same as the State except
  * some of the required props in the State are optional props.
  * These props have default values set in the initialState object.
  */
-interface ContributingDataProviderProps extends Omit<ContributingDataState, 'runningChecks'> {
+interface ContributeDataProviderProps extends Omit<ContributeDataState, 'runningChecks'> {
   children: React.ReactNode;
 }
 
-const ContributingDataContext = React.createContext<{state: ContributingDataState; dispatch: React.Dispatch<ContributingDataAction>} | undefined>(undefined);
+const ContributeDataContext = React.createContext<{state: ContributeDataState; dispatch: React.Dispatch<ContributeDataAction>} | undefined>(undefined);
 
-const initialState: ContributingDataState = {
+const initialState: ContributeDataState = {
   runningChecks: false,
   checksComplete: false,
 }
 
-function contributingDataReducer(state: ContributingDataState, action: ContributingDataAction): ContributingDataState {
+function contributingDataReducer(state: ContributeDataState, action: ContributeDataAction): ContributeDataState {
   switch (action.type) {
-    case ContributingDataActionType.RUN_CHECKS: {
+    case ContributeDataActionType.RUN_CHECKS: {
       return {
         ...state,
         runningChecks: true
       }
     }
-    case ContributingDataActionType.FINISH_CHECKS: {
+    case ContributeDataActionType.FINISH_CHECKS: {
       return {
         ...state,
         runningChecks: false,
@@ -50,21 +50,21 @@ function contributingDataReducer(state: ContributingDataState, action: Contribut
   }
 }
 
-export const ContributingDataProvider: React.FC<ContributingDataProviderProps> = (props) => {
+export const ContributeDataProvider: React.FC<ContributeDataProviderProps> = (props) => {
   const [state, dispatch] = React.useReducer(contributingDataReducer, initialState);
   const value = { state, dispatch };
 
   return (
-    <ContributingDataContext.Provider value={value}>
+    <ContributeDataContext.Provider value={value}>
       {props.children}
-    </ContributingDataContext.Provider>
+    </ContributeDataContext.Provider>
   )
 }
 
-export const useContributingData = () => {
-  const context = useContext(ContributingDataContext)
+export const useContributeData = () => {
+  const context = useContext(ContributeDataContext)
   if (context === undefined) {
-    throw new Error('useContributingData must be used within an ContributingDataProvider')
+    throw new Error('useContributeData must be used within an ContributeDataProvider')
   }
   return context
 }

@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link as RouterLink } from 'react-router-dom';
-import { useContributingData } from './context/ContextProvider';
+import { useContributeData } from './context/ContextProvider';
 import { LinearMeter } from '../../components/LinearMeter';
   
 export const ValidationChecks: React.FC = () => {  
-  const { state, dispatch } = useContributingData();
+  const { state, dispatch } = useContributeData();
 
   return (
     <Paper
