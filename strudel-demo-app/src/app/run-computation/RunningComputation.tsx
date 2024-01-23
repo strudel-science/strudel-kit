@@ -12,7 +12,7 @@ import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid
 import { DataGrid } from '../../components/DataGrid';
 import { NewScenarioModal } from './NewScenarioModal';
 
-export const RunningOptimization: React.FC = () => {
+export const RunningComputation: React.FC = () => {
   const [showAdvanced, setShowAdvanced] = useState(false);
 
   const handleAdvancedToggle = () => {

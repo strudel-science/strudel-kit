@@ -19,8 +19,8 @@ In the new directory you created, rename the main task flow and settings file an
 ```
 cd MyAnalysis
 mv Optimization.tsx MyAnalysisPage.tsx
-mv OptimizationSettings.tsx MyAnalysisSettings.tsx
-mv RunningOptimization.tsx Running.tsx
+mv Settings.tsx MyAnalysisSettings.tsx
+mv RunningComputation.tsx Running.tsx
 ```
 
 In that directory, edit _index.tsx_ to export your new task flow:
@@ -48,8 +48,8 @@ When you are done, the _App.tsx_ file will look something like this:
 import { OptimizationPage } from './pages/OptimizationPage';
 import { DataInputs } from './task-flows/Optimization/DataInputs';
 import { Scenario } from './task-flows/Optimization/Scenario';
-import { OptimizationSettings } from './task-flows/Optimization/OptimizationSettings';
-import { RunningOptimization } from './task-flows/Optimization/RunningOptimization';
+import { Settings } from './task-flows/Optimization/Settings';
+import { RunningComputation } from './task-flows/Optimization/RunningComputation';
 import { Results } from './task-flows/Optimization/Results';
 // New, added, imports
 import { MyAnalysisPage } from './pages/MyAnalysisPage';

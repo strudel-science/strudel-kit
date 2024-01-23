@@ -86,7 +86,7 @@ const columns: GridColDef[] = [
   },
 ];
   
-export const OptimizationWrapper: React.FC = () => {
+export const RunComputationWrapper: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleNewScenario = () => {

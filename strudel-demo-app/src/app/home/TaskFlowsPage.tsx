@@ -37,7 +37,7 @@ export const TaskFlowsPage: React.FC = () => {
               </Link>
             </NavListItem>
             <NavListItem>
-              <Link component={RouterLink} to="optimization">
+              <Link component={RouterLink} to="run-computation">
                 Optimization
               </Link> 
             </NavListItem>

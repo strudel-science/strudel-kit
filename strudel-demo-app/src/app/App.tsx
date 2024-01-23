@@ -10,11 +10,11 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatasetExplorer } from './search-data-repositories/DatasetExplorer';
 import { DatasetDetail } from './search-data-repositories/DatasetDetail';
-import { OptimizationWrapper } from './run-computation/OptimizationWrapper';
+import { RunComputationWrapper } from './run-computation/RunComputationWrapper';
 import { Scenario } from './run-computation/Scenario';
 import { DataInputs } from './run-computation/DataInputs';
-import { OptimizationSettings } from './run-computation/OptimizationSettings';
-import { RunningOptimization } from './run-computation/RunningOptimization';
+import { Settings } from './run-computation/Settings';
+import { RunningComputation } from './run-computation/RunningComputation';
 import { Results } from './run-computation/Results';
 import { ContributeDataWrapper } from './contribute-data/ContributeDataWrapper';
 import { Register } from './contribute-data/Register';
@@ -127,7 +127,7 @@ const router = createHashRouter([
     children: [
       {
         index: true,
-        element: <OptimizationWrapper />
+        element: <RunComputationWrapper />
       },
       {
         path: "scenario",
@@ -139,11 +139,11 @@ const router = createHashRouter([
           },
           {
             path: 'settings',
-            element: <OptimizationSettings />
+            element: <Settings />
           },
           {
             path: 'running',
-            element: <RunningOptimization />
+            element: <RunningComputation />
           },
           {
             path: 'results',

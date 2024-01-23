@@ -11,7 +11,7 @@ import { setPreviewItem } from '../../components/contexts/analytics/actions';
 import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { DataGrid } from '../../components/DataGrid';
 
-export const OptimizationSettings: React.FC = () => {
+export const Settings: React.FC = () => {
   const [showAdvanced, setShowAdvanced] = useState(false);
 
   const handleAdvancedToggle = () => {
