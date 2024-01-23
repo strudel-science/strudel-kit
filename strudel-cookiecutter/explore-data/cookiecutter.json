@@ -1,7 +1,7 @@
 {
   "projectName": "My Project",
   "taskflowName": "My Data Explorer",
-  "taskflowSlug": "{{ cookiecutter.taskflow_name.lower().replace(' ', '-').replace('_', '-') }}",
+  "taskflowSlug": "{{ cookiecutter.taskflowName.lower().replace(' ', '-').replace('_', '-') }}",
   "pageTitle": "My Data Explorer",
   "pageDescription": "Description of this app section"
 }
