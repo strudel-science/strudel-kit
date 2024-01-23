@@ -1,40 +1,42 @@
 import React from 'react';
 import './App.css';
-import { ExploringEntitiesWrapper } from './exploring-entities/ExploringEntitiesWrapper';
+import { ExploreDataWrapper } from './explore-data/ExploreDataWrapper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { Navigate, RouterProvider, createHashRouter } from 'react-router-dom';
 import { TaskFlowsPage } from './home/TaskFlowsPage';
-import { ExploringDatasetsWrapper } from './exploring-datasets/ExploringDatasetsWrapper';
+import { SearchDataRepositoriesWrapper } from './search-data-repositories/SearchDataRepositoriesWrapper';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import { DatasetExplorer } from './exploring-datasets/DatasetExplorer';
-import { DatasetDetail } from './exploring-datasets/DatasetDetail';
-import { OptimizationWrapper } from './optimization/OptimizationWrapper';
-import { Scenario } from './optimization/Scenario';
-import { DataInputs } from './optimization/DataInputs';
-import { OptimizationSettings } from './optimization/OptimizationSettings';
-import { RunningOptimization } from './optimization/RunningOptimization';
-import { Results } from './optimization/Results';
-import { ContributingDataWrapper } from './contributing-data/ContributingDataWrapper';
-import { Register } from './contributing-data/Register';
-import { ContributorPortal } from './contributing-data/ContributorPortal';
+import { DatasetExplorer } from './search-data-repositories/DatasetExplorer';
+import { DatasetDetail } from './search-data-repositories/DatasetDetail';
+import { RunComputationWrapper } from './run-computation/RunComputationWrapper';
+import { Scenario } from './run-computation/Scenario';
+import { DataInputs } from './run-computation/DataInputs';
+import { Settings } from './run-computation/Settings';
+import { RunningComputation } from './run-computation/RunningComputation';
+import { Results } from './run-computation/Results';
+import { ContributeDataWrapper } from './contribute-data/ContributeDataWrapper';
+import { Register } from './contribute-data/Register';
+import { ContributorPortal } from './contribute-data/ContributorPortal';
 import { MyAnalysisPage } from './my-analysis/MyAnalysisPage';
 import { MyScenario } from './my-analysis/Scenario';
 import { MyDataInputs } from './my-analysis/DataInputs';
 import { MyAnalysisSettings } from './my-analysis/MyAnalysisSettings';
 import { RunningMyAnalysis } from './my-analysis/Running';
 import { MyResults } from './my-analysis/Results';
-import { NewDataset } from './contributing-data/NewDataset';
-import { ReviewDataset } from './contributing-data/ReviewDataset';
-import { MonitorTasksWrapper } from './monitor-tasks/MonitorTasksWrapper';
-import { ExperimentCalendar } from './monitor-tasks/ExperimentCalendar';
-import { ExperimentList } from './monitor-tasks/ExperimentList';
-import { ExperimentDetail } from './monitor-tasks/ExperimentDetail';
-import { CompareScenariosWrapper } from './compare-scenarios/CompareScenariosWrapper';
-import { ScenarioList } from './compare-scenarios/ScenarioList';
-import { ScenarioComparison } from './compare-scenarios/ScenarioComparison';
-import { NewScenario } from './compare-scenarios/NewScenario';
+import { NewDataset } from './contribute-data/NewDataset';
+import { ReviewDataset } from './contribute-data/ReviewDataset';
+import { MonitorActivitiesWrapper } from './monitor-activities/MonitorActivitiesWrapper';
+import { ActivityCalendar } from './monitor-activities/ActivityCalendar';
+import { ActivityList } from './monitor-activities/ActivityList';
+import { ActivityDetail } from './monitor-activities/ActivityDetail';
+import { CompareDataWrapper } from './compare-data/CompareDataWrapper';
+import { ScenarioList } from './compare-data/ScenarioList';
+import { ScenarioComparison } from './compare-data/ScenarioComparison';
+import { NewScenario } from './compare-data/NewScenario';
+import { DataExplorer } from './explore-data/DataExplorer';
+import { DataDetailPage } from './explore-data/DataDetailPage';
 
 /**
  * TODO: Add more comments...
@@ -93,8 +95,8 @@ const router = createHashRouter([
     element: <TaskFlowsPage />,
   },
   {
-    path: "/exploring-datasets",
-    element: <ExploringDatasetsWrapper />,
+    path: "/search-data-repositories",
+    element: <SearchDataRepositoriesWrapper />,
     children: [
       {
         index: true,
@@ -107,15 +109,25 @@ const router = createHashRouter([
     ]
   },
   {
-    path: "/exploring-entities",
-    element: <ExploringEntitiesWrapper />,
-  },
-  {
-    path: "/optimization",
+    path: "/explore-data",
+    element: <ExploreDataWrapper />,
     children: [
       {
         index: true,
-        element: <OptimizationWrapper />
+        element: <DataExplorer />
+      },
+      {
+        path: ':datasetId',
+        element: <DataDetailPage />
+      }
+    ]
+  },
+  {
+    path: "/run-computation",
+    children: [
+      {
+        index: true,
+        element: <RunComputationWrapper />
       },
       {
         path: "scenario",
@@ -127,11 +139,11 @@ const router = createHashRouter([
           },
           {
             path: 'settings',
-            element: <OptimizationSettings />
+            element: <Settings />
           },
           {
             path: 'running',
-            element: <RunningOptimization />
+            element: <RunningComputation />
           },
           {
             path: 'results',
@@ -142,8 +154,8 @@ const router = createHashRouter([
     ]
   },
   {
-    path: "/contributing-data",
-    element: <ContributingDataWrapper />,
+    path: "/contribute-data",
+    element: <ContributeDataWrapper />,
     children: [
       {
         index: true,
@@ -168,35 +180,35 @@ const router = createHashRouter([
     ]
   },
   {
-    path: "/monitor-tasks",
-    element: <MonitorTasksWrapper />,
+    path: "/monitor-activities",
+    element: <MonitorActivitiesWrapper />,
     children: [
       // {
       //   index: true,
-      //   element: <ExperimentCalendar />
+      //   element: <ActivityCalendar />
       // },
       {
         index: true,
-        element: <ExperimentList />,
+        element: <ActivityList />,
       },
       {
         path: 'list',
         children: [
           {
             index: true,
-            element: <ExperimentList />,
+            element: <ActivityList />,
           },
           {
             path: 'detail',
-            element: <ExperimentDetail />
+            element: <ActivityDetail />
           },
         ]
       },
     ]
   },
   {
-    path: "/compare-scenarios",
-    element: <CompareScenariosWrapper />,
+    path: "/compare-data",
+    element: <CompareDataWrapper />,
     children: [
       {
         index: true,

@@ -5,9 +5,9 @@ import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
 import { setPreviewItem } from '../../components/contexts/analytics/actions';
-import { EEFiltersPanel } from './EEFiltersPanel';
-import { EEPreviewPanel } from './EEPreviewPanel';
-import { EEDataPanel } from './EEDataPanel';
+import { FiltersPanel } from './FiltersPanel';
+import { PreviewPanel } from './PreviewPanel';
+import { DataTablePanel } from './DataTablePanel';
 import { PageHeader } from '../../components/PageHeader';
 
 const getMainColumnSize = (showFiltersPanel: boolean, showPreviewPanel: boolean) => {
@@ -22,7 +22,7 @@ const getMainColumnSize = (showFiltersPanel: boolean, showPreviewPanel: boolean)
   }
 }
   
-export const ExploringEntitiesContent: React.FC = () => {
+export const DataExplorer: React.FC = () => {
   const {state, dispatch} = useAnalytics();
   const [showFiltersPanel, setShowFiltersPanel] = useState(true);
 
@@ -79,15 +79,15 @@ export const ExploringEntitiesContent: React.FC = () => {
       <Grid container spacing={1}>
         {showFiltersPanel && (
           <Grid item xs={2}>
-            <EEFiltersPanel onClose={handleCloseFilters} />
+            <FiltersPanel onClose={handleCloseFilters} />
           </Grid>
         )}
         <Grid item xs={getMainColumnSize(showFiltersPanel, !!state.previewItem)}>
-          <EEDataPanel onToggleFiltersPanel={handleToggleFilters} />
+          <DataTablePanel onToggleFiltersPanel={handleToggleFilters} />
         </Grid>
         {state.previewItem && (
           <Grid item xs={4}>
-            <EEPreviewPanel onClose={handleClosePreview} />
+            <PreviewPanel onClose={handleClosePreview} />
           </Grid>
         )}
       </Grid>

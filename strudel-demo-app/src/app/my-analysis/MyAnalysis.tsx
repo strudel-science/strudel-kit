@@ -11,7 +11,7 @@ import { setPreviewItem } from '../../components/contexts/analytics/actions';
 import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { DataGrid } from '../../components/DataGrid';
 import { NewScenarioModal } from './NewScenarioModal';
-import { DataInputs } from '../optimization/DataInputs';
+import { DataInputs } from '../run-computation/DataInputs';
 
 const scenarios = [
   {

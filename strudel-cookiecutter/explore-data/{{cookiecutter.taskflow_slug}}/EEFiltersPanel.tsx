@@ -20,7 +20,7 @@ interface Filter {
   defaultValue: any;
 }
 
-interface EEFiltersPanelProps {
+interface FiltersPanelProps {
   onClose: () => any
 }
 
@@ -31,7 +31,7 @@ const initFilterValues = (filters: Filter[]) => {
   })
 };
 
-export const EEFiltersPanel: React.FC<EEFiltersPanelProps> = (props) => { 
+export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => { 
   const {state, dispatch} = useAnalytics();
   const [eukRange, setEukRange] = useState([0, 100]);
   const [embRange, setEmbRange] = useState([0, 100]);

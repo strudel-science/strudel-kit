@@ -27,38 +27,33 @@ export const TaskFlowsPage: React.FC = () => {
         >
           <List>
             <NavListItem>
-              <Link component={RouterLink} to="exploring-datasets">
-                Exploring Datasets
+              <Link component={RouterLink} to="compare-data">
+                Compare Data
               </Link>
             </NavListItem>
             <NavListItem>
-              <Link component={RouterLink} to="exploring-entities">
-                Exploring Entities
+              <Link component={RouterLink} to="contribute-data">
+                Contribute Data
               </Link>
             </NavListItem>
             <NavListItem>
-              <Link component={RouterLink} to="optimization">
-                Optimization
+              <Link component={RouterLink} to="explore-data">
+                Explore Data
+              </Link>
+            </NavListItem>
+            <NavListItem>
+              <Link component={RouterLink} to="monitor-activities">
+                Monitor Activities
               </Link> 
             </NavListItem>
             <NavListItem>
-              <Link component={RouterLink} to="contributing-data">
-                Contributing Data
-              </Link>
-            </NavListItem>
-            <NavListItem>
-              <Link component={RouterLink} to="monitor-tasks">
-                Monitor Tasks
+              <Link component={RouterLink} to="run-computation">
+                Run Computation
               </Link> 
             </NavListItem>
             <NavListItem>
-              <Link component={RouterLink} to="compare-scenarios">
-                Compare Scenarios
-              </Link>
-            </NavListItem>
-            <NavListItem>
-              <Link component={RouterLink} to="myanalysis">
-                My Analysis
+              <Link component={RouterLink} to="search-data-repositories">
+                Search Data Repositories
               </Link>
             </NavListItem>
           </List>

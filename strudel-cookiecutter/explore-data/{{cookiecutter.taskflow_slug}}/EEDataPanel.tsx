@@ -6,11 +6,11 @@ import { DataGrid } from '../../components/DataGrid';
 import { GridEventListener } from '@mui/x-data-grid';
 import { setPreviewItem, setSearch } from '../../components/contexts/analytics/actions';
 
-interface EEDataPanelProps {
+interface DataTablePanelProps {
   onToggleFiltersPanel: () => any
 }
 
-export const EEDataPanel: React.FC<EEDataPanelProps> = (props) => { 
+export const DataTablePanel: React.FC<DataTablePanelProps> = (props) => { 
   const {state, dispatch} = useAnalytics();
 
   const handleRowClick: GridEventListener<'rowClick'> = (rowData) => {
