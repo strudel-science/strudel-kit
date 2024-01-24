@@ -1,42 +1,11 @@
 import React from 'react';
 import './App.css';
-import { ExploreDataWrapper } from './explore-data/ExploreDataWrapper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { Navigate, RouterProvider, createHashRouter } from 'react-router-dom';
 import { TaskFlowsPage } from './home/TaskFlowsPage';
-import { SearchDataRepositoriesWrapper } from './search-data-repositories/SearchDataRepositoriesWrapper';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import { DatasetExplorer } from './search-data-repositories/DatasetExplorer';
-import { DatasetDetail } from './search-data-repositories/DatasetDetail';
-import { RunComputationWrapper } from './run-computation/RunComputationWrapper';
-import { Scenario } from './run-computation/Scenario';
-import { DataInputs } from './run-computation/DataInputs';
-import { Settings } from './run-computation/Settings';
-import { RunningComputation } from './run-computation/RunningComputation';
-import { Results } from './run-computation/Results';
-import { ContributeDataWrapper } from './contribute-data/ContributeDataWrapper';
-import { Register } from './contribute-data/Register';
-import { ContributorPortal } from './contribute-data/ContributorPortal';
-import { MyAnalysisPage } from './my-analysis/MyAnalysisPage';
-import { MyScenario } from './my-analysis/Scenario';
-import { MyDataInputs } from './my-analysis/DataInputs';
-import { MyAnalysisSettings } from './my-analysis/MyAnalysisSettings';
-import { RunningMyAnalysis } from './my-analysis/Running';
-import { MyResults } from './my-analysis/Results';
-import { NewDataset } from './contribute-data/NewDataset';
-import { ReviewDataset } from './contribute-data/ReviewDataset';
-import { MonitorActivitiesWrapper } from './monitor-activities/MonitorActivitiesWrapper';
-import { ActivityCalendar } from './monitor-activities/ActivityCalendar';
-import { ActivityList } from './monitor-activities/ActivityList';
-import { ActivityDetail } from './monitor-activities/ActivityDetail';
-import { CompareDataWrapper } from './compare-data/CompareDataWrapper';
-import { ScenarioList } from './compare-data/ScenarioList';
-import { ScenarioComparison } from './compare-data/ScenarioComparison';
-import { NewScenario } from './compare-data/NewScenario';
-
-const json = {{ cookiecutter.project_json }}
 
 /**
  * TODO: Add more comments...
@@ -94,153 +63,30 @@ const router = createHashRouter([
     path: "/",
     element: <TaskFlowsPage />,
   },
-  {
-    path: "/search-data-repositories",
-    element: <SearchDataRepositoriesWrapper />,
-    children: [
+  /**
+   * Add more routes to task flows below.
+   * 
+   * Example:
+   *   
       {
-        index: true,
-        element: <DatasetExplorer />
-      },
-      {
-        path: ':datasetId',
-        element: <DatasetDetail />
-      }
-    ]
-  },
-  {
-    path: "/explore-data",
-    element: <ExploreDataWrapper />,
-  },
-  {
-    path: "/run-computation",
-    children: [
-      {
-        index: true,
-        element: <RunComputationWrapper />
-      },
-      {
-        path: "scenario",
-        element: <Scenario />,
-        children: [
-          {
-            path: 'data-inputs',
-            element: <DataInputs />
-          },
-          {
-            path: 'settings',
-            element: <Settings />
-          },
-          {
-            path: 'running',
-            element: <RunningComputation />
-          },
-          {
-            path: 'results',
-            element: <Results />
-          }
-        ]
-      },
-    ]
-  },
-  {
-    path: "/contribute-data",
-    element: <ContributeDataWrapper />,
-    children: [
-      {
-        index: true,
-        element: <Register />
-      },
-      {
-        path: 'register',
-        element: <Register />
-      },
-      {
-        path: 'portal',
-        element: <ContributorPortal />
-      },
-      {
-        path: 'new',
-        element: <NewDataset />
-      },
-      {
-        path: 'review',
-        element: <ReviewDataset />
-      }
-    ]
-  },
-  {
-    path: "/monitor-activities",
-    element: <MonitorActivitiesWrapper />,
-    children: [
-      // {
-      //   index: true,
-      //   element: <ActivityCalendar />
-      // },
-      {
-        index: true,
-        element: <ActivityList />,
-      },
-      {
-        path: 'list',
+        path: "/my-task-flow",
+        element: <MyTaskFlowWrapper />,
         children: [
           {
             index: true,
-            element: <ActivityList />,
+            element: <TaskFlowStart />
           },
           {
-            path: 'detail',
-            element: <ActivityDetail />
+            path: 'two',
+            element: <TaskFlowPageTwo />
+          },
+          {
+            path: 'three',
+            element: <TaskFlowPageThree />
           },
         ]
       },
-    ]
-  },
-  {
-    path: "/compare-data",
-    element: <CompareDataWrapper />,
-    children: [
-      {
-        index: true,
-        element: <ScenarioList />
-      },
-      {
-        path: 'compare',
-        element: <ScenarioComparison />
-      },
-      {
-        path: 'new',
-        element: <NewScenario />
-      },
-    ]
-  },
-  // My Analysis
-  {
-    path: "/myanalysis",
-    element: <MyAnalysisPage />,
-   },
-   {
-     path: "/myanalysis",
-     element: <MyScenario />,
-     children: [
-       {
-         path: 'data-inputs',
-         element: <MyDataInputs />
-       },
-       {
-         path: 'settings',
-         element: <MyAnalysisSettings />
-       },
-       {
-         path: 'running',
-         element: <RunningMyAnalysis />
-       },
-       {
-         path: 'results',
-         element: <MyResults />
-       }
-     ]
-   },
+   */
   {
     path: '*',
     element: <Navigate to="/" replace />

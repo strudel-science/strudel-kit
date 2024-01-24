@@ -16,7 +16,7 @@ interface Filter {
   defaultValue: any;
 }
 
-interface FiltersProps extends StackProps {
+interface FilterPanelProps extends StackProps {
   filters?: Filter[];
   onChange?: () => any;
   onClose?: () => any;
@@ -29,7 +29,7 @@ const initFilterValues = (filters: Filter[]) => {
   })
 };
 
-export const Filters: React.FC<FiltersProps> = ({ 
+export const Filters: React.FC<FilterPanelProps> = ({ 
   onClose,
   children,
   ...rest
