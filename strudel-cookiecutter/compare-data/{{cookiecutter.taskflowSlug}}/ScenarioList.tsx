@@ -15,8 +15,8 @@ export const ScenarioList: React.FC = () => {
   return (
     <Box>
       <PageHeader
-        pageTitle="Scenarios"
-        description="Collection of various scenarios saved from simulations, optimizations, or calculations."
+        pageTitle="{{ cookiecutter.pageTitle }}"
+        description="{{ cookiecutter.pageDescription }}"
         actions={
           <Stack direction="row">
             <Box>
