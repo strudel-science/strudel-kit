@@ -77,19 +77,14 @@ strudel create-app <app-name> [OPTIONS]
 
 #### Base Config File
 
-```json
+```js
 {
   // Title of the project to display in the top app bar.
-  "project_name": "My Base App",
+  "projectName": "My Base App",
   // Short description of the project.
-  "project_short_description": "This is my science app built with strudel and my custom json config."
+  "projectShortDescription": "This is my science app built with strudel and my custom json config."
 }
 ```
-
-| Property | Description |
-| -------- | ------- |
-| `projectName` | Title of the project to display in the top app bar. |
-| `projectShortDescription` | Short description of the project. |
 
 ### `strudel add-taskflow`
 
@@ -111,7 +106,7 @@ strudel add-taskflow <taskflow-name> --template <taskflow-template> [OPTIONS]
 
 #### Task Flow Config File
 
-```json
+```js
 {
   // Title of the project to display in the top app bar.
   "projectName": "My Project",
@@ -122,11 +117,4 @@ strudel add-taskflow <taskflow-name> --template <taskflow-template> [OPTIONS]
   // Title to display on the task flow page.
   "pageDescription": "Description of this app section"
 }
-
 ```
-| Property | Description |
-| -------- | ------- |
-| `projectName` | Title of the project to display in the top app bar. |
-| `taskflowName` | Title of the task flow to display in navigation. |
-| `pageTitle` | Title to display on the task flow page. |
-| `pageDescription` | Title to display on the task flow page. |
