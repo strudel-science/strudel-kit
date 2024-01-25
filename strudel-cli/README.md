@@ -47,6 +47,15 @@ Add the `compare-data` task flow to your app:
 strudel add-taskflow my-taskflow --template compare-data
 ```
 
+Install dependencies and start your app.
+
+```
+npm install
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
+
 ## Commands
 
 ### `strudel create-app`
@@ -59,7 +68,7 @@ strudel create-app <app-name> [OPTIONS]
 
 #### Options
 
-| Option    | Required or Optional | Description |
+| Option &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Required or Optional | Description |
 | -------- | ------- | ------- |
 | `<app-name>` | required | Name to use for the app's root directory (e.g. `my-app`). Must be a valid directory name.|
 | `--config`, `-c`  | optional | JSON configuration file to use to build the base app. See the Base Config File section for how to format this file. If not supplied, you will be prompted on the command-line to give configuration values. |
@@ -67,6 +76,15 @@ strudel create-app <app-name> [OPTIONS]
 | `--branch`, `-b` | optional | Branch in strudel-kit repo that should be used for the templates. Defaults to `main`. This option is primarily for use by contributors. |
 
 #### Base Config File
+
+```json
+{
+  // Title of the project to display in the top app bar.
+  "project_name": "My Base App",
+  // Short description of the project.
+  "project_short_description": "This is my science app built with strudel and my custom json config."
+}
+```
 
 | Property | Description |
 | -------- | ------- |
@@ -83,7 +101,7 @@ strudel add-taskflow <taskflow-name> --template <taskflow-template> [OPTIONS]
 
 #### Options
 
-| Option    | Required or Optional | Description |
+| Option &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Required or Optional | Description |
 | -------- | ------- | ------- |
 | `<taskflow-name>` | required | Name to use for the task flow's root directory (e.g. `my-taskflow`). Must be a valid directory name.|
 | `--template`, `-t` | required | Name of the strudel task flow template to use to scaffold the task flow. Available options: `compare-data`, `contribute-data`, `explore-data`, `monitor-activities`, `run-computation`, `search-data-repositories` |
@@ -93,6 +111,19 @@ strudel add-taskflow <taskflow-name> --template <taskflow-template> [OPTIONS]
 
 #### Task Flow Config File
 
+```json
+{
+  // Title of the project to display in the top app bar.
+  "projectName": "My Project",
+  // Title of the task flow to display in navigation.
+  "taskflowName": "My Compare Data Flow",
+  // Title to display on the task flow page.
+  "pageTitle": "Compare Data App",
+  // Title to display on the task flow page.
+  "pageDescription": "Description of this app section"
+}
+
+```
 | Property | Description |
 | -------- | ------- |
 | `projectName` | Title of the project to display in the top app bar. |
