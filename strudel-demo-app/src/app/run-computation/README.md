@@ -18,10 +18,10 @@ Go to the root directory of your new app:
 cd my-app
 ```
 
-Add the `compare-data` task flow to your app:
+Add the `run-computation` task flow to your app:
 
 ```
-strudel add-taskflow my-taskflow --template compare-data
+strudel add-taskflow my-taskflow --template run-computation
 ```
 
 ## Learn More
