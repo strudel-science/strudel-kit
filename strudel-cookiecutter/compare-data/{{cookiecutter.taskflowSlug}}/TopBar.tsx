@@ -20,7 +20,7 @@ export const TopBar: React.FC = () => {
           </Link>
         </IconButton>
         <Typography variant="h6" component="div" sx={{ '{{' }} flexGrow: 1 {{ '}}' }}>
-          Project Name
+          {{ cookiecutter.projectName }}
         </Typography>
         <IconButton
           size="large"
