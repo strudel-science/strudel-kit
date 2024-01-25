@@ -71,7 +71,7 @@ def add_taskflow(
     "--checkout", 
     branch,
     "--directory", 
-    f"strudel-cookiecutter/{template}",
+    f"strudel-cookiecutter/{template.value}",
     "--output-dir",
     output_dir,
     *(['--no-input'] if len(extra_args) > 0 else []),
