@@ -8,57 +8,52 @@ export const TaskFlowsPage: React.FC = () => {
   return (
     <Container
       maxWidth="md"
-      sx={{ '{{' }}
+      sx={{ "{{" }}
         marginTop: 3,
         marginBottom: 3,
-      {{ '}}' }}
+      {{ "}}" }}
     >
       <Paper
-        sx={{ '{{' }}
+        sx={{ "{{" }}
           padding: 2
-        {{ '}}' }}
+        {{ "}}" }}
       >
         <Box
           component="aside"
-          sx={{ '{{' }} 
+          sx={{ "{{" }} 
             position: 'relative', 
             width: '250px' 
-          {{ '}}' }}
+          {{ "}}" }}
         >
           <List>
             <NavListItem>
-              <Link component={RouterLink} to="search-data-repositories">
-                Exploring Datasets
+              <Link component={RouterLink} to="compare-data">
+                Compare Data
+              </Link>
+            </NavListItem>
+            <NavListItem>
+              <Link component={RouterLink} to="contribute-data">
+                Contribute Data
               </Link>
             </NavListItem>
             <NavListItem>
               <Link component={RouterLink} to="explore-data">
-                Exploring Entities
-              </Link>
-            </NavListItem>
-            <NavListItem>
-              <Link component={RouterLink} to="optimization">
-                Optimization
-              </Link> 
-            </NavListItem>
-            <NavListItem>
-              <Link component={RouterLink} to="contribute-data">
-                Contributing Data
+                Explore Data
               </Link>
             </NavListItem>
             <NavListItem>
               <Link component={RouterLink} to="monitor-activities">
-                Monitor Tasks
+                Monitor Activities
               </Link> 
             </NavListItem>
             <NavListItem>
-              <Link component={RouterLink} to="compare-data">
-                Compare Scenarios
-              </Link>
+              <Link component={RouterLink} to="run-computation">
+                Run Computation
+              </Link> 
             </NavListItem>
             <NavListItem>
-              <Link component={RouterLink} to="myanalysis">
-                My Analysis
+              <Link component={RouterLink} to="search-data-repositories">
+                Search Data Repositories
               </Link>
             </NavListItem>
           </List>
@@ -71,17 +66,17 @@ export const TaskFlowsPage: React.FC = () => {
 const NavListItem: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <ListItem
-      sx={{ '{{' }}
+      sx={{ "{{" }}
         padding: 0,
-      {{ '}}' }}
+      {{ "}}" }}
     >
       <Typography
-        sx={{ '{{' }}
+        sx={{ "{{" }}
           padding: '0.5rem 1rem',
           color: 'neutral.main',
           fontSize: '1.125rem',
           fontWeight: 'bold',
-        {{ '}}' }}
+        {{ "}}" }}
       >
         {children}
       </Typography>

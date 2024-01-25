@@ -45,7 +45,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
       <Button
         disableRipple
         onClick={handleClick}
-        sx={{ '{{' }}
+        sx={{ "{{" }}
           color: color,
           display: 'block',
           p: 0,
@@ -56,26 +56,26 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
             background: 'none',
             opacity: 0.7
           }
-        {{ '}}' }}
+        {{ "}}" }}
         {...buttonProps}
       >
         <Stack spacing={1} direction="row" alignItems="center">
           {!isOpenState && (
             <KeyboardArrowRightIcon 
-              sx={{ '{{' }} 
+              sx={{ "{{" }} 
                 ml: '-0.5rem',
                 mt: '-0.5rem',
                 mb: '-0.5rem'
-              {{ '}}' }} 
+              {{ "}}" }} 
             />
           )}
           {isOpenState && (
             <KeyboardArrowDownIcon 
-              sx={{ '{{' }} 
+              sx={{ "{{" }} 
                 ml: '-0.5rem',
                 mt: '-0.5rem',
                 mb: '-0.5rem'
-              {{ '}}' }} 
+              {{ "}}" }} 
             />
           )}
           <Box flex={1}>{label}</Box>

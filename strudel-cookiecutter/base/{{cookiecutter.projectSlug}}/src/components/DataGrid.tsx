@@ -9,7 +9,7 @@ export const DataGrid: React.FC<DataGridProps> = (props) => {
   return (
     <MuiDataGrid
       {...props}
-      sx={{ '{{' }}
+      sx={{ "{{" }}
         border: 0,
         '& .MuiDataGrid-cell:focus-within': {
           outline: 'none'
@@ -18,7 +18,7 @@ export const DataGrid: React.FC<DataGridProps> = (props) => {
           minHeight: '4rem'
         },
         ...props.sx
-      {{ '}}' }}
+      {{ "}}" }}
     />
   )
 }

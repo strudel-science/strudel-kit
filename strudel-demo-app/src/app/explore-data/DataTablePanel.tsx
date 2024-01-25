@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { DataGrid } from '../../components/DataGrid';
 import { GridEventListener } from '@mui/x-data-grid';
 import { setPreviewItem, setSearch } from '../../components/contexts/analytics/actions';
+import { useExploreData } from './context/ContextProvider';
 
 interface DataTablePanelProps {
   onToggleFiltersPanel: () => any
 }
 
 export const DataTablePanel: React.FC<DataTablePanelProps> = (props) => { 
-  const {state, dispatch} = useAnalytics();
+  const {state, dispatch} = useExploreData();
 
   const handleRowClick: GridEventListener<'rowClick'> = (rowData) => {
     console.log(rowData);

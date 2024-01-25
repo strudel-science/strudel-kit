@@ -1,11 +1,11 @@
 import { Box, Container } from '@mui/material';
 import React, { useState } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
+import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
 import { PageHeader } from '../../components/PageHeader';
-import { useExploreData } from './context/ContextProvider';
   
 export const DataDetailPage: React.FC = () => {
-  const {state, dispatch} = useExploreData();
+  const {state, dispatch} = useAnalytics();
   const params = useParams();
 
   return (
@@ -15,9 +15,9 @@ export const DataDetailPage: React.FC = () => {
         breadcrumbTitle="Data Detail"
         mb={1}
         p={2}
-        sx={{
+        sx={{ "{{" }}
           backgroundColor: 'white'
-        }}
+        {{ "}}" }}
       />
       <Container maxWidth="xl">
         Coming soon!

@@ -4,9 +4,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Filters } from '../../components/Filters';
 import { FilterField } from '../../components/FilterField';
 import { CheckboxList, CheckboxOption } from '../../components/CheckboxList';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
 import { setFilter } from '../../components/contexts/analytics/actions';
 import { FilterGroup } from '../../components/FilterGroup';
+import { FilterConfig, useExploreData } from './context/ContextProvider';
 
 enum FilterType {
   CHECKBOX_LIST = 'CHECKBOX_LIST',
@@ -32,7 +32,7 @@ const initFilterValues = (filters: Filter[]) => {
 };
 
 export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => { 
-  const {state, dispatch} = useAnalytics();
+  const {state, dispatch} = useExploreData();
   const [eukRange, setEukRange] = useState([0, 100]);
   const [embRange, setEmbRange] = useState([0, 100]);
   // TODO: add markers to sliders
@@ -55,6 +55,10 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
     setEmbRange(newValue as number[]);
   };
 
+  const getFilterComponent = (filter: FilterConfig) => {
+    return <p></p>;
+  }
+
   return (
     <Filters
       onClose={props.onClose}
@@ -66,6 +70,13 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
         pr: 2
       }}
     >
+      {state.filters.map((f, i) => (
+        <FilterField
+          label={f.displayName}
+          isCollapsible
+          filter={getFilterComponent(f)}
+        />
+      ))}
       <FilterField
         label="Assembly"
         isCollapsible

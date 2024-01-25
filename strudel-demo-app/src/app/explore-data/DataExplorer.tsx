@@ -3,12 +3,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
 import { setPreviewItem } from '../../components/contexts/analytics/actions';
 import { FiltersPanel } from './FiltersPanel';
 import { PreviewPanel } from './PreviewPanel';
 import { DataTablePanel } from './DataTablePanel';
 import { PageHeader } from '../../components/PageHeader';
+import { useExploreData } from './context/ContextProvider';
 
 const getMainColumnSize = (showFiltersPanel: boolean, showPreviewPanel: boolean) => {
   if (!showFiltersPanel && !showPreviewPanel) {
@@ -23,7 +23,7 @@ const getMainColumnSize = (showFiltersPanel: boolean, showPreviewPanel: boolean)
 }
   
 export const DataExplorer: React.FC = () => {
-  const {state, dispatch} = useAnalytics();
+  const {state, dispatch} = useExploreData();
   const [showFiltersPanel, setShowFiltersPanel] = useState(true);
 
   const handleCloseFilters = () => {

@@ -40,36 +40,9 @@ export const DataExplorer: React.FC = () => {
 
   return (
     <Box>
-      <Box sx={{ "{{" }} flexGrow: 1 {{ "}}" }}>
-        <AppBar color="default" position="static">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ "{{" }} mr: 2 {{ "}}" }}
-            >
-              <Link component={RouterLink} to="/">
-                <MenuIcon />
-              </Link>
-            </IconButton>
-            <Typography variant="h6" component="div" sx={{ "{{" }} flexGrow: 1 {{ "}}" }}>
-              Project name
-            </Typography>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-            >
-              <AccountCircleIcon />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-      </Box>
       <PageHeader
-        pageTitle="Genome Releases"
-        description="All gene sets have been annotated with KOG, KEGG, ENZYME, Pathway and the InterPro family of protein analysis tools."
+        pageTitle="{{ cookiecutter.pageTitle }}"
+        description="{{ cookiecutter.pageDescription }}"
         mb={1}
         p={2}
         sx={{ "{{" }}

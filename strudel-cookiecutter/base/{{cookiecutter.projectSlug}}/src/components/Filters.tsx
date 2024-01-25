@@ -29,7 +29,7 @@ const initFilterValues = (filters: Filter[]) => {
   })
 };
 
-export const FiltersPanel: React.FC<FilterPanelProps> = ({ 
+export const Filters: React.FC<FilterPanelProps> = ({ 
   onClose,
   children,
   ...rest
