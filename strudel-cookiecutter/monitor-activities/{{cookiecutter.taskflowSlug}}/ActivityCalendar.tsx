@@ -11,10 +11,10 @@ export const ActivityCalendar: React.FC = () => {
   return (
     <Container
       maxWidth="md"
-      sx={{ "{{" <--$$-->
+      sx={{ "{{" }}
         marginBottom: 3,
         marginTop: 3,
-      }}
+      {{ "}}" }}
     >
       <Typography variant="h6" component="h1">
         2023 Experiments (Work in Progress)

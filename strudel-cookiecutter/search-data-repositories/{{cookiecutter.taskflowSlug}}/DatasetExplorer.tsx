@@ -33,9 +33,9 @@ export const DatasetExplorer: React.FC = () => {
         description="{{ cookiecutter.pageDescription }}"
         mb={1}
         p={2}
-        sx={{ "{{" <--$$-->
+        sx={{ "{{" }}
           backgroundColor: 'white'
-        }}
+        {{ "}}" }}
       />
       <Grid container spacing={1}>
         {showFiltersPanel && (

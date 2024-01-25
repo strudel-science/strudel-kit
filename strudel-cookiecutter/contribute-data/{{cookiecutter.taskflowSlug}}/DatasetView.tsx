@@ -15,10 +15,10 @@ export const DatasetView: React.FC = () => {
   // TODO: use context for dataset state
   return (
     <Paper
-      sx={{ "{{" <--$$-->
+      sx={{ "{{" }}
         height: '100%',
         padding: 2,
-      }}
+      {{ "}}" }}
     >
       <Stack>
         <Typography

@@ -37,25 +37,25 @@ export const ReviewDataset: React.FC = () => {
               size="small"
               onClick={() => {
                 setAlertOpen(false);
-              }}
+              {{ "}}" }}
             >
               <CloseIcon fontSize="inherit" />
             </IconButton>
           }
-          sx={{ "{{" <--$$--> 
+          sx={{ "{{" }} 
             paddingLeft: 3,
             paddingRight: 3,
-          }}
+          {{ "}}" }}
         >
           Your dataset edits have been saved.
         </Alert>
       </Collapse>
       <Container
         maxWidth="xl"
-        sx={{ "{{" <--$$-->
+        sx={{ "{{" }}
           marginBottom: 3,
           marginTop: 3,
-        }}
+        {{ "}}" }}
       >
         <Stack>
           <Stack direction="row" justifyContent="space-between">
@@ -67,7 +67,7 @@ export const ReviewDataset: React.FC = () => {
             <Stack direction="row">
               <Box>
                 <Link component={RouterLink} to="/contribute-data/new">
-                  <Button variant="contained" sx={{ "{{" <--$$--> whiteSpace: 'nowrap' }}>
+                  <Button variant="contained" sx={{ "{{" }} whiteSpace: 'nowrap' {{ "}}" }}>
                     Edit Dataset
                   </Button>
                 </Link>
@@ -76,7 +76,7 @@ export const ReviewDataset: React.FC = () => {
                 <Button
                   variant="contained"
                   onClick={() => startRunChecks()}
-                  sx={{ "{{" <--$$--> whiteSpace: 'nowrap' }}
+                  sx={{ "{{" }} whiteSpace: 'nowrap' {{ "}}" }}
                 >
                   Run Checks
                 </Button>
@@ -84,7 +84,7 @@ export const ReviewDataset: React.FC = () => {
               {state.checksComplete && (
                 <Box>
                   <Link component={RouterLink} to="/contribute-data/portal">
-                    <Button variant="contained" sx={{ "{{" <--$$--> whiteSpace: 'nowrap' }}>
+                    <Button variant="contained" sx={{ "{{" }} whiteSpace: 'nowrap' {{ "}}" }}>
                       Publish Dataset
                     </Button>
                   </Link>

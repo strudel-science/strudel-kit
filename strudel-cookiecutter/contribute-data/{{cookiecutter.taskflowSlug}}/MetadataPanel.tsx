@@ -15,11 +15,11 @@ export const MetadataPanel: React.FC = () => {
   return (
     <Paper>
       <Box
-        sx={{ "{{" <--$$-->
+        sx={{ "{{" }}
           padding: 2,
           borderBottom: '1px solid',
           borderBottomColor: 'neutral.main',
-        }}
+        {{ "}}" }}
       >
         <Typography
           fontWeight="bold"
@@ -31,11 +31,11 @@ export const MetadataPanel: React.FC = () => {
       <Stack direction="row" spacing={0}>
         <Box
           component="aside"
-          sx={{ "{{" <--$$-->
+          sx={{ "{{" }}
             borderRight: '1px solid',
             borderRightColor: 'neutral.main',
             width: '150px',
-          }}
+          {{ "}}" }}
         >
           <List>
             <ListItem>Overview</ListItem>
@@ -45,18 +45,18 @@ export const MetadataPanel: React.FC = () => {
           </List>
         </Box>
         <Box
-          sx={{ "{{" <--$$-->
+          sx={{ "{{" }}
             padding: 2
-          }}
+          {{ "}}" }}
         >
           <Stack>
             <Stack 
               spacing={3}
-              sx={{ "{{" <--$$-->
+              sx={{ "{{" }}
                 borderBottom: '1px solid',
                 borderBottomColor: 'neutral.main',
                 paddingBottom: 2,
-              }}
+              {{ "}}" }}
             >
               <Typography color="neutral.dark" fontWeight="bold">Overview</Typography>
               <TextField
@@ -97,32 +97,32 @@ export const MetadataPanel: React.FC = () => {
             </Stack>
             <Stack 
               spacing={3}
-              sx={{ "{{" <--$$-->
+              sx={{ "{{" }}
                 borderBottom: '1px solid',
                 borderBottomColor: 'neutral.main',
                 paddingBottom: 2,
-              }}
+              {{ "}}" }}
             >
               <Typography color="neutral.dark" fontWeight="bold">Dates</Typography>
               <Stack direction="row">
                 <DatePicker 
                   value={startDate} 
                   label="Start Date"
-                  slotProps={{ "{{" <--$$-->
+                  slotProps={{ "{{" }}
                     actionBar: {
                       actions: ['clear', 'today']
                     }
-                  }}
+                  {{ "}}" }}
                   onChange={(value) => setStartDate(value)}
                 />
                 <DatePicker 
                   value={endDate} 
                   label="End Date"
-                  slotProps={{ "{{" <--$$-->
+                  slotProps={{ "{{" }}
                     actionBar: {
                       actions: ['clear', 'today']
                     }
-                  }}
+                  {{ "}}" }}
                   onChange={(value) => setEndDate(value)}
                 />
               </Stack>

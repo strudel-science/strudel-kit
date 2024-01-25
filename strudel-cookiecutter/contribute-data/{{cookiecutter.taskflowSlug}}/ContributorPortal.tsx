@@ -24,9 +24,9 @@ export const ContributorPortal: React.FC = () => {
   return (
     <Container
       maxWidth="xl"
-      sx={{ "{{" <--$$-->
+      sx={{ "{{" }}
         mt: 4
-      }}
+      {{ "}}" }}
     >
       <Stack>
         <Stack direction="row" justifyContent="space-between" alignItems="center">

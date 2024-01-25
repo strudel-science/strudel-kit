@@ -108,7 +108,7 @@ export const NewScenarioModal: React.FC<Props> = ({
     >
       <Stack
         direction="column"
-        sx={{ "{{" <--$$-->
+        sx={{ "{{" }}
           position: 'absolute' as 'absolute',
           top: '50%',
           left: '50%',
@@ -118,7 +118,7 @@ export const NewScenarioModal: React.FC<Props> = ({
           border: '1px solid #ccc',
           boxShadow: 24,
           p: 4,
-        }}
+        {{ "}}" }}
       >
         <Typography id="modal-modal-title" variant="h6" component="h2">
           New Analysis Scenario

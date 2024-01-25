@@ -96,7 +96,7 @@ export const RunComputationWrapper: React.FC = () => {
   return (
     <Box>
       {/** Shrink this down into a single TopBar component */}
-      <Box sx={{ "{{" <--$$--> flexGrow: 1 }}>
+      <Box sx={{ "{{" }} flexGrow: 1 {{ "}}" }}>
         <AppBar color="default" position="static">
           <Toolbar>
             <IconButton
@@ -104,13 +104,13 @@ export const RunComputationWrapper: React.FC = () => {
               edge="start"
               color="inherit"
               aria-label="menu"
-              sx={{ "{{" <--$$--> mr: 2 }}
+              sx={{ "{{" }} mr: 2 {{ "}}" }}
             >
               <Link component={RouterLink} to="/">
                 <MenuIcon />
               </Link>
             </IconButton>
-            <Typography variant="h6" component="div" sx={{ "{{" <--$$--> flexGrow: 1 }}>
+            <Typography variant="h6" component="div" sx={{ "{{" }} flexGrow: 1 {{ "}}" }}>
               Project name
             </Typography>
             <IconButton
@@ -125,18 +125,18 @@ export const RunComputationWrapper: React.FC = () => {
       </Box>
       <Container 
         maxWidth="xl"
-        sx={{ "{{" <--$$-->
+        sx={{ "{{" }}
           mt: 4
-        }}
+        {{ "}}" }}
       >
         <Paper>
           <Stack
             direction="row"
             spacing={2}
             alignItems="center"
-            sx={{ "{{" <--$$-->
+            sx={{ "{{" }}
               padding: 2
-            }}
+            {{ "}}" }}
           >
             <Box flex={1}>
               {/** TODO: Add stuff to the theme to make this less confusing */}

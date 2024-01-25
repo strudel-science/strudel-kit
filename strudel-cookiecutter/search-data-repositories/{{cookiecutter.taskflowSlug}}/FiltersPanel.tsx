@@ -64,13 +64,13 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
   return (
     <Filters
       onClose={props.onClose}
-      sx={{ "{{" <--$$-->
+      sx={{ "{{" }}
         backgroundColor: 'white',
         pt: 3,
         pb: 3,
         pl: 2,
         pr: 2
-      }}
+      {{ "}}" }}
     >
       <FilterField
         label="Category"
@@ -90,21 +90,21 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
             <DatePicker 
               value={dateRange[0]} 
               label="From"
-              slotProps={{ "{{" <--$$-->
+              slotProps={{ "{{" }}
                 actionBar: {
                   actions: ['clear', 'today']
                 }
-              }}
+              {{ "}}" }}
               onChange={(value) => setDateRange([value, dateRange[1]])}
             />
             <DatePicker 
               value={dateRange[1]} 
               label="To"
-              slotProps={{ "{{" <--$$-->
+              slotProps={{ "{{" }}
                 actionBar: {
                   actions: ['clear', 'today']
                 }
-              }}
+              {{ "}}" }}
               onChange={(value) => setDateRange([dateRange[0], value])}
             />
           </Stack>

@@ -9,14 +9,14 @@ export const Register: React.FC = () => {
   return (
     <Container
         maxWidth="md"
-        sx={{ "{{" <--$$-->
+        sx={{ "{{" }}
           mt: 4
-        }}
+        {{ "}}" }}
       >
         <Paper
-          sx={{ "{{" <--$$-->
+          sx={{ "{{" }}
             padding: 2
-          }}
+          {{ "}}" }}
         >
           <Stack spacing={4}>
             <Typography 

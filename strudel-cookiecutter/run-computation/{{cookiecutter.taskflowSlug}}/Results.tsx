@@ -87,31 +87,31 @@ export const Results: React.FC = () => {
   return (
     <Stack spacing={0} flex={1}>
       <Box
-        sx={{ "{{" <--$$-->
+        sx={{ "{{" }}
           backgroundColor: 'white',
           padding: 2,
           borderBottom: '1px solid',
           borderColor: 'neutral.main'
-        }}
+        {{ "}}" }}
       >
-        <Stepper activeStep={2} sx={{ "{{" <--$$--> maxWidth: 850 }}>
+        <Stepper activeStep={2} sx={{ "{{" }} maxWidth: 850 {{ "}}" }}>
           <Step key="Data Inputs">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/data-inputs" sx={{ "{{" <--$$--> color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="/run-computation/scenario/data-inputs" sx={{ "{{" }} color: 'inherit', textDecoration: 'none' {{ "}}" }}>
                 Data Inputs
               </Link>
             </StepLabel>
           </Step>
           <Step key="Optimization Settings">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/settings" sx={{ "{{" <--$$--> color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="/run-computation/scenario/settings" sx={{ "{{" }} color: 'inherit', textDecoration: 'none' {{ "}}" }}>
                 Optimization Settings
               </Link>
             </StepLabel>
           </Step>
           <Step key="Results">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/results" sx={{ "{{" <--$$--> color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="/run-computation/scenario/results" sx={{ "{{" }} color: 'inherit', textDecoration: 'none' {{ "}}" }}>
                 Results
               </Link>
             </StepLabel>
@@ -123,53 +123,53 @@ export const Results: React.FC = () => {
           component="ul"
           direction="column"
           spacing={0}
-          sx={{ "{{" <--$$-->
+          sx={{ "{{" }}
             backgroundColor: 'white',
             listStyle: 'none',
             margin: 0,
             padding: 4,
             width: 300,
-          }}
+          {{ "}}" }}
         >
           <Typography 
             component="li" 
             fontWeight="bold"
-            sx={{ "{{" <--$$-->
+            sx={{ "{{" }}
               marginBottom: 2
-            }}
+            {{ "}}" }}
           >
             Categories
           </Typography>
           <Typography 
             component="li"
-            sx={{ "{{" <--$$-->
+            sx={{ "{{" }}
               backgroundColor: '#D9EEFE',
               borderRight: '4px solid',
               borderColor: 'primary.main',
               padding: '1rem 2rem',
               marginLeft: '-2rem !important',
               marginRight: '-2rem !important'
-            }}
+            {{ "}}" }}
           >
             Summary
           </Typography>
           <Typography 
             component="li"
-            sx={{ "{{" <--$$-->
+            sx={{ "{{" }}
               padding: '1rem 2rem',
               marginLeft: '-2rem !important',
               marginRight: '-2rem !important'
-            }}
+            {{ "}}" }}
           >
             System Costing
           </Typography>
           <Typography 
             component="li" 
-            sx={{ "{{" <--$$-->
+            sx={{ "{{" }}
               padding: '1rem 2rem',
               marginLeft: '-2rem !important',
               marginRight: '-2rem !important'
-            }}
+            {{ "}}" }}
           >
             System Metrics
           </Typography>
@@ -177,9 +177,9 @@ export const Results: React.FC = () => {
         <Box flex={1}>
           <Container
             maxWidth="xl"
-            sx={{ "{{" <--$$-->
+            sx={{ "{{" }}
               mt: 4
-            }}
+            {{ "}}" }}
           >
             <Grid container spacing={4}>
               <Grid item sm={6}>
@@ -197,7 +197,7 @@ export const Results: React.FC = () => {
                         type: 'scatter'
                       },
                     ]}
-                    layout={{ "{{" <--$$-->}}
+                    layout={{ "{{" }}{{ "}}" }}
                   />
                 </Paper>
               </Grid>
@@ -222,7 +222,7 @@ export const Results: React.FC = () => {
                           type: 'bar'
                         },
                       ]}
-                      layout={{ "{{" <--$$-->}}
+                      layout={{ "{{" }}{{ "}}" }}
                     /> */}
                 </Paper>
               </Grid>
@@ -242,12 +242,12 @@ export const Results: React.FC = () => {
         </Box>
       </Stack>
       <Box
-        sx={{ "{{" <--$$-->
+        sx={{ "{{" }}
           backgroundColor: 'white',
           borderTop: '1px solid',
           borderColor: 'neutral.main',
           padding: 2,
-        }}
+        {{ "}}" }}
       >
         <Link component={RouterLink} to="/run-computation/scenario/settings">
           <Button variant="contained">Back to optimization settings</Button>

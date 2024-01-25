@@ -27,9 +27,9 @@ export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
         direction="row"
         spacing={2}
         alignItems="center"
-        sx={{ "{{" <--$$-->
+        sx={{ "{{" }}
           padding: 2
-        }}
+        {{ "}}" }}
       >
         <Button
           startIcon={<FilterAltIcon />}
@@ -55,9 +55,9 @@ export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
       </Stack>
       <Stack 
         direction="row"
-        sx={{ "{{" <--$$-->
+        sx={{ "{{" }}
           padding: 2
-        }}
+        {{ "}}" }}
       >
         <Stack flex={1}>
           {state.filteredData?.map((item, i) => (
@@ -66,14 +66,14 @@ export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
         </Stack>
         {!state.previewItem && (
           <Box 
-            sx={{ "{{" <--$$--> 
+            sx={{ "{{" }} 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: "center", 
               bgcolor: "neutral.dark", 
               height: 700,
               width: 400 
-            }}
+            {{ "}}" }}
           >
             <Typography>{'<Map>'}</Typography>
           </Box>

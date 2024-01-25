@@ -34,10 +34,10 @@ export const ActivityDetail: React.FC = () => {
   return (
     <Container
       maxWidth="xl"
-      sx={{ "{{" <--$$-->
+      sx={{ "{{" }}
         marginBottom: 3,
         marginTop: 3,
-      }}
+      {{ "}}" }}
     >
       <Stack>
         <Stack direction="row" alignItems="center">
@@ -59,11 +59,11 @@ export const ActivityDetail: React.FC = () => {
                     rows={experiment.events}
                     getRowId={(row) => row.id}
                     columns={columns}
-                    initialState={{ "{{" <--$$-->
+                    initialState={{ "{{" }}
                       sorting: {
                         sortModel: [{ field: 'event_time', sort: 'desc' }],
                       },
-                    }}
+                    {{ "}}" }}
                     disableColumnSelector
                     disableRowSelectionOnClick
                   />
@@ -73,9 +73,9 @@ export const ActivityDetail: React.FC = () => {
             <Grid item md={6}>
               <Stack>
                 <Paper
-                  sx={{ "{{" <--$$-->
+                  sx={{ "{{" }}
                     padding: 2
-                  }}
+                  {{ "}}" }}
                 >
                   <Stack>
                     <Typography>Notes</Typography>
@@ -86,19 +86,19 @@ export const ActivityDetail: React.FC = () => {
                       />
                     )}
                     <Box
-                      sx={{ "{{" <--$$-->
+                      sx={{ "{{" }}
                         position: 'relative'
-                      }}
+                      {{ "}}" }}
                     >
                       <TextField fullWidth multiline minRows={2} />
                       <Button 
                         variant="contained"
                         endIcon={<AddIcon />}
-                        sx={{ "{{" <--$$-->
+                        sx={{ "{{" }}
                           position: 'absolute',
                           bottom: '0.5rem',
                           right: '0.5rem',
-                        }}
+                        {{ "}}" }}
                       >
                         Add
                       </Button>
@@ -106,9 +106,9 @@ export const ActivityDetail: React.FC = () => {
                   </Stack>
                 </Paper>
                 <Paper
-                  sx={{ "{{" <--$$-->
+                  sx={{ "{{" }}
                     padding: 2
-                  }}
+                  {{ "}}" }}
                 >
                   <Plot
                     data={[
@@ -123,9 +123,9 @@ export const ActivityDetail: React.FC = () => {
                         type: 'scatter'
                       },
                     ]}
-                    layout={{ "{{" <--$$--> height: 450 }}
+                    layout={{ "{{" }} height: 450 {{ "}}" }}
                     useResizeHandler={true}
-                    style={{ "{{" <--$$--> width: '100%' }}
+                    style={{ "{{" }} width: '100%' {{ "}}" }}
                   />
                 </Paper>
               </Stack>

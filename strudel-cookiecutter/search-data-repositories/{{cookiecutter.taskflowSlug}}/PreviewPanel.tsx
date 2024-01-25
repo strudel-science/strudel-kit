@@ -32,11 +32,11 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
 
   return (
     <Box
-      sx={{ "{{" <--$$-->
+      sx={{ "{{" }}
         backgroundColor: 'white',
         height: '100%',
         p: 2
-      }}
+      {{ "}}" }}
     >
       <Stack spacing={3}>
         <Stack spacing={1}>
@@ -87,9 +87,9 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
             rows={state.previewItem['attached_files']}
             columns={attachedFilesColumns}
             disableRowSelectionOnClick
-            initialState={{ "{{" <--$$-->
+            initialState={{ "{{" }}
               pagination: { paginationModel: { pageSize: 5 } }
-            }}
+            {{ "}}" }}
           />
         </Box>
         <Stack direction="row">

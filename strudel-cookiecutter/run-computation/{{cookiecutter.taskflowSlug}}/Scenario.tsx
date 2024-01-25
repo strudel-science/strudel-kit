@@ -18,11 +18,11 @@ export const Scenario: React.FC = () => {
         <AppBar 
           color="default" 
           position="static"
-          sx={{ "{{" <--$$-->
+          sx={{ "{{" }}
             backgroundColor: 'white',
             borderBottom: '1px solid',
             borderColor: 'neutral.main'
-          }}
+          {{ "}}" }}
         >
           <Toolbar>
             <IconButton
@@ -30,15 +30,15 @@ export const Scenario: React.FC = () => {
               edge="start"
               color="inherit"
               aria-label="menu"
-              sx={{ "{{" <--$$--> mr: 2 }}
+              sx={{ "{{" }} mr: 2 {{ "}}" }}
             >
               <Link component={RouterLink} to="/">
                 <MenuIcon />
               </Link>
             </IconButton>
-            <Stack direction="row" alignItems="center" sx={{ "{{" <--$$--> flexGrow: 1 }}>
-              <Typography variant="h6" component="p" sx={{ "{{" <--$$--> marginRight: 2 }}>
-                {{ cookiecutter.projectName }}
+            <Stack direction="row" alignItems="center" sx={{ "{{" }} flexGrow: 1 {{ "}}" }}>
+              <Typography variant="h6" component="p" sx={{ "{{" }} marginRight: 2 {{ "}}" }}>
+                {{ cookiecutter.projectName {{ "}}" }}
               </Typography>
               <Breadcrumbs aria-label="breadcrumb" separator={<ChevronRightIcon fontSize="small" />}>
                 <Link underline="hover" color="inherit" to="/run-computation" component={RouterLink}>

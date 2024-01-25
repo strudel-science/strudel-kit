@@ -11,10 +11,10 @@ export const ValidationChecks: React.FC = () => {
 
   return (
     <Paper
-      sx={{ "{{" <--$$-->
+      sx={{ "{{" }}
         height: '100%',
         padding: 2,
-      }}
+      {{ "}}" }}
     >
       <Stack>
         <Typography
@@ -34,7 +34,7 @@ export const ValidationChecks: React.FC = () => {
         </Typography>
         {state.runningChecks && (
           <Box>
-            <Stack sx={{ "{{" <--$$--> marginBottom: 2, marginTop: 2, }}>
+            <Stack sx={{ "{{" }} marginBottom: 2, marginTop: 2, {{ "}}" }}>
               <LinearProgress />
               <Typography variant="body2">Running validation checks</Typography>
             </Stack>
@@ -42,7 +42,7 @@ export const ValidationChecks: React.FC = () => {
         )}
         {!state.runningChecks && state.checksComplete && (
           <Box>
-            <Stack sx={{ "{{" <--$$--> marginBottom: 2, marginTop: 2, }}>
+            <Stack sx={{ "{{" }} marginBottom: 2, marginTop: 2, {{ "}}" }}>
               <LinearMeter value={90} />
               <Stack direction="row">
                 <Typography 
@@ -67,7 +67,7 @@ export const ValidationChecks: React.FC = () => {
               Findability
             </Typography>
             {!state.runningChecks && state.checksComplete && (
-              <Box sx={{ "{{" <--$$--> width: '60%' }}>
+              <Box sx={{ "{{" }} width: '60%' {{ "}}" }}>
                 <LinearMeter value={100} />
               </Box>
             )}
@@ -83,7 +83,7 @@ export const ValidationChecks: React.FC = () => {
               Accessibility
             </Typography>
             {!state.runningChecks && state.checksComplete && (
-              <Box sx={{ "{{" <--$$--> width: '60%' }}>
+              <Box sx={{ "{{" }} width: '60%' {{ "}}" }}>
                 <LinearMeter value={100} />
               </Box>
             )}
@@ -98,7 +98,7 @@ export const ValidationChecks: React.FC = () => {
               Interoperability
             </Typography>
             {!state.runningChecks && state.checksComplete && (
-              <Box sx={{ "{{" <--$$--> width: '60%' }}>
+              <Box sx={{ "{{" }} width: '60%' {{ "}}" }}>
                 <LinearMeter value={90} />
               </Box>
             )}
@@ -113,7 +113,7 @@ export const ValidationChecks: React.FC = () => {
               Reusability
             </Typography>
             {!state.runningChecks && state.checksComplete && (
-              <Box sx={{ "{{" <--$$--> width: '60%' }}>
+              <Box sx={{ "{{" }} width: '60%' {{ "}}" }}>
                 <LinearMeter value={90} />
               </Box>
             )}
