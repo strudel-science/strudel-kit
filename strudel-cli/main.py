@@ -31,7 +31,8 @@ def create_app(
     "strudel-cookiecutter/base",
     "--output-dir",
     output_dir,
-    *(['--no-input'] if len(extra_args) > 0 else [])
+    *(['--no-input'] if len(extra_args) > 0 else []),
+    f"projectSlug={name}"
   ] + extra_args)
 
 
@@ -74,6 +75,7 @@ def add_taskflow(
     "--output-dir",
     output_dir,
     *(['--no-input'] if len(extra_args) > 0 else []),
+    f"taskflowSlug={name}"
   ] + extra_args)
 
 
