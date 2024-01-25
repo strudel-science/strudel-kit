@@ -1,13 +1,14 @@
 import typer
 import subprocess
 from typing_extensions import Annotated
-from utils import parse_json_to_args
+from utils import parse_json_to_args, name_callback
 
 app = typer.Typer()
 
 
 @app.command()
 def create_app(
+  name: Annotated[str, typer.Argument(callback=name_callback)],
   config: Annotated[str, typer.Option("--config", "-c")] = "",
   output_dir: Annotated[str, typer.Option("--output_dir", "-o")] = "",
   branch: Annotated[str, typer.Option("--branch", "-b")] = "main"
@@ -35,7 +36,8 @@ def create_app(
 
 @app.command()
 def add_taskflow(
-  name: str, 
+  name: str,
+  template: Annotated[str, typer.Option("--template", "-t")],
   config: Annotated[str, typer.Option("--config", "-c")] = "",
   output_dir: Annotated[str, typer.Option("--output_dir", "-o")] = "src/app",
   branch: Annotated[str, typer.Option("--branch", "-b")] = "main"

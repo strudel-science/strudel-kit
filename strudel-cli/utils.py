@@ -1,4 +1,5 @@
 import json
+import typer
 
 
 def parse_json_to_args(filename: str):
@@ -17,3 +18,14 @@ def parse_json_to_args(filename: str):
       args.append(f"{d}={data[d]}")
     f.close()
   return args
+
+
+def name_callback(value: str):
+  """
+  Ensure app and taskflow names are valid directory names
+  """
+  if value and not value[0].isalpha():
+    raise typer.BadParameter("App names must start with a letter")
+  elif any(char in value for char in [" ", "/", "\\", ">", "<", "\"", "|", "?", "*", ":"]):
+    raise typer.BadParameter("There's an invalid character in your app name. Make sure your app name is a valid directory name.")
+  return value
