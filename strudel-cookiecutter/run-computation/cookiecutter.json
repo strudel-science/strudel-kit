@@ -1,7 +1,7 @@
 {
   "projectName": "My Project",
-  "taskflowName": "My Compare Data Flow",
+  "taskflowName": "My Run Computation Flow",
   "taskflowSlug": "{{ cookiecutter.taskflowName.lower().replace(' ', '-').replace('_', '-') }}",
-  "pageTitle": "Compare Data App",
+  "pageTitle": "Run Computation App",
   "pageDescription": "Description of this app section"
 }
