@@ -101,7 +101,7 @@ strudel add-taskflow <taskflow-name> --template <taskflow-template> [OPTIONS]
 | `<taskflow-name>` | required | Name to use for the task flow's root directory (e.g. `my-taskflow`). Must be a valid directory name.|
 | `--template`, `-t` | required | Name of the strudel task flow template to use to scaffold the task flow. Available options: `compare-data`, `contribute-data`, `explore-data`, `monitor-activities`, `run-computation`, `search-data-repositories` |
 | `--config`, `-c`  | optional | JSON configuration file to use to build the task flow. See the Task Flow Config File section for how to format this file. If not supplied, you will be prompted on the command-line to give configuration values. |
-| `--output-dir`, `-o` | optional | Path to the directory where the app should be created. Defaults to current directory. |
+| `--output-dir`, `-o` | optional | Path to the directory where the task flow should be created. Defaults to `src/apps`. |
 | `--branch`, `-b` | optional | Branch in strudel-kit repo that should be used for the templates. Defaults to `main`. This option is primarily for use by contributors. |
 
 #### Task Flow Config File
