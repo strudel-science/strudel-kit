@@ -26,7 +26,7 @@ export const ActivityList: React.FC = () => {
   return (
     <Container
       maxWidth="xl"
-      sx={{
+      sx={{ "{{" <--$$-->
         marginBottom: 3,
         marginTop: 3,
       }}
@@ -42,7 +42,7 @@ export const ActivityList: React.FC = () => {
             rows={experiments}
             getRowId={(row) => row.id}
             columns={columns}
-            initialState={{
+            initialState={{ "{{" <--$$-->
               sorting: {
                 sortModel: [{ field: 'start_time', sort: 'desc' }],
               },

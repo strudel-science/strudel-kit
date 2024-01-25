@@ -64,16 +64,16 @@ export const DatasetDetail: React.FC = () => {
         breadcrumbTitle="Dataset Detail"
         mb={1}
         p={2}
-        sx={{
+        sx={{ "{{" <--$$-->
           backgroundColor: 'white'
         }}
       />
       <Container maxWidth="xl">
-        <Grid container spacing={1} sx={{ pt: 1, pr: 2, pb: 2, pl: 2,  }}>
+        <Grid container spacing={1} sx={{ "{{" <--$$--> pt: 1, pr: 2, pb: 2, pl: 2,  }}>
           {dataset && (
             <>
               <Grid item md={8} xs={12}>
-                <Paper sx={{ mb: 1 }}>
+                <Paper sx={{ "{{" <--$$--> mb: 1 }}>
                   <Stack p={2}>
                     <Stack direction="row">
                       <Box>
@@ -103,7 +103,7 @@ export const DatasetDetail: React.FC = () => {
                 </Paper>
                 <Paper>
                   <TabContext value={dataTabsValue}>
-                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                    <Box sx={{ "{{" <--$$--> borderBottom: 1, borderColor: 'divider' }}>
                       <TabList onChange={handleDataTabsChange} aria-label="lab API tabs example">
                         <Tab label="Data Files" value="1" />
                         <Tab label="Data Types" value="2" />
@@ -120,7 +120,7 @@ export const DatasetDetail: React.FC = () => {
                         columns={attachedFilesColumns}
                         disableColumnSelector
                         disableRowSelectionOnClick
-                        sx={{
+                        sx={{ "{{" <--$$-->
                           border: 'none'
                         }}
                       />
@@ -136,7 +136,7 @@ export const DatasetDetail: React.FC = () => {
                     <Box>
                       <Typography variant="h6" component="h2" mb={1}>Map</Typography>
                       <Box 
-                        sx={{ 
+                        sx={{ "{{" <--$$--> 
                           display: 'flex', 
                           alignItems: 'center', 
                           justifyContent: "center", 
@@ -151,9 +151,9 @@ export const DatasetDetail: React.FC = () => {
                       <Typography variant="h6" component="h2" mb={1}>Tags</Typography>
                         {dataset.tags.map((tag: string, i: number) => {
                           if (i < dataset.tags.length -1) {
-                            return <Typography component="span" sx={{ fontSize: 'small', marginRight: 0.5 }}>{tag},</Typography>
+                            return <Typography component="span" sx={{ "{{" <--$$--> fontSize: 'small', marginRight: 0.5 }}>{tag},</Typography>
                           } else {
-                            return <Typography component="span" sx={{ fontSize: 'small' }}>{tag}</Typography>
+                            return <Typography component="span" sx={{ "{{" <--$$--> fontSize: 'small' }}>{tag}</Typography>
                           }
                         })}
                     </Box>

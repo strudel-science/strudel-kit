@@ -15,7 +15,7 @@ export const MetadataPanel: React.FC = () => {
   return (
     <Paper>
       <Box
-        sx={{
+        sx={{ "{{" <--$$-->
           padding: 2,
           borderBottom: '1px solid',
           borderBottomColor: 'neutral.main',
@@ -31,7 +31,7 @@ export const MetadataPanel: React.FC = () => {
       <Stack direction="row" spacing={0}>
         <Box
           component="aside"
-          sx={{
+          sx={{ "{{" <--$$-->
             borderRight: '1px solid',
             borderRightColor: 'neutral.main',
             width: '150px',
@@ -45,14 +45,14 @@ export const MetadataPanel: React.FC = () => {
           </List>
         </Box>
         <Box
-          sx={{
+          sx={{ "{{" <--$$-->
             padding: 2
           }}
         >
           <Stack>
             <Stack 
               spacing={3}
-              sx={{
+              sx={{ "{{" <--$$-->
                 borderBottom: '1px solid',
                 borderBottomColor: 'neutral.main',
                 paddingBottom: 2,
@@ -97,7 +97,7 @@ export const MetadataPanel: React.FC = () => {
             </Stack>
             <Stack 
               spacing={3}
-              sx={{
+              sx={{ "{{" <--$$-->
                 borderBottom: '1px solid',
                 borderBottomColor: 'neutral.main',
                 paddingBottom: 2,
@@ -108,7 +108,7 @@ export const MetadataPanel: React.FC = () => {
                 <DatePicker 
                   value={startDate} 
                   label="Start Date"
-                  slotProps={{
+                  slotProps={{ "{{" <--$$-->
                     actionBar: {
                       actions: ['clear', 'today']
                     }
@@ -118,7 +118,7 @@ export const MetadataPanel: React.FC = () => {
                 <DatePicker 
                   value={endDate} 
                   label="End Date"
-                  slotProps={{
+                  slotProps={{ "{{" <--$$-->
                     actionBar: {
                       actions: ['clear', 'today']
                     }

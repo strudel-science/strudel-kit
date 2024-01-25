@@ -14,7 +14,7 @@ export const NewDataset: React.FC = () => {
   return (
     <Container
       maxWidth="xl"
-      sx={{
+      sx={{ "{{" <--$$-->
         marginBottom: 3,
         marginTop: 3,
       }}
@@ -39,7 +39,7 @@ export const NewDataset: React.FC = () => {
             </Box>
             <Box>
               <Link component={RouterLink} to="/contribute-data/review">
-                <Button variant="contained" sx={{ whiteSpace: 'nowrap' }}>
+                <Button variant="contained" sx={{ "{{" <--$$--> whiteSpace: 'nowrap' }}>
                   Save Dataset
                 </Button>
               </Link>

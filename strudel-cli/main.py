@@ -70,7 +70,7 @@ def add_taskflow(
     "--checkout", 
     branch,
     "--directory", 
-    f"strudel-cookiecutter/{name}",
+    f"strudel-cookiecutter/{template}",
     "--output-dir",
     output_dir,
     *(['--no-input'] if len(extra_args) > 0 else []),

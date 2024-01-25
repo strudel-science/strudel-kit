@@ -8,7 +8,7 @@ import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid
 export const DataFilesPanel: React.FC = () => {  
   return (
     <Paper
-      sx={{
+      sx={{ "{{" <--$$-->
         height: '100%',
       }}
     >
@@ -17,7 +17,7 @@ export const DataFilesPanel: React.FC = () => {
         spacing={2}
         alignItems="center"
         justifyContent="space-between"
-        sx={{
+        sx={{ "{{" <--$$-->
           padding: 2
         }}
       >
@@ -39,7 +39,7 @@ export const DataFilesPanel: React.FC = () => {
         columns={columns}
         disableColumnSelector
         disableRowSelectionOnClick
-        sx={{
+        sx={{ "{{" <--$$-->
           height: 'auto',
         }}
       />

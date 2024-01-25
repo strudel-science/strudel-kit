@@ -13,13 +13,13 @@ export const TopBar: React.FC = () => {
           edge="start"
           color="inherit"
           aria-label="menu"
-          sx={{ mr: 2 }}
+          sx={{ "{{" <--$$--> mr: 2 }}
         >
           <Link component={RouterLink} to="/">
             <MenuIcon />
           </Link>
         </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography variant="h6" component="div" sx={{ "{{" <--$$--> flexGrow: 1 }}>
           {{ cookiecutter.projectName }}
         </Typography>
         <IconButton

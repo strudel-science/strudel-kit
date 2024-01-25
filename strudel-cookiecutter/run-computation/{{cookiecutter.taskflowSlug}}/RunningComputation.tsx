@@ -22,31 +22,31 @@ export const RunningComputation: React.FC = () => {
   return (
     <Stack spacing={0} flex={1}>
       <Box
-        sx={{
+        sx={{ "{{" <--$$-->
           backgroundColor: 'white',
           padding: 2,
           borderBottom: '1px solid',
           borderColor: 'neutral.main'
         }}
       >
-        <Stepper activeStep={1} sx={{ maxWidth: 850 }}>
+        <Stepper activeStep={1} sx={{ "{{" <--$$--> maxWidth: 850 }}>
           <Step key="Data Inputs">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="/run-computation/scenario/data-inputs" sx={{ "{{" <--$$--> color: 'inherit', textDecoration: 'none' }}>
                 Data Inputs
               </Link>
             </StepLabel>
           </Step>
           <Step key="Optimization Settings">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="/run-computation/scenario/settings" sx={{ "{{" <--$$--> color: 'inherit', textDecoration: 'none' }}>
                 Optimization Settings
               </Link>
             </StepLabel>
           </Step>
           <Step key="Results">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/results" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="/run-computation/scenario/results" sx={{ "{{" <--$$--> color: 'inherit', textDecoration: 'none' }}>
                 Results
               </Link>
             </StepLabel>
@@ -55,11 +55,11 @@ export const RunningComputation: React.FC = () => {
       </Box>
       <Container
         maxWidth="md"
-        sx={{
+        sx={{ "{{" <--$$-->
           mt: 4
         }}
       >
-        <Paper sx={{ padding: 6, textAlign: 'center' }}>
+        <Paper sx={{ "{{" <--$$--> padding: 6, textAlign: 'center' }}>
           <Stack spacing={6}>
             <Typography variant="h6" component="h2">
               Running Optimization
@@ -68,7 +68,7 @@ export const RunningComputation: React.FC = () => {
               <Typography>This could take several minutes.</Typography>
               <Typography>You may leave this page and return later. Your progress will not be affected.</Typography>
             </Box>
-            <LinearProgress variant="determinate" value={70} sx={{ height: 10 }} />
+            <LinearProgress variant="determinate" value={70} sx={{ "{{" <--$$--> height: 10 }} />
             <Typography color="neutral.dark">
               Started 05/24/2023 12:32:33
             </Typography>

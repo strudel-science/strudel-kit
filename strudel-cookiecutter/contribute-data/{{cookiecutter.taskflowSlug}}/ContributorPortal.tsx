@@ -24,7 +24,7 @@ export const ContributorPortal: React.FC = () => {
   return (
     <Container
       maxWidth="xl"
-      sx={{
+      sx={{ "{{" <--$$-->
         mt: 4
       }}
     >

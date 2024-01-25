@@ -25,7 +25,7 @@ export const DataListCard: React.FC<DataListCardProps> = ({ item }) => {
       className={state.previewItem?.id === item.id ? 'selected' : ''}
       direction="row" 
       onClick={() => handleItemClick(item)}
-      sx={{
+      sx={{ "{{" <--$$-->
         padding: 1,
         transition: '0.25s',
         '&:hover': {
@@ -37,7 +37,7 @@ export const DataListCard: React.FC<DataListCardProps> = ({ item }) => {
       }}
     >
       <Box 
-        sx={{ 
+        sx={{ "{{" <--$$--> 
           display: 'flex', 
           alignItems: 'center', 
           justifyContent: "center", 
@@ -49,13 +49,13 @@ export const DataListCard: React.FC<DataListCardProps> = ({ item }) => {
         <Typography fontSize="small">{'<Image>'}</Typography>
       </Box>
       <Box flex={1}>
-        <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>
+        <Typography sx={{ "{{" <--$$--> color: 'primary.main', fontWeight: 'bold' }}>
           <Link component={RouterLink} to={`./${item['id']}`} underline="hover">
             {item.title}
           </Link>
         </Typography>
         <Typography
-          sx={{
+          sx={{ "{{" <--$$-->
             '-webkit-box-orient': 'vertical',
             '-webkit-line-clamp': '2',
             display: '-webkit-box',
@@ -65,7 +65,7 @@ export const DataListCard: React.FC<DataListCardProps> = ({ item }) => {
           {item.summary}
         </Typography>
         <Typography
-          sx={{
+          sx={{ "{{" <--$$-->
             '-webkit-box-orient': 'vertical',
             '-webkit-line-clamp': '1',
             display: '-webkit-box',
@@ -75,7 +75,7 @@ export const DataListCard: React.FC<DataListCardProps> = ({ item }) => {
         >
           <Typography 
             component="span" 
-            sx={{ 
+            sx={{ "{{" <--$$--> 
               fontSize: 'small', 
               fontWeight: 'bold', 
               marginRight: 0.5 
@@ -85,9 +85,9 @@ export const DataListCard: React.FC<DataListCardProps> = ({ item }) => {
           </Typography>
           {item.tags.map((tag: string, i: number) => {
             if (i < item.tags.length -1) {
-              return <Typography component="span" sx={{ fontSize: 'small', marginRight: 0.5 }}>{tag},</Typography>
+              return <Typography component="span" sx={{ "{{" <--$$--> fontSize: 'small', marginRight: 0.5 }}>{tag},</Typography>
             } else {
-              return <Typography component="span" sx={{ fontSize: 'small' }}>{tag}</Typography>
+              return <Typography component="span" sx={{ "{{" <--$$--> fontSize: 'small' }}>{tag}</Typography>
             }
           })}
         </Typography>                

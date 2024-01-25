@@ -64,7 +64,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
   return (
     <Filters
       onClose={props.onClose}
-      sx={{
+      sx={{ "{{" <--$$-->
         backgroundColor: 'white',
         pt: 3,
         pb: 3,
@@ -90,7 +90,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
             <DatePicker 
               value={dateRange[0]} 
               label="From"
-              slotProps={{
+              slotProps={{ "{{" <--$$-->
                 actionBar: {
                   actions: ['clear', 'today']
                 }
@@ -100,7 +100,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
             <DatePicker 
               value={dateRange[1]} 
               label="To"
-              slotProps={{
+              slotProps={{ "{{" <--$$-->
                 actionBar: {
                   actions: ['clear', 'today']
                 }

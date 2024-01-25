@@ -27,7 +27,7 @@ export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
         direction="row"
         spacing={2}
         alignItems="center"
-        sx={{
+        sx={{ "{{" <--$$-->
           padding: 2
         }}
       >
@@ -55,7 +55,7 @@ export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
       </Stack>
       <Stack 
         direction="row"
-        sx={{
+        sx={{ "{{" <--$$-->
           padding: 2
         }}
       >
@@ -66,7 +66,7 @@ export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
         </Stack>
         {!state.previewItem && (
           <Box 
-            sx={{ 
+            sx={{ "{{" <--$$--> 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: "center", 

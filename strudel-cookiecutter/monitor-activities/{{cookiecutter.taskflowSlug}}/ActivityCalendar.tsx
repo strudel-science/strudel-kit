@@ -11,7 +11,7 @@ export const ActivityCalendar: React.FC = () => {
   return (
     <Container
       maxWidth="md"
-      sx={{
+      sx={{ "{{" <--$$-->
         marginBottom: 3,
         marginTop: 3,
       }}

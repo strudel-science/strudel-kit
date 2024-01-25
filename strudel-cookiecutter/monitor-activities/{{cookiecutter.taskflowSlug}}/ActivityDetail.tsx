@@ -34,7 +34,7 @@ export const ActivityDetail: React.FC = () => {
   return (
     <Container
       maxWidth="xl"
-      sx={{
+      sx={{ "{{" <--$$-->
         marginBottom: 3,
         marginTop: 3,
       }}
@@ -59,7 +59,7 @@ export const ActivityDetail: React.FC = () => {
                     rows={experiment.events}
                     getRowId={(row) => row.id}
                     columns={columns}
-                    initialState={{
+                    initialState={{ "{{" <--$$-->
                       sorting: {
                         sortModel: [{ field: 'event_time', sort: 'desc' }],
                       },
@@ -73,7 +73,7 @@ export const ActivityDetail: React.FC = () => {
             <Grid item md={6}>
               <Stack>
                 <Paper
-                  sx={{
+                  sx={{ "{{" <--$$-->
                     padding: 2
                   }}
                 >
@@ -86,7 +86,7 @@ export const ActivityDetail: React.FC = () => {
                       />
                     )}
                     <Box
-                      sx={{
+                      sx={{ "{{" <--$$-->
                         position: 'relative'
                       }}
                     >
@@ -94,7 +94,7 @@ export const ActivityDetail: React.FC = () => {
                       <Button 
                         variant="contained"
                         endIcon={<AddIcon />}
-                        sx={{
+                        sx={{ "{{" <--$$-->
                           position: 'absolute',
                           bottom: '0.5rem',
                           right: '0.5rem',
@@ -106,7 +106,7 @@ export const ActivityDetail: React.FC = () => {
                   </Stack>
                 </Paper>
                 <Paper
-                  sx={{
+                  sx={{ "{{" <--$$-->
                     padding: 2
                   }}
                 >
@@ -123,9 +123,9 @@ export const ActivityDetail: React.FC = () => {
                         type: 'scatter'
                       },
                     ]}
-                    layout={{ height: 450 }}
+                    layout={{ "{{" <--$$--> height: 450 }}
                     useResizeHandler={true}
-                    style={{ width: '100%' }}
+                    style={{ "{{" <--$$--> width: '100%' }}
                   />
                 </Paper>
               </Stack>

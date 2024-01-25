@@ -21,31 +21,31 @@ export const Settings: React.FC = () => {
   return (
     <Stack spacing={0} flex={1}>
       <Box
-        sx={{
+        sx={{ "{{" <--$$-->
           backgroundColor: 'white',
           padding: 2,
           borderBottom: '1px solid',
           borderColor: 'neutral.main'
         }}
       >
-        <Stepper activeStep={1} sx={{ maxWidth: 850 }}>
+        <Stepper activeStep={1} sx={{ "{{" <--$$--> maxWidth: 850 }}>
           <Step key="Data Inputs">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="/run-computation/scenario/data-inputs" sx={{ "{{" <--$$--> color: 'inherit', textDecoration: 'none' }}>
                 Data Inputs
               </Link>
             </StepLabel>
           </Step>
           <Step key="Optimization Settings">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="/run-computation/scenario/settings" sx={{ "{{" <--$$--> color: 'inherit', textDecoration: 'none' }}>
                 Optimization Settings
               </Link>
             </StepLabel>
           </Step>
           <Step key="Results">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/results" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="/run-computation/scenario/results" sx={{ "{{" <--$$--> color: 'inherit', textDecoration: 'none' }}>
                 Results
               </Link>
             </StepLabel>
@@ -54,11 +54,11 @@ export const Settings: React.FC = () => {
       </Box>
       <Container
         maxWidth="md"
-        sx={{
+        sx={{ "{{" <--$$-->
           mt: 4
         }}
       >
-        <Paper sx={{ padding: 3 }}>
+        <Paper sx={{ "{{" <--$$--> padding: 3 }}>
           <Stack>
             <Typography variant="h6" component="h2">
               Optimization Settings
@@ -128,7 +128,7 @@ export const Settings: React.FC = () => {
             )}
             <Box textAlign="right">
               <Link component={RouterLink} to="/run-computation/scenario/running">
-                <Button variant="contained" sx={{ marginTop: 4 }}>
+                <Button variant="contained" sx={{ "{{" <--$$--> marginTop: 4 }}>
                   Run optimization
                 </Button>
               </Link>
