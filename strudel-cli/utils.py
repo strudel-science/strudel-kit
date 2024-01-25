@@ -24,6 +24,7 @@ def name_callback(value: str):
   """
   Ensure app and taskflow names are valid directory names
   """
+  
   if value and not value[0].isalpha():
     raise typer.BadParameter("App names must start with a letter")
   elif any(char in value for char in [" ", "/", "\\", ">", "<", "\"", "|", "?", "*", ":"]):

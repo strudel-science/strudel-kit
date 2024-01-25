@@ -2,6 +2,7 @@ import typer
 import subprocess
 from typing_extensions import Annotated
 from utils import parse_json_to_args, name_callback
+from enum import Enum
 
 app = typer.Typer()
 
@@ -34,10 +35,23 @@ def create_app(
   ] + extra_args)
 
 
+class TaskFlow(str, Enum):
+  """
+  Possible values for task flow names to pass
+  to the --template cli option.
+  """
+  compare_data = "compare-data"
+  contribute_data = "contribute-data"
+  explore_data = "explore-data"
+  monitor_activities = "monitor-activities"
+  run_computation = "run-computation"
+  search_data_repositories = "search-data-repositories"
+
+
 @app.command()
 def add_taskflow(
   name: str,
-  template: Annotated[str, typer.Option("--template", "-t")],
+  template: Annotated[TaskFlow, typer.Option("--template", "-t")],
   config: Annotated[str, typer.Option("--config", "-c")] = "",
   output_dir: Annotated[str, typer.Option("--output_dir", "-o")] = "src/app",
   branch: Annotated[str, typer.Option("--branch", "-b")] = "main"
