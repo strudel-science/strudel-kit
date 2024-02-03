@@ -8,6 +8,14 @@ This library provides a suite of templates to implement UIs for various differen
 
 ## Packages
 
-- strudel-cli
-- strudel-demo-app
-- strudel-cookiecutter
+### [strudel-cli](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/README.md)
+
+The strudel-cli is a command-line tool for bootstrapping web applications based on the STRUDEL Design System. If you're looking to get started building web applications with STRUDEL, this is the best way to start.
+
+### [strudel-demo-app](https://github.com/strudel-science/strudel-kit/tree/main/strudel-demo-app)
+
+Demo react app that implements each of the STRUDEL task flows. This code is an example of what you can build using the strudel-cli. If you prefer to just copy and paste code from GitHub, this is a good place to start.
+
+### [strudel-cookiecutter](https://github.com/strudel-science/strudel-kit/tree/main/strudel-cookiecutter)
+
+Templates designed for the [cookiecutter](https://cookiecutter.readthedocs.io/en/latest/README.html) tool. These templates are what strudel-cli uses to generate apps/task-flows. This package is not intended to be interacted with directly. It's best to use the strudel-cli.

@@ -25,6 +25,8 @@ The strudel-cli generates your app using a pre-defined stack based on principles
 
 Install the STRUDEL CLI tool:
 
+:warning: ***strudel-cli is not up on pypi yet. Please clone and execute locally for now. Sorry for the inconvenience!***
+
 ```
 pip install strudel-cli
 ```
