@@ -21,11 +21,11 @@ The strudel-cli generates your app using a pre-defined stack based on principles
 - [React Router](https://reactrouter.com/en/main)
 - [Create React App](https://create-react-app.dev/)
 
-## Quickstart
+## Quickstart for Users
 
 Install the STRUDEL CLI tool:
 
-:warning: ***strudel-cli is not up on pypi yet. Please clone and execute locally for now. Sorry for the inconvenience!***
+:warning: ***strudel-cli is not up on pypi yet! Please follow the Quickstart for Developers section to get started. Sorry for the inconvenience!***
 
 ```
 pip install strudel-cli
@@ -119,4 +119,37 @@ strudel add-taskflow <taskflow-name> --template <taskflow-template> [OPTIONS]
   // Title to display on the task flow page.
   "pageDescription": "Description of this app section"
 }
+```
+
+## Quickstart for Developers
+
+Clone the strudel-kit repo:
+
+```
+git clone git@github.com:strudel-science/strudel-kit.git
+```
+
+Navigate to the strudel-cli package of the strudel-kit repo:
+
+```
+cd strudel-kit/strudel-cli
+```
+
+(Recommended) Create a new conda environment or venv with python 3.9.6+ and activate it:
+
+```
+conda create my-strudel-env python=3.9.6
+conda activate my-strudel-env
+```
+
+Install the requirements:
+
+```
+pip install -r requirements.txt
+```
+
+Run the strudel commands using the `main.py` file:
+
+```
+python main.py create-app <app-name> [OPTIONS]
 ```
