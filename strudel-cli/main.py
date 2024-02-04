@@ -1,8 +1,10 @@
 import typer
 import subprocess
 import os
+import shutil
+from os.path import expanduser
 from typing_extensions import Annotated
-from utils import parse_json_to_args, name_callback
+from utils import parse_json_to_args, name_callback, clear_cookiecutter_cache
 from enum import Enum
 from rich import print
 from rich.padding import Padding
@@ -23,10 +25,10 @@ def create_app(
 
   try:
     print("[white]Creating your app...")
-
+    clear_cookiecutter_cache()
     extra_args = parse_json_to_args(config)
     
-    result = subprocess.run([
+    subprocess.run([
       "cookiecutter", 
       "gh:strudel-science/strudel-kit",
       "--checkout", 
@@ -51,7 +53,8 @@ def create_app(
     print(Padding("Then start adding task flows to your app:", (1, 0)))
     print(Padding("$ strudel add-taskflow my-first-taskflow --template explore-data", (0, 0, 0, 4)))
     print(Padding("$ strudel add-taskflow my-second-taskflow --template run-computation", (0, 0, 0, 4)))
-    print(Padding("Onwards!", (1, 0, 0, 0)))
+    print(Padding("Browse all the task flows: https://strudel.science/design-system/task-flows/overview", (1, 0, 0, 0)))
+    print("Onwards!")
 
 
 
@@ -82,7 +85,7 @@ def add_taskflow(
 
   try:
     print("[white]Adding a task flow to your app...")
-    
+    clear_cookiecutter_cache()
     extra_args = parse_json_to_args(config)
 
     subprocess.run([
@@ -103,6 +106,8 @@ def add_taskflow(
   else:
     print(Padding("[bold green]Successfully added a task flow to your strudel app!", (1, 0, 0, 0)))
     print(f"Your new task flow was built in {os.path.abspath(os.path.join(output_dir, name))}")
+    print(Padding("Browse more task flows: https://strudel.science/design-system/task-flows/overview", (1, 0, 0, 0)))
+    print("Onwards!")
 
 
 if __name__ == "__main__":

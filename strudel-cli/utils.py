@@ -1,5 +1,7 @@
 import json
 import typer
+import os
+import shutil
 
 
 def parse_json_to_args(filename: str):
@@ -30,3 +32,14 @@ def name_callback(value: str):
   elif any(char in value for char in [" ", "/", "\\", ">", "<", "\"", "|", "?", "*", ":"]):
     raise typer.BadParameter("Could not create your app because there's a special character in your app name. For your app name, it's best to use only letters, hyphens, and underscores.")
   return value
+
+def clear_cookiecutter_cache():
+  """
+  Remove the cached cookiecutter template for strudel-kit if it exists.
+  This ensures that the latest template is pulled from github any time a command is run.
+  This is necessary to bypass the cookiecutter "Is it okay to delete and re-download it?" step.
+  """
+  home = os.path.expanduser("~")
+  strudel_template_cache = os.path.join(home, ".cookiecutters/strudel-kit")
+  if os.path.exists(strudel_template_cache) and os.path.isdir(strudel_template_cache):
+    shutil.rmtree(strudel_template_cache)
