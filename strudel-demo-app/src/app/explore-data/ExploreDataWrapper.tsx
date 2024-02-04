@@ -7,6 +7,8 @@ import { Box } from '@mui/material';
 import { Outlet } from 'react-router';
 import { TopBar } from './TopBar';
 import { ExploreDataProvider } from './context/ContextProvider';
+import { columns } from './columns';
+import { filters } from './filters';
 
 export const ExploreDataWrapper: React.FC = () => {
   const [entities, setEntities] = useState<any[]>([]);
@@ -34,71 +36,3 @@ export const ExploreDataWrapper: React.FC = () => {
     </Box>
   )
 }
-
-const columns: GridColDef[] = [
-  { 
-    field: 'Organism', 
-    headerName: 'Organism', 
-    width: 200 
-  },
-  {
-    field: 'Common Name',
-    headerName: 'Common Name',
-    width: 150,
-  },
-  {
-    field: 'Assembly',
-    headerName: 'Assembly',
-    width: 150,
-  },
-  {
-    field: 'Data Usage Policy',
-    headerName: 'Data Usage Policy',
-    width: 150,
-  },
-  {
-    field: 'Euk. BUSCO %',
-    headerName: 'Euk. BUSCO %',
-    type: 'number',
-    width: 110,
-  },
-  {
-    field: 'Emb. BUSCO %',
-    headerName: 'Emb. BUSCO %',
-    type: 'number',
-    width: 110,
-  }
-];
-
-const filters = [
-  {
-    field: 'Assembly',
-    displayName: 'Dynamic Assembly Filter',
-    filterType: 'CheckboxList',
-    props: {
-      options: [
-        {
-          label: 'JGI',
-          value: 'JGI',
-        },
-        {
-          label: 'BYU',
-          value: 'BYU',
-        },
-        { 
-          label: 'AGP',
-          value: 'AGP',
-        },
-      ],
-    }
-  },
-  {
-    field: 'Euk. BUSCO %',
-    displayName: 'Dynamic Euk. BUSCO % Filter',
-    filterType: 'Slider',
-    props: {
-      min: 0,
-      max: 100,
-    }
-  }
-]
