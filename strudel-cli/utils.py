@@ -28,5 +28,5 @@ def name_callback(value: str):
   if value and not value[0].isalpha():
     raise typer.BadParameter("App names must start with a letter")
   elif any(char in value for char in [" ", "/", "\\", ">", "<", "\"", "|", "?", "*", ":"]):
-    raise typer.BadParameter("Could not create your app because there's a special character in your app name. Please remove the special character and try again.")
+    raise typer.BadParameter("Could not create your app because there's a special character in your app name. For your app name, it's best to use only letters, hyphens, and underscores.")
   return value
