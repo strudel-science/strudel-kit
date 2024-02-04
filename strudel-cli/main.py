@@ -9,10 +9,10 @@ app = typer.Typer()
 
 @app.command()
 def create_app(
-  name: Annotated[str, typer.Argument(callback=name_callback)],
-  config: Annotated[str, typer.Option("--config", "-c")] = "",
-  output_dir: Annotated[str, typer.Option("--output_dir", "-o")] = "",
-  branch: Annotated[str, typer.Option("--branch", "-b")] = "main"
+  name: Annotated[str, typer.Argument(callback=name_callback, help="The name of your app. It's best to use only letters, hyphens, and underscores.")],
+  config: Annotated[str, typer.Option("--config", "-c", help="JSON file with configuration values to use to build your app.")] = "",
+  output_dir: Annotated[str, typer.Option("--output_dir", "-o", help="Directory where the app should be created. Defaults to current directory.")] = "",
+  branch: Annotated[str, typer.Option("--branch", "-b", help="Branch in strudel-kit repo that should be used for the templates. This option is primarily for use by contributors.")] = "main"
 ):
   """
   Create a base strudel web application.
@@ -51,11 +51,11 @@ class TaskFlow(str, Enum):
 
 @app.command()
 def add_taskflow(
-  name: str,
-  template: Annotated[TaskFlow, typer.Option("--template", "-t")],
-  config: Annotated[str, typer.Option("--config", "-c")] = "",
-  output_dir: Annotated[str, typer.Option("--output_dir", "-o")] = "src/app",
-  branch: Annotated[str, typer.Option("--branch", "-b")] = "main"
+  name: Annotated[str, typer.Argument(callback=name_callback, help="The name of your task flow module. It's best to use only letters, hyphens, and underscores.")],
+  template: Annotated[TaskFlow, typer.Option("--template", "-t", help="Name of the strudel task flow template to use as the basis for your task flow.")],
+  config: Annotated[str, typer.Option("--config", "-c", help="JSON file with configuration values to use to build your task flow.")] = "",
+  output_dir: Annotated[str, typer.Option("--output_dir", "-o", help="Directory where the task flow module should be created.")] = "src/app",
+  branch: Annotated[str, typer.Option("--branch", "-b", help="Branch in strudel-kit repo that should be used for the templates. This option is primarily for use by contributors.")] = "main"
 ):
   """
   Add a new task flow section to an existing strudel web application.

@@ -22,11 +22,11 @@ def parse_json_to_args(filename: str):
 
 def name_callback(value: str):
   """
-  Ensure app and taskflow names are valid directory names
+  Ensure app and taskflow names are good react module names
   """
   
   if value and not value[0].isalpha():
     raise typer.BadParameter("App names must start with a letter")
   elif any(char in value for char in [" ", "/", "\\", ">", "<", "\"", "|", "?", "*", ":"]):
-    raise typer.BadParameter("There's an invalid character in your app name. Make sure your app name is a valid directory name.")
+    raise typer.BadParameter("Could not create your app because there's a special character in your app name. Please remove the special character and try again.")
   return value
