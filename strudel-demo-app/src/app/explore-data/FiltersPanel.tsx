@@ -7,6 +7,7 @@ import { CheckboxList, CheckboxOption } from '../../components/CheckboxList';
 import { setFilter } from '../../components/contexts/analytics/actions';
 import { FilterGroup } from '../../components/FilterGroup';
 import { FilterConfig, useExploreData } from './context/ContextProvider';
+import { StrudelSlider } from '../../components/StrudelSlider';
 
 enum FilterType {
   CHECKBOX_LIST = 'CHECKBOX_LIST',
@@ -33,6 +34,7 @@ const initFilterValues = (filters: Filter[]) => {
 
 export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => { 
   const {state, dispatch} = useExploreData();
+  const [filterValues, setFilterValues] = useState(state.filterValues);
   const [eukRange, setEukRange] = useState([0, 100]);
   const [embRange, setEmbRange] = useState([0, 100]);
   // TODO: add markers to sliders
@@ -56,6 +58,28 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
   };
 
   const getFilterComponent = (filter: FilterConfig) => {
+    switch (filter.filterType) {
+      case 'CheckboxList': {
+        return (
+          <CheckboxList
+            options={filter.props.options}
+            onChange={(values) => dispatch(setFilter({ field: filter.field, value: values, operator: 'contains one of' }))}
+          />
+        );
+      }
+      case 'Slider': {
+        return (
+          <StrudelSlider
+            getAriaLabel={() => filter.field}
+            valueLabelDisplay="auto"
+            min={filter.props.min}
+            max={filter.props.max}
+            onChangeCommitted={(event, values) => dispatch(setFilter({ field: filter.field, value: values, operator: 'range' }))}
+          />
+        );
+      }
+
+    }
     return <p></p>;
   }
 

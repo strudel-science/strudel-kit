@@ -27,7 +27,7 @@ export const ExploreDataWrapper: React.FC = () => {
         <TopBar />
       </Box>
       <Box>
-        <ExploreDataProvider data={entities} columns={columns} dataIdField='Proteome_ID'>
+        <ExploreDataProvider data={entities} columns={columns} filters={filters} dataIdField='Proteome_ID'>
           <Outlet />
         </ExploreDataProvider>
       </Box>
@@ -69,3 +69,36 @@ const columns: GridColDef[] = [
     width: 110,
   }
 ];
+
+const filters = [
+  {
+    field: 'Assembly',
+    displayName: 'Dynamic Assembly Filter',
+    filterType: 'CheckboxList',
+    props: {
+      options: [
+        {
+          label: 'JGI',
+          value: 'JGI',
+        },
+        {
+          label: 'BYU',
+          value: 'BYU',
+        },
+        { 
+          label: 'AGP',
+          value: 'AGP',
+        },
+      ],
+    }
+  },
+  {
+    field: 'Euk. BUSCO %',
+    displayName: 'Dynamic Euk. BUSCO % Filter',
+    filterType: 'Slider',
+    props: {
+      min: 0,
+      max: 100,
+    }
+  }
+]
