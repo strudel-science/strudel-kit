@@ -2,6 +2,7 @@ import json
 import typer
 import os
 import shutil
+from . import __version__
 
 
 def parse_json_to_args(filename: str):
@@ -32,6 +33,13 @@ def name_callback(value: str):
   elif any(char in value for char in [" ", "/", "\\", ">", "<", "\"", "|", "?", "*", ":"]):
     raise typer.BadParameter("Could not create your app because there's a special character in your app name. For your app name, it's best to use only letters, hyphens, and underscores.")
   return value
+
+
+def version_callback(value: bool):
+  if value:
+    print(f"strudel-cli version {__version__}")
+    raise typer.Exit()
+
 
 def clear_cookiecutter_cache():
   """

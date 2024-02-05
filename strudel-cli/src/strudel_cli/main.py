@@ -3,13 +3,14 @@ import subprocess
 import os
 import shutil
 from os.path import expanduser
+from typing import Optional
 from typing_extensions import Annotated
-from utils import parse_json_to_args, name_callback, clear_cookiecutter_cache
+from .utils import parse_json_to_args, name_callback, version_callback, clear_cookiecutter_cache
 from enum import Enum
 from rich import print
 from rich.padding import Padding
 
-app = typer.Typer()
+app = typer.Typer(no_args_is_help=True)
 
 
 @app.command()
@@ -22,7 +23,6 @@ def create_app(
   """
   Create a base strudel web application.
   """
-
   try:
     print("[white]Creating your app...")
     clear_cookiecutter_cache()
@@ -82,7 +82,6 @@ def add_taskflow(
   """
   Add a new task flow section to an existing strudel web application.
   """
-
   try:
     print("[white]Adding a task flow to your app...")
     clear_cookiecutter_cache()
@@ -108,6 +107,17 @@ def add_taskflow(
     print(f"Your new task flow was built in {os.path.abspath(os.path.join(output_dir, name))}")
     print(Padding("Browse more task flows: https://strudel.science/design-system/task-flows/overview", (1, 0, 0, 0)))
     print("Onwards!")
+
+
+@app.callback()
+def main(
+  version: Annotated[Optional[bool], typer.Option("--version", callback=version_callback)] = None
+):
+  """
+  Handle options for running strudel without any commands.
+  The --help option is not here because it is already implemented by default.
+  """
+  pass
 
 
 if __name__ == "__main__":
