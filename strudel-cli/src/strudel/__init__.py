@@ -1,3 +1,3 @@
 from importlib.metadata import version
 
-__version__ = version("strudel_cli")
+__version__ = version("strudel-cli")

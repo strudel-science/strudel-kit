@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "strudel_cli"
+name = "strudel-cli"
 version = "0.0.1"
 authors = [
   { name="Cody O'Donnell", email="ctodonnell@lbl.gov" },
@@ -28,8 +28,11 @@ classifiers = [
 ]
 
 [project.scripts]
-strudel = "strudel_cli.main:app"
+strudel = "strudel.main:app"
 
 [project.urls]
 Homepage = "https://github.com/strudel-science/strudel-kit"
 Issues = "https://github.com/strudel-science/strudel-kit/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/strudel"]

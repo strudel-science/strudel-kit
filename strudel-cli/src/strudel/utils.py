@@ -37,7 +37,7 @@ def name_callback(value: str):
 
 def version_callback(value: bool):
   if value:
-    print(f"strudel-cli version {__version__}")
+    print(f"strudel-cli {__version__}")
     raise typer.Exit()
 
 
