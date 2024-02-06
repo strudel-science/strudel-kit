@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Slider, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
 import { Filters } from '../../components/Filters';
 import { FilterField } from '../../components/FilterField';
 import { CheckboxList, CheckboxOption } from '../../components/CheckboxList';
 import { setFilter } from '../../components/contexts/analytics/actions';
-import { FilterGroup } from '../../components/FilterGroup';
 import { FilterConfig, useExploreData } from './context/ContextProvider';
 import { StrudelSlider } from '../../components/StrudelSlider';
 
@@ -82,6 +79,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
     >
       {state.filters.map((f, i) => (
         <FilterField
+          key={`${f.field}-${i}`}
           label={f.displayName}
           isCollapsible
           filter={getFilterComponent(f)}
