@@ -21,15 +21,29 @@ The strudel-cli generates your app using a pre-defined stack based on principles
 - [React Router](https://reactrouter.com/en/main)
 - [Create React App](https://create-react-app.dev/)
 
-## Quickstart for Users
+## User Quickstart
+
+https://nodejs.org/en/download
+
+### Prequisites
+
+Node.js and NPM must be installed to run the web applications you generate with strudel-cli. To check if you already have Node.js and NPM installed, open a terminal and run:
+
+```
+node --version
+npm --version
+```
+
+If both commands return a version number, you should be good to go. If not, you can download both tools together here: https://nodejs.org/en/download
+
+### Get Started
 
 Install the STRUDEL CLI tool:
 
-:warning: ***strudel-cli is not up on pypi yet! Please follow the Quickstart for Developers section to get started. Sorry for the inconvenience!***
-
 ```
-pip install strudel-cli
+pip install -i https://test.pypi.org/simple/ strudel-cli
 ```
+:warning: ***strudel-cli is only on TestPyPI for the moment. When it is published to PyPI, you will be able to omit the -i option***
 
 Create a base app:
 
@@ -57,6 +71,8 @@ npm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
+
+Didn't work? Make sure you have [installed NPM and Node.JS](https://nodejs.org/en/download).
 
 ## Commands
 
@@ -121,7 +137,7 @@ strudel add-taskflow <taskflow-name> --template <taskflow-template> [OPTIONS]
 }
 ```
 
-## Quickstart for Developers
+## Developer Quickstart
 
 ### Install
 
