@@ -97,7 +97,7 @@ def add_taskflow(
       "--output-dir",
       output_dir,
       *(['--no-input'] if len(extra_args) > 0 else []),
-      f"taskflowSlug={name}"
+      f"name={name}"
     ] + extra_args, check=True)
   except:
     print("[bold red]Encountered a problem.[/bold red] Your app has not been created.")
