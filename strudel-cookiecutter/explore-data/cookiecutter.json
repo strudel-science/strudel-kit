@@ -1,15 +1,47 @@
 {
-  "projectName": "My Project",
-  "taskflowName": "My Explore Data Flow",
-  "taskflowSlug": "{{ cookiecutter.taskflowName.lower().replace(' ', '-').replace('_', '-') }}",
+  "name": "my-taskflow",
   "config": {
     "pageTitle": "Explore Data App",
     "pageDescription": "Description of this app section",
-    "filters": [
-
-    ],
     "columns": [
-      
+      { 
+        "field": "first_field", 
+        "headerName": "Column One", 
+        "width": 200 
+      },
+      {
+        "field": "second_field",
+        "headerName": "Column Two",
+        "width": 150
+      }
+    ],
+    "filters": [
+      {
+        "field": "first_field",
+        "displayName": "My First Filter",
+        "filterType": "CheckboxList",
+        "props": {
+          "options": [
+            {
+              "label": "Onions",
+              "value": "onions"
+            },
+            {
+              "label": "Peppers",
+              "value": "peppers"
+            }
+          ]
+        }
+      },
+      {
+        "field": "second_field",
+        "displayName": "My Second Filter",
+        "filterType": "Slider",
+        "props": {
+          "min": 0,
+          "max": 100
+        }
+      }
     ]
   }
 }

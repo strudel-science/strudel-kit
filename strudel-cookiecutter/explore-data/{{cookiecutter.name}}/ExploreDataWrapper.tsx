@@ -6,42 +6,10 @@ import * as d3 from 'd3-fetch';
 import { basename } from '../App';
 import { Box } from '@mui/material';
 import { Outlet } from 'react-router';
-import { TopBar } from './TopBar';
-
-const columns: GridColDef[] = [
-  { 
-    field: 'Organism', 
-    headerName: 'Organism', 
-    width: 200 
-  },
-  {
-    field: 'Common Name',
-    headerName: 'Common Name',
-    width: 150,
-  },
-  {
-    field: 'Assembly',
-    headerName: 'Assembly',
-    width: 150,
-  },
-  {
-    field: 'Data Usage Policy',
-    headerName: 'Data Usage Policy',
-    width: 150,
-  },
-  {
-    field: 'Euk. BUSCO %',
-    headerName: 'Euk. BUSCO %',
-    type: 'number',
-    width: 110,
-  },
-  {
-    field: 'Emb. BUSCO %',
-    headerName: 'Emb. BUSCO %',
-    type: 'number',
-    width: 110,
-  }
-];
+import { ExploreDataProvider } from './context/ContextProvider';
+import { columns } from './columns';
+import { filters } from './filters';
+import { TopBar } from '../../components/TopBar';
 
 export const ExploreDataWrapper: React.FC = () => {
   const [entities, setEntities] = useState<any[]>([]);
@@ -62,9 +30,9 @@ export const ExploreDataWrapper: React.FC = () => {
         <TopBar />
       </Box>
       <Box>
-        <AnalyticsProvider data={entities} columns={columns} dataIdField='Proteome_ID'>
+        <ExploreDataProvider data={entities} columns={columns} filters={filters} dataIdField='Proteome_ID'>
           <Outlet />
-        </AnalyticsProvider>
+        </ExploreDataProvider>
       </Box>
     </Box>
   )
