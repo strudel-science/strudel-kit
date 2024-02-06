@@ -123,6 +123,8 @@ strudel add-taskflow <taskflow-name> --template <taskflow-template> [OPTIONS]
 
 ## Quickstart for Developers
 
+### Install
+
 Clone the strudel-kit repo:
 
 ```
@@ -138,18 +140,48 @@ cd strudel-kit/strudel-cli
 (Recommended) Create a new conda environment or venv with python 3.9.6+ and activate it:
 
 ```
-conda create my-strudel-env python=3.9.6
-conda activate my-strudel-env
+conda create strudel-env python=3.9
+conda activate strudel-env
 ```
 
-Install the requirements:
+Install the package in editable mode:
 
 ```
-pip install -r requirements.txt
+pip install -e .
 ```
 
-Run the strudel commands using the `main.py` file:
+Run the strudel commands:
 
 ```
-python main.py create-app <app-name> [OPTIONS]
+strudel create-app <app-name> [OPTIONS]
+```
+
+### Testing
+
+From the strudel-cli directory, run:
+
+```
+pytest
+```
+
+All the tests live in `strudel-cli/tests`
+
+### Publishing
+
+#### 1. Authenticate with PyPi
+
+In order to publish, you will have to authenticate with pypi and your account must have permission to administer the strudel-cli package on pypi.
+
+#### 2. Build a distrubtable package
+
+```
+python -m build
+```
+
+This will generate `.whl` and `.tar.gz` files in the `dist/` folder.
+
+#### 3. Upload to (Test)PyPi
+
+```
+python -m twine upload --repository testpypi dist/*
 ```
