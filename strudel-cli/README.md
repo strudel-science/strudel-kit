@@ -23,8 +23,6 @@ The strudel-cli generates your app using a pre-defined stack based on principles
 
 ## User Quickstart
 
-https://nodejs.org/en/download
-
 ### Prequisites
 
 Node.js and NPM must be installed to run the web applications you generate with strudel-cli. To check if you already have Node.js and NPM installed, open a terminal and run:
