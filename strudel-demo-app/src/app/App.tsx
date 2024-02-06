@@ -7,6 +7,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { router } from './routes';
 import { theme } from './theme';
+import { AppProvider } from '../context/ContextProvider';
 
 export const basename = document.querySelector('base')?.getAttribute('href') ?? '/';
 
@@ -15,7 +16,9 @@ const App: React.FC = () => {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <RouterProvider router={router} />
+        <AppProvider projectTitle="Demo App">
+          <RouterProvider router={router} />
+        </AppProvider>
       </ThemeProvider>
     </LocalizationProvider>
   );

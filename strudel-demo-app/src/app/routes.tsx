@@ -1,4 +1,3 @@
-import { Settings } from "@mui/icons-material";
 import { createHashRouter, Navigate } from "react-router-dom";
 import { CompareDataWrapper } from "./compare-data/CompareDataWrapper";
 import { NewScenario } from "./compare-data/NewScenario";
@@ -24,6 +23,7 @@ import { RunningMyAnalysis } from "./my-analysis/Running";
 import { MyScenario } from "./my-analysis/Scenario";
 import { RunComputationWrapper } from "./run-computation";
 import { DataInputs } from "./run-computation/DataInputs";
+import { Settings } from "./run-computation/Settings";
 import { Results } from "./run-computation/Results";
 import { RunningComputation } from "./run-computation/RunningComputation";
 import { Scenario } from "./run-computation/Scenario";

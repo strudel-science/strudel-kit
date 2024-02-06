@@ -11,6 +11,7 @@ import { setPreviewItem } from '../../components/contexts/analytics/actions';
 import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { DataGrid } from '../../components/DataGrid';
 import { NewScenarioModal } from './NewScenarioModal';
+import { useAppState } from '../../context/ContextProvider';
 
 const scenarios = [
   {
@@ -87,6 +88,7 @@ const columns: GridColDef[] = [
 ];
   
 export const RunComputationWrapper: React.FC = () => {
+  const app = useAppState();
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleNewScenario = () => {
@@ -111,7 +113,7 @@ export const RunComputationWrapper: React.FC = () => {
               </Link>
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Project name
+              {app.state.projectTitle}
             </Typography>
             <IconButton
               size="large"

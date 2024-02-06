@@ -2,6 +2,14 @@
   "projectName": "My Project",
   "taskflowName": "My Explore Data Flow",
   "taskflowSlug": "{{ cookiecutter.taskflowName.lower().replace(' ', '-').replace('_', '-') }}",
-  "pageTitle": "Explore Data App",
-  "pageDescription": "Description of this app section"
+  "config": {
+    "pageTitle": "Explore Data App",
+    "pageDescription": "Description of this app section",
+    "filters": [
+
+    ],
+    "columns": [
+      
+    ]
+  }
 }

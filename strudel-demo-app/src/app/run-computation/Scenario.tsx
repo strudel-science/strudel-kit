@@ -1,17 +1,13 @@
-import { AppBar, Box, Breadcrumbs, Button, Container, Grid, IconButton, Link, Paper, Stack, Step, StepLabel, Stepper, TextField, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Breadcrumbs, IconButton, Link, Stack, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import EditIcon from '@mui/icons-material/Edit';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import React, { useState } from 'react';
+import React from 'react';
 import { Outlet, Link as RouterLink } from 'react-router-dom';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
-import { setPreviewItem } from '../../components/contexts/analytics/actions';
-import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
-import { DataGrid } from '../../components/DataGrid';
+import { useAppState } from '../../context/ContextProvider';
   
 export const Scenario: React.FC = () => {
+  const app = useAppState();
   return (
     <Stack spacing={0} height="100vh">
       <Box>
@@ -38,7 +34,7 @@ export const Scenario: React.FC = () => {
             </IconButton>
             <Stack direction="row" alignItems="center" sx={{ flexGrow: 1 }}>
               <Typography variant="h6" component="p" sx={{ marginRight: 2 }}>
-                Project name
+                {app.state.projectTitle}
               </Typography>
               <Breadcrumbs aria-label="breadcrumb" separator={<ChevronRightIcon fontSize="small" />}>
                 <Link underline="hover" color="inherit" to="/run-computation" component={RouterLink}>

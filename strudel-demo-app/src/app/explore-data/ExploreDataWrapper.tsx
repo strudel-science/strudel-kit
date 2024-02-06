@@ -5,10 +5,10 @@ import * as d3 from 'd3-fetch';
 import { basename } from '../App';
 import { Box } from '@mui/material';
 import { Outlet } from 'react-router';
-import { TopBar } from './TopBar';
 import { ExploreDataProvider } from './context/ContextProvider';
 import { columns } from './columns';
 import { filters } from './filters';
+import { TopBar } from '../../components/TopBar';
 
 export const ExploreDataWrapper: React.FC = () => {
   const [entities, setEntities] = useState<any[]>([]);
