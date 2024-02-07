@@ -1,7 +1,7 @@
 {
-  "projectName": "My Project",
-  "taskflowName": "My Monitor Activities Flow",
-  "taskflowSlug": "{{ cookiecutter.taskflowName.lower().replace(' ', '-').replace('_', '-') }}",
-  "pageTitle": "Monitor Activities App",
-  "pageDescription": "Description of this app section"
+  "taskflowName": "my-taskflow",
+  "content": {
+    "pageTitle": "Monitor Activities App",
+    "pageDescription": "Description of this app section"
+  }
 }

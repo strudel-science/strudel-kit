@@ -1,6 +1,6 @@
 {
-  "name": "my-taskflow",
-  "config": {
+  "taskflowName": "my-taskflow",
+  "content": {
     "pageTitle": "Explore Data App",
     "pageDescription": "Description of this app section",
     "columns": [

@@ -28,9 +28,7 @@ def create_app(
   try:
     print("[white]Creating your app...")
     clear_cookiecutter_cache()
-    extra_args = parse_json_to_args(config)
-    
-    subprocess.run([
+    args = [
       "cookiecutter", 
       "gh:strudel-science/strudel-kit",
       "--checkout", 
@@ -39,15 +37,25 @@ def create_app(
       "strudel-cookiecutter/base",
       "--output-dir",
       output_dir,
-      *(['--no-input'] if len(extra_args) > 0 else []),
-      f"projectSlug={name}"
-    ] + extra_args, check=True)
+      f"projectName={name}"
+    ]
+    
+    if config:
+      # Convert the user's json config into a yaml config 
+      # so that it is compatible with cookiecutter and follows its specs.
+      temp_yaml_config = "temp_strudel_config.yaml"
+      json_to_yaml(config, temp_yaml_config)
+      # Add in extra args so the config file is used
+      args[1:1] = ["--config-file", temp_yaml_config]
+      args.insert(-1, "--no-input")
+    
+    subprocess.run( + extra_args, check=True)
   except:
     print("[bold red]Encountered a problem.[/bold red] Your app has not been created.")
     raise typer.Abort()
   else:
     print(Padding("[bold green]Successfully created your strudel app!", (1, 0, 0, 0)))
-    print(f"Your app was built in {os.path.abspath(os.path.join(output_dir, name))}")
+    print(f"[white]Your app was built in {os.path.abspath(os.path.join(output_dir, name))}")
     print(Padding("First, get your app up and running:", (1, 0)))
     print(Padding(f"[white]$ cd {os.path.relpath(os.path.join(output_dir, name))}", (0, 0, 0, 4)))
     print(Padding("$ npm install", (0, 0, 0, 4)))
@@ -96,19 +104,14 @@ def add_taskflow(
       f"strudel-cookiecutter/{template.value}",
       "--output-dir",
       output_dir,
-      f"name={name}"
+      f"taskflowName={name}"
     ]
+
     if config:
       # Convert the user's json config into a yaml config 
       # so that it is compatible with cookiecutter and follows its specs.
       temp_yaml_config = "temp_strudel_config.yaml"
-      json_file = open(config)
-      json_data = json.load(json_file)
-      json_data = {"default_context": json_data}
-      yaml_file=open(temp_yaml_config,"w")
-      yaml.dump(json_data, yaml_file)
-      yaml_file.close()
-      json_file.close()
+      json_to_yaml(config, temp_yaml_config)
       # Add in extra args so the config file is used
       args[1:1] = ["--config-file", temp_yaml_config]
       args.insert(-1, "--no-input")
@@ -119,7 +122,7 @@ def add_taskflow(
     raise typer.Abort()
   else:
     print(Padding("[bold green]Successfully added a task flow to your strudel app!", (1, 0, 0, 0)))
-    print(f"Your new task flow was built in {os.path.abspath(os.path.join(output_dir, name))}")
+    print(f"[white]Your new task flow was built in {os.path.abspath(os.path.join(output_dir, name))}")
     print(Padding("Browse more task flows: https://strudel.science/design-system/task-flows/overview", (1, 0, 0, 0)))
     print("Onwards!")
   finally:

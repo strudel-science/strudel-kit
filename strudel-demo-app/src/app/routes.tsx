@@ -15,12 +15,6 @@ import { TaskFlowsPage } from "./home/TaskFlowsPage";
 import { ActivityDetail } from "./monitor-activities/ActivityDetail";
 import { ActivityList } from "./monitor-activities/ActivityList";
 import { MonitorActivitiesWrapper } from "./monitor-activities/MonitorActivitiesWrapper";
-import { MyDataInputs } from "./my-analysis/DataInputs";
-import { MyAnalysisPage } from "./my-analysis/MyAnalysisPage";
-import { MyAnalysisSettings } from "./my-analysis/MyAnalysisSettings";
-import { MyResults } from "./my-analysis/Results";
-import { RunningMyAnalysis } from "./my-analysis/Running";
-import { MyScenario } from "./my-analysis/Scenario";
 import { RunComputationWrapper } from "./run-computation";
 import { DataInputs } from "./run-computation/DataInputs";
 import { Settings } from "./run-computation/Settings";
@@ -170,33 +164,6 @@ export const router = createHashRouter([
       },
     ]
   },
-  // My Analysis
-  {
-    path: "/myanalysis",
-    element: <MyAnalysisPage />,
-   },
-   {
-     path: "/myanalysis",
-     element: <MyScenario />,
-     children: [
-       {
-         path: 'data-inputs',
-         element: <MyDataInputs />
-       },
-       {
-         path: 'settings',
-         element: <MyAnalysisSettings />
-       },
-       {
-         path: 'running',
-         element: <RunningMyAnalysis />
-       },
-       {
-         path: 'results',
-         element: <MyResults />
-       }
-     ]
-   },
   {
     path: '*',
     element: <Navigate to="/" replace />

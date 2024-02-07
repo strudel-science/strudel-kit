@@ -1,5 +1,6 @@
 {
-  "projectName": "My Science App",
-  "projectSlug": "{{ cookiecutter.projectName.lower().replace(' ', '-').replace('_', '-') }}",
-  "projectShortDescription": "This is my science app built with strudel."
+  "projectName": "my-strudel-app",
+  "content": {
+    "projectTitle": "My Science App"
+  }
 }

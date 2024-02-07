@@ -1,26 +1,9 @@
 import json
+import yaml
 import typer
 import os
 import shutil
 from . import __version__
-
-
-def parse_json_to_args(filename: str):
-  """
-  A JSON config file can be passed to the command 
-  to override the default cookiecutter.json and surpass
-  the cookiecutter command-line prompts. This file is parsed
-  and added as extra_context args to cookiecutter.
-  """
-
-  args = []
-  if filename:
-    f = open(filename)
-    data = json.load(f)
-    for d in data:
-      args.append(f"{d}={data[d]}")
-    f.close()
-  return args
 
 
 def name_callback(value: str):
@@ -51,3 +34,34 @@ def clear_cookiecutter_cache():
   strudel_template_cache = os.path.join(home, ".cookiecutters/strudel-kit")
   if os.path.exists(strudel_template_cache) and os.path.isdir(strudel_template_cache):
     shutil.rmtree(strudel_template_cache)
+
+
+def parse_json_to_args(filename: str):
+  """
+  A JSON config file can be passed to the command 
+  to override the default cookiecutter.json and surpass
+  the cookiecutter command-line prompts. This file is parsed
+  and added as extra_context args to cookiecutter.
+  """
+
+  args = []
+  if filename:
+    f = open(filename)
+    data = json.load(f)
+    for d in data:
+      args.append(f"{d}={data[d]}")
+    f.close()
+  return args
+
+
+def json_to_yaml(json_file: str, output_file: str):
+  """
+  Create a yaml file from a given path to a json file.
+  """
+  json_file = open(json_file)
+  json_data = json.load(json_file)
+  json_data = {"default_context": json_data}
+  yaml_file=open(output_file,"w")
+  yaml.dump(json_data, yaml_file)
+  yaml_file.close()
+  json_file.close()

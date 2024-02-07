@@ -1,7 +1,7 @@
 {
-  "projectName": "My Project",
-  "taskflowName": "My Contribute Data Flow",
-  "taskflowSlug": "{{ cookiecutter.taskflowName.lower().replace(' ', '-').replace('_', '-') }}",
-  "pageTitle": "Contribute Data App",
-  "pageDescription": "Description of this app section"
+  "taskflowName": "my-taskflow",
+  "content": {
+    "pageTitle": "Contribute Data App",
+    "pageDescription": "Description of this app section"
+  }
 }

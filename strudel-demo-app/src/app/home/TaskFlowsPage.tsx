@@ -1,6 +1,4 @@
 import React, { PropsWithChildren, ReactNode, useEffect, useState } from 'react';
-import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
-import * as d3 from 'd3-fetch';
 import { Stack, Link, Container, Paper, List, ListItem, Typography, Box } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 
