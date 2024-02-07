@@ -2,6 +2,11 @@
 
 Both the `create-app` and `add-taskflow` commands accept config files so that you can customize the contents of your generated strudel code.
 
+```
+strudel create-app my-app --config base-config.json
+strudel add-taskflow my-taskflow --template explore-data --config my-taskflow-config.json
+```
+
 ### `create-app` Config File
 
 Below are the options for the config file you can pass to the `create-app` command. These options are used to build your initial base strudel app.
