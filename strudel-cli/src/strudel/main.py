@@ -7,7 +7,7 @@ import yaml
 from os.path import expanduser
 from typing import Optional
 from typing_extensions import Annotated
-from .utils import parse_json_to_args, name_callback, version_callback, clear_cookiecutter_cache
+from .utils import json_to_yaml, name_callback, version_callback, clear_cookiecutter_cache
 from enum import Enum
 from rich import print
 from rich.padding import Padding
@@ -49,7 +49,7 @@ def create_app(
       args[1:1] = ["--config-file", temp_yaml_config]
       args.insert(-1, "--no-input")
     
-    subprocess.run( + extra_args, check=True)
+    subprocess.run(args, check=True)
   except:
     print("[bold red]Encountered a problem.[/bold red] Your app has not been created.")
     raise typer.Abort()
