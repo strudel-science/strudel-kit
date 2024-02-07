@@ -1,3 +1,7 @@
 import { FilterConfig } from "./context/ContextProvider";
 
-export const filters: FilterConfig[] = {{ cookiecutter.config.filters }};
+export const filters: FilterConfig[] = [
+  {% for filter in cookiecutter.config.filters %}
+    {{ filter }}
+  {% endfor %}
+];
