@@ -17,7 +17,17 @@ export const ExploreDataWrapper: React.FC = () => {
   useEffect(() => {
     if (entities.length === 0) {
       const getData = async () => {
-        const data = await d3.tsv(`${basename}/data/Current_Genomes.tsv`);
+        const filename = '{{ cookiecutter.content.dataSource }}';
+        const fileExtension = filename.split('.').pop();
+        const filePath = `${basename}/data/${filename}`;
+        let data: any = null;
+        if (fileExtension === 'csv') {
+          data = await d3.csv(filePath);
+        } else if (fileExtension === 'tsv') {
+          data = await d3.tsv(filePath);
+        } else if (fileExtension === 'json') {
+          data = await d3.json(filePath);
+        }
         setEntities(data);
       }
       getData();

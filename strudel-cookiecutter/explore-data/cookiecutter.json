@@ -3,6 +3,7 @@
   "content": {
     "pageTitle": "Explore Data App",
     "pageDescription": "Description of this app section",
+    "dataSource": "Current_Genomes.tsv",
     "columns": [
       { 
         "field": "first_field", 
