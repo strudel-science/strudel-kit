@@ -2,6 +2,8 @@ import typer
 import subprocess
 import os
 import shutil
+import json
+import yaml
 from os.path import expanduser
 from typing import Optional
 from typing_extensions import Annotated
@@ -85,10 +87,8 @@ def add_taskflow(
   try:
     print("[white]Adding a task flow to your app...")
     clear_cookiecutter_cache()
-    extra_args = parse_json_to_args(config)
-
-    subprocess.run([
-      "cookiecutter", 
+    args = [
+      "cookiecutter",
       "gh:strudel-science/strudel-kit", 
       "--checkout", 
       branch,
@@ -96,9 +96,24 @@ def add_taskflow(
       f"strudel-cookiecutter/{template.value}",
       "--output-dir",
       output_dir,
-      *(['--no-input'] if len(extra_args) > 0 else []),
       f"name={name}"
-    ] + extra_args, check=True)
+    ]
+    if config:
+      # Convert the user's json config into a yaml config 
+      # so that it is compatible with cookiecutter and follows its specs.
+      temp_yaml_config = "temp_strudel_config.yaml"
+      json_file = open(config)
+      json_data = json.load(json_file)
+      json_data = {"default_context": json_data}
+      yaml_file=open(temp_yaml_config,"w")
+      yaml.dump(json_data, yaml_file)
+      yaml_file.close()
+      json_file.close()
+      # Add in extra args so the config file is used
+      args[1:1] = ["--config-file", temp_yaml_config]
+      args.insert(-1, "--no-input")
+    
+    subprocess.run(args, check=True)
   except:
     print("[bold red]Encountered a problem.[/bold red] Your app has not been created.")
     raise typer.Abort()
@@ -107,6 +122,9 @@ def add_taskflow(
     print(f"Your new task flow was built in {os.path.abspath(os.path.join(output_dir, name))}")
     print(Padding("Browse more task flows: https://strudel.science/design-system/task-flows/overview", (1, 0, 0, 0)))
     print("Onwards!")
+  finally:
+    if config:
+      os.remove(temp_yaml_config)
 
 
 @app.callback()
