@@ -82,25 +82,15 @@ Creates the base scaffolding for a web app based on the STRUDEL design system.
 strudel create-app <app-name> [OPTIONS]
 ```
 
+#### Arguments
+
+- `<app-name>`: Name to use for the app's root directory (e.g. `my-app`). Must be a valid directory name. [required]
+
 #### Options
 
-| Option &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Required or Optional | Description |
-| -------- | ------- | ------- |
-| `<app-name>` | required | Name to use for the app's root directory (e.g. `my-app`). Must be a valid directory name.|
-| `--config`, `-c`  | optional | JSON configuration file to use to build the base app. See the Base Config File section for how to format this file. If not supplied, you will be prompted on the command-line to give configuration values. |
-| `--output-dir`, `-o` | optional | Path to the directory where the app should be created. Defaults to current directory. |
-| `--branch`, `-b` | optional | Branch in strudel-kit repo that should be used for the templates. Defaults to `main`. This option is primarily for use by contributors. |
-
-#### Base Config File
-
-```js
-{
-  // Title of the project to display in the top app bar.
-  "projectName": "My Base App",
-  // Short description of the project.
-  "projectShortDescription": "This is my science app built with strudel and my custom json config."
-}
-```
+- `--config`, `-c`: JSON configuration file to use to build the base app. See [CONFIGS.md](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/CONFIGS.md) for how to format this file. If not supplied, you will be prompted on the command-line to give configuration values.
+- `--output-dir`, `-o`: Path to the directory where the app should be created. Defaults to current directory.
+- `--branch`, `-b`: Branch in strudel-kit repo that should be used for the templates. Defaults to `main`. This option is primarily for use by contributors.
 
 ### `strudel add-taskflow`
 
@@ -110,30 +100,17 @@ Adds a new task flow to an existing strudel app. Give the task flow a name and c
 strudel add-taskflow <taskflow-name> --template <taskflow-template> [OPTIONS]
 ```
 
+#### Arguments
+
+- `<taskflow-name>`: Name to use for the task flow's root directory (e.g. `my-taskflow`). Must be a valid directory name. [required]
+
 #### Options
 
-| Option &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Required or Optional | Description |
-| -------- | ------- | ------- |
-| `<taskflow-name>` | required | Name to use for the task flow's root directory (e.g. `my-taskflow`). Must be a valid directory name.|
-| `--template`, `-t` | required | Name of the strudel task flow template to use to scaffold the task flow. Available options: `compare-data`, `contribute-data`, `explore-data`, `monitor-activities`, `run-computation`, `search-data-repositories` |
-| `--config`, `-c`  | optional | JSON configuration file to use to build the task flow. See the Task Flow Config File section for how to format this file. If not supplied, you will be prompted on the command-line to give configuration values. |
-| `--output-dir`, `-o` | optional | Path to the directory where the task flow should be created. Defaults to `src/apps`. |
-| `--branch`, `-b` | optional | Branch in strudel-kit repo that should be used for the templates. Defaults to `main`. This option is primarily for use by contributors. |
-
-#### Task Flow Config File
-
-```js
-{
-  // Title of the project to display in the top app bar.
-  "projectName": "My Project",
-  // Title of the task flow to display in navigation.
-  "taskflowName": "My Compare Data Flow",
-  // Title to display on the task flow page.
-  "pageTitle": "Compare Data App",
-  // Title to display on the task flow page.
-  "pageDescription": "Description of this app section"
-}
-```
+- `--template`, `-t`: Name of the strudel task flow template to use to scaffold the task flow. [required]
+  - Available options: `compare-data`, `contribute-data`, `explore-data`, `monitor-activities`, `run-computation`, `search-data-repositories`
+-  `--config`, `-c`: JSON configuration file to use to build the task flow. See [CONFIGS.md](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/CONFIGS.md) for how to format this file. If not supplied, you will be prompted on the command-line to give configuration values.
+- `--output-dir`, `-o`: Path to the directory where the task flow should be created. Defaults to `src/apps`.
+- `--branch`, `-b`: Branch in strudel-kit repo that should be used for the templates. Defaults to `main`. This option is primarily for use by contributors.
 
 ## Developer Quickstart
 
