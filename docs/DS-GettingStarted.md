@@ -38,7 +38,14 @@ git clone https://github.com/strudel-science/strudel-kit
 pip install strudel-kit/strudel-cli
 ```
 
+If all the above steps went well (!) you should be able to run the `strudel` command in your current environment.
 
+```
+❯ strudel --version
+strudel-cli 0.0.2
+```
+
+If this fails, some common problems are that you are running in a terminal where you have not activated the (e.g., *miniconda*) Python environment into which you installed strudel-cli (you must do this every time you start a new terminal), or the installation somehow did not complete. Feel free to reach out to the team at [strudel@lbl.gov](mailto:strudel@lbl.gov) for help.
 
 ## Build an App with STRUDEL
 
