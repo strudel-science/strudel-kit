@@ -5,22 +5,24 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useAppState } from '../context/ContextProvider';
   
+/**
+ * Top navigation bar component
+ */
 export const TopBar: React.FC = () => {
   const app = useAppState();
   return (
     <AppBar color="default" position="static">
       <Toolbar>
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          sx={{ "{{" }} mr: 2 {{ "}}" }}
-        >
-          <Link component={RouterLink} to="/">
+        <Link component={RouterLink} to="/">
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+          >
             <MenuIcon />
-          </Link>
-        </IconButton>
+          </IconButton>
+        </Link>
         <Typography variant="h6" component="div" sx={{ "{{" }} flexGrow: 1 {{ "}}" }}>
           {app.state.projectTitle}
         </Typography>
