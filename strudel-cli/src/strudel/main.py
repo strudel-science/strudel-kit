@@ -175,7 +175,8 @@ class TaskFlow(str, Enum):
     run_computation = "run-computation"
     search_data_repositories = "search-data-repositories"
 
-
+# TODO: Make it fail if you aren't inside a strudel app when you run this
+# Remove args and just let them be in the config?
 @app.command()
 def add_taskflow(
     name: Annotated[
