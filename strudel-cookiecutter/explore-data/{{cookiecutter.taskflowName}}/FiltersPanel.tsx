@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Filters } from '../../components/Filters';
 import { FilterField } from '../../components/FilterField';
 import { CheckboxList, CheckboxOption } from '../../components/CheckboxList';
@@ -6,28 +6,9 @@ import { setFilter } from '../../components/contexts/analytics/actions';
 import { FilterConfig, useExploreData } from './context/ContextProvider';
 import { StrudelSlider } from '../../components/StrudelSlider';
 
-enum FilterType {
-  CHECKBOX_LIST = 'CHECKBOX_LIST',
-  RANGE_SLIDER = 'RANGE_SLIDER',
-}
-
-interface Filter {
-  label: string;
-  field: string;
-  type: FilterType;
-  defaultValue: any;
-}
-
 interface FiltersPanelProps {
   onClose: () => any
 }
-
-const initFilterValues = (filters: Filter[]) => {
-  const filterValues: any = {};
-  filters.forEach((filter) => {
-    filterValues[filter.field] = filter.defaultValue;
-  })
-};
 
 export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => { 
   const {state, dispatch} = useExploreData();
@@ -70,7 +51,6 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
     <Filters
       onClose={props.onClose}
       sx={{ "{{" }}
-        backgroundColor: 'white',
         pt: 3,
         pb: 3,
         pl: 2,

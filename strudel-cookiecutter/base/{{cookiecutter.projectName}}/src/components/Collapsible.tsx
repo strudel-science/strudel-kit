@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import { Box, Button, ButtonProps, Stack, StackProps } from '@mui/material';
+import { Box, Stack, StackProps } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
@@ -42,13 +42,13 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
 
   return (
     <Stack spacing={1} {...rest}>
-      <Button
-        disableRipple
+      <Box
+        role="button"
         onClick={handleClick}
         sx={{ "{{" }}
-          color: color,
+          cursor: 'pointer',
           display: 'block',
-          p: 0,
+          padding: 0,
           textAlign: 'left',
           textTransform: 'none',
           width: '100%',
@@ -57,7 +57,6 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
             opacity: 0.7
           }
         {{ "}}" }}
-        {...buttonProps}
       >
         <Stack spacing={1} direction="row" alignItems="center">
           {!isOpenState && (
@@ -80,7 +79,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
           )}
           <Box flex={1}>{label}</Box>
         </Stack>
-      </Button>
+      </Box>
       {isOpenState && (
         <Box>
           {children}
