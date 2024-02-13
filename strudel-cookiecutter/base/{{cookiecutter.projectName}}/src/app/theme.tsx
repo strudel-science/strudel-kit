@@ -8,6 +8,7 @@ import { createTheme } from "@mui/material";
 export const theme = createTheme({
   /** Color palette to use throughout the app */
   palette: {
+    mode: 'light',
     background: {
       default: '#F5F5F6',
       paper: '#fff',
@@ -74,7 +75,7 @@ export const theme = createTheme({
   },
   /** Default options for MUI components used throughout the app */
   components: {
-        MuiButton: {
+    MuiButton: {
       variants: [
         {
           props: { color: 'neutral' },
