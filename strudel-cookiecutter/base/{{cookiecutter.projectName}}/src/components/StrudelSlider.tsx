@@ -1,7 +1,5 @@
-import React, { ReactNode, useState } from 'react';
-import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Slider, SliderProps, Stack, StackProps, TextField, TextFieldProps, Typography } from '@mui/material';
-import { Collapsible } from './Collapsible';
-
+import React, { useState } from 'react';
+import { Slider, SliderProps } from '@mui/material';
 
 interface StrudelSliderProps extends SliderProps {
 
@@ -26,6 +24,8 @@ export const StrudelSlider: React.FC<StrudelSliderProps> = ({
     <Slider
       value={value}
       onChange={handleChange}
+      min={min}
+      max={max}
       {...rest}
     />
   )
