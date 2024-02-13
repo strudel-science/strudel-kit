@@ -77,7 +77,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
         filter={
           <CheckboxList
             options={categoryOptions}
-            onChange={(values) => dispatch(setFilter({ field: 'category', value: values, operator: 'contains one of' }))}
+            onChange={(values) => dispatch(setFilter({ field: 'category', value: values, operator: 'equals one of' }))}
           />
         }
       />
@@ -115,7 +115,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
         filter={
           <CheckboxList
             options={tagOptions}
-            onChange={(values) => dispatch(setFilter({ field: 'tags', value: values, operator: 'contains one of' }))}
+            onChange={(values) => dispatch(setFilter({ field: 'tags', value: values, operator: 'equals one of' }))}
           />
         }
       />
