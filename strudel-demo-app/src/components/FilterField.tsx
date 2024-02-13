@@ -1,14 +1,6 @@
-import React, { ReactNode, useState } from 'react';
-import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Stack, StackProps, TextField, TextFieldProps, Typography } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import { CheckboxList } from './CheckboxList';
-import { useAnalytics } from './contexts/analytics/AnalyticsProvider';
+import React, { ReactNode } from 'react';
+import { Box, Stack, StackProps, Typography } from '@mui/material';
 import { Collapsible } from './Collapsible';
-
-enum FilterType {
-  CHECKBOX_LIST = 'CHECKBOX_LIST',
-  RANGE_SLIDER = 'RANGE_SLIDER',
-}
 
 interface FilterFieldProps extends StackProps {
   label: ReactNode;
@@ -20,10 +12,11 @@ export const FilterField: React.FC<FilterFieldProps> = ({
   label,
   filter,
   isCollapsible,
+  color,
   ...rest
 }) => {
   const defaultLabel = (
-    <Typography color="black">
+    <Typography>
       {label}
     </Typography>
   );
@@ -34,7 +27,6 @@ export const FilterField: React.FC<FilterFieldProps> = ({
       {isCollapsible ? (
         <Collapsible
           {...rest}
-          color="black"
           label={labelComponent}
         >
           <Box pl={4}>

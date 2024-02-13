@@ -8,6 +8,7 @@ import { createTheme } from "@mui/material";
 export const theme = createTheme({
   /** Color palette to use throughout the app */
   palette: {
+    mode: 'light',
     background: {
       default: '#F5F5F6',
       paper: '#fff',
