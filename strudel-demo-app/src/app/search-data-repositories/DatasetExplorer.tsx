@@ -31,10 +31,9 @@ export const DatasetExplorer: React.FC = () => {
       <PageHeader
         pageTitle="Dataset Releases"
         description="Datasets"
-        mb={1}
-        p={2}
         sx={{
-          backgroundColor: 'white'
+          marginBottom: 1,
+          padding: 2,
         }}
       />
       <Grid container spacing={1}>

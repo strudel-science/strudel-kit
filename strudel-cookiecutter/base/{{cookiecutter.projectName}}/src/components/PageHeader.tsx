@@ -1,8 +1,8 @@
 import React from 'react';
-import { Box, BoxProps, Breadcrumbs, Button, Grid, Link, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
+import { PaperProps, Breadcrumbs, Link, Paper, Stack, Typography } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 
-interface PageHeaderProps extends BoxProps {
+interface PageHeaderProps extends PaperProps {
   pageTitle: string;
   breadcrumbTitle?: string;
   description?: string;
@@ -17,7 +17,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   ...rest
 }) => {
   return (
-    <Box {...rest}>
+    <Paper elevation={0} {...rest}>
       <Stack direction="row" justifyContent="space-between">
         <Stack spacing={1}>
           <Breadcrumbs aria-label="breadcrumb">
@@ -37,6 +37,6 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
         </Stack>
         {actions}
       </Stack>
-    </Box>
+    </Paper>
   )
 }

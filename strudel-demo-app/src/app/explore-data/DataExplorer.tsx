@@ -43,10 +43,9 @@ export const DataExplorer: React.FC = () => {
       <PageHeader
         pageTitle="Genome Releases"
         description="All gene sets have been annotated with KOG, KEGG, ENZYME, Pathway and the InterPro family of protein analysis tools."
-        mb={1}
-        p={2}
         sx={{
-          backgroundColor: 'white'
+          marginBottom: 1,
+          padding: 2,
         }}
       />
       <Grid container spacing={1}>

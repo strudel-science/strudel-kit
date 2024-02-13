@@ -1,5 +1,5 @@
-import React, { ReactNode, useEffect, useState } from 'react';
-import { Box, Button, Checkbox, FormControlLabel, FormGroup, FormGroupProps, FormLabel, IconButton, Link, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
+import React from 'react';
+import { Box, Button, IconButton, Link, Paper, Stack, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link as RouterLink } from 'react-router-dom';
 import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
@@ -31,11 +31,11 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
   })
 
   return (
-    <Box
+    <Paper
+      elevation={0}
       sx={{ "{{" }}
-        backgroundColor: 'white',
         height: '100%',
-        p: 2
+        padding: 2
       {{ "}}" }}
     >
       <Stack spacing={3}>
@@ -103,6 +103,6 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
           </Button>
         </Stack>
       </Stack>
-    </Box>
+    </Paper>
   );
 }

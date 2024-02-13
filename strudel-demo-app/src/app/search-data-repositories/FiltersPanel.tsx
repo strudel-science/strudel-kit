@@ -65,7 +65,6 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
     <Filters
       onClose={props.onClose}
       sx={{
-        backgroundColor: 'white',
         pt: 3,
         pb: 3,
         pl: 2,

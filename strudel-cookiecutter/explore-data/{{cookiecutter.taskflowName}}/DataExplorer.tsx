@@ -43,10 +43,9 @@ export const DataExplorer: React.FC = () => {
       <PageHeader
         pageTitle="{{ cookiecutter.content.pageTitle }}"
         description="{{ cookiecutter.content.pageDescription }}"
-        mb={1}
-        p={2}
         sx={{ "{{" }}
-          backgroundColor: 'white'
+          marginBottom: 1,
+          padding: 2,
         {{ "}}" }}
       />
       <Grid container spacing={1}>
