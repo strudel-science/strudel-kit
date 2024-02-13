@@ -19,6 +19,17 @@ export const StrudelSlider: React.FC<StrudelSliderProps> = ({
   const handleChange = (event: Event, value: number | number[], activeThumb: number) => {
     setValue(value as number[])
   }
+
+  const marks = [
+    {
+      value: min,
+      label: min,
+    },
+    {
+      value: max,
+      label: max,
+    }
+  ];
   
   return (
     <Slider
@@ -26,6 +37,7 @@ export const StrudelSlider: React.FC<StrudelSliderProps> = ({
       onChange={handleChange}
       min={min}
       max={max}
+      marks={marks}
       {...rest}
     />
   )
