@@ -26,7 +26,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
         return (
           <CheckboxList
             options={filter.props.options}
-            onChange={(values) => dispatch(setFilter({ field: filter.field, value: values, operator: 'contains one of' }))}
+            onChange={(values) => dispatch(setFilter({ field: filter.field, value: values, operator: 'equals one of' }))}
           />
         );
       }
