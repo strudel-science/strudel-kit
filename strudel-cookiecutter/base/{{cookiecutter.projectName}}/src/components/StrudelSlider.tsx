@@ -20,12 +20,24 @@ export const StrudelSlider: React.FC<StrudelSliderProps> = ({
     setValue(value as number[])
   }
   
+  const marks = [
+    {
+      value: min,
+      label: min,
+    },
+    {
+      value: max,
+      label: max,
+    }
+  ];
+  
   return (
     <Slider
       value={value}
       onChange={handleChange}
       min={min}
       max={max}
+      marks={marks}
       {...rest}
     />
   )

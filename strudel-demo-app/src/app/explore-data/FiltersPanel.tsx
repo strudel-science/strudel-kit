@@ -51,10 +51,10 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
     <Filters
       onClose={props.onClose}
       sx={{
-        pt: 3,
-        pb: 3,
-        pl: 2,
-        pr: 2
+        paddingTop: 3,
+        paddingBottom: 3,
+        paddingLeft: 2,
+        paddingRight: 2
       }}
     >
       {state.filters.map((f, i) => (

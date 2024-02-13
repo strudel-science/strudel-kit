@@ -26,7 +26,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
         return (
           <CheckboxList
             options={filter.props.options}
-            onChange={(values) => dispatch(setFilter({ field: filter.field, value: values, operator: 'contains one of' }))}
+            onChange={(values) => dispatch(setFilter({ field: filter.field, value: values, operator: 'equals one of' }))}
           />
         );
       }
@@ -51,10 +51,10 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
     <Filters
       onClose={props.onClose}
       sx={{ "{{" }}
-        pt: 3,
-        pb: 3,
-        pl: 2,
-        pr: 2
+        paddingTop: 3,
+        paddingBottom: 3,
+        paddingLeft: 2,
+        paddingRight: 2
       {{ "}}" }}
     >
       {state.filters.map((f, i) => (
