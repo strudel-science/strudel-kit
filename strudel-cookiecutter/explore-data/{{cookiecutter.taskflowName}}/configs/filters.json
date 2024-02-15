@@ -1,0 +1,28 @@
+[
+  {
+    "field": "first_field",
+    "displayName":"My Checkbox Filter",
+    "filterType":"CheckboxList",
+    "props":{
+      "options":[
+        {
+          "label":"Option 1",
+          "value": 1
+        },
+        {
+          "label":"Option 2",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "field":"second_field",
+    "displayName":"My Slider Filter",
+    "filterType":"Slider",
+    "props":{
+      "min":0,
+      "max":1000
+    }
+  }
+]

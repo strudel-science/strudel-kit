@@ -160,6 +160,9 @@ def create_app(
             )
         )
         print("Onwards!")
+    finally:
+        if config:
+            os.remove(temp_yaml_config)
 
 
 class TaskFlow(str, Enum):
@@ -261,6 +264,16 @@ def add_taskflow(
         print(str(e))
         raise typer.Abort()
     else:
+        if config:
+            try:
+                with open(config, "w", encoding="utf-8") as f:
+                    config_json = json.load(f)
+
+                with open(os.path.abspath(os.path.join(output_dir, name, 'configs', 'filters.json')), "w", encoding="utf-8") as filters_file:
+                    json.dump(config_json['content']['filters'], f, ensure_ascii=False, indent=4)
+            except:
+                print("Error copying filters into json file")
+            
         print(
             Padding(
                 "[bold green]Successfully added a task flow to your strudel app!",

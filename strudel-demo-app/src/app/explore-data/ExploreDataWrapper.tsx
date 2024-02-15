@@ -6,8 +6,8 @@ import { basename } from '../App';
 import { Box } from '@mui/material';
 import { Outlet } from 'react-router';
 import { ExploreDataProvider } from './context/ContextProvider';
-import { columns } from './columns';
-import { filters } from './filters';
+import columns from './configs/columns.json';
+import filters from './configs/filters.json';
 import { TopBar } from '../../components/TopBar';
 
 export const ExploreDataWrapper: React.FC = () => {
