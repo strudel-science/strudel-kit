@@ -86,7 +86,101 @@ Next we will learn how to do something a bit more useful with the app by adding 
 
 ## Add a Task Flow to Your App
 
-1. 1. Configure the task flow
+### Introduction
+
+As described elsewhere in the [documentation](https://strudel.science/design-system/task-flows/overview/), Task Flows are are a set of steps (represented by a series of screens) that help to accomplish a task and represent how a user progresses through a UI. To start building your app, you first add a Task Flow. In this example, we will add the Task Flow called "Explore Data".
+
+There are 3 basic steps to adding a new Task Flow, which will be covered in more detail below: (1) Create a simple configuration for your Task Flow -- currently this is done by editing a file, (2) Add the configured Task Flow into your app's source code, (3) Connect the Task Flow's page to the navigation of the main app.
+
+### (1) Configure Task Flow
+
+You only need to configure a Task Flow once, at creation time. You can think of configuration as a "helper" that is providing some simple text-based information that STRUDEL translates into the appropriate JavaScript code as it copies the files for your chosen Task Flow. 
+
+The configuration for a Task Flow is stored in a JSON file, though this is optional. If you don't provide a configuration file, you will be prompted for a couple of key values interactively. For "Explore Data", configuration is a chance to give some example starting data, so we will use the JSON file.
+
+#### Create JSON input
+
+To create the configuration file, cut and paste the following text into a file named, e.g., `explore.json`. We will refer back to the contents of this file later when it will be easier to see what effect the various parts of it had on the initial app setup. Also remember that this entire file is *optional* and you can get started with no configuration file at all (in which case you will be simply be prompted for a couple of values).
+
+```
+{
+  "taskflowName": "foo",
+  "content": {
+    "pageTitle": "Explore Data App",
+    "pageDescription": "Explore some simple genome data",
+    "dataSource": "Current_Genomes.tsv",
+    "columns": [
+      { 
+        "field": "Organism", 
+        "headerName": "Organism", 
+        "width": 200 
+      },
+      {
+        "field": "Proteome_ID",
+        "headerName": "Proteome ID",
+        "width": 150
+      },
+      {
+        "field": "Common_Name",
+        "headerName": "Common name",
+        "width": 200
+      }
+    ],
+    "filters": [
+      {
+        "field": "Organism",
+        "displayName": "Organism",
+        "filterType": "CheckboxList",
+        "props": {
+          "options": [
+            {
+              "label": "Acorus",
+              "value": "Acorus"
+            },
+            {
+              "label": "Zostera",
+              "value": "Zostera"
+            }
+          ]
+        }
+      },
+      {
+        "field": "Proteome_ID",
+        "displayName": "Proteome ID",
+        "filterType": "Slider",
+        "props": {
+          "min": 0,
+          "max": 1000
+        }
+      }
+    ]
+  }
+}
+```
+
+#### Data files
+
+You may have noticed the reference to "Current_Genomes.tsv" in the file above. This is the data file that will be explored by the Task Flow. In a real app you may have a much more sophisticated backend, of course, but the Task Flow comes with the ability to read spreadsheet-like files out of the box. We have taken a shortcut here and used a file that is built in to the distribution. If you are curious, you can see it for yourself in the `public/data/` directory of your app. You could start with your own comma-separated or tab-separated values file by just changing the name in the configuration and modifying the columns and fields accordingly.
+
+#### Next steps
+
+Now we are ready to create and add the task flow!
+
+### (2) Add Task Flow
+
+To add a Task Flow, use the `add-taskflow` sub-command of the `strudel` command-line program. In your terminal, in the directory of the app and configuration file you just created, type:
+
+```
+strudel add-taskflow --template explore-data -c explore.json explore
+```
+
+If this succeeds, then the JavaScript code will all be set up in your app directory and you will have a new page that can browse your data set.
+
+
+
+1. The basic 
+
+2. 1. Configure the task flow
 
    2. Add the task flow
 
