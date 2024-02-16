@@ -40,7 +40,7 @@ export const ExploreDataWrapper: React.FC = () => {
         <TopBar />
       </Box>
       <Box>
-        <ExploreDataProvider data={entities} columns={columns} filters={filters} dataIdField='Proteome_ID'>
+        <ExploreDataProvider data={entities} columns={columns} filters={filters} dataIdField='{{ cookiecutter.dataIdField }}'>
           <Outlet />
         </ExploreDataProvider>
       </Box>

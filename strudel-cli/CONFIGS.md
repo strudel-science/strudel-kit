@@ -62,13 +62,18 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 {
   // Name of the task flow to use as the directory and package name.
   "taskflowName": "my-taskflow",
-  "content": {
-    // Title to display on the task flow page.
-    "pageTitle": "Compare Data App",
-    // Description to display on the task flow page.
-    "pageDescription": "Description of this app section",
-    // List of columns to display in the table
-    "columns": [
+  // Title to display on the task flow page.
+  "pageTitle": "Compare Data App",
+  // Description to display on the task flow page.
+  "pageDescription": "Description of this app section",
+  // Name of the data file to use for the main table and filters
+  "dataSource": "my_data.json",
+  // The property in the dataset that acts as the unique id for each row
+  "dataIdField": "id",
+  // JSON definitions for configurable page elements
+  "definitions": {
+    // List of columns to display in the main table
+    "mainColumns": [
       { 
         // Property name for this column in the data
         "field": "first_field", 

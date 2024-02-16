@@ -3,6 +3,7 @@
   "pageTitle": "Explore Data App",
   "pageDescription": "Description of this app section",
   "dataSource": "my_data.json",
+  "dataIdField": "id",
   "definitions": {
     "mainColumns": [
       { 
