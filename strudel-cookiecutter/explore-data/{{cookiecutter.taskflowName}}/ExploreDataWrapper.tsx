@@ -17,7 +17,7 @@ export const ExploreDataWrapper: React.FC = () => {
   useEffect(() => {
     if (entities.length === 0) {
       const getData = async () => {
-        const filename = '{{ cookiecutter.content.dataSource }}';
+        const filename = '{{ cookiecutter.dataSource }}';
         const fileExtension = filename.split('.').pop();
         const filePath = `${basename}/data/${filename}`;
         let data: any = null;
@@ -40,7 +40,7 @@ export const ExploreDataWrapper: React.FC = () => {
         <TopBar />
       </Box>
       <Box>
-        <ExploreDataProvider data={entities} columns={columns} filters={filters} dataIdField='Proteome_ID'>
+        <ExploreDataProvider data={entities} columns={columns} filters={filters} dataIdField='{{ cookiecutter.dataIdField }}'>
           <Outlet />
         </ExploreDataProvider>
       </Box>

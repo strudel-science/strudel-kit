@@ -1,0 +1,20 @@
+{
+  "mainColumns": [
+    {
+      "field":"first_column",
+      "headerName":"First Column",
+      "width":200
+    }
+  ],
+  "filters": [
+    {
+      "field":"first_column",
+      "displayName":"First Column",
+      "filterType":"Slider",
+      "props":{
+        "min":0,
+        "max":100
+      }
+    }
+  ]
+}

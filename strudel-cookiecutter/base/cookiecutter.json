@@ -1,6 +1,4 @@
 {
   "projectName": "my-strudel-app",
-  "content": {
-    "projectTitle": "My Science App"
-  }
+  "pageTitle": "My Science App"
 }

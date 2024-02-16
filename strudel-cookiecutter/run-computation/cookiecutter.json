@@ -1,7 +1,5 @@
 {
   "taskflowName": "my-taskflow",
-  "content": {
-    "pageTitle": "Run Computation App",
-    "pageDescription": "Description of this app section"
-  }
+  "pageTitle": "Run Computation App",
+  "pageDescription": "Description of this app section"
 }

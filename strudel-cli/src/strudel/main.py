@@ -3,6 +3,7 @@ import logging
 import subprocess
 import os
 import traceback
+import json
 from typing import Optional
 from typing_extensions import Annotated
 from .utils import (
@@ -160,6 +161,9 @@ def create_app(
             )
         )
         print("Onwards!")
+    finally:
+        if config:
+            os.remove(temp_yaml_config)
 
 
 class TaskFlow(str, Enum):
@@ -261,6 +265,21 @@ def add_taskflow(
         print(str(e))
         raise typer.Abort()
     else:
+        if config:
+            try:
+                with open(config) as config_file:
+                    config_json = json.load(config_file)
+                # If the task flow config has a definitions object
+                # then copy the contents of that object into 
+                # the definitions.json file in the generated task flow.
+                # This is necessary because cookiecutter can't copy json verbatim into files.
+                if "definitions" in config_json:
+                    with open(os.path.join(output_dir, name, 'definitions.json'), "w", encoding="utf-8") as definitions_file:
+                        json.dump(config_json['definitions'], definitions_file, ensure_ascii=False, indent=2)
+            except Exception as e:
+                print("Error copying definitions into json file")
+                print(e)
+            
         print(
             Padding(
                 "[bold green]Successfully added a task flow to your strudel app!",

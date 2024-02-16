@@ -1,7 +1,10 @@
 {
   "taskflowName": "my-taskflow",
-  "content": {
-    "pageTitle": "Compare Data App",
-    "pageDescription": "Description of this app section"
-  }
+  "compareItem": "scenario",
+  "compareItemPlural": "scenarios",
+  "mainPageTitle": "Compare Data App",
+  "mainPageDescription": "Description of this app section",
+  "newItemPageTitle": "Compare Data App",
+  "newItemPageDescription": "Description of this app section",
+  "comparePageDescription": "Description of this app section"
 }
