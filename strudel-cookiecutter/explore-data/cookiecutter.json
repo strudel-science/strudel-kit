@@ -1,10 +1,10 @@
 {
-  "taskflowName": "my-taskflow",
-  "content": {
-    "pageTitle": "Explore Data App",
-    "pageDescription": "Description of this app section",
-    "dataSource": "Current_Genomes.tsv",
-    "columns": [
+  "taskflowName": "my-data-explorer",
+  "pageTitle": "Explore Data App",
+  "pageDescription": "Description of this app section",
+  "dataSource": "my_data.json",
+  "definitions": {
+    "mainColumns": [
       { 
         "field": "first_field", 
         "headerName": "Column One", 
