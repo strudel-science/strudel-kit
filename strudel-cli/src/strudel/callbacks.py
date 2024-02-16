@@ -3,7 +3,7 @@ import json
 from .utils import snake_to_camel_case
 
 defaults = {
-    "name": "",
+    "app_name": "",
     "config": "",
     "output_dir": "",
     "branch": "main",
@@ -47,8 +47,11 @@ def config_callback(ctx: typer.Context, param: typer.CallbackParam, value: str):
             defaults_from_config = {}
             for key in defaults:
                 # The config file uses camelCase so convert key before checking
-                # but support snake_case in config too for convenience.
-                if snake_to_camel_case(key) in config_json or key in config_json:
+                key_in_camel_case = snake_to_camel_case(key)
+                if key_in_camel_case in config_json:
+                    defaults_from_config[key] = config_json[key_in_camel_case]
+                # Support snake_case in config too for convenience
+                elif key in config_json:
                     defaults_from_config[key] = config_json[key]
 
             ctx.default_map = defaults

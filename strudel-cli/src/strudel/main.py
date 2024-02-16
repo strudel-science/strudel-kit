@@ -60,7 +60,7 @@ def create_app(
             callback=name_callback,
             help="The name of your app. It's best to use only letters, hyphens, and underscores.",
         ),
-    ] = defaults["name"],
+    ] = defaults["app_name"],
     config: Annotated[
         str,
         typer.Option(
@@ -107,7 +107,7 @@ def create_app(
             "strudel-cookiecutter/base",
             "--output-dir",
             output_dir,
-            f"appName={name}",
+            f"appName={app_name}",
         ]
 
         if config:
@@ -118,6 +118,8 @@ def create_app(
             # Add in extra args so the config file is used
             args[1:1] = ["--config-file", temp_yaml_config]
             args.insert(-1, "--no-input")
+
+        print(args)
 
         proc = subprocess.run(args, check=True)
     except subprocess.CalledProcessError as e:
@@ -137,12 +139,12 @@ def create_app(
             Padding("[bold green]Successfully created your strudel app!", (1, 0, 0, 0))
         )
         print(
-            f"[white]Your app was built in {os.path.abspath(os.path.join(output_dir, name))}"
+            f"[white]Your app was built in {os.path.abspath(os.path.join(output_dir, app_name))}"
         )
         print(Padding("First, get your app up and running:", (1, 0)))
         print(
             Padding(
-                f"[white]$ cd {os.path.relpath(os.path.join(output_dir, name))}",
+                f"[white]$ cd {os.path.relpath(os.path.join(output_dir, app_name))}",
                 (0, 0, 0, 4),
             )
         )
