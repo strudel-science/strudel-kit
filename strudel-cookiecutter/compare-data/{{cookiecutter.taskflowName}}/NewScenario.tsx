@@ -24,8 +24,8 @@ export const NewScenario: React.FC = () => {
   return (
     <Box>
       <PageHeader
-        pageTitle="New Scenario"
-        description="Add a new scenario to compare to the others in your list."
+        pageTitle="{{ cookiecutter.newItemPageTitle }}"
+        description="{{ cookiecutter.newItemPageDescription }}"
         actions={
           <Stack direction="row">
             <Box>

@@ -24,8 +24,8 @@ export const ScenarioComparison: React.FC = () => {
   return (
     <Box>
       <PageHeader
-        pageTitle="Compare Scenarios"
-        description="Comparing multiple saved scenarios for a selected model, calculation, or analysis."
+        pageTitle="{{ cookiecutter.mainPageTitle }}"
+        description="{{ cookiecutter.mainPageDescription }}"
         actions={
           <Stack direction="row">
             <Box>

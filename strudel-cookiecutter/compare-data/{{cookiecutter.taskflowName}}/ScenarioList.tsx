@@ -15,8 +15,8 @@ export const ScenarioList: React.FC = () => {
   return (
     <Box>
       <PageHeader
-        pageTitle="{{ cookiecutter.content.pageTitle }}"
-        description="{{ cookiecutter.content.pageDescription }}"
+        pageTitle="{{ cookiecutter.mainPageTitle }}"
+        description="{{ cookiecutter.mainPageDescription }}"
         actions={
           <Stack direction="row">
             <Box>

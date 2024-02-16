@@ -1,7 +1,5 @@
 {
   "taskflowName": "my-taskflow",
-  "content": {
-    "pageTitle": "Monitor Activities App",
-    "pageDescription": "Description of this app section"
-  }
+  "pageTitle": "Monitor Activities App",
+  "pageDescription": "Description of this app section"
 }

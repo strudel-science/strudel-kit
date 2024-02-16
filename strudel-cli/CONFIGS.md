@@ -15,10 +15,8 @@ Below are the options for the config file you can pass to the `create-app` comma
 {
   // Name of the project to use as the directory and package name.
   "projectName": "my-strudel-app",
-  "content": {
-    // Title of the project to display in the top app bar.
-    "projectTitle": "My Science App"
-  }
+  // Title of the project to display in the top app bar.
+  "pageTitle": "My Science App"
 }
 ```
 
@@ -30,14 +28,22 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 
 ```js
 {
-  // Title of the project to display in the top app bar.
-  "projectName": "My Project",
-  // Title of the task flow to display in navigation.
-  "taskflowName": "My Compare Data Flow",
-  // Title to display on the task flow page.
-  "pageTitle": "Compare Data App",
-  // Title to display on the task flow page.
-  "pageDescription": "Description of this app section"
+  // Name of the task flow to use as the directory/module name.
+  "taskflowName": "my-taskflow",
+  // Noun that describes what is being compared, i.e. what does each row represent?
+  "compareItem": "scenario",
+  // Pluralized version of the compareItem value
+  "compareItemPlural": "scenarios",
+  // Title to display on the main page of the task flow.
+  "mainPageTitle": "Compare Data App",
+  // Description to display on the main page of the task flow.
+  "mainPageDescription": "Description of this app section",
+  // Title to display on the New Item page of the task flow.
+  "newItemPageTitle": "Compare Data App",
+  // Description to display on the New Item page of the task flow.
+  "newItemPageDescription": "Description of this app section",
+  // Description to display on the Compare page of the task flow.
+  "comparePageDescription": "Description of this app section"
 }
 ```
 
@@ -45,14 +51,12 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 
 ```js
 {
-  // Name of the task flow to use as the directory name.
+  // Name of the task flow to use as the directory/module name.
   "taskflowName": "my-taskflow",
-  "content": {
-    // Title to display on the task flow page.
-    "pageTitle": "Compare Data App",
-    // Description to display on the task flow page.
-    "pageDescription": "Description of this app section"
-  }
+  // Title to display on the task flow page.
+  "pageTitle": "Contribute Data App",
+  // Description to display on the task flow page.
+  "pageDescription": "Description of this app section"
 }
 ```
 
@@ -134,14 +138,12 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 
 ```js
 {
-  // Name of the task flow to use as the directory and package name.
+  // Name of the task flow to use as the directory/module name.
   "taskflowName": "my-taskflow",
-  "content": {
-    // Title to display on the task flow page.
-    "pageTitle": "Compare Data App",
-    // Description to display on the task flow page.
-    "pageDescription": "Description of this app section"
-  }
+  // Title to display on the task flow page.
+  "pageTitle": "Monitor Activities App",
+  // Description to display on the task flow page.
+  "pageDescription": "Description of this app section"
 }
 ```
 
@@ -149,14 +151,12 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 
 ```js
 {
-  // Name of the task flow to use as the directory and package name.
+  // Name of the task flow to use as the directory/module name.
   "taskflowName": "my-taskflow",
-  "content": {
-    // Title to display on the task flow page.
-    "pageTitle": "Compare Data App",
-    // Description to display on the task flow page.
-    "pageDescription": "Description of this app section"
-  }
+  // Title to display on the task flow page.
+  "pageTitle": "Run Computation App",
+  // Description to display on the task flow page.
+  "pageDescription": "Description of this app section"
 }
 ```
 
@@ -164,13 +164,11 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 
 ```js
 {
-  // Name of the task flow to use as the directory and package name.
+  // Name of the task flow to use as the directory/module name.
   "taskflowName": "my-taskflow",
-  "content": {
-    // Title to display on the task flow page.
-    "pageTitle": "Compare Data App",
-    // Description to display on the task flow page.
-    "pageDescription": "Description of this app section"
-  }
+  // Title to display on the task flow page.
+  "pageTitle": "Search Data Repositories App",
+  // Description to display on the task flow page.
+  "pageDescription": "Description of this app section"
 }
 ```
