@@ -1,5 +1,5 @@
 {
-  "name": "{{ cookiecutter.projectName }}",
+  "name": "{{ cookiecutter.appName }}",
   "version": "0.0.1",
   "private": true,
   "homepage": ".",
