@@ -6,11 +6,15 @@ import traceback
 import json
 from typing import Optional
 from typing_extensions import Annotated
-from .utils import (
-    json_to_yaml,
+from .callbacks import (
+    defaults,
     name_callback,
     version_callback,
-    clear_cookiecutter_cache,
+    config_callback
+)
+from .utils import (
+    json_to_yaml,
+    clear_cookiecutter_cache
 )
 from enum import Enum
 from rich import print
@@ -50,21 +54,23 @@ def _clear_cache(action):
 
 @app.command()
 def create_app(
-    name: Annotated[
+    app_name: Annotated[
         str,
         typer.Argument(
             callback=name_callback,
             help="The name of your app. It's best to use only letters, hyphens, and underscores.",
         ),
-    ],
+    ] = defaults["name"],
     config: Annotated[
         str,
         typer.Option(
             "--config",
             "-c",
             help="JSON file with configuration values to use to build your app.",
+            callback=config_callback,
+            is_eager=True
         ),
-    ] = "",
+    ] = defaults["config"],
     output_dir: Annotated[
         str,
         typer.Option(
@@ -72,7 +78,7 @@ def create_app(
             "-o",
             help="Directory where the app should be created. Defaults to current directory.",
         ),
-    ] = "",
+    ] = defaults["output_dir"],
     branch: Annotated[
         str,
         typer.Option(
@@ -80,8 +86,8 @@ def create_app(
             "-b",
             help="Branch in strudel-kit repo that should be used for the templates. This option is primarily for use by contributors.",
         ),
-    ] = "main",
-    verbose: Annotated[int, typer.Option("--verbose", "-v", count=True)] = 0,
+    ] = defaults["branch"],
+    verbose: Annotated[int, typer.Option("--verbose", "-v", count=True)] = defaults["verbose"],
 ):
     """
     Create a base strudel web application.
@@ -91,6 +97,7 @@ def create_app(
     try:
         print("[white]Creating your app...")
         _clear_cache("create your app")
+
         args = [
             "cookiecutter",
             "gh:strudel-science/strudel-kit",
@@ -100,7 +107,7 @@ def create_app(
             "strudel-cookiecutter/base",
             "--output-dir",
             output_dir,
-            f"projectName={name}",
+            f"appName={name}",
         ]
 
         if config:
@@ -229,6 +236,7 @@ def add_taskflow(
     try:
         print("[white]Adding a Task Flow to your app...")
         _clear_cache("add a Task Flow")
+
         args = [
             "cookiecutter",
             "gh:strudel-science/strudel-kit",

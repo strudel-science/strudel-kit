@@ -1,12 +1,24 @@
 import typer
+import json
+from .utils import snake_to_camel_case
+
+defaults = {
+    "name": "",
+    "config": "",
+    "output_dir": "",
+    "branch": "main",
+    "template": "",
+    "verbose": 0
+}
 
 
 def name_callback(value: str):
     """
     Ensure app and taskflow names are good react module names
     """
-
-    if value and not value[0].isalpha():
+    if not value:
+        raise typer.BadParameter("Your app name is blank. Please specify a name for your app.")
+    elif value and not value[0].isalpha():
         raise typer.BadParameter("App names must start with a letter")
     elif any(char in value for char in [" ", "/", "\\", ">", "<", "\"", "|", "?", "*", ":"]):
         raise typer.BadParameter("Could not create your app because there's a special character in your app name. For your app name, it's best to use only letters, hyphens, and underscores.")
@@ -17,3 +29,30 @@ def version_callback(value: bool):
     if value:
         print(f"strudel-cli {__version__}")
         raise typer.Exit()
+
+
+def config_callback(ctx: typer.Context, param: typer.CallbackParam, value: str):
+    """
+    Update the default command-line arguments and options based on values from
+    the config file passed in the --config option.
+    """
+    print(value)
+    if value:
+        typer.echo(f"Loading config file: {value}")
+        try: 
+            with open(value) as config_file:
+                config_json = json.load(config_file)
+
+            # Look for command-line options in the config file
+            defaults_from_config = {}
+            for key in defaults:
+                # The config file uses camelCase so convert key before checking
+                # but support snake_case in config too for convenience.
+                if snake_to_camel_case(key) in config_json or key in config_json:
+                    defaults_from_config[key] = config_json[key]
+
+            ctx.default_map = defaults
+            ctx.default_map.update(defaults_from_config)
+        except Exception as ex:
+            raise typer.BadParameter(str(ex))
+    return value
