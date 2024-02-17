@@ -1,5 +1,5 @@
 {
-  "taskflowName": "my-taskflow",
+  "name": "my-taskflow",
   "pageTitle": "Contribute Data App",
   "pageDescription": "Description of this app section"
 }

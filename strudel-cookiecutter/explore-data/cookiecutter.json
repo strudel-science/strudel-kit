@@ -1,49 +1,53 @@
 {
-  "taskflowName": "my-data-explorer",
+  "name": "my-data-explorer",
   "pageTitle": "Explore Data App",
   "pageDescription": "Description of this app section",
   "dataSource": "my_data.json",
   "dataIdField": "id",
   "definitions": {
-    "mainColumns": [
-      { 
-        "field": "first_field", 
-        "headerName": "Column One", 
-        "width": 200 
-      },
-      {
-        "field": "second_field",
-        "headerName": "Column Two",
-        "width": 150
-      }
-    ],
-    "filters": [
-      {
-        "field": "first_field",
-        "displayName": "My First Filter",
-        "filterType": "CheckboxList",
-        "props": {
-          "options": [
-            {
-              "label": "Onions",
-              "value": "onions"
-            },
-            {
-              "label": "Peppers",
-              "value": "peppers"
-            }
-          ]
+    "columns": {
+      "main": [
+        { 
+          "field": "first_field", 
+          "headerName": "Column One", 
+          "width": 200 
+        },
+        {
+          "field": "second_field",
+          "headerName": "Column Two",
+          "width": 150
         }
-      },
-      {
-        "field": "second_field",
-        "displayName": "My Second Filter",
-        "filterType": "Slider",
-        "props": {
-          "min": 0,
-          "max": 100
+      ]
+    },
+    "filters": {
+      "main": [
+        {
+          "field": "first_field",
+          "displayName": "My First Filter",
+          "filterType": "CheckboxList",
+          "props": {
+            "options": [
+              {
+                "label": "Onions",
+                "value": "onions"
+              },
+              {
+                "label": "Peppers",
+                "value": "peppers"
+              }
+            ]
+          }
+        },
+        {
+          "field": "second_field",
+          "displayName": "My Second Filter",
+          "filterType": "Slider",
+          "props": {
+            "min": 0,
+            "max": 100
+          }
         }
-      }
-    ]
+      ]
+    }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "taskflowName": "my-taskflow",
+  "name": "my-taskflow",
   "pageTitle": "Search Data Repositories App",
   "pageDescription": "Description of this app section"
 }

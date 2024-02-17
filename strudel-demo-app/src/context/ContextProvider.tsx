@@ -2,7 +2,7 @@ import React, {  useReducer, useContext } from 'react';
 import { AppAction } from './actions';
 
 export interface AppState {
-  projectTitle: string;
+  appTitle: string;
 }
 
 /**
@@ -17,7 +17,7 @@ interface AppProviderProps extends Partial<AppState> {
 const AppContext = React.createContext<{state: AppState; dispatch: React.Dispatch<AppAction>} | undefined>(undefined);
 
 const initialState: AppState = {
-  projectTitle: '',
+  appTitle: '',
 };
 
 const initState = (initialState: AppState, props: AppProviderProps) => {
