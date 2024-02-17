@@ -14,9 +14,9 @@ Below are the options for the config file you can pass to the `create-app` comma
 ```js
 {
   // Name of the project to use as the directory and package name.
-  "projectName": "my-strudel-app",
+  "name": "my-strudel-app",
   // Title of the project to display in the top app bar.
-  "pageTitle": "My Science App"
+  "appTitle": "My Science App"
 }
 ```
 
@@ -29,7 +29,9 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 ```js
 {
   // Name of the task flow to use as the directory/module name.
-  "taskflowName": "my-taskflow",
+  "name": "my-taskflow",
+  // Task flow template to use to generate the components
+  "template": "compare-data",
   // Noun that describes what is being compared, i.e. what does each row represent?
   "compareItem": "scenario",
   // Pluralized version of the compareItem value
@@ -52,7 +54,9 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 ```js
 {
   // Name of the task flow to use as the directory/module name.
-  "taskflowName": "my-taskflow",
+  "name": "my-taskflow",
+  // Task flow template to use to generate the components
+  "template": "contribute-data",
   // Title to display on the task flow page.
   "pageTitle": "Contribute Data App",
   // Description to display on the task flow page.
@@ -65,7 +69,9 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 ```js
 {
   // Name of the task flow to use as the directory and package name.
-  "taskflowName": "my-taskflow",
+  "name": "my-taskflow",
+  // Task flow template to use to generate the components
+  "template": "explore-data",
   // Title to display on the task flow page.
   "pageTitle": "Compare Data App",
   // Description to display on the task flow page.
@@ -145,7 +151,9 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 ```js
 {
   // Name of the task flow to use as the directory/module name.
-  "taskflowName": "my-taskflow",
+  "name": "my-taskflow",
+  // Task flow template to use to generate the components
+  "template": "monitor-activities",
   // Title to display on the task flow page.
   "pageTitle": "Monitor Activities App",
   // Description to display on the task flow page.
@@ -158,7 +166,9 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 ```js
 {
   // Name of the task flow to use as the directory/module name.
-  "taskflowName": "my-taskflow",
+  "name": "my-taskflow",
+  // Task flow template to use to generate the components
+  "template": "run-computation",
   // Title to display on the task flow page.
   "pageTitle": "Run Computation App",
   // Description to display on the task flow page.
@@ -171,7 +181,9 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 ```js
 {
   // Name of the task flow to use as the directory/module name.
-  "taskflowName": "my-taskflow",
+  "name": "my-taskflow",
+  // Task flow template to use to generate the components
+  "template": "search-data-repositories",
   // Title to display on the task flow page.
   "pageTitle": "Search Data Repositories App",
   // Description to display on the task flow page.
