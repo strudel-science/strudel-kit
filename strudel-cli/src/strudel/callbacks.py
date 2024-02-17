@@ -3,12 +3,21 @@ import json
 from .utils import snake_to_camel_case
 
 defaults = {
-    "app_name": "",
-    "config": "",
-    "output_dir": "",
-    "branch": "main",
-    "template": "",
-    "verbose": 0
+    "create-app": {
+        "name": "",
+        "output_dir": "",
+        "branch": "main",
+        "config": "",
+        "verbose": 0
+    },
+    "add-taskflow": {
+        "name": "",
+        "template": "",
+        "output_dir": "src/app",
+        "branch": "main",
+        "config": "",
+        "verbose": 0
+    }
 }
 
 
@@ -36,7 +45,6 @@ def config_callback(ctx: typer.Context, param: typer.CallbackParam, value: str):
     Update the default command-line arguments and options based on values from
     the config file passed in the --config option.
     """
-    print(value)
     if value:
         typer.echo(f"Loading config file: {value}")
         try: 
@@ -45,7 +53,8 @@ def config_callback(ctx: typer.Context, param: typer.CallbackParam, value: str):
 
             # Look for command-line options in the config file
             defaults_from_config = {}
-            for key in defaults:
+
+            for key in defaults[ctx.command.name]:
                 # The config file uses camelCase so convert key before checking
                 key_in_camel_case = snake_to_camel_case(key)
                 if key_in_camel_case in config_json:
@@ -53,9 +62,10 @@ def config_callback(ctx: typer.Context, param: typer.CallbackParam, value: str):
                 # Support snake_case in config too for convenience
                 elif key in config_json:
                     defaults_from_config[key] = config_json[key]
-            print(defaults_from_config)
-            ctx.default_map = defaults
+
+            ctx.default_map = defaults[ctx.command.name]
             ctx.default_map.update(defaults_from_config)
+            print(ctx.default_map)
         except Exception as ex:
             raise typer.BadParameter(str(ex))
     return value

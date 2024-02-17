@@ -54,13 +54,13 @@ def _clear_cache(action):
 
 @app.command()
 def create_app(
-    app_name: Annotated[
+    name: Annotated[
         str,
         typer.Argument(
             callback=name_callback,
             help="The name of your app. It's best to use only letters, hyphens, and underscores.",
         ),
-    ] = defaults["app_name"],
+    ] = defaults["create-app"]["name"],
     config: Annotated[
         str,
         typer.Option(
@@ -70,7 +70,7 @@ def create_app(
             callback=config_callback,
             is_eager=True
         ),
-    ] = defaults["config"],
+    ] = defaults["create-app"]["config"],
     output_dir: Annotated[
         str,
         typer.Option(
@@ -78,7 +78,7 @@ def create_app(
             "-o",
             help="Directory where the app should be created. Defaults to current directory.",
         ),
-    ] = defaults["output_dir"],
+    ] = defaults["create-app"]["output_dir"],
     branch: Annotated[
         str,
         typer.Option(
@@ -86,8 +86,15 @@ def create_app(
             "-b",
             help="Branch in strudel-kit repo that should be used for the templates. This option is primarily for use by contributors.",
         ),
-    ] = defaults["branch"],
-    verbose: Annotated[int, typer.Option("--verbose", "-v", count=True)] = defaults["verbose"],
+    ] = defaults["create-app"]["branch"],
+    verbose: Annotated[
+        int, 
+        typer.Option(
+            "--verbose", 
+            "-v", 
+            count=True
+        ),
+    ] = defaults["create-app"]["verbose"],
 ):
     """
     Create a base strudel web application.
@@ -97,7 +104,7 @@ def create_app(
     try:
         print("[white]Creating your app...")
         _clear_cache("create your app")
-        print(app_name)
+
         args = [
             "cookiecutter",
             "gh:strudel-science/strudel-kit",
@@ -107,7 +114,7 @@ def create_app(
             "strudel-cookiecutter/base",
             "--output-dir",
             output_dir,
-            f"appName={app_name}",
+            f"name={name}",
         ]
 
         if config:
@@ -137,12 +144,12 @@ def create_app(
             Padding("[bold green]Successfully created your strudel app!", (1, 0, 0, 0))
         )
         print(
-            f"[white]Your app was built in {os.path.abspath(os.path.join(output_dir, app_name))}"
+            f"[white]Your app was built in {os.path.abspath(os.path.join(output_dir, name))}"
         )
         print(Padding("First, get your app up and running:", (1, 0)))
         print(
             Padding(
-                f"[white]$ cd {os.path.relpath(os.path.join(output_dir, app_name))}",
+                f"[white]$ cd {os.path.relpath(os.path.join(output_dir, name))}",
                 (0, 0, 0, 4),
             )
         )
@@ -190,13 +197,13 @@ class TaskFlow(str, Enum):
 # Remove args and just let them be in the config?
 @app.command()
 def add_taskflow(
-    taskflow_name: Annotated[
+    name: Annotated[
         str,
         typer.Argument(
             callback=name_callback,
             help="The name of your task flow module. It's best to use only letters, hyphens, and underscores.",
         ),
-    ],
+    ] = defaults["add-taskflow"]["name"],
     template: Annotated[
         TaskFlow,
         typer.Option(
@@ -204,7 +211,7 @@ def add_taskflow(
             "-t",
             help="Name of the strudel task flow template to use as the basis for your task flow.",
         ),
-    ],
+    ] = defaults["add-taskflow"]["template"],
     config: Annotated[
         str,
         typer.Option(
@@ -214,7 +221,7 @@ def add_taskflow(
             callback=config_callback,
             is_eager=True
         ),
-    ] = "",
+    ] = defaults["add-taskflow"]["config"],
     output_dir: Annotated[
         str,
         typer.Option(
@@ -222,7 +229,7 @@ def add_taskflow(
             "-o",
             help="Directory where the task flow module should be created.",
         ),
-    ] = "src/app",
+    ] = defaults["add-taskflow"]["output_dir"],
     branch: Annotated[
         str,
         typer.Option(
@@ -230,7 +237,7 @@ def add_taskflow(
             "-b",
             help="Branch in strudel-kit repo that should be used for the templates. This option is primarily for use by contributors.",
         ),
-    ] = "main",
+    ] = defaults["add-taskflow"]["branch"],
 ):
     """
     Add a new task flow section to an existing strudel web application.
@@ -248,7 +255,7 @@ def add_taskflow(
             f"strudel-cookiecutter/{template.value}",
             "--output-dir",
             output_dir,
-            f"taskflowName={taskflow_name}",
+            f"name={name}",
         ]
 
         if config:
@@ -284,7 +291,7 @@ def add_taskflow(
                 # the definitions.json file in the generated task flow.
                 # This is necessary because cookiecutter can't copy json verbatim into files.
                 if "definitions" in config_json:
-                    with open(os.path.join(output_dir, taskflow_name, 'definitions.json'), "w", encoding="utf-8") as definitions_file:
+                    with open(os.path.join(output_dir, name, 'definitions.json'), "w", encoding="utf-8") as definitions_file:
                         json.dump(config_json['definitions'], definitions_file, ensure_ascii=False, indent=2)
             except Exception as e:
                 print("Error copying definitions into json file")
@@ -297,7 +304,7 @@ def add_taskflow(
             )
         )
         print(
-            f"[white]Your new task flow was built in {os.path.abspath(os.path.join(output_dir, taskflow_name))}"
+            f"[white]Your new task flow was built in {os.path.abspath(os.path.join(output_dir, name))}"
         )
         print(
             Padding(

@@ -1,5 +1,5 @@
 {
-  "taskflowName": "my-data-explorer",
+  "name": "my-data-explorer",
   "pageTitle": "Explore Data App",
   "pageDescription": "Description of this app section",
   "dataSource": "my_data.json",
