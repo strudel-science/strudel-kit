@@ -65,7 +65,6 @@ def config_callback(ctx: typer.Context, param: typer.CallbackParam, value: str):
 
             ctx.default_map = defaults[ctx.command.name]
             ctx.default_map.update(defaults_from_config)
-            print(ctx.default_map)
         except Exception as ex:
             raise typer.BadParameter(str(ex))
     return value

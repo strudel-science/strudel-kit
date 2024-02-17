@@ -76,60 +76,66 @@ The options for the `add-taskflow` config file are dependent on the task flow te
   "dataIdField": "id",
   // JSON definitions for configurable page elements
   "definitions": {
-    // List of columns to display in the main table
-    "mainColumns": [
-      { 
-        // Property name for this column in the data
-        "field": "first_field", 
-        // Name to display in the column header
-        "headerName": "Column One", 
-        // Width of the column
-        "width": 200 
-      },
-      {
-        "field": "second_field",
-        "headerName": "Column Two",
-        "width": 150
-      }
-    ],
-    // List of filters to render in the filters panel
-    "filters": [
-      {
-        // Property name for this field in the data
-        "field": "first_field",
-        // Name display in the filter label
-        "displayName": "My First Filter",
-        // Type of filter component to use
-        // Options: "CheckboxList", "Slider"
-        "filterType": "CheckboxList",
-        // Extra options to pass to the filter
-        // These props are dependent on the filterType chosen
-        "props": {
-          // List of options to render as checkboxes
-          "options": [
-            {
-              "label": "Onions",
-              "value": "onions"
-            },
-            {
-              "label": "Peppers",
-              "value": "peppers"
-            }
-          ]
+    // Definitions for each table
+    "columns": {
+      // List of columns to display in the main table
+      "main": [
+        { 
+          // Property name for this column in the data
+          "field": "first_field", 
+          // Name to display in the column header
+          "headerName": "Column One", 
+          // Width of the column
+          "width": 200 
+        },
+        {
+          "field": "second_field",
+          "headerName": "Column Two",
+          "width": 150
         }
-      },
-      {
-        "field": "second_field",
-        "displayName": "My Second Filter",
-        "filterType": "Slider",
-        "props": {
-          // Minimum value of the slider
-          "min": 0,
-          // Maximum value of the slider
-          "max": 100
+      ]
+    },
+    // Definitions for each panel of filters
+    "filters": {
+      // List of filters to render in the main filters panel
+      "main": [
+        {
+          // Property name for this field in the data
+          "field": "first_field",
+          // Name display in the filter label
+          "displayName": "My First Filter",
+          // Type of filter component to use
+          // Options: "CheckboxList", "Slider"
+          "filterType": "CheckboxList",
+          // Extra options to pass to the filter
+          // These props are dependent on the filterType chosen
+          "props": {
+            // List of options to render as checkboxes
+            "options": [
+              {
+                "label": "Onions",
+                "value": "onions"
+              },
+              {
+                "label": "Peppers",
+                "value": "peppers"
+              }
+            ]
+          }
+        },
+        {
+          "field": "second_field",
+          "displayName": "My Second Filter",
+          "filterType": "Slider",
+          "props": {
+            // Minimum value of the slider
+            "min": 0,
+            // Maximum value of the slider
+            "max": 100
+          }
         }
-      }
-    ]
+      ]
+    }
   }
 }
 ```
