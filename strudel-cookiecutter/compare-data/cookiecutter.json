@@ -1,5 +1,5 @@
 {
-  "taskflowName": "my-taskflow",
+  "name": "my-taskflow",
   "compareItem": "scenario",
   "compareItemPlural": "scenarios",
   "mainPageTitle": "Compare Data App",
