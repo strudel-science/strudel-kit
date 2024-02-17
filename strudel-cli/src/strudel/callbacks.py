@@ -53,7 +53,7 @@ def config_callback(ctx: typer.Context, param: typer.CallbackParam, value: str):
                 # Support snake_case in config too for convenience
                 elif key in config_json:
                     defaults_from_config[key] = config_json[key]
-
+            print(defaults_from_config)
             ctx.default_map = defaults
             ctx.default_map.update(defaults_from_config)
         except Exception as ex:

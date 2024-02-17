@@ -97,7 +97,7 @@ def create_app(
     try:
         print("[white]Creating your app...")
         _clear_cache("create your app")
-
+        print(app_name)
         args = [
             "cookiecutter",
             "gh:strudel-science/strudel-kit",
@@ -118,8 +118,6 @@ def create_app(
             # Add in extra args so the config file is used
             args[1:1] = ["--config-file", temp_yaml_config]
             args.insert(-1, "--no-input")
-
-        print(args)
 
         proc = subprocess.run(args, check=True)
     except subprocess.CalledProcessError as e:
@@ -192,7 +190,7 @@ class TaskFlow(str, Enum):
 # Remove args and just let them be in the config?
 @app.command()
 def add_taskflow(
-    name: Annotated[
+    taskflow_name: Annotated[
         str,
         typer.Argument(
             callback=name_callback,
@@ -213,6 +211,8 @@ def add_taskflow(
             "--config",
             "-c",
             help="JSON file with configuration values to use to build your task flow.",
+            callback=config_callback,
+            is_eager=True
         ),
     ] = "",
     output_dir: Annotated[
@@ -248,7 +248,7 @@ def add_taskflow(
             f"strudel-cookiecutter/{template.value}",
             "--output-dir",
             output_dir,
-            f"taskflowName={name}",
+            f"taskflowName={taskflow_name}",
         ]
 
         if config:
@@ -284,7 +284,7 @@ def add_taskflow(
                 # the definitions.json file in the generated task flow.
                 # This is necessary because cookiecutter can't copy json verbatim into files.
                 if "definitions" in config_json:
-                    with open(os.path.join(output_dir, name, 'definitions.json'), "w", encoding="utf-8") as definitions_file:
+                    with open(os.path.join(output_dir, taskflow_name, 'definitions.json'), "w", encoding="utf-8") as definitions_file:
                         json.dump(config_json['definitions'], definitions_file, ensure_ascii=False, indent=2)
             except Exception as e:
                 print("Error copying definitions into json file")
@@ -297,7 +297,7 @@ def add_taskflow(
             )
         )
         print(
-            f"[white]Your new task flow was built in {os.path.abspath(os.path.join(output_dir, name))}"
+            f"[white]Your new task flow was built in {os.path.abspath(os.path.join(output_dir, taskflow_name))}"
         )
         print(
             Padding(
