@@ -174,7 +174,50 @@ To add a Task Flow, use the `add-taskflow` sub-command of the `strudel` command-
 strudel add-taskflow --template explore-data -c explore.json explore
 ```
 
-If this succeeds, then the JavaScript code will all be set up in your app directory and you will have a new page that can browse your data set.
+If this succeeds, then the JavaScript code will all be set up in your app directory and you will have a new page that can browse your data set. You can tell it succeeds if you get a message like:
+
+```
+Successfully added a task flow to your strudel app!
+Your new task flow was built in /some/path/to/foo/src/app/explore
+```
+
+#### Next steps
+
+We will now connect the task flow as a sub-page in our app.
+
+### (3) Connect the Task Flow
+
+Change to the `src/app` directory under your app, e.g.:
+
+```
+cd foo/src/app
+```
+
+In this directory you will see a file `routes.tsx` that you should open in an editor. This is the file that tells your app which URL paths map to which pages.
+
+In that file, add the following text after the line that ends `createHashRouter([`, which introduces a list of route objects:
+
+```
+{
+    path: "/explore",
+    element: <ExploreDataWrapper />,
+    children: [
+      {
+        index: true,
+        element: <DataExplorer />
+      },
+    ]
+},
+```
+
+also at the top of the file in the imports section, add these lines:
+
+```
+import { ExploreDataWrapper } from "./explore/ExploreDataWrapper";
+import { DataExplorer } from "./explore/DataExplorer";
+```
+
+You can test out your changes by reloading the app or restarting it (as a reminder, this is done with `npm start` from the `foo/src` directory that contains the 'package.json' file).
 
 
 
