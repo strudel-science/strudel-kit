@@ -121,6 +121,14 @@ In UNIX or MacOS, you can run the command: `cat - > planets.csv`, and then paste
 
 In Windows, one way to do this is run the command `notepad planets.csv`, paste the text above into the new notepad document, then save this file.
 
+Once you have created this file, **copy it to the `public/data` directory**, which is the default location for data files in this (and other) Task Flows. This way Strudel will be able to find it without any custom modifications:
+
+```
+cp planets.csv public/data
+```
+
+
+
 #### Create Task Flow configuration
 
 Before you continue, make sure you are in the directory of your app (i.e., `learning-strudel/foo` in this example).
@@ -238,7 +246,7 @@ cd src/app
 
 In this directory you will see a file `routes.tsx`. This is the file that tells your app which URL paths map to which pages.
 
-Open `routes.tx` in an editor.  Near the top of the file, in the JavaScript imports section, add these lines:
+Open `routes.tsx` in an editor.  Near the top of the file, in the JavaScript imports section, add these lines:
 
 ```
 import { ExploreDataWrapper } from "./explore/ExploreDataWrapper";
