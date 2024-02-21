@@ -1,7 +1,5 @@
-import React, { ReactNode, useState } from 'react';
-import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Slider, SliderProps, Stack, StackProps, TextField, TextFieldProps, Typography } from '@mui/material';
-import { Collapsible } from './Collapsible';
-
+import React, { useState } from 'react';
+import { Slider, SliderProps } from '@mui/material';
 
 interface StrudelSliderProps extends SliderProps {
 
@@ -21,11 +19,25 @@ export const StrudelSlider: React.FC<StrudelSliderProps> = ({
   const handleChange = (event: Event, value: number | number[], activeThumb: number) => {
     setValue(value as number[])
   }
+
+  const marks = [
+    {
+      value: min,
+      label: min,
+    },
+    {
+      value: max,
+      label: max,
+    }
+  ];
   
   return (
     <Slider
       value={value}
       onChange={handleChange}
+      min={min}
+      max={max}
+      marks={marks}
       {...rest}
     />
   )

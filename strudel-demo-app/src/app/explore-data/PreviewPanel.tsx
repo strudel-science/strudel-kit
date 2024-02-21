@@ -1,6 +1,7 @@
-import React, { ReactNode, useEffect, useState } from 'react';
-import { Box, Button, Checkbox, FormControlLabel, FormGroup, FormGroupProps, FormLabel, IconButton, Link, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
+import React from 'react';
+import { Box, Button, IconButton, Link, Paper, Stack, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { Link as RouterLink } from 'react-router-dom';
 import { LabelValueTable } from '../../components/LabelValueTable';
 import { DataGrid } from '../../components/DataGrid';
 import { useExploreData } from './context/ContextProvider';
@@ -37,6 +38,10 @@ const relatedColumns = [
   },
 ];
 
+/**
+ * Panel to show extra information about a row in a separate panel
+ * next to the data table.
+ */
 export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
   const {state, dispatch} = useExploreData();
   const emptyRows = Array(25).fill(0);
@@ -45,18 +50,18 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
   })
 
   return (
-    <Box
+    <Paper
+      elevation={0}
       sx={{
-        backgroundColor: 'white',
         height: '100%',
-        p: 2
+        padding: 2
       }}
     >
       <Stack spacing={3}>
         <Stack spacing={1}>
           <Stack direction="row">
             <Typography variant="h6" component="h3" flex={1}>
-              <Link href="#" underline="hover">
+              <Link component={RouterLink} to="." underline="hover">
                 {state.previewItem['Organism']}
               </Link>
             </Typography>
@@ -96,13 +101,13 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
         </Box>
         <Stack direction="row">
             <Button variant="contained">
-              View entity
+              View details
             </Button>
             <Button variant="outlined">
-              Export entity data
+              Export data
             </Button>
         </Stack>
       </Stack>
-    </Box>
+    </Paper>
   );
 }

@@ -1,0 +1,98 @@
+{
+  "columns": {
+    "main": [
+      {
+        "field":"Organism",
+        "headerName":"Organism",
+        "width":200
+      },
+      {
+        "field":"Common Name",
+        "headerName":"Common Name",
+        "width":150
+      },
+      {
+        "field":"Assembly",
+        "headerName":"Assembly",
+        "width":150
+      },
+      {
+        "field":"Data Usage Policy",
+        "headerName":"Data Usage Policy",
+        "width":150
+      },
+      {
+        "field":"Euk. BUSCO %",
+        "headerName":"Euk. BUSCO %",
+        "type":"number",
+        "width":110
+      },
+      {
+        "field":"Emb. BUSCO %",
+        "headerName":"Emb. BUSCO %",
+        "type":"number",
+        "width":110
+      }
+    ]
+  },
+  "filters": {
+    "main": [
+      {
+        "field": "Assembly",
+        "displayName":"Assembly Test",
+        "filterType":"CheckboxList",
+        "props":{
+          "options":[
+            {
+              "label":"JGI",
+              "value":"JGI"
+            },
+            {
+              "label":"BYU",
+              "value":"BYU"
+            },
+            {
+              "label":"AGP",
+              "value":"AGP"
+            }
+          ]
+        }
+      },
+      {
+        "field":"Data Usage Policy",
+        "displayName":"Data Usage Policy",
+        "filterType":"CheckboxList",
+        "props":{
+          "options":[
+            {
+              "label":"restricted",
+              "value":"restricted"
+            },
+            {
+              "label":"unrestricted",
+              "value":"unrestricted"
+            }
+          ]
+        }
+      },
+      {
+        "field":"Euk. BUSCO %",
+        "displayName":"Euk. BUSCO %",
+        "filterType":"Slider",
+        "props":{
+          "min":0,
+          "max":100
+        }
+      },
+      {
+        "field":"Emb. BUSCO %",
+        "displayName":"Emb. BUSCO %",
+        "filterType":"Slider",
+        "props":{
+          "min":0,
+          "max":100
+        }
+      }
+    ]
+  }
+}

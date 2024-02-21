@@ -14,11 +14,9 @@ Below are the options for the config file you can pass to the `create-app` comma
 ```js
 {
   // Name of the project to use as the directory and package name.
-  "projectName": "my-strudel-app",
-  "content": {
-    // Title of the project to display in the top app bar.
-    "projectTitle": "My Science App"
-  }
+  "name": "my-strudel-app",
+  // Title of the project to display in the top app bar.
+  "appTitle": "My Science App"
 }
 ```
 
@@ -30,14 +28,24 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 
 ```js
 {
-  // Title of the project to display in the top app bar.
-  "projectName": "My Project",
-  // Title of the task flow to display in navigation.
-  "taskflowName": "My Compare Data Flow",
-  // Title to display on the task flow page.
-  "pageTitle": "Compare Data App",
-  // Title to display on the task flow page.
-  "pageDescription": "Description of this app section"
+  // Name of the task flow to use as the directory/module name.
+  "name": "my-taskflow",
+  // Task flow template to use to generate the components
+  "template": "compare-data",
+  // Noun that describes what is being compared, i.e. what does each row represent?
+  "compareItem": "scenario",
+  // Pluralized version of the compareItem value
+  "compareItemPlural": "scenarios",
+  // Title to display on the main page of the task flow.
+  "mainPageTitle": "Compare Data App",
+  // Description to display on the main page of the task flow.
+  "mainPageDescription": "Description of this app section",
+  // Title to display on the New Item page of the task flow.
+  "newItemPageTitle": "Compare Data App",
+  // Description to display on the New Item page of the task flow.
+  "newItemPageDescription": "Description of this app section",
+  // Description to display on the Compare page of the task flow.
+  "comparePageDescription": "Description of this app section"
 }
 ```
 
@@ -45,14 +53,14 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 
 ```js
 {
-  // Name of the task flow to use as the directory name.
-  "taskflowName": "my-taskflow",
-  "content": {
-    // Title to display on the task flow page.
-    "pageTitle": "Compare Data App",
-    // Description to display on the task flow page.
-    "pageDescription": "Description of this app section"
-  }
+  // Name of the task flow to use as the directory/module name.
+  "name": "my-taskflow",
+  // Task flow template to use to generate the components
+  "template": "contribute-data",
+  // Title to display on the task flow page.
+  "pageTitle": "Contribute Data App",
+  // Description to display on the task flow page.
+  "pageDescription": "Description of this app section"
 }
 ```
 
@@ -61,66 +69,79 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 ```js
 {
   // Name of the task flow to use as the directory and package name.
-  "taskflowName": "my-taskflow",
-  "content": {
-    // Title to display on the task flow page.
-    "pageTitle": "Compare Data App",
-    // Description to display on the task flow page.
-    "pageDescription": "Description of this app section",
-    // List of columns to display in the table
-    "columns": [
-      { 
-        // Property name for this column in the data
-        "field": "first_field", 
-        // Name to display in the column header
-        "headerName": "Column One", 
-        // Width of the column
-        "width": 200 
-      },
-      {
-        "field": "second_field",
-        "headerName": "Column Two",
-        "width": 150
-      }
-    ],
-    // List of filters to render in the filters panel
-    "filters": [
-      {
-        // Property name for this field in the data
-        "field": "first_field",
-        // Name display in the filter label
-        "displayName": "My First Filter",
-        // Type of filter component to use
-        // Options: "CheckboxList", "Slider"
-        "filterType": "CheckboxList",
-        // Extra options to pass to the filter
-        // These props are dependent on the filterType chosen
-        "props": {
-          // List of options to render as checkboxes
-          "options": [
-            {
-              "label": "Onions",
-              "value": "onions"
-            },
-            {
-              "label": "Peppers",
-              "value": "peppers"
-            }
-          ]
+  "name": "my-taskflow",
+  // Task flow template to use to generate the components
+  "template": "explore-data",
+  // Title to display on the task flow page.
+  "pageTitle": "Compare Data App",
+  // Description to display on the task flow page.
+  "pageDescription": "Description of this app section",
+  // Name of the data file to use for the main table and filters
+  "dataSource": "my_data.json",
+  // The property in the dataset that acts as the unique id for each row
+  "dataIdField": "id",
+  // JSON definitions for configurable page elements
+  "definitions": {
+    // Definitions for each table
+    "columns": {
+      // List of columns to display in the main table
+      "main": [
+        { 
+          // Property name for this column in the data
+          "field": "first_field", 
+          // Name to display in the column header
+          "headerName": "Column One", 
+          // Width of the column
+          "width": 200 
+        },
+        {
+          "field": "second_field",
+          "headerName": "Column Two",
+          "width": 150
         }
-      },
-      {
-        "field": "second_field",
-        "displayName": "My Second Filter",
-        "filterType": "Slider",
-        "props": {
-          // Minimum value of the slider
-          "min": 0,
-          // Maximum value of the slider
-          "max": 100
+      ]
+    },
+    // Definitions for each panel of filters
+    "filters": {
+      // List of filters to render in the main filters panel
+      "main": [
+        {
+          // Property name for this field in the data
+          "field": "first_field",
+          // Name display in the filter label
+          "displayName": "My First Filter",
+          // Type of filter component to use
+          // Options: "CheckboxList", "Slider"
+          "filterType": "CheckboxList",
+          // Extra options to pass to the filter
+          // These props are dependent on the filterType chosen
+          "props": {
+            // List of options to render as checkboxes
+            "options": [
+              {
+                "label": "Onions",
+                "value": "onions"
+              },
+              {
+                "label": "Peppers",
+                "value": "peppers"
+              }
+            ]
+          }
+        },
+        {
+          "field": "second_field",
+          "displayName": "My Second Filter",
+          "filterType": "Slider",
+          "props": {
+            // Minimum value of the slider
+            "min": 0,
+            // Maximum value of the slider
+            "max": 100
+          }
         }
-      }
-    ]
+      ]
+    }
   }
 }
 ```
@@ -129,14 +150,14 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 
 ```js
 {
-  // Name of the task flow to use as the directory and package name.
-  "taskflowName": "my-taskflow",
-  "content": {
-    // Title to display on the task flow page.
-    "pageTitle": "Compare Data App",
-    // Description to display on the task flow page.
-    "pageDescription": "Description of this app section"
-  }
+  // Name of the task flow to use as the directory/module name.
+  "name": "my-taskflow",
+  // Task flow template to use to generate the components
+  "template": "monitor-activities",
+  // Title to display on the task flow page.
+  "pageTitle": "Monitor Activities App",
+  // Description to display on the task flow page.
+  "pageDescription": "Description of this app section"
 }
 ```
 
@@ -144,14 +165,14 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 
 ```js
 {
-  // Name of the task flow to use as the directory and package name.
-  "taskflowName": "my-taskflow",
-  "content": {
-    // Title to display on the task flow page.
-    "pageTitle": "Compare Data App",
-    // Description to display on the task flow page.
-    "pageDescription": "Description of this app section"
-  }
+  // Name of the task flow to use as the directory/module name.
+  "name": "my-taskflow",
+  // Task flow template to use to generate the components
+  "template": "run-computation",
+  // Title to display on the task flow page.
+  "pageTitle": "Run Computation App",
+  // Description to display on the task flow page.
+  "pageDescription": "Description of this app section"
 }
 ```
 
@@ -159,13 +180,13 @@ The options for the `add-taskflow` config file are dependent on the task flow te
 
 ```js
 {
-  // Name of the task flow to use as the directory and package name.
-  "taskflowName": "my-taskflow",
-  "content": {
-    // Title to display on the task flow page.
-    "pageTitle": "Compare Data App",
-    // Description to display on the task flow page.
-    "pageDescription": "Description of this app section"
-  }
+  // Name of the task flow to use as the directory/module name.
+  "name": "my-taskflow",
+  // Task flow template to use to generate the components
+  "template": "search-data-repositories",
+  // Title to display on the task flow page.
+  "pageTitle": "Search Data Repositories App",
+  // Description to display on the task flow page.
+  "pageDescription": "Description of this app section"
 }
 ```

@@ -62,10 +62,9 @@ export const DatasetDetail: React.FC = () => {
       <PageHeader
         pageTitle={datasetTitle}
         breadcrumbTitle="Dataset Detail"
-        mb={1}
-        p={2}
         sx={{
-          backgroundColor: 'white'
+          marginBottom: 1,
+          padding: 2,
         }}
       />
       <Container maxWidth="xl">
