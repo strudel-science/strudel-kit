@@ -13,7 +13,7 @@ Install the STRUDEL CLI tool:
 ```
 pip install -i https://test.pypi.org/simple/ strudel-cli
 ```
-:warning: ***strudel-cli is only on TestPyPI for the moment. When it is published to PyPI, you will be able to omit the -i option***
+:warning: _strudel-cli is only on TestPyPI right now. When it is published to PyPI, you won't need the -i option._
 
 Create a config file based on the [create-app config json](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/CONFIGS.md#create-app-config-file):
 
