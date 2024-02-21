@@ -90,77 +90,120 @@ Next we will learn how to do something a bit more useful with the app by adding 
 
 As described elsewhere in the [documentation](https://strudel.science/design-system/task-flows/overview/), Task Flows are are a set of steps (represented by a series of screens) that help to accomplish a task and represent how a user progresses through a UI. To start building your app, you first add a Task Flow. In this example, we will add the Task Flow called "Explore Data".
 
-There are 3 basic steps to adding a new Task Flow, which will be covered in more detail below: (1) Create a simple configuration for your Task Flow -- currently this is done by editing a file, (2) Add the configured Task Flow into your app's source code, (3) Connect the Task Flow's page to the navigation of the main app.
+There are 3 basic steps to adding a new Task Flow:  (1) Create a simple configuration for your Task Flow -- currently this is done by editing a file, (2) Add the configured Task Flow into your app's source code, (3) Connect the Task Flow's page to the navigation of the main app.
 
 ### (1) Configure Task Flow
 
-You only need to configure a Task Flow once, at creation time. You can think of configuration as a "helper" that is providing some simple text-based information that STRUDEL translates into the appropriate JavaScript code as it copies the files for your chosen Task Flow. 
+You only need to configure a Task Flow once, at creation time. You can think of configuration as a "helper" that is providing some text-based information that STRUDEL translates into the appropriate JavaScript code as it creates your Task Flow. 
 
-The configuration for a Task Flow is stored in a JSON file, though this is optional. If you don't provide a configuration file, you will be prompted for a couple of key values interactively. For "Explore Data", configuration is a chance to give some example starting data, so we will use the JSON file.
+The configuration for a Task Flow is stored in a JSON file. You need to create this file with an editor before you run the command to create the Task Flow. If you don't provide a configuration file, you will be prompted for a couple of key values interactively. But in most cases, as in the Explore Data Task Flow, it will save time to use a configuration file to specify some more details, so the Strudel command-line tool can create more of the JavaScript code for you automatically. In the future, we plan to have a more graphical, "wizard"-like interface for the configuration, but right now it's just you and your favorite text editor.
 
-#### Create JSON input
+#### Add a data file
 
-To create the configuration file, cut and paste the following text into a file named, e.g., `explore.json`. We will refer back to the contents of this file later when it will be easier to see what effect the various parts of it had on the initial app setup. Also remember that this entire file is *optional* and you can get started with no configuration file at all (in which case you will be simply be prompted for a couple of values).
+Before we create our configuration file, we are going to add a data source -- in this case, a simple comma-separate values (CSV) file with information about the planets (and one "dwarf planet") in our solar system. 
+
+In the directory of your app (i.e., `learning-strudel/foo` in this example), create a file called `planets.csv` with the following content:
+
+```
+Name,Diameter,Mass,Inclination,Eccentricity,Semi_majorAxis,SurfaceGravity,OrbitalPeriod,SiderealRotation,Satellites
+Mercury,4879.4, 3.302×10^23, 7.004, 0.20563593, 0.38709927, 3.7, 0.241, 58.65, 0
+Venus,12103.6, 4.869×10^24, 3.39471, 0.00677672, 0.72333566, 8.87, 0.615, 243.0187, 0
+Earth,12756.3, 5.974×10^24, 0.00005, 0.01671123, 1.00000261, 9.78, 1, 0.997271, 1
+Mars,6794.4, 6.419×10^23, 1.85061, 0.0933941, 1.52371034, 3.71, 1.881, 1.02595, 2
+Jupiter,142984, 1.899×10^27, 1.3053, 0.04838624, 5.202887, 24.79, 11.86, 0.4135, 63
+Saturn,120536, 5.688×10^26, 2.48446, 0.05386179, 9.53667594, 8.96, 29.46, 0.4264, 64
+Uranus,51118, 8.683×10^25, 0.774, 0.04725744, 19.18916464, 7.77, 84.01, 0.7181, 27
+Neptune,49572, 1.024×10^26, 1.76917, 0.00859048, 30.06992276, 11, 164.79, 0.6712, 14
+Pluto,2370.0, 1.3×10^22, 17.08900092, 0.250248713, 39.44506973, 0.62, 247.7406624, 6.387230, 5
+```
+
+In UNIX or MacOS, you can run the command: `cat - > planets.csv`, and then paste the text above (you may need to hit Control-D to close the file and return to the prompt).
+
+In Windows, one way to do this is run the command `notepad planets.csv`, paste the text above into the new notepad document, then save this file.
+
+#### Create Task Flow configuration
+
+Before you continue, make sure you are in the directory of your app (i.e., `learning-strudel/foo` in this example).
+
+To create the configuration file, cut and paste the following text into a file named, e.g., `explore.json`. 
 
 ```
 {
-  "taskflowName": "foo",
-  "content": {
-    "pageTitle": "Explore Data App",
-    "pageDescription": "Explore some simple genome data",
-    "dataSource": "Current_Genomes.tsv",
-    "columns": [
-      { 
-        "field": "Organism", 
-        "headerName": "Organism", 
-        "width": 200 
-      },
-      {
-        "field": "Proteome_ID",
-        "headerName": "Proteome ID",
-        "width": 150
-      },
-      {
-        "field": "Common_Name",
-        "headerName": "Common name",
-        "width": 200
-      }
-    ],
-    "filters": [
-      {
-        "field": "Organism",
-        "displayName": "Organism",
-        "filterType": "CheckboxList",
-        "props": {
-          "options": [
-            {
-              "label": "Acorus",
-              "value": "Acorus"
-            },
-            {
-              "label": "Zostera",
-              "value": "Zostera"
-            }
-          ]
+  "name": "explorer",
+  "pageTitle": "Explore Data for Foo",
+  "pageDescription": "Explore data for the foo application",
+  "dataSource": "planets.csv",
+  "dataIdField": "Name",
+  "definitions": {
+    "columns": {
+      "main": [
+        {
+          "field": "Name",
+          "headerName": "Name",
+          "width": 200
+        },
+        {
+          "field": "Diameter",
+          "headerName": "Diameter (km)",
+          "width": 150
+        },
+        {
+          "field": "Mass",
+          "headerName": "Mass (kg)",
+          "width": 150
+        },
+        {
+          "field": "Inclination",
+          "headerName": "Inclination (deg)",
+          "width": 150
+        },
+        {
+          "field": "Eccentricity",
+          "headerName": "Eccentricity",
+          "width": 150
         }
-      },
-      {
-        "field": "Proteome_ID",
-        "displayName": "Proteome ID",
-        "filterType": "Slider",
-        "props": {
-          "min": 0,
-          "max": 1000
+
+      ]
+    },
+    "filters": {
+      "main": [
+        {
+          "field": "Diameter",
+          "displayName": "Diameter (km)",
+          "filterType": "Slider",
+          "props": {
+            "min": 4000,
+            "max": 150000
+          }
         }
-      }
-    ]
+      ]
+    }
   }
 }
 ```
 
-#### Data files
+Now we will briefly explain the contents of this file. This is purely informational, so you can skip this and come back to it later if you want to get on with seeing your Task Flow in action.
 
-You may have noticed the reference to "Current_Genomes.tsv" in the file above. This is the data file that will be explored by the Task Flow. In a real app you may have a much more sophisticated backend, of course, but the Task Flow comes with the ability to read spreadsheet-like files out of the box. We have taken a shortcut here and used a file that is built in to the distribution. If you are curious, you can see it for yourself in the `public/data/` directory of your app. You could start with your own comma-separated or tab-separated values file by just changing the name in the configuration and modifying the columns and fields accordingly.
+There are two basic sections to the configuration. First, a list of key-value pairs. Some of these set some general values you will have in an Task Flow:
+
+```
+  "name": "explorer",
+  "pageTitle": "Explore Data for Foo",
+  "pageDescription": "Explore data for the foo application",
+```
+
+We can see above that we are giving the Task Flow a name, a title to display on its web page, and a description. 
+
+There also may be some key-value pairs that are specific to this type of Task Flow:
+
+```
+  "dataSource": "planets.csv",
+  "dataIdField": "Name",
+```
+
+In this case, `dataSource` specifies where the Explore Data Task Flow should get its initial data, and `dataIdField` tells the code that loads the data which field (i.e., which column in tabular data like this one) should be used to uniquely identify a record.
+
+The second section is called `definitions`. It provides some more detailed data that is made available to the Task Flow and its value is some structured chunk of JSON. In the case of the Explore Data Task Flow, this section defines which columns of the data to display and which (if any) filters to create for the "filters" sidebar. The values here will depend on the data source.
 
 #### Next steps
 
@@ -168,17 +211,17 @@ Now we are ready to create and add the task flow!
 
 ### (2) Add Task Flow
 
-To add a Task Flow, use the `add-taskflow` sub-command of the `strudel` command-line program. In your terminal, in the directory of the app and configuration file you just created, type:
+To add a Task Flow, use the `add-taskflow` sub-command of the `strudel` command-line program. Again, make sure your terminal is in the directory of your app (i.e., `learning-strudel/foo` in this example). Then, run this command:
 
 ```
 strudel add-taskflow --template explore-data -c explore.json explore
 ```
 
-If this succeeds, then the JavaScript code will all be set up in your app directory and you will have a new page that can browse your data set. You can tell it succeeds if you get a message like:
+If this succeeds, then the JavaScript code will all be set up in your app directory and you will have a new page that can browse your data set. You can tell it succeeds if the output contains a message like:
 
 ```
 Successfully added a task flow to your strudel app!
-Your new task flow was built in /some/path/to/foo/src/app/explore
+Your new task flow was built in /some/path/to/learning-strudel/foo/src/app/explore
 ```
 
 #### Next steps
@@ -190,12 +233,21 @@ We will now connect the task flow as a sub-page in our app.
 Change to the `src/app` directory under your app, e.g.:
 
 ```
-cd foo/src/app
+cd src/app
 ```
 
-In this directory you will see a file `routes.tsx` that you should open in an editor. This is the file that tells your app which URL paths map to which pages.
+In this directory you will see a file `routes.tsx`. This is the file that tells your app which URL paths map to which pages.
 
-In that file, add the following text after the line that ends `createHashRouter([`, which introduces a list of route objects:
+Open `routes.tx` in an editor.  Near the top of the file, in the JavaScript imports section, add these lines:
+
+```
+import { ExploreDataWrapper } from "./explore/ExploreDataWrapper";
+import { DataExplorer } from "./explore/DataExplorer";
+```
+
+This says to import the ReactJS components that were created by the "add-taskflow" command above from the appropriate directory. Next we will create a "route" that associates these components with a page URL. 
+
+Add the following text after the line that ends `createHashRouter([`. This is the section that tells the app how to map the URL path to a given page in the app (after a "/#/", thus the name). 
 
 ```
 {
@@ -210,24 +262,12 @@ In that file, add the following text after the line that ends `createHashRouter(
 },
 ```
 
-also at the top of the file in the imports section, add these lines:
+Save this file. And you're done! You should now have a fully functioning Explore Data Task Flow page.
 
-```
-import { ExploreDataWrapper } from "./explore/ExploreDataWrapper";
-import { DataExplorer } from "./explore/DataExplorer";
-```
+You can test out your changes by reloading the app or restarting it, then navigating to your page:
 
-You can test out your changes by reloading the app or restarting it (as a reminder, this is done with `npm start` from the `foo/src` directory that contains the 'package.json' file).
+ http://localhost:3000/#/explore
 
+#### Next steps
 
-
-1. The basic 
-
-2. 1. Configure the task flow
-
-   2. Add the task flow
-
-   3. Connect the task flow
-
-   4. 1. Add routes
-      2. Add dataset
+The next section provides some examples of how to customize your Task Flow.
