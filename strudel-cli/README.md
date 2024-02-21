@@ -43,10 +43,37 @@ pip install -i https://test.pypi.org/simple/ strudel-cli
 ```
 :warning: ***strudel-cli is only on TestPyPI for the moment. When it is published to PyPI, you will be able to omit the -i option***
 
+Create a config file based on the [create-app config json](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/CONFIGS.md#create-app-config-file):
+
+_my-app-config.json_
+```js
+{
+  "name": "my-strudel-app",
+  "appTitle": "My Science App"
+}
+```
+
 Create a base app:
 
 ```
-strudel create-app my-app
+strudel create-app --config my-app-config.json
+```
+
+Create a config file for a new task flow based on [one of the config examples](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/CONFIGS.md#compare-data):
+
+_my-taskflow-config.json_
+```js
+{
+  "name": "my-taskflow",
+  "template": "compare-data",
+  "compareItem": "scenario",
+  "compareItemPlural": "scenarios",
+  "mainPageTitle": "Compare Data App",
+  "mainPageDescription": "Description of this app section",
+  "newItemPageTitle": "Compare Data App",
+  "newItemPageDescription": "Description of this app section",
+  "comparePageDescription": "Description of this app section"
+}
 ```
 
 Go to the root directory of your new app:
@@ -55,10 +82,10 @@ Go to the root directory of your new app:
 cd my-app
 ```
 
-Add the `compare-data` task flow to your app:
+Add the task flow to your app:
 
 ```
-strudel add-taskflow my-taskflow --template compare-data
+strudel add-taskflow --config ../my-taskflow-config.json
 ```
 
 Install dependencies and start your app.

@@ -3,13 +3,26 @@
 Install the STRUDEL CLI tool:
 
 ```
-pip install strudel-cli
+pip install -i https://test.pypi.org/simple/ strudel-cli
 ```
+:warning: ***strudel-cli is only on TestPyPI for the moment. When it is published to PyPI, you will be able to omit the -i option***
 
 Create a base app:
 
 ```
 strudel create-app my-app
+```
+
+Create a config file for your new task flow based on [the run-computation config example](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/CONFIGS.md#run-computation):
+
+_my-taskflow-config.json_
+```js
+{
+  "name": "my-taskflow",
+  "template": "run-computation",
+  "pageTitle": "Run Computation App",
+  "pageDescription": "Description of this app section"
+}
 ```
 
 Go to the root directory of your new app:
@@ -18,10 +31,10 @@ Go to the root directory of your new app:
 cd my-app
 ```
 
-Add the `run-computation` task flow to your app:
+Add the task flow to your app:
 
 ```
-strudel add-taskflow my-taskflow --template run-computation
+strudel add-taskflow --config ../my-taskflow-config.json
 ```
 
 ## Learn More

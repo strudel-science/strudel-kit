@@ -1,4 +1,4 @@
-:warning: ***This library is in early-stage development. Check back soon for more updates!***
+:warning: ***This library is in early-stage development and is subject to change frequently. Check back soon for more updates!***
 
 # STRUDEL Kit
 
@@ -17,7 +17,8 @@ pip install -i https://test.pypi.org/simple/ strudel-cli
 
 Create a config file based on the [create-app config json](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/CONFIGS.md#create-app-config-file):
 
-```
+_my-app-config.json_
+```js
 {
   "name": "my-strudel-app",
   "appTitle": "My Science App"
@@ -32,7 +33,8 @@ strudel create-app --config my-app-config.json
 
 Create a config file for a new task flow based on [one of the config examples](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/CONFIGS.md#compare-data):
 
-```
+_my-taskflow-config.json_
+```js
 {
   "name": "my-taskflow",
   "template": "compare-data",
