@@ -6,8 +6,7 @@ import { basename } from '../App';
 import { Box } from '@mui/material';
 import { Outlet } from 'react-router';
 import { ExploreDataProvider } from './context/ContextProvider';
-import { columns } from './columns';
-import { filters } from './filters';
+import definitions from './definitions.json';
 import { TopBar } from '../../components/TopBar';
 
 export const ExploreDataWrapper: React.FC = () => {
@@ -39,7 +38,7 @@ export const ExploreDataWrapper: React.FC = () => {
         <TopBar />
       </Box>
       <Box>
-        <ExploreDataProvider data={entities} columns={columns} filters={filters} dataIdField='Proteome_ID'>
+        <ExploreDataProvider data={entities} columns={definitions.columns.main} filters={definitions.filters.main} dataIdField='Proteome_ID'>
           <Outlet />
         </ExploreDataProvider>
       </Box>

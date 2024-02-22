@@ -3,13 +3,18 @@ import logging
 import subprocess
 import os
 import traceback
+import json
 from typing import Optional
 from typing_extensions import Annotated
-from .utils import (
-    json_to_yaml,
+from .callbacks import (
+    defaults,
     name_callback,
     version_callback,
-    clear_cookiecutter_cache,
+    config_callback
+)
+from .utils import (
+    json_to_yaml,
+    clear_cookiecutter_cache
 )
 from enum import Enum
 from rich import print
@@ -55,15 +60,17 @@ def create_app(
             callback=name_callback,
             help="The name of your app. It's best to use only letters, hyphens, and underscores.",
         ),
-    ],
+    ] = defaults["create-app"]["name"],
     config: Annotated[
         str,
         typer.Option(
             "--config",
             "-c",
             help="JSON file with configuration values to use to build your app.",
+            callback=config_callback,
+            is_eager=True
         ),
-    ] = "",
+    ] = defaults["create-app"]["config"],
     output_dir: Annotated[
         str,
         typer.Option(
@@ -71,7 +78,7 @@ def create_app(
             "-o",
             help="Directory where the app should be created. Defaults to current directory.",
         ),
-    ] = "",
+    ] = defaults["create-app"]["output_dir"],
     branch: Annotated[
         str,
         typer.Option(
@@ -79,8 +86,15 @@ def create_app(
             "-b",
             help="Branch in strudel-kit repo that should be used for the templates. This option is primarily for use by contributors.",
         ),
-    ] = "main",
-    verbose: Annotated[int, typer.Option("--verbose", "-v", count=True)] = 0,
+    ] = defaults["create-app"]["branch"],
+    verbose: Annotated[
+        int, 
+        typer.Option(
+            "--verbose", 
+            "-v", 
+            count=True
+        ),
+    ] = defaults["create-app"]["verbose"],
 ):
     """
     Create a base strudel web application.
@@ -90,6 +104,7 @@ def create_app(
     try:
         print("[white]Creating your app...")
         _clear_cache("create your app")
+
         args = [
             "cookiecutter",
             "gh:strudel-science/strudel-kit",
@@ -99,7 +114,7 @@ def create_app(
             "strudel-cookiecutter/base",
             "--output-dir",
             output_dir,
-            f"projectName={name}",
+            f"name={name}",
         ]
 
         if config:
@@ -160,6 +175,9 @@ def create_app(
             )
         )
         print("Onwards!")
+    finally:
+        if config:
+            os.remove(temp_yaml_config)
 
 
 class TaskFlow(str, Enum):
@@ -185,7 +203,7 @@ def add_taskflow(
             callback=name_callback,
             help="The name of your task flow module. It's best to use only letters, hyphens, and underscores.",
         ),
-    ],
+    ] = defaults["add-taskflow"]["name"],
     template: Annotated[
         TaskFlow,
         typer.Option(
@@ -193,15 +211,17 @@ def add_taskflow(
             "-t",
             help="Name of the strudel task flow template to use as the basis for your task flow.",
         ),
-    ],
+    ] = defaults["add-taskflow"]["template"],
     config: Annotated[
         str,
         typer.Option(
             "--config",
             "-c",
             help="JSON file with configuration values to use to build your task flow.",
+            callback=config_callback,
+            is_eager=True
         ),
-    ] = "",
+    ] = defaults["add-taskflow"]["config"],
     output_dir: Annotated[
         str,
         typer.Option(
@@ -209,7 +229,7 @@ def add_taskflow(
             "-o",
             help="Directory where the task flow module should be created.",
         ),
-    ] = "src/app",
+    ] = defaults["add-taskflow"]["output_dir"],
     branch: Annotated[
         str,
         typer.Option(
@@ -217,7 +237,7 @@ def add_taskflow(
             "-b",
             help="Branch in strudel-kit repo that should be used for the templates. This option is primarily for use by contributors.",
         ),
-    ] = "main",
+    ] = defaults["add-taskflow"]["branch"],
 ):
     """
     Add a new task flow section to an existing strudel web application.
@@ -225,6 +245,7 @@ def add_taskflow(
     try:
         print("[white]Adding a Task Flow to your app...")
         _clear_cache("add a Task Flow")
+
         args = [
             "cookiecutter",
             "gh:strudel-science/strudel-kit",
@@ -234,7 +255,7 @@ def add_taskflow(
             f"strudel-cookiecutter/{template.value}",
             "--output-dir",
             output_dir,
-            f"taskflowName={name}",
+            f"name={name}",
         ]
 
         if config:
@@ -261,6 +282,21 @@ def add_taskflow(
         print(str(e))
         raise typer.Abort()
     else:
+        if config:
+            try:
+                with open(config) as config_file:
+                    config_json = json.load(config_file)
+                # If the task flow config has a definitions object
+                # then copy the contents of that object into 
+                # the definitions.json file in the generated task flow.
+                # This is necessary because cookiecutter can't copy json verbatim into files.
+                if "definitions" in config_json:
+                    with open(os.path.join(output_dir, name, 'definitions.json'), "w", encoding="utf-8") as definitions_file:
+                        json.dump(config_json['definitions'], definitions_file, ensure_ascii=False, indent=2)
+            except Exception as e:
+                print("Error copying definitions into json file")
+                print(e)
+            
         print(
             Padding(
                 "[bold green]Successfully added a task flow to your strudel app!",

@@ -113,7 +113,7 @@ const app = useAppState();
               </Link>
             </IconButton>
             <Typography variant="h6" component="div" sx={{ "{{" }} flexGrow: 1 {{ "}}" }}>
-              {app.state.projectTitle}
+              {app.state.appTitle}
             </Typography>
             <IconButton
               size="large"

@@ -41,8 +41,8 @@ export const DataExplorer: React.FC = () => {
   return (
     <Box>
       <PageHeader
-        pageTitle="{{ cookiecutter.content.pageTitle }}"
-        description="{{ cookiecutter.content.pageDescription }}"
+        pageTitle="{{ cookiecutter.pageTitle }}"
+        description="{{ cookiecutter.pageDescription }}"
         sx={{ "{{" }}
           marginBottom: 1,
           padding: 2,

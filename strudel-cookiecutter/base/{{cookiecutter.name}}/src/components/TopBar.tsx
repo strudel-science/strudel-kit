@@ -24,7 +24,7 @@ export const TopBar: React.FC = () => {
           </IconButton>
         </Link>
         <Typography variant="h6" component="div" sx={{ "{{" }} flexGrow: 1 {{ "}}" }}>
-          {app.state.projectTitle}
+          {app.state.appTitle}
         </Typography>
         <IconButton
           size="large"

@@ -16,7 +16,7 @@ const App: React.FC = () => {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <AppProvider projectTitle="{{ cookiecutter.content.projectTitle }}">
+        <AppProvider appTitle="{{ cookiecutter.appTitle }}">
           <RouterProvider router={router} />
         </AppProvider>
       </ThemeProvider>

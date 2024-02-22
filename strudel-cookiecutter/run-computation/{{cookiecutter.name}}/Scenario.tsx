@@ -34,7 +34,7 @@ const app = useAppState();
             </IconButton>
             <Stack direction="row" alignItems="center" sx={{ "{{" }} flexGrow: 1 {{ "}}" }}>
               <Typography variant="h6" component="p" sx={{ "{{" }} marginRight: 2 {{ "}}" }}>
-                {app.state.projectTitle}
+                {app.state.appTitle}
               </Typography>
               <Breadcrumbs aria-label="breadcrumb" separator={<ChevronRightIcon fontSize="small" />}>
                 <Link underline="hover" color="inherit" to="/run-computation" component={RouterLink}>

@@ -7,7 +7,7 @@ import { PageHeader } from '../../components/PageHeader';
 import { useCompareData } from './context/ContextProvider';
 import { setComparing, setSelectedRows } from './context/actions';
   
-export const ScenarioComparison: React.FC = () => {
+export const NewScenario: React.FC = () => {
   const { state, dispatch } = useCompareData();
 
   /**
@@ -24,21 +24,21 @@ export const ScenarioComparison: React.FC = () => {
   return (
     <Box>
       <PageHeader
-        pageTitle="Compare Scenarios"
-        description="Comparing multiple saved scenarios for a selected model, calculation, or analysis."
+        pageTitle="{{ cookiecutter.newItemPageTitle }}"
+        description="{{ cookiecutter.newItemPageDescription }}"
         actions={
           <Stack direction="row">
             <Box>
               <Link component={RouterLink} to="/compare-data">
-                <Button variant="contained" startIcon={<ArrowBackIcon />}>
-                  Back to Scenarios
+                <Button variant="contained" color="warning">
+                  Cancel
                 </Button>
               </Link>
             </Box>
             <Box>
-              <Link component={RouterLink} to="/compare-data/new">
+              <Link component={RouterLink} to="/compare-data">
                 <Button variant="contained">
-                  New Scenario
+                  Save Scenario
                 </Button>
               </Link>
             </Box>
@@ -58,26 +58,11 @@ export const ScenarioComparison: React.FC = () => {
       >
         <Paper
           sx={{ '{{' }}
-            '& .MuiDataGrid-columnHeader, .MuiDataGrid-cell': {
-              borderRight: '1px solid',
-              borderRightColor: 'neutral.main'
-            },
-            '& .compare-data--metric': {
-              fontWeight: 'bold',
-            },
-            
+            padding: 2,
           {{ '}}' }}
         >
-          {state.comparing && (
-            <DataGrid
-              rows={state.comparisonData}
-              getRowId={(row) => row.metric}
-              columns={state.comparisonColumns}
-              disableRowSelectionOnClick
-              disableDensitySelector
-              disableColumnFilter
-            />
-          )}
+          {/* TODO: add form */}
+          Work in progress
         </Paper>
       </Container>
     </Box>
