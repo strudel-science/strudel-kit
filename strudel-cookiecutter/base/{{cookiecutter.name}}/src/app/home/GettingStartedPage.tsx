@@ -1,23 +1,26 @@
-import React, { PropsWithChildren } from 'react';
-import { Container, Paper } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
+import React from 'react';
+import { Box, Container, Paper } from '@mui/material';
+import { TopBar } from '../../components/TopBar';
 
 export const GettingStartedPage: React.FC = () => {
   return (
-    <Container
-      maxWidth="md"
-      sx={{ "{{" }}
-        marginTop: 3,
-        marginBottom: 3,
-      {{ "}}" }}
-    >
-      <Paper
+    <Box>
+      <TopBar />
+      <Container
+        maxWidth="md"
         sx={{ "{{" }}
-          padding: 2
+          marginTop: 3,
+          marginBottom: 3,
         {{ "}}" }}
       >
-        Welcome to your STRUDEL app!
-      </Paper>
-    </Container>
+        <Paper
+          sx={{ "{{" }}
+            padding: 2
+          {{ "}}" }}
+        >
+          Welcome to your STRUDEL app!
+        </Paper>
+      </Container>
+    </Box>
   )
 }
