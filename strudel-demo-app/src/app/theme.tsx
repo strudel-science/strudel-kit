@@ -75,6 +75,31 @@ export const theme = createTheme({
   },
   /** Default options for MUI components used throughout the app */
   components: {
+    /**
+     * Example component customization.
+     * Learn more at https://mui.com/material-ui/customization/theme-components/
+     * 
+        MuiComponentName: {
+          defaultProps: {
+            // Put prop names and values here
+          },
+          styleOverrides: {
+            root: {
+              // Put styles here
+            }
+          },
+          // Create new custom variants of certain components
+          variants: [
+            {
+              props: { variant: '' },
+              style: {
+                // Put styles here
+              },
+            },
+          ],
+        },
+     *
+     */
     MuiButton: {
       variants: [
         {
@@ -86,6 +111,13 @@ export const theme = createTheme({
           },
         },
       ],
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          textDecoration: 'none'
+        }
+      }
     },
     MuiStack: {
       defaultProps: {

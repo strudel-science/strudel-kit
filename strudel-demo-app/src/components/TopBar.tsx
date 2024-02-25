@@ -30,9 +30,11 @@ export const TopBar: React.FC = () => {
               <MenuIcon />
             </IconButton>
           </AppLink>
-          <Typography variant="h6" component="div">
-            {app.state.appTitle}
-          </Typography>
+          <AppLink to="/">
+            <Typography variant="h6" component="div">
+              {app.state.appTitle}
+            </Typography>
+          </AppLink>
         </Stack>
         <IconButton
           size="large"
