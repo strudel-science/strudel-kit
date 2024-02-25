@@ -282,8 +282,37 @@ This is great, but it would be good to be able to access this page without havin
 
 Go to the `src/components` directory and open the file `TopBar.tsx`. This is the component for the top navigation bar that is displayed on the home page and all the other task flow pages.
 
+First, find the code where the app title is rendered so you can render the link directly to the right of the app title:
 
+```js
+<AppLink to="/">
+  <Typography variant="h6" component="div">
+    {app.state.appTitle}
+  </Typography>
+</AppLink>
+```
+
+Then add a new `AppLink` component directly underneath the `AppLink` component that renders the app title:
+
+```js
+<AppLink to="/">
+  <Typography variant="h6" component="div">
+    {app.state.appTitle}
+  </Typography>
+</AppLink>
+<AppLink to="/explore">
+  Explore
+</AppLink>
+```
+
+The `AppLink` component is used for links to internal pages in your app. The `to` prop tells the component which route it should link to and the content in between the opening (`<AppLink>`) and closing (`</AppLink>`) tags is the clickable content that displays on the page. Go to the home page at http://localhost:3000 and try out the link.
+
+TODO: add image of link on home page
+
+Woohoo! You have connected your first Task Flow.
 
 #### Next steps
 
 The next section provides some examples of how to customize your Task Flow.
+
+TODO: add links to previous/next page
