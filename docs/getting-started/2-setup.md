@@ -270,11 +270,19 @@ Add the following text after the line that ends `createHashRouter([`. This is th
 },
 ```
 
-Save this file. And you're done! You should now have a fully functioning Explore Data Task Flow page.
+Save this file. You should now have a fully functioning Explore Data Task Flow page when you navigate to the `/explore` route. Test this out by navigating your browser to http://localhost:3000/#/explore.
 
-You can test out your changes by reloading the app or restarting it, then navigating to your page:
+<details>
+  <summary>Note</summary>
+  The `#/` section of the URL is added by React to enable single-page routing that doesn't require extra page reloads. It can be removed by using <code>createBrowerRouter</code> instead of <code>createHashRouter</code>. See the <a href="https://reactrouter.com/en/main/routers/picking-a-router" target="_blank">react-router docs on picking a router</a>.
+</details>
+<br>
 
- http://localhost:3000/#/explore
+This is great, but it would be good to be able to access this page without having to type in the URL every time. Let's add a link to the Explore page in the top navigation bar.
+
+Go to the `src/components` directory and open the file `TopBar.tsx`. This is the component for the top navigation bar that is displayed on the home page and all the other task flow pages.
+
+
 
 #### Next steps
 
