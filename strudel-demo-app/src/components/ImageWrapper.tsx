@@ -15,16 +15,19 @@ interface ImageWrapperProps extends BoxProps {
 export const ImageWrapper: React.FC<ImageWrapperProps> = ({
   height,
   width,
+  sx,
   children,
   ...rest
 }) => {
   return (
     <Box
+      {...rest}
       sx={{
+        ...sx,
         height: height || 'auto',
+        overflow: 'hidden',
         width: width || 'auto',
       }}
-      {...rest}
     >
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {

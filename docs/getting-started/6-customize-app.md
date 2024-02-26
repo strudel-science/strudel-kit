@@ -172,8 +172,47 @@ Now, let's replace the "Tutorial Science App" title in the navigation bar with a
 
 [Click to download example-logo.png from GitHub]()
 
-Find the `AppLink` that contains the "Tutorial Science App" title
+Place `example-logo.png` in `public/images` alongside your other images.
 
+In `TopBar.tsx`, find the `AppLink` that contains the app title:
 
+```js
+<AppLink 
+  to="/" 
+  sx={{ 
+    color: '#fff'
+  }}
+>
+  <Typography variant="h6" component="div">
+    {app.state.appTitle}
+  </Typography>
+</AppLink>
+```
+
+Replace the whole `Typography` component with an `ImageWrapper` and `img` element. Then, reference the new logo image in the `src` attribute of the `img`. You can also remove the `sx` prop from this `AppLink` because it's no longer necessary:
+
+```js
+<AppLink to="/">
+  <ImageWrapper>
+    <img src="images/example-logo.png" />
+  </ImageWrapper>
+</AppLink>
+```
+
+And don't forget to import the `ImageWrapper` component to `TopBar.tsx`:
+
+```js
+import { ImageWrapper } from './ImageWrapper';
+```
+
+Now you just need to add a `height` to `ImageWrapper` and add some `alt` text to the `img`:
+
+```js
+<AppLink to="/">
+  <ImageWrapper height="50px">
+    <img src="images/example-logo.png" alt="PLANETS app logo" />
+  </ImageWrapper>
+</AppLink>
+```
 
 
