@@ -170,7 +170,7 @@ Refresh the page and watch the Explore link change color when you mouse over it.
 
 Now, let's replace the "Tutorial Science App" title in the navigation bar with a logo for a project. First, download the tutorial app logo from GitHub:
 
-[Click to download app-logo.png from GitHub]()
+[Click to download example-logo.png from GitHub]()
 
 Find the `AppLink` that contains the "Tutorial Science App" title
 
