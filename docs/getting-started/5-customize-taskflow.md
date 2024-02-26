@@ -1,10 +1,3 @@
-TODO: Outline:
-
-Remove an element
-Add a custom panel
-Add a custom page
-  Potentially a glossary but may hold off on this step
-
 # Customize Your Task Flow
 
 Now that you have set up your initial task flow let's customize some of the content within it. In this section you will learn how to remove, add, and edit sections in a task flow page.
@@ -134,14 +127,16 @@ Next, add dynamic rows to the second `LabelValueTable`. Replace the section labe
 
 Refresh the page and make sure you see dynamic values in both sections of the preview panel.
 
-To put the final touches on the preview panel, remove the placeholder subtitle section:
+TODO: add image of preview panel with dynamic label values
+
+Let's clean up the preview panel so that there's no more placeholder content. Find the placeholder subtitle section and remove it:
 
 ```js
 // Delete this line
 <Typography variant="body2">Row description, subtitle, or helper text.</Typography>
 ```
 
-and find the code that renders the "Preview Heading":
+Now find the code that renders the "Preview Heading":
 
 ```js
 <Typography variant="h6" component="h3" flex={1}>
@@ -151,7 +146,7 @@ and find the code that renders the "Preview Heading":
 </Typography>
 ```
 
-Replace "Preview Heading" with the name of the planet using the `Name` property:
+Replace "Preview Heading" with the name of the planet by accessing the `Name` column:
 
 ```js
 <Typography variant="h6" component="h3" flex={1}>
@@ -162,4 +157,89 @@ Replace "Preview Heading" with the name of the planet using the `Name` property:
 ```
 
 Here we are doing the same thing we did in the `LabelValueTable` components, except there is one small difference: the variable is wrapped with curly braces `{...}`. This is necessary because in React, curly braces indicate that a variable or function is going to be used in the component, otherwise it would render the literal text, "state.previewItem['Name']". This wasn't necessary in the `LabelValueTable` because there are already curly braces around the whole `row` prop.
+
+Refresh the page. You should see the planet name at the top of the preview panel.
+
+TODO: add image of preview panel with planet name
+
+### Add dynamic images
+
+In this step you will add an image for each planet and display it in the preview panel. First, create a new `images` directory inside the `public/` directory at the top level of the app.
+
+TODO: add image of images folder inside public directory
+
+Then, download the `planets.zip` file from the strudel-kit GitHub:
+
+https://github.com/strudel-science/strudel-kit/blob/cody/tutorial/docs/getting-started/images/planets.zip
+
+To download the raw zip file, click the download icon or the "Raw" button on the right side of the page.
+
+Double-click the `planets.zip` file you downloaded to unpack the files, then drill into the `planets` directory and copy the 8 files. There should be one file for each planet. 
+
+Paste the 8 planet images into `public/images`.
+
+Now you are ready to start incorporating the images into the preview panel. Open `PreviewPanel.tsx` and fine the "Physical Characteristics" section you edited earlier:
+
+```js
+<Box>
+  <Typography fontWeight="medium" mb={1}>Physical Characteristics</Typography>
+  <LabelValueTable 
+    rows={[
+      { label: 'Diameter', value: state.previewItem['Diameter'] },
+      { label: 'Mass', value: state.previewItem['Mass'] },
+      { label: 'Surface Gravity', value: state.previewItem['SurfaceGravity'] },
+    ]}
+  />
+</Box>
+```
+
+Add an image tag directly above this section:
+
+```js
+<img src="" />
+```
+
+The `img` tag uses the `src` attribute to tell it which image to display. In this case, you want the image to be different depending on the row that is selected. To do that, you are going to inject the planet's name into the path to the image:
+
+```js
+<img src={`images/${state.previewItem['Name']}.jpg`}/>
+```
+
+Here you are using a JavaScript syntax called a _template literal_. Instead of using quotes to wrap the string, you use backticks (`` ` ``) which lets you embed dynamic content inside the string using a dollar sign and curly braces (`${expression}`).
+
+Refresh your browser and check that the planet images are showing up in the preview panel when you click on a planet row.
+
+This is great but the images are looking a little too big. Let's add a uniform height to the images so that users can more easily see both the image and the characteristics data.
+
+To do this, import the `ImageWrapper` component below the other imports at the top of the file:
+
+```js
+import { ImageWrapper } from '../../components/ImageWrapper';
+```
+
+Then wrap your image with the `ImageWrapper` component and specify a height using the component's `height` prop:
+
+```js
+<ImageWrapper height="300px">
+  <img src={`images/${state.previewItem['Name']}.jpg`} />
+</ImageWrapper>
+```
+
+To make sure the images are accessible, add alt text to the `img` tag. Alt text is used by screen readers to describe images to users and it is also displayed if the image has trouble loading.
+
+```js
+<ImageWrapper height="300px">
+  <img src={`images/${state.previewItem['Name']}.jpg`} alt={`Sattelite image of ${state.previewItem['Name']}`} />
+</ImageWrapper>
+```
+
+Refresh your page and make sure the images are smaller and all the same height.
+
+TODO: Add image of preview with final planet images.
+
+Woohoo! You're done with customizations for now.
+
+## Next Steps
+
+At this point you have a task flow that is starting to be tailored to a particular data source and use-case. In the next section you will learn how to customize the app as a whole and make it your own.
 
