@@ -10,24 +10,24 @@ To get started modifying the theme, open up the theme file in `src/app/theme.tsx
 
 ### Change the Color Palette
 
-Let's start out by changing the color palette for the app. Right now, the primary color for the app is blue (`#1976d2`). Start by changing the `primary` `main` color to amaranth red (`#DD4050`):
+Let's start out by changing the color palette for the app. Right now, the primary color for the app is blue (`#1976d2`). Start by changing the `primary` `main` color to amaranth red (`#dd4050`):
 
 ```js
 primary: {
-  main: '#DD4050',
+  main: '#dd4050',
   light: '#42a5f5',
   dark: '#1565c0',
   contrastText: '#fff',
 },
 ```
 
-The essential colors in the palette each have a `main`, `light`, and `dark` version. You can specify the `light` and `dark` versions explicitly or you can remove them and they will be generated automatically based on the `main` color. For now, set the `light` and `dark` versions to bright pink (`#E36370`) and cardinal red (`#BF2231`) respectively.
+The essential colors in the palette each have a `main`, `light`, and `dark` version. You can specify the `light` and `dark` versions explicitly or you can remove them and they will be generated automatically based on the `main` color. For now, set the `light` and `dark` versions to bright pink (`#e36370`) and cardinal red (`#bf2231`) respectively.
 
 ```js
 primary: {
-  main: '#DD4050',
-  light: '#E36370',
-  dark: '#BF2231',
+  main: '#dd4050',
+  light: '#e36370',
+  dark: '#bf2231',
   contrastText: '#fff',
 },
 ```
@@ -36,13 +36,13 @@ Refresh the page and see if the blue text and buttons changed to the red tones.
 
 TODO: add image of red palette
 
-While you are here, also change the `secondary` colors to electric blue tones. Change `main` to `#00E9F5`, `light` to `#5EF6FF`, and `dark` to `#00C2CC`. Because this is a lighter color in general, also change the `contrastText` to black (`#000`). This controls the color of text that is rendered on top of the color and ensures the contrast is still readable and accessible.
+While you are here, also change the `secondary` colors to electric blue tones. Change `main` to `#00e9f5`, `light` to `#5ef6ff`, and `dark` to `#00c2cc`. Because this is a lighter color in general, also change the `contrastText` to black (`#000`). This controls the color of text that is rendered on top of the color and ensures the contrast is still readable and accessible.
 
 ```js
 secondary: {
-  main: '#00E9F5',
-  light: '#5EF6FF',
-  dark: '#00C2CC',
+  main: '#00e9f5',
+  light: '#5ef6ff',
+  dark: '#00c2cc',
   contrastText: '#000',
 },
 ```
@@ -82,6 +82,97 @@ TODO: add image of final dark mode
 
 You just learned how to modify the global app theme. Now let's learn how to customize the style of a specific component. In this step you will change the color of the top level navigation bar.
 
+Open the component for the navigation bar in `src/components/TopBar.tsx` and find the `AppBar` component:
+
+```js
+<AppBar color="default" position="static">
+```
+
+There are many ways to modify the styles of the elements in a component or on a page. In this tutorial you will use the MUI `sx` prop to change the styles of specific components. It's possible to use traditional methods like CSS classes for this too, but the `sx` prop allows you to easily utilize the global theme and create dynamic styles and states. You can read more about the `sx` prop in the (MUI documentation)[https://mui.com/material-ui/customization/how-to-customize/].
+
+To change the background color of the `AppBar` add the `sx` prop and set the `backgroundColor` property to `primary.main`:
+
+```js
+<AppBar 
+  color="default" 
+  position="static"
+  sx={{
+    backgroundColor: 'primary.main'
+  }}
+>
+```
+
+The `primary.main` string is a reference to the value in the `theme.palette` object. You can reference any value in the theme's `palette` inside of the `sx` prop. You can also just as easily use an explicit color code.
+
+You may have noticed that the color of the navigation bar changed, but now the links are not very readable because they are also red. Use the `sx` prop to change the text of the 3 `AppLink` components to white (`#fff`):
+
+```js
+<AppLink 
+  to="/" 
+  sx={{ 
+    color: '#fff'
+  }}
+>
+  <IconButton
+    size="large"
+    edge="start"
+    color="inherit"
+    aria-label="menu"
+  >
+    <MenuIcon />
+  </IconButton>
+</AppLink>
+<AppLink 
+  to="/" 
+  sx={{ 
+    color: '#fff'
+  }}
+>
+  <Typography variant="h6" component="div">
+    {app.state.appTitle}
+  </Typography>
+</AppLink>
+<AppLink 
+  to="/" 
+  sx={{ 
+    color: '#fff'
+  }}
+>
+  Explore
+</AppLink>
+```
+
+Refresh the page to see the new navigation bar.
+
+TODO: add image of the navbar
+
+You can also use the `sx` prop to make advanced style changes like changing the hover state of an element. To do add a different style for the hover state, add a new property to the `sx` object called `'&:hover'`. You can then give this new property its own object of styles which tells the component how it should look when it is being hovered by a user's cursor.
+
+Add a hover state style to the Explore page `AppLink` so that its color is `secondary.light` on hover:
+
+```js
+<AppLink 
+  to="/" 
+  sx={{ 
+    color: '#fff',
+    '&:hover': {
+      color: 'secondary.light',
+    }
+  }}
+>
+  Explore
+</AppLink>
+```
+
+Refresh the page and watch the Explore link change color when you mouse over it.
+
+## Add a Project Logo
+
+Now, let's replace the "Tutorial Science App" title in the navigation bar with a logo for a project. First, download the tutorial app logo from GitHub:
+
+[Click to download app-logo.png from GitHub]()
+
+Find the `AppLink` that contains the "Tutorial Science App" title
 
 
 

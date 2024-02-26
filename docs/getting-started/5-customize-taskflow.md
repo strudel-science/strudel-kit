@@ -170,7 +170,7 @@ TODO: add image of images folder inside public directory
 
 Then, download the `planets.zip` file from the strudel-kit GitHub:
 
-https://github.com/strudel-science/strudel-kit/blob/cody/tutorial/docs/getting-started/images/planets.zip
+[Click to download planets.zip from GitHub](https://github.com/strudel-science/strudel-kit/blob/cody/tutorial/docs/getting-started/images/planets.zip?raw=true)
 
 To download the raw zip file, click the download icon or the "Raw" button on the right side of the page.
 
