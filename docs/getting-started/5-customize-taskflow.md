@@ -9,3 +9,157 @@ Add a custom page
 
 Now that you have set up your initial task flow let's customize some of the content within it. In this section you will learn how to remove, add, and edit sections in a task flow page.
 
+## Remove an Element
+
+Often you won't want to use all of the page elements that come with a Task Flow. For this tutorial, you remove the "Related Data" table in the preview panel that displays when you click on a row. Because you don't have any nested or linked data for each planet in the table, this element isn't useful to the UI right now.
+
+TODO: add image of original preview panel
+
+First, look inside the `src/app/explorer/` directory that was generated when you first added your task flow:
+
+TODO: add image of explore-data Task Flow directory tree
+
+These are the files that determine how this specific Task Flow will be rendered in the UI. Some of these files reference other components that are common to the whole app, but these components are specific to the `explorer` Task Flow.
+
+For this step, open `PreviewPanel.tsx` because the "Related Data" table is in the preview panel.
+
+Next, find the code that renders the "Related Data" section:
+
+```js
+<Box>
+  <Typography fontWeight="medium" mb={1}>Related Data</Typography>
+  <DataGrid
+    rows={relatedRows}
+    columns={relatedColumns}
+    disableRowSelectionOnClick
+    initialState={{
+      pagination: { paginationModel: { pageSize: 5 } }
+    }}
+  />
+</Box>
+```
+
+This section of code includes a `Box` component to wrap around the whole section, a `Typography` component to display the section heading, and a `DataGrid` component to display the related data in a table.
+
+Delete this whole section of code, from `<Box>` to `</Box>` and save `PreviewPanel.tsx`. Refresh the Explorer page in the browser. The "Related Data" section should now be gone and the "View Details" and "Export Data" buttons should be directly below the other content.
+
+TODO: add image of preview panel without related data section
+
+## Edit the Preview Panel Content
+
+Now let's make the preview panel display more useful information. In this step, you are going to edit the property-value tables in the preview panel so that they display data from your data source: `planets.csv`.
+
+With `PreviewPanel.tsx` open, find the code that renders the "Property Group 1" section:
+
+```js
+<Box>
+  <Typography fontWeight="medium" mb={1}>Property Group 1</Typography>
+  <LabelValueTable 
+    rows={[
+      { label: 'Property 1', value: 'value' },
+      { label: 'Property 2', value: 'value' },
+      { label: 'Property 3', value: 'value' },
+    ]}
+  />
+</Box>
+```
+
+Just like the "Related Data" section, there is a `Box` component and a `Typography` component but there is also a `LabelValueTable` component. This component renders a list of properties and their values in a readable two-column format. 
+
+### Replace the Section Label
+
+For this first section, let's display the physical characteristics of the planet. Replace "Property Group 1" with "Physical Characteristics".
+
+```js
+<Typography fontWeight="medium" mb={1}>Physical Characteristics</Typography>
+```
+
+Refresh your browser and make sure "Physical Characteristics" displays as the section label.
+
+### Connect your data to the preview panel using the state variable
+
+Next, you will replace the rows in the `LabelValueTable` with data from the planet that the user has clicked. To do this, you need to access the internal `state` of the Explorer Task Flow. The `state` is an object that React uses to keep track of information about app. Data in the `state` is dynamic. This means that it changes based on actions that the user takes or external events like data requests.
+
+In the `PreviewPanel` component, the `state` has already been defined near the top of the component:
+
+```js
+const {state, dispatch} = useExploreData();
+```
+
+There are other pieces here, but for now just focus on the `state` variable. When a user clicks on a row in this task flow, the data in that row is stored in `state.previewItem`. Now, replace "Property 1" in the first `LabelValueTable` with the "Diameter" property for the selected planet:
+
+```js
+<LabelValueTable 
+  rows={[
+    { label: 'Diameter', value: state.previewItem['Diameter'] },
+    { label: 'Property 2', value: 'value' },
+    { label: 'Property 3', value: 'value' },
+  ]}
+/>
+```
+
+Here you have replaced the first label with "Diameter" and replaced the value with the value of the `Diameter` property from the selected row. Refresh the page and make sure your see a number next to the "Diameter" label in the preview panel. Click around to different rows. Do you see the number changing?
+
+Add a few more dynamic rows to the table in this section:
+
+```js
+<LabelValueTable 
+  rows={[
+    { label: 'Diameter', value: state.previewItem['Diameter'] },
+    { label: 'Mass', value: state.previewItem['Mass'] },
+    { label: 'Surface Gravity', value: state.previewItem['SurfaceGravity'] },
+  ]}
+/>
+```
+
+Notice that we can access properties that aren't displayed in the main table. Even though `SurfaceGravity` wasn't defined in the main table columns, it is still part of the underlying data so it is present in the internal task flow `state`. Also notice that the label can be any string you want, but the value must use the exact name of the property column in `planets.csv`.
+
+Next, add dynamic rows to the second `LabelValueTable`. Replace the section label "Property Group 2" with "Orbital Characteristics" and add dynamic data points for the other columns in `planets.csv`:
+
+```js
+<Box>
+  <Typography fontWeight="medium" mb={1}>Orbital Characteristics</Typography>
+  <LabelValueTable 
+    rows={[
+      { label: 'Inclination', value: state.previewItem['Inclination'] },
+      { label: 'Eccentricity', value: state.previewItem['Eccentricity'] },
+      { label: 'Semi Major Axis', value: state.previewItem['Semi_majorAxis'] },
+      { label: 'Orbital Period', value: state.previewItem['OrbitalPeriod'] },
+      { label: 'Sidereal Rotation', value: state.previewItem['SiderealRotation'] },
+      { label: 'Satellites', value: state.previewItem['Satellites'] },
+    ]}
+  />
+</Box>
+```
+
+Refresh the page and make sure you see dynamic values in both sections of the preview panel.
+
+To put the final touches on the preview panel, remove the placeholder subtitle section:
+
+```js
+// Delete this line
+<Typography variant="body2">Row description, subtitle, or helper text.</Typography>
+```
+
+and find the code that renders the "Preview Heading":
+
+```js
+<Typography variant="h6" component="h3" flex={1}>
+  <Link component={RouterLink} to="." underline="hover">
+    Preview Heading
+  </Link>
+</Typography>
+```
+
+Replace "Preview Heading" with the name of the planet using the `Name` property:
+
+```js
+<Typography variant="h6" component="h3" flex={1}>
+  <Link component={RouterLink} to="." underline="hover">
+    {state.previewItem['Name']}
+  </Link>
+</Typography>
+```
+
+Here we are doing the same thing we did in the `LabelValueTable` components, except there is one small difference: the variable is wrapped with curly braces `{...}`. This is necessary because in React, curly braces indicate that a variable or function is going to be used in the component, otherwise it would render the literal text, "state.previewItem['Name']". This wasn't necessary in the `LabelValueTable` because there are already curly braces around the whole `row` prop.
+

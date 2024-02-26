@@ -8,7 +8,7 @@ This tutorial is for anyone who wants to adapt a STRUDEL Task Flow into a custom
 
 ### What do I need to know before I start?
 
-TODO: Key concepts and terminology for command-line, react, strudel.
+TODO: Key concepts and terminology for command-line, react, typescript, strudel.
 
 ### Jump In
 
