@@ -237,7 +237,7 @@ Refresh your page and make sure the images are smaller and all the same height.
 
 TODO: Add image of preview with final planet images.
 
-Woohoo! You're done with customizations for now.
+Woohoo! You're done with task flow customizations for now.
 
 ## Next Steps
 

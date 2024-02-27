@@ -1,5 +1,5 @@
 import { AppBar, IconButton, Toolbar, Typography, Stack } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import React from 'react';
 import { useAppState } from '../context/ContextProvider';
@@ -27,7 +27,7 @@ export const TopBar: React.FC = () => {
               color="inherit"
               aria-label="menu"
             >
-              <MenuIcon />
+              <HomeIcon />
             </IconButton>
           </AppLink>
           <AppLink to="/">

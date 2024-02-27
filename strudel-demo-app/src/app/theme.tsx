@@ -66,7 +66,7 @@ export const theme = createTheme({
   /** Control the font, size, and font weights */
   typography: {
     htmlFontSize: 16,
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Helvetica", "Verdana", "Arial", sans-serif',
     fontSize: 14,
     fontWeightLight: 300,
     fontWeightRegular: 400,

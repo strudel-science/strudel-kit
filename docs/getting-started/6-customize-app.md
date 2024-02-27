@@ -78,6 +78,24 @@ Refresh the page and see how the new dark mode looks.
 
 TODO: add image of final dark mode
 
+### Change the Default Font
+
+The theme also controls the default font used throughout the app. All font properties are nested inside of the `typography` property. Try changing the default `fontFamily` from `Helvetica` to `Avenir`:
+
+```js
+typography: {
+  htmlFontSize: 16,
+  fontFamily: '"Avenir", "Verdana", "Arial", sans-serif',
+  fontSize: 14,
+  fontWeightLight: 300,
+  fontWeightRegular: 400,
+  fontWeightMedium: 500,
+  fontWeightBold: 700,
+},
+```
+
+Refresh the page and see if the font has changed. Some devices may not support `Avenir` and will instead show one of the backup fonts.
+
 ## Modify Specific Styles
 
 You just learned how to modify the global app theme. Now let's learn how to customize the style of a specific component. In this step you will change the color of the top level navigation bar.
@@ -215,4 +233,12 @@ Now you just need to add a `height` to `ImageWrapper` and add some `alt` text to
 </AppLink>
 ```
 
+Refresh the browser and check out your new app logo in the navigation bar.
 
+TODO: add navbar with logo image
+
+Hooray! You are all done customizing app styles for this tutorial.
+
+## Next Steps
+
+In the last section of this tutorial, you will put what you have learned together to edit the app's home page.

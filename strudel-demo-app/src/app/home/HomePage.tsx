@@ -7,7 +7,7 @@ import { TopBar } from '../../components/TopBar';
  * - Add instructions about how to rig up the router for task flows
  * - Add instructions for putting dataset into app
  */
-export const GettingStartedPage: React.FC = () => {
+export const HomePage: React.FC = () => {
   return (
     <Box>
       <TopBar />
