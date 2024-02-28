@@ -15,10 +15,10 @@ export const TopBar: React.FC = () => {
       <Toolbar>
         <Stack 
           direction="row" 
-          sx={{ "{{" }}
+          sx={{ '{{' }}
             alignItems: 'center',
             flexGrow: 1 ,
-          {{ "}}" }}
+          {{ '}}' }}
         >
           <AppLink to="/">
             <IconButton
