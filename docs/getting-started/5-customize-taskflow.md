@@ -243,3 +243,6 @@ Woohoo! You're done with task flow customizations for now.
 
 At this point you have a task flow that is starting to be tailored to a particular data source and use-case. In the next section you will learn how to customize the app as a whole and make it your own.
 
+Previous           |  Next
+:-------------------------:|:-------------------------:
+[Add a Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/4-add-taskflow.md)  |  [Customize Your App](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/6-customize-app.md)

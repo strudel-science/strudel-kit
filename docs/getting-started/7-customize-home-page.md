@@ -71,3 +71,7 @@ import { Box, Container, Paper, Stack, Typography } from '@mui/material';
 ```
 
 That's looking pretty good!
+
+Previous           |  Next
+:-------------------------:|:-------------------------:
+[Customize Your App](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/6-customize-app.md)  |  [Continue Learning](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/8-continue-learning.md)

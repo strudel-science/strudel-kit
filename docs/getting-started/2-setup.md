@@ -1,12 +1,4 @@
-# Getting Started with the STRUDEL Design System
-
-Contents
-
-* Set Up Your Development Environment
-* Build an App
-* Add a Task Flow to Your App
-
-## Set Up Your Development Environment
+# Set Up Your Development Environment
 
 The current interface to using the STRUDEL Design System is a command-line tool written in Python. To use this tool, you need to set up a development environment that lets you invoke Python commands from a terminal.
 
@@ -57,4 +49,4 @@ Now that you have the client installed, you can start building your first STRUDE
 
 Previous           |  Next
 :-------------------------:|:-------------------------:
-[Introduction](https://github.com/strudel-science/strudel-kit/blob/cody/tutorial/docs/getting-started/1-introduction.md)  |  [Build an App with STRUDEL](https://github.com/strudel-science/strudel-kit/blob/cody/tutorial/docs/getting-started/3-create-app.md)
+[Introduction](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/1-introduction.md)  |  [Build an App with STRUDEL](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/3-create-app.md)

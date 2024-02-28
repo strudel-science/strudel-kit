@@ -242,3 +242,7 @@ Hooray! You are all done customizing app styles for this tutorial.
 ## Next Steps
 
 In the last section of this tutorial, you will put what you have learned together to edit the app's home page.
+
+Previous           |  Next
+:-------------------------:|:-------------------------:
+[Customize Your Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/5-customize-taskflow.md)  |  [Customize the Home Page](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/7-customize-home-page.md)

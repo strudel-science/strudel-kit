@@ -1,4 +1,4 @@
-## Build an App
+# Build an App
 
 We will now start to create your first STRUDEL app. In this documentation, we will use the traditional computing nonsense-word "foo" for the name of app, but please feel free to choose a name more to your own liking. The `strudel` command has several sub-commands to do different tasks; to create an app named *foo* use the `create-app` sub-command like this:
 
@@ -28,3 +28,7 @@ This will generate some more warnings and informational messages on the console,
 In the future, when you run your app, you will not need to perform the install step -- just `npm start`. In fact, the development server that this runs is able to update the app "live" as you change the code in this directory, so you don't need to stop and restart the app for each change.
 
 Next we will learn how to do something a bit more useful with the app by adding your first task flow.
+
+Previous           |  Next
+:-------------------------:|:-------------------------:
+[Set Up Your Development Environment](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/2-setup.md)  |  [Add a Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/4-add-taskflow.md)
