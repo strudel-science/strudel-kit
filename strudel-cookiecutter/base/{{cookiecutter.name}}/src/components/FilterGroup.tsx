@@ -15,9 +15,9 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
   const defaultLabel = (
     <Typography 
       color="black"
-      sx={{ "{{" }}
+      sx={{
         fontWeight: 'medium'
-      {{ "}}" }}
+      }}
     >
       {label}
     </Typography>

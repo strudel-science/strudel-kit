@@ -2,7 +2,12 @@ import React from 'react';
 import { Box, Container, Paper } from '@mui/material';
 import { TopBar } from '../../components/TopBar';
 
-export const GettingStartedPage: React.FC = () => {
+/**
+ * TODO:
+ * - Add instructions about how to rig up the router for task flows
+ * - Add instructions for putting dataset into app
+ */
+export const HomePage: React.FC = () => {
   return (
     <Box>
       <TopBar />

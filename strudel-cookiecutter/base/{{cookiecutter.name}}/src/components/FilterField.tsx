@@ -12,7 +12,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
   label,
   filter,
   isCollapsible,
-color,
+  color,
   ...rest
 }) => {
   const defaultLabel = (
@@ -27,7 +27,7 @@ color,
       {isCollapsible ? (
         <Collapsible
           {...rest}
-                    label={labelComponent}
+          label={labelComponent}
         >
           <Box pl={4}>
             {filter}

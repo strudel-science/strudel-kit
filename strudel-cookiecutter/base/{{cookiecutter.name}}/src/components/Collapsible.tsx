@@ -7,13 +7,13 @@ export interface CollapsibleProps extends StackProps {
   color?: string;
   label: ReactNode;
   isOpen?: boolean;
-  }
+}
 
 export const Collapsible: React.FC<CollapsibleProps> = ({
   color,
   label,
   isOpen = false,
-    children,
+  children,
   ...rest
 }) => {
   const [isOpenState, setIsOpenState] = useState<boolean>(isOpen);
@@ -31,7 +31,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
       <Box
         role="button"
         onClick={handleClick}
-        sx={{ "{{" }}
+        sx={{
           cursor: 'pointer',
           display: 'block',
           padding: 0,
@@ -42,25 +42,25 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
             background: 'none',
             opacity: 0.7
           }
-        {{ "}}" }}
+        }}
       >
         <Stack spacing={1} direction="row" alignItems="center">
           {!isOpenState && (
             <KeyboardArrowRightIcon 
-              sx={{ "{{" }} 
+              sx={{ 
                 ml: '-0.5rem',
                 mt: '-0.5rem',
                 mb: '-0.5rem'
-              {{ "}}" }} 
+              }} 
             />
           )}
           {isOpenState && (
             <KeyboardArrowDownIcon 
-              sx={{ "{{" }} 
+              sx={{ 
                 ml: '-0.5rem',
                 mt: '-0.5rem',
                 mb: '-0.5rem'
-              {{ "}}" }} 
+              }} 
             />
           )}
           <Box flex={1}>{label}</Box>

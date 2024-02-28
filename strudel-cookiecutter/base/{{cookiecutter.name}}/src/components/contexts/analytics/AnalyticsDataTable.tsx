@@ -19,19 +19,19 @@ export const AnalyticsDataTable: React.FC<DataGridPropsWithComplexDefaultValueBe
       getRowId={(row) => row[state.dataIdField]}
       columns={state.columns}
       disableColumnSelector
-      initialState={{ "{{" }}
+      initialState={{
         pagination: { paginationModel: { page: state.tablePage, pageSize: state.tablePageSize } }
-      {{ "}}" }}
+      }}
       {...props}
       onRowClick={handleRowClick}
-      sx={{ "{{" }}
+      sx={{
         '& .MuiDataGrid-cell:focus-within': {
           outline: 'none'
         },
         '& .MuiDataGrid-overlayWrapper': {
           minHeight: '4rem'
         }
-      {{ "}}" }}
+      }}
     />
   )
 }
