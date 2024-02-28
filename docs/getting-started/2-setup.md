@@ -51,4 +51,10 @@ strudel-cli 0.0.2
 
 If this fails, some common problems are that you are running in a terminal where you have not activated the (e.g., *miniconda*) Python environment into which you installed strudel-cli (you must do this every time you start a new terminal), or the installation somehow did not complete. Feel free to reach out to the team at [strudel@lbl.gov](mailto:strudel@lbl.gov) for help.
 
+## Next Steps
+
 Now that you have the client installed, you can start building your first STRUDEL application.
+
+Previous           |  Next
+:-------------------------:|:-------------------------:
+[Introduction](https://github.com/strudel-science/strudel-kit/blob/cody/tutorial/docs/getting-started/1-introduction.md)  |  [Build an App with STRUDEL](https://github.com/strudel-science/strudel-kit/blob/cody/tutorial/docs/getting-started/3-create-app.md)

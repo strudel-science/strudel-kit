@@ -19,26 +19,30 @@ TODO: Key concepts and terminology for command-line, react, typescript, strudel.
 
 ### Jump In
 
-1. Set Up Your Development Environment
+1. [Set Up Your Development Environment](https://github.com/strudel-science/strudel-kit/blob/cody/tutorial/docs/getting-started/2-setup.md)
 
-Install all the prerequisite and core software that powers the STRUDEL Kit. 
+    Install all the prerequisite and core software that powers the STRUDEL Kit. 
 
-2. Build an App with STRUDEL
+2. [Build an App with STRUDEL](https://github.com/strudel-science/strudel-kit/blob/cody/tutorial/docs/getting-started/3-create-app.md)
 
-Get familiar with the STRUDEL CLI and generate the base scaffolding for a React app that uses the STRUDEL Design System.
+    Get familiar with the STRUDEL CLI and generate the base scaffolding for a React app that uses the STRUDEL Design System.
 
-3. Add a Task Flow to Your App
+3. [Add a Task Flow to Your App](https://github.com/strudel-science/strudel-kit/blob/cody/tutorial/docs/getting-started/4-add-taskflow.md)
 
-Learn how to add Task Flows into your app and build your own custom configurations.
+    Learn how to add Task Flows into your app and build your own custom configurations.
 
-4. Customize Your Task Flow
+4. [Customize Your Task Flow](https://github.com/strudel-science/strudel-kit/blob/cody/tutorial/docs/getting-started/5-customize-taskflow.md)
 
-Familiarize yourself with the Task Flow code and learn how to make changes that are important to your use case.
+    Familiarize yourself with the Task Flow code and learn how to make changes that are important to your use case.
 
-5. Customize Your App
+5. [Customize Your App](https://github.com/strudel-science/strudel-kit/blob/cody/tutorial/docs/getting-started/6-customize-app.md)
 
-Make the app your own by changing the theme, adding styles, and adding custom sections.
+    Make the app your own by changing the theme, adding styles, and adding custom sections.
 
-6. Continue Learning
+6. [Customize the Home Page](https://github.com/strudel-science/strudel-kit/blob/cody/tutorial/docs/getting-started/7-customize-home-page.md)
 
-Discover resources to help you continue developing applications with STRUDEL.
+    Build out a home page for your application.
+
+7. [Continue Learning](https://github.com/strudel-science/strudel-kit/blob/cody/tutorial/docs/getting-started/7-customize-home-page.md)
+
+    Discover resources to help you continue developing applications with STRUDEL.
