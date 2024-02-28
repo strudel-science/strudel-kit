@@ -4,7 +4,6 @@ import typer
 import os
 import shutil
 import re
-from . import __version__
 
 
 def clear_cookiecutter_cache():

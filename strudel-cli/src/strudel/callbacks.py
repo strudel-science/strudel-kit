@@ -1,6 +1,7 @@
 import typer
 import json
 from .utils import snake_to_camel_case
+from . import __version__
 
 defaults = {
     "create-app": {

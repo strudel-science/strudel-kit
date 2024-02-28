@@ -9,7 +9,7 @@ Since the STRUDEL application is based on JavaScript, later you will also need t
 Once you have these base requirements installed, create a new environment and a working directory. Here is an example of the steps you would use to set up a new environment with _miniconda_:
 
 ```
- conda create -y -n strudel-kit-learn python=3.12
+ conda create -y -n strudel-kit-learn python=3.12 pip
  conda activate strudel-kit-learn
 ```
 
@@ -23,8 +23,9 @@ Once you have the environment set up, create a working directory and move into i
 Once this is setup, use the "pip" Python package manager tool, which is standard with any modern Python installation, to install the STRUDEL command-line tools:
 
 ```
-pip install strudel-cli
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple strudel-cli
 ```
+:warning: _strudel-cli is only on TestPyPI right now. When it is published to PyPI, you will be able to omit the extra options._
 
 This will install the latest *released* version of the CLI code. If you want the freshly baked code right from the main repository instead, use the following recipe:
 
