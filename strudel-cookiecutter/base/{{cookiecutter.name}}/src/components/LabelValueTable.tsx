@@ -30,26 +30,26 @@ export const LabelValueTable: React.FC<LabelValueTableProps> = ({
         {rows?.map((row, i) => (
           <TableRow
             key={`${row.label}-${i}`}
-            sx={{ "{{" }} border: 0 {{ "}}" }}
+            sx={{ border: 0 }}
           >
             <TableCell
               width={labelWidth}
               component="th" 
               scope="row" 
-              sx={{ "{{" }} 
+              sx={{ 
                 border: 0,
                 color: 'neutral.dark',
                 pl: 0
-              {{ "}}" }}
+              }}
             >
               {row.label}
             </TableCell>
             <TableCell 
               align="left" 
-              sx={{ "{{" }} 
+              sx={{ 
                 border: 0,
                 pl: 0
-              {{ "}}" }}
+              }}
             >
               {row.value}
             </TableCell>

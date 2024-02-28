@@ -1,5 +1,5 @@
 import { createHashRouter, Navigate } from "react-router-dom";
-import { GettingStartedPage } from "./home/GettingStartedPage";
+import { HomePage } from "./home/HomePage";
 
 /**
  * App Router
@@ -8,7 +8,7 @@ import { GettingStartedPage } from "./home/GettingStartedPage";
 export const router = createHashRouter([
   {
     path: "/",
-    element: <GettingStartedPage />,
+    element: <HomePage />,
   },
   /**
    * Add more routes to task flows below.

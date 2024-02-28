@@ -66,7 +66,7 @@ export const theme = createTheme({
   /** Control the font, size, and font weights */
   typography: {
     htmlFontSize: 16,
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Helvetica", "Verdana", "Arial", sans-serif',
     fontSize: 14,
     fontWeightLight: 300,
     fontWeightRegular: 400,
@@ -75,6 +75,31 @@ export const theme = createTheme({
   },
   /** Default options for MUI components used throughout the app */
   components: {
+    /**
+     * Example component customization.
+     * Learn more at https://mui.com/material-ui/customization/theme-components/
+     * 
+        MuiComponentName: {
+          defaultProps: {
+            // Put prop names and values here
+          },
+          styleOverrides: {
+            root: {
+              // Put styles here
+            }
+          },
+          // Create new custom variants of certain components
+          variants: [
+            {
+              props: { variant: '' },
+              style: {
+                // Put styles here
+              },
+            },
+          ],
+        },
+     *
+     */
     MuiButton: {
       variants: [
         {
@@ -86,6 +111,13 @@ export const theme = createTheme({
           },
         },
       ],
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          textDecoration: 'none'
+        }
+      }
     },
     MuiStack: {
       defaultProps: {

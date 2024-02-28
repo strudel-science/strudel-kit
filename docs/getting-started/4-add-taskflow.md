@@ -1,89 +1,3 @@
-# Getting Started with the STRUDEL Design System
-
-Contents
-
-* Set Up Your Development Environment
-* Build an App
-* Add a Task Flow to Your App
-
-## Set Up Your Development Environment
-
-The current interface to using the STRUDEL Design System is a command-line tool written in Python. To use this tool, you need to set up a development environment that lets you invoke Python commands from a terminal.
-
-The first step is to start a terminal program. The rest of this tutorial will assume you are using a standard MacOS, UNIX, or Windows PowerShell (not command.exe) terminal. The exact shell interpreter should not matter, as most of the work is done by the Python script. Thus, you need to have a supported [version](https://devguide.python.org/versions/) of Python  installed on your system (Python 3.8 or above at the time of this writing). We recommend using a Python "environment" such as [miniconda](https://docs.anaconda.com/free/miniconda/index.html) or [pyenv](https://github.com/pyenv/pyenv) to isolate any changes you make here from your system Python installation. Please look at the documentation for these tools for more information.
-
-Since the STRUDEL application is based on JavaScript, later you will also need to have the [NodeJS package manager](https://nodejs.org/) (NPM) installed. Follow the [instructions on the NodeJS download page](https://nodejs.org/en/download) to install NPM for your operating system.
-
-Once you have these base requirements installed, create a new environment and a working directory. Here is an example of the steps you would use to set up a new environment with _miniconda_:
-
-```
- conda create -y -n strudel-kit-learn python=3.12
- conda activate strudel-kit-learn
-```
-
-Once you have the environment set up, create a working directory and move into it:
-
-```
- mkdir learning-strudel
- cd learning-strudel
-```
-
-Once this is setup, use the "pip" Python package manager tool, which is standard with any modern Python installation, to install the STRUDEL command-line tools:
-
-```
-pip install strudel-cli
-```
-
-This will install the latest *released* version of the CLI code. If you want the freshly baked code right from the main repository instead, use the following recipe:
-
-```
-# note: use only if you want 'freshly baked' code from GitHub main branch
-git clone https://github.com/strudel-science/strudel-kit
-pip install strudel-kit/strudel-cli
-```
-
-If all the above steps went well (!) you should be able to run the `strudel` command in your current environment.
-
-```
-❯ strudel --version
-strudel-cli 0.0.2
-```
-
-If this fails, some common problems are that you are running in a terminal where you have not activated the (e.g., *miniconda*) Python environment into which you installed strudel-cli (you must do this every time you start a new terminal), or the installation somehow did not complete. Feel free to reach out to the team at [strudel@lbl.gov](mailto:strudel@lbl.gov) for help.
-
-Now that you have the client installed, you can start building your first STRUDEL application.
-
-## Build an App
-
-We will now start to create your first STRUDEL app. In this documentation, we will use the traditional computing nonsense-word "foo" for the name of app, but please feel free to choose a name more to your own liking. The `strudel` command has several sub-commands to do different tasks; to create an app named *foo* use the `create-app` sub-command like this:
-
-```
-strudel create-app foo
-```
-
-This will generate some output and prompt you for some values, with default values supplied in parentheses. Here, we will assume you simply hit `[Enter]` to accept the default values. If this is the case, the command should give the message `Successfully created your strudel app!` and provide some additional hints on next steps (which we will not show here).
-
-At this point you will have a directory named for your app that is ready to run. Now you will change to that directory and use the Node Package Manager that you installed earlier to install the dependencies needed by your app.
-
-```
-cd foo
-npm install
-```
-
- This will produce a fair amount of output as the NPM tool fetches and installs all the JavaScript dependencies that STRUDEL uses. It will print out some warnings about deprecated packages and security vulnerabilities. This is normal. For a real-world deployment, you would need to look at these warnings and vulnerabilities more closely, but you can safely ignore them for now.
-
-Assuming you didn't get any errors in the  step above, you can now run your app from the same directory:
-
-```
-npm start
-```
-
-This will generate some more warnings and informational messages on the console, but should eventually cause your browser to open a new page with a simple welcome banner. If your browser does not open automatically, you can manually go to [http://localhost:3000/](http://localhost:3000/) to connect to the app.
-
-In the future, when you run your app, you will not need to perform the install step -- just `npm start`. In fact, the development server that this runs is able to update the app "live" as you change the code in this directory, so you don't need to stop and restart the app for each change.
-
-Next we will learn how to do something a bit more useful with the app by adding your first task flow.
-
 ## Add a Task Flow to Your App
 
 ### Introduction
@@ -126,8 +40,6 @@ Once you have created this file, **copy it to the `public/data` directory**, whi
 ```
 cp planets.csv public/data
 ```
-
-
 
 #### Create Task Flow configuration
 
@@ -270,12 +182,49 @@ Add the following text after the line that ends `createHashRouter([`. This is th
 },
 ```
 
-Save this file. And you're done! You should now have a fully functioning Explore Data Task Flow page.
+Save this file. You should now have a fully functioning Explore Data Task Flow page when you navigate to the `/explore` route. Test this out by navigating your browser to http://localhost:3000/#/explore.
 
-You can test out your changes by reloading the app or restarting it, then navigating to your page:
+<details>
+  <summary>Note</summary>
+  The `#/` section of the URL is added by React to enable single-page routing that doesn't require extra page reloads. It can be removed by using <code>createBrowerRouter</code> instead of <code>createHashRouter</code>. See the <a href="https://reactrouter.com/en/main/routers/picking-a-router" target="_blank">react-router docs on picking a router</a>.
+</details>
+<br>
 
- http://localhost:3000/#/explore
+This is great, but it would be good to be able to access this page without having to type in the URL every time. Let's add a link to the Explore page in the top navigation bar.
+
+Go to the `src/components` directory and open the file `TopBar.tsx`. This is the component for the top navigation bar that is displayed on the home page and all the other task flow pages.
+
+First, find the code where the app title is rendered so you can render the link directly to the right of the app title:
+
+```js
+<AppLink to="/">
+  <Typography variant="h6" component="div">
+    {app.state.appTitle}
+  </Typography>
+</AppLink>
+```
+
+Then add a new `AppLink` component directly underneath the `AppLink` component that renders the app title:
+
+```js
+<AppLink to="/">
+  <Typography variant="h6" component="div">
+    {app.state.appTitle}
+  </Typography>
+</AppLink>
+<AppLink to="/explore">
+  Explore
+</AppLink>
+```
+
+The `AppLink` component is used for links to internal pages in your app. The `to` prop tells the component which route it should link to and the content in between the opening (`<AppLink>`) and closing (`</AppLink>`) tags is the clickable content that displays on the page. Go to the home page at http://localhost:3000 and try out the link.
+
+TODO: add image of link on home page
+
+Woohoo! You have connected your first Task Flow.
 
 #### Next steps
 
 The next section provides some examples of how to customize your Task Flow.
+
+TODO: add links to previous/next page

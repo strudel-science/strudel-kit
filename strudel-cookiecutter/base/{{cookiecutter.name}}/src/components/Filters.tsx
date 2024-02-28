@@ -4,7 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 
 interface FilterPanelProps extends PaperProps {
-    onClose?: () => any;
+  onClose?: () => any;
 }
 
 export const Filters: React.FC<FilterPanelProps> = ({ 

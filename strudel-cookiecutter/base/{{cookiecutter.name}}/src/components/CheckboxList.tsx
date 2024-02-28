@@ -50,19 +50,19 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
             <Checkbox 
               value={option.value}
               onChange={(e, checked) => handleChange(checked, option.value)}
-              sx={{ "{{" }}
+              sx={{
                 pr: 1,
                 pl: 0,
                 pb: 0,
                 pt: 0
-              {{ "}}" }}
+              }}
             />
           }
-          sx={{ "{{" }}
+          sx={{
             '&:not(:last-child)': {
               mb: 1
             }
-          {{ "}}" }}
+          }}
         />
       ))}
     </FormGroup>
