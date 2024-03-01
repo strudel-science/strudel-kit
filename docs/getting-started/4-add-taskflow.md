@@ -215,8 +215,6 @@ Then add a new `AppLink` component directly underneath the `AppLink` component t
 
 The `AppLink` component is used for links to internal pages in your app. The `to` prop tells the component which route it should link to and the content in between the opening (`<AppLink>`) and closing (`</AppLink>`) tags is the clickable content that displays on the page. Go to the home page at http://localhost:3000 and try out the link.
 
-TODO: add image of link on home page
-
 Woohoo! You have connected your first Task Flow.
 
 #### Next steps

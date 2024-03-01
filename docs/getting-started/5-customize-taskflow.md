@@ -6,11 +6,7 @@ Now that you have set up your initial task flow let's customize some of the cont
 
 Often you won't want to use all of the page elements that come with a Task Flow. For this tutorial, you remove the "Related Data" table in the preview panel that displays when you click on a row. Because you don't have any nested or linked data for each planet in the table, this element isn't useful to the UI right now.
 
-TODO: add image of original preview panel
-
 First, look inside the `src/app/explorer/` directory that was generated when you first added your task flow:
-
-TODO: add image of explore-data Task Flow directory tree
 
 These are the files that determine how this specific Task Flow will be rendered in the UI. Some of these files reference other components that are common to the whole app, but these components are specific to the `explorer` Task Flow.
 
@@ -35,8 +31,6 @@ Next, find the code that renders the "Related Data" section:
 This section of code includes a `Box` component to wrap around the whole section, a `Typography` component to display the section heading, and a `DataGrid` component to display the related data in a table.
 
 Delete this whole section of code, from `<Box>` to `</Box>` and save `PreviewPanel.tsx`. Refresh the Explorer page in the browser. The "Related Data" section should now be gone and the "View Details" and "Export Data" buttons should be directly below the other content.
-
-TODO: add image of preview panel without related data section
 
 ## Edit the Preview Panel Content
 
@@ -127,8 +121,6 @@ Next, add dynamic rows to the second `LabelValueTable`. Replace the section labe
 
 Refresh the page and make sure you see dynamic values in both sections of the preview panel.
 
-TODO: add image of preview panel with dynamic label values
-
 Let's clean up the preview panel so that there's no more placeholder content. Find the placeholder subtitle section and remove it:
 
 ```js
@@ -160,13 +152,9 @@ Here we are doing the same thing we did in the `LabelValueTable` components, exc
 
 Refresh the page. You should see the planet name at the top of the preview panel.
 
-TODO: add image of preview panel with planet name
-
 ### Add dynamic images
 
 In this step you will add an image for each planet and display it in the preview panel. First, create a new `images` directory inside the `public/` directory at the top level of the app.
-
-TODO: add image of images folder inside public directory
 
 Then, download the `planets.zip` file from the strudel-kit GitHub:
 
@@ -234,8 +222,6 @@ To make sure the images are accessible, add alt text to the `img` tag. Alt text 
 ```
 
 Refresh your page and make sure the images are smaller and all the same height.
-
-TODO: Add image of preview with final planet images.
 
 Woohoo! You're done with task flow customizations for now.
 

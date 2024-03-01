@@ -34,8 +34,6 @@ primary: {
 
 Refresh the page and see if the blue text and buttons changed to the red tones.
 
-TODO: add image of red palette
-
 While you are here, also change the `secondary` colors to electric blue tones. Change `main` to `#00e9f5`, `light` to `#5ef6ff`, and `dark` to `#00c2cc`. Because this is a lighter color in general, also change the `contrastText` to black (`#000`). This controls the color of text that is rendered on top of the color and ensures the contrast is still readable and accessible.
 
 ```js
@@ -75,8 +73,6 @@ background: {
 ```
 
 Refresh the page and see how the new dark mode looks.
-
-TODO: add image of final dark mode
 
 ### Change the Default Font
 
@@ -162,8 +158,6 @@ You may have noticed that the color of the navigation bar changed, but now the l
 
 Refresh the page to see the new navigation bar.
 
-TODO: add image of the navbar
-
 You can also use the `sx` prop to make advanced style changes like changing the hover state of an element. To do add a different style for the hover state, add a new property to the `sx` object called `'&:hover'`. You can then give this new property its own object of styles which tells the component how it should look when it is being hovered by a user's cursor.
 
 Add a hover state style to the Explore page `AppLink` so that its color is `secondary.light` on hover:
@@ -234,8 +228,6 @@ Now you just need to add a `height` to `ImageWrapper` and add some `alt` text to
 ```
 
 Refresh the browser and check out your new app logo in the navigation bar.
-
-TODO: add navbar with logo image
 
 Hooray! You are all done customizing app styles for this tutorial.
 

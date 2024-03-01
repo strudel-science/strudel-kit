@@ -6,17 +6,6 @@ In this tutorial you will learn the basics of how to build a web application usi
 
 This tutorial is for anyone who wants to adapt a STRUDEL Task Flow into a custom web application. It will deal with tools such as the command line, JavaScript, TypeScript, React, HTML, and CSS. Experience with these tools will be helpful but is not required. This tutorial is written to be accessible to as many people as possible.
 
-### Key Concepts and Terminology
-
-TODO: Key concepts and terminology for command-line, react, typescript, strudel.
-
-- [STRUDEL](https://strudel.science)
-- [TypeScript](https://www.typescriptlang.org/)
-- [React](https://react.dev/)
-- [Material UI](https://mui.com/material-ui/getting-started/)
-- [React Router](https://reactrouter.com/en/main)
-
-
 ### Jump In
 
 1. [Set Up Your Development Environment](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/2-setup.md)
