@@ -9,16 +9,15 @@ Congratulations on building your first STRUDEL app! You are well on your way to 
 
 ### Material UI
 
-- [Material UI Components](https://mui.com/material-ui/all-components/)
+- [Getting Started with Material UI](https://mui.com/material-ui/getting-started/)
+- [MUI Components](https://mui.com/material-ui/all-components/)
 - [Theming in MUI](https://mui.com/material-ui/customization/theming/)
 - [MUI X Data Grid](https://mui.com/x/react-data-grid/)
 
 ### Data Visualization
 
 - [Plotly in React](https://plotly.com/javascript/react/)
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
+
+Previous           |  &nbsp;
+:-------------------------:|:-------------------------:
+[Customize the Home Page](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/7-customize-home-page.md)  |  &nbsp;

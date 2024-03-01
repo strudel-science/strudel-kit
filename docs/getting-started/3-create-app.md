@@ -1,17 +1,17 @@
 # Build an App
 
-We will now start to create your first STRUDEL app. In this documentation, we will use the traditional computing nonsense-word "foo" for the name of app, but please feel free to choose a name more to your own liking. The `strudel` command has several sub-commands to do different tasks; to create an app named *foo* use the `create-app` sub-command like this:
+We will now start to create your first STRUDEL app. In this documentation, we will use the traditional computing nonsense-word "foo" for the name of app, but please feel free to choose a name more to your own liking. The `strudel` command has several sub-commands to do different tasks; to create an app named *planets-app* use the `create-app` sub-command like this:
 
 ```
-strudel create-app foo
+strudel create-app planets-app
 ```
 
-This will generate some output and prompt you for some values, with default values supplied in parentheses. Here, we will assume you simply hit `[Enter]` to accept the default values. If this is the case, the command should give the message `Successfully created your strudel app!` and provide some additional hints on next steps (which we will not show here).
+This will generate some output and prompt you for some values, with default values supplied in parentheses. The first option has the `planets-app` value we passed via the command line, so just click Enter to accept. The second option asks for an `appTitle`. Give your app a custom title by typing `"Planets"` then clicking Enter. The command should give the message `Successfully created your strudel app!` and provide some additional hints on next steps (which we will not show here).
 
 At this point you will have a directory named for your app that is ready to run. Now you will change to that directory and use the Node Package Manager that you installed earlier to install the dependencies needed by your app.
 
 ```
-cd foo
+cd planets-app
 npm install
 ```
 

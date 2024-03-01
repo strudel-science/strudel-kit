@@ -16,7 +16,7 @@ The configuration for a Task Flow is stored in a JSON file. You need to create t
 
 Before we create our configuration file, we are going to add a data source -- in this case, a simple comma-separate values (CSV) file with information about the planets (and one "dwarf planet") in our solar system. 
 
-In the directory of your app (i.e., `learning-strudel/foo` in this example), create a file called `planets.csv` with the following content:
+In the directory of your app (i.e., `learning-strudel/planets-app` in this example), create a file called `planets.csv` with the following content:
 
 ```
 Name,Diameter,Mass,Inclination,Eccentricity,Semi_majorAxis,SurfaceGravity,OrbitalPeriod,SiderealRotation,Satellites
@@ -43,15 +43,16 @@ cp planets.csv public/data
 
 #### Create Task Flow configuration
 
-Before you continue, make sure you are in the directory of your app (i.e., `learning-strudel/foo` in this example).
+Before you continue, make sure you are in the directory of your app (i.e., `learning-strudel/planets-app` in this example).
 
-To create the configuration file, cut and paste the following text into a file named, e.g., `explore.json`. 
+To create the configuration file, cut and paste the following text into a file named, e.g., `solar-system.json`. 
 
 ```
 {
-  "name": "explorer",
-  "pageTitle": "Explore Data for Foo",
-  "pageDescription": "Explore data for the foo application",
+  "name": "solar-system",
+  "template": "explore-data",
+  "pageTitle": "Solar System Explorer",
+  "pageDescription": "Explore data about the planets that orbit the Sun.",
   "dataSource": "planets.csv",
   "dataIdField": "Name",
   "definitions": {
@@ -107,9 +108,9 @@ Now we will briefly explain the contents of this file. This is purely informatio
 There are two basic sections to the configuration. First, a list of key-value pairs. Some of these set some general values you will have in an Task Flow:
 
 ```
-  "name": "explorer",
-  "pageTitle": "Explore Data for Foo",
-  "pageDescription": "Explore data for the foo application",
+  "name": "solar-system",
+  "pageTitle": "Solar System Explorer",
+  "pageDescription": "Explore data about the planets that orbit the Sun.",
 ```
 
 We can see above that we are giving the Task Flow a name, a title to display on its web page, and a description. 
@@ -131,17 +132,17 @@ Now we are ready to create and add the task flow!
 
 ### (2) Add Task Flow
 
-To add a Task Flow, use the `add-taskflow` sub-command of the `strudel` command-line program. Again, make sure your terminal is in the directory of your app (i.e., `learning-strudel/foo` in this example). Then, run this command:
+To add a Task Flow, use the `add-taskflow` sub-command of the `strudel` command-line program. Again, make sure your terminal is in the directory of your app (i.e., `learning-strudel/planets-app` in this example). Then, run this command:
 
 ```
-strudel add-taskflow --template explore-data -c explore.json explore
+strudel add-taskflow --config solar-system.json
 ```
 
 If this succeeds, then the JavaScript code will all be set up in your app directory and you will have a new page that can browse your data set. You can tell it succeeds if the output contains a message like:
 
 ```
 Successfully added a task flow to your strudel app!
-Your new task flow was built in /some/path/to/learning-strudel/foo/src/app/explore
+Your new task flow was built in /some/path/to/learning-strudel/planets-app/src/app/solar-system
 ```
 
 #### Next steps
@@ -161,8 +162,8 @@ In this directory you will see a file `routes.tsx`. This is the file that tells 
 Open `routes.tsx` in an editor.  Near the top of the file, in the JavaScript imports section, add these lines:
 
 ```
-import { ExploreDataWrapper } from "./explore/ExploreDataWrapper";
-import { DataExplorer } from "./explore/DataExplorer";
+import { ExploreDataWrapper } from "./solar-system/ExploreDataWrapper";
+import { DataExplorer } from "./solar-system/DataExplorer";
 ```
 
 This says to import the ReactJS components that were created by the "add-taskflow" command above from the appropriate directory. Next we will create a "route" that associates these components with a page URL. 
@@ -171,7 +172,7 @@ Add the following text after the line that ends `createHashRouter([`. This is th
 
 ```
 {
-    path: "/explore",
+    path: "/solar-system",
     element: <ExploreDataWrapper />,
     children: [
       {
@@ -182,7 +183,7 @@ Add the following text after the line that ends `createHashRouter([`. This is th
 },
 ```
 
-Save this file. You should now have a fully functioning Explore Data Task Flow page when you navigate to the `/explore` route. Test this out by navigating your browser to http://localhost:3000/#/explore.
+Save this file. You should now have a fully functioning Explore Data Task Flow page when you navigate to the `/solar-system` route. Test this out by navigating your browser to http://localhost:3000/#/explore.
 
 <details>
   <summary>Note</summary>
@@ -207,13 +208,8 @@ First, find the code where the app title is rendered so you can render the link 
 Then add a new `AppLink` component directly underneath the `AppLink` component that renders the app title:
 
 ```js
-<AppLink to="/">
-  <Typography variant="h6" component="div">
-    {app.state.appTitle}
-  </Typography>
-</AppLink>
-<AppLink to="/explore">
-  Explore
+<AppLink to="/solar-system">
+  Solar System
 </AppLink>
 ```
 

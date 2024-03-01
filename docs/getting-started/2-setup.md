@@ -9,8 +9,8 @@ Since the STRUDEL application is based on JavaScript, later you will also need t
 Once you have these base requirements installed, create a new environment and a working directory. Here is an example of the steps you would use to set up a new environment with _miniconda_:
 
 ```
- conda create -y -n strudel-kit-learn python=3.12 pip
- conda activate strudel-kit-learn
+ conda create -y -n strudel-learn-env python=3.12 pip
+ conda activate strudel-learn-env
 ```
 
 Once you have the environment set up, create a working directory and move into it:
