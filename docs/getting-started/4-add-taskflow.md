@@ -14,7 +14,9 @@ The configuration for a Task Flow is stored in a JSON file. You need to create t
 
 #### Add a data file
 
-Before we create our configuration file, we are going to add a data source -- in this case, a simple comma-separate values (CSV) file with information about the planets (and one "dwarf planet") in our solar system. 
+Before we create our configuration file, we are going to add a data source -- in this case, a simple comma-separate values (CSV) file with information about the planets in our solar system. 
+
+Switch back to your original terminal and make sure you still have the `strudel-learn-env` activated (you should see `(strudel-learn-env)` at the start of the command line). Leave the app running in your other terminal. 
 
 In the directory of your app (i.e., `learning-strudel/planets-app` in this example), create a file called `planets.csv` with the following content:
 
@@ -28,7 +30,6 @@ Jupiter,142984, 1.899×10^27, 1.3053, 0.04838624, 5.202887, 24.79, 11.86, 0.4135
 Saturn,120536, 5.688×10^26, 2.48446, 0.05386179, 9.53667594, 8.96, 29.46, 0.4264, 64
 Uranus,51118, 8.683×10^25, 0.774, 0.04725744, 19.18916464, 7.77, 84.01, 0.7181, 27
 Neptune,49572, 1.024×10^26, 1.76917, 0.00859048, 30.06992276, 11, 164.79, 0.6712, 14
-Pluto,2370.0, 1.3×10^22, 17.08900092, 0.250248713, 39.44506973, 0.62, 247.7406624, 6.387230, 5
 ```
 
 In UNIX or MacOS, you can run the command: `cat - > planets.csv`, and then paste the text above (you may need to hit Control-D to close the file and return to the prompt).
