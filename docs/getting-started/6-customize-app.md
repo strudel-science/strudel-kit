@@ -4,7 +4,7 @@ For most web applications, it is important to include content and alterations th
 
 ## Modify the Theme
 
-STRUDEL leverages MUI theming capabilities to style much of the app. Because STRUDEL uses MUI for its low-level components, using the theme makes it easy to make app-wide changes and keep things consistent. To learn more about how MUI theming works, checkout (their documentation on the topic)[https://mui.com/material-ui/customization/theming/]. For this tutorial, we will keep explanations brief.
+STRUDEL leverages MUI theming capabilities to style much of the app. Because STRUDEL uses MUI for its low-level components, using the theme makes it easy to make app-wide changes and keep things consistent. To learn more about how MUI theming works, checkout [their documentation on the topic](https://mui.com/material-ui/customization/theming/). For this tutorial, we will keep explanations brief.
 
 To get started modifying the theme, open up the theme file in `src/app/theme.tsx`. In this file you will find the `theme` object. This is where all of the theme values are configured and it has been prepopulated with many default values to make editing the theme simpler.
 
@@ -102,7 +102,7 @@ Open the component for the navigation bar in `src/components/TopBar.tsx` and fin
 <AppBar color="default" position="static">
 ```
 
-There are many ways to modify the styles of the elements in a component or on a page. In this tutorial you will use the MUI `sx` prop to change the styles of specific components. It's possible to use traditional methods like CSS classes for this too, but the `sx` prop allows you to easily utilize the global theme and create dynamic styles and states. You can read more about the `sx` prop in the (MUI documentation)[https://mui.com/material-ui/customization/how-to-customize/].
+There are many ways to modify the styles of the elements in a component or on a page. In this tutorial you will use the MUI `sx` prop to change the styles of specific components. It's possible to use traditional methods like CSS classes for this too, but the `sx` prop allows you to easily utilize the global theme and create dynamic styles and states. You can read more about the `sx` prop in the [MUI documentation](https://mui.com/material-ui/customization/how-to-customize/).
 
 To change the background color of the `AppBar` add the `sx` prop and set the `backgroundColor` property to `primary.main`:
 
