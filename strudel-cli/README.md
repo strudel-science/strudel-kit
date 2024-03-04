@@ -1,6 +1,6 @@
 :warning: ***This library is in early-stage development. Check back soon for more updates!***
 
-# STRUDEL Command-Line Interface
+# STRUDEL Command-Line Interface (Beta)
 
 The strudel-cli is a command-line tool for bootstrapping web applications based on the [STRUDEL Design System](https://strudel.science/). 
 
