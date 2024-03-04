@@ -5,7 +5,7 @@ Congratulations on building your first STRUDEL app! You are well on your way to 
 ### STRUDEL
 
 - [Task Flows](https://egghead.io/courses/the-beginner-s-guide-to-react)
-- [Community Discussions](https://github.com/orgs/strudel-science/discussions)=
+- [Community Discussions](https://github.com/orgs/strudel-science/discussions)
 - [STRUDEL Events](https://strudel.science/engage/events/)
 - [Connect and Contribute](https://strudel.science/engage/contribute/)
 
