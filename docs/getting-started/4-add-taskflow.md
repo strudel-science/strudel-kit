@@ -186,6 +186,8 @@ Add the following text after the line that ends `createHashRouter([`. This is th
 
 Save this file. You should now have a fully functioning Explore Data Task Flow page when you navigate to the `/solar-system` route. Test this out by navigating your browser to http://localhost:3000/#/explore.
 
+![Screenshot of solar system Task Flow in a browser](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/images/start-explore-data-2.png?raw=true)
+
 <details>
   <summary>Note</summary>
   The `#/` section of the URL is added by React to enable single-page routing that doesn't require extra page reloads. It can be removed by using <code>createBrowerRouter</code> instead of <code>createHashRouter</code>. See the <a href="https://reactrouter.com/en/main/routers/picking-a-router" target="_blank">react-router docs on picking a router</a>.
@@ -215,6 +217,8 @@ Then add a new `AppLink` component directly underneath the `AppLink` component t
 ```
 
 The `AppLink` component is used for links to internal pages in your app. The `to` prop tells the component which route it should link to and the content in between the opening (`<AppLink>`) and closing (`</AppLink>`) tags is the clickable content that displays on the page. Go to the home page at http://localhost:3000 and try out the link.
+
+![Screenshot of home page with new navigation link in a browser](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/images/mid-home-page.png?raw=true)
 
 Woohoo! You have connected your first Task Flow.
 

@@ -25,6 +25,8 @@ npm start
 
 This will generate some more warnings and informational messages on the console, but should eventually cause your browser to open a new page with a simple welcome banner. If your browser does not open automatically, you can manually go to [http://localhost:3000/](http://localhost:3000/) to connect to the app.
 
+![Screenshot of home page in a browser](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/images/start-home-page.png?raw=true)
+
 In the future, when you run your app, you will not need to perform the install step -- just `npm start`. In fact, the development server that this runs is able to update the app "live" as you change the code in this directory, so you don't need to stop and restart the app for each change.
 
 Next we will learn how to do something a bit more useful with the app by adding your first task flow.

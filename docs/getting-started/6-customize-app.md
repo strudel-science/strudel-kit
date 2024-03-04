@@ -229,6 +229,8 @@ Now you just need to add a `height` to `ImageWrapper` and add some `alt` text to
 
 Refresh the browser and check out your new app logo in the navigation bar.
 
+![Screenshot of the finished solar system page with new logo and dark mode theme in a browser](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/images/final-explore-data.png?raw=true)
+
 Hooray! You are all done customizing app styles for this tutorial.
 
 ## Next Steps

@@ -223,6 +223,8 @@ To make sure the images are accessible, add alt text to the `img` tag. Alt text 
 
 Refresh your page and make sure the images are smaller and all the same height.
 
+![Screenshot of planet images in the preview panel](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/images/mid-preview-panel-2.png?raw=true)
+
 Woohoo! You're done with task flow customizations for now.
 
 ## Next Steps
