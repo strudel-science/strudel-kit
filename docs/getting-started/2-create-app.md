@@ -33,6 +33,8 @@ This will generate some more warnings and informational messages on the console,
 
 In the future, when you run your app, you will not need to perform the install step -- just `npm start`. In fact, the development server that this runs is able to update the app "live" as you change the code in this directory, so you don't need to stop and restart the app for each change.
 
+## Next Steps
+
 Next we will learn how to add your first task flow to the app.
 
 Previous           |  Next

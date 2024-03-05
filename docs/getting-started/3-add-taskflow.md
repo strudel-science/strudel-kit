@@ -228,7 +228,7 @@ The `AppLink` component is used for links to internal pages in your app. The `to
 
 Woohoo! You have connected your first Task Flow.
 
-#### Next steps
+## Next steps
 
 The next section provides some examples of how to customize your Task Flow.
 

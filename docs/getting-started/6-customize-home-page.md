@@ -79,6 +79,10 @@ Then wrap both `Paper` components inside of a `Stack`:
 
 That's looking pretty good!
 
+## Next Steps
+
+In the last section you will find resources to continue building your app and learning the STRUDEL Tech Stack.
+
 Previous           |  Next
 :-------------------------:|:-------------------------:
 [Customize Your App](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/5-customize-app.md)  |  [Continue Learning](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/7-continue-learning.md)

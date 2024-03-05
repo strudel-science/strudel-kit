@@ -25,6 +25,8 @@ Congratulations on building your first STRUDEL app! You are well on your way to 
 
 - [Plotly in React](https://plotly.com/javascript/react/)
 
+## You've reached the end!
+
 Previous           |  &nbsp;
 :-------------------------:|:-------------------------:
 [Customize the Home Page](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/6-customize-home-page.md)  |  &nbsp;
