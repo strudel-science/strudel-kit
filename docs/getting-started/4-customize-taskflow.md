@@ -6,9 +6,9 @@ Now that you have set up your initial task flow let's customize some of the cont
 
 Often you won't want to use all of the page elements that come with a Task Flow. For this tutorial, you remove the "Related Data" table in the preview panel that displays when you click on a row. Because you don't have any nested or linked data for each planet in the table, this element isn't useful to the UI right now.
 
-First, look inside the `src/app/explorer/` directory that was generated when you first added your task flow:
+First, look inside the `src/app/solar-system/` directory that was generated when you first added your task flow:
 
-These are the files that determine how this specific Task Flow will be rendered in the UI. Some of these files reference other components that are common to the whole app, but these components are specific to the `explorer` Task Flow.
+These are the files that determine how this specific Task Flow will be rendered in the UI. Some of these files reference other components that are common to the whole app, but these components are specific to the `solar-system` Task Flow.
 
 For this step, open `PreviewPanel.tsx` because the "Related Data" table is in the preview panel.
 
@@ -181,13 +181,7 @@ Now you are ready to start incorporating the images into the preview panel. Open
 </Box>
 ```
 
-Add an image tag directly above this section:
-
-```js
-<img src="" />
-```
-
-The `img` tag uses the `src` attribute to tell it which image to display. In this case, you want the image to be different depending on the row that is selected. To do that, you are going to inject the planet's name into the path to the image:
+Add an `<img>` tag directly above this section. The `img` tag uses the `src` attribute to tell it which image to display. In this case, you want the image to be different depending on the row that is selected. To do that, you are going to inject the planet's name into the path to the image:
 
 ```js
 <img src={`images/${state.previewItem['Name']}.jpg`}/>
@@ -217,7 +211,7 @@ To make sure the images are accessible, add alt text to the `img` tag. Alt text 
 
 ```js
 <ImageWrapper height="300px">
-  <img src={`images/${state.previewItem['Name']}.jpg`} alt={`Sattelite image of ${state.previewItem['Name']}`} />
+  <img src={`images/${state.previewItem['Name']}.jpg`} alt={`Satellite image of ${state.previewItem['Name']}`} />
 </ImageWrapper>
 ```
 
