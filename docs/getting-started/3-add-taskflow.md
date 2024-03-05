@@ -2,7 +2,7 @@
 
 ### Introduction
 
-Task Flows are are a set of steps (represented by a series of screens) that help to accomplish a task and represent how a user progresses through a UI. To start building your app, you first add a Task Flow. In this example, we will add the Task Flow called "Explore Data".
+Task Flows are are a set of steps (represented by a series of screens) that help to accomplish a task and represent how a user progresses through a UI. To start building your app, you first add a Task Flow. In this example, you will add the Task Flow called "Explore Data".
 
 There are 3 basic steps to adding a new Task Flow:
 
@@ -18,7 +18,7 @@ The configuration for a Task Flow is stored in a JSON file. You need to create t
 
 #### Add a data file
 
-Before we create our configuration file, we are going to add a data source -- in this case, a simple comma-separate values (CSV) file with information about the planets in our solar system. 
+Before you create your configuration file, you are going to add a data source -- in this case, a simple comma-separate values (CSV) file with information about the planets in our solar system. 
 
 Switch back to your original terminal and make sure you still have the `strudel-learn-env` activated (you should see `(strudel-learn-env)` at the start of the command line). Leave the app running in your other terminal. 
 
@@ -110,7 +110,7 @@ To create the configuration file, first create a file named `solar-system.json`.
 }
 ```
 
-Now we will briefly explain the contents of this file. This is purely informational, so you can skip this and come back to it later if you want to get on with seeing your Task Flow in action.
+The next few sections will briefly explain the contents of this file. This is purely informational, so you can skip this and come back to it later if you want to get on with seeing your Task Flow in action.
 
 There are two basic sections to the configuration. First, a list of key-value pairs. Some of these set some general values you will have in an Task Flow:
 
@@ -120,7 +120,7 @@ There are two basic sections to the configuration. First, a list of key-value pa
   "pageDescription": "Explore data about the planets that orbit the Sun.",
 ```
 
-We can see above that we are giving the Task Flow a name, a title to display on its web page, and a description. 
+You can see above that you are giving the Task Flow a name, a title to display on its web page, and a description. 
 
 There also may be some key-value pairs that are specific to this type of Task Flow:
 
@@ -135,7 +135,7 @@ The second section is called `definitions`. It provides some more detailed data 
 
 #### Next steps
 
-Now we are ready to create and add the task flow!
+Now you are ready to create and add the task flow!
 
 ### 2. Add Task Flow
 
@@ -173,7 +173,7 @@ import { ExploreDataWrapper } from "./solar-system/ExploreDataWrapper";
 import { DataExplorer } from "./solar-system/DataExplorer";
 ```
 
-This says to import the ReactJS components that were created by the "add-taskflow" command above from the appropriate directory. Next we will create a "route" that associates these components with a page URL. 
+This says to import the ReactJS components that were created by the "add-taskflow" command above from the appropriate directory. Next you will create a "route" that associates these components with a page URL. 
 
 Add the following text after the line that ends `createHashRouter([`. This is the section that tells the app how to map the URL path to a given page in the app (after a "/#/", thus the name). 
 

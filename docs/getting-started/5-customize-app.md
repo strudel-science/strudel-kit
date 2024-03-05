@@ -1,10 +1,10 @@
 # Customize Your App
 
-For most web applications, it is important to include content and alterations that are unique to your project. In this section we will cover the basics of how to make the app your own by changing the theme, styles, and general content.
+For most web applications, it is important to include content and alterations that are unique to your project. In this section you will learn the basics of how to make the app your own by changing the theme, styles, and general content.
 
 ## Modify the Global Theme
 
-STRUDEL leverages [MUI](https://mui.com/) theming capabilities to style much of the app. Because STRUDEL uses MUI for its low-level components, using the theme makes it easy to make app-wide changes and keep things consistent. To learn more about how MUI theming works, checkout [their documentation on the topic](https://mui.com/material-ui/customization/theming/). For this tutorial, we will keep explanations brief.
+STRUDEL leverages [MUI](https://mui.com/) theming capabilities to style much of the app. Because STRUDEL uses MUI for its low-level components, using the theme makes it easy to make app-wide changes and keep things consistent. To learn more about how MUI theming works, checkout [their documentation on the topic](https://mui.com/material-ui/customization/theming/). For this tutorial, the explanations will be kept brief.
 
 To get started modifying the theme, open up the theme file in `src/app/theme.tsx`. In this file you will find the `theme` object. This is where all of the theme values are configured and it has been prepopulated with many default values to make editing the theme simpler.
 

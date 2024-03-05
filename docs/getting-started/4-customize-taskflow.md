@@ -99,7 +99,7 @@ Add a few more dynamic rows to the table in this section:
 />
 ```
 
-Notice that we can access properties that aren't displayed in the main table. Even though `SurfaceGravity` wasn't defined in the main table columns, it is still part of the underlying data so it is present in the internal task flow `state`. Also notice that the label can be any string you want, but the value must use the exact name of the property column in `planets.csv`.
+Notice that you can access properties that aren't displayed in the main table. Even though `SurfaceGravity` wasn't defined in the main table columns, it is still part of the underlying data so it is present in the internal task flow `state`. Also notice that the label can be any string you want, but the value must use the exact name of the property column in `planets.csv`.
 
 Next, add dynamic rows to the second `LabelValueTable`. Replace the section label "Property Group 2" with "Orbital Characteristics" and add dynamic data points for the other columns in `planets.csv`:
 
@@ -148,7 +148,7 @@ Replace "Preview Heading" with the name of the planet by accessing the `Name` co
 </Typography>
 ```
 
-Here we are doing the same thing we did in the `LabelValueTable` components, except there is one small difference: the variable is wrapped with curly braces `{...}`. This is necessary because in React, curly braces indicate that a variable or function is going to be used in the component, otherwise it would render the literal text, "state.previewItem['Name']". This wasn't necessary in the `LabelValueTable` because there are already curly braces around the whole `row` prop.
+Here you are doing the same thing you did in the `LabelValueTable` components, except there is one small difference: the variable is wrapped with curly braces `{...}`. This is necessary because in React, curly braces indicate that a variable or function is going to be used in the component, otherwise it would render the literal text, "state.previewItem['Name']". This wasn't necessary in the `LabelValueTable` because there are already curly braces around the whole `row` prop.
 
 Refresh the page. You should see the planet name at the top of the preview panel.
 

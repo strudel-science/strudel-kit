@@ -10,7 +10,7 @@ This will generate some output and prompt you for some values, with default valu
 
 ![Screenshot of strudel create-app response prompts](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/images/create-app-response.png?raw=true)
 
-The first option has the `planets-app` value we passed via the command line, so just click Enter to accept. The second option asks for an `appTitle`. Give your app a custom title by typing `Planets` then clicking Enter. The command should give the message `Successfully created your strudel app!` and provide some additional hints on next steps (which we will not show here).
+The first option has the `planets-app` value you passed via the command line, so just click Enter to accept. The second option asks for an `appTitle`. Give your app a custom title by typing `Planets` then clicking Enter. The command should give the message `Successfully created your strudel app!` and provide some additional hints on next steps (which are not shown here).
 
 At this point you will have a directory named for your app that is ready to run. First **open up a separate terminal window** then navigate to the generated `planets-app` directory and use the Node Package Manager (npm) that you installed earlier to install the dependencies needed by your app.
 
@@ -35,7 +35,7 @@ In the future, when you run your app, you will not need to perform the install s
 
 ## Next Steps
 
-Next we will learn how to add your first task flow to the app.
+Next you will learn how to add your first task flow to the app.
 
 Previous           |  Next
 :-------------------------:|:-------------------------:

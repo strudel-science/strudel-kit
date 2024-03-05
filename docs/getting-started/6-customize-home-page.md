@@ -28,7 +28,7 @@ The `variant` prop is used to specify the kind of text to display in the compone
 <Typography variant="h1" fontSize="2rem">Planets of the Solar System</Typography>
 ```
 
-That looks better. Now, let's add a description section underneath. For this section we are going to discuss two new components: `Paper` and `Stack`. These are both components from MUI. The `Paper` component is used to wrap content in an elevated panel and the `Stack` component is used to organize content in vertical or horizontal layouts with equal spacing. Learn detailed information about [Paper](https://mui.com/material-ui/react-paper/) and [Stack](https://mui.com/material-ui/react-stack/) in the MUI docs.
+That looks better. Now, let's add a description section underneath. For this section you are going to use two new components: `Paper` and `Stack`. These are both components from MUI. The `Paper` component is used to wrap content in an elevated panel and the `Stack` component is used to organize content in vertical or horizontal layouts with equal spacing. Learn detailed information about [Paper](https://mui.com/material-ui/react-paper/) and [Stack](https://mui.com/material-ui/react-stack/) in the MUI docs.
 
 Here is the text to use for the description section (from [Wikipedia](https://en.wikipedia.org/wiki/Solar_System)):
 
