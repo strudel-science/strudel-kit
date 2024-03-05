@@ -27,4 +27,4 @@ Congratulations on building your first STRUDEL app! You are well on your way to 
 
 Previous           |  &nbsp;
 :-------------------------:|:-------------------------:
-[Customize the Home Page](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/7-customize-home-page.md)  |  &nbsp;
+[Customize the Home Page](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/6-customize-home-page.md)  |  &nbsp;

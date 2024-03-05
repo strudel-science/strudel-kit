@@ -231,4 +231,4 @@ In the last section of this tutorial, you will put what you have learned togethe
 
 Previous           |  Next
 :-------------------------:|:-------------------------:
-[Customize Your Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/5-customize-taskflow.md)  |  [Customize the Home Page](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/7-customize-home-page.md)
+[Customize Your Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/4-customize-taskflow.md)  |  [Customize the Home Page](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/6-customize-home-page.md)

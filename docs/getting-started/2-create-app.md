@@ -37,4 +37,4 @@ Next we will learn how to add your first task flow to the app.
 
 Previous           |  Next
 :-------------------------:|:-------------------------:
-[Set Up Your Development Environment](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/2-setup.md)  |  [Add a Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/4-add-taskflow.md)
+[Set Up Your Development Environment](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/1-setup.md)  |  [Add a Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/3-add-taskflow.md)

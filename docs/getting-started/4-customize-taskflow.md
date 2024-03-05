@@ -227,4 +227,4 @@ At this point you have a task flow that is starting to be tailored to a particul
 
 Previous           |  Next
 :-------------------------:|:-------------------------:
-[Add a Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/4-add-taskflow.md)  |  [Customize Your App](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/6-customize-app.md)
+[Add a Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/3-add-taskflow.md)  |  [Customize Your App](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/5-customize-app.md)

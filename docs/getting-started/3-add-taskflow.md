@@ -234,4 +234,4 @@ The next section provides some examples of how to customize your Task Flow.
 
 Previous           |  Next
 :-------------------------:|:-------------------------:
-[Build an App with STRUDEL](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/3-create-app.md)  |  [Customize Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/5-customize-taskflow.md)
+[Build an App with STRUDEL](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/2-create-app.md)  |  [Customize Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/4-customize-taskflow.md)

@@ -26,7 +26,7 @@ Once you have the environment set up, create a working directory and move into i
  cd learning-strudel
 ```
 
-### Install `strudel-cli` using `pip`
+### Install strudel-cli using pip
 
 Once this is setup, use the "pip" Python package manager tool, which is standard with any modern Python installation, to install the STRUDEL command-line tools:
 
@@ -43,7 +43,7 @@ git clone https://github.com/strudel-science/strudel-kit
 pip install strudel-kit/strudel-cli
 ```
 
-### Test `strudel-cli` Installation
+### Test strudel-cli Installation
 
 If all the above steps went well (!) you should be able to run the `strudel` command in your current environment.
 
@@ -60,4 +60,4 @@ Now that you have the client installed, you can start building your first STRUDE
 
 Previous           |  Next
 :-------------------------:|:-------------------------:
-[Introduction](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/1-introduction.md)  |  [Build an App with STRUDEL](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/3-create-app.md)
+[Introduction](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/1-introduction.md)  |  [Build an App with STRUDEL](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/2-create-app.md)
