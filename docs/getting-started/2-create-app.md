@@ -8,7 +8,7 @@ strudel create-app planets-app
 
 This will generate some output and prompt you for some values, with default values supplied in parentheses. 
 
-![Screenshot of home page in a browser](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/images/create-app-response.png?raw=true)
+![Screenshot of strudel create-app response prompts](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/images/create-app-response.png?raw=true)
 
 The first option has the `planets-app` value we passed via the command line, so just click Enter to accept. The second option asks for an `appTitle`. Give your app a custom title by typing `Planets` then clicking Enter. The command should give the message `Successfully created your strudel app!` and provide some additional hints on next steps (which we will not show here).
 
