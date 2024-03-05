@@ -12,7 +12,7 @@ This tutorial is for anyone who wants to build a web user interface for their sc
 
     Install all the prerequisite and core software that powers the STRUDEL Kit. 
 
-2. [Build an App with STRUDEL](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/3-create-app.md)
+2. [Create a Base App with STRUDEL](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/3-create-app.md)
 
     Get familiar with the STRUDEL CLI and generate the base scaffolding for a React app that uses the STRUDEL Design System.
 
