@@ -48,10 +48,23 @@ Add a new `Paper` component underneath the title's `Paper` (also copy over the s
 </Paper>
 ```
 
-Now create some space between the two `Paper` components by wrapping them in a `Stack`:
+Now create some space between the two `Paper` components by wrapping them in a `Stack` component. First add `Stack` to the `'@material/ui'` imports:
+
+```js
+import { Box, Container, Paper, Stack, Typography } from '@mui/material';
+```
+
+Then wrap both `Paper` components inside of a `Stack`:
 
 ```js
 <Stack>
+  <Paper
+    sx={{
+      padding: 2
+    }}
+  >
+    <Typography variant="h1" fontSize="2rem">Planets of the Solar System</Typography>
+  </Paper>
   <Paper
     sx={{
       padding: 2
@@ -62,12 +75,6 @@ Now create some space between the two `Paper` components by wrapping them in a `
     </Typography>
   </Paper>
 </Stack>
-```
-
-You will also need to add the `Stack` component to the `'@material/ui'` imports:
-
-```js
-import { Box, Container, Paper, Stack, Typography } from '@mui/material';
 ```
 
 That's looking pretty good!
