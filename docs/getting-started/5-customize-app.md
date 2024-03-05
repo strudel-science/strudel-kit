@@ -1,10 +1,10 @@
 # Customize Your App
 
-For most web applications, it is important to include content and alterations that are unique to your project. In this section we will cover the basics of how to make the app your own by changing the theme, styles, and general content.
+For most web applications, it is important to include content and alterations that are unique to your project. In this section you will learn the basics of how to make the app your own by changing the theme, styles, and general content.
 
-## Modify the Theme
+## Modify the Global Theme
 
-STRUDEL leverages MUI theming capabilities to style much of the app. Because STRUDEL uses MUI for its low-level components, using the theme makes it easy to make app-wide changes and keep things consistent. To learn more about how MUI theming works, checkout [their documentation on the topic](https://mui.com/material-ui/customization/theming/). For this tutorial, we will keep explanations brief.
+STRUDEL leverages [MUI](https://mui.com/) theming capabilities to style much of the app. Because STRUDEL uses MUI for its low-level components, using the theme makes it easy to make app-wide changes and keep things consistent. To learn more about how MUI theming works, checkout [their documentation on the topic](https://mui.com/material-ui/customization/theming/). For this tutorial, the explanations will be kept brief.
 
 To get started modifying the theme, open up the theme file in `src/app/theme.tsx`. In this file you will find the `theme` object. This is where all of the theme values are configured and it has been prepopulated with many default values to make editing the theme simpler.
 
@@ -133,7 +133,7 @@ You may have noticed that the color of the navigation bar changed, but now the l
     color="inherit"
     aria-label="menu"
   >
-    <MenuIcon />
+    <HomeIcon />
   </IconButton>
 </AppLink>
 <AppLink 
@@ -186,7 +186,13 @@ Now, let's replace the "Tutorial Science App" title in the navigation bar with a
 
 Place `example-logo.png` in `public/images` alongside your other images.
 
-In `TopBar.tsx`, find the `AppLink` that contains the app title:
+In `TopBar.tsx`, import the `ImageWrapper` component at the top of the file:
+
+```js
+import { ImageWrapper } from './ImageWrapper';
+```
+
+Then find the `AppLink` that contains the app title:
 
 ```js
 <AppLink 
@@ -205,27 +211,13 @@ Replace the whole `Typography` component with an `ImageWrapper` and `img` elemen
 
 ```js
 <AppLink to="/">
-  <ImageWrapper>
-    <img src="images/example-logo.png" />
-  </ImageWrapper>
-</AppLink>
-```
-
-And don't forget to import the `ImageWrapper` component to `TopBar.tsx`:
-
-```js
-import { ImageWrapper } from './ImageWrapper';
-```
-
-Now you just need to add a `height` to `ImageWrapper` and add some `alt` text to the `img`:
-
-```js
-<AppLink to="/">
   <ImageWrapper height="50px">
     <img src="images/example-logo.png" alt="PLANETS app logo" />
   </ImageWrapper>
 </AppLink>
 ```
+
+The above snippet also includes a `height` prop on the `ImageWrapper` and an `alt` prop on the `img`. The `height` prop specifies how tall the image should be in pixels. The width will automatically scale based on the height value. 
 
 Refresh the browser and check out your new app logo in the navigation bar.
 
@@ -239,4 +231,4 @@ In the last section of this tutorial, you will put what you have learned togethe
 
 Previous           |  Next
 :-------------------------:|:-------------------------:
-[Customize Your Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/5-customize-taskflow.md)  |  [Customize the Home Page](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/7-customize-home-page.md)
+[Customize Your Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/4-customize-taskflow.md)  |  [Customize the Home Page](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/6-customize-home-page.md)

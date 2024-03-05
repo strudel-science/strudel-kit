@@ -2,23 +2,33 @@
 
 ### Introduction
 
-As described elsewhere in the [documentation](https://strudel.science/design-system/task-flows/overview/), Task Flows are are a set of steps (represented by a series of screens) that help to accomplish a task and represent how a user progresses through a UI. To start building your app, you first add a Task Flow. In this example, we will add the Task Flow called "Explore Data".
+Task Flows are are a set of steps (represented by a series of screens) that help to accomplish a task and represent how a user progresses through a UI. To start building your app, you first add a Task Flow. In this example, you will add the Task Flow called "Explore Data".
 
-There are 3 basic steps to adding a new Task Flow:  (1) Create a simple configuration for your Task Flow -- currently this is done by editing a file, (2) Add the configured Task Flow into your app's source code, (3) Connect the Task Flow's page to the navigation of the main app.
+There are 3 basic steps to adding a new Task Flow:
 
-### (1) Configure Task Flow
+1. Create a simple configuration for your Task Flow in a JSON file.
+2. Add the configured Task Flow into your app's source code.
+3. Connect the Task Flow's page to the navigation of the main app.
+
+### 1. Configure Task Flow
 
 You only need to configure a Task Flow once, at creation time. You can think of configuration as a "helper" that is providing some text-based information that STRUDEL translates into the appropriate JavaScript code as it creates your Task Flow. 
 
-The configuration for a Task Flow is stored in a JSON file. You need to create this file with an editor before you run the command to create the Task Flow. If you don't provide a configuration file, you will be prompted for a couple of key values interactively. But in most cases, as in the Explore Data Task Flow, it will save time to use a configuration file to specify some more details, so the Strudel command-line tool can create more of the JavaScript code for you automatically. In the future, we plan to have a more graphical, "wizard"-like interface for the configuration, but right now it's just you and your favorite text editor.
+The configuration for a Task Flow is stored in a JSON file. You need to create this file with an editor before you run the command to create the Task Flow. If you don't provide a configuration file, you will be prompted for a couple of key values interactively. But in most cases, as in the Explore Data Task Flow, it will save time to use a configuration file to specify some more details, so strudel-cli can create more of the JavaScript code for you automatically.
 
 #### Add a data file
 
-Before we create our configuration file, we are going to add a data source -- in this case, a simple comma-separate values (CSV) file with information about the planets in our solar system. 
+Before you create your configuration file, you are going to add a data source -- in this case, a simple comma-separate values (CSV) file with information about the planets in our solar system. 
 
 Switch back to your original terminal and make sure you still have the `strudel-learn-env` activated (you should see `(strudel-learn-env)` at the start of the command line). Leave the app running in your other terminal. 
 
-In the directory of your app (i.e., `learning-strudel/planets-app` in this example), create a file called `planets.csv` with the following content:
+In the directory of your app (i.e., `learning-strudel/planets-app` in this example), create a file called `planets.csv`.
+
+In UNIX or MacOS, you can run the command: `cat - > planets.csv`, and then paste the text above (you may need to hit Control-D to close the file and return to the prompt).
+
+In Windows, one way to do this is run the command `notepad planets.csv`, paste the text above into the new notepad document, then save this file.
+
+Paste the following content into `planets.csv`:
 
 ```
 Name,Diameter,Mass,Inclination,Eccentricity,Semi_majorAxis,SurfaceGravity,OrbitalPeriod,SiderealRotation,Satellites
@@ -32,10 +42,6 @@ Uranus,51118, 8.683×10^25, 0.774, 0.04725744, 19.18916464, 7.77, 84.01, 0.7181,
 Neptune,49572, 1.024×10^26, 1.76917, 0.00859048, 30.06992276, 11, 164.79, 0.6712, 14
 ```
 
-In UNIX or MacOS, you can run the command: `cat - > planets.csv`, and then paste the text above (you may need to hit Control-D to close the file and return to the prompt).
-
-In Windows, one way to do this is run the command `notepad planets.csv`, paste the text above into the new notepad document, then save this file.
-
 Once you have created this file, **copy it to the `public/data` directory**, which is the default location for data files in this (and other) Task Flows. This way Strudel will be able to find it without any custom modifications:
 
 ```
@@ -46,7 +52,7 @@ cp planets.csv public/data
 
 Before you continue, make sure you are in the directory of your app (i.e., `learning-strudel/planets-app` in this example).
 
-To create the configuration file, cut and paste the following text into a file named, e.g., `solar-system.json`. 
+To create the configuration file, first create a file named `solar-system.json`. The name of this file can be anything you want, but it must be a valid `.json` file. Copy and paste the following text into `solar-system.json`. 
 
 ```
 {
@@ -104,7 +110,7 @@ To create the configuration file, cut and paste the following text into a file n
 }
 ```
 
-Now we will briefly explain the contents of this file. This is purely informational, so you can skip this and come back to it later if you want to get on with seeing your Task Flow in action.
+The next few sections will briefly explain the contents of this file. This is purely informational, so you can skip this and come back to it later if you want to get on with seeing your Task Flow in action.
 
 There are two basic sections to the configuration. First, a list of key-value pairs. Some of these set some general values you will have in an Task Flow:
 
@@ -114,7 +120,7 @@ There are two basic sections to the configuration. First, a list of key-value pa
   "pageDescription": "Explore data about the planets that orbit the Sun.",
 ```
 
-We can see above that we are giving the Task Flow a name, a title to display on its web page, and a description. 
+You can see above that you are giving the Task Flow a name, a title to display on its web page, and a description. 
 
 There also may be some key-value pairs that are specific to this type of Task Flow:
 
@@ -129,9 +135,9 @@ The second section is called `definitions`. It provides some more detailed data 
 
 #### Next steps
 
-Now we are ready to create and add the task flow!
+Now you are ready to create and add the task flow!
 
-### (2) Add Task Flow
+### 2. Add Task Flow
 
 To add a Task Flow, use the `add-taskflow` sub-command of the `strudel` command-line program. Again, make sure your terminal is in the directory of your app (i.e., `learning-strudel/planets-app` in this example). Then, run this command:
 
@@ -150,7 +156,7 @@ Your new task flow was built in /some/path/to/learning-strudel/planets-app/src/a
 
 We will now connect the task flow as a sub-page in our app.
 
-### (3) Connect the Task Flow
+### 3. Connect the Task Flow
 
 Change to the `src/app` directory under your app, e.g.:
 
@@ -167,7 +173,7 @@ import { ExploreDataWrapper } from "./solar-system/ExploreDataWrapper";
 import { DataExplorer } from "./solar-system/DataExplorer";
 ```
 
-This says to import the ReactJS components that were created by the "add-taskflow" command above from the appropriate directory. Next we will create a "route" that associates these components with a page URL. 
+This says to import the ReactJS components that were created by the "add-taskflow" command above from the appropriate directory. Next you will create a "route" that associates these components with a page URL. 
 
 Add the following text after the line that ends `createHashRouter([`. This is the section that tells the app how to map the URL path to a given page in the app (after a "/#/", thus the name). 
 
@@ -184,7 +190,7 @@ Add the following text after the line that ends `createHashRouter([`. This is th
 },
 ```
 
-Save this file. You should now have a fully functioning Explore Data Task Flow page when you navigate to the `/solar-system` route. Test this out by navigating your browser to http://localhost:3000/#/explore.
+Save this file. You should now have a fully functioning Explore Data Task Flow page when you navigate to the `/solar-system` route. Test this out by navigating your browser to http://localhost:3000/#/solar-system.
 
 ![Screenshot of solar system Task Flow in a browser](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/images/start-explore-data-2.png?raw=true)
 
@@ -222,10 +228,10 @@ The `AppLink` component is used for links to internal pages in your app. The `to
 
 Woohoo! You have connected your first Task Flow.
 
-#### Next steps
+## Next steps
 
 The next section provides some examples of how to customize your Task Flow.
 
 Previous           |  Next
 :-------------------------:|:-------------------------:
-[Build an App with STRUDEL](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/3-create-app.md)  |  [Customize Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/5-customize-taskflow.md)
+[Build an App with STRUDEL](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/2-create-app.md)  |  [Customize Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/4-customize-taskflow.md)

@@ -28,7 +28,7 @@ The `variant` prop is used to specify the kind of text to display in the compone
 <Typography variant="h1" fontSize="2rem">Planets of the Solar System</Typography>
 ```
 
-That looks better. Now, let's add a description section underneath. For this section we are going to discuss two new components: `Paper` and `Stack`. These are both components from MUI. The `Paper` component is used to wrap content in an elevated panel and the `Stack` component is used to organize content in vertical or horizontal layouts with equal spacing. Learn detailed information about [Paper](https://mui.com/material-ui/react-paper/) and [Stack](https://mui.com/material-ui/react-stack/) in the MUI docs.
+That looks better. Now, let's add a description section underneath. For this section you are going to use two new components: `Paper` and `Stack`. These are both components from MUI. The `Paper` component is used to wrap content in an elevated panel and the `Stack` component is used to organize content in vertical or horizontal layouts with equal spacing. Learn detailed information about [Paper](https://mui.com/material-ui/react-paper/) and [Stack](https://mui.com/material-ui/react-stack/) in the MUI docs.
 
 Here is the text to use for the description section (from [Wikipedia](https://en.wikipedia.org/wiki/Solar_System)):
 
@@ -48,10 +48,23 @@ Add a new `Paper` component underneath the title's `Paper` (also copy over the s
 </Paper>
 ```
 
-Now create some space between the two `Paper` components by wrapping them in a `Stack`:
+Now create some space between the two `Paper` components by wrapping them in a `Stack` component. First add `Stack` to the `'@material/ui'` imports:
+
+```js
+import { Box, Container, Paper, Stack, Typography } from '@mui/material';
+```
+
+Then wrap both `Paper` components inside of a `Stack`:
 
 ```js
 <Stack>
+  <Paper
+    sx={{
+      padding: 2
+    }}
+  >
+    <Typography variant="h1" fontSize="2rem">Planets of the Solar System</Typography>
+  </Paper>
   <Paper
     sx={{
       padding: 2
@@ -64,14 +77,12 @@ Now create some space between the two `Paper` components by wrapping them in a `
 </Stack>
 ```
 
-You will also need to add the `Stack` component to the `'@material/ui'` imports:
-
-```js
-import { Box, Container, Paper, Stack, Typography } from '@mui/material';
-```
-
 That's looking pretty good!
+
+## Next Steps
+
+In the last section you will find resources to continue building your app and learning the STRUDEL Tech Stack.
 
 Previous           |  Next
 :-------------------------:|:-------------------------:
-[Customize Your App](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/6-customize-app.md)  |  [Continue Learning](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/8-continue-learning.md)
+[Customize Your App](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/5-customize-app.md)  |  [Continue Learning](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/7-continue-learning.md)

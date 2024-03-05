@@ -6,9 +6,9 @@ Now that you have set up your initial task flow let's customize some of the cont
 
 Often you won't want to use all of the page elements that come with a Task Flow. For this tutorial, you remove the "Related Data" table in the preview panel that displays when you click on a row. Because you don't have any nested or linked data for each planet in the table, this element isn't useful to the UI right now.
 
-First, look inside the `src/app/explorer/` directory that was generated when you first added your task flow:
+First, look inside the `src/app/solar-system/` directory that was generated when you first added your task flow:
 
-These are the files that determine how this specific Task Flow will be rendered in the UI. Some of these files reference other components that are common to the whole app, but these components are specific to the `explorer` Task Flow.
+These are the files that determine how this specific Task Flow will be rendered in the UI. Some of these files reference other components that are common to the whole app, but these components are specific to the `solar-system` Task Flow.
 
 For this step, open `PreviewPanel.tsx` because the "Related Data" table is in the preview panel.
 
@@ -99,7 +99,7 @@ Add a few more dynamic rows to the table in this section:
 />
 ```
 
-Notice that we can access properties that aren't displayed in the main table. Even though `SurfaceGravity` wasn't defined in the main table columns, it is still part of the underlying data so it is present in the internal task flow `state`. Also notice that the label can be any string you want, but the value must use the exact name of the property column in `planets.csv`.
+Notice that you can access properties that aren't displayed in the main table. Even though `SurfaceGravity` wasn't defined in the main table columns, it is still part of the underlying data so it is present in the internal task flow `state`. Also notice that the label can be any string you want, but the value must use the exact name of the property column in `planets.csv`.
 
 Next, add dynamic rows to the second `LabelValueTable`. Replace the section label "Property Group 2" with "Orbital Characteristics" and add dynamic data points for the other columns in `planets.csv`:
 
@@ -148,7 +148,7 @@ Replace "Preview Heading" with the name of the planet by accessing the `Name` co
 </Typography>
 ```
 
-Here we are doing the same thing we did in the `LabelValueTable` components, except there is one small difference: the variable is wrapped with curly braces `{...}`. This is necessary because in React, curly braces indicate that a variable or function is going to be used in the component, otherwise it would render the literal text, "state.previewItem['Name']". This wasn't necessary in the `LabelValueTable` because there are already curly braces around the whole `row` prop.
+Here you are doing the same thing you did in the `LabelValueTable` components, except there is one small difference: the variable is wrapped with curly braces `{...}`. This is necessary because in React, curly braces indicate that a variable or function is going to be used in the component, otherwise it would render the literal text, "state.previewItem['Name']". This wasn't necessary in the `LabelValueTable` because there are already curly braces around the whole `row` prop.
 
 Refresh the page. You should see the planet name at the top of the preview panel.
 
@@ -181,13 +181,7 @@ Now you are ready to start incorporating the images into the preview panel. Open
 </Box>
 ```
 
-Add an image tag directly above this section:
-
-```js
-<img src="" />
-```
-
-The `img` tag uses the `src` attribute to tell it which image to display. In this case, you want the image to be different depending on the row that is selected. To do that, you are going to inject the planet's name into the path to the image:
+Add an `<img>` tag directly above this section. The `img` tag uses the `src` attribute to tell it which image to display. In this case, you want the image to be different depending on the row that is selected. To do that, you are going to inject the planet's name into the path to the image:
 
 ```js
 <img src={`images/${state.previewItem['Name']}.jpg`}/>
@@ -217,7 +211,7 @@ To make sure the images are accessible, add alt text to the `img` tag. Alt text 
 
 ```js
 <ImageWrapper height="300px">
-  <img src={`images/${state.previewItem['Name']}.jpg`} alt={`Sattelite image of ${state.previewItem['Name']}`} />
+  <img src={`images/${state.previewItem['Name']}.jpg`} alt={`Satellite image of ${state.previewItem['Name']}`} />
 </ImageWrapper>
 ```
 
@@ -233,4 +227,4 @@ At this point you have a task flow that is starting to be tailored to a particul
 
 Previous           |  Next
 :-------------------------:|:-------------------------:
-[Add a Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/4-add-taskflow.md)  |  [Customize Your App](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/6-customize-app.md)
+[Add a Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/3-add-taskflow.md)  |  [Customize Your App](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/5-customize-app.md)
