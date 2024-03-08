@@ -257,7 +257,7 @@ def add_taskflow(
             output_dir,
             f"name={name}",
         ]
-
+        config_output_dir = False
         if config:
             # Convert the user's json config into a yaml config
             # so that it is compatible with cookiecutter and follows its specs.
@@ -266,6 +266,16 @@ def add_taskflow(
             # Add in extra args so the config file is used
             args[1:1] = ["--config-file", temp_yaml_config]
             args.insert(-1, "--no-input")
+            # Get config output dir to check for existence
+            with open(config) as config_file:
+                config_json = json.load(config_file)
+                if 'output_dir' in config_json:
+                    config_output_dir = config_json['output_dir']
+
+        final_output_dir = config_output_dir if config_output_dir else output_dir
+        
+        if not os.path.isdir(final_output_dir):
+            raise ValueError(f"The output directory {final_output_dir} does not exist in your current working directory. Make sure you are executing add-taskflow from inside your app directory.")
 
         subprocess.run(args, check=True)
     except subprocess.CalledProcessError as e:
@@ -321,7 +331,7 @@ def add_taskflow(
 @app.callback()
 def main(
     version: Annotated[
-        Optional[bool], typer.Option("--version", callback=version_callback)
+        Optional[bool], typer.Option("--version", "-v", callback=version_callback)
     ] = None
 ):
     """
