@@ -1,6 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
-import { DataExplorer } from './DataExplorer';
-import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import React, { useEffect, useState } from 'react';
 import * as d3 from 'd3-fetch';
 import { basename } from '../App';
 import { Box } from '@mui/material';
@@ -25,6 +23,8 @@ export const ExploreDataWrapper: React.FC = () => {
           data = await d3.tsv(filePath);
         } else if (fileExtension === 'json') {
           data = await d3.json(filePath);
+        } else if (filename.startsWith('http')) {
+          data = await d3.json(filename);
         }
         setEntities(data);
       }
