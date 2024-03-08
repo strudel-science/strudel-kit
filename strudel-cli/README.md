@@ -39,9 +39,8 @@ If both commands return a version number, you should be good to go. If not, you 
 Install the STRUDEL CLI tool:
 
 ```
-pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple strudel-cli
+pip install strudel-cli
 ```
-:warning: _strudel-cli is only on TestPyPI right now. When it is published to PyPI, you will be able to omit the extra options._
 
 Create a config file based on the [create-app config json](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/CONFIGS.md#create-app-config-file):
 
@@ -201,5 +200,5 @@ This will generate `.whl` and `.tar.gz` files in the `dist/` folder.
 #### 3. Upload to (Test)PyPi
 
 ```
-python -m twine upload --repository testpypi dist/*
+python -m twine upload --repository pypi dist/*
 ```

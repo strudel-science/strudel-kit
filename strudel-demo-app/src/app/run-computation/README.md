@@ -3,9 +3,8 @@
 Install the STRUDEL CLI tool:
 
 ```
-pip install -i https://test.pypi.org/simple/ strudel-cli
+pip install strudel-cli
 ```
-:warning: _strudel-cli is only on TestPyPI right now. When it is published to PyPI, you won't need the -i option._
 
 Create a base app:
 

@@ -11,9 +11,8 @@ This library provides a suite of templates to implement UIs for various differen
 Install the STRUDEL CLI tool:
 
 ```
-pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple strudel-cli
+pip install strudel-cli
 ```
-:warning: _strudel-cli is only on TestPyPI right now. When it is published to PyPI, you will be able to omit the extra options._
 
 Create a config file based on the [create-app config json](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/CONFIGS.md#create-app-config-file):
 
