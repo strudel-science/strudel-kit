@@ -31,9 +31,8 @@ Once you have the environment set up, create a working directory and move into i
 Once this is setup, use the "pip" Python package manager tool, which is standard with any modern Python installation, to install the STRUDEL command-line tools:
 
 ```
-pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple strudel-cli
+pip install strudel-cli
 ```
-:warning: _strudel-cli is only on TestPyPI right now. When it is published to PyPI, you will be able to omit the extra options._
 
 This will install the latest *released* version of the CLI code. If you want the freshly baked code right from the main repository instead, use the following recipe:
 
