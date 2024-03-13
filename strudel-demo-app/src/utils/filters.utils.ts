@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { DataFilter } from "./ContextProvider";
+import { DataFilter } from "../types/filters.types";
 
 export const filterBySearchText = (allData: any[], searchText?: string) => {
   let filteredData = allData;
@@ -34,15 +34,24 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
               if (Array.isArray(f.value)) {
                 f.value.forEach((v) => {
                   if (!match) {
-                    if (d[f.field].indexOf(v) > -1) {
-                      match = true;
+                    if (Array.isArray(d[f.field])) {
+                      if (d[f.field].indexOf(v) > -1) {
+                        match = true;
+                      }
+                    } else {
+                      if (d[f.field] === v) {
+                        match = true;
+                      }
                     }
+                    
                   }
                 });
               }
               break;
             }
             case 'equals one of': {
+              console.log(f.value);
+              console.log(d[f.field]);
               if (Array.isArray(f.value)) {
                 f.value.forEach((v) => {
                   if (!match) {

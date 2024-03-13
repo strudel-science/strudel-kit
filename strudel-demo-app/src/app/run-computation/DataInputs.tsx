@@ -1,14 +1,7 @@
-import { AppBar, Box, Button, Container, Grid, IconButton, Link, Paper, Stack, Step, StepLabel, Stepper, TextField, Toolbar, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import React, { useState } from 'react';
+import { Box, Button, Container, Link, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
+import { GridColDef } from '@mui/x-data-grid';
+import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
-import { setPreviewItem } from '../../components/contexts/analytics/actions';
-import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { DataGrid } from '../../components/DataGrid';
 
 const inputUnits = [

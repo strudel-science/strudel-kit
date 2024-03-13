@@ -1,17 +1,15 @@
-import { AppBar, Box, Button, Container, Grid, IconButton, Link, Paper, Stack, TextField, Toolbar, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Box, Button, Container, IconButton, Link, Paper, Stack, Toolbar, Typography } from '@mui/material';
+import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
-import { setPreviewItem } from '../../components/contexts/analytics/actions';
-import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { DataGrid } from '../../components/DataGrid';
-import { NewScenarioModal } from './NewScenarioModal';
 import { useAppState } from '../../context/ContextProvider';
+import { NewScenarioModal } from './NewScenarioModal';
 
 const scenarios = [
   {

@@ -1,18 +1,13 @@
-import { AppBar, Box, Link, Grid, IconButton, Paper, Stack, TextField, Toolbar, Typography, Tab, Button, Container } from '@mui/material';
 import DownloadIcon from '@mui/icons-material/Download';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import CircleIcon from '@mui/icons-material/Circle';
-import React, { useState } from 'react';
-import { Link as RouterLink, useParams } from 'react-router-dom';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
-import { setPreviewItem } from '../../components/contexts/analytics/actions';
-import { FiltersPanel } from './FiltersPanel';
-import { PreviewPanel } from './PreviewPanel';
-import { DataListPanel } from './DataListPanel';
-import { PageHeader } from '../../components/PageHeader';
-import { LabelValueTable } from '../../components/LabelValueTable';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
+import { Box, Button, Container, Grid, Link, Paper, Stack, Tab, Typography } from '@mui/material';
 import { DataGrid, GridActionsCellItem, GridRowParams } from '@mui/x-data-grid';
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { LabelValueTable } from '../../components/LabelValueTable';
+import { PageHeader } from '../../components/PageHeader';
+import { useSearchDataRepositories } from './context/ContextProvider';
 
 const attachedFilesColumns = [
   { 
@@ -43,7 +38,7 @@ const attachedFilesColumns = [
 ];
   
 export const DatasetDetail: React.FC = () => {
-  const {state, dispatch} = useAnalytics();
+  const {state, dispatch} = useSearchDataRepositories();
   const params = useParams();
   const dataset = state.data?.find((d) => {
     if (params.datasetId) {

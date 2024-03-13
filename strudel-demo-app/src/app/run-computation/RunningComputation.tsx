@@ -1,16 +1,6 @@
-import { AppBar, Box, Button, Container, FormControl, Grid, IconButton, InputLabel, LinearProgress, Link, MenuItem, Paper, Select, Stack, Step, StepLabel, Stepper, TextField, Toolbar, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { Box, Container, LinearProgress, Link, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
-import { setPreviewItem } from '../../components/contexts/analytics/actions';
-import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
-import { DataGrid } from '../../components/DataGrid';
-import { NewScenarioModal } from './NewScenarioModal';
 
 export const RunningComputation: React.FC = () => {
   const [showAdvanced, setShowAdvanced] = useState(false);

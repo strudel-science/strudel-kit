@@ -1,14 +1,11 @@
-import { AppBar, Box, Link, Grid, IconButton, Paper, Stack, TextField, Toolbar, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Box, Grid } from '@mui/material';
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { setPreviewItem } from '../../components/contexts/analytics/actions';
 import { FiltersPanel } from './FiltersPanel';
 import { PreviewPanel } from './PreviewPanel';
 import { DataTablePanel } from './DataTablePanel';
 import { PageHeader } from '../../components/PageHeader';
 import { useExploreData } from './context/ContextProvider';
+import { setPreviewItem } from './context/actions';
 
 const getMainColumnSize = (showFiltersPanel: boolean, showPreviewPanel: boolean) => {
   if (!showFiltersPanel && !showPreviewPanel) {

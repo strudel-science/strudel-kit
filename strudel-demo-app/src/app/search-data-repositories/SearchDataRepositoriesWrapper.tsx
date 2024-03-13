@@ -1,10 +1,10 @@
 import { Box } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { AnalyticsProvider } from '../../components/contexts/analytics/AnalyticsProvider';
-import * as d3 from 'd3-fetch';
 import { basename } from '../App';
 import { TopBar } from '../../components/TopBar';
+import { SearchDataRepositoriesProvider } from './context/ContextProvider';
+import { getDataFromSource } from '../../utils/api.utils';
   
 export const SearchDataRepositoriesWrapper: React.FC = () => {
   const [datasets, setDatasets] = useState<any[]>([]);
@@ -12,7 +12,8 @@ export const SearchDataRepositoriesWrapper: React.FC = () => {
   useEffect(() => {
     if (datasets.length === 0) {
       const getData = async () => {
-        const data: any = await d3.json(`${basename}/data/datasets.json`);
+        const dataSource = 'datasets.json';
+        const data = await getDataFromSource(dataSource, basename);
         setDatasets(data);
       }
       getData();
@@ -25,9 +26,9 @@ export const SearchDataRepositoriesWrapper: React.FC = () => {
         <TopBar />
       </Box>
       <Box>
-        <AnalyticsProvider data={datasets} dataIdField='id'>
+        <SearchDataRepositoriesProvider data={datasets} dataIdField='id'>
           <Outlet />
-        </AnalyticsProvider>
+        </SearchDataRepositoriesProvider>
       </Box>
     </Box>
   )

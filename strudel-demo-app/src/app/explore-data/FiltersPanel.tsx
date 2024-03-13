@@ -2,9 +2,10 @@ import React from 'react';
 import { Filters } from '../../components/Filters';
 import { FilterField } from '../../components/FilterField';
 import { CheckboxList, CheckboxOption } from '../../components/CheckboxList';
-import { setFilter } from '../../components/contexts/analytics/actions';
-import { FilterConfig, useExploreData } from './context/ContextProvider';
+import { useExploreData } from './context/ContextProvider';
 import { StrudelSlider } from '../../components/StrudelSlider';
+import { setFilter } from './context/actions';
+import { FilterConfig } from '../../types/filters.types';
 
 interface FiltersPanelProps {
   onClose: () => any

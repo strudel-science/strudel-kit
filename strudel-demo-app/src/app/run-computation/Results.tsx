@@ -1,14 +1,11 @@
-import { AppBar, Box, Button, Container, Grid, IconButton, Link, Paper, Stack, Step, StepLabel, Stepper, TextField, Toolbar, Typography } from '@mui/material';
-import Plot from 'react-plotly.js';
-import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
-import { setPreviewItem } from '../../components/contexts/analytics/actions';
-import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
-import { DataGrid } from '../../components/DataGrid';
-import { NewScenarioModal } from './NewScenarioModal';
-import { chart } from './chart';
+import { Box, Button, Container, Grid, Link, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
+import { GridColDef } from '@mui/x-data-grid';
 import { Data } from 'plotly.js';
+import React from 'react';
+import Plot from 'react-plotly.js';
+import { Link as RouterLink } from 'react-router-dom';
+import { DataGrid } from '../../components/DataGrid';
+import { chart } from './chart';
 
 const inputUnits = [
   {

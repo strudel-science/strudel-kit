@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Radio, RadioGroup, Slider, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import { Filters } from '../../components/Filters';
-import { FilterField } from '../../components/FilterField';
-import { CheckboxList, CheckboxOption } from '../../components/CheckboxList';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
-import { setFilter } from '../../components/contexts/analytics/actions';
-import { FilterGroup } from '../../components/FilterGroup';
+import { Stack } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
+import React, { useEffect, useState } from 'react';
+import { CheckboxList, CheckboxOption } from '../../components/CheckboxList';
+import { FilterField } from '../../components/FilterField';
+import { Filters } from '../../components/Filters';
+import { useSearchDataRepositories } from './context/ContextProvider';
+import { setFilter } from './context/actions';
 
 enum FilterType {
   CHECKBOX_LIST = 'CHECKBOX_LIST',
@@ -34,7 +32,7 @@ const initFilterValues = (filters: Filter[]) => {
 };
 
 export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => { 
-  const {state, dispatch} = useAnalytics();
+  const {state, dispatch} = useSearchDataRepositories();
   const [dateRange, setDateRange] = useState([null, dayjs()]);
   
   const categoryOptions: CheckboxOption[] = [];
@@ -77,7 +75,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
         filter={
           <CheckboxList
             options={categoryOptions}
-            onChange={(values) => dispatch(setFilter({ field: 'category', value: values, operator: 'equals one of' }))}
+            onChange={(values) => dispatch(setFilter({ field: 'category', value: values, operator: 'contains one of' }))}
           />
         }
       />
@@ -115,7 +113,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
         filter={
           <CheckboxList
             options={tagOptions}
-            onChange={(values) => dispatch(setFilter({ field: 'tags', value: values, operator: 'equals one of' }))}
+            onChange={(values) => dispatch(setFilter({ field: 'tags', value: values, operator: 'contains one of' }))}
           />
         }
       />

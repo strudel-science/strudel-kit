@@ -1,25 +1,14 @@
 import React, { useEffect, useReducer, useContext } from 'react';
-import { AnalyticsAction, AnalyticsActionType, setData, setFilteredData } from './actions';
-import { filterData } from './utils';
+import { SearchDataRepositoriesAction, SearchDataRepositoriesActionType, setData, setFilteredData } from './actions';
+import { DataFilter, FilterConfig } from '../../../types/filters.types';
+import { filterData } from '../../../utils/filters.utils';
 
-export enum FilterOperator {
-  CONTAINS = 'CONTAINS',
-  EQUALS = 'EQUALS',
-  EQUALS_ONE_OF = 'EQUALS_ONE_OF',
-  BETWEEN = 'BETWEEN'
-}
-
-export interface DataFilter {
-  field: string;
-  value: string | number | any[] | null;
-  operator: string;
-}
-
-export interface AnalyticsState {
+export interface SearchDataRepositoriesState {
   columns: any[];
   count?: number;
   data?: any[];
   dataIdField: string;
+  filters: FilterConfig[];
   filteredData?: any[];
   activeFilters: DataFilter[];
   filterValues?: any;
@@ -31,17 +20,17 @@ export interface AnalyticsState {
 }
 
 /**
- * AnalyticsProvider props are the same as the State except
+ * SearchDataRepositoriesProvider props are the same as the State except
  * some of the required props in the State are optional props.
  * These props have default values set in the initialState object.
  */
-// interface AnalyticsProviderProps extends Omit<AnalyticsState, 
+// interface SearchDataRepositoriesProviderProps extends Omit<SearchDataRepositoriesState, 
 //   'activeFilters' | 
 //   'columns' | 
 //   'tablePage' | 
 //   'tablePageSize'
 // > {
-interface AnalyticsProviderProps extends Partial<AnalyticsState> {
+interface SearchDataRepositoriesProviderProps extends Partial<SearchDataRepositoriesState> {
   activeFilters?: DataFilter[];
   columns?: any[];
   tablePage?: number;
@@ -49,11 +38,12 @@ interface AnalyticsProviderProps extends Partial<AnalyticsState> {
   children: React.ReactNode; 
 }
 
-const AnalyticsContext = React.createContext<{state: AnalyticsState; dispatch: React.Dispatch<AnalyticsAction>} | undefined>(undefined);
+const SearchDataRepositoriesContext = React.createContext<{state: SearchDataRepositoriesState; dispatch: React.Dispatch<SearchDataRepositoriesAction>} | undefined>(undefined);
 
-const initialState: AnalyticsState = {
+const initialState: SearchDataRepositoriesState = {
   data: [],
   columns: [],
+  filters: [],
   filterValues: {},
   activeFilters: [],
   dataIdField: 'id',
@@ -61,7 +51,7 @@ const initialState: AnalyticsState = {
   tablePageSize: 25
 }
 
-const initState = (initialState: AnalyticsState, props: AnalyticsProviderProps) => {
+const initState = (initialState: SearchDataRepositoriesState, props: SearchDataRepositoriesProviderProps) => {
   const {children, ...rest} = props;
   return {
     ...initialState,
@@ -69,27 +59,27 @@ const initState = (initialState: AnalyticsState, props: AnalyticsProviderProps) 
   }
 };
 
-function analyticsReducer(state: AnalyticsState, action: AnalyticsAction): AnalyticsState {
+function searchDataRepositoriesReducer(state: SearchDataRepositoriesState, action: SearchDataRepositoriesAction): SearchDataRepositoriesState {
   switch (action.type) {
-    case AnalyticsActionType.SET_DATA: {
+    case SearchDataRepositoriesActionType.SET_DATA: {
       return {
         ...state,
         data: action.payload
       }
     }
-    case AnalyticsActionType.SET_SEARCH: {
+    case SearchDataRepositoriesActionType.SET_SEARCH: {
       return {
         ...state,
         searchTerm: action.payload
       }
     }
-    case AnalyticsActionType.SET_FILTERED_DATA: {
+    case SearchDataRepositoriesActionType.SET_FILTERED_DATA: {
       return {
         ...state,
         filteredData: action.payload
       }
     }
-    case AnalyticsActionType.SET_FILTER: {
+    case SearchDataRepositoriesActionType.SET_FILTER: {
       console.log(action);
       const filter = action.payload;
       const existingIndex = state.activeFilters.findIndex((f) => f.field === filter.field);
@@ -108,7 +98,7 @@ function analyticsReducer(state: AnalyticsState, action: AnalyticsAction): Analy
         activeFilters
       }
     }
-    case AnalyticsActionType.SET_PREVIEW_ITEM: {
+    case SearchDataRepositoriesActionType.SET_PREVIEW_ITEM: {
       return {
         ...state,
         previewItem: action.payload
@@ -120,8 +110,8 @@ function analyticsReducer(state: AnalyticsState, action: AnalyticsAction): Analy
   }
 }
 
-export const AnalyticsProvider: React.FC<AnalyticsProviderProps> = (props) => {
-  const [state, dispatch] = React.useReducer(analyticsReducer, initState(initialState, props));
+export const SearchDataRepositoriesProvider: React.FC<SearchDataRepositoriesProviderProps> = (props) => {
+  const [state, dispatch] = useReducer(searchDataRepositoriesReducer, initState(initialState, props));
   const value = { state, dispatch };
 
   useEffect(() => {
@@ -137,16 +127,16 @@ export const AnalyticsProvider: React.FC<AnalyticsProviderProps> = (props) => {
   }, [state.data, state.searchTerm, JSON.stringify(state.activeFilters)]);
 
   return (
-    <AnalyticsContext.Provider value={value}>
+    <SearchDataRepositoriesContext.Provider value={value}>
       {props.children}
-    </AnalyticsContext.Provider>
+    </SearchDataRepositoriesContext.Provider>
   )
 }
 
-export const useAnalytics = () => {
-  const context = useContext(AnalyticsContext)
+export const useSearchDataRepositories = () => {
+  const context = useContext(SearchDataRepositoriesContext)
   if (context === undefined) {
-    throw new Error('useAnalytics must be used within an AnalyticsProvider')
+    throw new Error('useSearchDataRepositories must be used within an SearchDataRepositoriesProvider')
   }
   return context
 }

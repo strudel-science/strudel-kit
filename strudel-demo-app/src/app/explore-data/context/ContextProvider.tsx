@@ -1,30 +1,9 @@
-import React, { useEffect, useReducer, useContext } from 'react';
-import { AnalyticsAction, AnalyticsActionType, setData, setFilteredData } from './actions';
-import { filterData } from './utils';
+import React, { useContext, useEffect } from 'react';
+import { ExploreDataAction, ExploreDataActionType, setData, setFilteredData } from './actions';
+import { DataFilter, FilterConfig } from '../../../types/filters.types';
+import { filterData } from '../../../utils/filters.utils';
 
-export enum FilterOperator {
-  CONTAINS = 'CONTAINS',
-  EQUALS = 'EQUALS',
-  EQUALS_ONE_OF = 'EQUALS_ONE_OF',
-  BETWEEN = 'BETWEEN'
-}
-
-export interface DataFilter {
-  field: string;
-  value: string | number | any[] | null;
-  operator: string;
-}
-
-export interface FilterConfig {
-  field: string;
-  displayName: string;
-  filterType: string;
-  group?: string;
-  tooltip?: string;
-  props: any;
-}
-
-export interface AnalyticsState {
+export interface ExploreDataState {
   columns: any[];
   count?: number;
   data?: any[];
@@ -41,17 +20,17 @@ export interface AnalyticsState {
 }
 
 /**
- * AnalyticsProvider props are the same as the State except
+ * ExploreDataProvider props are the same as the State except
  * some of the required props in the State are optional props.
  * These props have default values set in the initialState object.
  */
-// interface AnalyticsProviderProps extends Omit<AnalyticsState, 
+// interface ExploreDataProviderProps extends Omit<ExploreDataState, 
 //   'activeFilters' | 
 //   'columns' | 
 //   'tablePage' | 
 //   'tablePageSize'
 // > {
-interface AnalyticsProviderProps extends Partial<AnalyticsState> {
+interface ExploreDataProviderProps extends Partial<ExploreDataState> {
   activeFilters?: DataFilter[];
   columns?: any[];
   tablePage?: number;
@@ -59,9 +38,9 @@ interface AnalyticsProviderProps extends Partial<AnalyticsState> {
   children: React.ReactNode; 
 }
 
-const AnalyticsContext = React.createContext<{state: AnalyticsState; dispatch: React.Dispatch<AnalyticsAction>} | undefined>(undefined);
+const ExploreDataContext = React.createContext<{state: ExploreDataState; dispatch: React.Dispatch<ExploreDataAction>} | undefined>(undefined);
 
-const initialState: AnalyticsState = {
+const initialState: ExploreDataState = {
   data: [],
   columns: [],
   filters: [],
@@ -72,7 +51,7 @@ const initialState: AnalyticsState = {
   tablePageSize: 25
 }
 
-const initState = (initialState: AnalyticsState, props: AnalyticsProviderProps) => {
+const initState = (initialState: ExploreDataState, props: ExploreDataProviderProps) => {
   const {children, ...rest} = props;
   return {
     ...initialState,
@@ -80,27 +59,27 @@ const initState = (initialState: AnalyticsState, props: AnalyticsProviderProps) 
   }
 };
 
-function analyticsReducer(state: AnalyticsState, action: AnalyticsAction): AnalyticsState {
+function exploreDataReducer(state: ExploreDataState, action: ExploreDataAction): ExploreDataState {
   switch (action.type) {
-    case AnalyticsActionType.SET_DATA: {
+    case ExploreDataActionType.SET_DATA: {
       return {
         ...state,
         data: action.payload
       }
     }
-    case AnalyticsActionType.SET_SEARCH: {
+    case ExploreDataActionType.SET_SEARCH: {
       return {
         ...state,
         searchTerm: action.payload
       }
     }
-    case AnalyticsActionType.SET_FILTERED_DATA: {
+    case ExploreDataActionType.SET_FILTERED_DATA: {
       return {
         ...state,
         filteredData: action.payload
       }
     }
-    case AnalyticsActionType.SET_FILTER: {
+    case ExploreDataActionType.SET_FILTER: {
       console.log(action);
       const filter = action.payload;
       const existingIndex = state.activeFilters.findIndex((f) => f.field === filter.field);
@@ -119,7 +98,7 @@ function analyticsReducer(state: AnalyticsState, action: AnalyticsAction): Analy
         activeFilters
       }
     }
-    case AnalyticsActionType.SET_PREVIEW_ITEM: {
+    case ExploreDataActionType.SET_PREVIEW_ITEM: {
       return {
         ...state,
         previewItem: action.payload
@@ -131,8 +110,8 @@ function analyticsReducer(state: AnalyticsState, action: AnalyticsAction): Analy
   }
 }
 
-export const ExploreDataProvider: React.FC<AnalyticsProviderProps> = (props) => {
-  const [state, dispatch] = React.useReducer(analyticsReducer, initState(initialState, props));
+export const ExploreDataProvider: React.FC<ExploreDataProviderProps> = (props) => {
+  const [state, dispatch] = React.useReducer(exploreDataReducer, initState(initialState, props));
   const value = { state, dispatch };
 
   useEffect(() => {
@@ -148,16 +127,16 @@ export const ExploreDataProvider: React.FC<AnalyticsProviderProps> = (props) => 
   }, [state.data, state.searchTerm, JSON.stringify(state.activeFilters)]);
 
   return (
-    <AnalyticsContext.Provider value={value}>
+    <ExploreDataContext.Provider value={value}>
       {props.children}
-    </AnalyticsContext.Provider>
+    </ExploreDataContext.Provider>
   )
 }
 
 export const useExploreData = () => {
-  const context = useContext(AnalyticsContext)
+  const context = useContext(ExploreDataContext)
   if (context === undefined) {
-    throw new Error('useAnalytics must be used within an AnalyticsProvider')
+    throw new Error('useExploreData must be used within an ExploreDataProvider')
   }
   return context
 }

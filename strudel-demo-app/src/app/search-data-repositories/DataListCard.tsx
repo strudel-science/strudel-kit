@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
-import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, Link, Pagination, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
-import SortIcon from '@mui/icons-material/Sort';
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import { DataGrid } from '../../components/DataGrid';
-import { GridEventListener } from '@mui/x-data-grid';
+import { Box, Link, Stack, Typography } from '@mui/material';
 import { blue } from '@mui/material/colors';
-import { setPreviewItem, setSearch } from '../../components/contexts/analytics/actions';
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import { useSearchDataRepositories } from './context/ContextProvider';
+import { setPreviewItem } from './context/actions';
 
 interface DataListCardProps {
   item: any;
 }
 
 export const DataListCard: React.FC<DataListCardProps> = ({ item }) => { 
-  const {state, dispatch} = useAnalytics();
+  const {state, dispatch} = useSearchDataRepositories();
 
   const handleItemClick = (item: any) => {
     dispatch(setPreviewItem(item))

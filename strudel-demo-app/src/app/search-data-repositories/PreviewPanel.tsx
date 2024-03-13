@@ -2,9 +2,9 @@ import React from 'react';
 import { Box, Button, IconButton, Link, Paper, Stack, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link as RouterLink } from 'react-router-dom';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
 import { LabelValueTable } from '../../components/LabelValueTable';
 import { DataGrid } from '../../components/DataGrid';
+import { useSearchDataRepositories } from './context/ContextProvider';
 
 interface PreviewPanelProps {
   onClose: () => any
@@ -24,7 +24,7 @@ const attachedFilesColumns = [
 ];
 
 export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
-  const {state, dispatch} = useAnalytics();
+  const {state, dispatch} = useSearchDataRepositories();
   const emptyRows = Array(25).fill(0);
   const relatedRows = emptyRows.map((d, i) => {
     return { id: i, genome: state.previewItem['Organism'], attr1: 'value', attr2: 'value', attr3: 'value'}

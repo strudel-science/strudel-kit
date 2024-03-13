@@ -1,6 +1,7 @@
-import { DataFilter, AnalyticsState } from './ContextProvider';
+import { DataFilter } from '../../../types/filters.types';
+import { ExploreDataState } from './ContextProvider';
 
-export enum AnalyticsActionType {
+export enum ExploreDataActionType {
   SET_DATA = 'SET_DATA',
   SET_SEARCH = 'SET_SEARCH',
   SET_FILTERED_DATA = 'SET_FILTERED_DATA',
@@ -8,32 +9,32 @@ export enum AnalyticsActionType {
   SET_PREVIEW_ITEM = 'SET_PREVIEW_ITEM'
 }
 
-export interface AnalyticsAction {
-  type: AnalyticsActionType;
+export interface ExploreDataAction {
+  type: ExploreDataActionType;
   payload?: any;
 }
 
-export const setData = (data: AnalyticsState['data']): AnalyticsAction => ({
-  type: AnalyticsActionType.SET_DATA,
+export const setData = (data: ExploreDataState['data']): ExploreDataAction => ({
+  type: ExploreDataActionType.SET_DATA,
   payload: data,
 });
 
-export const setSearch = (searchTerm: AnalyticsState['searchTerm']): AnalyticsAction => ({
-  type: AnalyticsActionType.SET_SEARCH,
+export const setSearch = (searchTerm: ExploreDataState['searchTerm']): ExploreDataAction => ({
+  type: ExploreDataActionType.SET_SEARCH,
   payload: searchTerm,
 });
 
-export const setFilteredData = (data: AnalyticsState['filteredData']): AnalyticsAction => ({
-  type: AnalyticsActionType.SET_FILTERED_DATA,
+export const setFilteredData = (data: ExploreDataState['filteredData']): ExploreDataAction => ({
+  type: ExploreDataActionType.SET_FILTERED_DATA,
   payload: data,
 });
 
-export const setFilter = (filter: DataFilter): AnalyticsAction => ({
-  type: AnalyticsActionType.SET_FILTER,
+export const setFilter = (filter: DataFilter): ExploreDataAction => ({
+  type: ExploreDataActionType.SET_FILTER,
   payload: filter,
 });
 
-export const setPreviewItem = (rowItem: AnalyticsState['previewItem']): AnalyticsAction => ({
-  type: AnalyticsActionType.SET_PREVIEW_ITEM,
+export const setPreviewItem = (rowItem: ExploreDataState['previewItem']): ExploreDataAction => ({
+  type: ExploreDataActionType.SET_PREVIEW_ITEM,
   payload: rowItem,
 });
