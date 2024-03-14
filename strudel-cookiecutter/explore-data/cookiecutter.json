@@ -49,5 +49,9 @@
         }
       ]
     }
+  },
+  "_jinja2_env_vars": {
+    "variable_start_string": "{@", 
+    "variable_end_string": "@}"
   }
 }

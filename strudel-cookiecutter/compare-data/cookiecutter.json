@@ -6,5 +6,9 @@
   "mainPageDescription": "Description of this app section",
   "newItemPageTitle": "Compare Data App",
   "newItemPageDescription": "Description of this app section",
-  "comparePageDescription": "Description of this app section"
+  "comparePageDescription": "Description of this app section",
+  "_jinja2_env_vars": {
+    "variable_start_string": "{@", 
+    "variable_end_string": "@}"
+  }
 }
