@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { DataFilter } from "../types/filters.types";
+import { DataFilter, FilterOperator } from "../types/filters.types";
 
 export const filterBySearchText = (allData: any[], searchText?: string) => {
   let filteredData = allData;
@@ -24,13 +24,13 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
         let match = false;
         if (include === true) {
           switch (f.operator) {
-            case 'contains': {
+            case FilterOperator.CONTAINS: {
               if (d[f.field].indexOf(f.value) > -1) {
                 match = true;
               }
               break;
             }
-            case 'contains one of': {
+            case FilterOperator.CONTAINS_ONE_OF: {
               if (Array.isArray(f.value)) {
                 f.value.forEach((v) => {
                   if (!match) {
@@ -49,7 +49,7 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
               }
               break;
             }
-            case 'equals one of': {
+            case FilterOperator.EQUALS_ONE_OF: {
               console.log(f.value);
               console.log(d[f.field]);
               if (Array.isArray(f.value)) {
@@ -63,7 +63,7 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
               }
               break;
             }
-            case 'range': {
+            case FilterOperator.BETWEEN_INCLUSIVE: {
               if (Array.isArray(f.value)) {
                 const min = f.value[0];
                 const max = f.value[1];
@@ -73,16 +73,13 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
               }
               break;
             }
-            case 'date range': {
+            case FilterOperator.BETWEEN_DATES_INCLUSIVE: {
               if (
                 typeof d[f.field] === 'string' 
                 && Array.isArray(f.value)
                 && f.value[0]
                 && f.value[1]
               ) {
-                console.log(d[f.field]);
-                console.log(f.value);
-                console.log(dayjs(d[f.field]));
                 const dateValue = dayjs(d[f.field]);
                 if (dateValue.isAfter(f.value[0]) && dateValue.isBefore(f.value[1])) {
                   console.log('match');

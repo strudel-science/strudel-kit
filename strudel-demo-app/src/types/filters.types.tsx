@@ -10,12 +10,14 @@ export interface FilterConfig {
   filterType: string;
   group?: string;
   tooltip?: string;
-  props: any;
+  props?: any;
 }
 
 export enum FilterOperator {
   CONTAINS = 'CONTAINS',
+  CONTAINS_ONE_OF = 'CONTAINS_ONE_OF',
   EQUALS = 'EQUALS',
   EQUALS_ONE_OF = 'EQUALS_ONE_OF',
-  BETWEEN = 'BETWEEN'
+  BETWEEN_INCLUSIVE = 'BETWEEN_INCLUSIVE',
+  BETWEEN_DATES_INCLUSIVE = 'BETWEEN_DATES_INCLUSIVE',
 }

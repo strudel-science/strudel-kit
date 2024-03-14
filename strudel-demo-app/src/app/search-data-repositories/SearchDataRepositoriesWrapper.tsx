@@ -5,6 +5,7 @@ import { basename } from '../App';
 import { TopBar } from '../../components/TopBar';
 import { SearchDataRepositoriesProvider } from './context/ContextProvider';
 import { getDataFromSource } from '../../utils/api.utils';
+import definitions from './definitions.json';
   
 export const SearchDataRepositoriesWrapper: React.FC = () => {
   const [datasets, setDatasets] = useState<any[]>([]);
@@ -26,7 +27,7 @@ export const SearchDataRepositoriesWrapper: React.FC = () => {
         <TopBar />
       </Box>
       <Box>
-        <SearchDataRepositoriesProvider data={datasets} dataIdField='id'>
+        <SearchDataRepositoriesProvider data={datasets} dataIdField='id' filters={definitions.filters.main}>
           <Outlet />
         </SearchDataRepositoriesProvider>
       </Box>

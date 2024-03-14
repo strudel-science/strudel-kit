@@ -5,7 +5,9 @@ import { CheckboxList, CheckboxOption } from '../../components/CheckboxList';
 import { useExploreData } from './context/ContextProvider';
 import { StrudelSlider } from '../../components/StrudelSlider';
 import { setFilter } from './context/actions';
-import { FilterConfig } from '../../types/filters.types';
+import { FilterConfig, FilterOperator } from '../../types/filters.types';
+import { Stack } from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers';
 
 interface FiltersPanelProps {
   onClose: () => any
@@ -27,7 +29,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
         return (
           <CheckboxList
             options={filter.props.options}
-            onChange={(values) => dispatch(setFilter({ field: filter.field, value: values, operator: 'equals one of' }))}
+            onChange={(values) => dispatch(setFilter({ field: filter.field, value: values, operator: FilterOperator.CONTAINS_ONE_OF }))}
           />
         );
       }
@@ -38,12 +40,38 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
             valueLabelDisplay="auto"
             min={filter.props.min}
             max={filter.props.max}
-            onChangeCommitted={(event, values) => dispatch(setFilter({ field: filter.field, value: values, operator: 'range' }))}
+            onChangeCommitted={(event, values) => dispatch(setFilter({ field: filter.field, value: values, operator: FilterOperator.BETWEEN_INCLUSIVE }))}
           />
         );
       }
-      default: {
-        return null;
+      case 'date range': {
+        const currentDateRange = state.activeFilters.find((filter) => filter.field === filter.field);
+        const hasValue = currentDateRange && Array.isArray(currentDateRange.value) && currentDateRange.value.length === 2;
+        const currentMin = hasValue && Array.isArray(currentDateRange.value) ? currentDateRange.value[0] : null;
+        const currentMax = hasValue && Array.isArray(currentDateRange.value) ? currentDateRange.value[1] : null;
+
+        return (
+          <Stack>
+            <DatePicker 
+              label="From"
+              slotProps={{
+                actionBar: {
+                  actions: ['clear', 'today']
+                }
+              }}
+              onChange={(value) => dispatch(setFilter({ field: filter.field, value: [value, currentMax], operator: FilterOperator.BETWEEN_DATES_INCLUSIVE }))}
+            />
+            <DatePicker 
+              label="To"
+              slotProps={{
+                actionBar: {
+                  actions: ['clear', 'today']
+                }
+              }}
+              onChange={(value) => dispatch(setFilter({ field: filter.field, value: [currentMin, value], operator: FilterOperator.BETWEEN_DATES_INCLUSIVE }))}
+            />
+          </Stack>
+        );
       }
     }
   }

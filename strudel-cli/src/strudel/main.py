@@ -104,7 +104,7 @@ def create_app(
     try:
         print("[white]Creating your app...")
         _clear_cache("create your app")
-
+        jinja_settings = '{"variable_start_string": "{@", "variable_end_string": "@}"}'
         args = [
             "cookiecutter",
             "gh:strudel-science/strudel-kit",
@@ -114,9 +114,8 @@ def create_app(
             "strudel-cookiecutter/base",
             "--output-dir",
             output_dir,
-            f"name={name}",
+            f"name={name}"
         ]
-
         if config:
             # Convert the user's json config into a yaml config
             # so that it is compatible with cookiecutter and follows its specs.
@@ -124,8 +123,7 @@ def create_app(
             json_to_yaml(config, temp_yaml_config)
             # Add in extra args so the config file is used
             args[1:1] = ["--config-file", temp_yaml_config]
-            args.insert(-1, "--no-input")
-
+            args.insert(-1, "--no-input")    
         proc = subprocess.run(args, check=True)
     except subprocess.CalledProcessError as e:
         print(
@@ -193,8 +191,6 @@ class TaskFlow(str, Enum):
     run_computation = "run-computation"
     search_data_repositories = "search-data-repositories"
 
-# TODO: Make it fail if you aren't inside a strudel app when you run this
-# Remove args and just let them be in the config?
 @app.command()
 def add_taskflow(
     name: Annotated[
