@@ -24,6 +24,7 @@ import { Scenario } from "./run-computation/Scenario";
 import { DatasetDetail } from "./search-data-repositories/DatasetDetail";
 import { DatasetExplorer } from "./search-data-repositories/DatasetExplorer";
 import { SearchDataRepositoriesWrapper } from "./search-data-repositories/SearchDataRepositoriesWrapper";
+import { ComputationsList } from "./run-computation/ComputationsList";
 
 /**
  * App Router
@@ -64,10 +65,11 @@ export const router = createHashRouter([
   },
   {
     path: "/run-computation",
+    element: <RunComputationWrapper />,
     children: [
       {
         index: true,
-        element: <RunComputationWrapper />
+        element: <ComputationsList />
       },
       {
         path: "scenario",

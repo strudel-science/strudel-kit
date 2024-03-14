@@ -1,83 +1,30 @@
 import { Box, Button, Container, Link, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { DataGrid } from '../../components/DataGrid';
-
-const inputUnits = [
-  {
-    id: 0,
-    name: 'value',
-    unitType: 'value',
-    lowerBound: 0,
-    upperBound: 1,
-    constraints: 'value'
-  },
-  {
-    id: 1,
-    name: 'value',
-    unitType: 'value',
-    lowerBound: 0,
-    upperBound: 1,
-    constraints: 'value'
-  },
-  {
-    id: 2,
-    name: 'value',
-    unitType: 'value',
-    lowerBound: 0,
-    upperBound: 1,
-    constraints: 'value'
-  },
-  {
-    id: 3,
-    name: 'value',
-    unitType: 'value',
-    lowerBound: 0,
-    upperBound: 1,
-    constraints: 'value'
-  },
-  {
-    id: 4,
-    name: 'value',
-    unitType: 'value',
-    lowerBound: 0,
-    upperBound: 1,
-    constraints: 'value'
-  },
-];
-
-const columns: GridColDef[] = [
-  { 
-    field: 'name', 
-    headerName: 'Unit Name', 
-    width: 200 
-  },
-  { 
-    field: 'unitType', 
-    headerName: 'Unit Type', 
-    width: 200 
-  },
-  { 
-    field: 'constraints', 
-    headerName: 'Constraints', 
-    width: 200,
-  },
-  { 
-    field: 'lowerBound', 
-    headerName: 'Lower Bound', 
-    width: 200,
-    type: 'number'
-  },
-  { 
-    field: 'upperBound', 
-    headerName: 'Upper Bound', 
-    width: 200,
-    type: 'number'
-  },
-];
+import { useRunComputation } from './context/ContextProvider';
+import { getDataFromSource } from '../../utils/api.utils';
+import { basename } from '../App';
+import { setInputsTableData } from './context/actions';
 
 export const DataInputs: React.FC = () => {
+  const { state, dispatch } = useRunComputation();
+  
+  /**
+   * Fetch data for the inputs table when the page loads
+   */
+  useEffect(() => {
+    if (state.inputs.table.data.length === 0) {
+      const getData = async () => {
+        const dataSource = 'default/run-computation/inputs.json';
+        const data = await getDataFromSource(dataSource, basename);
+        dispatch(setInputsTableData(data));
+      }
+      getData();
+    }
+  }, []);
+
   return (
     <Stack spacing={0} flex={1}>
       <Box
@@ -177,9 +124,9 @@ export const DataInputs: React.FC = () => {
           >
             <Paper>
               <DataGrid
-                rows={inputUnits}
-                getRowId={(row) => row.id}
-                columns={columns}
+                rows={state.inputs.table.data}
+                getRowId={(row) => row[state.inputs.table.dataIdField]}
+                columns={state.inputs.table.columns}
                 disableColumnSelector
                 disableRowSelectionOnClick
               />
@@ -192,8 +139,11 @@ export const DataInputs: React.FC = () => {
           backgroundColor: 'white',
           borderTop: '1px solid',
           borderColor: 'neutral.main',
+          bottom: 0,
           padding: 2,
-          textAlign: 'right'
+          position: 'fixed',
+          textAlign: 'right',
+          width: '100%'
         }}
       >
         <Link component={RouterLink} to="/run-computation/scenario/settings">

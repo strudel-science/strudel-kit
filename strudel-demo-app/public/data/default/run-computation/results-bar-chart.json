@@ -1,0 +1,14 @@
+[
+  {
+    "x": ["Category 1", "Category 2", "Category 3"],
+    "y": [20, 14, 23],
+    "name": "Group 1",
+    "type": "bar"
+  },
+  {
+    "x": ["Category 1", "Category 2", "Category 3"],
+    "y": [12, 18, 29],
+    "name": "Group 2",
+    "type": "bar"
+  }
+]

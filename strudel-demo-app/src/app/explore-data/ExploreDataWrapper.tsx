@@ -27,7 +27,12 @@ export const ExploreDataWrapper: React.FC = () => {
         <TopBar />
       </Box>
       <Box>
-        <ExploreDataProvider data={entities} columns={definitions.columns.main} filters={definitions.filters.main} dataIdField='Proteome_ID'>
+        <ExploreDataProvider 
+          data={entities} 
+          columns={definitions.columns.main} 
+          filters={definitions.filters.main} 
+          dataIdField='Proteome_ID'
+        >
           <Outlet />
         </ExploreDataProvider>
       </Box>

@@ -1,86 +1,46 @@
 import { Box, Button, Container, Grid, Link, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
-import { GridColDef } from '@mui/x-data-grid';
-import { Data } from 'plotly.js';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Plot from 'react-plotly.js';
 import { Link as RouterLink } from 'react-router-dom';
 import { DataGrid } from '../../components/DataGrid';
-import { chart } from './chart';
-
-const inputUnits = [
-  {
-    id: 0,
-    name: 'value',
-    unitType: 'value',
-    lowerBound: 0,
-    upperBound: 1,
-    constraints: 'value'
-  },
-  {
-    id: 1,
-    name: 'value',
-    unitType: 'value',
-    lowerBound: 0,
-    upperBound: 1,
-    constraints: 'value'
-  },
-  {
-    id: 2,
-    name: 'value',
-    unitType: 'value',
-    lowerBound: 0,
-    upperBound: 1,
-    constraints: 'value'
-  },
-  {
-    id: 3,
-    name: 'value',
-    unitType: 'value',
-    lowerBound: 0,
-    upperBound: 1,
-    constraints: 'value'
-  },
-  {
-    id: 4,
-    name: 'value',
-    unitType: 'value',
-    lowerBound: 0,
-    upperBound: 1,
-    constraints: 'value'
-  },
-];
-
-const columns: GridColDef[] = [
-  { 
-    field: 'name', 
-    headerName: 'Unit Name', 
-    width: 200 
-  },
-  { 
-    field: 'unitType', 
-    headerName: 'Unit Type', 
-    width: 200 
-  },
-  { 
-    field: 'constraints', 
-    headerName: 'Constraints', 
-    width: 200,
-  },
-  { 
-    field: 'lowerBound', 
-    headerName: 'Lower Bound', 
-    width: 200,
-    type: 'number'
-  },
-  { 
-    field: 'upperBound', 
-    headerName: 'Upper Bound', 
-    width: 200,
-    type: 'number'
-  },
-];
+import { getDataFromSource } from '../../utils/api.utils';
+import { basename } from '../App';
+import { useRunComputation } from './context/ContextProvider';
+import { setResultsBarChartData, setResultsLineChartData, setResultsTableData } from './context/actions';
 
 export const Results: React.FC = () => {
+  const { state, dispatch } = useRunComputation();
+  
+  /**
+   * Fetch data for the inputs table when the page loads
+   */
+  useEffect(() => {
+    if (state.results.table.data.length === 0) {
+      const getData = async () => {
+        const dataSource = 'default/run-computation/results-table.json';
+        const data = await getDataFromSource(dataSource, basename);
+        dispatch(setResultsTableData(data));
+      }
+      getData();
+    }
+    if (state.results.lineChart.data.length === 0) {
+      const getData = async () => {
+        const dataSource = 'default/run-computation/results-line-chart.json';
+        const data = await getDataFromSource(dataSource, basename);
+        dispatch(setResultsLineChartData(data));
+      }
+      getData();
+    }
+    if (state.results.barChart.data.length === 0) {
+      const getData = async () => {
+        const dataSource = 'default/run-computation/results-bar-chart.json';
+        const data = await getDataFromSource(dataSource, basename);
+        dispatch(setResultsBarChartData(data));
+      }
+      getData();
+    }
+  }, []);
+
   return (
     <Stack spacing={0} flex={1}>
       <Box
@@ -182,53 +142,25 @@ export const Results: React.FC = () => {
               <Grid item sm={6}>
                 <Paper>
                   <Plot
-                    data={[
-                      {
-                        x: [1, 2, 3, 4],
-                        y: [10, 15, 13, 17],
-                        type: 'scatter'
-                      },
-                      {
-                        x: [1, 2, 3, 4],
-                        y: [16, 5, 11, 9],
-                        type: 'scatter'
-                      },
-                    ]}
+                    data={state.results.lineChart.data}
                     layout={{}}
                   />
                 </Paper>
               </Grid>
               <Grid item sm={6}>
                 <Paper>
-                <Plot
-                      data={chart.data as Data[]}
-                      layout={chart.layout as any}
-                    />
-                  {/* <Plot
-                      data={[
-                        {
-                          x: ['giraffes', 'orangutans', 'monkeys'],
-                          y: [20, 14, 23],
-                          name: 'SF Zoo',
-                          type: 'bar'
-                        },
-                        {
-                          x: ['giraffes', 'orangutans', 'monkeys'],
-                          y: [12, 18, 29],
-                          name: 'LA Zoo',
-                          type: 'bar'
-                        },
-                      ]}
-                      layout={{}}
-                    /> */}
+                  <Plot
+                    data={state.results.barChart.data}
+                    layout={{}}
+                  />
                 </Paper>
               </Grid>
               <Grid item xs={12}>
                 <Paper>
                   <DataGrid
-                    rows={inputUnits}
-                    getRowId={(row) => row.id}
-                    columns={columns}
+                    rows={state.results.table.data}
+                    getRowId={(row) => row[state.results.table.dataIdField]}
+                    columns={state.results.table.columns}
                     disableColumnSelector
                     disableRowSelectionOnClick
                   />
@@ -243,7 +175,10 @@ export const Results: React.FC = () => {
           backgroundColor: 'white',
           borderTop: '1px solid',
           borderColor: 'neutral.main',
+          bottom: 0,
           padding: 2,
+          position: 'fixed',
+          width: '100%'
         }}
       >
         <Link component={RouterLink} to="/run-computation/scenario/settings">
