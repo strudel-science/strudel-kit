@@ -1,21 +1,17 @@
-import React, { useState } from 'react';
-import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, Link, Pagination, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
-import SortIcon from '@mui/icons-material/Sort';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import { DataGrid } from '../../components/DataGrid';
-import { GridEventListener } from '@mui/x-data-grid';
-import { blue } from '@mui/material/colors';
-import { setPreviewItem, setSearch } from '../../components/contexts/analytics/actions';
+import SortIcon from '@mui/icons-material/Sort';
+import { Box, Button, Pagination, Paper, Stack, TextField, Typography } from '@mui/material';
+import React from 'react';
 import { DataListCard } from './DataListCard';
+import { useSearchDataRepositories } from './context/ContextProvider';
+import { setSearch } from './context/actions';
 
 interface DataListPanelProps {
   onToggleFiltersPanel: () => any
 }
 
 export const DataListPanel: React.FC<DataListPanelProps> = (props) => { 
-  const {state, dispatch} = useAnalytics();
+  const {state, dispatch} = useSearchDataRepositories();
 
   const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (evt) => {
     dispatch(setSearch(evt.target.value));
@@ -27,9 +23,9 @@ export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
         direction="row"
         spacing={2}
         alignItems="center"
-        sx={{ "{{" }}
+        sx={{
           padding: 2
-        {{ "}}" }}
+        }}
       >
         <Button
           startIcon={<FilterAltIcon />}
@@ -55,9 +51,9 @@ export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
       </Stack>
       <Stack 
         direction="row"
-        sx={{ "{{" }}
+        sx={{
           padding: 2
-        {{ "}}" }}
+        }}
       >
         <Stack flex={1}>
           {state.filteredData?.map((item, i) => (
@@ -66,14 +62,14 @@ export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
         </Stack>
         {!state.previewItem && (
           <Box 
-            sx={{ "{{" }} 
+            sx={{ 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: "center", 
               bgcolor: "neutral.dark", 
               height: 700,
               width: 400 
-            {{ "}}" }}
+            }}
           >
             <Typography>{'<Map>'}</Typography>
           </Box>

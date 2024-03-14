@@ -30,7 +30,7 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
           <Stack direction="row">
             <Typography variant="h6" component="h3" flex={1}>
               <Link component={RouterLink} to="." underline="hover">
-                Preview Heading
+                {state.previewItem[state.columns[0].field]}
               </Link>
             </Typography>
             <IconButton size="small" onClick={props.onClose}><CloseIcon /></IconButton>
@@ -80,6 +80,9 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
   );
 }
 
+/**
+ * Placeholder columns for related data table
+ */
 const relatedColumns = [
   { 
     field: 'id', 
@@ -103,6 +106,9 @@ const relatedColumns = [
   },
 ];
 
+/**
+ * Placeholder rows for related data table
+ */
 const emptyRows = Array(25).fill(0);
 const relatedRows = emptyRows.map((d, i) => {
   return { id: i, attr1: 'value', attr2: 'value', attr3: 'value'}

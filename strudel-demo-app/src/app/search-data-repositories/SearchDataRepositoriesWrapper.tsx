@@ -27,7 +27,12 @@ export const SearchDataRepositoriesWrapper: React.FC = () => {
         <TopBar />
       </Box>
       <Box>
-        <SearchDataRepositoriesProvider data={datasets} dataIdField='id' filters={definitions.filters.main}>
+        <SearchDataRepositoriesProvider 
+          data={datasets} 
+          dataIdField='id' 
+          filters={definitions.filters.main} 
+          cardFields={definitions.cards.main}
+        >
           <Outlet />
         </SearchDataRepositoriesProvider>
       </Box>

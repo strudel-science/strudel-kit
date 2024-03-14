@@ -1,9 +1,10 @@
 import React, { useEffect, useReducer, useContext } from 'react';
 import { SearchDataRepositoriesAction, SearchDataRepositoriesActionType, setData, setFilteredData } from './actions';
-import { DataFilter, FilterConfig } from '../../../types/filters.types';
+import { DataCard, DataFilter, FilterConfig } from '../../../types/filters.types';
 import { filterData } from '../../../utils/filters.utils';
 
 export interface SearchDataRepositoriesState {
+  cardFields: DataCard;
   columns: any[];
   count?: number;
   data?: any[];
@@ -24,14 +25,9 @@ export interface SearchDataRepositoriesState {
  * some of the required props in the State are optional props.
  * These props have default values set in the initialState object.
  */
-// interface SearchDataRepositoriesProviderProps extends Omit<SearchDataRepositoriesState, 
-//   'activeFilters' | 
-//   'columns' | 
-//   'tablePage' | 
-//   'tablePageSize'
-// > {
 interface SearchDataRepositoriesProviderProps extends Partial<SearchDataRepositoriesState> {
   activeFilters?: DataFilter[];
+  cardFields?: DataCard;
   columns?: any[];
   tablePage?: number;
   tablePageSize?: number;
@@ -42,6 +38,11 @@ const SearchDataRepositoriesContext = React.createContext<{state: SearchDataRepo
 
 const initialState: SearchDataRepositoriesState = {
   data: [],
+  cardFields: {
+    title: '',
+    content: '',
+    tags: '',
+  },
   columns: [],
   filters: [],
   filterValues: {},

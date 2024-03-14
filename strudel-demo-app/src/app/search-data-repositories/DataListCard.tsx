@@ -47,46 +47,42 @@ export const DataListCard: React.FC<DataListCardProps> = ({ item }) => {
       <Box flex={1}>
         <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>
           <Link component={RouterLink} to={`./${item['id']}`} underline="hover">
-            {item.title}
+            {item[state.cardFields.title]}
           </Link>
         </Typography>
-        <Typography
-          sx={{
-            '-webkit-box-orient': 'vertical',
-            '-webkit-line-clamp': '2',
-            display: '-webkit-box',
-            overflow: 'hidden'
-          }}
-        >
-          {item.summary}
-        </Typography>
-        <Typography
-          sx={{
-            '-webkit-box-orient': 'vertical',
-            '-webkit-line-clamp': '1',
-            display: '-webkit-box',
-            fontStyle: 'italic',
-            overflow: 'hidden'
-          }}
-        >
-          <Typography 
-            component="span" 
-            sx={{ 
-              fontSize: 'small', 
-              fontWeight: 'bold', 
-              marginRight: 0.5 
+        {state.cardFields.content && (
+          <Typography
+            sx={{
+              '-webkit-box-orient': 'vertical',
+              '-webkit-line-clamp': '2',
+              display: '-webkit-box',
+              overflow: 'hidden'
             }}
           >
-            Tags:
+            {item[state.cardFields.content]}
           </Typography>
-          {item.tags.map((tag: string, i: number) => {
-            if (i < item.tags.length -1) {
-              return <Typography component="span" sx={{ fontSize: 'small', marginRight: 0.5 }}>{tag},</Typography>
-            } else {
-              return <Typography component="span" sx={{ fontSize: 'small' }}>{tag}</Typography>
-            }
-          })}
-        </Typography>                
+        )}
+        {state.cardFields.tags && (
+          <Typography
+            sx={{
+              '-webkit-box-orient': 'vertical',
+              '-webkit-line-clamp': '1',
+              display: '-webkit-box',
+              fontStyle: 'italic',
+              overflow: 'hidden'
+            }}
+          >
+            {item[state.cardFields.tags].map((tag: string, i: number) => {
+              if (i < item['tags'].length -1) {
+                return <Typography component="span" sx={{ fontSize: 'small', marginRight: 0.5 }}>{tag},</Typography>
+              } else {
+                return <Typography component="span" sx={{ fontSize: 'small' }}>{tag}</Typography>
+              }
+            })}
+          </Typography>  
+        )}
+        
+                      
       </Box>
     </Stack>
   )

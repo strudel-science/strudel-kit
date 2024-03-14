@@ -21,3 +21,9 @@ export enum FilterOperator {
   BETWEEN_INCLUSIVE = 'BETWEEN_INCLUSIVE',
   BETWEEN_DATES_INCLUSIVE = 'BETWEEN_DATES_INCLUSIVE',
 }
+
+export interface DataCard {
+  title: string;
+  content?: string;
+  tags?: string;
+}

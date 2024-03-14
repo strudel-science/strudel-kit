@@ -1,18 +1,13 @@
-import { AppBar, Box, Link, Grid, IconButton, Paper, Stack, TextField, Toolbar, Typography, Tab, Button, Container } from '@mui/material';
 import DownloadIcon from '@mui/icons-material/Download';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import CircleIcon from '@mui/icons-material/Circle';
-import React, { useState } from 'react';
-import { Link as RouterLink, useParams } from 'react-router-dom';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
-import { setPreviewItem } from '../../components/contexts/analytics/actions';
-import { FiltersPanel } from './FiltersPanel';
-import { PreviewPanel } from './PreviewPanel';
-import { DataListPanel } from './DataListPanel';
-import { PageHeader } from '../../components/PageHeader';
-import { LabelValueTable } from '../../components/LabelValueTable';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
+import { Box, Button, Container, Grid, Link, Paper, Stack, Tab, Typography } from '@mui/material';
 import { DataGrid, GridActionsCellItem, GridRowParams } from '@mui/x-data-grid';
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { LabelValueTable } from '../../components/LabelValueTable';
+import { PageHeader } from '../../components/PageHeader';
+import { useSearchDataRepositories } from './context/ContextProvider';
 
 const attachedFilesColumns = [
   { 
@@ -43,7 +38,7 @@ const attachedFilesColumns = [
 ];
   
 export const DatasetDetail: React.FC = () => {
-  const {state, dispatch} = useAnalytics();
+  const {state, dispatch} = useSearchDataRepositories();
   const params = useParams();
   const dataset = state.data?.find((d) => {
     if (params.datasetId) {
@@ -62,17 +57,17 @@ export const DatasetDetail: React.FC = () => {
       <PageHeader
         pageTitle={datasetTitle}
         breadcrumbTitle="Dataset Detail"
-        sx={{ "{{" }}
+        sx={{
           marginBottom: 1,
           padding: 2,
-        {{ "}}" }}
+        }}
       />
       <Container maxWidth="xl">
-        <Grid container spacing={1} sx={{ "{{" }} pt: 1, pr: 2, pb: 2, pl: 2,  {{ "}}" }}>
+        <Grid container spacing={1} sx={{ pt: 1, pr: 2, pb: 2, pl: 2,  }}>
           {dataset && (
             <>
               <Grid item md={8} xs={12}>
-                <Paper sx={{ "{{" }} mb: 1 {{ "}}" }}>
+                <Paper sx={{ mb: 1 }}>
                   <Stack p={2}>
                     <Stack direction="row">
                       <Box>
@@ -102,7 +97,7 @@ export const DatasetDetail: React.FC = () => {
                 </Paper>
                 <Paper>
                   <TabContext value={dataTabsValue}>
-                    <Box sx={{ "{{" }} borderBottom: 1, borderColor: 'divider' {{ "}}" }}>
+                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                       <TabList onChange={handleDataTabsChange} aria-label="lab API tabs example">
                         <Tab label="Data Files" value="1" />
                         <Tab label="Data Types" value="2" />
@@ -119,9 +114,9 @@ export const DatasetDetail: React.FC = () => {
                         columns={attachedFilesColumns}
                         disableColumnSelector
                         disableRowSelectionOnClick
-                        sx={{ "{{" }}
+                        sx={{
                           border: 'none'
-                        {{ "}}" }}
+                        }}
                       />
                     </TabPanel>
                     <TabPanel value="2">Tab Two Content</TabPanel>
@@ -135,13 +130,13 @@ export const DatasetDetail: React.FC = () => {
                     <Box>
                       <Typography variant="h6" component="h2" mb={1}>Map</Typography>
                       <Box 
-                        sx={{ "{{" }} 
+                        sx={{ 
                           display: 'flex', 
                           alignItems: 'center', 
                           justifyContent: "center", 
                           bgcolor: "neutral.dark", 
                           height: 300 
-                        {{ "}}" }}
+                        }}
                       >
                         <Typography>{'<Map>'}</Typography>
                       </Box>
@@ -150,9 +145,9 @@ export const DatasetDetail: React.FC = () => {
                       <Typography variant="h6" component="h2" mb={1}>Tags</Typography>
                         {dataset.tags.map((tag: string, i: number) => {
                           if (i < dataset.tags.length -1) {
-                            return <Typography component="span" sx={{ "{{" }} fontSize: 'small', marginRight: 0.5 {{ "}}" }}>{tag},</Typography>
+                            return <Typography component="span" sx={{ fontSize: 'small', marginRight: 0.5 }}>{tag},</Typography>
                           } else {
-                            return <Typography component="span" sx={{ "{{" }} fontSize: 'small' {{ "}}" }}>{tag}</Typography>
+                            return <Typography component="span" sx={{ fontSize: 'small' }}>{tag}</Typography>
                           }
                         })}
                     </Box>
