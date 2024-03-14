@@ -24,8 +24,8 @@ export const NewScenario: React.FC = () => {
   return (
     <Box>
       <PageHeader
-        pageTitle="{{ cookiecutter.newItemPageTitle }}"
-        description="{{ cookiecutter.newItemPageDescription }}"
+        pageTitle="New {@ cookiecutter.compareItem @}"
+        description="{@ cookiecutter.newItemPageDescription @}"
         actions={
           <Stack direction="row">
             <Box>
@@ -38,28 +38,28 @@ export const NewScenario: React.FC = () => {
             <Box>
               <Link component={RouterLink} to="/compare-data">
                 <Button variant="contained">
-                  Save Scenario
+                  Save {@ cookiecutter.compareItem @}
                 </Button>
               </Link>
             </Box>
           </Stack>
         }
-        sx={{ '{{' }}
+        sx={{
           padding: 3,
           backgroundColor: 'white',
-        {{ '}}' }}
+        }}
       />
       <Container
         maxWidth="xl"
-        sx={{ '{{' }}
+        sx={{
           marginTop: 3,
           marginBottom: 3,
-        {{ '}}' }}
+        }}
       >
         <Paper
-          sx={{ '{{' }}
+          sx={{
             padding: 2,
-          {{ '}}' }}
+          }}
         >
           {/* TODO: add form */}
           Work in progress

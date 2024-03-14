@@ -22,7 +22,7 @@ export const CompareDataWrapper: React.FC = () => {
 
   return (
     <Box>
-      <Box sx={{ '{{' }} flexGrow: 1 {{ '}}' }}>
+      <Box sx={{ flexGrow: 1 }}>
         <TopBar />
       </Box>
       <Box>

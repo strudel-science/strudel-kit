@@ -24,40 +24,40 @@ export const ScenarioComparison: React.FC = () => {
   return (
     <Box>
       <PageHeader
-        pageTitle="{{ cookiecutter.mainPageTitle }}"
-        description="{{ cookiecutter.mainPageDescription }}"
+        pageTitle="Compare {@ cookiecutter.compareItemPlural @}"
+        description="{@ cookiecutter.comparePageDescription @}"
         actions={
           <Stack direction="row">
             <Box>
               <Link component={RouterLink} to="/compare-data">
                 <Button variant="contained" startIcon={<ArrowBackIcon />}>
-                  Back to Scenarios
+                  Back to {@ cookiecutter.compareItemPlural @}
                 </Button>
               </Link>
             </Box>
             <Box>
               <Link component={RouterLink} to="/compare-data/new">
                 <Button variant="contained">
-                  New Scenario
+                  New {@ cookiecutter.compareItem @}
                 </Button>
               </Link>
             </Box>
           </Stack>
         }
-        sx={{ '{{' }}
+        sx={{
           padding: 3,
           backgroundColor: 'white',
-        {{ '}}' }}
+        }}
       />
       <Container
         maxWidth="xl"
-        sx={{ '{{' }}
+        sx={{
           marginTop: 3,
           marginBottom: 3,
-        {{ '}}' }}
+        }}
       >
         <Paper
-          sx={{ '{{' }}
+          sx={{
             '& .MuiDataGrid-columnHeader, .MuiDataGrid-cell': {
               borderRight: '1px solid',
               borderRightColor: 'neutral.main'
@@ -66,7 +66,7 @@ export const ScenarioComparison: React.FC = () => {
               fontWeight: 'bold',
             },
             
-          {{ '}}' }}
+          }}
         >
           {state.comparing && (
             <DataGrid

@@ -15,8 +15,8 @@ export const ScenarioList: React.FC = () => {
   return (
     <Box>
       <PageHeader
-        pageTitle="{{ cookiecutter.mainPageTitle }}"
-        description="{{ cookiecutter.mainPageDescription }}"
+        pageTitle="{@ cookiecutter.mainPageTitle @}"
+        description="{@ cookiecutter.mainPageDescription @}"
         actions={
           <Stack direction="row">
             <Box>
@@ -25,14 +25,14 @@ export const ScenarioList: React.FC = () => {
                   <Button 
                     variant="outlined"
                   >
-                    Compare Scenarios
+                    Compare {@ cookiecutter.compareItemPlural @}
                   </Button>
                 )}
                 {state.selectedRows.length > 0 && (
                   <Button 
                     variant={state.selectedRows.length > 1 ? 'contained' : 'outlined' }
                   >
-                    Compare Scenarios ({state.selectedRows.length})
+                    Compare {@ cookiecutter.compareItemPlural @} ({state.selectedRows.length})
                   </Button>
                 )}
               </Link>
@@ -40,23 +40,23 @@ export const ScenarioList: React.FC = () => {
             <Box>
               <Link component={RouterLink} to="/compare-data/new">
                 <Button variant="contained">
-                  New Scenario
+                  New {@ cookiecutter.compareItem @}
                 </Button>
               </Link>
             </Box>
           </Stack>
         }
-        sx={{ '{{' }}
+        sx={{
           padding: 3,
           backgroundColor: 'white',
-        {{ '}}' }}
+        }}
       />
       <Container
         maxWidth="xl"
-        sx={{ '{{' }}
+        sx={{
           marginTop: 3,
           marginBottom: 3,
-        {{ '}}' }}
+        }}
       >
         <Paper>
           <DataGrid
@@ -69,18 +69,18 @@ export const ScenarioList: React.FC = () => {
             disableRowSelectionOnClick
             disableDensitySelector
             disableColumnFilter
-            slots={{ '{{' }} toolbar: GridToolbar {{ '}}' }}
-            slotProps={{ '{{' }}
+            slots={{ toolbar: GridToolbar }}
+            slotProps={{
               toolbar: {
                 showQuickFilter: true,
               },
-            {{ '}}' }}
-            sx={{ '{{' }}
+            }}
+            sx={{
               '& .MuiDataGrid-toolbarContainer': {
                 padding: 2,
                 paddingBottom: 0
               }
-            {{ '}}' }}
+            }}
           />
         </Paper>
       </Container>
