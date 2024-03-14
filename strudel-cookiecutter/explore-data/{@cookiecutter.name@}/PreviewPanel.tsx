@@ -16,14 +16,14 @@ interface PreviewPanelProps {
  */
 export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
   const {state, dispatch} = useExploreData();
-  
+
   return (
     <Paper
       elevation={0}
-      sx={{ "{{" }}
+      sx={{
         height: '100%',
         padding: 2
-      {{ "}}" }}
+      }}
     >
       <Stack spacing={3}>
         <Stack spacing={1}>
@@ -62,9 +62,9 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
             rows={relatedRows}
             columns={relatedColumns}
             disableRowSelectionOnClick
-            initialState={{ "{{" }}
+            initialState={{
               pagination: { paginationModel: { pageSize: 5 } }
-            {{ "}}" }}
+            }}
           />
         </Box>
         <Stack direction="row">

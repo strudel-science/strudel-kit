@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import * as d3 from 'd3-fetch';
 import { basename } from '../App';
 import { Box } from '@mui/material';
 import { Outlet } from 'react-router';
 import { ExploreDataProvider } from './context/ContextProvider';
 import definitions from './definitions.json';
 import { TopBar } from '../../components/TopBar';
+import { getDataFromSource } from '../../utils/api.utils';
 
 export const ExploreDataWrapper: React.FC = () => {
   const [entities, setEntities] = useState<any[]>([]);
@@ -13,19 +13,8 @@ export const ExploreDataWrapper: React.FC = () => {
   useEffect(() => {
     if (entities.length === 0) {
       const getData = async () => {
-        const filename = '{{ cookiecutter.dataSource }}';
-        const fileExtension = filename.split('.').pop();
-        const filePath = `${basename}/data/${filename}`;
-        let data: any = null;
-        if (fileExtension === 'csv') {
-          data = await d3.csv(filePath);
-        } else if (fileExtension === 'tsv') {
-          data = await d3.tsv(filePath);
-        } else if (fileExtension === 'json') {
-          data = await d3.json(filePath);
-        } else if (filename.startsWith('http')) {
-          data = await d3.json(filename);
-        }
+        const dataSource = '{@ cookiecutter.dataSource @}';
+        const data = await getDataFromSource(dataSource, basename);
         setEntities(data);
       }
       getData();
@@ -34,11 +23,11 @@ export const ExploreDataWrapper: React.FC = () => {
 
   return (
     <Box>
-      <Box sx={{ "{{" }} flexGrow: 1 {{ "}}" }}>
+      <Box sx={{ flexGrow: 1 }}>
         <TopBar />
       </Box>
       <Box>
-        <ExploreDataProvider data={entities} columns={definitions.columns.main} filters={definitions.filters.main} dataIdField='{{ cookiecutter.dataIdField }}'>
+        <ExploreDataProvider data={entities} columns={definitions.columns.main} filters={definitions.filters.main} dataIdField='{@ cookiecutter.dataIdField @}'>
           <Outlet />
         </ExploreDataProvider>
       </Box>

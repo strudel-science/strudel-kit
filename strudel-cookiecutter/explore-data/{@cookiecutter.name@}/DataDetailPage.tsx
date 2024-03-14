@@ -13,10 +13,10 @@ export const DataDetailPage: React.FC = () => {
       <PageHeader
         pageTitle="Detail"
         breadcrumbTitle="Data Detail"
-        sx={{ "{{" }}
+        sx={{
           marginBottom: 1,
           padding: 2,
-        {{ "}}" }}
+        }}
       />
       <Container maxWidth="xl">
         Coming soon!

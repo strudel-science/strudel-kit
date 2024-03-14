@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
 import FilterListIcon from '@mui/icons-material/FilterList';
-import { DataGrid } from '../../components/DataGrid';
+import { Button, Paper, Stack, TextField, Typography } from '@mui/material';
 import { GridEventListener } from '@mui/x-data-grid';
-import { setPreviewItem, setSearch } from '../../components/contexts/analytics/actions';
+import React from 'react';
+import { DataGrid } from '../../components/DataGrid';
 import { useExploreData } from './context/ContextProvider';
+import { setPreviewItem, setSearch } from './context/actions';
 
 interface DataTablePanelProps {
   onToggleFiltersPanel: () => any
@@ -28,9 +28,9 @@ export const DataTablePanel: React.FC<DataTablePanelProps> = (props) => {
         direction="row"
         spacing={2}
         alignItems="center"
-        sx={{ "{{" }}
+        sx={{
           padding: 2
-        {{ "}}" }}
+        }}
       >
         <Typography variant="h6" component="h2" flex={1}>Entity List</Typography>
         <Button
@@ -51,19 +51,19 @@ export const DataTablePanel: React.FC<DataTablePanelProps> = (props) => {
         getRowId={(row) => row[state.dataIdField]}
         columns={state.columns}
         disableColumnSelector
-        initialState={{ "{{" }}
+        initialState={{
           pagination: { paginationModel: { page: state.tablePage, pageSize: state.tablePageSize } }
-        {{ "}}" }}
+        }}
         {...props}
         onRowClick={handleRowClick}
-        sx={{ "{{" }}
+        sx={{
           '& .MuiDataGrid-cell:focus-within': {
             outline: 'none'
           },
           '& .MuiDataGrid-overlayWrapper': {
             minHeight: '4rem'
           }
-        {{ "}}" }}
+        }}
       />
     </Paper>      
   )
