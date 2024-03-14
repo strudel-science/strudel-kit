@@ -17,7 +17,7 @@ const App: React.FC = () => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
           Test
-        <AppProvider appTitle="{{ cookiecutter.appTitle }}">
+        <AppProvider appTitle="{@ cookiecutter.appTitle @}">
           <RouterProvider router={router} />
         </AppProvider>
       </ThemeProvider>
