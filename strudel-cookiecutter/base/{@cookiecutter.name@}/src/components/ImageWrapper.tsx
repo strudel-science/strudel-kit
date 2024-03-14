@@ -22,12 +22,12 @@ export const ImageWrapper: React.FC<ImageWrapperProps> = ({
   return (
     <Box
       {...rest}
-      sx={{ '{{' }}
+      sx={{
         ...sx,
         height: height || 'auto',
         overflow: 'hidden',
         width: width || 'auto',
-      {{ '}}' }}
+      }}
     >
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {

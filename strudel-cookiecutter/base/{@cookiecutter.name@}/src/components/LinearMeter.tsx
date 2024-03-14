@@ -9,7 +9,7 @@ export const LinearMeter: React.FC<LinearProgressProps> = (props) => {
   return (
     <LinearProgress
       variant="determinate"
-      sx={{ '{{' }}
+      sx={{
         height: 10,
         borderRadius: 5,
         [`&.${linearProgressClasses.colorPrimary}`]: {
@@ -19,7 +19,7 @@ export const LinearMeter: React.FC<LinearProgressProps> = (props) => {
           borderRadius: 5,
           backgroundColor: 'success.light',
         },
-      {{ '}}' }}
+      }}
       {...props}
     />
   )

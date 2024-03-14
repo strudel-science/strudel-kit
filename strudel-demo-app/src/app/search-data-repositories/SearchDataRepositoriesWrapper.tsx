@@ -13,7 +13,7 @@ export const SearchDataRepositoriesWrapper: React.FC = () => {
   useEffect(() => {
     if (datasets.length === 0) {
       const getData = async () => {
-        const dataSource = 'datasets.json';
+        const dataSource = 'default/datasets.json';
         const data = await getDataFromSource(dataSource, basename);
         setDatasets(data);
       }

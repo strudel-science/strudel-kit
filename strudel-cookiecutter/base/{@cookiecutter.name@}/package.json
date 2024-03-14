@@ -1,8 +1,8 @@
 {
-  "name": "{{ cookiecutter.name }}",
+  "name": "{@ cookiecutter.name @}",
   "version": "0.0.1",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://strudel.science/strudel-kit",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",

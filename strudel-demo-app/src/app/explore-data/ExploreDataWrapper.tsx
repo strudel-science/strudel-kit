@@ -13,7 +13,7 @@ export const ExploreDataWrapper: React.FC = () => {
   useEffect(() => {
     if (entities.length === 0) {
       const getData = async () => {
-        const dataSource = 'Current_Genomes.tsv';
+        const dataSource = 'default/genomes.tsv';
         const data = await getDataFromSource(dataSource, basename);
         setEntities(data);
       }

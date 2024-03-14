@@ -39,7 +39,7 @@
     "main": [
       {
         "field": "Assembly",
-        "displayName":"Assembly Test",
+        "displayName":"Assembly",
         "filterType":"CheckboxList",
         "props":{
           "options":[

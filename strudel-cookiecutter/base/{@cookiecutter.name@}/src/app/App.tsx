@@ -16,7 +16,6 @@ const App: React.FC = () => {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-          Test
         <AppProvider appTitle="{@ cookiecutter.appTitle @}">
           <RouterProvider router={router} />
         </AppProvider>

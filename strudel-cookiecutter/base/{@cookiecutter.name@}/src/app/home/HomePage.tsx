@@ -13,15 +13,15 @@ export const HomePage: React.FC = () => {
       <TopBar />
       <Container
         maxWidth="md"
-        sx={{ "{{" }}
+        sx={{
           marginTop: 3,
           marginBottom: 3,
-        {{ "}}" }}
+        }}
       >
         <Paper
-          sx={{ "{{" }}
+          sx={{
             padding: 2
-          {{ "}}" }}
+          }}
         >
           Welcome to your STRUDEL app!
         </Paper>
