@@ -1,13 +1,22 @@
-import { Box, Container, LinearProgress, Link, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import { Box, Button, Container, LinearProgress, Link, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { useInterval } from '../../utils/useInterval';
 
 export const RunningComputation: React.FC = () => {
-  const [showAdvanced, setShowAdvanced] = useState(false);
+  const [running, setRunning] = useState(true);
+  const [progress, setProgress] = useState(0);
 
-  const handleAdvancedToggle = () => {
-    setShowAdvanced(!showAdvanced);
-  };
+  /**
+   * Simulate the time it takes to run the optimization
+   */
+  useInterval(() => {
+    if (progress < 100) {
+      setProgress(progress + 10);
+    } else {
+      setRunning(false);
+    }
+  }, 500);
 
   return (
     <Stack spacing={0} flex={1}>
@@ -50,19 +59,37 @@ export const RunningComputation: React.FC = () => {
         }}
       >
         <Paper sx={{ padding: 6, textAlign: 'center' }}>
-          <Stack spacing={6}>
-            <Typography variant="h6" component="h2">
-              Running Optimization
-            </Typography>
-            <Box color="neutral.dark">
-              <Typography>This could take several minutes.</Typography>
-              <Typography>You may leave this page and return later. Your progress will not be affected.</Typography>
-            </Box>
-            <LinearProgress variant="determinate" value={70} sx={{ height: 10 }} />
-            <Typography color="neutral.dark">
-              Started 05/24/2023 12:32:33
-            </Typography>
-          </Stack>
+          {running && (
+            <Stack spacing={6}>
+              <Typography variant="h6" component="h2">
+                Running Optimization
+              </Typography>
+              <Box color="neutral.dark">
+                <Typography>This could take several minutes.</Typography>
+                <Typography>You may leave this page and return later. Your progress will not be affected.</Typography>
+              </Box>
+              <LinearProgress variant="determinate" value={progress} sx={{ height: 10 }} />
+              <Typography color="neutral.dark">
+                Started 05/24/2023 12:32:33
+              </Typography>
+            </Stack>
+          )}
+          {!running && (
+            <Stack spacing={6}>
+              <Typography variant="h6" component="h2">
+                Complete
+              </Typography>
+              <Box color="neutral.dark">
+                <Typography>Your results are ready to view.</Typography>
+              </Box>
+              <Link component={RouterLink} to="/run-computation/scenario/results">
+                <Button variant="contained" size="large">Continue to Results</Button>
+              </Link>
+              <Typography color="neutral.dark">
+                Started 05/24/2023 9:32:33 AM, Ended 05/24/2023 11:47:03 AM
+              </Typography>
+            </Stack>
+          )}
         </Paper>  
       </Container>
     </Stack>

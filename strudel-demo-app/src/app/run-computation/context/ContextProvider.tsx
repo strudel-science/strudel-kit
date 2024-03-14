@@ -28,7 +28,8 @@ export interface RunComputationState {
     barChart: {
       data: any[],
     }
-  }
+  },
+  selectedItem?: any,
 }
 
 /**
