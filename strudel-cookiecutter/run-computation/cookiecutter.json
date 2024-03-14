@@ -1,7 +1,67 @@
 {
   "name": "my-taskflow",
-  "pageTitle": "Run Computation App",
-  "pageDescription": "Description of this app section",
+  "computeItem": "scenario",
+  "computeItemPlural": "scenarios",
+  "pages": {
+    "list": {
+      "pageTitle": "Scenario List",
+      "pageDescription": "Scenarios represent a set of analysis inputs / parameters / settings and the results of that analysis."
+    },
+    "inputs": {
+      "pageTitle": "Data Inputs"
+    },
+    "settings": {
+      "pageTitle": "Optimization Settings"
+    },
+    "results": {
+      "pageTitle": "Results"
+    }
+  },
+  "data": {
+    "list": {
+      "table": {
+        "dataSource": "default/computations.json",
+        "dataIdField": ""
+      }
+    },
+    "inputs": {
+      "table": {
+        "dataSource": "default/computations.json",
+        "dataIdField": ""
+      }
+    },
+    "results": {
+      "chart1": {
+        "dataSource": "default/computations.json",
+        "dataIdField": ""
+      },
+      "chart2": {
+        "dataSource": "default/computations.json",
+        "dataIdField": ""
+      },
+      "table": {
+        "dataSource": "default/computations.json",
+        "dataIdField": ""
+      }
+    }
+  },
+  "definitions": {
+    "list": {
+      "table": {
+        "columns": []
+      }
+    },
+    "inputs": {
+      "table": {
+        "columns": []
+      }
+    },
+    "results": {
+      "table": {
+        "columns": []
+      }
+    }
+  },
   "_jinja2_env_vars": {
     "variable_start_string": "{@", 
     "variable_end_string": "@}"
