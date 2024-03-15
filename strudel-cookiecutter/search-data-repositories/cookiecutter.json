@@ -1,15 +1,27 @@
 {
   "name": "my-taskflow",
-  "pageTitle": "Search Data Repositories App",
-  "pageDescription": "Description of this app section",
-  "dataSource": "default/datasets.json",
-  "dataIdField": "id",
+  "pages": {
+    "main": {
+      "pageTitle":"Search Data Repositories App",
+      "pageDescription": "Description of this app section"
+    }
+  },
+  "data": {
+    "main": {
+      "cards": {
+        "dataSource": "default/explore-data/genomes.tsv",
+        "dataIdField": "id"
+      }
+    }
+  },
   "definitions": {
-    "cards": {
+    "columns": {
       "main": {
-        "title": "title",
-        "content": "description",
-        "tags": "tags"
+        "card": {
+          "title": "title",
+          "content": "summary",
+          "tags": "tags"
+        }
       }
     },
     "filters": {

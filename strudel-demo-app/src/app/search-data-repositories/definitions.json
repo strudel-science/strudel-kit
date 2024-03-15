@@ -1,9 +1,11 @@
 {
-  "cards": {
+  "columns": {
     "main": {
-      "title": "title",
-      "content": "summary",
-      "tags": "tags"
+      "card": {
+        "title": "title",
+        "content": "summary",
+        "tags": "tags"
+      }
     }
   },
   "filters": {

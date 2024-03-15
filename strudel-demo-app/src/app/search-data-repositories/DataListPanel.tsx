@@ -43,7 +43,6 @@ export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
         </Button>
         <Button
           startIcon={<SortIcon />}
-          onClick={props.onToggleFiltersPanel}
         >
           Sort
         </Button>

@@ -20,6 +20,7 @@ export const SearchDataRepositoriesWrapper: React.FC = () => {
   useEffect(() => {
     if (datasets.length === 0) {
       const getData = async () => {
+        // strudel-kit-variable-next-line
         const dataSource = 'default/search-data-repositories/datasets.json';
         const data = await getDataFromSource(dataSource, basename);
         setDatasets(data);
@@ -39,9 +40,10 @@ export const SearchDataRepositoriesWrapper: React.FC = () => {
       <Box>
         <SearchDataRepositoriesProvider 
           data={datasets} 
+          // strudel-kit-variable-next-line
           dataIdField='id' 
           filters={definitions.filters.main} 
-          cardFields={definitions.cards.main}
+          cardFields={definitions.columns.main.card}
         >
           <Outlet />
         </SearchDataRepositoriesProvider>

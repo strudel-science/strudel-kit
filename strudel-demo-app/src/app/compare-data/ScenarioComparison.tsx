@@ -32,20 +32,24 @@ export const ScenarioComparison: React.FC = () => {
   return (
     <Box>
       <PageHeader
+        // strudel-kit-variable-next-line
         pageTitle="Compare Scenarios"
+        // strudel-kit-variable-next-line
         description="Comparing multiple saved scenarios for a selected model, calculation, or analysis."
         actions={
           <Stack direction="row">
             <Box>
-              <Link component={RouterLink} to="/compare-data">
+              <Link component={RouterLink} to=".">
                 <Button variant="contained" startIcon={<ArrowBackIcon />}>
+                  {/* strudel-kit-variable-next-line */}
                   Back to Scenarios
                 </Button>
               </Link>
             </Box>
             <Box>
-              <Link component={RouterLink} to="/compare-data/new">
+              <Link component={RouterLink} to="new">
                 <Button variant="contained">
+                  {/* strudel-kit-variable-next-line */}
                   New Scenario
                 </Button>
               </Link>

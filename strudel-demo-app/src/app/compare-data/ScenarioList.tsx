@@ -21,16 +21,19 @@ export const ScenarioList: React.FC = () => {
   return (
     <Box>
       <PageHeader
+        // strudel-kit-variable-next-line
         pageTitle="Scenarios"
+        // strudel-kit-variable-next-line
         description="Collection of various scenarios saved from simulations, optimizations, or calculations."
         actions={
           <Stack direction="row">
             <Box>
-              <Link component={RouterLink} to="/compare-data/compare">
+              <Link component={RouterLink} to="compare">
                 {state.selectedRows.length === 0 && (
                   <Button 
                     variant="outlined"
                   >
+                    {/* strudel-kit-variable-next-line */}
                     Compare Scenarios
                   </Button>
                 )}
@@ -38,14 +41,16 @@ export const ScenarioList: React.FC = () => {
                   <Button 
                     variant={state.selectedRows.length > 1 ? 'contained' : 'outlined' }
                   >
+                    {/* strudel-kit-variable-next-line */}
                     Compare Scenarios ({state.selectedRows.length})
                   </Button>
                 )}
               </Link>
             </Box>
             <Box>
-              <Link component={RouterLink} to="/compare-data/new">
+              <Link component={RouterLink} to="new">
                 <Button variant="contained">
+                  {/* strudel-kit-variable-next-line */}
                   New Scenario
                 </Button>
               </Link>

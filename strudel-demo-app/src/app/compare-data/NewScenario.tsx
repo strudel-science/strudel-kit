@@ -29,19 +29,21 @@ export const NewScenario: React.FC = () => {
   return (
     <Box>
       <PageHeader
+        // strudel-kit-variable-next-line
         pageTitle="New Scenario"
+        // strudel-kit-variable-next-line
         description="Add a new scenario to compare to the others in your list."
         actions={
           <Stack direction="row">
             <Box>
-              <Link component={RouterLink} to="/compare-data">
+              <Link component={RouterLink} to=".">
                 <Button variant="contained" color="warning">
                   Cancel
                 </Button>
               </Link>
             </Box>
             <Box>
-              <Link component={RouterLink} to="/compare-data">
+              <Link component={RouterLink} to=".">
                 <Button variant="contained">
                   Save Scenario
                 </Button>

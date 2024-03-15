@@ -42,12 +42,14 @@ export const ComputationsList: React.FC = () => {
                 variant="h6" 
                 component="h1" 
               >
+                {/* strudel-kit-variable-next-line */}
                 Scenario List
               </Typography>
               <Typography 
                 variant="subtitle1" 
                 component="p" 
               >
+                {/* strudel-kit-variable-next-line */}
                 Scenarios represent a set of analysis inputs / parameters / settings and the results of that analysis. 
               </Typography>
             </Box>
@@ -55,6 +57,7 @@ export const ComputationsList: React.FC = () => {
               variant="contained"
               onClick={handleNewScenario}
             >
+              {/* strudel-kit-variable-next-line */}
               New Scenario
             </Button>
             <NewScenarioModal modalOpen={modalOpen} setModalOpen={setModalOpen} />

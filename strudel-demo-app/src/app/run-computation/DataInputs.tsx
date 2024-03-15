@@ -21,6 +21,7 @@ export const DataInputs: React.FC = () => {
   useEffect(() => {
     if (state.inputs.table.data.length === 0) {
       const getData = async () => {
+        // strudel-kit-variable-next-line
         const dataSource = 'default/run-computation/inputs.json';
         const data = await getDataFromSource(dataSource, basename);
         dispatch(setInputsTableData(data));
@@ -46,6 +47,7 @@ export const DataInputs: React.FC = () => {
           <Step key="Data Inputs">
             <StepLabel>
               <Link component={RouterLink} to="/run-computation/scenario/data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                {/* strudel-kit-variable-next-line */}
                 Data Inputs
               </Link>
             </StepLabel>
@@ -53,6 +55,7 @@ export const DataInputs: React.FC = () => {
           <Step key="Optimization Settings">
             <StepLabel>
               <Link component={RouterLink} to="/run-computation/scenario/settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                {/* strudel-kit-variable-next-line */}
                 Optimization Settings
               </Link>
             </StepLabel>
@@ -60,6 +63,7 @@ export const DataInputs: React.FC = () => {
           <Step key="Results">
             <StepLabel>
               <Link component={RouterLink} to="/run-computation/scenario/results" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                {/* strudel-kit-variable-next-line */}
                 Results
               </Link>
             </StepLabel>
@@ -154,6 +158,7 @@ export const DataInputs: React.FC = () => {
         }}
       >
         <Link component={RouterLink} to="/run-computation/scenario/settings">
+          {/* strudel-kit-variable-next-line */}
           <Button variant="contained">Continue to optimization settings</Button>
         </Link>
       </Box>

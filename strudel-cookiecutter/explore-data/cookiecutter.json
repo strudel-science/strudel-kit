@@ -1,50 +1,114 @@
 {
   "name": "my-data-explorer",
-  "pageTitle": "Explore Data App",
-  "pageDescription": "Description of this app section",
-  "dataSource": "default/genomes.tsv",
-  "dataIdField": "id",
+  "pages": {
+    "main": {
+      "pageTitle": "Explore Data App",
+      "pageDescription": "Description of this app section"
+    }
+  },
+  "data": {
+    "main": {
+      "table": {
+        "dataSource": "default/explore-data/genomes.tsv",
+        "dataIdField": "id"
+      }
+    }
+  },
   "definitions": {
     "columns": {
-      "main": [
-        { 
-          "field": "first_field", 
-          "headerName": "Column One", 
-          "width": 200 
-        },
-        {
-          "field": "second_field",
-          "headerName": "Column Two",
-          "width": 150
-        }
-      ]
+      "main": {
+        "table": [
+          {
+            "field":"Organism",
+            "headerName":"Organism",
+            "width":200
+          },
+          {
+            "field":"Common Name",
+            "headerName":"Common Name",
+            "width":200
+          },
+          {
+            "field":"Assembly",
+            "headerName":"Assembly",
+            "width":150
+          },
+          {
+            "field":"Data Usage Policy",
+            "headerName":"Data Usage Policy",
+            "width":220
+          },
+          {
+            "field":"Euk. BUSCO %",
+            "headerName":"Euk. BUSCO %",
+            "type":"number",
+            "width":200
+          },
+          {
+            "field":"Emb. BUSCO %",
+            "headerName":"Emb. BUSCO %",
+            "type":"number",
+            "width":200
+          }
+        ]
+      }
     },
     "filters": {
       "main": [
         {
-          "field": "first_field",
-          "displayName": "My First Filter",
-          "filterType": "CheckboxList",
-          "props": {
-            "options": [
+          "field": "Assembly",
+          "displayName":"Assembly",
+          "filterType":"CheckboxList",
+          "props":{
+            "options":[
               {
-                "label": "Onions",
-                "value": "onions"
+                "label":"JGI",
+                "value":"JGI"
               },
               {
-                "label": "Peppers",
-                "value": "peppers"
+                "label":"BYU",
+                "value":"BYU"
+              },
+              {
+                "label":"AGP",
+                "value":"AGP"
               }
             ]
           }
         },
         {
-          "field": "second_field",
-          "displayName": "My Second Filter",
-          "filterType": "Slider",
-          "props": {
-            "min": 0,
-            "max": 100
+          "field":"Data Usage Policy",
+          "displayName":"Data Usage Policy",
+          "filterType":"CheckboxList",
+          "props":{
+            "options":[
+              {
+                "label":"restricted",
+                "value":"restricted"
+              },
+              {
+                "label":"unrestricted",
+                "value":"unrestricted"
+              }
+            ]
+          }
+        },
+        {
+          "field":"Euk. BUSCO %",
+          "displayName":"Euk. BUSCO %",
+          "filterType":"Slider",
+          "props":{
+            "min":0,
+            "max":100
+          }
+        },
+        {
+          "field":"Emb. BUSCO %",
+          "displayName":"Emb. BUSCO %",
+          "filterType":"Slider",
+          "props":{
+            "min":0,
+            "max":100
           }
         }
       ]

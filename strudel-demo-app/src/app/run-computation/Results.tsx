@@ -21,7 +21,8 @@ export const Results: React.FC = () => {
   useEffect(() => {
     if (state.results.table.data.length === 0) {
       const getData = async () => {
-        const dataSource = 'default/run-computation/results-table.json';
+        // strudel-kit-variable-next-line
+        const dataSource = 'default/run-computation/results_table.json';
         const data = await getDataFromSource(dataSource, basename);
         dispatch(setResultsTableData(data));
       }
@@ -29,7 +30,8 @@ export const Results: React.FC = () => {
     }
     if (state.results.lineChart.data.length === 0) {
       const getData = async () => {
-        const dataSource = 'default/run-computation/results-line-chart.json';
+        // strudel-kit-variable-next-line
+        const dataSource = 'default/run-computation/results_line_chart.json';
         const data = await getDataFromSource(dataSource, basename);
         dispatch(setResultsLineChartData(data));
       }
@@ -37,7 +39,8 @@ export const Results: React.FC = () => {
     }
     if (state.results.barChart.data.length === 0) {
       const getData = async () => {
-        const dataSource = 'default/run-computation/results-bar-chart.json';
+        // strudel-kit-variable-next-line
+        const dataSource = 'default/run-computation/results_bar_chart.json';
         const data = await getDataFromSource(dataSource, basename);
         dispatch(setResultsBarChartData(data));
       }
@@ -62,6 +65,7 @@ export const Results: React.FC = () => {
           <Step key="Data Inputs">
             <StepLabel>
               <Link component={RouterLink} to="/run-computation/scenario/data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                {/* strudel-kit-variable-next-line   */}
                 Data Inputs
               </Link>
             </StepLabel>
@@ -69,6 +73,7 @@ export const Results: React.FC = () => {
           <Step key="Optimization Settings">
             <StepLabel>
               <Link component={RouterLink} to="/run-computation/scenario/settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                {/* strudel-kit-variable-next-line */}
                 Optimization Settings
               </Link>
             </StepLabel>
@@ -76,6 +81,7 @@ export const Results: React.FC = () => {
           <Step key="Results">
             <StepLabel>
               <Link component={RouterLink} to="/run-computation/scenario/results" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                {/* strudel-kit-variable-next-line */}
                 Results
               </Link>
             </StepLabel>
@@ -189,6 +195,7 @@ export const Results: React.FC = () => {
         }}
       >
         <Link component={RouterLink} to="/run-computation/scenario/settings">
+          {/* strudel-kit-variable-next-line */}
           <Button variant="contained">Back to optimization settings</Button>
         </Link>
       </Box>

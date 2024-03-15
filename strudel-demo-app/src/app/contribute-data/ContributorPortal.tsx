@@ -7,6 +7,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { getDataFromSource } from '../../utils/api.utils';
 import { basename } from '../App';
+import definitions from './definitions.json';
 
 /**
  * Page to show a contributor's uploads in the contribute-data Task Flow.
@@ -21,6 +22,7 @@ export const ContributorPortal: React.FC = () => {
   useEffect(() => {
     if (datasets.length === 0) {
       const getData = async () => {
+        // strudel-kit-variable-next-line
         const dataSource = 'default/contribute-data/contributor_datasets.json';
         const data = await getDataFromSource(dataSource, basename);
         setDatasets(data);
@@ -42,6 +44,7 @@ export const ContributorPortal: React.FC = () => {
       <Stack>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Typography variant="h6" component="h1">
+            {/* strudel-kit-variable-next-line */}
             Your Dataset Uploads
           </Typography>
           <Link component={RouterLink} to="/contribute-data/new">
@@ -53,7 +56,8 @@ export const ContributorPortal: React.FC = () => {
         <Paper>
           <DataGrid
             rows={datasets}
-            getRowId={(row) => row.id}
+            // strudel-kit-variable-next-line
+            getRowId={(row) => row['id']}
             columns={columns}
             disableColumnSelector
             disableRowSelectionOnClick
@@ -68,36 +72,7 @@ export const ContributorPortal: React.FC = () => {
  * Define column definitions in-file for prototyping
  */
 const columns: GridColDef[] = [
-  { 
-    field: 'title', 
-    headerName: 'Dataset Title', 
-    width: 200 
-  },
-  { 
-    field: 'category', 
-    headerName: 'Category', 
-    width: 200 
-  },
-  { 
-    field: 'summary', 
-    headerName: 'Summary', 
-    width: 200 
-  },
-  { 
-    field: 'doi', 
-    headerName: 'DOI', 
-    width: 200 
-  },
-  { 
-    field: 'publication_date', 
-    headerName: 'Created Date', 
-    width: 200 
-  },
-  { 
-    field: 'status', 
-    headerName: 'Status', 
-    width: 200 
-  },
+  ...definitions.columns.portal.table,
   { 
     field: 'actions', 
     headerName: 'Actions', 

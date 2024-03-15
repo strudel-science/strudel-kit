@@ -21,6 +21,7 @@ export const CompareDataWrapper: React.FC = () => {
   useEffect(() => {
     if (scenarios.length === 0) {
       const getData = async () => {
+        // strudel-kit-variable-next-line
         const dataSource = 'default/compare-data/scenarios.json';
         const data = await getDataFromSource(dataSource, basename);
         setScenarios(data);
@@ -38,7 +39,8 @@ export const CompareDataWrapper: React.FC = () => {
         <TopBar />
       </Box>
       <Box>
-        <CompareDataProvider data={scenarios} columns={definitions.columns.main} dataIdField='id'>
+        {/* strudel-kit-variable-next-line */}
+        <CompareDataProvider data={scenarios} columns={definitions.columns.list.table} dataIdField='id'>
           <Outlet />
         </CompareDataProvider>
       </Box>

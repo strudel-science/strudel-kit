@@ -1,7 +1,5 @@
 {
   "name": "my-taskflow",
-  "pageTitle": "Monitor Activities App",
-  "pageDescription": "Description of this app section",
   "_jinja2_env_vars": {
     "variable_start_string": "{@", 
     "variable_end_string": "@}"

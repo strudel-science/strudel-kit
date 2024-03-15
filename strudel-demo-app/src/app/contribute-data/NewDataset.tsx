@@ -21,9 +21,11 @@ export const NewDataset: React.FC = () => {
         <Stack direction="row" justifyContent="space-between">
           <Stack>
             <Typography variant="h6" component="h1">
+              {/* strudel-kit-variable-next-line */}
               Upload a new dataset
             </Typography>
             <Typography>
+              {/* strudel-kit-variable-next-line */}
               Mention the data contribution steps in brief, and also major requirements if any. Also give links to detailed documentation of steps, requirements and guidelines. Link to documentation.
             </Typography>
           </Stack>

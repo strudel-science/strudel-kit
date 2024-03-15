@@ -20,6 +20,7 @@ export const ExploreDataWrapper: React.FC = () => {
   useEffect(() => {
     if (entities.length === 0) {
       const getData = async () => {
+        // strudel-kit-variable-next-line
         const dataSource = 'default/explore-data/genomes.tsv';
         const data = await getDataFromSource(dataSource, basename);
         setEntities(data);
@@ -39,8 +40,9 @@ export const ExploreDataWrapper: React.FC = () => {
       <Box>
         <ExploreDataProvider 
           data={entities} 
-          columns={definitions.columns.main} 
+          columns={definitions.columns.main.table} 
           filters={definitions.filters.main} 
+          // strudel-kit-variable-next-line
           dataIdField='Proteome_ID'
         >
           <Outlet />

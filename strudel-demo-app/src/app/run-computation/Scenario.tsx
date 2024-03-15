@@ -25,6 +25,7 @@ export const Scenario: React.FC = () => {
             <Stack direction="row" alignItems="center" sx={{ flexGrow: 1 }}>
               <Breadcrumbs aria-label="breadcrumb" separator={<ChevronRightIcon fontSize="small" />}>
                 <Link underline="hover" color="inherit" to="/run-computation" component={RouterLink}>
+                  {/* strudel-kit-variable-next-line */}
                   Scenario List
                 </Link>
                 <Typography color="text.primary">Optimization Scenario 1</Typography>

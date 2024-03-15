@@ -50,6 +50,7 @@ export const NewScenarioModal: React.FC<Props> = ({
         }}
       >
         <Typography id="modal-modal-title" variant="h6" component="h2">
+          {/* strudel-kit-variable-next-line */}
           New Analysis Scenario
         </Typography>
         <FormControl fullWidth>

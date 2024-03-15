@@ -1,7 +1,66 @@
 {
   "name": "my-taskflow",
-  "pageTitle": "Contribute Data App",
-  "pageDescription": "Description of this app section",
+  "pages": {
+    "register": {
+      "pageTitle": "Register as a data contributor"
+    },
+    "portal": {
+      "pageTitle": "Your Dataset Uploads"
+    },
+    "upload": {
+      "pageTitle": "Upload a new dataset",
+      "pageDescription": "Description of this app section"
+    },
+    "review": {
+      "pageTitle": "Review your new dataset"
+    }
+  },
+  "data": {
+    "portal": {
+      "table": {
+        "dataSource": "default/contribute-data/contributor_datasets.json",
+        "dataIdField": "id"
+      }
+    }
+  },
+  "definitions": {
+    "columns": {
+      "portal": {
+        "table": [
+          { 
+            "field": "title", 
+            "headerName": "Dataset Title", 
+            "width": 200 
+          },
+          { 
+            "field": "category", 
+            "headerName": "Category", 
+            "width": 200 
+          },
+          { 
+            "field": "summary", 
+            "headerName": "Summary", 
+            "width": 200 
+          },
+          { 
+            "field": "doi", 
+            "headerName": "DOI", 
+            "width": 200 
+          },
+          { 
+            "field": "publication_date", 
+            "headerName": "Created Date", 
+            "width": 200 
+          },
+          { 
+            "field": "status", 
+            "headerName": "Status", 
+            "width": 200 
+          }
+        ]
+      }
+    }
+  },
   "_jinja2_env_vars": {
     "variable_start_string": "{@", 
     "variable_end_string": "@}"

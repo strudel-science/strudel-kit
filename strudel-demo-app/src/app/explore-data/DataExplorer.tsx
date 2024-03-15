@@ -34,7 +34,9 @@ export const DataExplorer: React.FC = () => {
   return (
     <Box>
       <PageHeader
+        // strudel-kit-variable-next-line
         pageTitle="Genome Releases"
+        // strudel-kit-variable-next-line
         description="All gene sets have been annotated with KOG, KEGG, ENZYME, Pathway and the InterPro family of protein analysis tools."
         sx={{
           marginBottom: 1,

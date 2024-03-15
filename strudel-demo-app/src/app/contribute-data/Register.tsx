@@ -25,6 +25,7 @@ export const Register: React.FC = () => {
               variant="h6" 
               component="h1" 
             >
+              {/* strudel-kit-variable-next-line */}
               Register as a data contributor
             </Typography>
             <Box>

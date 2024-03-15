@@ -24,6 +24,7 @@ export const RunComputationWrapper: React.FC = () => {
   useEffect(() => {
     if (listItems.length === 0) {
       const getData = async () => {
+        // strudel-kit-variable-next-line
         const dataSource = 'default/run-computation/list.json';
         const data = await getDataFromSource(dataSource, basename);
         setListItems(data);
@@ -45,6 +46,7 @@ export const RunComputationWrapper: React.FC = () => {
           list={{
             table: {
               data: listItems,
+              // strudel-kit-variable-next-line
               dataIdField: 'id',
               columns: [
                 ...definitions.list.table.columns,
@@ -65,6 +67,7 @@ export const RunComputationWrapper: React.FC = () => {
           inputs={{
             table: {
               data: [],
+              // strudel-kit-variable-next-line
               dataIdField: 'id',
               columns: definitions.inputs.table.columns,
             }
@@ -72,6 +75,7 @@ export const RunComputationWrapper: React.FC = () => {
           results={{
             table: {
               data: [],
+              // strudel-kit-variable-next-line
               dataIdField: 'id',
               columns: definitions.results.table.columns,
             }

@@ -65,6 +65,7 @@ export const ReviewDataset: React.FC = () => {
           <Stack direction="row" justifyContent="space-between">
             <Stack>
               <Typography variant="h6" component="h1">
+                {/* strudel-kit-variable-next-line */}
                 Review your new dataset
               </Typography>
             </Stack>

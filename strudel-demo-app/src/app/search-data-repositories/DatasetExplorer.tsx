@@ -33,7 +33,9 @@ export const DatasetExplorer: React.FC = () => {
   return (
     <Box>
       <PageHeader
+        // strudel-kit-variable-next-line
         pageTitle="Dataset Releases"
+        // strudel-kit-variable-next-line
         description="Datasets"
         sx={{
           marginBottom: 1,
