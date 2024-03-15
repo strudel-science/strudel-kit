@@ -1,90 +1,38 @@
-import { AppBar, Box, Button, Container, Grid, IconButton, Link, Paper, Stack, Step, StepLabel, Stepper, TextField, Toolbar, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import React, { useState } from 'react';
+import { Box, Button, Container, Link, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
+import React, { useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
-import { setPreviewItem } from '../../components/contexts/analytics/actions';
-import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
-import { DataGrid } from '../../components/DataGrid';
+import { DataGrid } from '@mui/x-data-grid';
+import { getDataFromSource } from '../../utils/api.utils';
+import { basename } from '../App';
+import { useRunComputation } from './context/ContextProvider';
+import { setInputsTableData } from './context/actions';
 
-const inputUnits = [
-  {
-    id: 0,
-    name: 'value',
-    unitType: 'value',
-    lowerBound: 0,
-    upperBound: 1,
-    constraints: 'value'
-  },
-  {
-    id: 1,
-    name: 'value',
-    unitType: 'value',
-    lowerBound: 0,
-    upperBound: 1,
-    constraints: 'value'
-  },
-  {
-    id: 2,
-    name: 'value',
-    unitType: 'value',
-    lowerBound: 0,
-    upperBound: 1,
-    constraints: 'value'
-  },
-  {
-    id: 3,
-    name: 'value',
-    unitType: 'value',
-    lowerBound: 0,
-    upperBound: 1,
-    constraints: 'value'
-  },
-  {
-    id: 4,
-    name: 'value',
-    unitType: 'value',
-    lowerBound: 0,
-    upperBound: 1,
-    constraints: 'value'
-  },
-];
-
-const columns: GridColDef[] = [
-  { 
-    field: 'name', 
-    headerName: 'Unit Name', 
-    width: 200 
-  },
-  { 
-    field: 'unitType', 
-    headerName: 'Unit Type', 
-    width: 200 
-  },
-  { 
-    field: 'constraints', 
-    headerName: 'Constraints', 
-    width: 200,
-  },
-  { 
-    field: 'lowerBound', 
-    headerName: 'Lower Bound', 
-    width: 200,
-    type: 'number'
-  },
-  { 
-    field: 'upperBound', 
-    headerName: 'Upper Bound', 
-    width: 200,
-    type: 'number'
-  },
-];
-
+/**
+ * Page to display input data after creating or selecting an item from 
+ * the `<ComputationsList>` page in the run-computation Task Flow.
+ * Table columns are configured in `definitions.inputs.table.columns`
+ */
 export const DataInputs: React.FC = () => {
+  const { state, dispatch } = useRunComputation();
+  
+  /**
+   * Fetch data for the inputs table when the page loads
+   */
+  useEffect(() => {
+    if (state.inputs.table.data.length === 0) {
+      const getData = async () => {
+        // strudel-kit-variable-next-line
+        const dataSource = 'default/run-computation/inputs.json';
+        const data = await getDataFromSource(dataSource, basename);
+        dispatch(setInputsTableData(data));
+      }
+      getData();
+    }
+  }, []);
+
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Stack spacing={0} flex={1}>
       <Box
@@ -99,6 +47,7 @@ export const DataInputs: React.FC = () => {
           <Step key="Data Inputs">
             <StepLabel>
               <Link component={RouterLink} to="/run-computation/scenario/data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                {/* strudel-kit-variable-next-line */}
                 Data Inputs
               </Link>
             </StepLabel>
@@ -106,6 +55,7 @@ export const DataInputs: React.FC = () => {
           <Step key="Optimization Settings">
             <StepLabel>
               <Link component={RouterLink} to="/run-computation/scenario/settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                {/* strudel-kit-variable-next-line */}
                 Optimization Settings
               </Link>
             </StepLabel>
@@ -113,6 +63,7 @@ export const DataInputs: React.FC = () => {
           <Step key="Results">
             <StepLabel>
               <Link component={RouterLink} to="/run-computation/scenario/results" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                {/* strudel-kit-variable-next-line */}
                 Results
               </Link>
             </StepLabel>
@@ -184,9 +135,9 @@ export const DataInputs: React.FC = () => {
           >
             <Paper>
               <DataGrid
-                rows={inputUnits}
-                getRowId={(row) => row.id}
-                columns={columns}
+                rows={state.inputs.table.data}
+                getRowId={(row) => row[state.inputs.table.dataIdField]}
+                columns={state.inputs.table.columns}
                 disableColumnSelector
                 disableRowSelectionOnClick
               />
@@ -199,11 +150,15 @@ export const DataInputs: React.FC = () => {
           backgroundColor: 'white',
           borderTop: '1px solid',
           borderColor: 'neutral.main',
+          bottom: 0,
           padding: 2,
-          textAlign: 'right'
+          position: 'fixed',
+          textAlign: 'right',
+          width: '100%'
         }}
       >
         <Link component={RouterLink} to="/run-computation/scenario/settings">
+          {/* strudel-kit-variable-next-line */}
           <Button variant="contained">Continue to optimization settings</Button>
         </Link>
       </Box>

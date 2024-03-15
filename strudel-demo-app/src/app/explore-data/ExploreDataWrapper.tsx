@@ -1,44 +1,50 @@
 import React, { useEffect, useState } from 'react';
-import * as d3 from 'd3-fetch';
 import { basename } from '../App';
 import { Box } from '@mui/material';
 import { Outlet } from 'react-router';
 import { ExploreDataProvider } from './context/ContextProvider';
 import definitions from './definitions.json';
 import { TopBar } from '../../components/TopBar';
+import { getDataFromSource } from '../../utils/api.utils';
 
+/**
+ * Top-level wrapper for the explore-data Task Flow templates.
+ * Inner pages are rendered inside the `<Outlet />` component
+ */
 export const ExploreDataWrapper: React.FC = () => {
   const [entities, setEntities] = useState<any[]>([]);
 
+  /**
+   * Fetch data for the main table when the page loads
+   */
   useEffect(() => {
     if (entities.length === 0) {
       const getData = async () => {
-        const filename = 'Current_Genomes.tsv';
-        const fileExtension = filename.split('.').pop();
-        const filePath = `${basename}/data/${filename}`;
-        let data: any = null;
-        if (fileExtension === 'csv') {
-          data = await d3.csv(filePath);
-        } else if (fileExtension === 'tsv') {
-          data = await d3.tsv(filePath);
-        } else if (fileExtension === 'json') {
-          data = await d3.json(filePath);
-        } else if (filename.startsWith('http')) {
-          data = await d3.json(filename);
-        }
+        // strudel-kit-variable-next-line
+        const dataSource = 'default/explore-data/genomes.tsv';
+        const data = await getDataFromSource(dataSource, basename);
         setEntities(data);
       }
       getData();
     }
   }, []);
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Box>
       <Box sx={{ flexGrow: 1 }}>
         <TopBar />
       </Box>
       <Box>
-        <ExploreDataProvider data={entities} columns={definitions.columns.main} filters={definitions.filters.main} dataIdField='Proteome_ID'>
+        <ExploreDataProvider 
+          data={entities} 
+          columns={definitions.columns.main.table} 
+          filters={definitions.filters.main} 
+          // strudel-kit-variable-next-line
+          dataIdField='Proteome_ID'
+        >
           <Outlet />
         </ExploreDataProvider>
       </Box>

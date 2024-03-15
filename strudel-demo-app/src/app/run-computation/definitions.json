@@ -1,0 +1,94 @@
+{
+  "list": {
+    "table": {
+      "columns": [
+        { 
+          "field": "name", 
+          "headerName": "Scenario Name", 
+          "width": 200 
+        },
+        { 
+          "field": "analysisType", 
+          "headerName": "Analysis Type", 
+          "width": 200 
+        },
+        { 
+          "field": "createdDate", 
+          "headerName": "Date Created", 
+          "width": 200 
+        },
+        { 
+          "field": "status", 
+          "headerName": "Status", 
+          "width": 200 
+        }
+      ]
+    }
+  },
+  "inputs": {
+    "table": {
+      "columns": [
+        { 
+          "field": "name", 
+          "headerName": "Unit Name", 
+          "width": 200 
+        },
+        { 
+          "field": "unitType", 
+          "headerName": "Unit Type", 
+          "width": 200 
+        },
+        { 
+          "field": "constraints", 
+          "headerName": "Constraints", 
+          "width": 200
+        },
+        { 
+          "field": "lowerBound", 
+          "headerName": "Lower Bound", 
+          "width": 200,
+          "type": "number"
+        },
+        { 
+          "field": "upperBound", 
+          "headerName": "Upper Bound", 
+          "width": 200,
+          "type": "number"
+        }
+      ]
+    }
+  },
+  "results": {
+    "table": {
+      "columns": [
+        { 
+          "field": "name", 
+          "headerName": "Unit Name", 
+          "width": 200 
+        },
+        { 
+          "field": "unitType", 
+          "headerName": "Unit Type", 
+          "width": 200 
+        },
+        { 
+          "field": "constraints", 
+          "headerName": "Constraints", 
+          "width": 200
+        },
+        { 
+          "field": "lowerBound", 
+          "headerName": "Lower Bound", 
+          "width": 200,
+          "type": "number"
+        },
+        { 
+          "field": "upperBound", 
+          "headerName": "Upper Bound", 
+          "width": 200,
+          "type": "number"
+        }
+      ]
+    }
+  }
+}
