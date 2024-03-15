@@ -6,7 +6,11 @@ import { FiltersPanel } from './FiltersPanel';
 import { PreviewPanel } from './PreviewPanel';
 import { useSearchDataRepositories } from './context/ContextProvider';
 import { setPreviewItem } from './context/actions';
-  
+
+/**
+ * The main explore page for the search-data-repositories Task Flow.
+ * Displays a page header, `<FiltersPanel>`, `<DataListPanel>`, and `<PreviewPanel>`.
+ */
 export const DatasetExplorer: React.FC = () => {
   const {state, dispatch} = useSearchDataRepositories();
   const [showFiltersPanel, setShowFiltersPanel] = useState(true);
@@ -23,11 +27,14 @@ export const DatasetExplorer: React.FC = () => {
     dispatch(setPreviewItem(null));
   }
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Box>
       <PageHeader
-        pageTitle="Dataset Releases"
-        description="Datasets"
+        pageTitle="{@ cookiecutter.pages.main.pageTitle @}"
+        description="{@ cookiecutter.pages.main.pageDescription @}"
         sx={{
           marginBottom: 1,
           padding: 2,

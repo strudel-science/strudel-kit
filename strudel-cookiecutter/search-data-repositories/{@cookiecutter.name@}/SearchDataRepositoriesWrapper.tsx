@@ -6,14 +6,21 @@ import { TopBar } from '../../components/TopBar';
 import { SearchDataRepositoriesProvider } from './context/ContextProvider';
 import { getDataFromSource } from '../../utils/api.utils';
 import definitions from './definitions.json';
-  
+
+/**
+ * Top-level wrapper for the search-data-repositories Task Flow templates.
+ * Inner pages are rendered inside the `<Outlet />` component
+ */
 export const SearchDataRepositoriesWrapper: React.FC = () => {
   const [datasets, setDatasets] = useState<any[]>([]);
 
+  /**
+   * Fetch data for the cards list when the page loads
+   */
   useEffect(() => {
     if (datasets.length === 0) {
       const getData = async () => {
-        const dataSource = '{@ cookiecutter.dataSource @}';
+        const dataSource = '{@ cookiecutter.data.main.cards.dataSource @}';
         const data = await getDataFromSource(dataSource, basename);
         setDatasets(data);
       }
@@ -21,13 +28,21 @@ export const SearchDataRepositoriesWrapper: React.FC = () => {
     }
   }, []);
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Box>
       <Box sx={{ flexGrow: 1 }}>
         <TopBar />
       </Box>
       <Box>
-        <SearchDataRepositoriesProvider data={datasets} dataIdField='{@ cookiecutter.dataSource @}' filters={definitions.filters.main}>
+        <SearchDataRepositoriesProvider 
+          data={datasets} 
+          dataIdField='{@ cookiecutter.data.main.cards.dataIdField @}' 
+          filters={definitions.filters.main} 
+          cardFields={definitions.columns.main.card}
+        >
           <Outlet />
         </SearchDataRepositoriesProvider>
       </Box>

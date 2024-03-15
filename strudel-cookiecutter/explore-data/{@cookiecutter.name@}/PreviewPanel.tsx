@@ -3,7 +3,7 @@ import { Box, Button, IconButton, Link, Paper, Stack, Typography } from '@mui/ma
 import CloseIcon from '@mui/icons-material/Close';
 import { Link as RouterLink } from 'react-router-dom';
 import { LabelValueTable } from '../../components/LabelValueTable';
-import { DataGrid } from '../../components/DataGrid';
+import { DataGrid } from '@mui/x-data-grid';
 import { useExploreData } from './context/ContextProvider';
 
 interface PreviewPanelProps {
@@ -12,11 +12,14 @@ interface PreviewPanelProps {
 
 /**
  * Panel to show extra information about a row in a separate panel
- * next to the data table.
+ * next to the `<DataTablePanel>`.
  */
 export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
   const {state, dispatch} = useExploreData();
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Paper
       elevation={0}
@@ -30,7 +33,7 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
           <Stack direction="row">
             <Typography variant="h6" component="h3" flex={1}>
               <Link component={RouterLink} to="." underline="hover">
-                Preview Heading
+                {state.previewItem[state.columns[0].field]}
               </Link>
             </Typography>
             <IconButton size="small" onClick={props.onClose}><CloseIcon /></IconButton>
@@ -80,6 +83,9 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
   );
 }
 
+/**
+ * Placeholder columns for related data table
+ */
 const relatedColumns = [
   { 
     field: 'id', 
@@ -103,6 +109,9 @@ const relatedColumns = [
   },
 ];
 
+/**
+ * Placeholder rows for related data table
+ */
 const emptyRows = Array(25).fill(0);
 const relatedRows = emptyRows.map((d, i) => {
   return { id: i, attr1: 'value', attr2: 'value', attr3: 'value'}

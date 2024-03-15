@@ -1,8 +1,12 @@
-import { Select, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button, ListItem, List, FormControl, InputLabel, MenuItem, FormHelperText, SelectChangeEvent } from '@mui/material';
+import { Box, FormControl, FormHelperText, InputLabel, List, ListItem, MenuItem, Paper, Select, SelectChangeEvent, Stack, TextField, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
-import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
-  
+import React, { useState } from 'react';
+
+/**
+ * Panel for entering metadata about the new dataset in the contribute-data Task Flow.
+ * Data from this panel would then display in the <DatasetView> in the next step (not currently hooked together).
+ */
 export const MetadataPanel: React.FC = () => {
   const [category, setCategory] = useState<string>();
   const [startDate, setStartDate] = useState<dayjs.Dayjs | null>(null);
@@ -12,14 +16,17 @@ export const MetadataPanel: React.FC = () => {
     setCategory(event.target.value);
   };
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Paper>
       <Box
-        sx={{ "{{" }}
+        sx={{
           padding: 2,
           borderBottom: '1px solid',
           borderBottomColor: 'neutral.main',
-        {{ "}}" }}
+        }}
       >
         <Typography
           fontWeight="bold"
@@ -31,11 +38,11 @@ export const MetadataPanel: React.FC = () => {
       <Stack direction="row" spacing={0}>
         <Box
           component="aside"
-          sx={{ "{{" }}
+          sx={{
             borderRight: '1px solid',
             borderRightColor: 'neutral.main',
             width: '150px',
-          {{ "}}" }}
+          }}
         >
           <List>
             <ListItem>Overview</ListItem>
@@ -45,18 +52,18 @@ export const MetadataPanel: React.FC = () => {
           </List>
         </Box>
         <Box
-          sx={{ "{{" }}
+          sx={{
             padding: 2
-          {{ "}}" }}
+          }}
         >
           <Stack>
             <Stack 
               spacing={3}
-              sx={{ "{{" }}
+              sx={{
                 borderBottom: '1px solid',
                 borderBottomColor: 'neutral.main',
                 paddingBottom: 2,
-              {{ "}}" }}
+              }}
             >
               <Typography color="neutral.dark" fontWeight="bold">Overview</Typography>
               <TextField
@@ -97,32 +104,32 @@ export const MetadataPanel: React.FC = () => {
             </Stack>
             <Stack 
               spacing={3}
-              sx={{ "{{" }}
+              sx={{
                 borderBottom: '1px solid',
                 borderBottomColor: 'neutral.main',
                 paddingBottom: 2,
-              {{ "}}" }}
+              }}
             >
               <Typography color="neutral.dark" fontWeight="bold">Dates</Typography>
               <Stack direction="row">
                 <DatePicker 
                   value={startDate} 
                   label="Start Date"
-                  slotProps={{ "{{" }}
+                  slotProps={{
                     actionBar: {
                       actions: ['clear', 'today']
                     }
-                  {{ "}}" }}
+                  }}
                   onChange={(value) => setStartDate(value)}
                 />
                 <DatePicker 
                   value={endDate} 
                   label="End Date"
-                  slotProps={{ "{{" }}
+                  slotProps={{
                     actionBar: {
                       actions: ['clear', 'today']
                     }
-                  {{ "}}" }}
+                  }}
                   onChange={(value) => setEndDate(value)}
                 />
               </Stack>

@@ -1,92 +1,69 @@
 {
   "columns": {
-    "main": [
-      {
-        "field":"Organism",
-        "headerName":"Organism",
-        "width":200
-      },
-      {
-        "field":"Common Name",
-        "headerName":"Common Name",
-        "width":150
-      },
-      {
-        "field":"Assembly",
-        "headerName":"Assembly",
-        "width":150
-      },
-      {
-        "field":"Data Usage Policy",
-        "headerName":"Data Usage Policy",
-        "width":150
-      },
-      {
-        "field":"Euk. BUSCO %",
-        "headerName":"Euk. BUSCO %",
-        "type":"number",
-        "width":110
-      },
-      {
-        "field":"Emb. BUSCO %",
-        "headerName":"Emb. BUSCO %",
-        "type":"number",
-        "width":110
+    "main": {
+      "card": {
+        "title": "title",
+        "content": "summary",
+        "tags": "tags"
       }
-    ]
+    }
   },
   "filters": {
     "main": [
       {
         "field": "category",
-        "displayName":"Category",
-        "filterType":"CheckboxList",
-        "props":{
-          "options":[
+        "displayName": "Category",
+        "filterType": "CheckboxList",
+        "props": {
+          "options": [
             {
-              "label":"Groundwater",
-              "value":"Groundwater"
+              "label": "Fires",
+              "value": "Fires"
             },
             {
-              "label":"Fires",
-              "value":"Fires"
+              "label": "Floods",
+              "value": "Floods"
             },
             {
-              "label":"Floods",
-              "value":"Floods"
+              "label": "Earthquakes",
+              "value": "Earthquakes"
             },
             {
-              "label":"Earthquakes",
-              "value":"Earthquakes"
+              "label": "Groundwater",
+              "value": "Groundwater"
+            },
+            {
+              "label": "Biology",
+              "value": "Biology"
             }
           ]
         }
       },
       {
-        "field":"tags",
-        "displayName":"Tags",
-        "filterType":"CheckboxList",
-        "props":{
-          "options":[
+        "field": "tags",
+        "displayName": "Tags",
+        "filterType": "CheckboxList",
+        "props": {
+          "options": [
             {
-              "label":"Boreal forest",
-              "value":"Boreal forest"
+              "label": "Boreal forest",
+              "value": "Boreal forest"
             },
             {
-              "label":"Carbon and greenhouse gas emissions",
-              "value":"Carbon and greenhouse gas emissions"
+              "label": "Carbon and greenhouse gas emissions",
+              "value": "Carbon and greenhouse gas emissions"
             },
             {
-              "label":"Ecology",
-              "value":"Ecology"
+              "label": "Ecology",
+              "value": "Ecology"
             }
           ]
         }
       },
       {
-        "field":"publication_date",
-        "displayName":"Publication Date",
-        "filterType":"date range"
+        "field": "publication_date",
+        "displayName": "Publication Date",
+        "filterType": "date range"
       }
     ]
   }

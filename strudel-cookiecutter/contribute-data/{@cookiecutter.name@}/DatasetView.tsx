@@ -1,24 +1,22 @@
-import { AppBar, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { Link as RouterLink } from 'react-router-dom';
-import * as d3 from 'd3-fetch';
-import { basename } from '../App';
-import { DataGrid } from '../../components/DataGrid';
-import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
-import { DataFilesPanel, files } from './DataFilesPanel';
-import { MetadataPanel } from './MetadataPanel';
+import { Box, Paper, Stack, Typography } from '@mui/material';
+import { GridColDef } from '@mui/x-data-grid';
+import React from 'react';
+import { DataGrid } from '@mui/x-data-grid';
 import { LabelValueTable } from '../../components/LabelValueTable';
-  
+import { files } from './DataFilesPanel';
+
+/**
+ * Panel to display data entered from the `<MetadataPanel>` and the `<DataFilesPanel>` from
+ * the previous step in contribute-data (not currently hooked together).
+ * This component is rendered as part of the `<ReviewDataset>` page.
+ */
 export const DatasetView: React.FC = () => {  
-  // TODO: use context for dataset state
   return (
     <Paper
-      sx={{ "{{" }}
+      sx={{
         height: '100%',
         padding: 2,
-      {{ "}}" }}
+      }}
     >
       <Stack>
         <Typography
@@ -70,6 +68,9 @@ export const DatasetView: React.FC = () => {
   );
 }
 
+/**
+ * Define column definitions in-file for prototyping
+ */
 const columns: GridColDef[] = [
   { 
     field: 'filename', 

@@ -13,16 +13,17 @@ interface FiltersPanelProps {
   onClose: () => any
 }
 
+/**
+ * Main filters panel in the explore-data Task Flow.
+ * Filters are generated based on the configurations in definitions.filters.main.
+ * The input values will filter data in the main table.
+ */
 export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => { 
   const {state, dispatch} = useExploreData();
-  
-  const assmeblyOptions: CheckboxOption[] = [];
-  state.data?.forEach((d) => {
-    if (d['Assembly'] && assmeblyOptions.filter((o) => o.value === d['Assembly']).length === 0) {
-      assmeblyOptions.push({ label: d['Assembly'], value: d['Assembly'] });
-    }
-  });
 
+  /**
+   * Render filter component based on the `filterType` from the filter definition.
+   */
   const getFilterComponent = (filter: FilterConfig) => {
     switch (filter.filterType) {
       case 'CheckboxList': {
@@ -76,6 +77,9 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
     }
   }
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Filters
       onClose={props.onClose}

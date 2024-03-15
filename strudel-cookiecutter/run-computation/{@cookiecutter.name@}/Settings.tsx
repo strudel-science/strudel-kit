@@ -1,16 +1,12 @@
-import { AppBar, Box, Button, Container, FormControl, Grid, IconButton, InputLabel, Link, MenuItem, Paper, Select, Stack, Step, StepLabel, Stepper, TextField, Toolbar, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { Box, Button, Container, FormControl, Grid, Link, MenuItem, Paper, Select, Stack, Step, StepLabel, Stepper, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
-import { setPreviewItem } from '../../components/contexts/analytics/actions';
-import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
-import { DataGrid } from '../../components/DataGrid';
 
+/**
+ * Page to configure settings for a computational run.
+ * Completing and submitting the form takes users to the 
+ * `<RunningComputation>` component.
+ */
 export const Settings: React.FC = () => {
   const [showAdvanced, setShowAdvanced] = useState(false);
 
@@ -18,35 +14,38 @@ export const Settings: React.FC = () => {
     setShowAdvanced(!showAdvanced);
   };
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Stack spacing={0} flex={1}>
       <Box
-        sx={{ "{{" }}
+        sx={{
           backgroundColor: 'white',
           padding: 2,
           borderBottom: '1px solid',
           borderColor: 'neutral.main'
-        {{ "}}" }}
+        }}
       >
-        <Stepper activeStep={1} sx={{ "{{" }} maxWidth: 850 {{ "}}" }}>
+        <Stepper activeStep={1} sx={{ maxWidth: 850 }}>
           <Step key="Data Inputs">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/data-inputs" sx={{ "{{" }} color: 'inherit', textDecoration: 'none' {{ "}}" }}>
-                Data Inputs
+              <Link component={RouterLink} to="/run-computation/scenario/data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                {@ cookiecutter.pages.inputs.pageTitle @}
               </Link>
             </StepLabel>
           </Step>
           <Step key="Optimization Settings">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/settings" sx={{ "{{" }} color: 'inherit', textDecoration: 'none' {{ "}}" }}>
-                Optimization Settings
+              <Link component={RouterLink} to="/run-computation/scenario/settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                {@ cookiecutter.pages.settings.pageTitle @}
               </Link>
             </StepLabel>
           </Step>
           <Step key="Results">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/results" sx={{ "{{" }} color: 'inherit', textDecoration: 'none' {{ "}}" }}>
-                Results
+              <Link component={RouterLink} to="/run-computation/scenario/results" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                {@ cookiecutter.pages.results.pageTitle @}
               </Link>
             </StepLabel>
           </Step>
@@ -54,14 +53,14 @@ export const Settings: React.FC = () => {
       </Box>
       <Container
         maxWidth="md"
-        sx={{ "{{" }}
+        sx={{
           mt: 4
-        {{ "}}" }}
+        }}
       >
-        <Paper sx={{ "{{" }} padding: 3 {{ "}}" }}>
+        <Paper sx={{ padding: 3 }}>
           <Stack>
             <Typography variant="h6" component="h2">
-              Optimization Settings
+              {@ cookiecutter.pages.settings.pageTitle @}
             </Typography>
             <Grid container rowSpacing={2} alignItems="center">
               <Grid item md={3}>
@@ -128,7 +127,7 @@ export const Settings: React.FC = () => {
             )}
             <Box textAlign="right">
               <Link component={RouterLink} to="/run-computation/scenario/running">
-                <Button variant="contained" sx={{ "{{" }} marginTop: 4 {{ "}}" }}>
+                <Button variant="contained" sx={{ marginTop: 4 }}>
                   Run optimization
                 </Button>
               </Link>

@@ -9,34 +9,10 @@ import { LabelValueTable } from '../../components/LabelValueTable';
 import { PageHeader } from '../../components/PageHeader';
 import { useSearchDataRepositories } from './context/ContextProvider';
 
-const attachedFilesColumns = [
-  { 
-    field: 'file_name', 
-    headerName: 'File Name',
-    flex: 1
-  },
-  { 
-    field: 'description', 
-    headerName: 'Description',
-    flex: 1
-  },
-  { 
-    field: 'file_size', 
-    headerName: 'Size', 
-    width: 150 
-  },
-  { 
-    field: 'actions', 
-    headerName: '', 
-    type: 'actions',
-    getActions: (params: GridRowParams) => [
-      <GridActionsCellItem icon={<DownloadIcon/>} label="Download" />,
-      <GridActionsCellItem icon={<VisibilityIcon/>} label="View" />,
-    ],
-    flex: 1
-  },
-];
-  
+/**
+ * Detail page for a particular dataset. This is accessed by clicking on a 
+ * card title or the link in the `<PreviewPanel>`.
+ */
 export const DatasetDetail: React.FC = () => {
   const {state, dispatch} = useSearchDataRepositories();
   const params = useParams();
@@ -52,6 +28,9 @@ export const DatasetDetail: React.FC = () => {
     setDataTabsValue(newValue);
   };
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Box>
       <PageHeader
@@ -201,3 +180,34 @@ export const DatasetDetail: React.FC = () => {
     </Box>
   )
 }
+
+/**
+ * Attached files data configured in-file for prototyping
+ */
+const attachedFilesColumns = [
+  { 
+    field: 'file_name', 
+    headerName: 'File Name',
+    flex: 1
+  },
+  { 
+    field: 'description', 
+    headerName: 'Description',
+    flex: 1
+  },
+  { 
+    field: 'file_size', 
+    headerName: 'Size', 
+    width: 150 
+  },
+  { 
+    field: 'actions', 
+    headerName: '', 
+    type: 'actions',
+    getActions: (params: GridRowParams) => [
+      <GridActionsCellItem icon={<DownloadIcon/>} label="Download" />,
+      <GridActionsCellItem icon={<VisibilityIcon/>} label="View" />,
+    ],
+    flex: 1
+  },
+];

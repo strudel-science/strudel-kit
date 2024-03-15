@@ -10,6 +10,11 @@ interface DataListPanelProps {
   onToggleFiltersPanel: () => any
 }
 
+/**
+ * Show a list of filterable `<DataListCard>` components based on the data source.
+ * Cards are filterable by the inputs in `<FiltersPanel>` and clicking a card will 
+ * display the `<PreviewPanel>`.
+ */
 export const DataListPanel: React.FC<DataListPanelProps> = (props) => { 
   const {state, dispatch} = useSearchDataRepositories();
 
@@ -17,6 +22,9 @@ export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
     dispatch(setSearch(evt.target.value));
   };
   
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Paper>
       <Stack
@@ -35,7 +43,6 @@ export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
         </Button>
         <Button
           startIcon={<SortIcon />}
-          onClick={props.onToggleFiltersPanel}
         >
           Sort
         </Button>

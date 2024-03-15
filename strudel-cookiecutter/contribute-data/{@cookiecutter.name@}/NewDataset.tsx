@@ -1,32 +1,30 @@
-import { AppBar, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { Box, Button, Container, Grid, Link, Stack, Typography } from '@mui/material';
+import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import * as d3 from 'd3-fetch';
-import { basename } from '../App';
-import { DataGrid } from '../../components/DataGrid';
-import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { DataFilesPanel } from './DataFilesPanel';
 import { MetadataPanel } from './MetadataPanel';
-  
+
+/**
+ * Page for entering information about a new dataset in the contribute-data Task Flow.
+ * Includes the `<MetadataPanel>` and `<DataFilesPanel>` for adding input data.
+ */
 export const NewDataset: React.FC = () => {  
   return (
     <Container
       maxWidth="xl"
-      sx={{ "{{" }}
+      sx={{
         marginBottom: 3,
         marginTop: 3,
-      {{ "}}" }}
+      }}
     >
       <Stack>
         <Stack direction="row" justifyContent="space-between">
           <Stack>
             <Typography variant="h6" component="h1">
-              Upload a new dataset
+              {@ cookiecutter.pages.upload.pageTitle @}
             </Typography>
             <Typography>
-              Mention the data contribution steps in brief, and also major requirements if any. Also give links to detailed documentation of steps, requirements and guidelines. Link to documentation.
+              {@ cookiecutter.pages.upload.pageDescription @}
             </Typography>
           </Stack>
           <Stack direction="row">
@@ -39,7 +37,7 @@ export const NewDataset: React.FC = () => {
             </Box>
             <Box>
               <Link component={RouterLink} to="/contribute-data/review">
-                <Button variant="contained" sx={{ "{{" }} whiteSpace: 'nowrap' {{ "}}" }}>
+                <Button variant="contained" sx={{ whiteSpace: 'nowrap' }}>
                   Save Dataset
                 </Button>
               </Link>
@@ -60,74 +58,3 @@ export const NewDataset: React.FC = () => {
     </Container>
   );
 }
-
-const files = [
-  {
-    id: 0,
-    filename: 'xx',
-    type: 'csv',
-    size: '213 MB',
-    status: 'Uploading'
-  },
-  {
-    id: 1,
-    filename: 'xy',
-    type: 'csv',
-    size: '213 MB',
-    status: 'Uploading'
-  },
-  {
-    id: 2,
-    filename: 'xs',
-    type: 'csv',
-    size: '213 MB',
-    status: 'Uploading'
-  },
-  {
-    id: 3,
-    filename: 'xe',
-    type: 'tsv',
-    size: '2 GB',
-    status: 'Uploaded'
-  },
-  {
-    id: 4,
-    filename: 'xz',
-    type: 'txt',
-    size: '15 MB',
-    status: 'Uploaded'
-  }
-]
-
-const columns: GridColDef[] = [
-  { 
-    field: 'filename', 
-    headerName: 'File Name', 
-    width: 150 
-  },
-  { 
-    field: 'type', 
-    headerName: 'Type', 
-    width: 100 
-  },
-  { 
-    field: 'size', 
-    headerName: 'Size', 
-    width: 100 
-  },
-  { 
-    field: 'status', 
-    headerName: 'Status', 
-    width: 100 
-  },
-  { 
-    field: 'actions', 
-    headerName: 'Actions', 
-    type: 'actions',
-    getActions: (params: GridRowParams) => [
-      <GridActionsCellItem icon={<EditIcon/>} label="Edit" />,
-      <GridActionsCellItem icon={<DeleteIcon/>} label="Delete" />
-    ],
-    flex: 1,
-  },
-];
