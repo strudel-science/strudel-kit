@@ -36,14 +36,14 @@ export const NewScenario: React.FC = () => {
         actions={
           <Stack direction="row">
             <Box>
-              <Link component={RouterLink} to=".">
+              <Link component={RouterLink} to="..">
                 <Button variant="contained" color="warning">
                   Cancel
                 </Button>
               </Link>
             </Box>
             <Box>
-              <Link component={RouterLink} to=".">
+              <Link component={RouterLink} to="..">
                 <Button variant="contained">
                   Save Scenario
                 </Button>

@@ -44,7 +44,7 @@ export const ScenarioComparison: React.FC = () => {
               </Link>
             </Box>
             <Box>
-              <Link component={RouterLink} to="new">
+              <Link component={RouterLink} to="../new">
                 <Button variant="contained">
                   New {@ cookiecutter.compareItem @}
                 </Button>

@@ -39,7 +39,7 @@ export const ScenarioComparison: React.FC = () => {
         actions={
           <Stack direction="row">
             <Box>
-              <Link component={RouterLink} to=".">
+              <Link component={RouterLink} to="..">
                 <Button variant="contained" startIcon={<ArrowBackIcon />}>
                   {/* strudel-kit-variable-next-line */}
                   Back to Scenarios
@@ -47,7 +47,7 @@ export const ScenarioComparison: React.FC = () => {
               </Link>
             </Box>
             <Box>
-              <Link component={RouterLink} to="new">
+              <Link component={RouterLink} to="../new">
                 <Button variant="contained">
                   {/* strudel-kit-variable-next-line */}
                   New Scenario
