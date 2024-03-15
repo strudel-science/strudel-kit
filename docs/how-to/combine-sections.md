@@ -4,4 +4,258 @@ When using STRUDEL Kit it's common to want to take a section from one Task Flow 
 
 In this example, you will copy the charts and table from the Results page in the Run Computation Task Flow into the Comparison page of the Compare Data Task Flow.
 
-### 1. Locate the desired components
+### 0. Add both Task Flows to your app
+
+If you haven't already, add both the Run Computation and Compare Data Task Flows into your app:
+
+```
+strudel add-taskflow first-taskflow -t run-computation
+strudel add-taskflow second-taskflow -t compare-data
+```
+
+### 1. Locate the file with the desired components
+
+The table and charts live in `Results.tsx` inside the Task Flow folder that uses the Run Computation template. In this example that directory would be named `first-taskflow`.
+
+### 2. Copy the components
+
+Scan the components and elements in the final `return` statement for the component. There you will find a `<Grid>` component that contains two `<Plot>` components and one `<DataGrid>` component. Copy the whole `<Grid>` component from `<Grid>` to `</Grid>`. Make sure to always include the closing section of components when you copy them. This will look like `</Component>` for component that have inner children and `/>` for components that don't.
+
+```jsx
+<Grid container spacing={4}>
+  <Grid item sm={6}>
+    <Paper>
+      <Plot
+        data={state.results.lineChart.data}
+        layout={{}}
+      />
+    </Paper>
+  </Grid>
+  <Grid item sm={6}>
+    <Paper>
+      <Plot
+        data={state.results.barChart.data}
+        layout={{}}
+      />
+    </Paper>
+  </Grid>
+  <Grid item xs={12}>
+    <Paper>
+      <DataGrid
+        rows={state.results.table.data}
+        getRowId={(row) => row[state.results.table.dataIdField]}
+        columns={state.results.table.columns}
+        disableColumnSelector
+        disableRowSelectionOnClick
+      />
+    </Paper>
+  </Grid>
+</Grid> 
+```
+
+### 3. Locate the destination file
+
+The comparison page of the Compare Data Task Flow lives in `ScenarioComparison.tsx`. In this example its parent directory would be named `second-taskflow`. Open this file. This is where we want to paste our new components.
+
+### 4. Paste the components
+
+Let's say you want to put these new components underneath the comparison data table but you want them to fill the same width (i.e. you want them to be in the same container). You will find the `<DataGrid>` component towards the bottom of the file. Paste the new components directly underneath the `<Paper>` component that wraps around the `<DataGrid>` but keep them inside of the `<Container>` component:
+
+```jsx
+<Container
+  maxWidth="xl"
+  sx={{
+    marginTop: 3,
+    marginBottom: 3,
+  }}
+>
+  <Paper
+    sx={{
+      '& .MuiDataGrid-columnHeader, .MuiDataGrid-cell': {
+        borderRight: '1px solid',
+        borderRightColor: 'neutral.main'
+      },
+      '& .compare-data--metric': {
+        fontWeight: 'bold',
+      },
+      
+    }}
+  >
+    {state.comparing && (
+      <DataGrid
+        rows={state.comparisonData}
+        getRowId={(row) => row.metric}
+        columns={state.comparisonColumns}
+        disableRowSelectionOnClick
+        disableDensitySelector
+        disableColumnFilter
+      />
+    )}
+  </Paper>
+  <Grid container spacing={4}>
+    <Grid item sm={6}>
+      <Paper>
+        <Plot
+          data={state.results.lineChart.data}
+          layout={{}}
+        />
+      </Paper>
+    </Grid>
+    <Grid item sm={6}>
+      <Paper>
+        <Plot
+          data={state.results.barChart.data}
+          layout={{}}
+        />
+      </Paper>
+    </Grid>
+    <Grid item xs={12}>
+      <Paper>
+        <DataGrid
+          rows={state.results.table.data}
+          getRowId={(row) => row[state.results.table.dataIdField]}
+          columns={state.results.table.columns}
+          disableColumnSelector
+          disableRowSelectionOnClick
+        />
+      </Paper>
+    </Grid>
+  </Grid> 
+</Container>
+```
+
+Let's also make a small change to the top-most `<Grid>` component by adding some margin to the top:
+
+```jsx
+<Grid container spacing={4} marginTop={1}>
+```
+
+### 5. Update the imports
+
+Because we added new components to the `ScenarioComparison.tsx` file, we need to import the ones that aren't already imported:
+
+```js
+import { Box, Button, Container, Grid, Link, Paper, Stack } from '@mui/material';
+import Plot from 'react-plotly.js';
+```
+
+Almost there. Now we just need to add source data to the new table, line chart, and bar chart.
+
+### 6. Connect new data sources
+
+In a real app, the data for these components would likely come from an API or external file but in this example we are going to place the data directly in the component. See the How to Connect to an API article for more information about connecting data sources.
+
+Here is the line chart component with some example data plugged in:
+
+```js
+<Plot
+  data={[
+    {
+      "x": [1, 2, 3, 4],
+      "y": [10, 15, 13, 17],
+      "type": "scatter"
+    },
+    {
+      "x": [1, 2, 3, 4],
+      "y": [16, 5, 11, 9],
+      "type": "scatter"
+    },
+    {
+      "x": [1, 2, 3, 4],
+      "y": [21, 17, 4, 10],
+      "type": "scatter"
+    }
+  ]}
+  layout={{}}
+/>
+```
+
+And here is bar chart component with some example data plugged in:
+
+```js
+<Plot
+  data={[
+    {
+      "x": ["Tulip", "Orchid", "Sunflower"],
+      "y": [20, 14, 23],
+      "type": "bar"
+    },
+  ]}
+  layout={{}}
+/>
+```
+
+And finally, populate the `rows` prop and the `columns` prop of the `<DataGrid>` component with some example values like below:
+
+```js
+<DataGrid
+  rows={[
+    {
+      "sample_id": 0,
+      "type": "tulip",
+      "latitude": 37.8715,
+      "longitude": -122.2727,
+      "elevation (m)": 52,
+      "notes": "healthy growth"
+    },
+    {
+      "sample_id": 1,
+      "type": "tulip",
+      "latitude": 38.2341,
+      "longitude": -121.4875,
+      "elevation (m)": 52,
+      "notes": "healthy growth"
+    },
+    {
+      "sample_id": 2,
+      "type": "sunflower",
+      "latitude": 37.2338,
+      "longitude": -121.4899,
+      "elevation (m)": 52,
+      "notes": "unhealthy coloration"
+    },
+    {
+      "sample_id": 3,
+      "type": "orchid",
+      "latitude": 37.8758,
+      "longitude": -122.2732,
+      "elevation (m)": 52,
+      "notes": "healthy growth"
+    },
+    {
+      "sample_id": 4,
+      "type": "orchid",
+      "latitude": 37.8715,
+      "longitude": -122.2727,
+      "elevation (m)": 52,
+      "notes": "fungal infection"
+    }
+  ]}
+  getRowId={(row) => row['sample_id']}
+  columns={[
+    {
+      field: 'sample_id'
+    },
+    {
+      field: 'type'
+    },
+    {
+      field: 'latitude',
+      type: 'number'
+    },
+    {
+      field: 'longitude',
+      type: 'number'
+    },
+    {
+      field: 'elevation (m)',
+      type: 'number'
+    },
+    {
+      field: 'notes'
+    },
+  ]}
+  disableColumnSelector
+  disableRowSelectionOnClick
+/>
+```
