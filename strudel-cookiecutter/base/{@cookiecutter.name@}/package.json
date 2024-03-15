@@ -1,6 +1,6 @@
 {
   "name": "{@ cookiecutter.name @}",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "private": true,
   "homepage": "https://strudel.science/strudel-kit",
   "dependencies": {

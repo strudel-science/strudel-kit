@@ -86,7 +86,7 @@ function CompareDataReducer(state: CompareDataState, action: CompareDataAction):
 }
 
 export const CompareDataProvider: React.FC<CompareDataProviderProps> = (props) => {
-  const [state, dispatch] = React.useReducer(CompareDataReducer, initState(initialState, props));
+  const [state, dispatch] = useReducer(CompareDataReducer, initState(initialState, props));
   const value = { state, dispatch };
 
   useEffect(() => {
@@ -127,10 +127,6 @@ export const CompareDataProvider: React.FC<CompareDataProviderProps> = (props) =
         });
         return row;
       });
-      console.log(metrics);
-      console.log(scenarios);
-      console.log(comparisonData);
-      console.log(comparisonColumns);
       dispatch(setComparisonData(comparisonData, comparisonColumns));
     }
   }, [state.comparing]);
