@@ -6,85 +6,16 @@ import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
-const scenarios = [
-  {
-    id: 0,
-    name: 'Scenario 1',
-    analysisType: 'Sensitivity Analysis',
-    createdDate: '05/24/2023',
-    status: 'Running'
-  },
-  {
-    id: 1,
-    name: 'Scenario 2',
-    analysisType: 'Sensitivity Analysis',
-    createdDate: '05/24/2023',
-    status: 'Draft'
-  },
-  {
-    id: 2,
-    name: 'Scenario 3',
-    analysisType: 'Optimization',
-    createdDate: '05/24/2023',
-    status: 'Completed'
-  },
-  {
-    id: 3,
-    name: 'Scenario 4',
-    analysisType: 'Optimization',
-    createdDate: '05/23/2023',
-    status: 'Completed'
-  },
-  {
-    id: 4,
-    name: 'Scenario 5',
-    analysisType: 'Optimization',
-    createdDate: '05/23/2023',
-    status: 'Completed'
-  },
-];
-
-const columns: GridColDef[] = [
-  { 
-    field: 'name', 
-    headerName: 'Scenario Name', 
-    width: 200 
-  },
-  { 
-    field: 'analysisType', 
-    headerName: 'Analysis Type', 
-    width: 200 
-  },
-  { 
-    field: 'createdDate', 
-    headerName: 'Date Created', 
-    width: 200 
-  },
-  { 
-    field: 'status', 
-    headerName: 'Status', 
-    width: 200 
-  },
-  { 
-    field: 'actions', 
-    headerName: 'Actions', 
-    type: 'actions',
-    getActions: (params: GridRowParams) => [
-      <GridActionsCellItem icon={<ContentCopyIcon/>} label="Duplicate" />,
-      <GridActionsCellItem icon={<EditIcon/>} label="Edit" />,
-      <GridActionsCellItem icon={<DeleteIcon/>} label="Delete" />
-    ],
-    flex: 1,
-    // headerAlign: 'right',
-    // align: 'right'
-  },
-];
-
 interface Props {
   modalOpen: boolean;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
-  
+
+/**
+ * Modal to display over the `<ComputationsList>` to fill out a form for creating 
+ * a new computation run.
+ * Completing the form takes you to the `<DataInputs>` step.
+ */
 export const NewScenarioModal: React.FC<Props> = ({
   modalOpen,
   setModalOpen
@@ -94,6 +25,9 @@ export const NewScenarioModal: React.FC<Props> = ({
     setModalOpen(false);
   };
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Modal
       open={modalOpen}

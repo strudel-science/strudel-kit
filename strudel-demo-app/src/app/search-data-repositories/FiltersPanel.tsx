@@ -1,48 +1,29 @@
-import React from 'react';
-import { Filters } from '../../components/Filters';
-import { FilterField } from '../../components/FilterField';
-import { CheckboxList, CheckboxOption } from '../../components/CheckboxList';
-import { useSearchDataRepositories } from './context/ContextProvider';
-import { StrudelSlider } from '../../components/StrudelSlider';
-import { setFilter } from './context/actions';
-import { FilterConfig, FilterOperator } from '../../types/filters.types';
 import { Stack } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
+import React from 'react';
+import { CheckboxList } from '../../components/CheckboxList';
+import { FilterField } from '../../components/FilterField';
+import { Filters } from '../../components/Filters';
+import { StrudelSlider } from '../../components/StrudelSlider';
+import { FilterConfig, FilterOperator } from '../../types/filters.types';
+import { useSearchDataRepositories } from './context/ContextProvider';
+import { setFilter } from './context/actions';
 
 interface FiltersPanelProps {
   onClose: () => any
 }
 
+/**
+ * Main filters panel in the search-data-repositories Task Flow.
+ * Filters are generated based on the configurations in `definitions.filters.main`.
+ * The input values will filter data in the `<DataListPanel>`.
+ */
 export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => { 
   const {state, dispatch} = useSearchDataRepositories();
-  
-  const assmeblyOptions: CheckboxOption[] = [];
-  state.data?.forEach((d) => {
-    if (d['Assembly'] && assmeblyOptions.filter((o) => o.value === d['Assembly']).length === 0) {
-      assmeblyOptions.push({ label: d['Assembly'], value: d['Assembly'] });
-    }
-  });
 
-  const categoryOptions: CheckboxOption[] = [];
-  state.data?.forEach((d) => {
-    if (d['category'] && categoryOptions.filter((o) => o.value === d['category']).length === 0) {
-      categoryOptions.push({ label: d['category'], value: d['category'] });
-    }
-  });
-  categoryOptions.sort((a, b) => a.label < b.label ? -1 : 1);
-
-  const tagOptions: CheckboxOption[] = [];
-  state.data?.forEach((d) => {
-    if (d['tags']) {
-      d['tags'].forEach((t: string) => {
-        if (tagOptions.filter((o) => o.value === t).length === 0) {
-          tagOptions.push({ label: t, value: t });
-        }
-      });
-    }
-  });
-  tagOptions.sort((a, b) => a.label < b.label ? -1 : 1);
-
+  /**
+   * Render filter component based on the `filterType` from the filter definition.
+   */
   const getFilterComponent = (filter: FilterConfig) => {
     switch (filter.filterType) {
       case 'CheckboxList': {
@@ -99,6 +80,9 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
     }
   }
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Filters
       onClose={props.onClose}

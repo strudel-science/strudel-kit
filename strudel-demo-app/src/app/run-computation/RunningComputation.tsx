@@ -3,6 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useInterval } from '../../utils/useInterval';
 
+/**
+ * Page to show while a computation is running and after it completes.
+ * Continuing after completion, this page takes users to the `<Results>` page.
+ */
 export const RunningComputation: React.FC = () => {
   const [running, setRunning] = useState(true);
   const [progress, setProgress] = useState(0);
@@ -18,6 +22,9 @@ export const RunningComputation: React.FC = () => {
     }
   }, 500);
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Stack spacing={0} flex={1}>
       <Box

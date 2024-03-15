@@ -1,28 +1,36 @@
-import { AppBar, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import * as d3 from 'd3-fetch';
-import { basename } from '../App';
-import { DataGrid } from '../../components/DataGrid';
-import { GridActionsCellItem, GridColDef, GridComparatorFn, GridRowParams } from '@mui/x-data-grid';
+import { Container, Paper, Stack, Typography } from '@mui/material';
+import { GridColDef, GridComparatorFn } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
-  
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { DataGrid } from '@mui/x-data-grid';
+import { getDataFromSource } from '../../utils/api.utils';
+import { basename } from '../App';
+
+/**
+ * List view of all activities in the monitor-activites Task Flow.
+ */
 export const ActivityList: React.FC = () => {
   const [experiments, setExperiments] = useState<any[]>([]);
   const navigate = useNavigate();
 
+  /**
+   * Fetch data for the main table when the page loads
+   */
   useEffect(() => {
     if (experiments.length === 0) {
       const getData = async () => {
-        const data: any = await d3.json(`${basename}/data/experiments.json`);
+        const dataSource = 'default/monitor-activities/experiments.json';
+        const data = await getDataFromSource(dataSource, basename);
         setExperiments(data);
       }
       getData();
     }
   }, []);
   
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Container
       maxWidth="xl"

@@ -1,12 +1,14 @@
-import { AppBar, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Box, Button, Container, Link, Paper, Stack } from '@mui/material';
+import React, { useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { DataGrid } from '../../components/DataGrid';
 import { PageHeader } from '../../components/PageHeader';
 import { useCompareData } from './context/ContextProvider';
-import { setComparing, setSelectedRows } from './context/actions';
-  
+import { setComparing } from './context/actions';
+
+/**
+ * Page for filling out a form for adding a new item to 
+ * the main list in the compare-data Task Flow.
+ */
 export const NewScenario: React.FC = () => {
   const { state, dispatch } = useCompareData();
 
@@ -21,6 +23,9 @@ export const NewScenario: React.FC = () => {
     }
   }, []);
   
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Box>
       <PageHeader

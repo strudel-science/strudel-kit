@@ -2,17 +2,21 @@ import { Box, Button, Container, Grid, Link, Paper, Stack, Step, StepLabel, Step
 import React, { useEffect } from 'react';
 import Plot from 'react-plotly.js';
 import { Link as RouterLink } from 'react-router-dom';
-import { DataGrid } from '../../components/DataGrid';
+import { DataGrid } from '@mui/x-data-grid';
 import { getDataFromSource } from '../../utils/api.utils';
 import { basename } from '../App';
 import { useRunComputation } from './context/ContextProvider';
 import { setResultsBarChartData, setResultsLineChartData, setResultsTableData } from './context/actions';
 
+/**
+ * Results page to display after a computation completes in the run-computation Task Flow.
+ * Displays a line chart, bar chart, and table of results from the computation.
+ */
 export const Results: React.FC = () => {
   const { state, dispatch } = useRunComputation();
   
   /**
-   * Fetch data for the inputs table when the page loads
+   * Fetch data for the inputs table, line chart, and bar chart when the page loads
    */
   useEffect(() => {
     if (state.results.table.data.length === 0) {
@@ -41,6 +45,9 @@ export const Results: React.FC = () => {
     }
   }, []);
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Stack spacing={0} flex={1}>
       <Box

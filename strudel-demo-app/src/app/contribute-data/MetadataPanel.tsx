@@ -1,8 +1,12 @@
-import { Select, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button, ListItem, List, FormControl, InputLabel, MenuItem, FormHelperText, SelectChangeEvent } from '@mui/material';
+import { Box, FormControl, FormHelperText, InputLabel, List, ListItem, MenuItem, Paper, Select, SelectChangeEvent, Stack, TextField, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
-import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
-  
+import React, { useState } from 'react';
+
+/**
+ * Panel for entering metadata about the new dataset in the contribute-data Task Flow.
+ * Data from this panel would then display in the <DatasetView> in the next step (not currently hooked together).
+ */
 export const MetadataPanel: React.FC = () => {
   const [category, setCategory] = useState<string>();
   const [startDate, setStartDate] = useState<dayjs.Dayjs | null>(null);
@@ -12,6 +16,9 @@ export const MetadataPanel: React.FC = () => {
     setCategory(event.target.value);
   };
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Paper>
       <Box

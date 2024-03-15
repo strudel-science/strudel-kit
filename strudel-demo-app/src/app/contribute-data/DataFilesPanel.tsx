@@ -1,10 +1,14 @@
-import { AppBar, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { DataGrid } from '../../components/DataGrid';
+import EditIcon from '@mui/icons-material/Edit';
+import { Button, Paper, Stack, Typography } from '@mui/material';
 import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
-  
+import React from 'react';
+import { DataGrid } from '@mui/x-data-grid';
+
+/**
+ * Panel to display on the `<NewDataset>` page of the contribute-data Task Flow.
+ * Shows a table with files that have been uploaded as part of the dataset.
+ */
 export const DataFilesPanel: React.FC = () => {  
   return (
     <Paper
@@ -47,6 +51,9 @@ export const DataFilesPanel: React.FC = () => {
   );
 }
 
+/**
+ * Define files table data in-file for prototyping
+ */
 export const files = [
   {
     id: 0,
@@ -85,6 +92,9 @@ export const files = [
   }
 ]
 
+/**
+ * Define column definitions in-file for prototyping
+ */
 const columns: GridColDef[] = [
   { 
     field: 'filename', 

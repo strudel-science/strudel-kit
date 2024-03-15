@@ -3,7 +3,7 @@ import { Box, Button, IconButton, Link, Paper, Stack, Typography } from '@mui/ma
 import CloseIcon from '@mui/icons-material/Close';
 import { Link as RouterLink } from 'react-router-dom';
 import { LabelValueTable } from '../../components/LabelValueTable';
-import { DataGrid } from '../../components/DataGrid';
+import { DataGrid } from '@mui/x-data-grid';
 import { useSearchDataRepositories } from './context/ContextProvider';
 import { GridColDef } from '@mui/x-data-grid';
 
@@ -11,9 +11,16 @@ interface PreviewPanelProps {
   onClose: () => any
 }
 
+/**
+ * Panel to show extra information about a card in a separate panel
+ * next to the `<DataListPanel>`.
+ */
 export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
   const {state, dispatch} = useSearchDataRepositories();
   
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Paper
       elevation={0}

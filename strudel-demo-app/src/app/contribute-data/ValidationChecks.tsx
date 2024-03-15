@@ -1,14 +1,18 @@
-import { AppBar, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button, LinearProgress, linearProgressClasses } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { Link as RouterLink } from 'react-router-dom';
-import { useContributeData } from './context/ContextProvider';
+import { Box, LinearProgress, Paper, Stack, Typography } from '@mui/material';
+import React from 'react';
 import { LinearMeter } from '../../components/LinearMeter';
+import { useContributeData } from './context/ContextProvider';
   
+/**
+ * Panel to display information and status of validation checks in the contribute-data Task Flow.
+ * This component is rendered as part of the `<ReviewDataset>` page.
+ */
 export const ValidationChecks: React.FC = () => {  
   const { state, dispatch } = useContributeData();
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Paper
       sx={{

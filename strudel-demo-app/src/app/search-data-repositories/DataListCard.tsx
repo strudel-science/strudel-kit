@@ -9,6 +9,11 @@ interface DataListCardProps {
   item: any;
 }
 
+/**
+ * Card to show in the main list of the `<DatasetExplorer>`.
+ * The fields that are displayed in the cards are originally  
+ * configured in `defintions.cards.main`.
+ */
 export const DataListCard: React.FC<DataListCardProps> = ({ item }) => { 
   const {state, dispatch} = useSearchDataRepositories();
 
@@ -16,6 +21,9 @@ export const DataListCard: React.FC<DataListCardProps> = ({ item }) => {
     dispatch(setPreviewItem(item))
   };
   
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Stack 
       className={state.previewItem?.id === item.id ? 'selected' : ''}

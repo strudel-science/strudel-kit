@@ -2,7 +2,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { Button, Paper, Stack, TextField, Typography } from '@mui/material';
 import { GridEventListener } from '@mui/x-data-grid';
 import React from 'react';
-import { DataGrid } from '../../components/DataGrid';
+import { DataGrid } from '@mui/x-data-grid';
 import { useExploreData } from './context/ContextProvider';
 import { setPreviewItem, setSearch } from './context/actions';
 
@@ -10,11 +10,15 @@ interface DataTablePanelProps {
   onToggleFiltersPanel: () => any
 }
 
+/**
+ * Main data table and its header section in the explore-data Task Flow.
+ * Columns are configured based on definitions.columns.main.
+ * Data in this table is filtered by the inputs in the filters panel.
+ */
 export const DataTablePanel: React.FC<DataTablePanelProps> = (props) => { 
   const {state, dispatch} = useExploreData();
 
   const handleRowClick: GridEventListener<'rowClick'> = (rowData) => {
-    console.log(rowData);
     dispatch(setPreviewItem(rowData.row));
   };
 
@@ -22,6 +26,9 @@ export const DataTablePanel: React.FC<DataTablePanelProps> = (props) => {
     dispatch(setSearch(evt.target.value));
   };
   
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Paper>
       <Stack

@@ -1,15 +1,19 @@
-import { AppBar, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import AddIcon from '@mui/icons-material/Add';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Box, Button, Container, Grid, IconButton, Link, Paper, Stack, TextField, Typography } from '@mui/material';
+import { DataGrid, GridColDef, GridComparatorFn } from '@mui/x-data-grid';
+import dayjs from 'dayjs';
 import React, { useEffect, useState } from 'react';
+import Plot from 'react-plotly.js';
 import { Link as RouterLink } from 'react-router-dom';
 import { LabelValueTable } from '../../components/LabelValueTable';
-import { DataGrid, GridColDef, GridComparatorFn } from '@mui/x-data-grid';
-import * as d3 from 'd3-fetch';
+import { getDataFromSource } from '../../utils/api.utils';
 import { basename } from '../App';
-import dayjs from 'dayjs';
-import Plot from 'react-plotly.js';
-  
+
+/**
+ * Detail view of the selected activity from `<ActivityList>` in monitor-activities Task Flow.
+ * The two components are not currently hooked together.
+ */
 export const ActivityDetail: React.FC = () => {
   const [experiment, setExperiment] = useState<any>();
 
@@ -21,16 +25,23 @@ export const ActivityDetail: React.FC = () => {
     });
   }
 
+  /**
+   * Fetch data for the main table when the page loads
+   */
   useEffect(() => {
     if (!experiment) {
       const getData = async () => {
-        const data: any = await d3.json(`${basename}/data/experiment_detail.json`);
+        const dataSource = 'default/monitor-activities/experiment_detail.json';
+        const data = await getDataFromSource(dataSource, basename);
         setExperiment(data);
       }
       getData();
     }
   }, []);
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Container
       maxWidth="xl"

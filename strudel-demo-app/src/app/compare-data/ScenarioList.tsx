@@ -1,17 +1,23 @@
-import { AppBar, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { Link as RouterLink } from 'react-router-dom';
-import { DataGrid } from '../../components/DataGrid';
+import { Box, Button, Container, Link, Paper, Stack } from '@mui/material';
 import { GridToolbar } from '@mui/x-data-grid';
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import { DataGrid } from '@mui/x-data-grid';
 import { PageHeader } from '../../components/PageHeader';
 import { useCompareData } from './context/ContextProvider';
 import { setSelectedRows } from './context/actions';
   
+/**
+ * List page to show comparable items in the compare-data Task Flow.
+ * Items in this table are selectable and can be sent to the `<ScenarioComparison>` 
+ * page to be rendered in the comparison table. 
+ */
 export const ScenarioList: React.FC = () => {
   const { state, dispatch } = useCompareData();
   
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Box>
       <PageHeader

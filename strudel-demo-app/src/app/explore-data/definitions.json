@@ -9,7 +9,7 @@
       {
         "field":"Common Name",
         "headerName":"Common Name",
-        "width":150
+        "width":200
       },
       {
         "field":"Assembly",
@@ -19,19 +19,19 @@
       {
         "field":"Data Usage Policy",
         "headerName":"Data Usage Policy",
-        "width":150
+        "width":220
       },
       {
         "field":"Euk. BUSCO %",
         "headerName":"Euk. BUSCO %",
         "type":"number",
-        "width":110
+        "width":200
       },
       {
         "field":"Emb. BUSCO %",
         "headerName":"Emb. BUSCO %",
         "type":"number",
-        "width":110
+        "width":200
       }
     ]
   },

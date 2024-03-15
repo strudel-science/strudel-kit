@@ -3,6 +3,11 @@ import { AppBar, Box, Breadcrumbs, Link, Stack, Toolbar, Typography } from '@mui
 import React from 'react';
 import { Outlet, Link as RouterLink } from 'react-router-dom';
   
+/**
+ * Wrapper component for the steps involved in a computational run.
+ * This goes from `<DataInputs>` to `<Settings>` to `<RunningComputation>` to `<Results>`.
+ * These inner steps are rendered by the `<Outlet>` component.
+ */
 export const Scenario: React.FC = () => {
   return (
     <Stack spacing={0} height="100vh">

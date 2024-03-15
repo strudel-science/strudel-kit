@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material";
+import type {} from '@mui/x-data-grid/themeAugmentation';
 
 /**
  * MUI Theme object for setting app-wide and component-wide styles.
@@ -57,6 +58,11 @@ export const theme = createTheme({
     common: {
       black: '#000',
       white: '#fff',
+    },
+    grey: {
+      50: '#ddd',
+      500: '#999',
+      900: '#444'
     }
   },
   /** Control the default border radius */
@@ -124,5 +130,24 @@ export const theme = createTheme({
         spacing: 2
       },
     },
+    MuiDataGrid: {
+      styleOverrides: {
+        root: {
+          border: 0,
+          '& .MuiDataGrid-cell:focus-within': {
+            outline: 'none'
+          },
+          '& .MuiDataGrid-overlayWrapper': {
+            minHeight: '4rem'
+          },
+          '& .MuiDataGrid-columnHeaderTitle': {
+            color: 'grey.900',
+            fontSize: '0.85rem',
+            fontWeight: 'bold',
+            textTransform: 'uppercase',
+          },
+        }
+      }
+    }
   },
 });

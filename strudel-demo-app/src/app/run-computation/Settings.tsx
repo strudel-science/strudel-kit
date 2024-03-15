@@ -2,6 +2,11 @@ import { Box, Button, Container, FormControl, Grid, Link, MenuItem, Paper, Selec
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
+/**
+ * Page to configure settings for a computational run.
+ * Completing and submitting the form takes users to the 
+ * `<RunningComputation>` component.
+ */
 export const Settings: React.FC = () => {
   const [showAdvanced, setShowAdvanced] = useState(false);
 
@@ -9,6 +14,9 @@ export const Settings: React.FC = () => {
     setShowAdvanced(!showAdvanced);
   };
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Stack spacing={0} flex={1}>
       <Box

@@ -3,7 +3,7 @@ import { Box, Button, IconButton, Link, Paper, Stack, Typography } from '@mui/ma
 import CloseIcon from '@mui/icons-material/Close';
 import { Link as RouterLink } from 'react-router-dom';
 import { LabelValueTable } from '../../components/LabelValueTable';
-import { DataGrid } from '../../components/DataGrid';
+import { DataGrid } from '@mui/x-data-grid';
 import { useExploreData } from './context/ContextProvider';
 
 interface PreviewPanelProps {
@@ -12,11 +12,14 @@ interface PreviewPanelProps {
 
 /**
  * Panel to show extra information about a row in a separate panel
- * next to the data table.
+ * next to the `<DataTablePanel>`.
  */
 export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
   const {state, dispatch} = useExploreData();
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Paper
       elevation={0}

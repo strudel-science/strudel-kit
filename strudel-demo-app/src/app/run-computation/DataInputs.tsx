@@ -1,13 +1,17 @@
 import { Box, Button, Container, Link, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
-import { GridColDef } from '@mui/x-data-grid';
 import React, { useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { DataGrid } from '../../components/DataGrid';
-import { useRunComputation } from './context/ContextProvider';
+import { DataGrid } from '@mui/x-data-grid';
 import { getDataFromSource } from '../../utils/api.utils';
 import { basename } from '../App';
+import { useRunComputation } from './context/ContextProvider';
 import { setInputsTableData } from './context/actions';
 
+/**
+ * Page to display input data after creating or selecting an item from 
+ * the `<ComputationsList>` page in the run-computation Task Flow.
+ * Table columns are configured in `definitions.inputs.table.columns`
+ */
 export const DataInputs: React.FC = () => {
   const { state, dispatch } = useRunComputation();
   
@@ -25,6 +29,9 @@ export const DataInputs: React.FC = () => {
     }
   }, []);
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Stack spacing={0} flex={1}>
       <Box

@@ -1,12 +1,14 @@
-import { AppBar, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { LabelValueTable } from '../../components/LabelValueTable';
+import { Container, Link, Typography } from '@mui/material';
 import { DateCalendar, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-  
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+
+/**
+ * Work in Progress:
+ * 
+ * Page to see all activities by day in a calendar view in the monitor-activities Task Flow.
+ */
 export const ActivityCalendar: React.FC = () => {
   return (
     <Container

@@ -10,7 +10,11 @@ import { getDataFromSource } from '../../utils/api.utils';
 import { basename } from '../App';
 import { RunComputationProvider } from './context/ContextProvider';
 import definitions from './definitions.json';
-  
+
+/**
+ * Top-level wrapper for the run-computation Task Flow templates.
+ * Inner pages are rendered inside the `<Outlet />` component
+ */
 export const RunComputationWrapper: React.FC = () => {
   const [listItems, setListItems] = useState<any[]>([]);
 
@@ -28,6 +32,9 @@ export const RunComputationWrapper: React.FC = () => {
     }
   }, []);
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Box>
       <Box sx={{ flexGrow: 1 }}>

@@ -1,23 +1,24 @@
-import { AppBar, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button, Alert, Collapse } from '@mui/material';
-import React, { useEffect, useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
+import { Alert, Box, Button, Collapse, Container, Grid, IconButton, Link, Stack, Typography } from '@mui/material';
+import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import * as d3 from 'd3-fetch';
-import { basename } from '../App';
-import { DataGrid } from '../../components/DataGrid';
-import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
-import { DataFilesPanel } from './DataFilesPanel';
-import { MetadataPanel } from './MetadataPanel';
 import { DatasetView } from './DatasetView';
 import { ValidationChecks } from './ValidationChecks';
 import { useContributeData } from './context/ContextProvider';
 import { finishChecks, runChecks } from './context/actions';
-  
+
+/**
+ * Page to review a new dataset before submitting it in the contribute-data Task Flow.
+ * Users can see read-only data in the `<DatasetView>`, go back to editing, or run checks 
+ * against their uploaded dataset and see validation in the `<ValidationChecks>` component.
+ */
 export const ReviewDataset: React.FC = () => {
   const [alertOpen, setAlertOpen] = useState(true);
-    // TODO: use context for dataset state
   const { state, dispatch } = useContributeData();
 
+  /**
+   * Simulate the checks being run using an external service
+   */
   const startRunChecks = () => {
     dispatch(runChecks());
     setTimeout(() => {
@@ -25,6 +26,9 @@ export const ReviewDataset: React.FC = () => {
     }, 5000)
   }
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Box>
       <Collapse in={alertOpen}>
