@@ -20,25 +20,25 @@
   "data": {
     "list": {
       "table": {
-        "dataSource": "default/run-compuation/list.json",
+        "dataSource": "default/run-computation/list.json",
         "dataIdField": "id"
       }
     },
     "inputs": {
       "table": {
-        "dataSource": "default/run-compuation/inputs.json",
+        "dataSource": "default/run-computation/inputs.json",
         "dataIdField": ""
       }
     },
     "results": {
       "lineChart": {
-        "dataSource": "default/run-compuation/results-line-chart.json"
+        "dataSource": "default/run-computation/results_line_chart.json"
       },
       "barChart": {
-        "dataSource": "default/run-compuation/results-bar-chart.json"
+        "dataSource": "default/run-computation/results_bar_chart.json"
       },
       "table": {
-        "dataSource": "default/run-compuation/results-table.json",
+        "dataSource": "default/run-computation/results_table.json",
         "dataIdField": "id"
       }
     }

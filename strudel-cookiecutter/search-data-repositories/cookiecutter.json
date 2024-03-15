@@ -9,7 +9,7 @@
   "data": {
     "main": {
       "cards": {
-        "dataSource": "default/explore-data/genomes.tsv",
+        "dataSource": "default/search-data-repositories/datasets.json",
         "dataIdField": "id"
       }
     }

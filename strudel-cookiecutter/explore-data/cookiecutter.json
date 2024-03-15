@@ -10,7 +10,7 @@
     "main": {
       "table": {
         "dataSource": "default/explore-data/genomes.tsv",
-        "dataIdField": "id"
+        "dataIdField": "Proteome_ID"
       }
     }
   },

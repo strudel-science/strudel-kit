@@ -1,16 +1,16 @@
 import { Box } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Outlet } from 'react-router-dom';
-import * as d3 from 'd3-fetch';
-import { basename } from '../App';
 import { TopBar } from '../../components/TopBar';
-  
-export const MonitorActivitiesWrapper: React.FC = () => {
-  const [datasets, setDatasets] = useState<any[]>([]);
 
+/**
+ * Top-level wrapper for the monitor-activities Task Flow templates.
+ * Inner pages are rendered inside the `<Outlet />` component
+ */
+export const MonitorActivitiesWrapper: React.FC = () => {
   return (
     <Box>
-      <Box sx={{ "{{" }} flexGrow: 1 {{ "}}" }}>
+      <Box sx={{ flexGrow: 1 }}>
         <TopBar />
       </Box>
       <Box>
