@@ -42,7 +42,7 @@ export const ComputationsList: React.FC = () => {
                 variant="h6" 
                 component="h1" 
               >
-                {@ cookiecutter.page.list.pageTitle @}
+                {@ cookiecutter.pages.list.pageTitle @}
               </Typography>
               <Typography 
                 variant="subtitle1" 
