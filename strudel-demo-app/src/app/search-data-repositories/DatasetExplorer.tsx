@@ -1,17 +1,18 @@
-import { AppBar, Box, Link, Grid, IconButton, Paper, Stack, TextField, Toolbar, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Box, Grid } from '@mui/material';
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
-import { setPreviewItem } from '../../components/contexts/analytics/actions';
+import { PageHeader } from '../../components/PageHeader';
+import { DataListPanel } from './DataListPanel';
 import { FiltersPanel } from './FiltersPanel';
 import { PreviewPanel } from './PreviewPanel';
-import { DataListPanel } from './DataListPanel';
-import { PageHeader } from '../../components/PageHeader';
-  
+import { useSearchDataRepositories } from './context/ContextProvider';
+import { setPreviewItem } from './context/actions';
+
+/**
+ * The main explore page for the search-data-repositories Task Flow.
+ * Displays a page header, `<FiltersPanel>`, `<DataListPanel>`, and `<PreviewPanel>`.
+ */
 export const DatasetExplorer: React.FC = () => {
-  const {state, dispatch} = useAnalytics();
+  const {state, dispatch} = useSearchDataRepositories();
   const [showFiltersPanel, setShowFiltersPanel] = useState(true);
 
   const handleCloseFilters = () => {
@@ -26,10 +27,15 @@ export const DatasetExplorer: React.FC = () => {
     dispatch(setPreviewItem(null));
   }
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Box>
       <PageHeader
+        // strudel-kit-variable-next-line
         pageTitle="Dataset Releases"
+        // strudel-kit-variable-next-line
         description="Datasets"
         sx={{
           marginBottom: 1,

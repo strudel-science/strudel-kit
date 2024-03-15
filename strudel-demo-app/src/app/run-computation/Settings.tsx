@@ -1,16 +1,12 @@
-import { AppBar, Box, Button, Container, FormControl, Grid, IconButton, InputLabel, Link, MenuItem, Paper, Select, Stack, Step, StepLabel, Stepper, TextField, Toolbar, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { Box, Button, Container, FormControl, Grid, Link, MenuItem, Paper, Select, Stack, Step, StepLabel, Stepper, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { useAnalytics } from '../../components/contexts/analytics/AnalyticsProvider';
-import { setPreviewItem } from '../../components/contexts/analytics/actions';
-import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
-import { DataGrid } from '../../components/DataGrid';
 
+/**
+ * Page to configure settings for a computational run.
+ * Completing and submitting the form takes users to the 
+ * `<RunningComputation>` component.
+ */
 export const Settings: React.FC = () => {
   const [showAdvanced, setShowAdvanced] = useState(false);
 
@@ -18,6 +14,9 @@ export const Settings: React.FC = () => {
     setShowAdvanced(!showAdvanced);
   };
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Stack spacing={0} flex={1}>
       <Box
@@ -32,6 +31,7 @@ export const Settings: React.FC = () => {
           <Step key="Data Inputs">
             <StepLabel>
               <Link component={RouterLink} to="/run-computation/scenario/data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                {/* strudel-kit-variable-next-line */}
                 Data Inputs
               </Link>
             </StepLabel>
@@ -39,6 +39,7 @@ export const Settings: React.FC = () => {
           <Step key="Optimization Settings">
             <StepLabel>
               <Link component={RouterLink} to="/run-computation/scenario/settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                {/* strudel-kit-variable-next-line */}
                 Optimization Settings
               </Link>
             </StepLabel>
@@ -46,6 +47,7 @@ export const Settings: React.FC = () => {
           <Step key="Results">
             <StepLabel>
               <Link component={RouterLink} to="/run-computation/scenario/results" sx={{ color: 'inherit', textDecoration: 'none' }}>
+                {/* strudel-kit-variable-next-line */}
                 Results
               </Link>
             </StepLabel>
@@ -61,6 +63,7 @@ export const Settings: React.FC = () => {
         <Paper sx={{ padding: 3 }}>
           <Stack>
             <Typography variant="h6" component="h2">
+              {/* strudel-kit-variable-next-line */}
               Optimization Settings
             </Typography>
             <Grid container rowSpacing={2} alignItems="center">

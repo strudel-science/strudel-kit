@@ -1,10 +1,12 @@
-import { AppBar, Link, IconButton, Toolbar, Typography, Container, Paper, Stack, Box, Grid, TextField, Button } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Box, Button, Container, Link, Paper, Stack, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { LabelValueTable } from '../../components/LabelValueTable';
-  
+
+/**
+ * Initial page for registering as a contributor in the contribute-data Task Flow.
+ * After submitting, users are directed to the `<ContributorPortal>`.
+ */
 export const Register: React.FC = () => {
   return (
     <Container
@@ -23,6 +25,7 @@ export const Register: React.FC = () => {
               variant="h6" 
               component="h1" 
             >
+              {/* strudel-kit-variable-next-line */}
               Register as a data contributor
             </Typography>
             <Box>

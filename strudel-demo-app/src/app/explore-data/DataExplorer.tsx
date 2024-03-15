@@ -1,27 +1,17 @@
-import { AppBar, Box, Link, Grid, IconButton, Paper, Stack, TextField, Toolbar, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Box, Grid } from '@mui/material';
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { setPreviewItem } from '../../components/contexts/analytics/actions';
 import { FiltersPanel } from './FiltersPanel';
 import { PreviewPanel } from './PreviewPanel';
 import { DataTablePanel } from './DataTablePanel';
 import { PageHeader } from '../../components/PageHeader';
 import { useExploreData } from './context/ContextProvider';
+import { setPreviewItem } from './context/actions';
 
-const getMainColumnSize = (showFiltersPanel: boolean, showPreviewPanel: boolean) => {
-  if (!showFiltersPanel && !showPreviewPanel) {
-    return 12;
-  } else if (showFiltersPanel && !showPreviewPanel) {
-    return 10;
-  } else if (!showFiltersPanel && showPreviewPanel) {
-    return 8;
-  } else if (showFiltersPanel && showPreviewPanel) {
-    return 6;
-  }
-}
-  
+/**
+ * Main explorer page in the explore-data Task Flow.
+ * This page includes the page header, filters panel, 
+ * main table, and the table row preview panel.
+ */
 export const DataExplorer: React.FC = () => {
   const {state, dispatch} = useExploreData();
   const [showFiltersPanel, setShowFiltersPanel] = useState(true);
@@ -38,10 +28,15 @@ export const DataExplorer: React.FC = () => {
     dispatch(setPreviewItem(null));
   }
 
+  /**
+   * Content to render on the page for this component
+   */
   return (
     <Box>
       <PageHeader
+        // strudel-kit-variable-next-line
         pageTitle="Genome Releases"
+        // strudel-kit-variable-next-line
         description="All gene sets have been annotated with KOG, KEGG, ENZYME, Pathway and the InterPro family of protein analysis tools."
         sx={{
           marginBottom: 1,
@@ -65,4 +60,16 @@ export const DataExplorer: React.FC = () => {
       </Grid>
     </Box>
   )
+}
+
+const getMainColumnSize = (showFiltersPanel: boolean, showPreviewPanel: boolean) => {
+  if (!showFiltersPanel && !showPreviewPanel) {
+    return 12;
+  } else if (showFiltersPanel && !showPreviewPanel) {
+    return 10;
+  } else if (!showFiltersPanel && showPreviewPanel) {
+    return 8;
+  } else if (showFiltersPanel && showPreviewPanel) {
+    return 6;
+  }
 }

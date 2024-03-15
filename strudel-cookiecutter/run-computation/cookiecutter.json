@@ -1,5 +1,144 @@
 {
   "name": "my-taskflow",
-  "pageTitle": "Run Computation App",
-  "pageDescription": "Description of this app section"
+  "computeItem": "scenario",
+  "computeItemPlural": "scenarios",
+  "pages": {
+    "list": {
+      "pageTitle": "Scenario List",
+      "pageDescription": "Scenarios represent a set of analysis inputs / parameters / settings and the results of that analysis."
+    },
+    "inputs": {
+      "pageTitle": "Data Inputs"
+    },
+    "settings": {
+      "pageTitle": "Optimization Settings"
+    },
+    "results": {
+      "pageTitle": "Results"
+    }
+  },
+  "data": {
+    "list": {
+      "table": {
+        "dataSource": "default/run-computation/list.json",
+        "dataIdField": "id"
+      }
+    },
+    "inputs": {
+      "table": {
+        "dataSource": "default/run-computation/inputs.json",
+        "dataIdField": ""
+      }
+    },
+    "results": {
+      "lineChart": {
+        "dataSource": "default/run-computation/results_line_chart.json"
+      },
+      "barChart": {
+        "dataSource": "default/run-computation/results_bar_chart.json"
+      },
+      "table": {
+        "dataSource": "default/run-computation/results_table.json",
+        "dataIdField": "id"
+      }
+    }
+  },
+  "definitions": {
+    "list": {
+      "table": {
+        "columns": [
+          { 
+            "field": "name", 
+            "headerName": "Scenario Name", 
+            "width": 200 
+          },
+          { 
+            "field": "analysisType", 
+            "headerName": "Analysis Type", 
+            "width": 200 
+          },
+          { 
+            "field": "createdDate", 
+            "headerName": "Date Created", 
+            "width": 200 
+          },
+          { 
+            "field": "status", 
+            "headerName": "Status", 
+            "width": 200 
+          }
+        ]
+      }
+    },
+    "inputs": {
+      "table": {
+        "columns": [
+          { 
+            "field": "name", 
+            "headerName": "Unit Name", 
+            "width": 200 
+          },
+          { 
+            "field": "unitType", 
+            "headerName": "Unit Type", 
+            "width": 200 
+          },
+          { 
+            "field": "constraints", 
+            "headerName": "Constraints", 
+            "width": 200
+          },
+          { 
+            "field": "lowerBound", 
+            "headerName": "Lower Bound", 
+            "width": 200,
+            "type": "number"
+          },
+          { 
+            "field": "upperBound", 
+            "headerName": "Upper Bound", 
+            "width": 200,
+            "type": "number"
+          }
+        ]
+      }
+    },
+    "results": {
+      "table": {
+        "columns": [
+          { 
+            "field": "name", 
+            "headerName": "Unit Name", 
+            "width": 200 
+          },
+          { 
+            "field": "unitType", 
+            "headerName": "Unit Type", 
+            "width": 200 
+          },
+          { 
+            "field": "constraints", 
+            "headerName": "Constraints", 
+            "width": 200
+          },
+          { 
+            "field": "lowerBound", 
+            "headerName": "Lower Bound", 
+            "width": 200,
+            "type": "number"
+          },
+          { 
+            "field": "upperBound", 
+            "headerName": "Upper Bound", 
+            "width": 200,
+            "type": "number"
+          }
+        ]
+      }
+    }
+  },
+  "_jinja2_env_vars": {
+    "variable_start_string": "{@", 
+    "variable_end_string": "@}"
+  }
 }

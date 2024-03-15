@@ -1,4 +1,8 @@
 {
   "name": "my-strudel-app",
-  "appTitle": "My Science App"
+  "appTitle": "My Science App",
+  "_jinja2_env_vars": {
+    "variable_start_string": "{@", 
+    "variable_end_string": "@}"
+  }
 }
