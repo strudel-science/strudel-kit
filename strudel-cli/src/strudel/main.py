@@ -104,7 +104,6 @@ def create_app(
     try:
         print("[white]Creating your app...")
         _clear_cache("create your app")
-        jinja_settings = '{"variable_start_string": "{@", "variable_end_string": "@}"}'
         args = [
             "cookiecutter",
             "gh:strudel-science/strudel-kit",
