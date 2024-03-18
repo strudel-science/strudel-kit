@@ -6,13 +6,22 @@ Welcome to the STRUDEL Kit Docs!
 
 ### Getting Started Tutorial
 
-A detailed guide on how to build and customize a Task Flow using the strudel-cli and the STRUDEL Kit React templates.
+A detailed step-by-step guide on how to build and customize a Task Flow using the strudel-cli and the STRUDEL Kit React templates.
 
-### How-To Pages
+- Setup
+- Create a base app
+- Add a Task Flow
+- Customize your task flow
+- Customize app theme and styles
+- Continue learning
 
-- How to Combine Sections from Different Task Flows
-- How to Connect Task Flows Together
-- How to Connect an API
+### How-Tos
+
+One page instructions on different advanced STRUDEL Kit methods.
+
+- How to combine sections from different task flows
+- How to connect task flows together
+- How to connect an API
 
 ### Task Flow Configuration
 
