@@ -22,7 +22,6 @@ export const Results: React.FC = () => {
    * Set data for the results table when the data loads
    */
   useEffect(() => {
-    console.log(state.results.table.data);
     if (!state.results.table.data || state.results.table.data.length === 0) {
       dispatch(setResultsTableData(tableData));
     }

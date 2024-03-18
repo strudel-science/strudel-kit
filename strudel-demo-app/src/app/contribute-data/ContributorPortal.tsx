@@ -2,7 +2,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Button, Container, Link, Paper, Stack, Typography } from '@mui/material';
 import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { useDataFromSource } from '../../utils/useDataFromSource';

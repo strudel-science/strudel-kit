@@ -1,34 +1,19 @@
 import { Container, Paper, Stack, Typography } from '@mui/material';
-import { GridColDef, GridComparatorFn } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridComparatorFn } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DataGrid } from '@mui/x-data-grid';
-import { getDataFromSource } from '../../utils/api.utils';
+import { useDataFromSource } from '../../utils/useDataFromSource';
 import { basename } from '../App';
 
 /**
  * List view of all activities in the monitor-activites Task Flow.
  */
 export const ActivityList: React.FC = () => {
-  const [experiments, setExperiments] = useState<any[]>([]);
+  const experiments = useDataFromSource('default/monitor-activities/experiments.json', basename);
   const navigate = useNavigate();
 
-  /**
-   * Fetch data for the main table when the page loads
-   */
-  useEffect(() => {
-    if (experiments.length === 0) {
-      const getData = async () => {
-        const dataSource = 'default/monitor-activities/experiments.json';
-        const data = await getDataFromSource(dataSource, basename);
-        setExperiments(data);
-      }
-      getData();
-    }
-  }, []);
-  
-  /**
+    /**
    * Content to render on the page for this component
    */
   return (
@@ -47,7 +32,7 @@ export const ActivityList: React.FC = () => {
         </Stack>
         <Paper>
           <DataGrid
-            rows={experiments}
+            rows={experiments || []}
             getRowId={(row) => row.id}
             columns={columns}
             initialState={{

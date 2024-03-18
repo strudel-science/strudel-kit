@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { basename } from '../App';
 import { Box } from '@mui/material';
 import { Outlet } from 'react-router';

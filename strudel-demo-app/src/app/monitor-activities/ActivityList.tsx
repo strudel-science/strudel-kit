@@ -1,9 +1,8 @@
 import { Container, Paper, Stack, Typography } from '@mui/material';
-import { GridColDef, GridComparatorFn } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridComparatorFn } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DataGrid } from '@mui/x-data-grid';
 import { useDataFromSource } from '../../utils/useDataFromSource';
 import { basename } from '../App';
 

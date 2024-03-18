@@ -3,7 +3,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Box } from '@mui/material';
 import { GridActionsCellItem, GridRowParams } from '@mui/x-data-grid';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { TopBar } from '../../components/TopBar';
 import { useDataFromSource } from '../../utils/useDataFromSource';
