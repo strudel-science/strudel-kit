@@ -1,6 +1,6 @@
-import { Box, Container } from '@mui/material';
-import React, { useState } from 'react';
-import { Link as RouterLink, useParams } from 'react-router-dom';
+import { Box, Container, Paper, Stack, Typography } from '@mui/material';
+import React from 'react';
+import { useParams } from 'react-router-dom';
 import { PageHeader } from '../../components/PageHeader';
 import { useExploreData } from './context/ContextProvider';
 
@@ -12,6 +12,14 @@ import { useExploreData } from './context/ContextProvider';
 export const DataDetailPage: React.FC = () => {
   const {state, dispatch} = useExploreData();
   const params = useParams();
+  const entity = state.data?.find((d) => {
+    if (params.datasetId) {
+      return d[state.dataIdField].toString() === params.datasetId.toString();
+    }
+  });
+  console.log(state);
+  console.log(entity);
+  const entityTitle = entity ? entity[state.columns[0].field] : 'Not Found';
 
   /**
    * Content to render on the page for this component
@@ -19,7 +27,7 @@ export const DataDetailPage: React.FC = () => {
   return (
     <Box>
       <PageHeader
-        pageTitle="Detail"
+        pageTitle={entityTitle}
         breadcrumbTitle="Data Detail"
         sx={{
           marginBottom: 1,
@@ -27,7 +35,29 @@ export const DataDetailPage: React.FC = () => {
         }}
       />
       <Container maxWidth="xl">
-        Coming soon!
+        <Stack>
+          <Paper
+            sx={{
+              padding: 2
+            }}
+          >
+            <Stack>
+              <Typography fontWeight="bold">
+                {state.columns[1].field}
+              </Typography>
+              <Typography>
+                {entity && entity[state.columns[1].field]}
+              </Typography>
+            </Stack>
+          </Paper>
+          <Paper
+            sx={{
+              padding: 2
+            }}
+          >
+            More coming soon!
+          </Paper>
+        </Stack>
       </Container>
     </Box>
   )
