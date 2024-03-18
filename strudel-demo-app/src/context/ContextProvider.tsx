@@ -1,8 +1,9 @@
 import React, {  useReducer, useContext } from 'react';
-import { AppAction } from './actions';
+import { AppAction, AppActionType } from './actions';
 
 export interface AppState {
   appTitle: string;
+  apiModalOpen: boolean;
 }
 
 /**
@@ -11,6 +12,7 @@ export interface AppState {
  * These props have default values set in the initialState object.
  */
 interface AppProviderProps extends Partial<AppState> {
+  apiModalOpen?: boolean;
   children: React.ReactNode;
 }
 
@@ -18,6 +20,7 @@ const AppContext = React.createContext<{state: AppState; dispatch: React.Dispatc
 
 const initialState: AppState = {
   appTitle: '',
+  apiModalOpen: false,
 };
 
 const initState = (initialState: AppState, props: AppProviderProps) => {
@@ -30,6 +33,18 @@ const initState = (initialState: AppState, props: AppProviderProps) => {
 
 function appReducer(state: AppState, action: AppAction): AppState {
   switch (action.type) {
+    case AppActionType.OPEN_API_MODAL: {
+      return {
+        ...state,
+        apiModalOpen: true
+      }
+    }
+    case AppActionType.CLOSE_API_MODAL: {
+      return {
+        ...state,
+        apiModalOpen: false
+      }
+    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`)
     }

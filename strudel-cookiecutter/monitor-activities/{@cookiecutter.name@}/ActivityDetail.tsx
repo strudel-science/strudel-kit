@@ -3,11 +3,11 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Box, Button, Container, Grid, IconButton, Link, Paper, Stack, TextField, Typography } from '@mui/material';
 import { DataGrid, GridColDef, GridComparatorFn } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Plot from 'react-plotly.js';
 import { Link as RouterLink } from 'react-router-dom';
 import { LabelValueTable } from '../../components/LabelValueTable';
-import { getDataFromSource } from '../../utils/api.utils';
+import { useDataFromSource } from '../../utils/useDataFromSource';
 import { basename } from '../App';
 
 /**
@@ -15,7 +15,7 @@ import { basename } from '../App';
  * The two components are not currently hooked together.
  */
 export const ActivityDetail: React.FC = () => {
-  const [experiment, setExperiment] = useState<any>();
+  const experiment = useDataFromSource('default/monitor-activities/experiment_detail.json', basename);
 
   const getNoteRows = (notes: any[]) => {
     return notes.map((note) => {
@@ -24,20 +24,6 @@ export const ActivityDetail: React.FC = () => {
       return note;
     });
   }
-
-  /**
-   * Fetch data for the main table when the page loads
-   */
-  useEffect(() => {
-    if (!experiment) {
-      const getData = async () => {
-        const dataSource = 'default/monitor-activities/experiment_detail.json';
-        const data = await getDataFromSource(dataSource, basename);
-        setExperiment(data);
-      }
-      getData();
-    }
-  }, []);
 
   /**
    * Content to render on the page for this component

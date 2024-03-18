@@ -2,7 +2,7 @@ import { Box, Button, Container, Link, Paper, Stack, Step, StepLabel, Stepper, T
 import React, { useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
-import { getDataFromSource } from '../../utils/api.utils';
+import { useDataFromSource } from '../../utils/useDataFromSource';
 import { basename } from '../App';
 import { useRunComputation } from './context/ContextProvider';
 import { setInputsTableData } from './context/actions';
@@ -14,20 +14,16 @@ import { setInputsTableData } from './context/actions';
  */
 export const DataInputs: React.FC = () => {
   const { state, dispatch } = useRunComputation();
+  const inputsData = useDataFromSource('default/run-computation/inputs.json', basename);
   
   /**
-   * Fetch data for the inputs table when the page loads
+   * Set data for the inputs table when the data loads
    */
   useEffect(() => {
-    if (state.inputs.table.data.length === 0) {
-      const getData = async () => {
-        const dataSource = '{@ cookiecutter.data.inputs.table.dataSource @}';
-        const data = await getDataFromSource(dataSource, basename);
-        dispatch(setInputsTableData(data));
-      }
-      getData();
+    if (!state.inputs.table.data || state.inputs.table.data.length === 0) {
+      dispatch(setInputsTableData(inputsData));
     }
-  }, []);
+  }, [inputsData]);
 
   /**
    * Content to render on the page for this component
@@ -131,7 +127,7 @@ export const DataInputs: React.FC = () => {
           >
             <Paper>
               <DataGrid
-                rows={state.inputs.table.data}
+                rows={state.inputs.table.data || []}
                 getRowId={(row) => row[state.inputs.table.dataIdField]}
                 columns={state.inputs.table.columns}
                 disableColumnSelector

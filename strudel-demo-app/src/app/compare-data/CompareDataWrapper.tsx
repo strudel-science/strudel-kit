@@ -5,7 +5,7 @@ import { basename } from '../App';
 import { TopBar } from '../../components/TopBar';
 import { CompareDataProvider } from './context/ContextProvider';
 import { GridColDef } from '@mui/x-data-grid';
-import { getDataFromSource } from '../../utils/api.utils';
+import { useDataFromSource } from '../../utils/useDataFromSource';
 import definitions from './definitions.json'
 
 /**
@@ -13,22 +13,7 @@ import definitions from './definitions.json'
  * Inner pages are rendered inside the `<Outlet />` component
  */
 export const CompareDataWrapper: React.FC = () => {
-  const [scenarios, setScenarios] = useState<any[]>([]);
-
-  /**
-   * Fetch data for the list table when the page loads
-   */
-  useEffect(() => {
-    if (scenarios.length === 0) {
-      const getData = async () => {
-        // strudel-kit-variable-next-line
-        const dataSource = 'default/compare-data/scenarios.json';
-        const data = await getDataFromSource(dataSource, basename);
-        setScenarios(data);
-      }
-      getData();
-    }
-  }, []);
+  const scenarios = useDataFromSource('default/compare-data/scenarios.json', basename);
 
   /**
    * Content to render on the page for this component

@@ -8,6 +8,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { router } from './routes';
 import { theme } from './theme';
 import { AppProvider } from '../context/ContextProvider';
+import { ApiModal } from '../components/ApiModal';
 
 export const basename = document.querySelector('base')?.getAttribute('href') ?? '/';
 
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <CssBaseline />
         <AppProvider appTitle="{@ cookiecutter.appTitle @}">
           <RouterProvider router={router} />
+          <ApiModal />
         </AppProvider>
       </ThemeProvider>
     </LocalizationProvider>

@@ -2,10 +2,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Button, Container, Link, Paper, Stack, Typography } from '@mui/material';
 import { GridActionsCellItem, GridColDef, GridRowParams } from '@mui/x-data-grid';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
-import { getDataFromSource } from '../../utils/api.utils';
+import { useDataFromSource } from '../../utils/useDataFromSource';
 import { basename } from '../App';
 import definitions from './definitions.json';
 
@@ -14,22 +14,7 @@ import definitions from './definitions.json';
  * Also allows users to start a new dataset which sends them to the `<NewDataset>` component.
  */
 export const ContributorPortal: React.FC = () => {
-  const [datasets, setDatasets] = useState<any[]>([]);
-
-  /**
-   * Fetch data for the list table when the page loads
-   */
-  useEffect(() => {
-    if (datasets.length === 0) {
-      const getData = async () => {
-        // strudel-kit-variable-next-line
-        const dataSource = 'default/contribute-data/contributor_datasets.json';
-        const data = await getDataFromSource(dataSource, basename);
-        setDatasets(data);
-      }
-      getData();
-    }
-  }, []);
+  const datasets = useDataFromSource('default/contribute-data/contributor_datasets.json', basename);
   
   /**
    * Content to render on the page for this component
@@ -55,7 +40,7 @@ export const ContributorPortal: React.FC = () => {
         </Stack>
         <Paper>
           <DataGrid
-            rows={datasets}
+            rows={datasets || []}
             // strudel-kit-variable-next-line
             getRowId={(row) => row['id']}
             columns={columns}
