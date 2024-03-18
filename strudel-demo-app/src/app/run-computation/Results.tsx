@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import Plot from 'react-plotly.js';
 import { Link as RouterLink } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
-import { getDataFromSource } from '../../utils/api.utils';
+import { useDataFromSource } from '../../utils/useDataFromSource';
 import { basename } from '../App';
 import { useRunComputation } from './context/ContextProvider';
 import { setResultsBarChartData, setResultsLineChartData, setResultsTableData } from './context/actions';
@@ -14,39 +14,37 @@ import { setResultsBarChartData, setResultsLineChartData, setResultsTableData } 
  */
 export const Results: React.FC = () => {
   const { state, dispatch } = useRunComputation();
-  
+  const tableData = useDataFromSource('default/run-computation/results_table.json', basename);
+  const lineData = useDataFromSource('default/run-computation/results_line_chart.json', basename);
+  const barData = useDataFromSource('default/run-computation/results_bar_chart.json', basename);
+
   /**
-   * Fetch data for the inputs table, line chart, and bar chart when the page loads
+   * Set data for the results table when the data loads
    */
   useEffect(() => {
-    if (state.results.table.data.length === 0) {
-      const getData = async () => {
-        // strudel-kit-variable-next-line
-        const dataSource = 'default/run-computation/results_table.json';
-        const data = await getDataFromSource(dataSource, basename);
-        dispatch(setResultsTableData(data));
-      }
-      getData();
+    console.log(state.results.table.data);
+    if (!state.results.table.data || state.results.table.data.length === 0) {
+      dispatch(setResultsTableData(tableData));
     }
-    if (state.results.lineChart.data.length === 0) {
-      const getData = async () => {
-        // strudel-kit-variable-next-line
-        const dataSource = 'default/run-computation/results_line_chart.json';
-        const data = await getDataFromSource(dataSource, basename);
-        dispatch(setResultsLineChartData(data));
-      }
-      getData();
+  }, [tableData]);
+
+  /**
+   * Set data for the results line chart when the data loads
+   */
+  useEffect(() => {
+    if (!state.results.lineChart.data || state.results.lineChart.data.length === 0) {
+      dispatch(setResultsLineChartData(lineData));
     }
-    if (state.results.barChart.data.length === 0) {
-      const getData = async () => {
-        // strudel-kit-variable-next-line
-        const dataSource = 'default/run-computation/results_bar_chart.json';
-        const data = await getDataFromSource(dataSource, basename);
-        dispatch(setResultsBarChartData(data));
-      }
-      getData();
+  }, [lineData]);
+
+  /**
+   * Set data for the results bar chart when the data loads
+   */
+  useEffect(() => {
+    if (!state.results.barChart.data || state.results.barChart.data.length === 0) {
+      dispatch(setResultsBarChartData(barData));
     }
-  }, []);
+  }, [barData]);
 
   /**
    * Content to render on the page for this component
@@ -171,7 +169,7 @@ export const Results: React.FC = () => {
               <Grid item xs={12}>
                 <Paper>
                   <DataGrid
-                    rows={state.results.table.data}
+                    rows={state.results.table.data || []}
                     getRowId={(row) => row[state.results.table.dataIdField]}
                     columns={state.results.table.columns}
                     disableColumnSelector
