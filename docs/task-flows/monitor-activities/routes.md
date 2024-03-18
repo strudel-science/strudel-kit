@@ -5,40 +5,35 @@ Below are the components to import and the router object to add to `routes.tsx` 
 ### Import Statements
 
 ```js
-import { ContributeDataWrapper } from "./contribute-data/ContributeDataWrapper";
-import { ContributorPortal } from "./contribute-data/ContributorPortal";
-import { NewDataset } from "./contribute-data/NewDataset";
-import { Register } from "./contribute-data/Register";
-import { ReviewDataset } from "./contribute-data/ReviewDataset";
+import { ActivityDetail } from "./monitor-activities/ActivityDetail";
+import { ActivityList } from "./monitor-activities/ActivityList";
+import { MonitorActivitiesWrapper } from "./monitor-activities/MonitorActivitiesWrapper";
 ```
 
 ### Router Object
 
 ```js
 {
-  path: "/contribute-data",
-  element: <ContributeDataWrapper />,
+  path: "/monitor-activities",
+  element: <MonitorActivitiesWrapper />,
   children: [
     {
       index: true,
-      element: <Register />
+      element: <ActivityList />,
     },
     {
-      path: 'register',
-      element: <Register />
+      path: 'list',
+      children: [
+        {
+          index: true,
+          element: <ActivityList />,
+        },
+        {
+          path: 'detail',
+          element: <ActivityDetail />
+        },
+      ]
     },
-    {
-      path: 'portal',
-      element: <ContributorPortal />
-    },
-    {
-      path: 'new',
-      element: <NewDataset />
-    },
-    {
-      path: 'review',
-      element: <ReviewDataset />
-    }
   ]
 },
 ```
