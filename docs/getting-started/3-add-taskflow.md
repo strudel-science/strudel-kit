@@ -8,7 +8,7 @@ There are 3 basic steps to adding a new Task Flow:
 
 1. Create a simple configuration for your Task Flow in a JSON file.
 2. Add the configured Task Flow into your app's source code.
-3. Connect the Task Flow's page to the navigation of the main app.
+3. Connect the Task Flow's pages to the navigation of the main app.
 
 ### 1. Configure Task Flow
 
@@ -58,40 +58,51 @@ To create the configuration file, first create a file named `solar-system.json`.
 {
   "name": "solar-system",
   "template": "explore-data",
-  "pageTitle": "Solar System Explorer",
-  "pageDescription": "Explore data about the planets that orbit the Sun.",
-  "dataSource": "planets.csv",
-  "dataIdField": "Name",
+  "pages": {
+    "main": {
+      "pageTitle": "Solar System Explorer",
+      "pageDescription": "Explore data about the planets that orbit the Sun."
+    }
+  },
+  "data": {
+    "main": {
+      "table": {
+        "dataSource": "planets.csv",
+        "dataIdField": "Name"
+      }
+    }
+  },
   "definitions": {
     "columns": {
-      "main": [
-        {
-          "field": "Name",
-          "headerName": "Name",
-          "width": 200
-        },
-        {
-          "field": "Diameter",
-          "headerName": "Diameter (km)",
-          "width": 150
-        },
-        {
-          "field": "Mass",
-          "headerName": "Mass (kg)",
-          "width": 150
-        },
-        {
-          "field": "Inclination",
-          "headerName": "Inclination (deg)",
-          "width": 150
-        },
-        {
-          "field": "Eccentricity",
-          "headerName": "Eccentricity",
-          "width": 150
-        }
-
-      ]
+      "main": {
+        "table": [
+          {
+            "field": "Name",
+            "headerName": "Name",
+            "width": 200
+          },
+          {
+            "field": "Diameter",
+            "headerName": "Diameter (km)",
+            "width": 150
+          },
+          {
+            "field": "Mass",
+            "headerName": "Mass (kg)",
+            "width": 150
+          },
+          {
+            "field": "Inclination",
+            "headerName": "Inclination (deg)",
+            "width": 150
+          },
+          {
+            "field": "Eccentricity",
+            "headerName": "Eccentricity",
+            "width": 150
+          }
+        ]
+      }
     },
     "filters": {
       "main": [
@@ -112,26 +123,22 @@ To create the configuration file, first create a file named `solar-system.json`.
 
 The next few sections will briefly explain the contents of this file. This is purely informational, so you can skip this and come back to it later if you want to get on with seeing your Task Flow in action.
 
-There are two basic sections to the configuration. First, a list of key-value pairs. Some of these set some general values you will have in an Task Flow:
+There are four basic sections to this configuration. First, there are two key-value pairs. These specifiy the name of your Task Flow directory to generate and the template to use:
 
 ```
   "name": "solar-system",
-  "pageTitle": "Solar System Explorer",
-  "pageDescription": "Explore data about the planets that orbit the Sun.",
+  "template": "explore-data",
 ```
 
-You can see above that you are giving the Task Flow a name, a title to display on its web page, and a description. 
+The template can be any of the six implemented Task Flows but the choice of template determines what the rest of the config looks like.
 
-There also may be some key-value pairs that are specific to this type of Task Flow:
+Second, there's the `pages` section. This sets some basic text values for different elements on the pages of the Task Flow.
 
-```
-  "dataSource": "planets.csv",
-  "dataIdField": "Name",
-```
+Third there is the `data` section. This specifies how the Task Flow should read data into its components. Explore Data has one main table that displays the data and in this case, `dataSource` specifies where that table should get its initial data, and `dataIdField` tells the code that loads the data which field (i.e., which column in tabular data like this one) should be used to uniquely identify a record.
 
-In this case, `dataSource` specifies where the Explore Data Task Flow should get its initial data, and `dataIdField` tells the code that loads the data which field (i.e., which column in tabular data like this one) should be used to uniquely identify a record.
+The fourth section is called `definitions`. It provides some more detailed data that is made available to the Task Flow and its value is some structured chunk of JSON. In the case of the Explore Data Task Flow, this section defines which columns of the data to display and which (if any) filters to create for the "filters" sidebar. The values here will depend on the data source.
 
-The second section is called `definitions`. It provides some more detailed data that is made available to the Task Flow and its value is some structured chunk of JSON. In the case of the Explore Data Task Flow, this section defines which columns of the data to display and which (if any) filters to create for the "filters" sidebar. The values here will depend on the data source.
+You can find more detailed documentation for each Task Flow config in the [task-flows section](https://github.com/strudel-science/strudel-kit/tree/main/docs/task-flows) of the docs.
 
 #### Next steps
 
@@ -179,14 +186,14 @@ Add the following text after the line that ends `createHashRouter([`. This is th
 
 ```
 {
-    path: "/solar-system",
-    element: <ExploreDataWrapper />,
-    children: [
-      {
-        index: true,
-        element: <DataExplorer />
-      },
-    ]
+  path: "/solar-system",
+  element: <ExploreDataWrapper />,
+  children: [
+    {
+      index: true,
+      element: <DataExplorer />
+    },
+  ]
 },
 ```
 
