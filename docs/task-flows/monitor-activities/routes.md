@@ -5,16 +5,16 @@ Below are the components to import and the router object to add to `routes.tsx` 
 ### Import Statements
 
 ```js
-import { ActivityDetail } from "./monitor-activities/ActivityDetail";
-import { ActivityList } from "./monitor-activities/ActivityList";
-import { MonitorActivitiesWrapper } from "./monitor-activities/MonitorActivitiesWrapper";
+import { ActivityDetail } from "./yourtaskflowname/ActivityDetail";
+import { ActivityList } from "./yourtaskflowname/ActivityList";
+import { MonitorActivitiesWrapper } from "./yourtaskflowname/MonitorActivitiesWrapper";
 ```
 
 ### Router Object
 
 ```js
 {
-  path: "/monitor-activities",
+  path: "/yourtaskflowname",
   element: <MonitorActivitiesWrapper />,
   children: [
     {

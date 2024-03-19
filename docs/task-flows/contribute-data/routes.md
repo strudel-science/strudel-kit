@@ -5,18 +5,18 @@ Below are the components to import and the router object to add to `routes.tsx` 
 ### Import Statements
 
 ```js
-import { ContributeDataWrapper } from "./contribute-data/ContributeDataWrapper";
-import { ContributorPortal } from "./contribute-data/ContributorPortal";
-import { NewDataset } from "./contribute-data/NewDataset";
-import { Register } from "./contribute-data/Register";
-import { ReviewDataset } from "./contribute-data/ReviewDataset";
+import { ContributeDataWrapper } from "./yourtaskflowname/ContributeDataWrapper";
+import { ContributorPortal } from "./yourtaskflowname/ContributorPortal";
+import { NewDataset } from "./yourtaskflowname/NewDataset";
+import { Register } from "./yourtaskflowname/Register";
+import { ReviewDataset } from "./yourtaskflowname/ReviewDataset";
 ```
 
 ### Router Object
 
 ```js
 {
-  path: "/contribute-data",
+  path: "/yourtaskflowname",
   element: <ContributeDataWrapper />,
   children: [
     {

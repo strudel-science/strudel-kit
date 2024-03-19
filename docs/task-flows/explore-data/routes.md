@@ -5,16 +5,16 @@ Below are the components to import and the router object to add to `routes.tsx` 
 ### Import Statements
 
 ```js
-import { ExploreDataWrapper } from "./explore-data";
-import { DataDetailPage } from "./explore-data/DataDetailPage";
-import { DataExplorer } from "./explore-data/DataExplorer";
+import { ExploreDataWrapper } from "./yourtaskflowname";
+import { DataDetailPage } from "./yourtaskflowname/DataDetailPage";
+import { DataExplorer } from "./yourtaskflowname/DataExplorer";
 ```
 
 ### Router Object
 
 ```js
 {
-  path: "/explore-data",
+  path: "/yourtaskflowname",
   element: <ExploreDataWrapper />,
   children: [
     {

@@ -5,16 +5,16 @@ Below are the components to import and the router object to add to `routes.tsx` 
 ### Import Statements
 
 ```js
-import { DatasetDetail } from "./search-data-repositories/DatasetDetail";
-import { DatasetExplorer } from "./search-data-repositories/DatasetExplorer";
-import { SearchDataRepositoriesWrapper } from "./search-data-repositories/SearchDataRepositoriesWrapper";
+import { DatasetDetail } from "./yourtaskflowname/DatasetDetail";
+import { DatasetExplorer } from "./yourtaskflowname/DatasetExplorer";
+import { SearchDataRepositoriesWrapper } from "./yourtaskflowname/SearchDataRepositoriesWrapper";
 ```
 
 ### Router Object
 
 ```js
 {
-  path: "/search-data-repositories",
+  path: "/yourtaskflowname",
   element: <SearchDataRepositoriesWrapper />,
   children: [
     {

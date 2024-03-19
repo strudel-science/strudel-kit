@@ -5,19 +5,19 @@ Below are the components to import and the router object to add to `routes.tsx` 
 ### Import Statements
 
 ```js
-import { RunComputationWrapper } from "./run-computation";
-import { DataInputs } from "./run-computation/DataInputs";
-import { Settings } from "./run-computation/Settings";
-import { Results } from "./run-computation/Results";
-import { RunningComputation } from "./run-computation/RunningComputation";
-import { Scenario } from "./run-computation/Scenario";
+import { RunComputationWrapper } from "./yourtaskflowname";
+import { DataInputs } from "./yourtaskflowname/DataInputs";
+import { Settings } from "./yourtaskflowname/Settings";
+import { Results } from "./yourtaskflowname/Results";
+import { RunningComputation } from "./yourtaskflowname/RunningComputation";
+import { Scenario } from "./yourtaskflowname/Scenario";
 ```
 
 ### Router Object
 
 ```js
 {
-  path: "/run-computation",
+  path: "/yourtaskflowname",
   element: <RunComputationWrapper />,
   children: [
     {

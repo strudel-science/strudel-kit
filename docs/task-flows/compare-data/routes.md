@@ -5,17 +5,17 @@ Below are the components to import and the router object to add to `routes.tsx` 
 ### Import Statements
 
 ```js
-import { CompareDataWrapper } from "./compare-data/CompareDataWrapper";
-import { NewScenario } from "./compare-data/NewScenario";
-import { ScenarioComparison } from "./compare-data/ScenarioComparison";
-import { ScenarioList } from "./compare-data/ScenarioList";
+import { CompareDataWrapper } from "./yourtaskflowname/CompareDataWrapper";
+import { NewScenario } from "./yourtaskflowname/NewScenario";
+import { ScenarioComparison } from "./yourtaskflowname/ScenarioComparison";
+import { ScenarioList } from "./yourtaskflowname/ScenarioList";
 ```
 
 ### Router Object
 
 ```js
 {
-  path: "/compare-data",
+  path: "/yourtaskflowname",
   element: <CompareDataWrapper />,
   children: [
     {
