@@ -188,7 +188,7 @@ export const Results: React.FC = () => {
           width: '100%'
         }}
       >
-        <Link component={RouterLink} to="/run-computation/scenario/settings">
+        <Link component={RouterLink} to="../settings">
           <Button variant="contained">Back to {@ cookiecutter.pages.settings.pageTitle @}</Button>
         </Link>
       </Box>

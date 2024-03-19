@@ -37,7 +37,7 @@ export const ScenarioComparison: React.FC = () => {
         actions={
           <Stack direction="row">
             <Box>
-              <Link component={RouterLink} to=".">
+              <Link component={RouterLink} to="..">
                 <Button variant="contained" startIcon={<ArrowBackIcon />}>
                   Back to {@ cookiecutter.compareItemPlural @}
                 </Button>

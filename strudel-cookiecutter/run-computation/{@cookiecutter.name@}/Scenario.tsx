@@ -24,7 +24,7 @@ export const Scenario: React.FC = () => {
           <Toolbar variant="dense">
             <Stack direction="row" alignItems="center" sx={{ flexGrow: 1 }}>
               <Breadcrumbs aria-label="breadcrumb" separator={<ChevronRightIcon fontSize="small" />}>
-                <Link underline="hover" color="inherit" to="/run-computation" component={RouterLink}>
+                <Link underline="hover" color="inherit" to=".." component={RouterLink}>
                   {@ cookiecutter.pages.list.pageTitle @}
                 </Link>
                 <Typography color="text.primary">Optimization Scenario 1</Typography>

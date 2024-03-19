@@ -76,7 +76,7 @@ export const Register: React.FC = () => {
               </Stack>
             </Box>
             <Box>
-              <Link component={RouterLink} to="/contribute-data/portal">
+              <Link component={RouterLink} to="portal">
                 <Button variant="contained">
                   Submit Registration
                 </Button>
