@@ -1,6 +1,6 @@
 # STRUDEL Kit Docs
 
-Welcome to the STRUDEL Kit Docs!
+Welcome to the STRUDEL Kit Docs! STRUDEL Kit is a web development toolkit for building scientific UIs based on the STRUDEL Design System and Task Flows. It consists of a command-line bootstrapping tool and a suite of React-based JavaScript templates. Visit [strudel.science](https://strudel.science) for more information about the STRUDEL project.
 
 ## What's here?
 
