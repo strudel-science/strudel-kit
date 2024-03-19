@@ -6,6 +6,8 @@ STRUDEL Kit is a React-based JavaScript library for building scientific UIs base
 
 This library provides a suite of templates to implement UIs for various different task flows common to the scientific domain. The app is intended to be used as a starting point for building out a web app that includes one or more of the task flows provided.
 
+### [Browse the Docs](https://github.com/strudel-science/strudel-kit/tree/main/docs)
+
 ## Quickstart
 
 Install the STRUDEL CLI tool:
@@ -14,37 +16,10 @@ Install the STRUDEL CLI tool:
 pip install strudel-cli
 ```
 
-Create a config file based on the [create-app config json](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/CONFIGS.md#create-app-config-file):
-
-_my-app-config.json_
-```js
-{
-  "name": "my-strudel-app",
-  "appTitle": "My Science App"
-}
-```
-
 Create a base app:
 
 ```
-strudel create-app --config my-app-config.json
-```
-
-Create a config file for a new task flow based on [one of the config examples](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/CONFIGS.md#compare-data):
-
-_my-taskflow-config.json_
-```js
-{
-  "name": "my-taskflow",
-  "template": "compare-data",
-  "compareItem": "scenario",
-  "compareItemPlural": "scenarios",
-  "mainPageTitle": "Compare Data App",
-  "mainPageDescription": "Description of this app section",
-  "newItemPageTitle": "Compare Data App",
-  "newItemPageDescription": "Description of this app section",
-  "comparePageDescription": "Description of this app section"
-}
+strudel create-app my-app
 ```
 
 Go to the root directory of your new app:
@@ -53,7 +28,13 @@ Go to the root directory of your new app:
 cd my-app
 ```
 
-Add the task flow to your app:
+Add a new Task Flow to your app and use the default configurations:
+
+```
+strudel add-taskflow my-taskflow --template run-computation
+```
+
+Or create a config file for your new task flow based on [the config example](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/run-computation/config.md) for the selected Task Flow template.
 
 ```
 strudel add-taskflow --config ../my-taskflow-config.json
@@ -65,6 +46,8 @@ Install dependencies and start your app.
 npm install
 npm start
 ```
+
+For a complete guide to using STRUDEL Kit check out the [Getting Started Tutorial](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/0-introduction.md).
 
 ## Packages
 
