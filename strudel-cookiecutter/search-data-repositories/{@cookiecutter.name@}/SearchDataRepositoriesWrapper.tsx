@@ -12,7 +12,7 @@ import definitions from './definitions.json';
  * Inner pages are rendered inside the `<Outlet />` component
  */
 export const SearchDataRepositoriesWrapper: React.FC = () => {
-  const datasets = useDataFromSource('default/search-data-repositories/datasets.json', basename)
+  const datasets = useDataFromSource('{@ cookiecutter.data.main.cards.dataSource @}', basename)
 
   /**
    * Content to render on the page for this component

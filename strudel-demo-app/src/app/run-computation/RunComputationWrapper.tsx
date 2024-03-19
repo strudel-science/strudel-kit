@@ -16,6 +16,7 @@ import definitions from './definitions.json';
  * Inner pages are rendered inside the `<Outlet />` component
  */
 export const RunComputationWrapper: React.FC = () => {
+  // strudel-kit-variable-next-line
   const listItems = useDataFromSource('default/run-computation/list.json', basename)
 
   /**

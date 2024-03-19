@@ -14,6 +14,7 @@ import { setInputsTableData } from './context/actions';
  */
 export const DataInputs: React.FC = () => {
   const { state, dispatch } = useRunComputation();
+  // strudel-kit-variable-next-line
   const inputsData = useDataFromSource('default/run-computation/inputs.json', basename);
   
   /**

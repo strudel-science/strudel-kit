@@ -14,7 +14,7 @@ import { setInputsTableData } from './context/actions';
  */
 export const DataInputs: React.FC = () => {
   const { state, dispatch } = useRunComputation();
-  const inputsData = useDataFromSource('default/run-computation/inputs.json', basename);
+  const inputsData = useDataFromSource('{@ cookiecutter.data.inputs.table.dataSource @}', basename);
   
   /**
    * Set data for the inputs table when the data loads

@@ -13,7 +13,7 @@ import definitions from './definitions.json'
  * Inner pages are rendered inside the `<Outlet />` component
  */
 export const CompareDataWrapper: React.FC = () => {
-  const scenarios = useDataFromSource('default/compare-data/scenarios.json', basename);
+  const scenarios = useDataFromSource('{@ cookiecutter.data.list.table.dataSource @}', basename);
         
   /**
    * Content to render on the page for this component
@@ -24,7 +24,11 @@ export const CompareDataWrapper: React.FC = () => {
         <TopBar />
       </Box>
       <Box>
-        <CompareDataProvider data={scenarios} columns={definitions.columns.list.table} dataIdField='{@ cookiecutter.data.list.table.dataIdField @}'>
+        <CompareDataProvider 
+          data={scenarios || []} 
+          columns={definitions.columns.list.table} 
+          dataIdField='{@ cookiecutter.data.list.table.dataIdField @}'
+        >
           <Outlet />
         </CompareDataProvider>
       </Box>

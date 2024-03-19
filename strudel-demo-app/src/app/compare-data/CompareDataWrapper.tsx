@@ -13,6 +13,7 @@ import definitions from './definitions.json'
  * Inner pages are rendered inside the `<Outlet />` component
  */
 export const CompareDataWrapper: React.FC = () => {
+  // strudel-kit-variable-next-line
   const scenarios = useDataFromSource('default/compare-data/scenarios.json', basename);
 
   /**
@@ -25,7 +26,11 @@ export const CompareDataWrapper: React.FC = () => {
       </Box>
       <Box>
         {/* strudel-kit-variable-next-line */}
-        <CompareDataProvider data={scenarios || []} columns={definitions.columns.list.table} dataIdField='id'>
+        <CompareDataProvider 
+          data={scenarios || []} 
+          columns={definitions.columns.list.table} 
+          dataIdField='id'
+        >
           <Outlet />
         </CompareDataProvider>
       </Box>

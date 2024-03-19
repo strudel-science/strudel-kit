@@ -14,8 +14,11 @@ import { setResultsBarChartData, setResultsLineChartData, setResultsTableData } 
  */
 export const Results: React.FC = () => {
   const { state, dispatch } = useRunComputation();
+  // strudel-kit-variable-next-line
   const tableData = useDataFromSource('default/run-computation/results_table.json', basename);
+  // strudel-kit-variable-next-line
   const lineData = useDataFromSource('default/run-computation/results_line_chart.json', basename);
+  // strudel-kit-variable-next-line
   const barData = useDataFromSource('default/run-computation/results_bar_chart.json', basename);
 
   /**

@@ -14,6 +14,7 @@ import definitions from './definitions.json';
  * Also allows users to start a new dataset which sends them to the `<NewDataset>` component.
  */
 export const ContributorPortal: React.FC = () => {
+  // strudel-kit-variable-next-line
   const datasets = useDataFromSource('default/contribute-data/contributor_datasets.json', basename);
   
   /**

@@ -12,7 +12,7 @@ import { useDataFromSource } from '../../utils/useDataFromSource';
  * Inner pages are rendered inside the `<Outlet />` component
  */
 export const ExploreDataWrapper: React.FC = () => {
-  const entities = useDataFromSource('default/explore-data/genomes.tsv', basename);
+  const entities = useDataFromSource('{@ cookiecutter.data.main.table.dataSource @}', basename);
         
   /**
    * Content to render on the page for this component

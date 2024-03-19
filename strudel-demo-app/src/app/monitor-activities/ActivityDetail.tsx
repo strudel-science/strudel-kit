@@ -15,6 +15,7 @@ import { basename } from '../App';
  * The two components are not currently hooked together.
  */
 export const ActivityDetail: React.FC = () => {
+  // strudel-kit-variable-next-line
   const experiment = useDataFromSource('default/monitor-activities/experiment_detail.json', basename);
 
   const getNoteRows = (notes: any[]) => {

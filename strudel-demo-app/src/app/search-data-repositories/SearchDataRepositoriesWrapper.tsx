@@ -12,6 +12,7 @@ import definitions from './definitions.json';
  * Inner pages are rendered inside the `<Outlet />` component
  */
 export const SearchDataRepositoriesWrapper: React.FC = () => {
+  // strudel-kit-variable-next-line
   const datasets = useDataFromSource('default/search-data-repositories/datasets.json', basename)
 
   /**

@@ -12,6 +12,7 @@ import { useDataFromSource } from '../../utils/useDataFromSource';
  * Inner pages are rendered inside the `<Outlet />` component
  */
 export const ExploreDataWrapper: React.FC = () => {
+  // strudel-kit-variable-next-line
   const entities = useDataFromSource('default/explore-data/genomes.tsv', basename);
 
   /**

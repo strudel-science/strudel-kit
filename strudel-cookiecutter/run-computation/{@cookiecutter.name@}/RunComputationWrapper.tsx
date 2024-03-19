@@ -16,7 +16,7 @@ import definitions from './definitions.json';
  * Inner pages are rendered inside the `<Outlet />` component
  */
 export const RunComputationWrapper: React.FC = () => {
-  const listItems = useDataFromSource('default/run-computation/list.json', basename)
+  const listItems = useDataFromSource('{@ cookiecutter.data.list.table.dataSource @}', basename)
 
   /**
    * Content to render on the page for this component

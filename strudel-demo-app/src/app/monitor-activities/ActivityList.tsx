@@ -10,6 +10,7 @@ import { basename } from '../App';
  * List view of all activities in the monitor-activites Task Flow.
  */
 export const ActivityList: React.FC = () => {
+  // strudel-kit-variable-next-line
   const experiments = useDataFromSource('default/monitor-activities/experiments.json', basename);
   const navigate = useNavigate();
   

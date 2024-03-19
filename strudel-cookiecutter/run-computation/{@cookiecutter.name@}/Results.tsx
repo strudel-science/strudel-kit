@@ -14,9 +14,9 @@ import { setResultsBarChartData, setResultsLineChartData, setResultsTableData } 
  */
 export const Results: React.FC = () => {
   const { state, dispatch } = useRunComputation();
-  const tableData = useDataFromSource('default/run-computation/results_table.json', basename);
-  const lineData = useDataFromSource('default/run-computation/results_line_chart.json', basename);
-  const barData = useDataFromSource('default/run-computation/results_bar_chart.json', basename);
+  const tableData = useDataFromSource('{@ cookiecutter.data.results.table.dataSource @}', basename);
+  const lineData = useDataFromSource('{@ cookiecutter.data.results.lineChart.dataSource @}', basename);
+  const barData = useDataFromSource('{@ cookiecutter.data.results.barChart.dataSource @}', basename);
   
   /**
    * Set data for the results table when the data loads
