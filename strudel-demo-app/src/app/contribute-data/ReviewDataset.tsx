@@ -71,7 +71,7 @@ export const ReviewDataset: React.FC = () => {
             </Stack>
             <Stack direction="row">
               <Box>
-                <Link component={RouterLink} to="/contribute-data/new">
+                <Link component={RouterLink} to="../new">
                   <Button variant="contained" sx={{ whiteSpace: 'nowrap' }}>
                     Edit Dataset
                   </Button>
@@ -88,7 +88,7 @@ export const ReviewDataset: React.FC = () => {
               </Box>
               {state.checksComplete && (
                 <Box>
-                  <Link component={RouterLink} to="/contribute-data/portal">
+                  <Link component={RouterLink} to="../portal">
                     <Button variant="contained" sx={{ whiteSpace: 'nowrap' }}>
                       Publish Dataset
                     </Button>

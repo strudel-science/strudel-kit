@@ -5,7 +5,6 @@ import { TopBar } from '../../components/TopBar';
 import { useDataFromSource } from '../../utils/useDataFromSource';
 import { basename } from '../App';
 import { SearchDataRepositoriesProvider } from './context/ContextProvider';
-import { useDataFromSource } from '../../utils/useDataFromSource';
 import definitions from './definitions.json';
 
 /**

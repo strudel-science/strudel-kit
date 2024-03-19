@@ -40,7 +40,7 @@ export const ActivityList: React.FC = () => {
                 sortModel: [{ field: 'start_time', sort: 'desc' }],
               },
             }}
-            onRowClick={() => navigate('/monitor-activities/list/detail')}
+            onRowClick={() => navigate('list/detail')}
             disableColumnSelector
             disableRowSelectionOnClick
           />

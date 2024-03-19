@@ -32,7 +32,7 @@ export const ContributorPortal: React.FC = () => {
             {/* strudel-kit-variable-next-line */}
             Your Dataset Uploads
           </Typography>
-          <Link component={RouterLink} to="/contribute-data/new">
+          <Link component={RouterLink} to="../new">
             <Button variant="contained">
               New Dataset
             </Button>

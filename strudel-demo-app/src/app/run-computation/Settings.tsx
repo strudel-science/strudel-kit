@@ -30,7 +30,7 @@ export const Settings: React.FC = () => {
         <Stepper activeStep={1} sx={{ maxWidth: 850 }}>
           <Step key="Data Inputs">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="../data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
                 {/* strudel-kit-variable-next-line */}
                 Data Inputs
               </Link>
@@ -38,7 +38,7 @@ export const Settings: React.FC = () => {
           </Step>
           <Step key="Optimization Settings">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="../settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
                 {/* strudel-kit-variable-next-line */}
                 Optimization Settings
               </Link>
@@ -46,7 +46,7 @@ export const Settings: React.FC = () => {
           </Step>
           <Step key="Results">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/results" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="../results" sx={{ color: 'inherit', textDecoration: 'none' }}>
                 {/* strudel-kit-variable-next-line */}
                 Results
               </Link>
@@ -130,7 +130,7 @@ export const Settings: React.FC = () => {
               </Grid>
             )}
             <Box textAlign="right">
-              <Link component={RouterLink} to="/run-computation/scenario/running">
+              <Link component={RouterLink} to="../running">
                 <Button variant="contained" sx={{ marginTop: 4 }}>
                   Run optimization
                 </Button>

@@ -25,7 +25,7 @@ export const CompareDataWrapper: React.FC = () => {
       </Box>
       <Box>
         {/* strudel-kit-variable-next-line */}
-        <CompareDataProvider data={scenarios} columns={definitions.columns.list.table} dataIdField='id'>
+        <CompareDataProvider data={scenarios || []} columns={definitions.columns.list.table} dataIdField='id'>
           <Outlet />
         </CompareDataProvider>
       </Box>

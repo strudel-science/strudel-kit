@@ -41,7 +41,7 @@ export const DataInputs: React.FC = () => {
         <Stepper activeStep={0} sx={{ maxWidth: 850 }}>
           <Step key="Data Inputs">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="../data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
                 {/* strudel-kit-variable-next-line */}
                 Data Inputs
               </Link>
@@ -49,7 +49,7 @@ export const DataInputs: React.FC = () => {
           </Step>
           <Step key="Optimization Settings">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="../settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
                 {/* strudel-kit-variable-next-line */}
                 Optimization Settings
               </Link>
@@ -57,7 +57,7 @@ export const DataInputs: React.FC = () => {
           </Step>
           <Step key="Results">
             <StepLabel>
-              <Link component={RouterLink} to="/run-computation/scenario/results" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link component={RouterLink} to="../results" sx={{ color: 'inherit', textDecoration: 'none' }}>
                 {/* strudel-kit-variable-next-line */}
                 Results
               </Link>
@@ -152,7 +152,7 @@ export const DataInputs: React.FC = () => {
           width: '100%'
         }}
       >
-        <Link component={RouterLink} to="/run-computation/scenario/settings">
+        <Link component={RouterLink} to="../settings">
           {/* strudel-kit-variable-next-line */}
           <Button variant="contained">Continue to optimization settings</Button>
         </Link>

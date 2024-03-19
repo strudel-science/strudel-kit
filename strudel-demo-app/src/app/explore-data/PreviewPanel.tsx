@@ -32,7 +32,7 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
         <Stack spacing={1}>
           <Stack direction="row">
             <Typography variant="h6" component="h3" flex={1}>
-              <Link component={RouterLink} to={`./${state.previewItem[state.dataIdField]}`} underline="hover">
+              <Link component={RouterLink} to={`${state.previewItem[state.dataIdField]}`} underline="hover">
                 {state.previewItem[state.columns[0].field]}
               </Link>
             </Typography>
@@ -71,7 +71,7 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
           />
         </Box>
         <Stack direction="row">
-          <Link component={RouterLink} to={`./${state.previewItem[state.dataIdField]}`}>
+          <Link component={RouterLink} to={`${state.previewItem[state.dataIdField]}`}>
             <Button variant="contained">
               View details
             </Button>
