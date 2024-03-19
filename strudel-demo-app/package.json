@@ -49,7 +49,7 @@
       "react-hooks/exhaustive-deps": "off",
       "no-self-compare": "off",
       "array-callback-return": "off"
-  }
+    }
   },
   "browserslist": {
     "production": [
