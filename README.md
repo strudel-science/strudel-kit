@@ -16,7 +16,7 @@ Install the STRUDEL CLI tool:
 pip install strudel-cli
 ```
 
-Create a base app:
+Create a base app (enter values at the prompts or hit Enter to use the default value):
 
 ```
 strudel create-app my-app
@@ -28,10 +28,10 @@ Go to the root directory of your new app:
 cd my-app
 ```
 
-Add a new Task Flow to your app and use the default configurations:
+Add a new Task Flow to your app using the default configurations (hit Enter at each prompt):
 
 ```
-strudel add-taskflow my-taskflow --template run-computation
+strudel add-taskflow my-default-taskflow --template run-computation
 ```
 
 Or create a config file for your new task flow based on [the config example](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/run-computation/config.md) for the selected Task Flow template.
