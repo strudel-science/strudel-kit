@@ -1,8 +1,8 @@
 import { Box, Button, Container, Grid, Link, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
+import { DataGrid } from '@mui/x-data-grid';
 import React, { useEffect } from 'react';
 import Plot from 'react-plotly.js';
 import { Link as RouterLink } from 'react-router-dom';
-import { DataGrid } from '@mui/x-data-grid';
 import { useDataFromSource } from '../../utils/useDataFromSource';
 import { basename } from '../App';
 import { useRunComputation } from './context/ContextProvider';

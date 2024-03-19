@@ -1,12 +1,12 @@
 import { Box } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
-import { basename } from '../App';
-import { TopBar } from '../../components/TopBar';
-import { CompareDataProvider } from './context/ContextProvider';
 import { GridColDef } from '@mui/x-data-grid';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import { TopBar } from '../../components/TopBar';
 import { useDataFromSource } from '../../utils/useDataFromSource';
-import definitions from './definitions.json'
+import { basename } from '../App';
+import { CompareDataProvider } from './context/ContextProvider';
+import definitions from './definitions.json';
 
 /**
  * Top-level wrapper for the compare-data Task Flow templates.

@@ -1,6 +1,5 @@
-import React, { useEffect, useReducer, useContext } from 'react';
+import React, { useContext } from 'react';
 import { ContributeDataAction, ContributeDataActionType } from './actions';
-import { filterData } from './utils';
 
 export interface DataFilter {
   field: string;

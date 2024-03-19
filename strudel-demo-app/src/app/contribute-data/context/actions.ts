@@ -1,5 +1,3 @@
-import { ContributeDataState } from './ContextProvider';
-
 export enum ContributeDataActionType {
   RUN_CHECKS = 'RUN_CHECKS',
   FINISH_CHECKS = 'FINISH_CHECKS',

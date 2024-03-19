@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useReducer } from 'react';
+import React, { useContext, useReducer } from 'react';
 import { RunComputationAction, RunComputationActionType } from './actions';
 
 export interface RunComputationState {
