@@ -12,18 +12,6 @@ Create a base app:
 strudel create-app my-app
 ```
 
-Create a config file for your new task flow based on [the run-computation config example](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/CONFIGS.md#run-computation):
-
-_my-taskflow-config.json_
-```js
-{
-  "name": "my-taskflow",
-  "template": "run-computation",
-  "pageTitle": "Run Computation App",
-  "pageDescription": "Description of this app section"
-}
-```
-
 Go to the root directory of your new app:
 
 ```
@@ -33,9 +21,17 @@ cd my-app
 Add the task flow to your app:
 
 ```
-strudel add-taskflow --config ../my-taskflow-config.json
+strudel add-taskflow my-run-computation-tf --template run-computation
 ```
+
+Accept the default options or create a configuration file for your Task Flow.
+
+```
+strudel add-taskflow --config my-config.json
+```
+
+### [How to Configure this Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/run-computation/config.md)
 
 ## Learn More
 
-[Read more about the strudel-cli and learn advanced usage.](https://github.com/strudel-science/strudel-kit/tree/main/strudel-cli)
+[Read more about the strudel-cli and learn advanced usage.](https://github.com/strudel-science/strudel-kit/tree/main/docs)

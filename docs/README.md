@@ -27,32 +27,20 @@ One page instructions on different advanced STRUDEL Kit methods.
 
 Examples and explanations for each Task Flow's configuration file. Also an example of how to connect each Task Flow to the base app's router.
 
-#### Compare Data
+#### Config File Examples
 
-- [Config Example](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/compare-data/config.md)
-- [Router Example](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/compare-data/routes.md)
+- [Compare Data Config](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/compare-data/config.md)
+- [Contribute Data Config](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/contribute-data/config.md)
+- [Explore Data Config](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/explore-data/config.md)
+- [Monitor Activities Config](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/monitor-activities/config.md)
+- [Run Computaiton Config](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/run-computation/config.md)
+- [Search Data Repositories Config](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/search-data-repositories/config.md)
 
-#### Contribute Data
+#### Router Examples
 
-- [Config Example](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/contribute-data/config.md)
-- [Router Example](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/contribute-data/routes.md)
-
-#### Explore Data
-
-- [Config Example](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/explore-data/config.md)
-- [Router Example](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/explore-data/routes.md)
-
-#### Monitor Activities
-
-- [Config Example](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/monitor-activities/config.md)
-- [Router Example](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/monitor-activities/routes.md)
-
-#### Run Computaiton
-
-- [Config Example](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/run-computation/config.md)
-- [Router Example](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/run-computation/routes.md)
-
-#### Search Data Repositories
-
-- [Config Example](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/search-data-repositories/config.md)
-- [Router Example](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/search-data-repositories/routes.md)
+- [Compare Data Router](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/compare-data/routes.md)
+- [Contribute Data Router](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/contribute-data/routes.md)
+- [Explore Data Router](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/explore-data/routes.md)
+- [Monitor Activities Router](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/monitor-activities/routes.md)
+- [Run Computaiton Router](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/run-computation/routes.md)
+- [Search Data Repositories Router](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/search-data-repositories/routes.md)
