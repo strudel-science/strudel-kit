@@ -38,5 +38,8 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
+  },
+  "engines": {
+    "node": "^18.18.0 || >=20.0.0"
   }
 }
