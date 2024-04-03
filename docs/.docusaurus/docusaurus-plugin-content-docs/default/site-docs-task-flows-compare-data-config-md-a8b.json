@@ -1,0 +1,26 @@
+{
+  "id": "task-flows/compare-data/config",
+  "title": "Configuration",
+  "description": "Compare Data",
+  "source": "@site/docs/task-flows/compare-data/config.md",
+  "sourceDirName": "task-flows/compare-data",
+  "slug": "/task-flows/compare-data/config",
+  "permalink": "/task-flows/compare-data/config",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/task-flows/compare-data/config.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Configuration"
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/"
+  },
+  "next": {
+    "title": "Routes",
+    "permalink": "/task-flows/compare-data/routes"
+  }
+}

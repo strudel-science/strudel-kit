@@ -1,0 +1,19 @@
+{
+  "title": "Task Flows",
+  "description": "Learn about the most important Docusaurus concepts!",
+  "keywords": [
+    "guides"
+  ],
+  "slug": "/category/task-flows",
+  "permalink": "/category/task-flows",
+  "navigation": {
+    "previous": {
+      "title": "Introduction",
+      "permalink": "/"
+    },
+    "next": {
+      "title": "Compare Data",
+      "permalink": "/category/compare-data"
+    }
+  }
+}

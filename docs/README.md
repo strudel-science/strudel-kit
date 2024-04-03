@@ -1,46 +1,41 @@
-# STRUDEL Kit Docs
+# Website
 
-Welcome to the STRUDEL Kit Docs! STRUDEL Kit is a web development toolkit for building scientific UIs based on the STRUDEL Design System and Task Flows. It consists of a command-line bootstrapping tool and a suite of React-based JavaScript templates. Visit [strudel.science](https://strudel.science) for more information about the STRUDEL project.
+This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
-## What's here?
+### Installation
 
-### [Getting Started Tutorial](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/0-introduction.md)
+```
+$ yarn
+```
 
-A detailed step-by-step guide on how to build and customize a Task Flow using the strudel-cli and the STRUDEL Kit React templates.
+### Local Development
 
-- [Setup](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/1-setup.md)
-- [Create a base app](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/2-create-app.md)
-- [Add a Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/3-add-taskflow.md)
-- [Customize your task flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/4-customize-taskflow.md)
-- [Customize app theme and styles](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/5-customize-app.md)
-- [Customize the Home Page](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/6-customize-home-page.md)
-- [Continue learning](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/7-continue-learning.md)
+```
+$ yarn start
+```
 
-### How-Tos
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-One page instructions on different advanced STRUDEL Kit methods.
+### Build
 
-- [How to combine sections from different task flows](https://github.com/strudel-science/strudel-kit/blob/main/docs/how-to/combine-sections.md)
-- [How to connect task flows together](https://github.com/strudel-science/strudel-kit/blob/main/docs/how-to/connect-task-flows-together.md)
+```
+$ yarn build
+```
 
-### Task Flow Configuration
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-Examples and explanations for each Task Flow's configuration file. Also an example of how to connect each Task Flow to the base app's router.
+### Deployment
 
-#### Config File Examples
+Using SSH:
 
-- [Compare Data Config](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/compare-data/config.md)
-- [Contribute Data Config](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/contribute-data/config.md)
-- [Explore Data Config](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/explore-data/config.md)
-- [Monitor Activities Config](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/monitor-activities/config.md)
-- [Run Computaiton Config](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/run-computation/config.md)
-- [Search Data Repositories Config](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/search-data-repositories/config.md)
+```
+$ USE_SSH=true yarn deploy
+```
 
-#### Router Examples
+Not using SSH:
 
-- [Compare Data Router](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/compare-data/routes.md)
-- [Contribute Data Router](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/contribute-data/routes.md)
-- [Explore Data Router](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/explore-data/routes.md)
-- [Monitor Activities Router](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/monitor-activities/routes.md)
-- [Run Computaiton Router](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/run-computation/routes.md)
-- [Search Data Repositories Router](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/search-data-repositories/routes.md)
+```
+$ GIT_USER=<Your GitHub username> yarn deploy
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.

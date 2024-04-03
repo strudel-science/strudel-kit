@@ -1,0 +1,25 @@
+{
+  "id": "getting-started/add-taskflow",
+  "title": "add-taskflow",
+  "description": "Add a Task Flow to Your App",
+  "source": "@site/docs/getting-started/3-add-taskflow.md",
+  "sourceDirName": "getting-started",
+  "slug": "/getting-started/add-taskflow",
+  "permalink": "/getting-started/add-taskflow",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/getting-started/3-add-taskflow.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Create a Base App",
+    "permalink": "/getting-started/create-app"
+  },
+  "next": {
+    "title": "Customize Your Task Flow",
+    "permalink": "/getting-started/customize-taskflow"
+  }
+}

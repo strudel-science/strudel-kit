@@ -1,0 +1,19 @@
+{
+  "title": "Compare Data",
+  "description": "Learn about the most important Docusaurus concepts!",
+  "keywords": [
+    "guides"
+  ],
+  "slug": "/category/compare-data",
+  "permalink": "/category/compare-data",
+  "navigation": {
+    "previous": {
+      "title": "Task Flows",
+      "permalink": "/category/task-flows"
+    },
+    "next": {
+      "title": "Compare Data Config File",
+      "permalink": "/task-flows/compare-data/config"
+    }
+  }
+}

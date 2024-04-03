@@ -1,0 +1,24 @@
+{
+  "id": "how-to/combine-sections",
+  "title": "How to Combine Sections from Different Task Flows",
+  "description": "When using STRUDEL Kit it's common to want to take a section from one Task Flow and copy it into a different one. Doing so requires you to copy the desired components and elements from one Task Flow file into another file in the desired destination. The difficulty depends on the particular components, but in general, this is easy to do.",
+  "source": "@site/docs/how-to/combine-sections.md",
+  "sourceDirName": "how-to",
+  "slug": "/how-to/combine-sections",
+  "permalink": "/how-to/combine-sections",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/how-to/combine-sections.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Continue Learning",
+    "permalink": "/getting-started/continue-learning"
+  },
+  "next": {
+    "title": "How to Connect Task Flows Together",
+    "permalink": "/how-to/connect-task-flows-together"
+  }
+}

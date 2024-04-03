@@ -1,0 +1,24 @@
+{
+  "id": "task-flows/run-computation/config",
+  "title": "Run Computation Config File",
+  "description": "Configuration file to pass to the add-taskflow command for the Run Computation Task Flow. Specifications in the config file can be overriden by options supplied on the command line.",
+  "source": "@site/docs/task-flows/run-computation/config.md",
+  "sourceDirName": "task-flows/run-computation",
+  "slug": "/task-flows/run-computation/config",
+  "permalink": "/task-flows/run-computation/config",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/task-flows/run-computation/config.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Monitor Activities Routes",
+    "permalink": "/task-flows/monitor-activities/routes"
+  },
+  "next": {
+    "title": "Routes",
+    "permalink": "/task-flows/compare-data/routes"
+  }
+}

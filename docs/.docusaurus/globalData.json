@@ -1,0 +1,147 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/",
+          "mainDocId": "getting-started/introduction",
+          "docs": [
+            {
+              "id": "getting-started/installation",
+              "path": "/getting-started/installation",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "getting-started/introduction",
+              "path": "/",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "getting-started/usage",
+              "path": "/getting-started/usage",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "task-flows/compare-data/config",
+              "path": "/task-flows/compare-data/config",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "task-flows/compare-data/routes",
+              "path": "/task-flows/compare-data/routes",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "task-flows/contribute-data/config",
+              "path": "/task-flows/contribute-data/config",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "task-flows/contribute-data/routes",
+              "path": "/task-flows/contribute-data/routes",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "task-flows/explore-data/config",
+              "path": "/task-flows/explore-data/config",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "task-flows/explore-data/routes",
+              "path": "/task-flows/explore-data/routes",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "task-flows/monitor-activities/config",
+              "path": "/task-flows/monitor-activities/config",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "task-flows/monitor-activities/routes",
+              "path": "/task-flows/monitor-activities/routes",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "task-flows/run-computation/config",
+              "path": "/task-flows/run-computation/config",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "task-flows/run-computation/routes",
+              "path": "/task-flows/run-computation/routes",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "task-flows/search-data-repositories/config",
+              "path": "/task-flows/search-data-repositories/config",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "task-flows/search-data-repositories/routes",
+              "path": "/task-flows/search-data-repositories/routes",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "tutorials/basic-app-with-strudel/add-taskflow",
+              "path": "/tutorials/basic-app-with-strudel/add-taskflow"
+            },
+            {
+              "id": "tutorials/basic-app-with-strudel/continue-learning",
+              "path": "/tutorials/basic-app-with-strudel/continue-learning"
+            },
+            {
+              "id": "tutorials/basic-app-with-strudel/create-app",
+              "path": "/tutorials/basic-app-with-strudel/create-app"
+            },
+            {
+              "id": "tutorials/basic-app-with-strudel/customize-app",
+              "path": "/tutorials/basic-app-with-strudel/customize-app"
+            },
+            {
+              "id": "tutorials/basic-app-with-strudel/customize-home-page",
+              "path": "/tutorials/basic-app-with-strudel/customize-home-page"
+            },
+            {
+              "id": "tutorials/basic-app-with-strudel/customize-taskflow",
+              "path": "/tutorials/basic-app-with-strudel/customize-taskflow"
+            },
+            {
+              "id": "tutorials/basic-app-with-strudel/introduction",
+              "path": "/tutorials/basic-app-with-strudel/introduction",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "tutorials/basic-app-with-strudel/setup",
+              "path": "/tutorials/basic-app-with-strudel/setup",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "tutorials/combine-sections",
+              "path": "/tutorials/combine-sections",
+              "sidebar": "mainSidebar"
+            },
+            {
+              "id": "tutorials/connect-task-flows-together",
+              "path": "/tutorials/connect-task-flows-together",
+              "sidebar": "mainSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "mainSidebar": {
+              "link": {
+                "path": "/",
+                "label": "getting-started/introduction"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

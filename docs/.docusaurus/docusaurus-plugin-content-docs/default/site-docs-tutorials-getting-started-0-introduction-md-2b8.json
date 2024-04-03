@@ -1,0 +1,16 @@
+{
+  "id": "tutorials/getting-started/introduction",
+  "title": "Getting Started with STRUDEL Kit (Beta)",
+  "description": "In this tutorial you will learn the basics of how to build a web application using the STRUDEL Task Flow templates and STRUDEL CLI. By the end you will have your own customized version of the Explore Data Task Flow running in a web browser on your computer.",
+  "source": "@site/docs/tutorials/getting-started/0-introduction.md",
+  "sourceDirName": "tutorials/getting-started",
+  "slug": "/tutorials/getting-started/introduction",
+  "permalink": "/tutorials/getting-started/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorials/getting-started/0-introduction.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {}
+}

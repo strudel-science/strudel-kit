@@ -1,0 +1,16 @@
+{
+  "id": "tutorials/basic-app-with-strudel/customize-app",
+  "title": "Customize Your App",
+  "description": "For most web applications, it is important to include content and alterations that are unique to your project. In this section you will learn the basics of how to make the app your own by changing the theme, styles, and general content.",
+  "source": "@site/docs/tutorials/basic-app-with-strudel/5-customize-app.md",
+  "sourceDirName": "tutorials/basic-app-with-strudel",
+  "slug": "/tutorials/basic-app-with-strudel/customize-app",
+  "permalink": "/tutorials/basic-app-with-strudel/customize-app",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorials/basic-app-with-strudel/5-customize-app.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {}
+}

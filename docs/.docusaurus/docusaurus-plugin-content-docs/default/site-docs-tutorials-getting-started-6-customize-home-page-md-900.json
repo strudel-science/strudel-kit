@@ -1,0 +1,16 @@
+{
+  "id": "tutorials/getting-started/customize-home-page",
+  "title": "Customize the Home Page",
+  "description": "STRUDEL generates a default home page in src/app/home/HomePage.tsx. In this section you will add some content, images, and links to the home page.",
+  "source": "@site/docs/tutorials/getting-started/6-customize-home-page.md",
+  "sourceDirName": "tutorials/getting-started",
+  "slug": "/tutorials/getting-started/customize-home-page",
+  "permalink": "/tutorials/getting-started/customize-home-page",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorials/getting-started/6-customize-home-page.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {}
+}

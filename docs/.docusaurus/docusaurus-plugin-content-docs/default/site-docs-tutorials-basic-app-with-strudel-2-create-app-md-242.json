@@ -1,0 +1,16 @@
+{
+  "id": "tutorials/basic-app-with-strudel/create-app",
+  "title": "Create a Base App",
+  "description": "We will now start to create your first STRUDEL app using the strudel-cli you installed in the previous step. The strudel command has several sub-commands to do different tasks; to create an app named planets-app use the create-app sub-command like this:",
+  "source": "@site/docs/tutorials/basic-app-with-strudel/2-create-app.md",
+  "sourceDirName": "tutorials/basic-app-with-strudel",
+  "slug": "/tutorials/basic-app-with-strudel/create-app",
+  "permalink": "/tutorials/basic-app-with-strudel/create-app",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/tutorials/basic-app-with-strudel/2-create-app.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {}
+}
