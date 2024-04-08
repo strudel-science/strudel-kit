@@ -99,9 +99,22 @@ const sidebars: SidebarsConfig = {
             'tutorials/basic-app-with-strudel/setup'
           ]
         },
-        'tutorials/combine-sections',
-        'tutorials/connect-task-flows-together'
+        {
+          type: 'doc',
+          label: 'Combine sections from Task Flows',
+          id: 'tutorials/combine-sections'
+        },
+        {
+          type: 'doc',
+          label: 'Connect Task Flows Together',
+          id: 'tutorials/connect-task-flows-together'
+        },
       ],
+    },
+    {
+      type: 'doc',
+      label: 'CLI Reference',
+      id: 'cli/reference'
     },
   ],
 };

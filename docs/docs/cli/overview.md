@@ -1,8 +1,8 @@
-:warning: ***This library is in early-stage development. Check back soon for more updates!***
-
-# STRUDEL Command-Line Interface (Beta)
+# Command-Line Interface - Overview
 
 The strudel-cli is a command-line tool for bootstrapping web applications based on the [STRUDEL Design System](https://strudel.science/). 
+
+:warning: ***This library is in early-stage development. Check back soon for more updates!***
 
 #### How it Works
 
@@ -97,46 +97,6 @@ npm start
 Open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
 
 Didn't work? Make sure you have [installed NPM and Node.JS](https://nodejs.org/en/download).
-
-## Commands
-
-### `strudel create-app`
-
-Creates the base scaffolding for a web app based on the STRUDEL design system.
-
-```
-strudel create-app <app-name> [OPTIONS]
-```
-
-#### Arguments
-
-- `<app-name>`: Name to use for the app's root directory (e.g. `my-app`). Must be a valid directory name. [required]
-
-#### Options
-
-- `--config`, `-c`: JSON configuration file to use to build the base app. See [CONFIGS.md](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/CONFIGS.md) for how to format this file. If not supplied, you will be prompted on the command-line to give configuration values.
-- `--output-dir`, `-o`: Path to the directory where the app should be created. Defaults to current directory.
-- `--branch`, `-b`: Branch in strudel-kit repo that should be used for the templates. Defaults to `main`. This option is primarily for use by contributors.
-
-### `strudel add-taskflow`
-
-Adds a new task flow to an existing strudel app. Give the task flow a name and choose one of the strudel task flow templates to base your section on.
-
-```
-strudel add-taskflow <taskflow-name> --template <taskflow-template> [OPTIONS]
-```
-
-#### Arguments
-
-- `<taskflow-name>`: Name to use for the task flow's root directory (e.g. `my-taskflow`). Must be a valid directory name. [required]
-
-#### Options
-
-- `--template`, `-t`: Name of the strudel task flow template to use to scaffold the task flow. [required]
-  - Available options: `compare-data`, `contribute-data`, `explore-data`, `monitor-activities`, `run-computation`, `search-data-repositories`
--  `--config`, `-c`: JSON configuration file to use to build the task flow. See [CONFIGS.md](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/CONFIGS.md) for how to format this file. If not supplied, you will be prompted on the command-line to give configuration values.
-- `--output-dir`, `-o`: Path to the directory where the task flow should be created. Defaults to `src/apps`.
-- `--branch`, `-b`: Branch in strudel-kit repo that should be used for the templates. Defaults to `main`. This option is primarily for use by contributors.
 
 ## Developer Quickstart
 
