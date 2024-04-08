@@ -93,7 +93,7 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: 'category',
-          label: 'Build an App with STRUDEL',
+          label: 'Getting Started Guide',
           items: [
             'tutorials/basic-app-with-strudel/introduction',
             'tutorials/basic-app-with-strudel/setup'
@@ -101,12 +101,12 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'doc',
-          label: 'Combine sections from Task Flows',
+          label: 'Combining sections',
           id: 'tutorials/combine-sections'
         },
         {
           type: 'doc',
-          label: 'Connect Task Flows Together',
+          label: 'Connecting Task Flows',
           id: 'tutorials/connect-task-flows-together'
         },
       ],
