@@ -29,6 +29,8 @@
     "@docusaurus/module-type-aliases": "3.2.0",
     "@docusaurus/tsconfig": "3.2.0",
     "@docusaurus/types": "3.2.0",
+    "docusaurus-plugin-react-docgen-typescript": "^1.1.0",
+    "react-docgen-typescript": "^2.2.2",
     "typescript": "~5.2.2"
   },
   "browserslist": {

@@ -2,6 +2,23 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+const options: any = {
+  // pass in a single string or an array of strings
+  src: ['../strudel-demo-app/src/components/**/*.tsx'],
+  // parserOptions: {
+  //   // pass parserOptions to react-docgen-typescript
+  //   // here is a good starting point which filters out all
+  //   // types from react
+  //   propFilter: (prop, component) => {
+  //     if (prop.parent) {
+  //       return !prop.parent.fileName.includes('@types/react');
+  //     }
+
+  //     return true;
+  //   },
+  // },
+};
+
 const config: Config = {
   title: 'My Site',
   tagline: 'Dinosaurs are cool',
@@ -128,6 +145,9 @@ const config: Config = {
   } satisfies Preset.ThemeConfig,
   themes: [
     '@saucelabs/theme-github-codeblock'
+  ],
+  plugins: [
+    ['docusaurus-plugin-react-docgen-typescript', options],
   ]
 };
 
