@@ -117,6 +117,13 @@ const sidebars: SidebarsConfig = {
       id: 'cli/reference'
     },
   ],
+  componentsSidebar: [
+    {
+      type: 'doc',
+      label: 'LabelValueTable',
+      id: 'components/LabelValueTable',
+    },
+  ]
 };
 
 export default sidebars;

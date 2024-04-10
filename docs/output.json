@@ -1,0 +1,38 @@
+{
+  "../strudel-demo-app/src/components/LabelValueTable.tsx": [
+    {
+      "description": "Component for displaying a flat list of label-value pairs\nin a two column table.",
+      "methods": [],
+      "displayName": "LabelValueTable",
+      "props": {
+        "rows": {
+          "required": false,
+          "tsType": {
+            "name": "Array",
+            "elements": [
+              {
+                "name": "LabelValuePair"
+              }
+            ],
+            "raw": "LabelValuePair[]"
+          },
+          "description": ""
+        },
+        "labelWidth": {
+          "required": false,
+          "tsType": {
+            "name": "number"
+          },
+          "description": "",
+          "defaultValue": {
+            "value": "150",
+            "computed": false
+          }
+        }
+      },
+      "composes": [
+        "TableProps"
+      ]
+    }
+  ]
+}
