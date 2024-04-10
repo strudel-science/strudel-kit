@@ -5,6 +5,7 @@ import { RouterProvider } from 'react-router-dom';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { router } from './routes';
+import { Routes } from '@generouted/react-router'
 import { theme } from './theme';
 import { AppProvider } from '../context/ContextProvider';
 import { ApiModal } from '../components/ApiModal';
@@ -18,7 +19,8 @@ const App: React.FC = () => {
         <CssBaseline />
         {/* strudel-kit-variable-next-line */}
         <AppProvider appTitle="Demo App">
-          <RouterProvider router={router} />
+          {/* <RouterProvider router={router} /> */}
+          <Routes />
           <ApiModal />
         </AppProvider>
       </ThemeProvider>
