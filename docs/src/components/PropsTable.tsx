@@ -44,7 +44,7 @@ export const PropsTable: React.FC<PropsTableProps> = ({
       size="small"
       aria-label="label value table"
       sx={{
-        backgroundColor: 'white' 
+        color: 'white' 
       }}
     >
       <TableBody>
@@ -71,10 +71,10 @@ export const PropsTable: React.FC<PropsTableProps> = ({
               {propsData[prop].description}
             </TableCell>
             <TableCell>
-              {propsData[prop].tsType.raw || propsData[prop].tsType.name}
+              {propsData[prop].tsType.name}
             </TableCell>
             <TableCell>
-              {propsData[prop].required}
+              {JSON.stringify(propsData[prop].required)}
             </TableCell>
           </TableRow>
         ))}

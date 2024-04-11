@@ -16,14 +16,14 @@
             ],
             "raw": "LabelValuePair[]"
           },
-          "description": ""
+          "description": "List of label value pairs"
         },
         "labelWidth": {
           "required": false,
           "tsType": {
             "name": "number"
           },
-          "description": "",
+          "description": "Width in pixels of the label column",
           "defaultValue": {
             "value": "150",
             "computed": false
