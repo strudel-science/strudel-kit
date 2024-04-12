@@ -1,0 +1,25 @@
+{
+  // These tasks will run in order when initializing your CodeSandbox project.
+  "setupTasks": [
+    {
+      "command": "cd strudel-demo-app",
+      "name": "c"
+    },
+    {
+      "command": "npm install",
+      "name": "n"
+    }
+  ],
+
+  // These tasks can be run from CodeSandbox. Running one will open a log in the app.
+  "tasks": {
+    "c": {
+      "name": "c",
+      "command": "cd strudel-demo-app && npm install && npm start",
+      "runAtStart": true,
+      "preview": {
+        "port": 3000
+      }
+    }
+  }
+}
