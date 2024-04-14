@@ -148,9 +148,17 @@ const config: Config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
+    liveCodeBlock: {
+      /**
+       * The position of the live playground, above or under the editor
+       * Possible values: "top" | "bottom"
+       */
+      playgroundPosition: 'top',
+    },
   } satisfies Preset.ThemeConfig,
   themes: [
-    '@saucelabs/theme-github-codeblock'
+    '@saucelabs/theme-github-codeblock',
+    '@docusaurus/theme-live-codeblock'
   ],
   plugins: [
     ['docusaurus-plugin-react-docgen-typescript', options],

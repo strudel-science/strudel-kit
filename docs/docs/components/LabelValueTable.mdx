@@ -1,5 +1,23 @@
 import docgenJson from '@site/output.json';
 import { PropsTable } from "@site/src/components/PropsTable"
+import { LabelValueTable, Test, LinearMeter } from 'strudel-components'
+
+```jsx live
+<LabelValueTable 
+  rows={[
+    {
+      label: 'Test',
+      value: 17
+    },
+    {
+      label: 'Test B',
+      value: 29
+    }
+  ]}
+/>
+```
+
+## Props
 
 <PropsTable 
   propsData={docgenJson['../strudel-demo-app/src/components/LabelValueTable.tsx'][0]['props']} 
