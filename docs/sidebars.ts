@@ -30,7 +30,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Task Flow Templates',
+      label: 'Templates',
       // link: {
       //   type: 'generated-index',
       //   description: 'Learn about the most important Docusaurus concepts!',
@@ -89,6 +89,13 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Components',
+      items: [
+        'components/LabelValueTable',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Tutorials',
       items: [
         {
@@ -101,7 +108,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'doc',
-          label: 'Combining sections',
+          label: 'Combining Sections',
           id: 'tutorials/combine-sections'
         },
         {
@@ -117,13 +124,6 @@ const sidebars: SidebarsConfig = {
       id: 'cli/reference'
     },
   ],
-  componentsSidebar: [
-    {
-      type: 'doc',
-      label: 'LabelValueTable',
-      id: 'components/LabelValueTable',
-    },
-  ]
 };
 
 export default sidebars;
