@@ -92,6 +92,7 @@ const sidebars: SidebarsConfig = {
       label: 'Components',
       items: [
         'components/LabelValueTable',
+        'components/LinearMeter',
       ],
     },
     {
