@@ -7,7 +7,7 @@ defaults = {
     "create-app": {
         "name": "",
         "output_dir": "",
-        "branch": "prod",
+        "branch": f"v{__version__}",
         "config": "",
         "verbose": 0
     },
@@ -15,7 +15,7 @@ defaults = {
         "name": "",
         "template": "",
         "output_dir": "src/app",
-        "branch": "prod",
+        "branch": f"v{__version__}",
         "config": "",
         "verbose": 0
     }
