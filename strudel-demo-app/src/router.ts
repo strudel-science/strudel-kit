@@ -8,6 +8,11 @@ export type Path =
   | `/compare-data`
   | `/compare-data/compare`
   | `/compare-data/new`
+  | `/run-computation`
+  | `/run-computation/ComputationsList`
+  | `/run-computation/DataInputs`
+  | `/run-computation/Results`
+  | `/run-computation/RunComputationWrapper`
   | `/test`
 
 export type Params = {
