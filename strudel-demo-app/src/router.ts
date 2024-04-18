@@ -9,14 +9,17 @@ export type Path =
   | `/compare-data/compare`
   | `/compare-data/new`
   | `/run-computation`
-  | `/run-computation/ComputationsList`
-  | `/run-computation/DataInputs`
-  | `/run-computation/Results`
-  | `/run-computation/RunComputationWrapper`
+  | `/run-computation/:id/data-inputs`
+  | `/run-computation/:id/results`
+  | `/run-computation/:id/running`
+  | `/run-computation/:id/settings`
   | `/test`
 
 export type Params = {
-  
+  '/run-computation/:id/data-inputs': { id: string }
+  '/run-computation/:id/results': { id: string }
+  '/run-computation/:id/running': { id: string }
+  '/run-computation/:id/settings': { id: string }
 }
 
 export type ModalPath = never

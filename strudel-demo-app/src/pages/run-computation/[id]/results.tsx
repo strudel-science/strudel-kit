@@ -1,30 +1,52 @@
-import { Box, Button, Container, Link, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
-import React, { useEffect } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Box, Button, Container, Grid, Link, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { useDataFromSource } from '../../utils/useDataFromSource';
-import { basename } from '../../main';
-import { useRunComputation } from './_context/ContextProvider';
-import { setInputsTableData } from './_context/actions';
+import React, { useEffect } from 'react';
+import Plot from 'react-plotly.js';
+import { Link as RouterLink } from 'react-router-dom';
+import { useDataFromSource } from '../../../utils/useDataFromSource';
+import { basename } from '../../../main';
+import { useRunComputation } from '../_context/ContextProvider';
+import { setResultsBarChartData, setResultsLineChartData, setResultsTableData } from '../_context/actions';
 
 /**
- * Page to display input data after creating or selecting an item from 
- * the `<ComputationsList>` page in the run-computation Task Flow.
- * Table columns are configured in `definitions.inputs.table.columns`
+ * Results page to display after a computation completes in the run-computation Task Flow.
+ * Displays a line chart, bar chart, and table of results from the computation.
  */
-export const DataInputs: React.FC = () => {
+const ResultsPage: React.FC = () => {
   const { state, dispatch } = useRunComputation();
   // strudel-kit-variable-next-line
-  const inputsData = useDataFromSource('default/run-computation/inputs.json', basename);
-  
+  const tableData = useDataFromSource('default/run-computation/results_table.json', basename);
+  // strudel-kit-variable-next-line
+  const lineData = useDataFromSource('default/run-computation/results_line_chart.json', basename);
+  // strudel-kit-variable-next-line
+  const barData = useDataFromSource('default/run-computation/results_bar_chart.json', basename);
+
   /**
-   * Set data for the inputs table when the data loads
+   * Set data for the results table when the data loads
    */
   useEffect(() => {
-    if (!state.inputs.table.data || state.inputs.table.data.length === 0) {
-      dispatch(setInputsTableData(inputsData));
+    if (!state.results.table.data || state.results.table.data.length === 0) {
+      dispatch(setResultsTableData(tableData));
     }
-  }, [inputsData]);
+  }, [tableData]);
+
+  /**
+   * Set data for the results line chart when the data loads
+   */
+  useEffect(() => {
+    if (!state.results.lineChart.data || state.results.lineChart.data.length === 0) {
+      dispatch(setResultsLineChartData(lineData));
+    }
+  }, [lineData]);
+
+  /**
+   * Set data for the results bar chart when the data loads
+   */
+  useEffect(() => {
+    if (!state.results.barChart.data || state.results.barChart.data.length === 0) {
+      dispatch(setResultsBarChartData(barData));
+    }
+  }, [barData]);
 
   /**
    * Content to render on the page for this component
@@ -39,11 +61,11 @@ export const DataInputs: React.FC = () => {
           borderColor: 'neutral.main'
         }}
       >
-        <Stepper activeStep={0} sx={{ maxWidth: 850 }}>
+        <Stepper activeStep={2} sx={{ maxWidth: 850 }}>
           <Step key="Data Inputs">
             <StepLabel>
               <Link component={RouterLink} to="../data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
-                {/* strudel-kit-variable-next-line */}
+                {/* strudel-kit-variable-next-line   */}
                 Data Inputs
               </Link>
             </StepLabel>
@@ -99,7 +121,7 @@ export const DataInputs: React.FC = () => {
               marginRight: '-2rem !important'
             }}
           >
-            Input Units
+            Summary
           </Typography>
           <Typography 
             component="li"
@@ -109,7 +131,7 @@ export const DataInputs: React.FC = () => {
               marginRight: '-2rem !important'
             }}
           >
-            Input Streams
+            System Costing
           </Typography>
           <Typography 
             component="li" 
@@ -119,25 +141,45 @@ export const DataInputs: React.FC = () => {
               marginRight: '-2rem !important'
             }}
           >
-            Unit Costing
+            System Metrics
           </Typography>
         </Stack>
-        <Box flex={1} sx={{ overflow: 'hidden' }}>
+        <Box flex={1}>
           <Container
             maxWidth="xl"
             sx={{
               mt: 4
             }}
           >
-            <Paper>
-              <DataGrid
-                rows={state.inputs.table.data || []}
-                getRowId={(row) => row[state.inputs.table.dataIdField]}
-                columns={state.inputs.table.columns}
-                disableColumnSelector
-                disableRowSelectionOnClick
-              />
-            </Paper>  
+            <Grid container spacing={4}>
+              <Grid item sm={6}>
+                <Paper>
+                  <Plot
+                    data={state.results.lineChart.data}
+                    layout={{}}
+                  />
+                </Paper>
+              </Grid>
+              <Grid item sm={6}>
+                <Paper>
+                  <Plot
+                    data={state.results.barChart.data}
+                    layout={{}}
+                  />
+                </Paper>
+              </Grid>
+              <Grid item xs={12}>
+                <Paper>
+                  <DataGrid
+                    rows={state.results.table.data || []}
+                    getRowId={(row) => row[state.results.table.dataIdField]}
+                    columns={state.results.table.columns}
+                    disableColumnSelector
+                    disableRowSelectionOnClick
+                  />
+                </Paper>
+              </Grid>
+            </Grid>  
           </Container>
         </Box>
       </Stack>
@@ -149,15 +191,16 @@ export const DataInputs: React.FC = () => {
           bottom: 0,
           padding: 2,
           position: 'fixed',
-          textAlign: 'right',
           width: '100%'
         }}
       >
         <Link component={RouterLink} to="../settings">
           {/* strudel-kit-variable-next-line */}
-          <Button variant="contained">Continue to optimization settings</Button>
+          <Button variant="contained">Back to optimization settings</Button>
         </Link>
       </Box>
     </Stack>
   )
 }
+
+export default ResultsPage;

@@ -9,13 +9,13 @@ import { TopBar } from '../../components/TopBar';
 import { useDataFromSource } from '../../utils/useDataFromSource';
 import { basename } from '../../main';
 import { RunComputationProvider } from './_context/ContextProvider';
-import definitions from './definitions.json';
+import definitions from './_config/definitions.json';
 
 /**
  * Top-level wrapper for the run-computation Task Flow templates.
  * Inner pages are rendered inside the `<Outlet />` component
  */
-export const RunComputationWrapper: React.FC = () => {
+const RunComputationLayout: React.FC = () => {
   // strudel-kit-variable-next-line
   const listItems = useDataFromSource('default/run-computation/list.json', basename)
 
@@ -73,3 +73,5 @@ export const RunComputationWrapper: React.FC = () => {
     </Box>
   )
 }
+
+export default RunComputationLayout;

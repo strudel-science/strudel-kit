@@ -7,7 +7,7 @@ import { Link as RouterLink } from 'react-router-dom';
  * Completing and submitting the form takes users to the 
  * `<RunningComputation>` component.
  */
-export const Settings: React.FC = () => {
+const SettingsPage: React.FC = () => {
   const [showAdvanced, setShowAdvanced] = useState(false);
 
   const handleAdvancedToggle = () => {
@@ -142,3 +142,5 @@ export const Settings: React.FC = () => {
     </Stack>
   )
 }
+
+export default SettingsPage;

@@ -1,5 +1,5 @@
 import { Box, Button, Container, LinearProgress, Link, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useInterval } from '../../../utils/useInterval';
 
@@ -7,20 +7,17 @@ import { useInterval } from '../../../utils/useInterval';
  * Page to show while a computation is running and after it completes.
  * Continuing after completion, this page takes users to the `<Results>` page.
  */
-export const RunningComputation: React.FC = () => {
+const RunningComputationPage: React.FC = () => {
   const [running, setRunning] = useState(true);
-  const [progress, setProgress] = useState(0);
 
   /**
    * Simulate the time it takes to run the optimization
    */
-  useInterval(() => {
-    if (progress < 100) {
-      setProgress(progress + 10);
-    } else {
+  useEffect(() => {
+    setTimeout(() => {
       setRunning(false);
-    }
-  }, 500);
+    }, 2000)
+  })
 
   /**
    * Content to render on the page for this component
@@ -78,7 +75,7 @@ export const RunningComputation: React.FC = () => {
                 <Typography>This could take several minutes.</Typography>
                 <Typography>You may leave this page and return later. Your progress will not be affected.</Typography>
               </Box>
-              <LinearProgress variant="determinate" value={progress} sx={{ height: 10 }} />
+              <LinearProgress variant="indeterminate" sx={{ height: 10 }} />
               <Typography color="neutral.dark">
                 Started 05/24/2023 12:32:33
               </Typography>
@@ -105,3 +102,5 @@ export const RunningComputation: React.FC = () => {
     </Stack>
   )
 }
+
+export default RunningComputationPage;

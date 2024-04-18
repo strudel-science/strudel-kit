@@ -8,7 +8,7 @@ import { Outlet, Link as RouterLink } from 'react-router-dom';
  * This goes from `<DataInputs>` to `<Settings>` to `<RunningComputation>` to `<Results>`.
  * These inner steps are rendered by the `<Outlet>` component.
  */
-export const Scenario: React.FC = () => {
+const ComputationLayout: React.FC = () => {
   return (
     <Stack spacing={0} height="100vh">
       <Box>
@@ -38,3 +38,5 @@ export const Scenario: React.FC = () => {
     </Stack>
   )
 }
+
+export default ComputationLayout;

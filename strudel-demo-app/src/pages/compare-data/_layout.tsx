@@ -1,11 +1,10 @@
 import { Box } from '@mui/material';
-import { GridColDef } from '@mui/x-data-grid';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { TopBar } from '../../components/TopBar';
 import { useDataFromSource } from '../../utils/useDataFromSource';
 import { CompareDataProvider } from './_context/ContextProvider';
-import definitions from './_definitions.json';
+import definitions from './_config/definitions.json';
 import { basename } from '../../main';
 
 /**
