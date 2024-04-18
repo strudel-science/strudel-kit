@@ -8,6 +8,10 @@ export type Path =
   | `/compare-data`
   | `/compare-data/compare`
   | `/compare-data/new`
+  | `/contribute-data`
+  | `/contribute-data/new`
+  | `/contribute-data/portal`
+  | `/contribute-data/review`
   | `/run-computation`
   | `/run-computation/:id/data-inputs`
   | `/run-computation/:id/results`
