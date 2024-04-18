@@ -12,6 +12,8 @@ export type Path =
   | `/contribute-data/new`
   | `/contribute-data/portal`
   | `/contribute-data/review`
+  | `/explore-data`
+  | `/explore-data/:id`
   | `/run-computation`
   | `/run-computation/:id/data-inputs`
   | `/run-computation/:id/results`
@@ -20,6 +22,7 @@ export type Path =
   | `/test`
 
 export type Params = {
+  '/explore-data/:id': { id: string }
   '/run-computation/:id/data-inputs': { id: string }
   '/run-computation/:id/results': { id: string }
   '/run-computation/:id/running': { id: string }
