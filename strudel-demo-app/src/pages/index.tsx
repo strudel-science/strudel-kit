@@ -10,8 +10,6 @@ import { AppLink } from '../components/AppLink';
  * - Add instructions for putting dataset into app
  */
 const HomePage: React.FC = () => {
-  console.log(routes);
-  console.log('blob');
   return (
     <Box>
       <TopBar />
