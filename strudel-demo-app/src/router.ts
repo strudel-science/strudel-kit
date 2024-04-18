@@ -24,7 +24,6 @@ export type Path =
   | `/run-computation/:id/settings`
   | `/search-data-repositories`
   | `/search-data-repositories/:id`
-  | `/test`
 
 export type Params = {
   '/explore-data/:id': { id: string }
