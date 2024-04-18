@@ -22,6 +22,8 @@ export type Path =
   | `/run-computation/:id/results`
   | `/run-computation/:id/running`
   | `/run-computation/:id/settings`
+  | `/search-data-repositories`
+  | `/search-data-repositories/:id`
   | `/test`
 
 export type Params = {
@@ -30,6 +32,7 @@ export type Params = {
   '/run-computation/:id/results': { id: string }
   '/run-computation/:id/running': { id: string }
   '/run-computation/:id/settings': { id: string }
+  '/search-data-repositories/:id': { id: string }
 }
 
 export type ModalPath = never
