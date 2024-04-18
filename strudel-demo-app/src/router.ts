@@ -14,6 +14,9 @@ export type Path =
   | `/contribute-data/review`
   | `/explore-data`
   | `/explore-data/:id`
+  | `/monitor-activities`
+  | `/monitor-activities/calendar`
+  | `/monitor-activities/detail`
   | `/run-computation`
   | `/run-computation/:id/data-inputs`
   | `/run-computation/:id/results`
