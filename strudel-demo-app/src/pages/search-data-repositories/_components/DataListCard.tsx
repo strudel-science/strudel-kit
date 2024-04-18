@@ -61,20 +61,20 @@ export const DataListCard: React.FC<DataListCardProps> = ({ item }) => {
         {state.cardFields.content && (
           <Typography
             sx={{
-              '-webkit-box-orient': 'vertical',
-              '-webkit-line-clamp': '2',
+              WebkitBoxOrient: 'vertical',
+              WebkitLineClamp: '2',
               display: '-webkit-box',
               overflow: 'hidden'
             }}
           >
-            {item[state.cardFields.content]}
+            {item[state.cardFields.content]} test
           </Typography>
         )}
         {state.cardFields.tags && (
           <Typography
             sx={{
-              '-webkit-box-orient': 'vertical',
-              '-webkit-line-clamp': '1',
+              WebkitBoxOrient: 'vertical',
+              WebkitLineClamp: '1',
               display: '-webkit-box',
               fontStyle: 'italic',
               overflow: 'hidden'
@@ -82,9 +82,9 @@ export const DataListCard: React.FC<DataListCardProps> = ({ item }) => {
           >
             {item[state.cardFields.tags].map((tag: string, i: number) => {
               if (i < item['tags'].length -1) {
-                return <Typography component="span" sx={{ fontSize: 'small', marginRight: 0.5 }}>{tag},</Typography>
+                return <Typography key={`${tag}-${i}`} component="span" sx={{ fontSize: 'small', marginRight: 0.5 }}>{tag},</Typography>
               } else {
-                return <Typography component="span" sx={{ fontSize: 'small' }}>{tag}</Typography>
+                return <Typography key={`${tag}-${i}`} component="span" sx={{ fontSize: 'small' }}>{tag}</Typography>
               }
             })}
           </Typography>  

@@ -28,7 +28,7 @@ const ActivityList: React.FC = () => {
       <Stack>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Typography variant="h6" component="h1">
-            Experiments
+            Experiments test
           </Typography>
         </Stack>
         <Paper>

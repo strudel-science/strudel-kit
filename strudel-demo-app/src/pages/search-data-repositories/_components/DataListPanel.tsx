@@ -64,7 +64,7 @@ export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
       >
         <Stack flex={1}>
           {state.filteredData?.map((item, i) => (
-            <DataListCard item={item} />
+            <DataListCard key={item[state.dataIdField]} item={item} />
           ))}
         </Stack>
         {!state.previewItem && (

@@ -67,9 +67,9 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
             <Typography>
               {state.previewItem[state.cardFields.tags].map((tag: string, i: number) => {
                 if (state.cardFields.tags && i < state.previewItem[state.cardFields.tags].length - 1) {
-                  return <span>{`${tag}, `}</span>
+                  return <span key={`${tag}-${i}`}>{`${tag}, `}</span>
                 } else {
-                  return <span>{tag}</span>
+                  return <span key={`${tag}-${i}`}>{tag}</span>
                 }
               })}
             </Typography>
