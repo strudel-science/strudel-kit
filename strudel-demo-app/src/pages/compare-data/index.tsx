@@ -6,6 +6,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { PageHeader } from '../../components/PageHeader';
 import { useCompareData } from './_context/ContextProvider';
 import { setSelectedRows } from './_context/actions';
+import { config } from './_config/taskflow.config';
   
 /**
  * List page to show comparable items in the compare-data Task Flow.
@@ -22,9 +23,9 @@ const ScenarioList: React.FC = () => {
     <Box>
       <PageHeader
         // strudel-kit-variable-next-line
-        pageTitle="Scenarios"
+        pageTitle={config.pages.index.title}
         // strudel-kit-variable-next-line
-        description="Collection of various scenarios saved from simulations, optimizations, or calculations."
+        description={config.pages.index.description}
         actions={
           <Stack direction="row">
             <Box>
@@ -34,7 +35,7 @@ const ScenarioList: React.FC = () => {
                     variant="outlined"
                   >
                     {/* strudel-kit-variable-next-line */}
-                    Compare Scenarios
+                    Compare {config.properties.itemNamePlural}
                   </Button>
                 )}
                 {state.selectedRows.length > 0 && (
@@ -42,7 +43,7 @@ const ScenarioList: React.FC = () => {
                     variant={state.selectedRows.length > 1 ? 'contained' : 'outlined' }
                   >
                     {/* strudel-kit-variable-next-line */}
-                    Compare Scenarios ({state.selectedRows.length})
+                    Compare {config.properties.itemNamePlural} ({state.selectedRows.length})
                   </Button>
                 )}
               </Link>
@@ -51,7 +52,7 @@ const ScenarioList: React.FC = () => {
               <Link component={RouterLink} to="new">
                 <Button variant="contained">
                   {/* strudel-kit-variable-next-line */}
-                  New Scenario
+                  New {config.properties.itemName}
                 </Button>
               </Link>
             </Box>

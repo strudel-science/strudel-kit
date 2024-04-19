@@ -4,8 +4,8 @@ import { Outlet } from 'react-router-dom';
 import { TopBar } from '../../components/TopBar';
 import { useDataFromSource } from '../../utils/useDataFromSource';
 import { CompareDataProvider } from './_context/ContextProvider';
-import definitions from './_config/definitions.json';
 import { basename } from '../../main';
+import { config } from './_config/taskflow.config';
 
 /**
  * Top-level wrapper for the compare-data Task Flow templates.
@@ -13,7 +13,7 @@ import { basename } from '../../main';
  */
 const CompareDataWrapper: React.FC = () => {
   // strudel-kit-variable-next-line
-  const scenarios = useDataFromSource('default/compare-data/scenarios.json', basename);
+  const scenarios = useDataFromSource(config.data.list.source, basename);
 
   /**
    * Content to render on the page for this component
@@ -27,7 +27,7 @@ const CompareDataWrapper: React.FC = () => {
         {/* strudel-kit-variable-next-line */}
         <CompareDataProvider 
           data={scenarios || []} 
-          columns={definitions.columns.list.table} 
+          columns={config.pages.index.tableColumns} 
           dataIdField='id'
         >
           <Outlet />

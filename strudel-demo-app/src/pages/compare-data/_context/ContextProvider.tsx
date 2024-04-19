@@ -1,10 +1,6 @@
 import React, { useEffect, useReducer, useContext } from 'react';
 import { CompareDataAction, CompareDataActionType, setComparisonData, setData } from './actions';
-import { GridColDef } from '@mui/x-data-grid';
-
-export type CompareDataGridColDef = GridColDef & {
-  isComparisonMetric?: boolean;
-}
+import { CompareDataConfigColDef } from '../_config/taskflow.types';
 
 interface ComparisonRow {
   [key: string]: number | string | null | undefined;
@@ -13,8 +9,8 @@ interface ComparisonRow {
 export interface CompareDataState {
   data: any[];
   selectedRows: any[];
-  columns: CompareDataGridColDef[];
-  comparisonColumns: CompareDataGridColDef[];
+  columns: CompareDataConfigColDef[];
+  comparisonColumns: CompareDataConfigColDef[];
   dataIdField: string;
   comparing?: boolean;
   comparisonData: ComparisonRow[]
@@ -108,7 +104,7 @@ export const CompareDataProvider: React.FC<CompareDataProviderProps> = (props) =
     if (state.comparing && state.selectedRows.length > 1) {
       const metrics = state.columns.filter((c) => c.isComparisonMetric);
       const scenarios = state.data.filter((d) => state.selectedRows.indexOf(d.id) > -1);
-      const comparisonColumns: CompareDataGridColDef[] = [
+      const comparisonColumns: CompareDataConfigColDef[] = [
         {
           field: 'metric',
           headerName: 'Metric',
