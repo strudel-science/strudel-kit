@@ -10,6 +10,22 @@ import { AppLink } from '../components/AppLink';
  * - Add instructions for putting dataset into app
  */
 const HomePage: React.FC = () => {
+  /**
+   * Sort routes alphabetically by path
+   */
+  routes[0].children?.sort((a, b) => {
+    const pathA = a.path || '';
+    const pathB = b.path || '';
+
+    if (pathA === 'playground' || pathA < pathB) {
+      return -1;
+    } else if (pathA > pathB) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+
   return (
     <Box>
       <TopBar />

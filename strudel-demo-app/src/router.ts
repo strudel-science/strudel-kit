@@ -17,6 +17,7 @@ export type Path =
   | `/monitor-activities`
   | `/monitor-activities/calendar`
   | `/monitor-activities/detail`
+  | `/playground`
   | `/run-computation`
   | `/run-computation/:id/data-inputs`
   | `/run-computation/:id/results`
