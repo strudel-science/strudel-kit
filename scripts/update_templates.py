@@ -18,7 +18,7 @@ for tf in taskflows:
   # Source of the updated template files
   taskflow_src = Path(f'./strudel-taskflows/src/pages/{tf}')
   # Root of the cookiecutter template
-  cookiecutter_root = Path(f'./build/{tf}')
+  cookiecutter_root = Path(f'./strudel-cookiecutter/{tf}')
   # Destination of the new template files
   cookiecutter_dest = Path(f'{cookiecutter_root}/{{@cookiecutter.name@}}')
   # Remove existing files inside the cookiecutter template
@@ -42,7 +42,7 @@ for tf in taskflows:
 
 # Update the base app template
 base_src = Path('./strudel-taskflows/')
-base_dest = Path('./build/base/{@cookiecutter.name@}')
+base_dest = Path('./strudel-cookiecutter/base/{@cookiecutter.name@}')
 if base_dest.exists() and base_dest.is_dir():
     shutil.rmtree(base_dest)
 # Copy and paste the whole strudel-taskflows app
