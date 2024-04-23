@@ -1,20 +1,19 @@
 import { Box, Grid } from '@mui/material';
 import React, { useState } from 'react';
+import { PageHeader } from '../../components/PageHeader';
+import { DataListPanel } from './_components/DataListPanel';
 import { FiltersPanel } from './_components/FiltersPanel';
 import { PreviewPanel } from './_components/PreviewPanel';
-import { DataTablePanel } from './_components/DataTablePanel';
-import { PageHeader } from '../../components/PageHeader';
-import { useExploreData } from './_context/ContextProvider';
+import { useSearchDataRepositories } from './_context/ContextProvider';
 import { setPreviewItem } from './_context/actions';
 import { taskflow } from './_config/taskflow.config';
 
 /**
- * Main explorer page in the explore-data Task Flow.
- * This page includes the page header, filters panel, 
- * main table, and the table row preview panel.
+ * The main explore page for the search-data-repositories Task Flow.
+ * Displays a page header, `<FiltersPanel>`, `<DataListPanel>`, and `<PreviewPanel>`.
  */
-const DataExplorer: React.FC = () => {
-  const {state, dispatch} = useExploreData();
+const DatasetExplorer: React.FC = () => {
+  const {state, dispatch} = useSearchDataRepositories();
   const [showFiltersPanel, setShowFiltersPanel] = useState(true);
 
   const handleCloseFilters = () => {
@@ -49,7 +48,7 @@ const DataExplorer: React.FC = () => {
           </Grid>
         )}
         <Grid item xs={getMainColumnSize(showFiltersPanel, !!state.previewItem)}>
-          <DataTablePanel onToggleFiltersPanel={handleToggleFilters} />
+          <DataListPanel onToggleFiltersPanel={handleToggleFilters} />
         </Grid>
         {state.previewItem && (
           <Grid item xs={4}>
@@ -59,7 +58,7 @@ const DataExplorer: React.FC = () => {
       </Grid>
     </Box>
   )
-}
+};
 
 const getMainColumnSize = (showFiltersPanel: boolean, showPreviewPanel: boolean) => {
   if (!showFiltersPanel && !showPreviewPanel) {
@@ -71,6 +70,6 @@ const getMainColumnSize = (showFiltersPanel: boolean, showPreviewPanel: boolean)
   } else if (showFiltersPanel && showPreviewPanel) {
     return 6;
   }
-}
+};
 
-export default DataExplorer;
+export default DatasetExplorer;
