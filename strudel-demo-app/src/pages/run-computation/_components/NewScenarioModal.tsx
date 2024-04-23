@@ -1,6 +1,7 @@
 import { Box, Button, FormControl, InputLabel, Link, MenuItem, Modal, Select, Stack, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { taskflow } from '../_config/taskflow.config';
 
 interface Props {
   modalOpen: boolean;
@@ -47,7 +48,7 @@ export const NewScenarioModal: React.FC<Props> = ({
       >
         <Typography id="modal-modal-title" variant="h6" component="h2">
           {/* strudel-kit-variable-next-line */}
-          New Analysis Scenario
+          New Analysis {taskflow.properties.itemName}
         </Typography>
         <FormControl fullWidth>
           <InputLabel id="analysis-type-select-label">Analysis Type</InputLabel>

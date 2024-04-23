@@ -9,15 +9,14 @@ import { TopBar } from '../../components/TopBar';
 import { useDataFromSource } from '../../utils/useDataFromSource';
 import { basename } from '../../main';
 import { RunComputationProvider } from './_context/ContextProvider';
-import definitions from './_config/definitions.json';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * Top-level wrapper for the run-computation Task Flow templates.
  * Inner pages are rendered inside the `<Outlet />` component
  */
 const RunComputationLayout: React.FC = () => {
-  // strudel-kit-variable-next-line
-  const listItems = useDataFromSource('default/run-computation/list.json', basename)
+  const listItems = useDataFromSource(taskflow.data.items.source, basename)
 
   /**
    * Content to render on the page for this component
@@ -32,10 +31,9 @@ const RunComputationLayout: React.FC = () => {
           list={{
             table: {
               data: listItems,
-              // strudel-kit-variable-next-line
-              dataIdField: 'id',
+              dataIdField: taskflow.data.items.idField,
               columns: [
-                ...definitions.list.table.columns,
+                ...taskflow.pages.index.tableColumns,
                 { 
                   field: 'actions', 
                   headerName: 'Actions', 
@@ -53,17 +51,15 @@ const RunComputationLayout: React.FC = () => {
           inputs={{
             table: {
               data: [],
-              // strudel-kit-variable-next-line
-              dataIdField: 'id',
-              columns: definitions.inputs.table.columns,
+              dataIdField: taskflow.data.inputs.idField,
+              columns: taskflow.pages.dataInputs.tableColumns,
             }
           }}
           results={{
             table: {
               data: [],
-              // strudel-kit-variable-next-line
-              dataIdField: 'id',
-              columns: definitions.results.table.columns,
+              dataIdField: taskflow.data.results.idField,
+              columns: taskflow.pages.results.tableColumns,
             }
           }}
         >

@@ -1,0 +1,26 @@
+{
+  "id": "task-flows/compare-data/routes",
+  "title": "Routes",
+  "description": "Below are the components to import and the router object to add to routes.tsx to implement the Compare Data Task Flow. See all routes implemented in the demo-app.",
+  "source": "@site/docs/task-flows/compare-data/routes.mdx",
+  "sourceDirName": "task-flows/compare-data",
+  "slug": "/task-flows/compare-data/routes",
+  "permalink": "/task-flows/compare-data/routes",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/codytodonnell/strudel-kit/tree/main/docs/docs/task-flows/compare-data/routes.mdx",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Routes"
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Configuration",
+    "permalink": "/task-flows/compare-data/config"
+  },
+  "next": {
+    "title": "Configuration",
+    "permalink": "/task-flows/contribute-data/config"
+  }
+}

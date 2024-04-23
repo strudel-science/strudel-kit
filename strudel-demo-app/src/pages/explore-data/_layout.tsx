@@ -2,18 +2,17 @@ import React from 'react';
 import { Box } from '@mui/material';
 import { Outlet } from 'react-router';
 import { ExploreDataProvider } from './_context/ContextProvider';
-import definitions from './_config/definitions.json';
 import { TopBar } from '../../components/TopBar';
 import { useDataFromSource } from '../../utils/useDataFromSource';
 import { basename } from '../../main';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * Top-level wrapper for the explore-data Task Flow templates.
  * Inner pages are rendered inside the `<Outlet />` component
  */
 const ExploreDataLayout: React.FC = () => {
-  // strudel-kit-variable-next-line
-  const entities = useDataFromSource('default/explore-data/genomes.tsv', basename);
+  const entities = useDataFromSource(taskflow.data.items.source, basename);
 
   /**
    * Content to render on the page for this component
@@ -26,10 +25,9 @@ const ExploreDataLayout: React.FC = () => {
       <Box>
         <ExploreDataProvider 
           data={entities} 
-          columns={definitions.columns.main.table} 
-          filters={definitions.filters.main} 
-          // strudel-kit-variable-next-line
-          dataIdField='Proteome_ID'
+          columns={taskflow.pages.index.tableColumns} 
+          filters={taskflow.pages.index.tableFilters} 
+          dataIdField={taskflow.data.items.idField}
         >
           <Outlet />
         </ExploreDataProvider>

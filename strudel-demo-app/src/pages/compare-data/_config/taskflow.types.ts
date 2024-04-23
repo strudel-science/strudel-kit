@@ -4,6 +4,9 @@ export type CompareDataConfigColDef = GridColDef & {
   isComparisonMetric?: boolean;
 }
 
+/**
+ * Type definitions for the Compare Data Task Flow config object
+ */
 export interface CompareDataConfig {
   /** Attributes that are used across the Task Flow */
   properties: {
@@ -13,7 +16,7 @@ export interface CompareDataConfig {
     itemNamePlural: string,
   },
   data: {
-    list: {
+    items: {
       source: string,
       idField: string
     },

@@ -1,0 +1,26 @@
+{
+  "id": "getting-started/usage",
+  "title": "Usage",
+  "description": "",
+  "source": "@site/docs/getting-started/usage.md",
+  "sourceDirName": "getting-started",
+  "slug": "/getting-started/usage",
+  "permalink": "/getting-started/usage",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/codytodonnell/strudel-kit/tree/main/docs/docs/getting-started/usage.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Usage"
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Installation",
+    "permalink": "/getting-started/installation"
+  },
+  "next": {
+    "title": "Configuration",
+    "permalink": "/task-flows/compare-data/config"
+  }
+}

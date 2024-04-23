@@ -6,7 +6,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { PageHeader } from '../../components/PageHeader';
 import { useCompareData } from './_context/ContextProvider';
 import { setSelectedRows } from './_context/actions';
-import { config } from './_config/taskflow.config';
+import { taskflow } from './_config/taskflow.config';
   
 /**
  * List page to show comparable items in the compare-data Task Flow.
@@ -22,10 +22,8 @@ const ScenarioList: React.FC = () => {
   return (
     <Box>
       <PageHeader
-        // strudel-kit-variable-next-line
-        pageTitle={config.pages.index.title}
-        // strudel-kit-variable-next-line
-        description={config.pages.index.description}
+        pageTitle={taskflow.pages.index.title}
+        description={taskflow.pages.index.description}
         actions={
           <Stack direction="row">
             <Box>
@@ -34,16 +32,14 @@ const ScenarioList: React.FC = () => {
                   <Button 
                     variant="outlined"
                   >
-                    {/* strudel-kit-variable-next-line */}
-                    Compare {config.properties.itemNamePlural}
+                    Compare {taskflow.properties.itemNamePlural}
                   </Button>
                 )}
                 {state.selectedRows.length > 0 && (
                   <Button 
                     variant={state.selectedRows.length > 1 ? 'contained' : 'outlined' }
                   >
-                    {/* strudel-kit-variable-next-line */}
-                    Compare {config.properties.itemNamePlural} ({state.selectedRows.length})
+                    Compare {taskflow.properties.itemNamePlural} ({state.selectedRows.length})
                   </Button>
                 )}
               </Link>
@@ -51,8 +47,7 @@ const ScenarioList: React.FC = () => {
             <Box>
               <Link component={RouterLink} to="new">
                 <Button variant="contained">
-                  {/* strudel-kit-variable-next-line */}
-                  New {config.properties.itemName}
+                  New {taskflow.properties.itemName}
                 </Button>
               </Link>
             </Box>

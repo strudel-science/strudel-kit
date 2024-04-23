@@ -5,15 +5,14 @@ import { TopBar } from '../../components/TopBar';
 import { useDataFromSource } from '../../utils/useDataFromSource';
 import { CompareDataProvider } from './_context/ContextProvider';
 import { basename } from '../../main';
-import { config } from './_config/taskflow.config';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * Top-level wrapper for the compare-data Task Flow templates.
  * Inner pages are rendered inside the `<Outlet />` component
  */
 const CompareDataWrapper: React.FC = () => {
-  // strudel-kit-variable-next-line
-  const scenarios = useDataFromSource(config.data.list.source, basename);
+  const scenarios = useDataFromSource(taskflow.data.items.source, basename);
 
   /**
    * Content to render on the page for this component
@@ -24,10 +23,9 @@ const CompareDataWrapper: React.FC = () => {
         <TopBar />
       </Box>
       <Box>
-        {/* strudel-kit-variable-next-line */}
         <CompareDataProvider 
           data={scenarios || []} 
-          columns={config.pages.index.tableColumns} 
+          columns={taskflow.pages.index.tableColumns} 
           dataIdField='id'
         >
           <Outlet />

@@ -1,20 +1,20 @@
 import { CompareDataConfig } from "./taskflow.types";
 
-export const config: CompareDataConfig = {
+export const taskflow: CompareDataConfig = {
   properties: {
-    itemName: "orb",
-    itemNamePlural: "orbs",
+    itemName: "scenario",
+    itemNamePlural: "scenarios",
   },
   data: {
-    list: {
+    items: {
       source: "default/compare-data/scenarios.json",
       idField: "id"
     }
   },
   pages: {
     index: {
-      title: "Compare Data App with New Config",
-      description: "Description of this app section test",
+      title: "Compare Data App",
+      description: "Description of this app section",
       tableColumns: [
         {
           field: "name",
@@ -94,12 +94,12 @@ export const config: CompareDataConfig = {
       ]
     },
     new: {
-      title: "New Scenario Test",
-      description: "Description of this app section new"
+      title: "New Scenario",
+      description: "Description of this app section"
     },
     compare: {
-      title: "Compare Scenarios Test",
-      description: "Description of this app section compare"
+      title: "Compare Scenarios",
+      description: "Description of this app section"
     }
   }
 }

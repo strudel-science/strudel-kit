@@ -9,14 +9,14 @@ import { Link as RouterLink } from 'react-router-dom';
 import { LabelValueTable } from '../../components/LabelValueTable';
 import { useDataFromSource } from '../../utils/useDataFromSource';
 import { basename } from '../../main';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * Detail view of the selected activity from `<ActivityList>` in monitor-activities Task Flow.
  * The two components are not currently hooked together.
  */
 const ActivityDetail: React.FC = () => {
-  // strudel-kit-variable-next-line
-  const experiment = useDataFromSource('default/monitor-activities/experiment_detail.json', basename);
+  const experiment = useDataFromSource(taskflow.data.detail.source, basename);
 
   const getNoteRows = (notes: any[]) => {
     return notes.map((note) => {

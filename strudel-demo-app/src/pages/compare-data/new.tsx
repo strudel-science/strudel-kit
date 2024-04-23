@@ -4,7 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { PageHeader } from '../../components/PageHeader';
 import { useCompareData } from './_context/ContextProvider';
 import { setComparing } from './_context/actions';
-import { config } from './_config/taskflow.config';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * Page for filling out a form for adding a new item to 
@@ -30,10 +30,8 @@ export const NewScenario: React.FC = () => {
   return (
     <Box>
       <PageHeader
-        // strudel-kit-variable-next-line
-        pageTitle={config.pages.new.title}
-        // strudel-kit-variable-next-line
-        description={config.pages.new.description}
+        pageTitle={taskflow.pages.new.title}
+        description={taskflow.pages.new.description}
         actions={
           <Stack direction="row">
             <Box>
@@ -46,7 +44,7 @@ export const NewScenario: React.FC = () => {
             <Box>
               <Link component={RouterLink} to="..">
                 <Button variant="contained">
-                  Save {config.properties.itemName}
+                  Save {taskflow.properties.itemName}
                 </Button>
               </Link>
             </Box>

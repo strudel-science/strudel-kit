@@ -6,6 +6,7 @@ import { DataTablePanel } from './_components/DataTablePanel';
 import { PageHeader } from '../../components/PageHeader';
 import { useExploreData } from './_context/ContextProvider';
 import { setPreviewItem } from './_context/actions';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * Main explorer page in the explore-data Task Flow.
@@ -34,10 +35,8 @@ const DataExplorer: React.FC = () => {
   return (
     <Box>
       <PageHeader
-        // strudel-kit-variable-next-line
-        pageTitle="Genome Releases"
-        // strudel-kit-variable-next-line
-        description="All gene sets have been annotated with KOG, KEGG, ENZYME, Pathway and the InterPro family of protein analysis tools."
+        pageTitle={taskflow.pages.index.title}
+        description={taskflow.pages.index.description}
         sx={{
           marginBottom: 1,
           padding: 2,

@@ -6,7 +6,7 @@ import { PageHeader } from '../../components/PageHeader';
 import { useCompareData } from './_context/ContextProvider';
 import { setComparing } from './_context/actions';
 import { DataGrid } from '@mui/x-data-grid';
-import { config } from './_config/taskflow.config';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * Comparison page for the compare-data Task Flow.
@@ -33,25 +33,21 @@ const ScenarioComparison: React.FC = () => {
   return (
     <Box>
       <PageHeader
-        // strudel-kit-variable-next-line
-        pageTitle={config.pages.compare.title}
-        // strudel-kit-variable-next-line
-        description={config.pages.compare.description}
+        pageTitle={taskflow.pages.compare.title}
+        description={taskflow.pages.compare.description}
         actions={
           <Stack direction="row">
             <Box>
               <Link component={RouterLink} to="..">
                 <Button variant="contained" startIcon={<ArrowBackIcon />}>
-                  {/* strudel-kit-variable-next-line */}
-                  Back to {config.properties.itemNamePlural}
+                  Back to {taskflow.properties.itemNamePlural}
                 </Button>
               </Link>
             </Box>
             <Box>
               <Link component={RouterLink} to="../new">
                 <Button variant="contained">
-                  {/* strudel-kit-variable-next-line */}
-                  New {config.properties.itemName}
+                  New {taskflow.properties.itemName}
                 </Button>
               </Link>
             </Box>

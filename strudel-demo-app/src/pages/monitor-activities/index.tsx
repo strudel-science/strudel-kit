@@ -5,13 +5,13 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDataFromSource } from '../../utils/useDataFromSource';
 import { basename } from '../../main';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * List view of all activities in the monitor-activites Task Flow.
  */
 const ActivityList: React.FC = () => {
-  // strudel-kit-variable-next-line
-  const experiments = useDataFromSource('default/monitor-activities/experiments.json', basename);
+  const experiments = useDataFromSource(taskflow.data.items.source, basename);
   const navigate = useNavigate();
   
   /**

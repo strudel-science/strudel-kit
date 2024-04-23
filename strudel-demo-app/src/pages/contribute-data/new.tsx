@@ -3,6 +3,7 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { DataFilesPanel } from './_components/DataFilesPanel';
 import { MetadataPanel } from './_components/MetadataPanel';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * Page for entering information about a new dataset in the contribute-data Task Flow.
@@ -21,12 +22,10 @@ const NewDataset: React.FC = () => {
         <Stack direction="row" justifyContent="space-between">
           <Stack>
             <Typography variant="h6" component="h1">
-              {/* strudel-kit-variable-next-line */}
-              Upload a new dataset
+              {taskflow.pages.new.title}
             </Typography>
             <Typography>
-              {/* strudel-kit-variable-next-line */}
-              Mention the data contribution steps in brief, and also major requirements if any. Also give links to detailed documentation of steps, requirements and guidelines. Link to documentation.
+              {taskflow.pages.new.description}
             </Typography>
           </Stack>
           <Stack direction="row">

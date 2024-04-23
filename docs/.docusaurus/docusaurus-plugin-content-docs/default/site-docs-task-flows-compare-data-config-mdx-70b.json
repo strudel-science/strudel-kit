@@ -1,0 +1,26 @@
+{
+  "id": "task-flows/compare-data/config",
+  "title": "Configuration",
+  "description": "Configuration file to pass to the add-taskflow command for the Compare Data Task Flow. Specifications in the config file can be overriden by options supplied on the command line.",
+  "source": "@site/docs/task-flows/compare-data/config.mdx",
+  "sourceDirName": "task-flows/compare-data",
+  "slug": "/task-flows/compare-data/config",
+  "permalink": "/task-flows/compare-data/config",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/codytodonnell/strudel-kit/tree/main/docs/docs/task-flows/compare-data/config.mdx",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Configuration"
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Usage",
+    "permalink": "/getting-started/usage"
+  },
+  "next": {
+    "title": "Routes",
+    "permalink": "/task-flows/compare-data/routes"
+  }
+}

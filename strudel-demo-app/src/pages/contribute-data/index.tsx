@@ -2,6 +2,7 @@ import { Box, Button, Container, Link, Paper, Stack, TextField, Typography } fro
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { LabelValueTable } from '../../components/LabelValueTable';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * Initial page for registering as a contributor in the contribute-data Task Flow.
@@ -25,8 +26,7 @@ const Register: React.FC = () => {
               variant="h6" 
               component="h1" 
             >
-              {/* strudel-kit-variable-next-line */}
-              Register as a data contributor
+              {taskflow.pages.index.title}
             </Typography>
             <Box>
               <Typography fontWeight="medium" mb={1}>

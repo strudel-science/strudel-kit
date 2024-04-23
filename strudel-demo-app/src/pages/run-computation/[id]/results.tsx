@@ -7,6 +7,7 @@ import { useDataFromSource } from '../../../utils/useDataFromSource';
 import { basename } from '../../../main';
 import { useRunComputation } from '../_context/ContextProvider';
 import { setResultsBarChartData, setResultsLineChartData, setResultsTableData } from '../_context/actions';
+import { taskflow } from '../_config/taskflow.config';
 
 /**
  * Results page to display after a computation completes in the run-computation Task Flow.
@@ -14,12 +15,9 @@ import { setResultsBarChartData, setResultsLineChartData, setResultsTableData } 
  */
 const ResultsPage: React.FC = () => {
   const { state, dispatch } = useRunComputation();
-  // strudel-kit-variable-next-line
-  const tableData = useDataFromSource('default/run-computation/results_table.json', basename);
-  // strudel-kit-variable-next-line
-  const lineData = useDataFromSource('default/run-computation/results_line_chart.json', basename);
-  // strudel-kit-variable-next-line
-  const barData = useDataFromSource('default/run-computation/results_bar_chart.json', basename);
+  const tableData = useDataFromSource(taskflow.data.results.source, basename);
+  const lineData = useDataFromSource(taskflow.data.lineChart.source, basename);
+  const barData = useDataFromSource(taskflow.data.barChart.source, basename);
 
   /**
    * Set data for the results table when the data loads
@@ -65,24 +63,21 @@ const ResultsPage: React.FC = () => {
           <Step key="Data Inputs">
             <StepLabel>
               <Link component={RouterLink} to="../data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
-                {/* strudel-kit-variable-next-line   */}
-                Data Inputs
+                {taskflow.pages.dataInputs.title}
               </Link>
             </StepLabel>
           </Step>
           <Step key="Optimization Settings">
             <StepLabel>
               <Link component={RouterLink} to="../settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
-                {/* strudel-kit-variable-next-line */}
-                Optimization Settings
+                {taskflow.pages.settings.title}
               </Link>
             </StepLabel>
           </Step>
           <Step key="Results">
             <StepLabel>
               <Link component={RouterLink} to="../results" sx={{ color: 'inherit', textDecoration: 'none' }}>
-                {/* strudel-kit-variable-next-line */}
-                Results
+                {taskflow.pages.results.title}
               </Link>
             </StepLabel>
           </Step>
@@ -195,8 +190,7 @@ const ResultsPage: React.FC = () => {
         }}
       >
         <Link component={RouterLink} to="../settings">
-          {/* strudel-kit-variable-next-line */}
-          <Button variant="contained">Back to optimization settings</Button>
+          <Button variant="contained">Back to {taskflow.pages.settings.title}</Button>
         </Link>
       </Box>
     </Stack>

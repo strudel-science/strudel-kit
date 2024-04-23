@@ -1,0 +1,26 @@
+{
+  "id": "getting-started/installation",
+  "title": "Installation",
+  "description": "",
+  "source": "@site/docs/getting-started/installation.md",
+  "sourceDirName": "getting-started",
+  "slug": "/getting-started/installation",
+  "permalink": "/getting-started/installation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/codytodonnell/strudel-kit/tree/main/docs/docs/getting-started/installation.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Installation"
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/"
+  },
+  "next": {
+    "title": "Usage",
+    "permalink": "/getting-started/usage"
+  }
+}

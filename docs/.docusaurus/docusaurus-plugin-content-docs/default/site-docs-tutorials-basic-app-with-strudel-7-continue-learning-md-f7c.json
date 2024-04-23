@@ -1,0 +1,16 @@
+{
+  "id": "tutorials/basic-app-with-strudel/continue-learning",
+  "title": "Continue Learning",
+  "description": "Congratulations on building your first STRUDEL app! You are well on your way to creating a product that is usable, understandable, and impactful. Of course, the journey does not end here. Below you will find a curated list of resources to continue building on what you learned in this tutorial.",
+  "source": "@site/docs/tutorials/basic-app-with-strudel/7-continue-learning.md",
+  "sourceDirName": "tutorials/basic-app-with-strudel",
+  "slug": "/tutorials/basic-app-with-strudel/continue-learning",
+  "permalink": "/tutorials/basic-app-with-strudel/continue-learning",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/codytodonnell/strudel-kit/tree/main/docs/docs/tutorials/basic-app-with-strudel/7-continue-learning.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {}
+}

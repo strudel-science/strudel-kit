@@ -2,6 +2,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { AppBar, Box, Breadcrumbs, Link, Stack, Toolbar, Typography } from '@mui/material';
 import React from 'react';
 import { Outlet, Link as RouterLink } from 'react-router-dom';
+import { taskflow } from '../_config/taskflow.config';
   
 /**
  * Wrapper component for the steps involved in a computational run.
@@ -25,8 +26,7 @@ const ComputationLayout: React.FC = () => {
             <Stack direction="row" alignItems="center" sx={{ flexGrow: 1 }}>
               <Breadcrumbs aria-label="breadcrumb" separator={<ChevronRightIcon fontSize="small" />}>
                 <Link underline="hover" color="inherit" to=".." component={RouterLink}>
-                  {/* strudel-kit-variable-next-line */}
-                  Scenario List
+                  {taskflow.properties.itemName} List
                 </Link>
                 <Typography color="text.primary">Optimization Scenario 1</Typography>
               </Breadcrumbs>

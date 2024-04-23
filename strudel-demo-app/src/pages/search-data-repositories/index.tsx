@@ -6,6 +6,7 @@ import { FiltersPanel } from './_components/FiltersPanel';
 import { PreviewPanel } from './_components/PreviewPanel';
 import { useSearchDataRepositories } from './_context/ContextProvider';
 import { setPreviewItem } from './_context/actions';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * The main explore page for the search-data-repositories Task Flow.
@@ -33,10 +34,8 @@ const DatasetExplorer: React.FC = () => {
   return (
     <Box>
       <PageHeader
-        // strudel-kit-variable-next-line
-        pageTitle="Dataset Releases"
-        // strudel-kit-variable-next-line
-        description="Datasets"
+        pageTitle={taskflow.pages.index.title}
+        description={taskflow.pages.index.description}
         sx={{
           marginBottom: 1,
           padding: 2,

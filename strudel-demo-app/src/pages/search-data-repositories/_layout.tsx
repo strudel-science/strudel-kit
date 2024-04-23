@@ -4,16 +4,15 @@ import { Outlet } from 'react-router-dom';
 import { TopBar } from '../../components/TopBar';
 import { useDataFromSource } from '../../utils/useDataFromSource';
 import { SearchDataRepositoriesProvider } from './_context/ContextProvider';
-import definitions from './_config/definitions.json';
 import { basename } from '../../main';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * Top-level wrapper for the search-data-repositories Task Flow templates.
  * Inner pages are rendered inside the `<Outlet />` component
  */
 const SearchDataRepositoriesLayout: React.FC = () => {
-  // strudel-kit-variable-next-line
-  const datasets = useDataFromSource('default/search-data-repositories/datasets.json', basename)
+  const datasets = useDataFromSource(taskflow.data.items.source, basename)
 
   /**
    * Content to render on the page for this component
@@ -26,10 +25,9 @@ const SearchDataRepositoriesLayout: React.FC = () => {
       <Box>
         <SearchDataRepositoriesProvider 
           data={datasets} 
-          // strudel-kit-variable-next-line
-          dataIdField='id' 
-          filters={definitions.filters.main} 
-          cardFields={definitions.columns.main.card}
+          dataIdField={taskflow.data.items.idField} 
+          filters={taskflow.pages.index.cardFilters} 
+          cardFields={taskflow.pages.index.cardFields}
         >
           <Outlet />
         </SearchDataRepositoriesProvider>

@@ -6,16 +6,15 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { useDataFromSource } from '../../utils/useDataFromSource';
-import definitions from './_config/definitions.json';
 import { basename } from '../../main';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * Page to show a contributor's uploads in the contribute-data Task Flow.
  * Also allows users to start a new dataset which sends them to the `<NewDataset>` component.
  */
 const ContributorPortal: React.FC = () => {
-  // strudel-kit-variable-next-line
-  const datasets = useDataFromSource('default/contribute-data/contributor_datasets.json', basename);
+  const datasets = useDataFromSource(taskflow.data.datasets.source, basename);
   
   /**
    * Content to render on the page for this component
@@ -30,8 +29,7 @@ const ContributorPortal: React.FC = () => {
       <Stack>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Typography variant="h6" component="h1">
-            {/* strudel-kit-variable-next-line */}
-            Your Dataset Uploads
+            {taskflow.pages.portal.title}
           </Typography>
           <Link component={RouterLink} to="../new">
             <Button variant="contained">
@@ -42,8 +40,7 @@ const ContributorPortal: React.FC = () => {
         <Paper>
           <DataGrid
             rows={datasets || []}
-            // strudel-kit-variable-next-line
-            getRowId={(row) => row['id']}
+            getRowId={(row) => row[taskflow.data.datasets.idField]}
             columns={columns}
             disableColumnSelector
             disableRowSelectionOnClick
@@ -58,7 +55,7 @@ const ContributorPortal: React.FC = () => {
  * Define column definitions in-file for prototyping
  */
 const columns: GridColDef[] = [
-  ...definitions.columns.portal.table,
+  ...taskflow.pages.portal.tableColumns,
   { 
     field: 'actions', 
     headerName: 'Actions', 

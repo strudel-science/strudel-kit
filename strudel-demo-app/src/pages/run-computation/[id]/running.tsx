@@ -2,6 +2,7 @@ import { Box, Button, Container, LinearProgress, Link, Paper, Stack, Step, StepL
 import React, { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useInterval } from '../../../utils/useInterval';
+import { taskflow } from '../_config/taskflow.config';
 
 /**
  * Page to show while a computation is running and after it completes.
@@ -33,27 +34,24 @@ const RunningComputationPage: React.FC = () => {
         }}
       >
         <Stepper activeStep={1} sx={{ maxWidth: 850 }}>
-          <Step key="Data Inputs">
+          <Step key={taskflow.pages.dataInputs.title}>
             <StepLabel>
               <Link component={RouterLink} to="../data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
-                {/* strudel-kit-variable-next-line */}
-                Data Inputs
+                {taskflow.pages.dataInputs.title}
               </Link>
             </StepLabel>
           </Step>
-          <Step key="Optimization Settings">
+          <Step key={taskflow.pages.settings.title}>
             <StepLabel>
               <Link component={RouterLink} to="../settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
-                {/* strudel-kit-variable-next-line */}
-                Optimization Settings
+                {taskflow.pages.settings.title}
               </Link>
             </StepLabel>
           </Step>
-          <Step key="Results">
+          <Step key={taskflow.pages.results.title}>
             <StepLabel>
               <Link component={RouterLink} to="../results" sx={{ color: 'inherit', textDecoration: 'none' }}>
-                {/* strudel-kit-variable-next-line */}
-                Results
+                {taskflow.pages.results.title}
               </Link>
             </StepLabel>
           </Step>

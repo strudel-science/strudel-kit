@@ -1,0 +1,24 @@
+{
+  "id": "components/LinearMeter",
+  "title": "LinearMeter",
+  "description": "{docgenJson./lib/components/${metadata.title}.tsx['description']}",
+  "source": "@site/docs/components/LinearMeter.mdx",
+  "sourceDirName": "components",
+  "slug": "/components/LinearMeter",
+  "permalink": "/components/LinearMeter",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/codytodonnell/strudel-kit/tree/main/docs/docs/components/LinearMeter.mdx",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "LabelValueTable",
+    "permalink": "/components/LabelValueTable"
+  },
+  "next": {
+    "title": "Getting Started with STRUDEL Kit (Beta)",
+    "permalink": "/tutorials/basic-app-with-strudel/introduction"
+  }
+}

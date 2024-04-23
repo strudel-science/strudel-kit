@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { NewScenarioModal } from './_components/NewScenarioModal';
 import { useRunComputation } from './_context/ContextProvider';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * List page for all compuation runs in the run-computation Task Flow.
@@ -42,23 +43,20 @@ export const ListPage: React.FC = () => {
                 variant="h6" 
                 component="h1" 
               >
-                {/* strudel-kit-variable-next-line */}
-                Scenario List
+                {taskflow.pages.index.title}
               </Typography>
               <Typography 
                 variant="subtitle1" 
                 component="p" 
               >
-                {/* strudel-kit-variable-next-line */}
-                Scenarios represent a set of analysis inputs / parameters / settings and the results of that analysis. 
+                {taskflow.pages.index.description}
               </Typography>
             </Box>
             <Button
               variant="contained"
               onClick={handleNewScenario}
             >
-              {/* strudel-kit-variable-next-line */}
-              New Scenario
+              New {taskflow.properties.itemName}
             </Button>
             <NewScenarioModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
           </Stack>

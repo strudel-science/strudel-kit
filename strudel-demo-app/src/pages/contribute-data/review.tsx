@@ -6,6 +6,7 @@ import { DatasetView } from './_components/DatasetView';
 import { ValidationChecks } from './_components/ValidationChecks';
 import { useContributeData } from './_context/ContextProvider';
 import { finishChecks, runChecks } from './_context/actions';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * Page to review a new dataset before submitting it in the contribute-data Task Flow.
@@ -65,8 +66,7 @@ const ReviewDataset: React.FC = () => {
           <Stack direction="row" justifyContent="space-between">
             <Stack>
               <Typography variant="h6" component="h1">
-                {/* strudel-kit-variable-next-line */}
-                Review your new dataset
+                {taskflow.pages.review.title}
               </Typography>
             </Stack>
             <Stack direction="row">

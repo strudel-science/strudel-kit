@@ -3,12 +3,11 @@ import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import { Routes } from '@generouted/react-router'
+import { routes } from '@generouted/react-router'
 import { theme } from './theme';
 import { AppProvider } from './context/ContextProvider';
 import { ApiModal } from './components/ApiModal';
-
-export const basename = document.querySelector('base')?.getAttribute('href') ?? '';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 const App: React.FC = () => {
   return (
@@ -17,7 +16,7 @@ const App: React.FC = () => {
         <CssBaseline />
         {/* strudel-kit-variable-next-line */}
         <AppProvider appTitle="Demo App">
-          <Routes />
+          <RouterProvider router={createBrowserRouter(routes)} />
           <ApiModal />
         </AppProvider>
       </ThemeProvider>

@@ -1,0 +1,24 @@
+{
+  "id": "tutorials/connect-task-flows-together",
+  "title": "How to Connect Task Flows Together",
+  "description": "Task Flows don't always exist in isolation inside apps. Instead, Task Flows often fit together in various ways. In this article you will learn how to connect steps from two different task flows into a larger flow.",
+  "source": "@site/docs/tutorials/connect-task-flows-together.md",
+  "sourceDirName": "tutorials",
+  "slug": "/tutorials/connect-task-flows-together",
+  "permalink": "/tutorials/connect-task-flows-together",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/codytodonnell/strudel-kit/tree/main/docs/docs/tutorials/connect-task-flows-together.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "How to Combine Sections from Different Task Flows",
+    "permalink": "/tutorials/combine-sections"
+  },
+  "next": {
+    "title": "strudel",
+    "permalink": "/cli/reference"
+  }
+}

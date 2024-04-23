@@ -1,0 +1,26 @@
+{
+  "id": "task-flows/search-data-repositories/config",
+  "title": "Configuration",
+  "description": "Configuration file to pass to the add-taskflow command for the Search Data Repositories Task Flow. Specifications in the config file can be overriden by options supplied on the command line.",
+  "source": "@site/docs/task-flows/search-data-repositories/config.mdx",
+  "sourceDirName": "task-flows/search-data-repositories",
+  "slug": "/task-flows/search-data-repositories/config",
+  "permalink": "/task-flows/search-data-repositories/config",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/codytodonnell/strudel-kit/tree/main/docs/docs/task-flows/search-data-repositories/config.mdx",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Configuration"
+  },
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Routes",
+    "permalink": "/task-flows/run-computation/routes"
+  },
+  "next": {
+    "title": "Routes",
+    "permalink": "/task-flows/search-data-repositories/routes"
+  }
+}

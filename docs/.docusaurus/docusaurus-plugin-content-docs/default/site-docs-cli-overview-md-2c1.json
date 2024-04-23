@@ -1,0 +1,15 @@
+{
+  "id": "cli/overview",
+  "title": "Command-Line Interface - Overview",
+  "description": "The strudel-cli is a command-line tool for bootstrapping web applications based on the STRUDEL Design System.",
+  "source": "@site/docs/cli/overview.md",
+  "sourceDirName": "cli",
+  "slug": "/cli/overview",
+  "permalink": "/cli/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/codytodonnell/strudel-kit/tree/main/docs/docs/cli/overview.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

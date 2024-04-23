@@ -1,0 +1,24 @@
+{
+  "id": "components/LabelValueTable",
+  "title": "LabelValueTable",
+  "description": "{docgenJson./lib/components/${metadata.title}.tsx['description']}",
+  "source": "@site/docs/components/LabelValueTable.mdx",
+  "sourceDirName": "components",
+  "slug": "/components/LabelValueTable",
+  "permalink": "/components/LabelValueTable",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/codytodonnell/strudel-kit/tree/main/docs/docs/components/LabelValueTable.mdx",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "mainSidebar",
+  "previous": {
+    "title": "Routes",
+    "permalink": "/task-flows/search-data-repositories/routes"
+  },
+  "next": {
+    "title": "LinearMeter",
+    "permalink": "/components/LinearMeter"
+  }
+}
