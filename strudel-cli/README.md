@@ -192,7 +192,7 @@ In order to publish, you will have to authenticate with pypi and your account mu
 #### 2. Build a distrubtable package
 
 ```
-rm -rf dist/* && python -m build
+rm -rf dist && python -m build
 ```
 
 This will generate `.whl` and `.tar.gz` files in the `dist/` folder.
