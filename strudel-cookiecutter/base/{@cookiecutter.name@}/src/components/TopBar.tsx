@@ -4,12 +4,14 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import React from 'react';
 import { useAppState } from '../context/ContextProvider';
 import { AppLink } from './AppLink';
+import { routes } from '@generouted/react-router';
 
 /**
  * Top navigation bar component
  */
 export const TopBar: React.FC = () => {
   const app = useAppState();
+  console.log(routes);
   return (
     <AppBar color="default" position="static">
       <Toolbar>
