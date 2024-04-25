@@ -14,7 +14,7 @@ defaults = {
     "add-taskflow": {
         "name": "",
         "template": "",
-        "output_dir": "src/app",
+        "output_dir": "src/pages",
         "branch": f"v{__version__}",
         "config": "",
         "verbose": 0
