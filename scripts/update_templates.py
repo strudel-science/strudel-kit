@@ -1,6 +1,7 @@
 import shutil
 import os
 import json
+import re
 from pathlib import Path
 
 
@@ -45,6 +46,31 @@ base_src = Path('./strudel-taskflows/')
 base_dest = Path('./strudel-cookiecutter/base/{@cookiecutter.name@}')
 if base_dest.exists() and base_dest.is_dir():
     shutil.rmtree(base_dest)
+
 # Copy and paste the whole strudel-taskflows app
-# but ignore the taskflow and node_modules directories
-shutil.copytree(base_src, base_dest, ignore=shutil.ignore_patterns(*taskflows, 'node_modules'))
+# but ignore the taskflows, some other files
+ignore_files = (
+  *taskflows,
+  'node_modules',
+  'package-lock.json',
+  'COPYRIGHT.md',
+  'LICENSE',
+  '.vite'
+)
+shutil.copytree(base_src, base_dest, ignore=shutil.ignore_patterns(*ignore_files))
+
+# Copy the default data files separately because they are ignored above
+base_data_dest = Path(f'{base_dest}/public/data')
+if base_data_dest.exists() and base_data_dest.is_dir():
+    shutil.rmtree(base_data_dest)
+shutil.copytree(f'{base_src}/public/data', base_data_dest)
+
+# Replace parts package.json with cookiecutter template string
+with open(f'{base_dest}/package.json', 'r') as file:
+  packageJson = file.read()
+
+packageJson = packageJson.replace('"name": "strudel-taskflows"', '"name": "{@ cookiecutter.name @}"')
+packageJson = re.sub('"version": ".+"', '"version": "0.0.0"', packageJson)
+
+with open(f'{base_dest}/package.json', 'w') as file:
+  file.write(packageJson)

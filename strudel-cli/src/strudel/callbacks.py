@@ -7,6 +7,7 @@ defaults = {
     "create-app": {
         "name": "",
         "output_dir": "",
+        "repo": "gh:strudel-science/strudel-kit",
         "branch": f"v{__version__}",
         "config": "",
         "verbose": 0
@@ -14,7 +15,8 @@ defaults = {
     "add-taskflow": {
         "name": "",
         "template": "",
-        "output_dir": "src/app",
+        "output_dir": "src/pages",
+        "repo": "gh:strudel-science/strudel-kit",
         "branch": f"v{__version__}",
         "config": "",
         "verbose": 0

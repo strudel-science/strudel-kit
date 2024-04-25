@@ -79,6 +79,14 @@ def create_app(
             help="Directory where the app should be created. Defaults to current directory.",
         ),
     ] = defaults["create-app"]["output_dir"],
+    repo: Annotated[
+        str,
+        typer.Option(
+            "--repo",
+            "-r",
+            help="Repository to pull templates from (in the form 'gh:ORG/REPO-NAME'). This should only be used by contributors testing on their own fork. In most all other cases, the default repo should be used.",
+        ),
+    ] = defaults["create-app"]["repo"],
     branch: Annotated[
         str,
         typer.Option(
@@ -106,7 +114,7 @@ def create_app(
         _clear_cache("create your app")
         args = [
             "cookiecutter",
-            "gh:strudel-science/strudel-kit",
+            repo,
             "--checkout",
             branch,
             "--directory",
@@ -225,6 +233,14 @@ def add_taskflow(
             help="Directory where the task flow module should be created.",
         ),
     ] = defaults["add-taskflow"]["output_dir"],
+    repo: Annotated[
+        str,
+        typer.Option(
+            "--repo",
+            "-r",
+            help="Repository to pull templates from (in the form 'gh:ORG/REPO-NAME'). This should only be used by contributors testing on their own fork. In most all other cases, the default repo should be used.",
+        ),
+    ] = defaults["add-taskflow"]["repo"],
     branch: Annotated[
         str,
         typer.Option(
@@ -243,7 +259,7 @@ def add_taskflow(
 
         args = [
             "cookiecutter",
-            "gh:strudel-science/strudel-kit",
+            repo,
             "--checkout",
             branch,
             "--directory",
