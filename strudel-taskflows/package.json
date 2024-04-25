@@ -1,8 +1,7 @@
 {
-  "//": "strudel-kit-variable-next-line",
-  "name": "strudel-demo-app",
+  "name": "strudel-taskflows",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.9",
   "type": "module",
   "scripts": {
     "start": "vite",
