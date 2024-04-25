@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Paper, Stack, Typography } from '@mui/material';
+import { Box, Chip, Container, Grid, Paper, Stack, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 import { TopBar } from '../components/TopBar';
 import { routes } from '@generouted/react-router';
 import { AppLink } from '../components/AppLink';
@@ -17,7 +17,7 @@ const HomePage: React.FC = () => {
     const pathA = a.path || '';
     const pathB = b.path || '';
 
-    if (pathA === 'playground' || pathA < pathB) {
+    if ((pathA === 'playground' && pathB !== '/') || pathA < pathB) {
       return -1;
     } else if (pathA > pathB) {
       return 1;
@@ -30,39 +30,99 @@ const HomePage: React.FC = () => {
     <Box>
       <TopBar />
       <Container
-        maxWidth="md"
+        maxWidth="xl"
         sx={{
           marginTop: 3,
           marginBottom: 3,
         }}
       >
-        <Stack>
-          <Paper
+        <Box>
+          <Stack
             sx={{
-              padding: 2
+              marginBottom: 4
             }}
           >
-            <Typography variant="h5" component="h1" fontWeight="bold">Welcome to your app built with STRUDEL!</Typography>
-          </Paper>
-          <Paper
-            sx={{
-              padding: 2
-            }}
-          >
-            <Stack>
-              <Typography variant="h6">Registered Pages</Typography>
-              {routes[0].children?.map((route) => {
-                if (route.path !== '/' && route.path !== '*') {
-                  return (
-                    <Box key={route.path}>
-                      <AppLink to={route.path || ''}>{route.path}</AppLink>
-                    </Box>
-                  )
-                }
-              })}
-            </Stack>
-          </Paper>
-        </Stack>
+            <Typography variant="h6" component="h1" fontWeight="bold">You just built an app with STRUDEL!</Typography>
+            <Typography>
+              Get started by going to <code><AppLink to="playground">/playground</AppLink></code> and editing <Chip size="small" label={<code>src/pages/playground/index.tsx</code>} />
+            </Typography>
+          </Stack>
+          <Grid container columnSpacing={4}>
+            <Grid item md={6}>
+              <Stack>
+                <Typography variant="h5" component="h2">Registered Pages</Typography>
+                <Typography>
+                  Below are all of the pages that are registered in your app. As you add new top-level pages and Task Flows to your app, they will show up here.
+                </Typography>
+                <Stack
+                  spacing={0}
+                  sx={{
+                    border: '1px solid',
+                    borderColor: 'grey.50',
+                    padding: 2
+                  }}
+                >
+                  <Table>
+                    <TableBody>
+                      {routes[0].children?.map((route) => {
+                        if (route.path === '/') {
+                          return (
+                            <TableRow key={route.path}>
+                              <TableCell>
+                                <code>
+                                  <AppLink to={route.path || ''}>/</AppLink>
+                                </code>
+                              </TableCell>
+                              <TableCell>
+                                <code>
+                                  <Chip size="small" label={<code>src/pages/index.tsx</code>} />
+                                </code>
+                              </TableCell>
+                            </TableRow>
+                          )
+                        } else if (route.path !== '*') {
+                          return (
+                            <TableRow key={route.path}>
+                              <TableCell>
+                                <code>
+                                  <AppLink to={route.path || ''}>/{route.path}</AppLink>
+                                </code>
+                              </TableCell>
+                              <TableCell>
+                                <code>
+                                  <Chip size="small" label={<code>src/pages/{route.path}/index.tsx</code>} />
+                                </code>
+                              </TableCell>
+                            </TableRow>
+                          )
+                        }
+                      })}
+                    </TableBody>
+                  </Table>
+                </Stack>
+              </Stack>
+            </Grid>
+            <Grid item md={6}>
+              <Stack>
+                <Typography variant="h5" component="h2">What's Next?</Typography>
+                <Typography variant="h6" component="h3">Add Task Flows</Typography>
+                <code>strudel add-taskflow my-taskflow -t explore-data</code>
+                <Typography variant="h6" component="h3">Add Components</Typography>
+                <Typography>
+                  Qui minim fugiat mollit ipsum velit nisi eu magna ea excepteur labore velit eiusmod. Mollit elit nostrud aute exercitation. Consequat consequat exercitation mollit aute veniam ut. Officia sunt nisi sunt do quis cupidatat. Qui esse mollit nulla ut velit do est ut deserunt. Ut ullamco exercitation anim incididunt amet ex occaecat ullamco amet consequat aute.
+                </Typography>
+                <Typography variant="h6" component="h3">Customize the Theme</Typography>
+                <Typography>
+                  Qui minim fugiat mollit ipsum velit nisi eu magna ea excepteur labore velit eiusmod. Mollit elit nostrud aute exercitation. Consequat consequat exercitation mollit aute veniam ut. Officia sunt nisi sunt do quis cupidatat. Qui esse mollit nulla ut velit do est ut deserunt. Ut ullamco exercitation anim incididunt amet ex occaecat ullamco amet consequat aute.
+                </Typography>
+                <Typography variant="h6" component="h3">Explore the Docs</Typography>
+                <Typography>
+                  Qui minim fugiat mollit ipsum velit nisi eu magna ea excepteur labore velit eiusmod. Mollit elit nostrud aute exercitation. Consequat consequat exercitation mollit aute veniam ut. Officia sunt nisi sunt do quis cupidatat. Qui esse mollit nulla ut velit do est ut deserunt. Ut ullamco exercitation anim incididunt amet ex occaecat ullamco amet consequat aute.
+                </Typography>
+              </Stack>
+            </Grid>
+          </Grid>
+        </Box>
       </Container>
     </Box>
   )
