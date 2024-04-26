@@ -23,7 +23,7 @@ export const config = {
     ]
   },
   theme: {
-    mode: '',
+    mode: 'light',
     primaryColor: '',
     secondaryColor: '',
     backgroundColor: '',
