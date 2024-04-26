@@ -1,8 +1,8 @@
-import React from 'react';
-import { Box, Container, Paper, Stack, Typography } from '@mui/material';
-import { TopBar } from '../components/TopBar';
 import { routes } from '@generouted/react-router';
+import { Box, Container, Paper, Stack, Typography } from '@mui/material';
+import React from 'react';
 import { AppLink } from '../components/AppLink';
+import { Layout } from '../components/Layout';
 
 /**
  * TODO:
@@ -27,8 +27,7 @@ const HomePage: React.FC = () => {
   });
 
   return (
-    <Box>
-      <TopBar />
+    <Layout>
       <Container
         maxWidth="md"
         sx={{
@@ -64,7 +63,7 @@ const HomePage: React.FC = () => {
           </Paper>
         </Stack>
       </Container>
-    </Box>
+    </Layout>
   )
 }
 
