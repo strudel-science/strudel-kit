@@ -30,7 +30,7 @@ const HomePage: React.FC = () => {
     <Box>
       <TopBar />
       <Container
-        maxWidth="xl"
+        maxWidth="lg"
         sx={{
           marginTop: 3,
           marginBottom: 3,
@@ -47,8 +47,8 @@ const HomePage: React.FC = () => {
               Get started by going to <code><AppLink to="playground">/playground</AppLink></code> and editing <Chip size="small" label={<code>src/pages/playground/index.tsx</code>} />
             </Typography>
           </Stack>
-          <Grid container columnSpacing={4}>
-            <Grid item md={6}>
+          <Grid container columnSpacing={4} rowSpacing={4}>
+            <Grid item md={12}>
               <Stack>
                 <Typography variant="h5" component="h2">Registered Pages</Typography>
                 <Typography>
@@ -62,7 +62,7 @@ const HomePage: React.FC = () => {
                     padding: 2
                   }}
                 >
-                  <Table>
+                  <Table size="small">
                     <TableBody>
                       {routes[0].children?.map((route) => {
                         if (route.path === '/') {
@@ -102,23 +102,13 @@ const HomePage: React.FC = () => {
                 </Stack>
               </Stack>
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={12}>
               <Stack>
                 <Typography variant="h5" component="h2">What's Next?</Typography>
                 <Typography variant="h6" component="h3">Add Task Flows</Typography>
-                <code>strudel add-taskflow my-taskflow -t explore-data</code>
-                <Typography variant="h6" component="h3">Add Components</Typography>
-                <Typography>
-                  Qui minim fugiat mollit ipsum velit nisi eu magna ea excepteur labore velit eiusmod. Mollit elit nostrud aute exercitation. Consequat consequat exercitation mollit aute veniam ut. Officia sunt nisi sunt do quis cupidatat. Qui esse mollit nulla ut velit do est ut deserunt. Ut ullamco exercitation anim incididunt amet ex occaecat ullamco amet consequat aute.
-                </Typography>
-                <Typography variant="h6" component="h3">Customize the Theme</Typography>
-                <Typography>
-                  Qui minim fugiat mollit ipsum velit nisi eu magna ea excepteur labore velit eiusmod. Mollit elit nostrud aute exercitation. Consequat consequat exercitation mollit aute veniam ut. Officia sunt nisi sunt do quis cupidatat. Qui esse mollit nulla ut velit do est ut deserunt. Ut ullamco exercitation anim incididunt amet ex occaecat ullamco amet consequat aute.
-                </Typography>
-                <Typography variant="h6" component="h3">Explore the Docs</Typography>
-                <Typography>
-                  Qui minim fugiat mollit ipsum velit nisi eu magna ea excepteur labore velit eiusmod. Mollit elit nostrud aute exercitation. Consequat consequat exercitation mollit aute veniam ut. Officia sunt nisi sunt do quis cupidatat. Qui esse mollit nulla ut velit do est ut deserunt. Ut ullamco exercitation anim incididunt amet ex occaecat ullamco amet consequat aute.
-                </Typography>
+                <Paper elevation={0} sx={{ padding: 2 }}>
+                  <code>strudel add-taskflow my-taskflow -t explore-data</code>
+                </Paper>
               </Stack>
             </Grid>
           </Grid>
