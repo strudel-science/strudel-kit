@@ -8,7 +8,7 @@ import { openApiModal } from '../context/actions';
  * Include the local basename if pulling from a local source.
  */
 export const useDataFromSource = (dataSource: string, basename?: string): any => {
-  const app = useAppState();
+  const { dispatch } = useAppState();
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export const useDataFromSource = (dataSource: string, basename?: string): any =>
           });
           if (!response.ok) {
             console.log(response);
-            app.dispatch(openApiModal());
+            dispatch(openApiModal());
             throw new Error("unable to fetch");
           }
           data = await response.json();
