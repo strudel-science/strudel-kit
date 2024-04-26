@@ -4,7 +4,6 @@ import { Outlet } from 'react-router';
 import { ExploreDataProvider } from './_context/ContextProvider';
 import { TopBar } from '../../components/TopBar';
 import { useDataFromSource } from '../../utils/useDataFromSource';
-import { basename } from '../../main';
 import { taskflow } from './_config/taskflow.config';
 
 /**
@@ -12,7 +11,7 @@ import { taskflow } from './_config/taskflow.config';
  * Inner pages are rendered inside the `<Outlet />` component
  */
 const ExploreDataLayout: React.FC = () => {
-  const entities = useDataFromSource(taskflow.data.items.source, basename);
+  const entities = useDataFromSource(taskflow.data.items.source);
 
   /**
    * Content to render on the page for this component

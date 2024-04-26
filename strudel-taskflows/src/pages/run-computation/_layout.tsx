@@ -7,7 +7,6 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { TopBar } from '../../components/TopBar';
 import { useDataFromSource } from '../../utils/useDataFromSource';
-import { basename } from '../../main';
 import { RunComputationProvider } from './_context/ContextProvider';
 import { taskflow } from './_config/taskflow.config';
 
@@ -16,7 +15,7 @@ import { taskflow } from './_config/taskflow.config';
  * Inner pages are rendered inside the `<Outlet />` component
  */
 const RunComputationLayout: React.FC = () => {
-  const listItems = useDataFromSource(taskflow.data.items.source, basename)
+  const listItems = useDataFromSource(taskflow.data.items.source)
 
   /**
    * Content to render on the page for this component
