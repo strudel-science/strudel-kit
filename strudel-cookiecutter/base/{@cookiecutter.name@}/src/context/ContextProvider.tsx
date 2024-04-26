@@ -65,8 +65,7 @@ export const AppProvider: React.FC<AppProviderProps> = (props) => {
 export const useAppState = () => {
   const context = useContext(AppContext)
   if (context === undefined) {
-    console.log('useAppState must be used within an AppProvider')
-    return { state: { appTitle: 'Test' } };
+    throw new Error('useAppState must be used within an AppProvider')
   }
   return context
 }

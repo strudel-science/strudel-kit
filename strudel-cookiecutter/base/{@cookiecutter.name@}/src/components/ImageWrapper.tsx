@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
 import { Box, BoxProps } from '@mui/material';
+import React from 'react';
 import './ImageWrapper.css';
 
 interface ImageWrapperProps extends BoxProps {

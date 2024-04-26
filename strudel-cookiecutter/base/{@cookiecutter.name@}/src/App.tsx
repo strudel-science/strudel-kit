@@ -14,8 +14,7 @@ const App: React.FC = () => {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {/* strudel-kit-variable-next-line */}
-        <AppProvider appTitle="Demo App">
+        <AppProvider>
           <RouterProvider router={createBrowserRouter(routes)} />
           <ApiModal />
         </AppProvider>
