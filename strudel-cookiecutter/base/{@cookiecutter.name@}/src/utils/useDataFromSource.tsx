@@ -7,9 +7,10 @@ import { openApiModal } from '../context/actions';
  * Get data from a local source or REST API.
  * Include the local basename if pulling from a local source.
  */
-export const useDataFromSource = (dataSource: string, basename?: string): any => {
+export const useDataFromSource = (dataSource: string): any => {
   const { dispatch } = useAppState();
   const [data, setData] = useState();
+  const basename = document.querySelector('base')?.getAttribute('href') ?? '';
 
   useEffect(() => {
     const fetchData = async () => {

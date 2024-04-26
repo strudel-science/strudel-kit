@@ -8,7 +8,6 @@ import Plot from 'react-plotly.js';
 import { Link as RouterLink } from 'react-router-dom';
 import { LabelValueTable } from '../../components/LabelValueTable';
 import { useDataFromSource } from '../../utils/useDataFromSource';
-import { basename } from '../../main';
 import { taskflow } from './_config/taskflow.config';
 
 /**
@@ -16,7 +15,7 @@ import { taskflow } from './_config/taskflow.config';
  * The two components are not currently hooked together.
  */
 const ActivityDetail: React.FC = () => {
-  const experiment = useDataFromSource(taskflow.data.detail.source, basename);
+  const experiment = useDataFromSource(taskflow.data.detail.source);
 
   const getNoteRows = (notes: any[]) => {
     return notes.map((note) => {

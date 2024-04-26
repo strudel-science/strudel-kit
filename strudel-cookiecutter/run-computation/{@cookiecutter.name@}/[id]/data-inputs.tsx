@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { useDataFromSource } from '../../../utils/useDataFromSource';
-import { basename } from '../../../main';
 import { useRunComputation } from '../_context/ContextProvider';
 import { setInputsTableData } from '../_context/actions';
 import { taskflow } from '../_config/taskflow.config';
@@ -15,7 +14,7 @@ import { taskflow } from '../_config/taskflow.config';
  */
 const DataInputsPage: React.FC = () => {
   const { state, dispatch } = useRunComputation();
-  const inputsData = useDataFromSource(taskflow.data.inputs.source, basename);
+  const inputsData = useDataFromSource(taskflow.data.inputs.source);
   
   /**
    * Set data for the inputs table when the data loads
