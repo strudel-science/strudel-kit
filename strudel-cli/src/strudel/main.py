@@ -121,7 +121,8 @@ def create_app(
             "strudel-cookiecutter/base",
             "--output-dir",
             output_dir,
-            f"name={name}"
+            f"name={name}",
+            "--no-input"
         ]
         if config:
             # Convert the user's json config into a yaml config
@@ -267,6 +268,7 @@ def add_taskflow(
             "--output-dir",
             output_dir,
             f"name={name}",
+            "--no-input"
         ]
         config_output_dir = False
         if config:
