@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 import Plot from 'react-plotly.js';
 import { Link as RouterLink } from 'react-router-dom';
 import { useDataFromSource } from '../../../utils/useDataFromSource';
-import { basename } from '../../../main';
 import { useRunComputation } from '../_context/ContextProvider';
 import { setResultsBarChartData, setResultsLineChartData, setResultsTableData } from '../_context/actions';
 import { taskflow } from '../_config/taskflow.config';
@@ -15,9 +14,9 @@ import { taskflow } from '../_config/taskflow.config';
  */
 const ResultsPage: React.FC = () => {
   const { state, dispatch } = useRunComputation();
-  const tableData = useDataFromSource(taskflow.data.results.source, basename);
-  const lineData = useDataFromSource(taskflow.data.lineChart.source, basename);
-  const barData = useDataFromSource(taskflow.data.barChart.source, basename);
+  const tableData = useDataFromSource(taskflow.data.results.source);
+  const lineData = useDataFromSource(taskflow.data.lineChart.source);
+  const barData = useDataFromSource(taskflow.data.barChart.source);
 
   /**
    * Set data for the results table when the data loads

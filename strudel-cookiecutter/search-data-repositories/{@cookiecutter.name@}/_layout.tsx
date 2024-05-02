@@ -4,7 +4,6 @@ import { Outlet } from 'react-router-dom';
 import { TopBar } from '../../components/TopBar';
 import { useDataFromSource } from '../../utils/useDataFromSource';
 import { SearchDataRepositoriesProvider } from './_context/ContextProvider';
-import { basename } from '../../main';
 import { taskflow } from './_config/taskflow.config';
 
 /**
@@ -12,7 +11,7 @@ import { taskflow } from './_config/taskflow.config';
  * Inner pages are rendered inside the `<Outlet />` component
  */
 const SearchDataRepositoriesLayout: React.FC = () => {
-  const datasets = useDataFromSource(taskflow.data.items.source, basename)
+  const datasets = useDataFromSource(taskflow.data.items.source)
 
   /**
    * Content to render on the page for this component
