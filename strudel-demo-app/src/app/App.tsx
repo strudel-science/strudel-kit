@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { RouterProvider } from 'react-router-dom';
@@ -10,7 +9,7 @@ import { theme } from './theme';
 import { AppProvider } from '../context/ContextProvider';
 import { ApiModal } from '../components/ApiModal';
 
-export const basename = document.querySelector('base')?.getAttribute('href') ?? '/';
+export const basename = document.querySelector('base')?.getAttribute('href') ?? '';
 
 const App: React.FC = () => {
   return (
