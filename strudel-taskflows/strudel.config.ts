@@ -2,6 +2,7 @@
  * Configure global options and content for your app.
  */
 export const config = {
+  title: 'STRUDEL + React + MUI',
   navbar: {
     title: 'My Project',
     logo: 'strudel-logo-icon.png',
