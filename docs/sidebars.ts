@@ -30,7 +30,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Templates',
+      label: 'Task Flows',
       // link: {
       //   type: 'generated-index',
       //   description: 'Learn about the most important Docusaurus concepts!',
@@ -41,6 +41,7 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Compare Data',
           items: [
+            'task-flows/compare-data/usage',
             'task-flows/compare-data/config',
             'task-flows/compare-data/routes',
           ]
