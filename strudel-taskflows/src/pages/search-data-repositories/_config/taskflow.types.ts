@@ -1,5 +1,3 @@
-import { GridColDef } from "@mui/x-data-grid"
-
 /**
  * Type definitions for the Compare Data Task Flow config object
  */

@@ -10,7 +10,7 @@ import { useExploreData } from './_context/ContextProvider';
  * Detail view for a selected row from the` <DataExplorer>` in the explore-data Task Flow.
  */
 const DataDetailPage: React.FC = () => {
-  const {state, dispatch} = useExploreData();
+  const { state } = useExploreData();
   const params = useParams();
   const entity = state.data?.find((d) => {
     if (params.id) {

@@ -15,7 +15,7 @@ interface PreviewPanelProps {
  * next to the `<DataTablePanel>`.
  */
 export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
-  const {state, dispatch} = useExploreData();
+  const { state } = useExploreData();
 
   /**
    * Content to render on the page for this component
