@@ -54,6 +54,7 @@ export const ApiModal: React.FC = () => {
             <TextField 
               value={value} 
               label="Value"
+              type="password"
               onChange={(event) => {
                 setValue(event.target.value);
               }}

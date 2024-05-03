@@ -6,7 +6,6 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { useDataFromSource } from '../../utils/useDataFromSource';
-import { basename } from '../../main';
 import { taskflow } from './_config/taskflow.config';
 
 /**
@@ -14,7 +13,7 @@ import { taskflow } from './_config/taskflow.config';
  * Also allows users to start a new dataset which sends them to the `<NewDataset>` component.
  */
 const ContributorPortal: React.FC = () => {
-  const datasets = useDataFromSource(taskflow.data.datasets.source, basename);
+  const datasets = useDataFromSource(taskflow.data.datasets.source);
   
   /**
    * Content to render on the page for this component

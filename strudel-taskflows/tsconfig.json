@@ -20,6 +20,6 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "strudel.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

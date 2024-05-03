@@ -1,5 +1,6 @@
-import { createTheme } from "@mui/material";
+import { PaletteMode, createTheme } from "@mui/material";
 import type {} from '@mui/x-data-grid/themeAugmentation';
+import { config } from "../strudel.config";
 
 /**
  * MUI Theme object for setting app-wide and component-wide styles.
@@ -9,22 +10,22 @@ import type {} from '@mui/x-data-grid/themeAugmentation';
 export const theme = createTheme({
   /** Color palette to use throughout the app */
   palette: {
-    mode: 'light',
+    mode: config.theme.mode as PaletteMode || 'light',
     background: {
-      default: '#F5F5F6',
-      paper: '#fff',
+      default: config.theme.backgroundColor || '#F5F5F6',
+      paper: config.theme.paperBackgroundColor || '#fff',
     },
     primary: {
-      main: '#1976d2',
-      light: '#42a5f5',
-      dark: '#1565c0',
-      contrastText: '#fff',
+      main: config.theme.primaryColor || '#1976d2',
+      // light: '#42a5f5',
+      // dark: '#1565c0',
+      // contrastText: '#fff',
     },
     secondary: {
-      main: '#9c27b0',
-      light: '#ba68c8',
-      dark: '#7b1fa2',
-      contrastText: '#fff',
+      main: config.theme.secondaryColor || '#9c27b0',
+      // light: '#ba68c8',
+      // dark: '#7b1fa2',
+      // contrastText: '#fff',
     },
     info: {
       main: '#0288d1',
@@ -72,7 +73,7 @@ export const theme = createTheme({
   /** Control the font, size, and font weights */
   typography: {
     htmlFontSize: 16,
-    fontFamily: '"Helvetica", "Verdana", "Arial", sans-serif',
+    fontFamily: `${config.theme.fontFamily}, "Helvetica", "Verdana", "Arial", sans-serif`,
     fontSize: 14,
     fontWeightLight: 300,
     fontWeightRegular: 400,
