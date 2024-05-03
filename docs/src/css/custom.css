@@ -41,3 +41,13 @@
   --ifm-table-stripe-background: #3cad6e;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* Custom styles for the @docusaurus/theme-live-codeblock */
+.playgroundHeader_node_modules-\@docusaurus-theme-live-codeblock-lib-theme-Playground-styles-module {
+  display: none;
+}
+
+.playgroundPreview_node_modules-\@docusaurus-theme-live-codeblock-lib-theme-Playground-styles-module {
+  margin-bottom: 0.5rem;
+  border-radius: var(--ifm-code-border-radius);
+}

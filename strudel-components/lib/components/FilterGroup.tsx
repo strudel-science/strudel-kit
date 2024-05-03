@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Box, BoxProps, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, IconButton, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
+import React from 'react';
 import { Collapsible, CollapsibleProps } from './Collapsible';
 
 interface FilterGroupProps extends CollapsibleProps {

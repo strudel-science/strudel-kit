@@ -1,6 +1,5 @@
-import React, { ReactNode, useEffect, useState } from 'react';
-import { Box, Button, Checkbox, FormControlLabel, FormGroup, FormGroupProps, FormLabel, IconButton, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import { Checkbox, FormControlLabel, FormGroup, FormGroupProps } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 
 type CheckboxOptionValue = string | number;
 

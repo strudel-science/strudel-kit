@@ -20,12 +20,12 @@ interface FiltersProps extends StackProps {
   onClose?: () => any;
 }
 
-const initFilterValues = (filters: Filter[]) => {
-  const filterValues: any = {};
-  filters.forEach((filter) => {
-    filterValues[filter.field] = filter.defaultValue;
-  })
-};
+// const initFilterValues = (filters: Filter[]) => {
+//   const filterValues: any = {};
+//   filters.forEach((filter) => {
+//     filterValues[filter.field] = filter.defaultValue;
+//   })
+// };
 
 export const Filters: React.FC<FiltersProps> = ({ 
   onClose,
