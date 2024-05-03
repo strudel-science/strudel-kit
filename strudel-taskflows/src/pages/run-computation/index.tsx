@@ -11,7 +11,7 @@ import { taskflow } from './_config/taskflow.config';
  * `<DataInputs>` component for the next step.
  */
 export const ListPage: React.FC = () => {
-  const { state, dispatch } = useRunComputation();
+  const { state } = useRunComputation();
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleNewScenario = () => {

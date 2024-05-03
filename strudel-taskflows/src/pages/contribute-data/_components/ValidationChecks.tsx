@@ -8,7 +8,7 @@ import { useContributeData } from '../_context/ContextProvider';
  * This component is rendered as part of the `<ReviewDataset>` page.
  */
 export const ValidationChecks: React.FC = () => {  
-  const { state, dispatch } = useContributeData();
+  const { state } = useContributeData();
 
   /**
    * Content to render on the page for this component

@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
 import { LinearProgress, LinearProgressProps, linearProgressClasses } from '@mui/material';
+import React from 'react';
 
 /**
  * Styled version of the LinearProgress mui component that can be 
