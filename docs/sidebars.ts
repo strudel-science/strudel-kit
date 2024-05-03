@@ -37,6 +37,7 @@ const sidebars: SidebarsConfig = {
       //   keywords: ['guides'],
       // },
       items: [
+        'task-flows/overview',
         {
           type: 'category',
           label: 'Compare Data',
