@@ -20,9 +20,9 @@ const options: any = {
 };
 
 const config: Config = {
-  title: 'My Site',
+  title: 'STRUDEL Kit',
   tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
 
   // Set the production url of your site here
   url: 'https://your-docusaurus-site.example.com',
