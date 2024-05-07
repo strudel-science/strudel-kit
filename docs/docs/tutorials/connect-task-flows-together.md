@@ -1,4 +1,8 @@
-# How to Connect Task Flows Together
+---
+title: 'Connecting Task Flows'
+---
+
+## How to Connect Task Flows Together
 
 Task Flows don't always exist in isolation inside apps. Instead, Task Flows often fit together in various ways. In this article you will learn how to connect steps from two different task flows into a larger flow.
 

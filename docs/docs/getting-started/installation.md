@@ -4,11 +4,12 @@ title: 'Installation'
 
 ## Prerequisites
 
-- Python 3.8+
-- Node.js 18+
-- NPM 
+STRUDEL Kit requires Python to run the CLI and Node.js with NPM to run the web applications you build. If you don't already have these tools on your system, use the links below to install them:
 
-## Install strudel-cli with pip (recommended)
+- [Python 3.8+](https://www.python.org/downloads/)
+- [Node.js 18+ with NPM](https://nodejs.org/en/download)
+
+## Install strudel-cli with pip
 
 The strudel-cli can be installed from PyPi via the `pip` package installer for Python.
 

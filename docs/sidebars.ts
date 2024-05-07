@@ -24,6 +24,7 @@ const sidebars: SidebarsConfig = {
       label: 'Getting Started',
       items: [
         'getting-started/introduction',
+        'getting-started/quickstart',
         'getting-started/installation',
         'getting-started/usage'
       ],
@@ -99,11 +100,11 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Tutorials',
+      label: 'Guides',
       items: [
         {
           type: 'category',
-          label: 'Getting Started Guide',
+          label: 'Building with STRUDEL Tutorial',
           items: [
             'tutorials/basic-app-with-strudel/introduction',
             'tutorials/basic-app-with-strudel/setup'
