@@ -7,7 +7,11 @@ import ConfigJson from '!!raw-loader!../../../strudel-taskflows/strudel.config';
 
 This page will cover the basic workflow for using STRUDEL Kit to build a web UI. 
 
-There are three primary steps to using STRUDEL Kit: (1) Build a base app, (2) add Task Flows, and (3) customize. 
+There are three primary steps to using STRUDEL Kit:
+
+1. Build a base app
+2. Add Task Flows
+3. Customize
 
 ## Confirm CLI installation
 
@@ -95,9 +99,11 @@ You can add one Task Flow after the other or add them progressively as you are r
 strudel add-taskflow my-other-taskflow --template explore-data
 ```
 
+Each Task Flow is registered as a URL route in your app as soon as it's added. For example, after adding the above Task Flows, you can now go to http://localhost:5173/my-taskflow and http://localhost:5173/my-other-taskflow to see your templates in action.
+
 ### Customize your Task Flow
 
-Similar to the base app, each Task Flow comes with its own configuration file. You can find the configuration file in `_config/taskflow.config.ts` inside the newly created directory for your Task Flow. Here you can start customizing the content in your Task Flow and connecting your own data sources. Check out the Task Flows section for more information about how to configure each Task Flow.
+Similar to the base app, each Task Flow comes with its own configuration file. You can find the configuration file in `_config/taskflow.config.ts` inside the newly created directory for your Task Flow. Here you can start customizing the content in your Task Flow and connecting your own data sources. Check out the [Task Flows](#) section for more information about how to configure each Task Flow.
 
 If you'd like to customize the Task Flow beyond what you can do with the configuration file, you have full reign to edit the components in the template. Check out these helpful guides on customizing Task Flow components:
 

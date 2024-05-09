@@ -1,3 +1,7 @@
+---
+slug: create-app
+---
+
 # Create a Base App
 
 We will now start to create your first STRUDEL app using the strudel-cli you installed in the previous step. The `strudel` command has several sub-commands to do different tasks; to create an app named *planets-app* use the `create-app` sub-command like this:

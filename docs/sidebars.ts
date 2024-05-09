@@ -31,6 +31,36 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Guides and Concepts',
+      items: [
+        {
+          type: 'doc',
+          label: 'Combining Sections',
+          id: 'guides/combine-sections'
+        },
+        {
+          type: 'doc',
+          label: 'Connecting Task Flows',
+          id: 'guides/connect-task-flows-together'
+        },
+        {
+          type: 'category',
+          label: 'Full Tutorials',
+          items: [
+            {
+              type: 'category',
+              label: 'Building with STRUDEL',
+              items: [
+                'guides/tutorials/basic-app-with-strudel/introduction',
+                'guides/tutorials/basic-app-with-strudel/setup'
+              ]
+            }
+          ]
+        },
+      ],
+    },
+    {
+      type: 'category',
       label: 'Task Flows',
       // link: {
       //   type: 'generated-index',
@@ -96,30 +126,6 @@ const sidebars: SidebarsConfig = {
       items: [
         'components/LabelValueTable',
         'components/LinearMeter',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Guides',
-      items: [
-        {
-          type: 'category',
-          label: 'Building with STRUDEL Tutorial',
-          items: [
-            'tutorials/basic-app-with-strudel/introduction',
-            'tutorials/basic-app-with-strudel/setup'
-          ]
-        },
-        {
-          type: 'doc',
-          label: 'Combining Sections',
-          id: 'tutorials/combine-sections'
-        },
-        {
-          type: 'doc',
-          label: 'Connecting Task Flows',
-          id: 'tutorials/connect-task-flows-together'
-        },
       ],
     },
     {
