@@ -10,44 +10,47 @@ This library provides a suite of templates to implement UIs for various differen
 
 ## Quickstart
 
-Install the STRUDEL CLI tool:
+Install strudel-cli from PyPi:
 
-```
+```bash
 pip install strudel-cli
 ```
 
-Create a base app (enter values at the prompts or hit Enter to use the default value):
+Create a strudel base app:
 
-```
+```bash
 strudel create-app my-app
 ```
 
-Go to the root directory of your new app:
+This will generate a base web application in a new directory called `my-app`. Go into the new directory:
 
-```
+```bash
 cd my-app
 ```
 
-Add a new Task Flow to your app using the default configurations (hit Enter at each prompt):
+Install the app dependencies:
 
-```
-strudel add-taskflow my-default-taskflow --template run-computation
-```
-
-Or create a config file for your new task flow based on [the config example](https://github.com/strudel-science/strudel-kit/blob/main/docs/task-flows/run-computation/config.md) for the selected Task Flow template.
-
-```
-strudel add-taskflow --config ../my-taskflow-config.json
-```
-
-Install dependencies and start your app.
-
-```
+```bash
 npm install
+```
+
+Start up your app locally:
+
+```bash
 npm start
 ```
 
-For a complete guide to using STRUDEL Kit check out the [Getting Started Tutorial](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/0-introduction.md).
+Open your app in the browser at http://localhost:5173
+
+Add a Task Flow to your app:
+
+```bash
+strudel add-taskflow my-taskflow --template compare-data
+```
+
+This generates new template files for your Task Flow in `my-app/src/pages/my-taskflow`. Check out the Usage and Configuration page for the template you are using to learn how to customize it.
+
+Navigate to http://localhost:5173/my-taskflow to see your new Task Flow.
 
 ## Packages
 

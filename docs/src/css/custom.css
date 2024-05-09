@@ -60,6 +60,10 @@ html[data-theme='dark'] .footer--dark {
   --ifm-footer-link-color: var(--ifm-color-primary);
 }
 
+.theme-doc-sidebar-container {
+  margin-right: var(--ifm-spacing-horizontal);
+}
+
 /* Custom styles for the @docusaurus/theme-live-codeblock */
 .playgroundHeader_node_modules-\@docusaurus-theme-live-codeblock-lib-theme-Playground-styles-module {
   display: none;

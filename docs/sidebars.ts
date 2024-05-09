@@ -24,8 +24,8 @@ const sidebars: SidebarsConfig = {
       label: 'Getting Started',
       items: [
         'getting-started/introduction',
-        'getting-started/quickstart',
         'getting-started/installation',
+        'getting-started/quickstart',
         'getting-started/usage'
       ],
     },
