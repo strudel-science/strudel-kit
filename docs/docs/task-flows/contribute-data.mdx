@@ -1,0 +1,73 @@
+---
+title: 'Contribute Data'
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import ConfigJson from '!!raw-loader!../../../strudel-taskflows/src/pages/contribute-data/_config/taskflow.config';
+
+# Contribute Data
+
+## Links
+
+- [Description and guidelines](https://strudel.science/design-system/task-flows/contribute-data/)
+- [Live example](https://strudel.science/strudel-kit/#/contribute-data)
+- [Source code](https://github.com/strudel-science/strudel-kit/tree/main/strudel-taskflows/src/pages/contribute-data)
+
+## Use this Task Flow
+
+From the root of your app, run the following on the command line:
+
+```
+strudel add-taskflow my-taskflow --template contribute-data
+```
+
+## Generated Files
+
+```
+my-taskflow
+├── _components
+│  ├── DataFilesPanel.tsx
+│  ├── DatasetView.tsx
+│  ├── MetadataPanel.tsx
+│  └── ValidationChecks.tsx
+├── _config
+│  ├── taskflow.config.ts
+│  └── taskflow.types.ts
+├── _context
+│  ├── ContextProvider.tsx
+│  ├── actions.ts
+│  └── utils.ts
+├── _layout.tsx
+├── index.tsx
+├── new.tsx
+├── portal.tsx
+└── review.tsx
+```
+
+## Pages
+
+#### `index.tsx`
+
+**URL Route**: `/`  
+First page of the Contribute Data Task Flow. Displays a user registration form for users that want to contribute datasets.
+
+#### `portal.tsx`
+
+**URL Route**: `/portal`  
+User portal page of the Contribute Data Task Flow. Displays a list of the user's current uploaded datasets.
+
+#### `new.tsx`
+
+**URL Route**: `/new`  
+New dataset page of the Contribute Data Task Flow. Displays a metadata form and data upload panel for adding new data contributions. 
+
+#### `review.tsx`
+
+**URL Route**: `/review`  
+Review new dataset page of the Contribute Data Task Flow. Displays a preview of the dataset information to be uploaded and performs standard validation checks on the data.
+
+## Configuration
+
+This Task Flow can be configured from the `taskflow.config.ts` file in the `_config` directory of the generated template files.
+
+<CodeBlock language="ts">{ConfigJson}</CodeBlock>

@@ -62,62 +62,14 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Task Flows',
-      // link: {
-      //   type: 'generated-index',
-      //   description: 'Learn about the most important Docusaurus concepts!',
-      //   keywords: ['guides'],
-      // },
       items: [
         'task-flows/overview',
-        {
-          type: 'category',
-          label: 'Compare Data',
-          items: [
-            'task-flows/compare-data/usage',
-            'task-flows/compare-data/config',
-            'task-flows/compare-data/routes',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Contribute Data',
-          items: [
-            'task-flows/contribute-data/config',
-            'task-flows/contribute-data/routes',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Explore Data',
-          items: [
-            'task-flows/explore-data/config',
-            'task-flows/explore-data/routes',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Monitor Activities',
-          items: [
-            'task-flows/monitor-activities/config',
-            'task-flows/monitor-activities/routes',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Run Computation',
-          items: [
-            'task-flows/run-computation/config',
-            'task-flows/run-computation/routes',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Search Data Repositories',
-          items: [
-            'task-flows/search-data-repositories/config',
-            'task-flows/search-data-repositories/routes',
-          ]
-        }
+        'task-flows/compare-data',
+        'task-flows/contribute-data',
+        'task-flows/explore-data',
+        'task-flows/monitor-activities',
+        'task-flows/run-computation',
+        'task-flows/search-data-repositories',
       ],
     },
     {

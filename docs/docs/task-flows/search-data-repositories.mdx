@@ -1,0 +1,61 @@
+---
+title: 'Search Data Repositories'
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import ConfigJson from '!!raw-loader!../../../strudel-taskflows/src/pages/search-data-repositories/_config/taskflow.config';
+
+# Search Data Repositories
+
+## Links
+
+- [Description and guidelines](https://strudel.science/design-system/task-flows/search-data-repositories/)
+- [Live example](https://strudel.science/strudel-kit/#/search-data-repositories)
+- [Source code](https://github.com/strudel-science/strudel-kit/tree/main/strudel-taskflows/src/pages/search-data-repositories)
+
+## Use this Task Flow
+
+From the root of your app, run the following on the command line:
+
+```
+strudel add-taskflow my-taskflow --template search-data-repositories
+```
+
+## Generated Files
+
+```
+my-taskflow
+├── _components
+│  ├── DataListCard.tsx
+│  ├── DataListPanel.tsx
+│  ├── FiltersPanel.tsx
+│  └── PreviewPanel.tsx
+├── _config
+│  ├── taskflow.config.ts
+│  └── taskflow.types.ts
+├── _context
+│  ├── ContextProvider.tsx
+│  └── actions.ts
+├── [id].tsx
+├── _layout.tsx
+└── index.tsx
+
+```
+
+## Pages
+
+#### `index.tsx`
+
+**URL Route**: `/`  
+First page of the Search Data Repositories Task Flow. Displays a list of data cards, filters panel, and a data preview panel.
+
+#### `[id].tsx`
+
+**URL Route**: `/:id`  
+Data detail page of the Search Data Repositories Task Flow. When a user drills into a record from the main page, the detail page shows more data about the selected item.
+
+## Configuration
+
+This Task Flow can be configured from the `taskflow.config.ts` file in the `_config` directory of the generated template files.
+
+<CodeBlock language="ts">{ConfigJson}</CodeBlock>

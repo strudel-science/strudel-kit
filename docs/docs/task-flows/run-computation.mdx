@@ -1,0 +1,77 @@
+---
+title: 'Run Computation'
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import ConfigJson from '!!raw-loader!../../../strudel-taskflows/src/pages/run-computation/_config/taskflow.config';
+
+# Run Computation
+
+## Links
+
+- [Description and guidelines](https://strudel.science/design-system/task-flows/run-computation/)
+- [Live example](https://strudel.science/strudel-kit/#/run-computation)
+- [Source code](https://github.com/strudel-science/strudel-kit/tree/main/strudel-taskflows/src/pages/run-computation)
+
+## Use this Task Flow
+
+From the root of your app, run the following on the command line:
+
+```
+strudel add-taskflow my-taskflow --template run-computation
+```
+
+## Generated Files
+
+```
+my-taskflow
+├── _components
+│  └── NewScenarioModal.tsx
+├── _config
+│  ├── taskflow.config.ts
+│  └── taskflow.types.ts
+├── _context
+│  ├── ContextProvider.tsx
+│  └── actions.ts
+├── [id]
+│  ├── _layout.tsx
+│  ├── data-inputs.tsx
+│  ├── results.tsx
+│  ├── running.tsx
+│  └── settings.tsx
+├── _layout.tsx
+└── index.tsx
+```
+
+## Pages
+
+#### `index.tsx`
+
+**URL Route**: `/`  
+First page of the Run Computation Task Flow. Displays a list of existing runs and a button to create a new run.
+
+#### `[id]/data-inputs.tsx`
+
+**URL Route**: `/:id/data-inputs`  
+Data inputs page of the Run Computation Task Flow. The first step in a computation which displays a set of input data for the computation.
+
+#### `[id]/settings.tsx`
+
+**URL Route**: `/:id/settings`  
+Settings page of the Run Computation Task Flow. Displays a form for editing parameters to pass to the computation when it runs.
+
+#### `[id]/running.tsx`
+
+**URL Route**: `/:id/running`  
+Running page of the Run Computation Task Flow. Displays a progress bar and message while the computation is in progress.
+
+#### `[id]/results.tsx`
+
+**URL Route**: `/:id/results`  
+Results page of the Run Computation Task Flow. Displays output data and visualizations from the computation.
+
+## Configuration
+
+This Task Flow can be configured from the `taskflow.config.ts` file in the `_config` directory of the generated template files.
+
+<CodeBlock language="ts">{ConfigJson}</CodeBlock>

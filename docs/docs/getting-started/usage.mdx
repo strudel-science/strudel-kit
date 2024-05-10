@@ -33,7 +33,7 @@ This will generate a new directory called `my-app` with the basic scaffolding fo
 
 The app comes pre-baked with all libraries in the [STRUDEL Tech Stack](#) as well as a set of custom components that are used across the app and the Task Flow templates. 
 
-### Base app breakdown
+### Base app files breakdown
 
 ```py
 my-app
@@ -93,7 +93,25 @@ After you have your base app up and running, you can add Task Flow templates int
 strudel add-taskflow my-taskflow --template compare-data
 ```
 
-You can add one Task Flow after the other or add them progressively as you are ready to start working with them in your app. The name you give your Task Flow maps to a directory name in `src/pages` so make sure that each Task Flow has a unique name. You can pass any of the available templates to the `--template` option. Here's what it would look like to add another Task Flow using the `explore-data` template:
+This generates a new directory at `src/pages/my-taskflow` with all the files you need to run the initial Task Flow.
+
+### Task Flow files breakdown
+
+```py
+my-taskflow
+├── _config
+│  ├── taskflow.config.ts # Task Flow configuration file
+│  └── taskflow.types.ts # Type definitions for the config object
+├── _context
+│  ├── ContextProvider.tsx # State variables shared across the Task Flow
+│  └── actions.ts # Actions shared across the Task Flow
+├── _layout.tsx # Layout wrapper for all the Task Flow pages
+├── compare.tsx # Compare page component
+├── index.tsx # Initial page component
+└── new.tsx # New page component
+```
+
+You can add one Task Flow after the other or add them progressively as you are ready to start working with them in your app. The name you give your Task Flow maps to the directory name so make sure that each Task Flow has a unique name. You can pass any of the available templates to the `--template` option. Here's what it would look like to add another Task Flow using the `explore-data` template:
 
 ```bash
 strudel add-taskflow my-other-taskflow --template explore-data

@@ -1,8 +1,17 @@
 ---
-title: 'Usage'
+title: 'Compare Data'
 ---
 
+import CodeBlock from '@theme/CodeBlock';
+import ConfigJson from '!!raw-loader!../../../strudel-taskflows/src/pages/compare-data/_config/taskflow.config';
+
 # Compare Data
+
+## Links
+
+- [Description and guidelines](https://strudel.science/design-system/task-flows/compare-data/)
+- [Live example](https://strudel.science/strudel-kit/#/compare-data)
+- [Source code](https://github.com/strudel-science/strudel-kit/tree/main/strudel-taskflows/src/pages/compare-data)
 
 ## Use this Task Flow
 
@@ -12,7 +21,7 @@ From the root of your app, run the following on the command line:
 strudel add-taskflow my-taskflow --template compare-data
 ```
 
-### Generated Files
+## Generated Files
 
 ```
 my-taskflow
@@ -28,7 +37,7 @@ my-taskflow
 └── new.tsx
 ```
 
-### Pages
+## Pages
 
 #### `index.tsx`
 
@@ -45,8 +54,8 @@ Compare page of the Compare Data Task Flow. When a user selects records to compa
 **URL Route**: `/new`  
 New record page of the Compare Data Task Flow. Displays a form for generating a new record in the data.
 
-## Links
+## Configuration
 
-- [Description and guidelines](https://strudel.science/design-system/task-flows/compare-data/)
-- [Live example](https://strudel.science/strudel-kit/#/compare-data)
-- [Source code](https://github.com/strudel-science/strudel-kit/tree/main/strudel-taskflows/src/pages/compare-data)
+This Task Flow can be configured from the `taskflow.config.ts` file in the `_config` directory of the generated template files.
+
+<CodeBlock language="ts">{ConfigJson}</CodeBlock>
