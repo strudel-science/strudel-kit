@@ -2,6 +2,9 @@
 title: 'Quickstart'
 ---
 
+import { Grid } from '@mui/material';
+import { LinkCard } from '@site/src/components/LinkCard';
+
 Install strudel-cli from PyPi:
 
 ```bash
@@ -43,3 +46,24 @@ strudel add-taskflow my-taskflow --template compare-data
 This generates new template files for your Task Flow in `my-app/src/pages/my-taskflow`. Check out the Usage and Configuration page for the template you are using to learn how to customize it.
 
 Navigate to http://localhost:5173/my-taskflow to see your new Task Flow.
+
+## Learn more
+
+<Grid container columnSpacing={2} rowSpacing={2} marginBottom={2}>
+  <Grid item sm={4}>
+    <LinkCard
+      href="/getting-started/usage"
+      target="_self"
+      label="Basic Usage"
+      description="Learn the basics with some guidance"
+    /> 
+  </Grid>
+  <Grid item sm={4}>
+    <LinkCard
+      href="/task-flows/overview"
+      target="_self"
+      label="Task Flows"
+      description="Learn how to configure Task Flows"
+    /> 
+  </Grid>
+</Grid>

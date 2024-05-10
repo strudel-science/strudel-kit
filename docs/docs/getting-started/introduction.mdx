@@ -3,7 +3,7 @@ title: 'Introduction'
 slug: /
 ---
 
-import { Grid, Stack } from '@mui/material';
+import { Grid } from '@mui/material';
 import { LinkCard } from '@site/src/components/LinkCard';
 
 # STRUDEL Kit
@@ -113,7 +113,7 @@ Before getting started, we recommend having some familiarity with the command li
 <Grid container columnSpacing={2} rowSpacing={2} marginBottom={2}>
   <Grid item sm={4}>
     <LinkCard
-      href="#"
+      href="/getting-started/installation"
       target="_self"
       label="Installation"
       description="Install everything you need to get started"
@@ -121,7 +121,7 @@ Before getting started, we recommend having some familiarity with the command li
   </Grid>
   <Grid item sm={4}>
     <LinkCard
-      href="#"
+      href="/getting-started/quickstart"
       target="_self"
       label="Quickstart"
       description="Jump straight into the code"
@@ -129,10 +129,18 @@ Before getting started, we recommend having some familiarity with the command li
   </Grid>
   <Grid item sm={4}>
     <LinkCard
-      href="#"
+      href="/getting-started/usage"
       target="_self"
       label="Basic Usage"
       description="Learn the basics with some guidance"
+    /> 
+  </Grid>
+  <Grid item sm={4}>
+    <LinkCard
+      href="/guides/tutorials/basic-app-with-strudel/introduction"
+      target="_self"
+      label="Tutorial"
+      description="A full tutorial on building with STRUDEL"
     /> 
   </Grid>
 </Grid>
