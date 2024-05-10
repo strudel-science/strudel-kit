@@ -3,6 +3,9 @@ title: 'Introduction'
 slug: /
 ---
 
+import { Grid, Stack } from '@mui/material';
+import { LinkCard } from '@site/src/components/LinkCard';
+
 # STRUDEL Kit
 
 Welcome to the STRUDEL Kit Docs! STRUDEL Kit is a web development toolkit for building scientific UIs based on the [STRUDEL Design System and Task Flows](https://strudel.science/design-system/overview/). The toolkit helps users build out scientific Task Flows as usable web applications. It consists of a suite of React-based TypeScript templates and a command line interface for bootstrapping apps using the templates. Apps built with STRUDEL are pre-baked with much of the setup you need to turn complex Task Flows into efficient and highly usable experiences for your users.
@@ -19,10 +22,117 @@ Visit [strudel.science](https://strudel.science) for more information about the 
 
 ## How does it work?
 
-### Architecture
+STRUDEL Kit brings together multiple open source tools as well as its own set of templates and lightweight components to offer a cohesive system in which someone can quickly jump in and start developing a usable scientific web app. There are two main pieces to web applications built with STRUDEL Kit: the base app and the Task Flow templates.
+
+The **base app** provides the basic scaffolding you need to get started building a web app. It consists of a preconfigured architecture of open source tools and custom components. Here's what's included:
+
+<Grid container columnSpacing={2} rowSpacing={2} marginBottom={2}>
+  <Grid item sm={4}>
+    <LinkCard
+      href="https://react.dev/"
+      image={<img src="img/react.png" />}
+      label="React"
+      description="Component-based web UI library"
+    /> 
+  </Grid>
+  <Grid item sm={4}>
+    <LinkCard
+      href="https://www.typescriptlang.org/"
+      image={<img src="img/typescript.svg" />}
+      label="TypeScript"
+      description="JavaScript with syntax for types"
+    /> 
+  </Grid>
+  <Grid item sm={4}>
+    <LinkCard
+      href="https://vitejs.dev/"
+      image={<img src="img/vite.png" />}
+      label="Vite"
+      description="Modern frontend build tool"
+    /> 
+  </Grid>
+  <Grid item sm={4}>
+    <LinkCard
+      href="#"
+      image={<img src="img/strudel-logo-icon.png" />}
+      label="STRUDEL Components"
+      description="Custom components inside the base app"
+    /> 
+  </Grid>
+  <Grid item sm={4}>
+    <LinkCard
+      href="https://mui.com/"
+      image={<img src="img/material-ui.png" />}
+      label="Material UI"
+      description="Low-level component library"
+    /> 
+  </Grid>
+  <Grid item sm={4}>
+    <LinkCard
+      href="https://plotly.com/javascript/"
+      image={<img src="img/plotly.png" />}
+      label="Plotly.js"
+      description="Declarative data visualization library"
+    /> 
+  </Grid>
+  <Grid item sm={4}>
+    <LinkCard
+      href="https://github.com/oedotme/generouted"
+      image={<img src="img/generouted.svg" />}
+      label="Generouted"
+      description="Automated file-based routing library"
+    /> 
+  </Grid>
+  <Grid item sm={4}>
+    <LinkCard
+      href="https://react.dev/reference/react/useContext"
+      label="React Context API"
+      description="React's first-party state management"
+    /> 
+  </Grid>
+</Grid>
+
+The **Task Flows templates** are pre-built flows of React components for common patterns in scientific UIs. The template components are configured to plug right into the base app but you can also plug them into existing React apps with a little bit of restructuring.
+
+The **strudel-cli** brings both of these pieces together in a command line tool for easily generating base apps and Task Flow templates. It is the primary interface for getting started with STRUDEL Kit.
 
 ## Motivation
 
+There are many tools out there to help make building web applications easier for developers and better for end users but few tools target the unique needs of scientific software UIs. STRUDEL aims to be a go-to resource for Research Scientists and Research Software Engineers who want to build tools that offer a great user experience that can help advance their research goals.
+
+Instead of reinventing the wheel from the ground up, STRUDEL Kit leverages existing open source tools and tries to fill in the gaps when it comes to building scientific web applications. We think that implementing a good task flow in a UI is vital to a good user experience. STRUDEL focuses on high level flows and components to help make good user experience more accessible to the scientific software community.
+
 ## Who should use STRUDEL Kit?
 
+STRUDEL Kit aims to be convenient for experts in web development and approachable to non-experts. Understanding JavaScript, TypeScript, and React are important for being able to customize the apps you build with STRUDEL Kit. However, STRUDEL Kit also offers configuration-based customization which makes it easy to make basic changes without even touching the inner React code and we are working to make the configurations even more powerful.
+
+Before getting started, we recommend having some familiarity with the command line, JSON or similar data types, JavaScript, and React.
+
 ## Next Steps
+
+<Grid container columnSpacing={2} rowSpacing={2} marginBottom={2}>
+  <Grid item sm={4}>
+    <LinkCard
+      href="#"
+      target="_self"
+      label="Installation"
+      description="Install everything you need to get started"
+    /> 
+  </Grid>
+  <Grid item sm={4}>
+    <LinkCard
+      href="#"
+      target="_self"
+      label="Quickstart"
+      description="Jump straight into the code"
+    /> 
+  </Grid>
+  <Grid item sm={4}>
+    <LinkCard
+      href="#"
+      target="_self"
+      label="Basic Usage"
+      description="Learn the basics with some guidance"
+    /> 
+  </Grid>
+</Grid>

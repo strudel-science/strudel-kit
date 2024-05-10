@@ -5,33 +5,6 @@ export interface PropsTableProps {
   propsData: any
 }
 
-// const propsDataTest = {
-//   "rows": {
-//     "required": false,
-//     "tsType": {
-//       "name": "Array",
-//       "elements": [
-//         {
-//           "name": "LabelValuePair"
-//         }
-//       ],
-//       "raw": "LabelValuePair[]"
-//     },
-//     "description": ""
-//   },
-//   "labelWidth": {
-//     "required": false,
-//     "tsType": {
-//       "name": "number"
-//     },
-//     "description": "",
-//     "defaultValue": {
-//       "value": "150",
-//       "computed": false
-//     }
-//   }
-// }
-
 /**
  * Component for displaying a flat list of label-value pairs
  * in a two column table.
