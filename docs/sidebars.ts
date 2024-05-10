@@ -31,7 +31,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Guides and Concepts',
+      label: 'Guides',
       items: [
         {
           type: 'doc',
