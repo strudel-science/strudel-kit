@@ -13,7 +13,8 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "docgen": "react-docgen"
+    "docgen": "react-docgen",
+    "gh-pages": "gh-pages -d build -e docs"
   },
   "dependencies": {
     "@docusaurus/core": "3.2.0",
@@ -37,6 +38,7 @@
     "@docusaurus/tsconfig": "3.2.0",
     "@docusaurus/types": "3.2.0",
     "docusaurus-plugin-react-docgen-typescript": "^1.1.0",
+    "gh-pages": "^6.1.1",
     "react-docgen-typescript": "^2.2.2",
     "typescript": "~5.2.2"
   },

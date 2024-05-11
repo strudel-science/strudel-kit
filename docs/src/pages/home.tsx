@@ -4,7 +4,6 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
-import { LabelValueTable } from 'strudel-components'
 
 import styles from './index.module.css';
 
@@ -12,18 +11,6 @@ function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <LabelValueTable 
-        rows={[
-          {
-            label: 'Test',
-            value: 17
-          },
-          {
-            label: 'Test B',
-            value: 29
-          }
-        ]}
-      />
       <div className="container">
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
