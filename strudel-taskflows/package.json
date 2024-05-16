@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.9",
   "type": "module",
+  "homepage": "https://codytodonnell.github.io/strudel-kit/demo/",
   "scripts": {
     "start": "vite",
     "dev": "vite",
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "@types/d3-fetch": "^3.0.7",
+    "@types/node": "^20.12.12",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@types/react-plotly.js": "^2.6.3",
