@@ -52,7 +52,13 @@ const sidebars: SidebarsConfig = {
               label: 'Building with STRUDEL',
               items: [
                 'guides/tutorials/basic-app-with-strudel/introduction',
-                'guides/tutorials/basic-app-with-strudel/setup'
+                'guides/tutorials/basic-app-with-strudel/setup',
+                'guides/tutorials/basic-app-with-strudel/create-app',
+                'guides/tutorials/basic-app-with-strudel/add-taskflow',
+                'guides/tutorials/basic-app-with-strudel/customize-taskflow',
+                'guides/tutorials/basic-app-with-strudel/customize-app',
+                'guides/tutorials/basic-app-with-strudel/customize-home-page',
+                'guides/tutorials/basic-app-with-strudel/continue-learning'
               ]
             }
           ]

@@ -8,7 +8,7 @@ When using STRUDEL Kit it's common to want to take a section from one Task Flow 
 
 In this example, you will copy the charts and table from the Results page in the Run Computation Task Flow into the Comparison page of the Compare Data Task Flow.
 
-### 0. Add both Task Flows to your app
+### 1. Add both Task Flows to your app
 
 If you haven't already, add both the Run Computation and Compare Data Task Flows into your app:
 
@@ -17,11 +17,11 @@ strudel add-taskflow first-taskflow -t run-computation
 strudel add-taskflow second-taskflow -t compare-data
 ```
 
-### 1. Locate the file with the desired components
+### 2. Locate the file with the desired components
 
 The table and charts live in `Results.tsx` inside the Task Flow folder that uses the Run Computation template. In this example that directory would be named `first-taskflow`.
 
-### 2. Copy the components
+### 3. Copy the components
 
 Scan the components and elements in the final `return` statement for the component. There you will find a `<Grid>` component that contains two `<Plot>` components and one `<DataGrid>` component. Copy the whole `<Grid>` component from `<Grid>` to `</Grid>`. Make sure to always include the closing section of components when you copy them. This will look like `</Component>` for component that have inner children and `/>` for components that don't.
 
@@ -57,11 +57,11 @@ Scan the components and elements in the final `return` statement for the compone
 </Grid> 
 ```
 
-### 3. Locate the destination file
+### 4. Locate the destination file
 
 The comparison page of the Compare Data Task Flow lives in `ScenarioComparison.tsx`. In this example its parent directory would be named `second-taskflow`. Open this file. This is where we want to paste our new components.
 
-### 4. Paste the components
+### 5. Paste the components
 
 Let's say you want to put these new components underneath the comparison data table but you want them to fill the same width (i.e. you want them to be in the same container). You will find the `<DataGrid>` component towards the bottom of the file. Paste the new components directly underneath the `<Paper>` component that wraps around the `<DataGrid>` but keep them inside of the `<Container>` component:
 
@@ -134,7 +134,7 @@ Let's also make a small change to the top-most `<Grid>` component by adding some
 <Grid container spacing={4} marginTop={1}>
 ```
 
-### 5. Update the imports
+### 6. Update the imports
 
 Because we added new components to the `ScenarioComparison.tsx` file, we need to import the ones that aren't already imported:
 
@@ -145,7 +145,7 @@ import Plot from 'react-plotly.js';
 
 Almost there. Now we just need to add source data to the new table, line chart, and bar chart.
 
-### 6. Connect new data sources
+### 7. Connect new data sources
 
 In a real app, the data for these components would likely come from an API or external file but in this example we are going to place the data directly in the component. See the How to Connect to an API article for more information about connecting data sources.
 
