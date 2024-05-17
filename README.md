@@ -48,7 +48,7 @@ Add a Task Flow to your app:
 strudel add-taskflow my-taskflow --template compare-data
 ```
 
-This generates new template files for your Task Flow in `my-app/src/pages/my-taskflow`. Check out the Usage and Configuration page for the template you are using to learn how to customize it.
+This generates new template files for your Task Flow in `my-app/src/pages/my-taskflow`. Check out the [First Steps](https://strudel.science/strudel-kit/docs/getting-started/first-steps) and [Configuration](https://strudel.science/strudel-kit/docs/task-flows/overview) page for the template you are using to learn how to customize it.
 
 Navigate to http://localhost:5173/my-taskflow to see your new Task Flow.
 
