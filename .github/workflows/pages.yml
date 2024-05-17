@@ -52,6 +52,8 @@ jobs:
         run: |
           cd strudel-taskflows
           npm run build
+        env:
+          VITE_BASE_URL: /strudel-kit/demo/
       - name: Deploy docs
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
