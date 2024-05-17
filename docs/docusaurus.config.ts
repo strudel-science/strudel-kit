@@ -145,8 +145,8 @@ const config: Config = {
       copyright: `Copyright © ${new Date().getFullYear()} The Regents of the University of California, through Lawrence Berkeley National Laboratory.`,
     },
     prism: {
-      theme: prismThemes.oneDark,
-      darkTheme: prismThemes.oneDark,
+      theme: prismThemes.dracula,
+      darkTheme: prismThemes.dracula,
     },
     liveCodeBlock: {
       /**
