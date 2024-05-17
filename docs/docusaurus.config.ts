@@ -103,10 +103,10 @@ const config: Config = {
             },
             {
               label: 'Components',
-              to: '/components/LabelValueTable',
+              to: '/components/overview',
             },
             {
-              label: 'CLI Reference',
+              label: 'CLI',
               to: '/cli/reference',
             },
           ],
