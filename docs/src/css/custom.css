@@ -64,6 +64,20 @@ html[data-theme='dark'] .footer--dark {
   margin-right: var(--ifm-spacing-horizontal);
 }
 
+.theme-doc-sidebar-item-category-level-1 > .menu__list {
+  padding-left: 0;
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible .menu__link--active {
+  color: var(--ifm-menu-color);
+}
+
 /* Custom styles for the @docusaurus/theme-live-codeblock */
 .playgroundHeader_node_modules-\@docusaurus-theme-live-codeblock-lib-theme-Playground-styles-module {
   display: none;

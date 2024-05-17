@@ -21,77 +21,91 @@ const sidebars: SidebarsConfig = {
   mainSidebar: [
     {
       type: 'category',
-      label: 'Getting Started',
+      label: 'Learn',
+      collapsible: false,
       items: [
-        'getting-started/introduction',
-        'getting-started/installation',
-        'getting-started/quickstart',
-        'getting-started/usage'
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Guides',
-      items: [
+        'introduction',
         {
-          type: 'doc',
-          label: 'Combining Sections',
-          id: 'guides/combine-sections'
-        },
-        {
-          type: 'doc',
-          label: 'Connecting Task Flows',
-          id: 'guides/connect-task-flows-together'
+          type: 'category',
+          label: 'Getting Started',
+          items: [
+            'getting-started/installation',
+            'getting-started/quickstart',
+            'getting-started/first-steps'
+          ],
         },
         {
           type: 'category',
-          label: 'Full Tutorials',
+          label: 'Guides',
           items: [
             {
+              type: 'doc',
+              label: 'Combining Sections',
+              id: 'guides/combine-sections'
+            },
+            {
+              type: 'doc',
+              label: 'Connecting Task Flows',
+              id: 'guides/connect-task-flows-together'
+            },
+            {
               type: 'category',
-              label: 'Building with STRUDEL',
+              label: 'Full Tutorials',
               items: [
-                'guides/tutorials/basic-app-with-strudel/introduction',
-                'guides/tutorials/basic-app-with-strudel/setup',
-                'guides/tutorials/basic-app-with-strudel/create-app',
-                'guides/tutorials/basic-app-with-strudel/add-taskflow',
-                'guides/tutorials/basic-app-with-strudel/customize-taskflow',
-                'guides/tutorials/basic-app-with-strudel/customize-app',
-                'guides/tutorials/basic-app-with-strudel/customize-home-page',
-                'guides/tutorials/basic-app-with-strudel/continue-learning'
+                {
+                  type: 'category',
+                  label: 'Building with STRUDEL',
+                  items: [
+                    'guides/tutorials/basic-app-with-strudel/introduction',
+                    'guides/tutorials/basic-app-with-strudel/setup',
+                    'guides/tutorials/basic-app-with-strudel/create-app',
+                    'guides/tutorials/basic-app-with-strudel/add-taskflow',
+                    'guides/tutorials/basic-app-with-strudel/customize-taskflow',
+                    'guides/tutorials/basic-app-with-strudel/customize-app',
+                    'guides/tutorials/basic-app-with-strudel/customize-home-page',
+                    'guides/tutorials/basic-app-with-strudel/continue-learning'
+                  ]
+                }
               ]
-            }
-          ]
+            },
+          ],
         },
-      ],
+      ]
     },
     {
       type: 'category',
-      label: 'Task Flows',
+      label: 'Reference',
+      collapsible: false,
       items: [
-        'task-flows/overview',
-        'task-flows/compare-data',
-        'task-flows/contribute-data',
-        'task-flows/explore-data',
-        'task-flows/monitor-activities',
-        'task-flows/run-computation',
-        'task-flows/search-data-repositories',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Components',
-      items: [
-        'components/overview',
-        'components/LabelValueTable',
-        'components/LinearMeter',
-      ],
-    },
-    {
-      type: 'doc',
-      label: 'CLI Reference',
-      id: 'cli/reference'
-    },
+        {
+          type: 'category',
+          label: 'Task Flows',
+          items: [
+            'task-flows/overview',
+            'task-flows/compare-data',
+            'task-flows/contribute-data',
+            'task-flows/explore-data',
+            'task-flows/monitor-activities',
+            'task-flows/run-computation',
+            'task-flows/search-data-repositories',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Components',
+          items: [
+            'components/overview',
+            'components/LabelValueTable',
+            'components/LinearMeter',
+          ],
+        },
+        {
+          type: 'doc',
+          label: 'CLI',
+          id: 'cli/reference'
+        },
+      ]
+    }
   ],
 };
 
