@@ -1,5 +1,10 @@
 # Customize the Home Page
 
+:::warning
+
+This tutorial was written for v0.0.2 through v0.0.9 of strudel-kit. It is currently in the process of being updated for v0.1.0. 
+:::
+
 STRUDEL generates a default home page in `src/app/home/HomePage.tsx`. In this section you will add some content, images, and links to the home page.
 
 First, let's add a title. To add a title, use the `Typography` component from MUI. This is a general component for different variations of text. You can read more about the `Typography` component on the[ MUI `Typography` documentation page](https://mui.com/material-ui/react-typography/).
@@ -82,7 +87,3 @@ That's looking pretty good!
 ## Next Steps
 
 In the last section you will find resources to continue building your app and learning the STRUDEL Tech Stack.
-
-Previous           |  Next
-:-------------------------:|:-------------------------:
-[Customize Your App](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/5-customize-app.md)  |  [Continue Learning](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/7-continue-learning.md)

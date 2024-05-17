@@ -1,5 +1,10 @@
 # Customize Your App
 
+:::warning
+
+This tutorial was written for v0.0.2 through v0.0.9 of strudel-kit. It is currently in the process of being updated for v0.1.0. 
+:::
+
 For most web applications, it is important to include content and alterations that are unique to your project. In this section you will learn the basics of how to make the app your own by changing the theme, styles, and general content.
 
 ## Modify the Global Theme
@@ -228,7 +233,3 @@ Hooray! You are all done customizing app styles for this tutorial.
 ## Next Steps
 
 In the last section of this tutorial, you will put what you have learned together to edit the app's home page.
-
-Previous           |  Next
-:-------------------------:|:-------------------------:
-[Customize Your Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/4-customize-taskflow.md)  |  [Customize the Home Page](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/6-customize-home-page.md)

@@ -4,6 +4,11 @@ slug: create-app
 
 # Create a Base App
 
+:::warning
+
+This tutorial was written for v0.0.2 through v0.0.9 of strudel-kit. It is currently in the process of being updated for v0.1.0. 
+:::
+
 We will now start to create your first STRUDEL app using the strudel-cli you installed in the previous step. The `strudel` command has several sub-commands to do different tasks; to create an app named *planets-app* use the `create-app` sub-command like this:
 
 ```
@@ -40,7 +45,3 @@ In the future, when you run your app, you will not need to perform the install s
 ## Next Steps
 
 Next you will learn how to add your first task flow to the app.
-
-Previous           |  Next
-:-------------------------:|:-------------------------:
-[Set Up Your Development Environment](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/1-setup.md)  |  [Add a Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/3-add-taskflow.md)

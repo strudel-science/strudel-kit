@@ -2,6 +2,11 @@
 title: 'Connecting Task Flows'
 ---
 
+:::warning
+
+This tutorial was written for v0.0.2 through v0.0.9 of strudel-kit. It is currently in the process of being updated for v0.1.0. 
+:::
+
 ## How to Connect Task Flows Together
 
 Task Flows don't always exist in isolation inside apps. Instead, Task Flows often fit together in various ways. In this article you will learn how to connect steps from two different task flows into a larger flow.

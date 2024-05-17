@@ -1,5 +1,10 @@
 # Customize Your Task Flow
 
+:::warning
+
+This tutorial was written for v0.0.2 through v0.0.9 of strudel-kit. It is currently in the process of being updated for v0.1.0. 
+:::
+
 Now that you have set up your initial task flow let's customize some of the content within it. In this section you will learn how to remove, add, and edit sections in a task flow page.
 
 ## Remove an Element
@@ -224,7 +229,3 @@ Woohoo! You're done with task flow customizations for now.
 ## Next Steps
 
 At this point you have a task flow that is starting to be tailored to a particular data source and use-case. In the next section you will learn how to customize the app as a whole and make it your own.
-
-Previous           |  Next
-:-------------------------:|:-------------------------:
-[Add a Task Flow](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/3-add-taskflow.md)  |  [Customize Your App](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/5-customize-app.md)

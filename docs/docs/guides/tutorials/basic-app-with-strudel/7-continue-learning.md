@@ -1,5 +1,10 @@
 # Continue Learning
 
+:::warning
+
+This tutorial was written for v0.0.2 through v0.0.9 of strudel-kit. It is currently in the process of being updated for v0.1.0. 
+:::
+
 Congratulations on building your first STRUDEL app! You are well on your way to creating a product that is usable, understandable, and impactful. Of course, the journey does not end here. Below you will find a curated list of resources to continue building on what you learned in this tutorial.
 
 ### STRUDEL
@@ -24,9 +29,3 @@ Congratulations on building your first STRUDEL app! You are well on your way to 
 ### Data Visualization
 
 - [Plotly in React](https://plotly.com/javascript/react/)
-
-## You've reached the end!
-
-Previous           |  &nbsp;
-:-------------------------:|:-------------------------:
-[Customize the Home Page](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/6-customize-home-page.md)  |  &nbsp;
