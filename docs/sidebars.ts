@@ -76,6 +76,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Components',
       items: [
+        'components/overview',
         'components/LabelValueTable',
         'components/LinearMeter',
       ],
