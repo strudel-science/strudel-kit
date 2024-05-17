@@ -53,9 +53,11 @@ export const LinkCard: React.FC<LinkCardProps> = ({
                 {label}
               </Typography>
             </Stack>
-            <Typography variant="body2" color="text.secondary">
-              {description}
-            </Typography>
+            {description && (
+              <Typography variant="body2" color="text.secondary">
+                {description}
+              </Typography>
+            )}
           </Stack>
         </CardContent>
       </CardActionArea>
