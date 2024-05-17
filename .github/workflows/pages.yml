@@ -1,9 +1,9 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Runs on pushes to the feature/component-library branch
+  # Runs on pushes to the main branch
   push:
-    branches: ["feature/component-library"]
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
