@@ -31,7 +31,7 @@ export const LinkCard: React.FC<LinkCardProps> = ({
           textDecoration: 'none'
         }
       }}>
-      <CardActionArea href={href} target={target}>
+      <CardActionArea href={href} target={target} sx={{ height: '100%' }}>
         <CardContent>
           <Stack spacing={1}>
             <Stack direction="row" spacing={1} alignItems="center">
