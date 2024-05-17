@@ -21,28 +21,16 @@ const options: any = {
 
 const config: Config = {
   title: 'STRUDEL Kit',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Create user-centered software for scientific communities',
   favicon: 'img/favicon.png',
-  // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://strudel.science',
   baseUrl: '/strudel-kit/docs/',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
-
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
-
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
-
   presets: [
     [
       'classic',
@@ -50,7 +38,7 @@ const config: Config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/codytodonnell/strudel-kit/tree/main/docs',
+          editUrl: 'https://github.com/strudel-science/strudel-kit/tree/main/docs',
         },
         blog: false,
         theme: {
@@ -59,9 +47,8 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/strudel-logo-header.png',
     colorMode: {
       defaultMode: 'dark',
     },
@@ -84,7 +71,7 @@ const config: Config = {
           label: 'Documentation',
         },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/strudel-science/strudel-kit',
           label: 'GitHub',
           position: 'right',
         },
@@ -92,13 +79,35 @@ const config: Config = {
     },
     footer: {
       style: 'dark',
+      logo: {
+        alt: 'STRUDEL Logo',
+        src: 'img/strudel-logo-header.png',
+        href: 'https://strudel.science',
+        height: 75,
+      },
       links: [
         {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'Getting Started',
+              to: '/',
+            },
+            {
+              label: 'Guides',
+              to: '/guides/combine-sections',
+            },
+            {
+              label: 'Task Flows',
+              to: '/task-flows/overview',
+            },
+            {
+              label: 'Components',
+              to: '/components/LabelValueTable',
+            },
+            {
+              label: 'CLI Reference',
+              to: '/cli/reference',
             },
           ],
         },
@@ -106,16 +115,16 @@ const config: Config = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'GitHub Discussions',
+              href: 'https://github.com/orgs/strudel-science/discussions/',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: 'Join our mailing list',
+              href: 'mailto:strudel-community+subscribe@lbl.gov',
             },
             {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              label: 'Email us',
+              href: 'mailto:strudel@lbl.gov',
             },
           ],
         },
@@ -123,17 +132,17 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
+              label: 'Events',
+              href: 'https://strudel.science/engage/events/',
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: 'Task Flow Designs',
+              href: 'https://strudel.science/design-system/task-flows/overview/',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} The Regents of the University of California, through Lawrence Berkeley National Laboratory.`,
     },
     prism: {
       theme: prismThemes.github,
