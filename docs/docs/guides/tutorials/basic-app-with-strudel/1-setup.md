@@ -35,14 +35,6 @@ Once this is setup, use the "pip" Python package manager tool, which is standard
 pip install strudel-cli
 ```
 
-This will install the latest *released* version of the CLI code. If you want the freshly baked code right from the main repository instead, use the following recipe:
-
-```
-# note: use only if you want 'freshly baked' code from GitHub main branch
-git clone https://github.com/strudel-science/strudel-kit
-pip install strudel-kit/strudel-cli
-```
-
 ### Test strudel-cli Installation
 
 If all the above steps went well (!) you should be able to run the `strudel` command in your current environment.
@@ -56,8 +48,8 @@ If this fails, some common problems are that you are running in a terminal where
 
 ### (Optional) Install NodeJS and NPM Globally
 
-If you used conda and created an environment using the command in the guide, then you will have Node.js and NPM installed inside of that conda environment and that should allow you to run the app without issue. If you prefer to install Node.js and NPM outside of conda, you can install it globally by following the [instructions on the NodeJS download page](https://nodejs.org/en/download) to install NPM and NodeJS together for your operating system.
+If you used conda and created an environment using the command in the guide, then you will have Node.js and NPM installed inside of that conda environment and that should allow you to run the app without issue. If you prefer to install Node.js and NPM outside of conda, you can install it globally by following the [instructions on the NodeJS download page](https://nodejs.org/en/download) to install NPM and NodeJS together for your operating system. This is typical for web developers who regularly work NPM and Node.js.
 
 ## Next Steps
 
-Now that you have the client installed, you can start building your first STRUDEL application.
+Now that you have the CLI installed, you can start building your first STRUDEL application.

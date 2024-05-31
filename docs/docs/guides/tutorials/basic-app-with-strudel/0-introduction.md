@@ -9,7 +9,7 @@ In this tutorial you will learn the basics of how to build a web application usi
 
 ### Who is this tutorial for?
 
-This tutorial is for anyone who wants to build a web user interface for their scientific software by starting with a STRUDEL Task Flow. It will deal with tools such as the command line, JavaScript, TypeScript, React, HTML, and CSS. Experience with these tools will be helpful but is not required. This tutorial is written to be accessible to as many people as possible.
+This tutorial is for anyone who wants to build a web user interface for their scientific software by starting with a STRUDEL Task Flow. It will deal with tools such as the command line, JavaScript, TypeScript, React, HTML, and CSS. Some experience with these tools will be important to following along with the tutorial.
 
 ### Have feedback?
 
