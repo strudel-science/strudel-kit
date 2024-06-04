@@ -5,9 +5,7 @@ import { AppLink } from '../components/AppLink';
 import { Layout } from '../components/Layout';
 
 /**
- * TODO:
- * - Add instructions about how to rig up the router for task flows
- * - Add instructions for putting dataset into app
+ * Home page component that renders at the root route /
  */
 const HomePage: React.FC = () => {
   /**
