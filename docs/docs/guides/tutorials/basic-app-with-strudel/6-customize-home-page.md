@@ -1,10 +1,5 @@
 # Customize the Home Page
 
-:::warning
-
-This tutorial was written for v0.0.2 through v0.0.9 of strudel-kit. It is currently in the process of being updated for v0.1.0. 
-:::
-
 STRUDEL generates a default home page in `src/pages/index.tsx`. In this section you will add some content, images, and links to the home page.
 
 First, let's remove the contents of the existing home page. Replace the contents of `src/pages/index.tsx` with the following barebones component:

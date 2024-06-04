@@ -1,10 +1,5 @@
 # Add a Task Flow to Your App
 
-:::warning
-
-This tutorial was written for v0.0.2 through v0.0.9 of strudel-kit. It is currently in the process of being updated for v0.1.0. 
-:::
-
 ### Introduction
 
 Task Flows are are a set of steps (represented by a series of screens) that help a user accomplish a task and represent how a user progresses through a UI. STRUDEL has several Task Flow templates that can be added into a base app as a new set of pages. In this example, you will add the Task Flow called "Explore Data".

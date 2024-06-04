@@ -1,10 +1,5 @@
 # Customize Your Task Flow
 
-:::warning
-
-This tutorial was written for v0.0.2 through v0.0.9 of strudel-kit. It is currently in the process of being updated for v0.1.0. 
-:::
-
 Now that you have set up your initial task flow let's customize some of the content within it. In this section you will learn how to remove, add, and edit sections in a task flow page.
 
 ## Remove an Element
