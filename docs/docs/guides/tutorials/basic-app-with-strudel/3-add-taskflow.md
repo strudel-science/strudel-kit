@@ -7,33 +7,55 @@ This tutorial was written for v0.0.2 through v0.0.9 of strudel-kit. It is curren
 
 ### Introduction
 
-Task Flows are are a set of steps (represented by a series of screens) that help to accomplish a task and represent how a user progresses through a UI. To start building your app, you first add a Task Flow. In this example, you will add the Task Flow called "Explore Data".
+Task Flows are are a set of steps (represented by a series of screens) that help a user accomplish a task and represent how a user progresses through a UI. STRUDEL has several Task Flow templates that can be added into a base app as a new set of pages. In this example, you will add the Task Flow called "Explore Data".
 
-There are 3 basic steps to adding a new Task Flow:
+### Add a Task Flow
 
-1. Create a simple configuration for your Task Flow in a JSON file.
-2. Add the configured Task Flow into your app's source code.
-3. Connect the Task Flow's pages to the navigation of the main app.
+Let's extend your base app to include a new section where users search and filter data about planets in the Solar System. The first thing you will do is add a new Task Flow called `solar-system` that uses the `explore-data` template. Make sure your terminal is in the directory of your app (i.e., `learning-strudel/planets-app` in this example), then, run this command:
 
-### 1. Configure Task Flow
+```
+strudel add-taskflow solar-system --template explore-data
+```
 
-You only need to configure a Task Flow once, at creation time. You can think of configuration as a "helper" that is providing some text-based information that STRUDEL translates into the appropriate JavaScript code as it creates your Task Flow. 
+If this succeeds, then the you will see a message in the terminal like:
 
-The configuration for a Task Flow is stored in a JSON file. You need to create this file with an editor before you run the command to create the Task Flow. If you don't provide a configuration file, you will be prompted for a couple of key values interactively. But in most cases, as in the Explore Data Task Flow, it will save time to use a configuration file to specify some more details, so strudel-cli can create more of the JavaScript code for you automatically.
+```
+Successfully added a task flow to your strudel app!
+Your new task flow was built in /some/path/to/learning-strudel/planets-app/src/pages/solar-system
+```
 
-#### Add a data file
+You should notice two new things:
+1. A new directory called `solar-system` inside `src/pages` 
+2. A new link on the home page to `/solar-system`
 
-Before you create your configuration file, you are going to add a data source -- in this case, a simple comma-separate values (CSV) file with information about the planets in our solar system. 
+First let's break down the new files that were added:
 
-Switch back to your original terminal and make sure you still have the `strudel-learn-env` activated (you should see `(strudel-learn-env)` at the start of the command line). Leave the app running in your other terminal. 
+```py
+solar-system
+├── _components
+│  ├── DataTablePanel.tsx # Data table on the main page
+│  ├── FiltersPanel.tsx # Filters panel on the main page
+│  └── PreviewPanel.tsx # Preview panel on the main page
+├── _config
+│  ├── taskflow.config.ts # Task Flow configuration file
+│  └── taskflow.types.ts
+├── _context
+│  ├── ContextProvider.tsx
+│  └── actions.ts
+├── [id].tsx # Data detail page component
+├── _layout.tsx # Layout wrapper component
+└── index.tsx # Main page component
+```
 
-In the directory of your app (i.e., `learning-strudel/planets-app` in this example), create a file called `planets.csv`.
+These files are from the Explore Data Task Flow template. They include four main pieces: page components, a configuration file, a layout component, and inner page components. If you want to read about each of these in detail, check out the [Task Flows](/strudel-kit/docs/task-flows/overview) page. Right now, we will cover the basics as each piece comes up.
 
-In UNIX or MacOS, you can run the command: `cat - > planets.csv`, and then paste the text above (you may need to hit Control-D to close the file and return to the prompt).
+Next, if you click on the new `/solar-system` link on the home page, you will be taken to the default Explore Data page. Right now it is configured with default data and settings. Let's keep going to configure this Task Flow for own usecase.
 
-In Windows, one way to do this is run the command `notepad planets.csv`, paste the text above into the new notepad document, then save this file.
+### Add a data source
 
-Paste the following content into `planets.csv`:
+Right now the Task Flow you created is pulling its data from the `public/data/default/explore-data/` directory. Let's instead create a new new data file that we will use for our Task Flow. 
+
+Open up a blank file and paste in the following content:
 
 ```
 Name,Diameter,Mass,Inclination,Eccentricity,Semi_majorAxis,SurfaceGravity,OrbitalPeriod,SiderealRotation,Satellites
@@ -47,198 +69,118 @@ Uranus,51118, 8.683×10^25, 0.774, 0.04725744, 19.18916464, 7.77, 84.01, 0.7181,
 Neptune,49572, 1.024×10^26, 1.76917, 0.00859048, 30.06992276, 11, 164.79, 0.6712, 14
 ```
 
-Once you have created this file, **copy it to the `public/data` directory**, which is the default location for data files in this (and other) Task Flows. This way Strudel will be able to find it without any custom modifications:
+Save this file in `public/data` and name it `planets.csv`.
 
+### Edit the Task Flow Configuration
+
+Now you need to tell the Task Flow to use the new data source you just created. Open up the solar-system Task Flow's configuration file in `src/pages/solar-system/_config/taskflow.config.ts`.
+
+:::info Reference
+
+`taskflow.config.ts` contains configurable properties for your Task Flow. Read more about this file on the [Task Flows](/strudel-kit/docs/task-flows/overview) page.
+:::
+
+Replace the `data` object at the top of the file with the following:
+
+```js
+data: {
+  items: {
+    /**
+     * Source of the data for the initial list of items on the main page.
+     */
+    source: "planets.csv",
+    /**
+     * Name of the field in the data that represents a unique identifier for each record.
+     */
+    idField: "Name"
+  }
+},
 ```
-cp planets.csv public/data
-```
 
-#### Create Task Flow configuration
+Now instead of pointing to the default dataset, your Task Flow points to the planets dataset you made. Next, we need to change the page titles, table columns, and filters for the main `index` page.
 
-Before you continue, make sure you are in the directory of your app (i.e., `learning-strudel/planets-app` in this example).
+Replace the `pages` object with the following:
 
-To create the configuration file, first create a file named `solar-system.json`. The name of this file can be anything you want, but it must be a valid `.json` file. Copy and paste the following text into `solar-system.json`. 
-
-```
-{
-  "name": "solar-system",
-  "template": "explore-data",
-  "pages": {
-    "main": {
-      "pageTitle": "Solar System Explorer",
-      "pageDescription": "Explore data about the planets that orbit the Sun."
-    }
-  },
-  "data": {
-    "main": {
-      "table": {
-        "dataSource": "planets.csv",
-        "dataIdField": "Name"
+```js
+pages: {
+  index: {
+    /**
+     * Title to appear at the top of the main page.
+     */
+    title: "Solar System Explorer",
+    /**
+     * Text to appear underneath the title at the top of the main page.
+     */
+    description: "Explore data about the planets that orbit the Sun.",
+    /**
+     * List of column definition objects for the columns in the table on the main page.
+     */
+    tableColumns: [
+      {
+        field: "Name",
+        headerName: "Name",
+        width: 200
+      },
+      {
+        field: "Diameter",
+        headerName: "Diameter (km)",
+        width: 150
+      },
+      {
+        field: "Mass",
+        headerName: "Mass (kg)",
+        width: 150
+      },
+      {
+        field: "Inclination",
+        headerName: "Inclination (deg)",
+        width: 150
+      },
+      {
+        field: "Eccentricity",
+        headerName: "Eccentricity",
+        width: 150
       }
-    }
-  },
-  "definitions": {
-    "columns": {
-      "main": {
-        "table": [
-          {
-            "field": "Name",
-            "headerName": "Name",
-            "width": 200
-          },
-          {
-            "field": "Diameter",
-            "headerName": "Diameter (km)",
-            "width": 150
-          },
-          {
-            "field": "Mass",
-            "headerName": "Mass (kg)",
-            "width": 150
-          },
-          {
-            "field": "Inclination",
-            "headerName": "Inclination (deg)",
-            "width": 150
-          },
-          {
-            "field": "Eccentricity",
-            "headerName": "Eccentricity",
-            "width": 150
-          }
-        ]
-      }
-    },
-    "filters": {
-      "main": [
-        {
-          "field": "Diameter",
-          "displayName": "Diameter (km)",
-          "filterType": "Slider",
-          "props": {
-            "min": 4000,
-            "max": 150000
-          }
+    ],
+    /**
+     * List of filters to display on the main page and use to filter the main table data. 
+     * Each filter has a definition object to determine how it renders and functions.
+     */
+    tableFilters: [
+      {
+        field: "Diameter",
+        displayName: "Diameter (km)",
+        filterType: "Slider",
+        props: {
+          min: 4000,
+          max: 150000
         }
-      ]
-    }
+      }
+    ]
   }
 }
 ```
 
-The next few sections will briefly explain the contents of this file. This is purely informational, so you can skip this and come back to it later if you want to get on with seeing your Task Flow in action.
-
-There are four basic sections to this configuration. First, there are two key-value pairs. These specifiy the name of your Task Flow directory to generate and the template to use:
-
-```
-  "name": "solar-system",
-  "template": "explore-data",
-```
-
-The template can be any of the six implemented Task Flows but the choice of template determines what the rest of the config looks like.
-
-Second, there's the `pages` section. This sets some basic text values for different elements on the pages of the Task Flow.
-
-Third there is the `data` section. This specifies how the Task Flow should read data into its components. Explore Data has one main table that displays the data and in this case, `dataSource` specifies where that table should get its initial data, and `dataIdField` tells the code that loads the data which field (i.e., which column in tabular data like this one) should be used to uniquely identify a record.
-
-The fourth section is called `definitions`. It provides some more detailed data that is made available to the Task Flow and its value is some structured chunk of JSON. In the case of the Explore Data Task Flow, this section defines which columns of the data to display and which (if any) filters to create for the "filters" sidebar. The values here will depend on the data source.
-
-You can find more detailed documentation for each Task Flow config in the [task-flows section](https://github.com/strudel-science/strudel-kit/tree/main/docs/task-flows) of the docs.
-
-#### Next steps
-
-Now you are ready to create and add the task flow!
-
-### 2. Add Task Flow
-
-To add a Task Flow, use the `add-taskflow` sub-command of the `strudel` command-line program. Again, make sure your terminal is in the directory of your app (i.e., `learning-strudel/planets-app` in this example). Then, run this command:
-
-```
-strudel add-taskflow --config solar-system.json
-```
-
-If this succeeds, then the JavaScript code will all be set up in your app directory and you will have a new page that can browse your data set. You can tell it succeeds if the output contains a message like:
-
-```
-Successfully added a task flow to your strudel app!
-Your new task flow was built in /some/path/to/learning-strudel/planets-app/src/app/solar-system
-```
-
-#### Next steps
-
-We will now connect the task flow as a sub-page in our app.
-
-### 3. Connect the Task Flow
-
-Change to the `src/app` directory under your app, e.g.:
-
-```
-cd src/app
-```
-
-In this directory you will see a file `routes.tsx`. This is the file that tells your app which URL paths map to which pages.
-
-Open `routes.tsx` in an editor.  Near the top of the file, in the JavaScript imports section, add these lines:
-
-```
-import { ExploreDataWrapper } from "./solar-system/ExploreDataWrapper";
-import { DataExplorer } from "./solar-system/DataExplorer";
-```
-
-This says to import the ReactJS components that were created by the "add-taskflow" command above from the appropriate directory. Next you will create a "route" that associates these components with a page URL. 
-
-Add the following text after the line that ends `createHashRouter([`. This is the section that tells the app how to map the URL path to a given page in the app (after a "/#/", thus the name). 
-
-```
-{
-  path: "/solar-system",
-  element: <ExploreDataWrapper />,
-  children: [
-    {
-      index: true,
-      element: <DataExplorer />
-    },
-  ]
-},
-```
-
-Save this file. You should now have a fully functioning Explore Data Task Flow page when you navigate to the `/solar-system` route. Test this out by navigating your browser to http://localhost:3000/#/solar-system.
+Save this file. You should now have a fully functioning Explore Data Task Flow page when you navigate to the `/solar-system` route. Test this out by navigating your browser to http://localhost:5173/solar-system.
 
 ![Screenshot of solar system Task Flow in a browser](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/images/start-explore-data-2.png?raw=true)
 
-<details>
-  <summary>Note</summary>
-  The `#/` section of the URL is added by React to enable single-page routing that doesn't require extra page reloads. It can be removed by using <code>createBrowerRouter</code> instead of <code>createHashRouter</code>. See the <a href="https://reactrouter.com/en/main/routers/picking-a-router" target="_blank">react-router docs on picking a router</a>.
-</details>
-<br/>
+This is great, but it would be good to be able to access this page from the navbar instead. Let's add a link to the Solar System page in the top navigation bar.
 
-This is great, but it would be good to be able to access this page without having to type in the URL every time. Let's add a link to the Explore page in the top navigation bar.
+To do this we are going to open the global strudel configuration file `strudel.config.ts` located at the root of our app.
 
-Go to the `src/components` directory and open the file `TopBar.tsx`. This is the component for the top navigation bar that is displayed on the home page and all the other task flow pages.
-
-First, find the code where the app title is rendered so you can render the link directly to the right of the app title:
+Right now there is one item, `Playground`, in the list of items to render in the `navbar`. We don't need this item so let's replace it with a link to our solar system page:
 
 ```js
-<AppLink to="/">
-  <Typography variant="h6" component="div">
-    {app.state.appTitle}
-  </Typography>
-</AppLink>
+{
+  label: 'Solar System',
+  path: '/solar-system'
+}
 ```
 
-Then add a new `AppLink` component directly underneath the `AppLink` component that renders the app title:
+Save that file and you should see a new "Solar System" link in the navbar.
 
-```js
-<AppLink to="/solar-system">
-  Solar System
-</AppLink>
-```
-
-The `AppLink` component is used for links to internal pages in your app. The `to` prop tells the component which route it should link to and the content in between the opening (`<AppLink>`) and closing (`</AppLink>`) tags is the clickable content that displays on the page. Go to the home page at http://localhost:3000 and try out the link.
-
-![Screenshot of home page with new navigation link in a browser](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/images/mid-home-page.png?raw=true)
-
-Woohoo! You have connected your first Task Flow.
+Woohoo! You now have your first fully connected Task Flow.
 
 ## Next steps
 
