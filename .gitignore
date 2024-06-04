@@ -18,15 +18,12 @@ build/
 .env.test.local
 .env.production.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
 __pycache__
 
 # distribution files
 dist/
 
+.docusaurus
 # generouted
 router.ts
 

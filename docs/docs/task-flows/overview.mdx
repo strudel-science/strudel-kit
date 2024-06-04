@@ -1,0 +1,34 @@
+---
+title: 'Overview'
+---
+
+# Task Flows
+
+Task Flow templates in STRUDEL Kit are UI flows built out as React components that plug directly into your base app. They are based on the [Task Flows in the STRUDEL Design System](https://strudel.science/design-system/task-flows/overview/) which offer user-friendly methods for implementing common patterns seen in scientific and data-intensive UIs. Task Flow templates can be generated using the strudel-cli and the `add-taskflow` command.
+
+Every Task Flow template consists of four main pieces:
+
+1. Confguration file
+2. Page components
+3. Layout components
+4. Inner page components
+
+## Confguration file
+
+Every Task Flow template has a `taskflow.config.ts` file inside its `_config` directory. This file contains the `taskflow` object which contains all of the configurable properties for that particular Task Flow. The values supplied in the config determine how different parts of the UI are rendered. In some cases this is simple like rendering a page title but in other cases it is more complex like rendering columns or filters. Each Task Flow has its own unique configuration but they all follow very similar patterns. Be sure to check out the Task Flow page for the particular template you are using to see the details for how to configure that UI.
+
+## Page components
+
+A Task Flow template is made up of a series of pages that are built out as React components. Any file that is not prefixed by an underscore (`_`) or nested in a directory that is prefixed with an underscore is a page. The name of the file maps directly to the name of the path in the URL to render that page. Note that the URL path includes the full path starting from the `pages` directory. So a the file `/src/pages/my-taskflow/new.tsx` will be accessible at the URL route `/my-taskflow/new`. STRUDEL Kit uses the Generouted library to autogenerate routes based on the file structure. Check out their [documentation](https://github.com/oedotme/generouted?tab=readme-ov-file#conventions) to understand all the conventions around file naming and page routing.
+
+## Layout components
+
+Most Task Flow templates have at least one `_layout.tsx` file. These files are wrapper components that wrap around all of the pages in their current level of nesting or lower. These are used for layout elements that are common to multiple pages in a Task Flow like navigation or header elements.
+
+## Inner page components
+
+On top of their page components, most Task Flows also have inner page components that separated into their own files. These are housed in the `_components` directory and are used within page components.
+
+
+
+

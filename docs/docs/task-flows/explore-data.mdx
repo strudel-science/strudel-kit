@@ -1,0 +1,61 @@
+---
+title: 'Explore Data'
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import ConfigJson from '!!raw-loader!../../../strudel-taskflows/src/pages/explore-data/_config/taskflow.config';
+
+# Explore Data
+
+## Links
+
+- [Description and guidelines](https://strudel.science/design-system/task-flows/explore-data/)
+- [Live example](https://strudel.science/strudel-kit/#/explore-data)
+- [Source code](https://github.com/strudel-science/strudel-kit/tree/main/strudel-taskflows/src/pages/explore-data)
+
+## Use this Task Flow
+
+Before continuing, make sure you have followed the instructions to [install the strudel-cli](/strudel-kit/docs/getting-started/installation).
+
+From the root of your app, run the following on the command line:
+
+```
+strudel add-taskflow my-taskflow --template explore-data
+```
+
+## Generated Files
+
+```
+my-taskflow
+├── _components
+│  ├── DataTablePanel.tsx
+│  ├── FiltersPanel.tsx
+│  └── PreviewPanel.tsx
+├── _config
+│  ├── taskflow.config.ts
+│  └── taskflow.types.ts
+├── _context
+│  ├── ContextProvider.tsx
+│  └── actions.ts
+├── [id].tsx
+├── _layout.tsx
+└── index.tsx
+```
+
+## Pages
+
+#### `index.tsx`
+
+**URL Route**: `/`  
+First page of the Explore Data Task Flow. Displays a data table, filters panel, and a data preview panel.
+
+#### `[id].tsx`
+
+**URL Route**: `/:id`  
+Data detail page of the Explore Data Task Flow. When a user drills into a record in the data table, the detail page shows more data about the selected item.
+
+## Configuration
+
+This Task Flow can be configured from the `taskflow.config.ts` file in the `_config` directory of the generated template files.
+
+<CodeBlock language="ts" title="taskflow.config.ts">{ConfigJson}</CodeBlock>

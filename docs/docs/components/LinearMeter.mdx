@@ -1,0 +1,26 @@
+import componentsJson from '@site/components.json';
+import { PropsTable } from "@site/src/components/PropsTable"
+// import { LinearMeter } from 'strudel-components'
+
+{componentsJson[`./lib/components/${metadata.title}.tsx`][0]['description']}
+<br />
+
+## Import
+
+```jsx
+import { LinearMeter } from 'strudel-components'
+```
+
+## Basic Usage
+
+Coming soon!
+
+{/* ```jsx live
+<LinearMeter />
+``` */}
+
+## Props
+
+<PropsTable 
+  propsData={componentsJson[`./lib/components/${metadata.title}.tsx`][0]['props'] || {}} 
+/>

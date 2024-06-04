@@ -1,0 +1,37 @@
+import componentsJson from '@site/components.json';
+import { PropsTable } from "@site/src/components/PropsTable"
+// import { LabelValueTable } from 'strudel-components'
+
+{componentsJson[`./lib/components/${metadata.title}.tsx`][0]['description']}
+<br />
+
+## Import
+
+```jsx
+import { LabelValueTable } from 'strudel-components'
+```
+
+## Basic Usage
+
+Coming soon!
+
+{/* ```jsx live
+<LabelValueTable 
+  rows={[
+    {
+      label: 'Test',
+      value: 17
+    },
+    {
+      label: 'Test B',
+      value: 29
+    }
+  ]}
+/>
+``` */}
+
+## Props
+
+<PropsTable 
+  propsData={componentsJson[`./lib/components/${metadata.title}.tsx`][0]['props']} 
+/>

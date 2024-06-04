@@ -10,7 +10,13 @@ import { openApiModal } from '../context/actions';
 export const useDataFromSource = (dataSource: string): any => {
   const { dispatch } = useAppState();
   const [data, setData] = useState();
-  const basename = document.querySelector('base')?.getAttribute('href') ?? '';
+  /** Get the base portion of the URL. Will be blank when running locally. */
+  const base = document.querySelector('base')?.getAttribute('href') ?? '';
+  /** 
+   * Use the VITE_BASE_URL env variable to specify a path prefix that 
+   * should be added to routes and local requests
+   */
+  const basename = base + import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     const fetchData = async () => {

@@ -19,12 +19,13 @@ const App: React.FC = () => {
     document.title = config.title;
   }, []);
 
+  console.log(import.meta.env);
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <AppProvider>
-          <RouterProvider router={createBrowserRouter(routes)} />
+          <RouterProvider router={createBrowserRouter(routes, { basename: import.meta.env.VITE_BASE_URL })} />
           <ApiModal />
         </AppProvider>
       </ThemeProvider>

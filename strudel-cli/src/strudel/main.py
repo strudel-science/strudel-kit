@@ -348,8 +348,9 @@ def main(
     ] = None
 ):
     """
-    Handle options for running strudel without any commands.
-    The --help option is not here because it is already implemented by default.
+    The strudel-cli allows you to bootstrap apps and Task Flow templates based on the STRUDEL Design System. 
+    
+    Get started using the base command `strudel`.
     """
     pass
 
