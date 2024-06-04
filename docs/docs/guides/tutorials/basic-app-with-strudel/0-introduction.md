@@ -1,10 +1,10 @@
-# Getting Started with STRUDEL Kit (Beta)
+# Tutorial Introduction
 
 In this tutorial you will learn the basics of how to build a web application using the STRUDEL Task Flow templates and STRUDEL CLI. By the end you will have your own customized version of the [Explore Data Task Flow](https://strudel.science/design-system/task-flows/explore-data/) running in a web browser on your computer.
 
 ### Who is this tutorial for?
 
-This tutorial is for anyone who wants to build a web user interface for their scientific software by starting with a STRUDEL Task Flow. It will deal with tools such as the command line, JavaScript, TypeScript, React, HTML, and CSS. Some experience with these tools will be important to following along with the tutorial.
+This tutorial is for anyone who wants to build a web user interface for their scientific software by starting with a STRUDEL Task Flow. It will deal with tools such as the command line, JavaScript, TypeScript, React, HTML, and CSS. Some experience with these tools will be important to follow along with the tutorial.
 
 ### Have feedback?
 

@@ -1,4 +1,4 @@
-# Set Up Your Development Environment
+# Setup
 
 The current interface to using the STRUDEL Design System is a command-line tool written in Python. To use this tool, you need to set up a development environment that lets you invoke Python commands from a terminal.
 
