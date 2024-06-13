@@ -1,5 +1,3 @@
-:warning: ***This library is in early-stage development. Check back soon for more updates!***
-
 # STRUDEL Kit
 
 STRUDEL Kit is a React-based JavaScript library for building scientific UIs based on the STRUDEL Design System and Task Flows. Visit [strudel.science](https://strudel.science) for more information about the STRUDEL project.
