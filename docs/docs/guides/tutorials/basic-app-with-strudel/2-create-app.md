@@ -61,7 +61,7 @@ npm start
 
 This will start up a local server to run your application from the browser. Once it finishes running, you should be able to open the home page (`src/pages/index.tsx`) of your app by opening a browser and navigating to [http://localhost:5174/](http://localhost:5174/).
 
-![Screenshot of home page in a browser](/img/start-home-page.png)
+![Screenshot of home page in a browser](/img/tutorial/start-home-page.png)
 
 In the future, when you run your app, you will not need to perform the install step -- just `npm start`. In fact, the development server that this runs is able to update the app "live" as you change the code in this directory, so you don't need to stop and restart the app for each change.
 

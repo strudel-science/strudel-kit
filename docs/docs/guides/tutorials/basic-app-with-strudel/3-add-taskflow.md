@@ -158,7 +158,7 @@ pages: {
 
 Save this file. You should now have a fully functioning Explore Data Task Flow page when you navigate to the `/solar-system` route. Test this out by navigating your browser to http://localhost:5173/solar-system.
 
-![Screenshot of solar system Task Flow in a browser](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/images/start-explore-data-2.png?raw=true)
+![Screenshot of solar system Task Flow in a browser](/img/tutorial/start-explore-data-2.png)
 
 This is great, but it would be good to be able to access this page from the navbar instead. Let's add a link to the Solar System page in the top navigation bar.
 
