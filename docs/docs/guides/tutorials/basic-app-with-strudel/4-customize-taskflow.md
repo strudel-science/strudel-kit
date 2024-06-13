@@ -156,11 +156,9 @@ Refresh the page. You should see the planet name at the top of the preview panel
 
 In this step you will add an image for each planet and display it in the preview panel. First, create a new `images` directory inside the `public/` directory at the top level of the app.
 
-Then, download the `planets.zip` file from the strudel-kit GitHub:
+Then, download the `planets.zip` file using the link below:
 
-[Click to download planets.zip from GitHub](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/images/planets.zip?raw=true)
-
-To download the raw zip file, click the download icon or the "Raw" button on the right side of the page.
+[Click to download planets.zip](/img/tutorial/planets.zip)
 
 Double-click the `planets.zip` file you downloaded to unpack the files, then drill into the `planets` directory and copy the 8 files. There should be one file for each planet. 
 
@@ -217,7 +215,7 @@ To make sure the images are accessible, add alt text to the `img` tag. Alt text 
 
 Refresh your page and make sure the images are smaller and all the same height.
 
-![Screenshot of planet images in the preview panel](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/images/mid-preview-panel-2.png?raw=true)
+![Screenshot of planet images in the preview panel](/img/tutorial/mid-preview-panel-2.png)
 
 Woohoo! You're done with task flow customizations for now.
 

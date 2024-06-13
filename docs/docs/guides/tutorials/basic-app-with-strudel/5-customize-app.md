@@ -158,7 +158,7 @@ Refresh the page and watch the Explore link change color when you mouse over it.
 
 Now, let's replace the "Tutorial Science App" title in the navigation bar with a logo for a project. First, download the tutorial app logo from GitHub:
 
-[Click to download example-logo.png from GitHub](https://github.com/strudel-science/strudel-kit/blob/main/docs/getting-started/images/example-logo.png?raw=true)
+[Click to open example-logo.png](/img/tutorial/example-logo.png). Then right-click the image and click "Save Image As..."
 
 Place `example-logo.png` in the `public` folder alongside your other images.
 
