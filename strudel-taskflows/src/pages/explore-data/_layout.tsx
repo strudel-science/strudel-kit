@@ -11,8 +11,6 @@ import { taskflow } from './_config/taskflow.config';
  * Inner pages are rendered inside the `<Outlet />` component
  */
 const ExploreDataLayout: React.FC = () => {
-  // Test commit
-  // Commit from feature/test
   const entities = useDataFromSource(taskflow.data.items.source);
 
   /**
