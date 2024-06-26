@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button, IconButton, Link, Paper, Stack, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link as RouterLink } from 'react-router-dom';
 import { LabelValueTable } from '../../../components/LabelValueTable';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useExploreData } from '../_context/ContextProvider';
 
 interface PreviewPanelProps {
@@ -15,7 +15,21 @@ interface PreviewPanelProps {
  * next to the `<DataTablePanel>`.
  */
 export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
-  const {state, dispatch} = useExploreData();
+  const { state } = useExploreData(); // Assuming useExploreData provides state
+  const [relatedRows, setRelatedRows] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (state.previewItem) {
+      const emptyRows = Array(1).fill(0);
+      const rows = emptyRows.map((_, i) => ({
+        id: i,
+        family: state.previewItem['family'], 
+        species: state.previewItem['species'],
+        kingdom: state.previewItem['kingdom'],
+      }));
+      setRelatedRows(rows);
+    }
+  }, [state.previewItem]); // Re-run effect when state.previewItem changes
 
   /**
    * Content to render on the page for this component
@@ -38,24 +52,31 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
             </Typography>
             <IconButton size="small" onClick={props.onClose}><CloseIcon /></IconButton>
           </Stack>
-          <Typography variant="body2">Row description, subtitle, or helper text.</Typography>
-        </Stack>
-        <Box>
-          <Typography fontWeight="medium" mb={1}>Property Group 1</Typography>
+          <Box>
+          <Typography fontWeight="medium" mb={1}>Common Name & Year of Discovery</Typography>
           <LabelValueTable 
             rows={[
-              { label: 'Property 1', value: 'value' },
-              { label: 'Property 2', value: 'value' },
-              { label: 'Property 3', value: 'value' },
+              { label: 'Common Name & YOD', value: state.previewItem['genericName'] },
+            ]}
+          />
+        </Box>
+        </Stack>
+        <Box>
+          <Typography fontWeight="medium" mb={1}>Parallels</Typography>
+          <LabelValueTable 
+            rows={[
+              { label: 'Latitude', value: state.previewItem['decimalLatitude'] },
+              { label: 'Longitude', value: state.previewItem['decimalLongitude'] },
             ]}
           />
         </Box>
         <Box>
-          <Typography fontWeight="medium" mb={1}>Property Group 2</Typography>
+          <Typography fontWeight="medium" mb={1}>Time and Place</Typography>
           <LabelValueTable 
             rows={[
-              { label: 'Property 4', value: 'value' },
-              { label: 'Property 5', value: 'value' },
+              { label: 'Year', value: state.previewItem['year'] },
+              { label: 'Region', value: state.previewItem['gbifRegion'] },
+              { label: 'Country', value: state.previewItem['country'] },
             ]}
           />
         </Box>
@@ -63,11 +84,9 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
           <Typography fontWeight="medium" mb={1}>Related Data</Typography>
           <DataGrid
             rows={relatedRows}
-            columns={relatedColumns}
+            columns={relatedColumns as GridColDef[]} // Ensure relatedColumns is defined correctly
             disableRowSelectionOnClick
-            initialState={{
-              pagination: { paginationModel: { pageSize: 5 } }
-            }}
+            autoHeight
           />
         </Box>
         <Stack direction="row">
@@ -88,33 +107,27 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
 /**
  * Placeholder columns for related data table
  */
-const relatedColumns = [
+const relatedColumns: GridColDef[] = [
   { 
     field: 'id', 
     headerName: 'ID', 
     width: 50 
   },
   { 
-    field: 'attr1', 
-    headerName: 'Attribute 1', 
+    field: 'family', 
+    headerName: 'Family', 
     width: 100 
   },
   { 
-    field: 'attr2', 
-    headerName: 'Attribute 2', 
+    field: 'species', 
+    headerName: 'Species', 
     width: 100 
   },
   { 
-    field: 'attr3', 
-    headerName: 'Attribute 3', 
+    field: 'kingdom', 
+    headerName: 'Kingdom', 
     width: 100 
   },
 ];
 
-/**
- * Placeholder rows for related data table
- */
-const emptyRows = Array(25).fill(0);
-const relatedRows = emptyRows.map((d, i) => {
-  return { id: i, attr1: 'value', attr2: 'value', attr3: 'value'}
-});
+export default PreviewPanel;
