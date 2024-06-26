@@ -1,0 +1,303 @@
+[
+  {
+    "id": 45,
+    "experiment_name": "Experiment Cricket",
+    "start_time": "12/16/2023, 3:01:07 PM",
+    "end_time": null,
+    "status": "Running"
+  },
+  {
+    "id": 44,
+    "experiment_name": "Experiment Mouse",
+    "start_time": "12/15/2023, 1:40:10 PM",
+    "end_time": null,
+    "status": "Running"
+  },
+  {
+    "id": 8,
+    "experiment_name": "Experiment Fox",
+    "start_time": "6/27/2023, 1:42:11 PM",
+    "end_time": "6/30/2023, 5:15:29 AM",
+    "status": "Complete"
+  },
+  {
+    "id": 14,
+    "experiment_name": "Experiment Elephant",
+    "start_time": "10/15/2023, 1:42:11 PM",
+    "end_time": "10/18/2023, 5:15:29 AM",
+    "status": "Interrupted"
+  },
+  {
+    "id": 30,
+    "experiment_name": "Experiment Hippo",
+    "start_time": "6/27/2023, 1:42:11 PM",
+    "end_time": "6/30/2023, 5:15:29 AM",
+    "status": "Interrupted"
+  },
+  {
+    "id": 43,
+    "experiment_name": "Experiment Cherry",
+    "start_time": "5/20/2023, 9:34:45 AM",
+    "end_time": "5/22/2023, 2:46:01 PM",
+    "status": "Complete"
+  },
+  {
+    "id": 23,
+    "experiment_name": "Experiment Lime",
+    "start_time": "4/22/2023, 9:34:45 AM",
+    "end_time": "4/24/2023, 2:46:01 PM",
+    "status": "Complete"
+  },
+  {
+    "id": 39,
+    "experiment_name": "Experiment Giraffe",
+    "start_time": "4/28/2023, 9:34:45 AM",
+    "end_time": "4/30/2023, 2:46:01 PM",
+    "status": "Complete"
+  },
+  {
+    "id": 26,
+    "experiment_name": "Experiment Horse",
+    "start_time": "2/17/2023, 1:42:11 PM",
+    "end_time": "2/20/2023, 5:15:29 AM",
+    "status": "Complete"
+  },
+  {
+    "id": 11,
+    "experiment_name": "Experiment Sloth",
+    "start_time": "1/14/2023, 9:34:45 AM",
+    "end_time": "1/16/2023, 2:46:01 PM",
+    "status": "Complete"
+  },
+  {
+    "id": 35,
+    "experiment_name": "Experiment Gargoyle",
+    "start_time": "7/10/2023, 9:34:45 AM",
+    "end_time": "7/12/2023, 2:46:01 PM",
+    "status": "Complete"
+  },
+  {
+    "id": 19,
+    "experiment_name": "Experiment Lion",
+    "start_time": "8/6/2023, 9:34:45 AM",
+    "end_time": "8/8/2023, 2:46:01 PM",
+    "status": "Complete"
+  },
+  {
+    "id": 3,
+    "experiment_name": "Experiment Jasmine",
+    "start_time": "6/5/2023, 9:34:45 AM",
+    "end_time": "6/7/2023, 2:46:01 PM",
+    "status": "Complete"
+  },
+  {
+    "id": 6,
+    "experiment_name": "Experiment Crocodile",
+    "start_time": "9/20/2022, 1:42:11 PM",
+    "end_time": "9/23/2022, 5:15:29 AM",
+    "status": "Interrupted"
+  },
+  {
+    "id": 32,
+    "experiment_name": "Experiment Lemon",
+    "start_time": "9/6/2022, 11:27:18 AM",
+    "end_time": "9/8/2022, 3:48:52 AM",
+    "status": "Complete"
+  },
+  {
+    "id": 17,
+    "experiment_name": "Experiment Iceberg",
+    "start_time": "7/8/2022, 9:11:04 AM",
+    "end_time": "7/10/2022, 11:27:39 AM",
+    "status": "Failed"
+  },
+  {
+    "id": 41,
+    "experiment_name": "Experiment Diamond",
+    "start_time": "6/19/2022, 9:11:04 AM",
+    "end_time": "6/21/2022, 11:27:39 AM",
+    "status": "Failed"
+  },
+  {
+    "id": 21,
+    "experiment_name": "Experiment Ruby",
+    "start_time": "6/12/2022, 9:11:04 AM",
+    "end_time": "6/14/2022, 11:27:39 AM",
+    "status": "Failed"
+  },
+  {
+    "id": 27,
+    "experiment_name": "Experiment Pigeon",
+    "start_time": "5/29/2022, 11:27:18 AM",
+    "end_time": "5/31/2022, 3:48:52 AM",
+    "status": "Complete"
+  },
+  {
+    "id": 13,
+    "experiment_name": "Experiment Oregono",
+    "start_time": "5/9/2022, 9:11:04 AM",
+    "end_time": "5/11/2022, 11:27:39 AM",
+    "status": "Failed"
+  },
+  {
+    "id": 28,
+    "experiment_name": "Experiment Otter",
+    "start_time": "5/1/2022, 11:27:18 AM",
+    "end_time": "5/3/2022, 3:48:52 AM",
+    "status": "Complete"
+  },
+  {
+    "id": 0,
+    "experiment_name": "Experiment Gecko",
+    "start_time": "3/14/2022, 11:27:18 AM",
+    "end_time": "3/16/2022, 3:48:52 AM",
+    "status": "Complete"
+  },
+  {
+    "id": 25,
+    "experiment_name": "Experiment Banana",
+    "start_time": "3/5/2022, 9:11:04 AM",
+    "end_time": "3/7/2022, 11:27:39 AM",
+    "status": "Failed"
+  },
+  {
+    "id": 34,
+    "experiment_name": "Experiment Thunder",
+    "start_time": "12/7/2021, 1:42:11 PM",
+    "end_time": "12/10/2021, 5:15:29 AM",
+    "status": "Interrupted"
+  },
+  {
+    "id": 15,
+    "experiment_name": "Experiment Tornado",
+    "start_time": "12/1/2021, 9:34:45 AM",
+    "end_time": "12/3/2021, 2:46:01 PM",
+    "status": "Complete"
+  },
+  {
+    "id": 9,
+    "experiment_name": "Experiment Wind",
+    "start_time": "11/13/2021, 1:42:11 PM",
+    "end_time": "11/16/2021, 5:15:29 AM",
+    "status": "Interrupted"
+  },
+  {
+    "id": 29,
+    "experiment_name": "Experiment Pufferfish",
+    "start_time": "10/14/2021, 9:11:04 AM",
+    "end_time": "10/16/2021, 11:27:39 AM",
+    "status": "Failed"
+  },
+  {
+    "id": 42,
+    "experiment_name": "Experiment Strawberry",
+    "start_time": "9/26/2021, 1:42:11 PM",
+    "end_time": "9/29/2021, 5:15:29 AM",
+    "status": "Interrupted"
+  },
+  {
+    "id": 22,
+    "experiment_name": "Experiment Grape",
+    "start_time": "9/19/2021, 1:42:11 PM",
+    "end_time": "9/22/2021, 5:15:29 AM",
+    "status": "Interrupted"
+  },
+  {
+    "id": 10,
+    "experiment_name": "Experiment Lightning",
+    "start_time": "8/30/2021, 1:42:11 PM",
+    "end_time": "9/2/2021, 5:15:29 AM",
+    "status": "Interrupted"
+  },
+  {
+    "id": 2,
+    "experiment_name": "Experiment Leopard",
+    "start_time": "8/22/2021, 1:42:11 PM",
+    "end_time": "8/25/2021, 5:15:29 AM",
+    "status": "Interrupted"
+  },
+  {
+    "id": 38,
+    "experiment_name": "Experiment Donkey",
+    "start_time": "8/15/2021, 1:42:11 PM",
+    "end_time": "8/18/2021, 5:15:29 AM",
+    "status": "Interrupted"
+  },
+  {
+    "id": 7,
+    "experiment_name": "Experiment Walrus",
+    "start_time": "5/15/2021, 9:34:45 AM",
+    "end_time": "5/17/2021, 2:46:01 PM",
+    "status": "Complete"
+  },
+  {
+    "id": 16,
+    "experiment_name": "Experiment Basil",
+    "start_time": "3/24/2020, 11:27:18 AM",
+    "end_time": "3/26/2020, 3:48:52 AM",
+    "status": "Complete"
+  },
+  {
+    "id": 18,
+    "experiment_name": "Experiment Guava",
+    "start_time": "11/28/2020, 9:11:04 AM",
+    "end_time": "11/30/2020, 11:27:39 AM",
+    "status": "Interrupted"
+  },
+  {
+    "id": 5,
+    "experiment_name": "Experiment Kiwi",
+    "start_time": "11/7/2020, 9:11:04 AM",
+    "end_time": "11/9/2020, 11:27:39 AM",
+    "status": "Failed"
+  },
+  {
+    "id": 12,
+    "experiment_name": "Experiment Shark",
+    "start_time": "6/25/2020, 11:27:18 AM",
+    "end_time": "6/27/2020, 3:48:52 AM",
+    "status": "Complete"
+  },
+  {
+    "id": 33,
+    "experiment_name": "Experiment Turtle",
+    "start_time": "5/2/2020, 9:11:04 AM",
+    "end_time": "5/4/2020, 11:27:39 AM",
+    "status": "Failed"
+  },
+  {
+    "id": 1,
+    "experiment_name": "Experiment Dragon",
+    "start_time": "4/28/2020, 9:11:04 AM",
+    "end_time": "4/30/2020, 11:27:39 AM",
+    "status": "Failed"
+  },
+  {
+    "id": 31,
+    "experiment_name": "Experiment Lizard",
+    "start_time": "2/20/2020, 9:34:45 AM",
+    "end_time": "2/22/2020, 2:46:01 PM",
+    "status": "Complete"
+  },
+  {
+    "id": 20,
+    "experiment_name": "Experiment Apple",
+    "start_time": "1/29/2020, 11:27:18 AM",
+    "end_time": "1/31/2020, 3:48:52 AM",
+    "status": "Complete"
+  },
+  {
+    "id": 36,
+    "experiment_name": "Experiment Avocado",
+    "start_time": "1/15/2020, 11:27:18 AM",
+    "end_time": "1/17/2020, 3:48:52 AM",
+    "status": "Complete"
+  },
+  {
+    "id": 4,
+    "experiment_name": "Experiment Watermelon",
+    "start_time": "1/11/2020, 11:27:18 AM",
+    "end_time": "1/13/2020, 3:48:52 AM",
+    "status": "Complete"
+  }
+]
