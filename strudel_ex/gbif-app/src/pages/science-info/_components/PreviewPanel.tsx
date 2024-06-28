@@ -7,7 +7,7 @@ import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useExploreData } from '../_context/ContextProvider';
 
 interface PreviewPanelProps {
-  onClose: () => any
+  onClose: () => any;
 }
 
 /**
@@ -15,19 +15,20 @@ interface PreviewPanelProps {
  * next to the `<DataTablePanel>`.
  */
 export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
-  const { state } = useExploreData(); // Assuming useExploreData provides state
-  const [relatedRows, setRelatedRows] = useState<any[]>([]);
+  const { state } = useExploreData(); // Access the state from the context provider
+  const [relatedRows, setRelatedRows] = useState<any[]>([]); // State to hold related data rows
 
+  // Effect to update relatedRows when state.previewItem changes
   useEffect(() => {
     if (state.previewItem) {
-      const emptyRows = Array(1).fill(0);
+      const emptyRows = Array(1).fill(0); // Create an array with one empty element
       const rows = emptyRows.map((_, i) => ({
         id: i,
         family: state.previewItem['family'], 
         species: state.previewItem['species'],
         kingdom: state.previewItem['kingdom'],
       }));
-      setRelatedRows(rows);
+      setRelatedRows(rows); // Update relatedRows state with the new data
     }
   }, [state.previewItem]); // Re-run effect when state.previewItem changes
 
@@ -47,26 +48,26 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
           <Stack direction="row">
             <Typography variant="h6" component="h3" flex={1}>
               <Link component={RouterLink} to={`${state.previewItem[state.dataIdField]}`} underline="hover">
-                {state.previewItem[state.columns[0].field]}
+                {state.previewItem[state.columns[0].field]} {/* Display the first column field */}
               </Link>
             </Typography>
-            <IconButton size="small" onClick={props.onClose}><CloseIcon /></IconButton>
+            <IconButton size="small" onClick={props.onClose}><CloseIcon /></IconButton> {/* Close button */}
           </Stack>
           <Box>
-          <Typography fontWeight="medium" mb={1}>Common Name & Year of Discovery</Typography>
-          <LabelValueTable 
-            rows={[
-              { label: 'Common Name & YOD', value: state.previewItem['genericName'] },
-            ]}
-          />
-        </Box>
+            <Typography fontWeight="medium" mb={1}>Common Name & Year of Discovery</Typography>
+            <LabelValueTable 
+              rows={[
+                { label: 'Common Name & YOD', value: state.previewItem['genericName'] }, // Display common name and year of discovery
+              ]}
+            />
+          </Box>
         </Stack>
         <Box>
           <Typography fontWeight="medium" mb={1}>Parallels</Typography>
           <LabelValueTable 
             rows={[
-              { label: 'Latitude', value: state.previewItem['decimalLatitude'] },
-              { label: 'Longitude', value: state.previewItem['decimalLongitude'] },
+              { label: 'Latitude', value: state.previewItem['decimalLatitude'] }, // Display latitude
+              { label: 'Longitude', value: state.previewItem['decimalLongitude'] }, // Display longitude
             ]}
           />
         </Box>
@@ -74,17 +75,17 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
           <Typography fontWeight="medium" mb={1}>Time and Place</Typography>
           <LabelValueTable 
             rows={[
-              { label: 'Year', value: state.previewItem['year'] },
-              { label: 'Region', value: state.previewItem['gbifRegion'] },
-              { label: 'Country', value: state.previewItem['country'] },
+              { label: 'Year', value: state.previewItem['year'] }, // Display year
+              { label: 'Region', value: state.previewItem['gbifRegion'] }, // Display GBIF region
+              { label: 'Country', value: state.previewItem['country'] }, // Display country
             ]}
           />
         </Box>
         <Box>
           <Typography fontWeight="medium" mb={1}>Related Data</Typography>
           <DataGrid
-            rows={relatedRows}
-            columns={relatedColumns as GridColDef[]} // Ensure relatedColumns is defined correctly
+            rows={relatedRows} // Set related rows data
+            columns={relatedColumns as GridColDef[]} // Set columns for related data
             disableRowSelectionOnClick
             autoHeight
           />
