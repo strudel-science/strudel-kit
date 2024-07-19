@@ -51,7 +51,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
               onChange={(e, checked) => handleChange(checked, option.value)}
               sx={{
                 pr: 1,
-                pl: 0,
+                pl: 1,
                 pb: 0,
                 pt: 0
               }}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Slider, SliderProps } from '@mui/material';
+import { Box, Slider, SliderProps } from '@mui/material';
 
 interface StrudelSliderProps extends SliderProps {
 
@@ -32,13 +32,20 @@ export const StrudelSlider: React.FC<StrudelSliderProps> = ({
   ];
   
   return (
-    <Slider
-      value={value}
-      onChange={handleChange}
-      min={min}
-      max={max}
-      marks={marks}
-      {...rest}
-    />
+    <Box
+      sx={{
+        paddingLeft: 1,
+        paddingRight: 1,
+      }}
+    >
+      <Slider
+        value={value}
+        onChange={handleChange}
+        min={min}
+        max={max}
+        marks={marks}
+        {...rest}
+      />
+    </Box>
   )
 }
