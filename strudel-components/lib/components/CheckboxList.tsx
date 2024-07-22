@@ -9,6 +9,7 @@ export interface CheckboxOption {
 }
 
 interface CheckboxListProps extends Omit<FormGroupProps, 'onChange'> {
+  values: string[] | number[] | null;
   options: CheckboxOption[];
   onChange?: (values: CheckboxOptionValue[] | null) => any;
 }
@@ -16,37 +17,51 @@ interface CheckboxListProps extends Omit<FormGroupProps, 'onChange'> {
 export const CheckboxList: React.FC<CheckboxListProps> = ({
   options = [],
   onChange,
+  values,
+  sx,
   ...rest
 }) => {
-  const [values, setValues] = useState<CheckboxOptionValue[] | null>(null);
+  const [checkValues, setCheckValues] = useState<CheckboxOptionValue[] | null>(values);
   
   const handleChange = (checked: boolean, value: CheckboxOption['value']) => {
-    if (values === null && checked) {
-      setValues([value]);
-    } else if (values !== null && checked) {
-      setValues([...values, value]);
-    } else if (values !== null && !checked) {
-      const newValues = values.filter((v) => v !== value);
+    if (checkValues === null && checked) {
+      setCheckValues([value]);
+    } else if (checkValues !== null && checked) {
+      setCheckValues([...checkValues, value]);
+    } else if (checkValues !== null && !checked) {
+      const newValues = checkValues.filter((v) => v !== value);
       if (newValues.length > 0) {
-        setValues(newValues);
+        setCheckValues(newValues);
       } else {
-        setValues(null);
+        setCheckValues(null);
       }
     }
   };
 
   useEffect(() => {
-    if (onChange) onChange(values);
+    if (onChange) onChange(checkValues);
+  }, [checkValues]);
+
+  useEffect(() => {
+    console.log(values)
+    setCheckValues(values);
   }, [values]);
 
   return (
-    <FormGroup {...rest}>
+    <FormGroup
+      sx={{
+        display: 'inline-flex',
+        ...sx
+      }}
+      {...rest}
+    >
       {options.map((option, i) => (
         <FormControlLabel
           key={`${option}-${i}`}
           label={option.label}
           control={
-            <Checkbox 
+            <Checkbox
+              checked={!!checkValues && checkValues.indexOf(option.value) > -1}
               value={option.value}
               onChange={(e, checked) => handleChange(checked, option.value)}
               sx={{

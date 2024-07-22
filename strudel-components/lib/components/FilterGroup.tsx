@@ -1,7 +1,7 @@
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import { Accordion, AccordionDetails, AccordionSummary, Stack, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { setExpandedGroup, useFilters } from './FilterContext';
+import { useFilters } from './FilterContext';
 
 interface FilterGroupProps {
   label?: React.ReactNode;
@@ -17,9 +17,11 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
   const { state, dispatch } = useFilters();
 
   const handleChange = (panel: string | number) => (event: React.SyntheticEvent, newExpanded: boolean) => {
-    dispatch(setExpandedGroup(newExpanded ? panel : false));
+    dispatch({ type: 'SET_EXPANDED_GROUP', payload: newExpanded ? panel : false });
   };
 
+  console.log(state);
+  
   return (
     <Accordion 
       disableGutters
@@ -29,7 +31,7 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
       sx={{
         borderTop: '1px solid',
         borderTopColor: 'grey.300',
-        '&:first-child': {
+        '&:first-of-type': {
           borderTop: 'none',
         },
         '&::before': {

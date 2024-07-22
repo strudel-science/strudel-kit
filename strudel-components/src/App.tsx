@@ -3,7 +3,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { Filters } from '../lib/components/Filters'
 import { Box, CssBaseline, Stack, ThemeProvider, Typography, createTheme } from '@mui/material'
 import { CheckboxList } from '../lib/components/CheckboxList'
-import { StrudelSlider } from '../lib/components/StrudelSlider'
+import { RangeSlider } from '../lib/components/RangeSlider'
 import { FilterGroup } from '../lib/components/FilterGroup'
 import { FilterField } from '../lib/components/FilterField'
 import { FilterContext } from '../lib/components/FilterContext'
@@ -23,6 +23,45 @@ function App() {
             >
               <FilterGroup label="My Accordion 1" groupId={1}>
                 <FilterField
+                  label="Slider"
+                  field="field1"
+                  filterComponent="RangeSlider"
+                  filterProps={{
+                    min: 0,
+                    max: 100
+                  }}
+                />
+                <FilterField
+                  label="Slider 2"
+                  field="field2"
+                  filterComponent="RangeSlider"
+                  filterProps={{
+                    min: 100,
+                    max: 400
+                  }}
+                />
+                <FilterField
+                  label="Checkboxes"
+                  field="field3"
+                  filterComponent="CheckboxList"
+                  filterProps={{
+                    options: [
+                      {
+                        label: "JGI",
+                        value: "JGI"
+                      },
+                      {
+                        label: "BYU",
+                        value: "BYU"
+                      },
+                      {
+                        label: "AGP",
+                        value: "AGP"
+                      }
+                    ]
+                  }}
+                />
+                {/* <FilterField
                   label="Slider"
                   filter={
                     <StrudelSlider
@@ -65,9 +104,9 @@ function App() {
                       onChange={(values) => null}
                     />
                   }
-                />
+                /> */}
               </FilterGroup>
-              <FilterGroup label="My Accordion 2" groupId={2}>
+              {/* <FilterGroup label="My Accordion 2" groupId={2}>
                 <FilterField
                   label="Slider"
                   filter={
@@ -90,10 +129,10 @@ function App() {
                     />
                   }
                 />
-              </FilterGroup>
+              </FilterGroup> */}
             </Filters>
           </FilterContext>
-          <Filters
+          {/* <Filters
             header="No Groups"
             grouped={false}
             sx={{
@@ -166,7 +205,7 @@ function App() {
                   />
                 }
               />
-          </Filters>
+          </Filters> */}
         </Stack>
       </ThemeProvider>
     </LocalizationProvider>

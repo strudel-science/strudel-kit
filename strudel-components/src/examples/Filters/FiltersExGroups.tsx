@@ -2,7 +2,7 @@ import { Typography } from "@mui/material"
 import { FilterField } from "../../../lib/components/FilterField"
 import { FilterGroup } from "../../../lib/components/FilterGroup"
 import { Filters } from "../../../lib/components/Filters"
-import { StrudelSlider } from "../../../lib/components/StrudelSlider"
+import { StrudelSlider } from "../../../lib/components/RangeSlider"
 import { CheckboxList } from "../../../lib/components/CheckboxList"
 
 export const FiltersExGroups: React.FC = () => { 

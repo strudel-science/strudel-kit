@@ -1,7 +1,7 @@
 import { CheckboxList } from "../../../lib/components/CheckboxList"
 import { FilterField } from "../../../lib/components/FilterField"
 import { Filters } from "../../../lib/components/Filters"
-import { StrudelSlider } from "../../../lib/components/StrudelSlider"
+import { StrudelSlider } from "../../../lib/components/RangeSlider"
 
 export const FiltersExNoGroups: React.FC = () => { 
   return (

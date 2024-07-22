@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Box, Slider, SliderProps } from '@mui/material';
 
-interface StrudelSliderProps extends SliderProps {
+interface RangeSliderProps extends SliderProps {
 
 }
 
 /**
- * Custom wrapper for the MUI Slider component.
- * Enables advanced features such as value debounce.
+ * Custom wrapper for the MUI Slider components where
+ * the user is selecting a range of values.
  */
-export const StrudelSlider: React.FC<StrudelSliderProps> = ({
+export const RangeSlider: React.FC<RangeSliderProps> = ({
   min = 0,
   max = 100,
   ...rest
