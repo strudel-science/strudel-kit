@@ -109,11 +109,18 @@ function App() {
           </Filters>
           <Filters
             header="No Groups"
+            onChange={handleFilterChange}
             grouped={false}
             sx={{
               maxWidth: '400px'
             }}
           >
+              <FilterField
+                label="Text 1"
+                field="field3"
+                tooltip='This cool text field'
+                filterComponent="TextField"
+              />
               <FilterField
                 label="Slider 2"
                 field="field1"

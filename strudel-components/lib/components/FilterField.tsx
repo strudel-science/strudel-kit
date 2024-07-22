@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Stack, StackProps, Tooltip, Typography } from '@mui/material';
+import { Box, Stack, StackProps, TextField, Tooltip, Typography } from '@mui/material';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { CheckboxList } from './CheckboxList';
 import { RangeSlider } from './RangeSlider';
@@ -10,8 +10,8 @@ interface FilterFieldProps extends StackProps {
   label: string;
   field: string;
   tooltip?: string;
-  filterComponent: 'RangeSlider' | 'CheckboxList' | 'DateRange';
-  filterProps: any;
+  filterComponent: 'RangeSlider' | 'CheckboxList' | 'DateRange' | 'TextField';
+  filterProps?: any;
 }
 
 /**
@@ -20,7 +20,8 @@ interface FilterFieldProps extends StackProps {
 type FilterValue<T> = 
   T extends 'RangeSlider' ? number[] : 
   T extends 'CheckboxList' ? string[] | number[] | null : 
-  T extends 'DateRange' ? [Date | null, Date | null] : 
+  T extends 'DateRange' ? [Date | null, Date | null] :
+  T extends 'TextField' ? string | null : 
   never;
 
 /**
@@ -68,6 +69,9 @@ export const FilterField: React.FC<FilterFieldProps> = ({
         break;
       case 'DateRange':
         setValue([filterProps.min, filterProps.max]);
+        break;
+      case 'TextField':
+        setValue(null);
         break;
       default:
         console.log('Unknown filter type');
@@ -148,6 +152,29 @@ export const FilterField: React.FC<FilterFieldProps> = ({
               onChange={(value) => dispatch({ type: 'SET_FILTER', payload: { field: field, value: [currentMin, value] } })}
             />
           </Stack>
+        );
+      }
+      case 'TextField': {
+
+        /**
+         * Debounce the dispatch so that activeFilters isn't rapidly updated.
+         */
+        useEffect(() => {
+          const timeout = setTimeout(() => {
+            dispatch({ type: 'SET_FILTER', payload: { field: field, value: value } })
+          }, 1000);
+          return () => {
+            clearTimeout(timeout);
+          }
+        }, [value]);
+
+        return (
+          <TextField
+            value={value || ''}
+            onChange={(e) => setValue(e.target.value)}
+            fullWidth
+            {...filterProps}
+          />
         );
       }
     }
