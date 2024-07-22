@@ -61,50 +61,47 @@ function App() {
                     ]
                   }}
                 />
-                {/* <FilterField
+              </FilterGroup>
+              <FilterGroup label="My Accordion 2" groupId={2}>
+                <FilterField
                   label="Slider"
-                  filter={
-                    <StrudelSlider
-                      valueLabelDisplay="auto"
-                      min={0}
-                      max={1000}
-                      onChangeCommitted={(event, values) => null}
-                    />
-                  }
+                  field="field4"
+                  filterComponent="RangeSlider"
+                  filterProps={{
+                    min: 0,
+                    max: 100
+                  }}
                 />
                 <FilterField
                   label="Slider 2"
-                  filter={
-                    <StrudelSlider
-                      valueLabelDisplay="auto"
-                      min={0}
-                      max={1000}
-                      onChangeCommitted={(event, values) => null}
-                    />
-                  }
+                  field="field5"
+                  filterComponent="RangeSlider"
+                  filterProps={{
+                    min: 100,
+                    max: 400
+                  }}
                 />
-                <FilterField 
-                  label="Assembly"
-                  filter={
-                    <CheckboxList
-                      options={[
-                        {
-                          label: "JGI",
-                          value: "JGI"
-                        },
-                        {
-                          label: "BYU",
-                          value: "BYU"
-                        },
-                        {
-                          label: "AGP",
-                          value: "AGP"
-                        }
-                      ]}
-                      onChange={(values) => null}
-                    />
-                  }
-                /> */}
+                <FilterField
+                  label="Checkboxes"
+                  field="field6"
+                  filterComponent="CheckboxList"
+                  filterProps={{
+                    options: [
+                      {
+                        label: "JGI",
+                        value: "JGI"
+                      },
+                      {
+                        label: "BYU",
+                        value: "BYU"
+                      },
+                      {
+                        label: "AGP",
+                        value: "AGP"
+                      }
+                    ]
+                  }}
+                />
               </FilterGroup>
               {/* <FilterGroup label="My Accordion 2" groupId={2}>
                 <FilterField

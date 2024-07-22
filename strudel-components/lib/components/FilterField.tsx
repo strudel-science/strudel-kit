@@ -27,7 +27,7 @@ type FilterValue<T> =
  * Values like 0 and false should be considered as having a value,
  * and having an empty array should be considered not having a value.
  */
-const hasValue = (value: any) => {
+export const hasValue = (value: any) => {
   if (value === 0 || value === false) {
     return true;
   } else if (Array.isArray(value) && value.length === 0) {
