@@ -117,6 +117,7 @@ function App() {
               <FilterField
                 label="Slider 2"
                 field="field1"
+                tooltip='This cool slider'
                 filterComponent="RangeSlider"
                 filterProps={{
                   min: 100,

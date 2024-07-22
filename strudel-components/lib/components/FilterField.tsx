@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Stack, StackProps, Typography } from '@mui/material';
+import { Box, Stack, StackProps, Tooltip, Typography } from '@mui/material';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { CheckboxList } from './CheckboxList';
 import { RangeSlider } from './RangeSlider';
@@ -9,6 +9,7 @@ import { useFilters } from './FilterContext';
 interface FilterFieldProps extends StackProps {
   label: string;
   field: string;
+  tooltip?: string;
   filterComponent: 'RangeSlider' | 'CheckboxList' | 'DateRange';
   filterProps: any;
 }
@@ -43,6 +44,7 @@ export const hasValue = (value: any) => {
 export const FilterField: React.FC<FilterFieldProps> = ({
   label,
   field,
+  tooltip,
   filterComponent,
   filterProps,
   ...rest
@@ -89,6 +91,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
             values={value as string[] | number[] | null}
             options={filterProps.options}
             onChange={(values) => dispatch({ type: 'SET_FILTER', payload: { field: field, value: values } })}
+            {...filterProps}
           />
         );
       }
@@ -114,6 +117,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
             value={value || [filterProps.min, filterProps.max]}
             onChange={(e, value) => setValue(value as number[])}
             onChangeCommitted={handleSliderChange}
+            {...filterProps}
           />
         );
       }
@@ -186,16 +190,33 @@ export const FilterField: React.FC<FilterFieldProps> = ({
           spacing={1}
           onClick={() => handleCancelFilter()}
           sx={{
-            cursor: 'pointer',
+            cursor: isActive ? 'pointer' : 'default',
             display: 'inline-flex',
           }}
         >
-          <Typography
-            fontWeight="bold"
-            color={isActive ? 'primary' : 'default'}
-          >
-            {label}
-          </Typography>
+          {tooltip && (
+            <Tooltip title={tooltip} placement="top" arrow>
+              <Typography
+                fontWeight="bold"
+                color={isActive ? 'primary' : 'auto'}
+                sx={{
+                  textDecoration: 'underline',
+                  textDecorationStyle: 'dotted',
+                  textUnderlineOffset: '0.25rem'
+                }}
+              >
+                {label}
+              </Typography>
+            </Tooltip>
+          )}
+          {!tooltip && (
+            <Typography
+              fontWeight="bold"
+              color={isActive ? 'primary' : 'default'}
+            >
+              {label}
+            </Typography>
+          )}
           {isActive && (
             <CancelOutlinedIcon color="primary" />
           )}
