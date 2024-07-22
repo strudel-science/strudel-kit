@@ -36,8 +36,6 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
   const handleChange = (panel: string | number) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     dispatch({ type: 'SET_EXPANDED_GROUP', payload: newExpanded ? panel : false });
   };
-
-  console.log(children);
   
   return (
     <Accordion 

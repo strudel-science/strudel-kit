@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useContext, useEffect } from 'react';
+import React, { PropsWithChildren, useContext, useEffect, useReducer } from 'react';
 
 export interface FilterState {
   activeFilters: { [key: string]: any }
@@ -14,6 +14,7 @@ const initialState: FilterState = {
 
 export type FilterAction = 
   | { type: 'SET_FILTER', payload: { field: string, value: any } }
+  | { type: 'SET_ACTIVE_FILTERS', payload:FilterState['activeFilters'] }
   | { type: 'SET_EXPANDED_GROUP', payload: FilterState['expandedGroup']; }
 
 function filterReducer(state: FilterState, action: FilterAction): FilterState {
@@ -22,6 +23,12 @@ function filterReducer(state: FilterState, action: FilterAction): FilterState {
       return {
         ...state,
         activeFilters: { ...state.activeFilters, [action.payload.field]: action.payload.value }
+      }
+    }
+    case 'SET_ACTIVE_FILTERS': {
+      return {
+        ...state,
+        activeFilters: action.payload
       }
     }
     case 'SET_EXPANDED_GROUP': {
@@ -36,9 +43,33 @@ function filterReducer(state: FilterState, action: FilterAction): FilterState {
   }
 }
 
-export const FilterContext: React.FC<PropsWithChildren> = ({ children }) => {
-  const [state, dispatch] = React.useReducer(filterReducer, initialState);
+interface FilterContextProps extends PropsWithChildren {
+  activeFilters?: FilterState['activeFilters'];
+  onChange?: (filters: FilterState['activeFilters']) => void;
+}
+
+export const FilterContext: React.FC<FilterContextProps> = ({ 
+  activeFilters = {},
+  onChange = (filters) => null,
+  children 
+}) => {
+  const [state, dispatch] = useReducer(filterReducer, { ...initialState, activeFilters });
   const value = { state, dispatch };
+
+  /**
+   * Emit a change event when state.activeFilters changes
+   */
+  useEffect(() => {
+    if (onChange) onChange(state.activeFilters);
+  }, [state.activeFilters]);
+
+  /**
+   * If activeFilters is changed from outside the context (e.g. filters are reset)
+   * then the new value should be dispatched.
+   */
+  useEffect(() => {
+    dispatch({ type: 'SET_ACTIVE_FILTERS', payload: activeFilters });
+  }, [activeFilters]);
 
   return (
     <FilterContextAPI.Provider value={value}>

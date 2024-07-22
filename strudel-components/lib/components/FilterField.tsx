@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Stack, StackProps, Typography } from '@mui/material';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { CheckboxList } from './CheckboxList';
@@ -148,6 +148,24 @@ export const FilterField: React.FC<FilterFieldProps> = ({
       }
     }
   }
+
+  /**
+   * When activeFilters changes, make sure the value changes accordingly.
+   * This primarily happens when filters are reset from the top.
+   */
+  useEffect(() => {
+    if (isActive) {
+      setValue(state.activeFilters[field]);
+    } else if (filterComponent === 'RangeSlider') {
+      /** RangeSliders should be considered off if both values are min and max */
+      if (value && (value[0] !== filterProps.min || value[1] !== filterProps.max)) {
+        handleCancelFilter();
+      }
+    } else if (hasValue(value)) {
+      handleCancelFilter();
+    }
+  },[state.activeFilters]);
+
   return (
     <Stack 
       spacing={1}
