@@ -32,6 +32,10 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
     }
   }, [state.previewItem]); // Re-run effect when state.previewItem changes
 
+  if (!state.previewItem) {
+    return null; // Return null if there is no preview item
+  }
+
   /**
    * Content to render on the page for this component
    */
