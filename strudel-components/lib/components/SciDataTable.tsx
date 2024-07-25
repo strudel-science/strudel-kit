@@ -1,7 +1,8 @@
-import { Stack, Typography } from '@mui/material';
-import { DataGrid, DataGridProps, GridColDef, GridColumnHeaderParams } from '@mui/x-data-grid';
+import { Box, Chip, Grid, Popover, Stack, Typography } from '@mui/material';
+import { DataGrid, DataGridProps, GridColDef, GridColumnHeaderParams, GridRenderCellParams } from '@mui/x-data-grid';
 import React from 'react';
 import { hasValue } from './FilterField';
+import { ArrayWithPopover } from './ArrayWithPopover';
 
 export type SciDataTableColDef = GridColDef & {
   units?: string;
@@ -35,6 +36,7 @@ const getGridColumns = (columns: SciDataTableColDef[]) => {
     /** Handle value transformation options */
     if (!gridColumn.valueFormatter) {
       gridColumn.valueFormatter = (value: number) => {
+        console.log(decimals);
         /** Empty cells should render as '-' */
         if (!hasValue(value)) {
           return '-'
@@ -57,6 +59,19 @@ const getGridColumns = (columns: SciDataTableColDef[]) => {
           return value.toPrecision(sigFigs);
         } else {
           return value;
+        }
+      }
+    }
+
+    /** Handle value transformation options */
+    if (!gridColumn.renderCell) {
+      gridColumn.renderCell = (params: GridRenderCellParams) => {
+        if (Array.isArray(params.value)) {
+          return (
+            <ArrayWithPopover values={params.value} />
+          )
+        } else {
+          return params.formattedValue;
         }
       }
     }
