@@ -3,12 +3,18 @@ import { GridColDef, GridColumnHeaderParams } from '@mui/x-data-grid'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { SciDataTable, SciDataTableColDef } from '../lib/components/SciDataTable'
+import { Formula } from '../lib/components/Formula'
 
 function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <ThemeProvider theme={createTheme()}>
         <CssBaseline />
+        <Stack>
+          <Formula content='H2O' />
+          <Formula content='H2O2-x' />
+          <Formula content='C29H26ClFN4O4S' />
+        </Stack>
         <SciDataTable rows={rows} columns={columns} />
       </ThemeProvider>
     </LocalizationProvider>
@@ -26,6 +32,7 @@ const columns: SciDataTableColDef[] = [
   {
     field: 'lastName',
     headerName: 'Last name',
+    isFormula: true,
     width: 150,
   },
   {
@@ -51,8 +58,8 @@ const columns: SciDataTableColDef[] = [
 ];
 
 const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 14, stuff: ['one', 'two', 'three', 'two', 'three', 'two', 'three'] },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 31 },
+  { id: 1, lastName: 'C29H26ClFN4O4S', firstName: 'Jon', age: 14, stuff: ['one', 'two', 'three', 'two', 'three', 'two', 'three'] },
+  { id: 2, lastName: 'H2O', firstName: 'Cersei', age: 31 },
   { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 0 },
   { id: 4, lastName: 'Stark', firstName: 'Arya', age: 0.0000001 },
   { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },

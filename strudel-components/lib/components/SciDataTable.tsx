@@ -3,11 +3,13 @@ import { DataGrid, DataGridProps, GridColDef, GridColumnHeaderParams, GridRender
 import React from 'react';
 import { hasValue } from './FilterField';
 import { ArrayWithPopover } from './ArrayWithPopover';
+import { Formula } from './Formula';
 
 export type SciDataTableColDef = GridColDef & {
   units?: string;
   decimals?: number;
   sigFigs?: number;
+  isFormula?: boolean;
 }
 
 interface SciDataTableProps extends Omit<DataGridProps, 'columns'> {
@@ -20,6 +22,7 @@ const getGridColumns = (columns: SciDataTableColDef[]) => {
       units,
       decimals,
       sigFigs,
+      isFormula,
       ...gridColumn 
     } = column;
 
@@ -70,6 +73,8 @@ const getGridColumns = (columns: SciDataTableColDef[]) => {
           return (
             <ArrayWithPopover values={params.value} />
           )
+        } if (isFormula) {
+          return <Formula content={params.value} />
         } else {
           return params.formattedValue;
         }
