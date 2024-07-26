@@ -28,6 +28,7 @@ const columns: SciDataGridColDef[] = [
     headerName: 'First Name',
     units: 'meters',
     width: 150,
+    hasPopover: true,
   },
   {
     field: 'lastName',
@@ -61,7 +62,7 @@ const rows = [
   { id: 1, lastName: 'C29H26ClFN4O4S', firstName: 'Jon', age: 14.7575, stuff: ['one', 'two', 'three', 'four', 'five'] },
   { id: 2, lastName: 'H2O', firstName: 'Cersei', age: 3100000 },
   { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 0 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 0.0000001 },
+  { id: 4, lastName: 'Stark', firstName: 'Ea et sit nostrud mollit sint exercitation. Qui laboris in cupidatat excepteur ea eiusmod aute. Esse sint laborum irure id. Excepteur dolore sit qui consequat culpa deserunt ea elit deserunt dolor do amet.', age: 0.0000001 },
   { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
   { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
   { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },

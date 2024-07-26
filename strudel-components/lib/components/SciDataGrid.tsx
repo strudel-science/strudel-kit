@@ -1,19 +1,32 @@
 import { Box, Chip, Grid, Popover, Stack, Typography } from '@mui/material';
 import { DataGrid, DataGridProps, GridColDef, GridColumnHeaderParams, GridRenderCellParams } from '@mui/x-data-grid';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { hasValue } from './FilterField';
 import { ArrayWithPopover } from './ArrayWithPopover';
 import { Formula } from './Formula';
+import { CellWithPopover } from './CellWithPopover';
 
 export type SciDataGridColDef = GridColDef & {
   units?: string;
   decimals?: number;
   sigFigs?: number;
   isFormula?: boolean;
+  hasPopover?: boolean;
 }
 
 interface SciDataGridProps extends Omit<DataGridProps, 'columns'> {
   columns: SciDataGridColDef[];
+}
+
+const CellWrapper: React.FC<{ hasPopover?: boolean, children: ReactNode }> = ({ 
+  hasPopover, 
+  children 
+}) => {
+  if (hasPopover) {
+    return <CellWithPopover>{children}</CellWithPopover>
+  } else {
+    return children
+  }
 }
 
 const getGridColumns = (columns: SciDataGridColDef[]) => {
@@ -23,6 +36,7 @@ const getGridColumns = (columns: SciDataGridColDef[]) => {
       decimals,
       sigFigs,
       isFormula,
+      hasPopover,
       ...gridColumn 
     } = column;
 
@@ -79,9 +93,17 @@ const getGridColumns = (columns: SciDataGridColDef[]) => {
             <ArrayWithPopover values={params.value} />
           )
         } if (isFormula) {
-          return <Formula content={params.value} />
+          return (
+            <CellWrapper hasPopover={hasPopover}>
+              <Formula content={params.value} />
+            </CellWrapper>
+          )
         } else {
-          return params.formattedValue;
+          return (
+            <CellWrapper hasPopover={hasPopover}>
+              {params.formattedValue}
+            </CellWrapper>
+          )
         }
       }
     }
