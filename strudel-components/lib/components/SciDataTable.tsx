@@ -39,7 +39,6 @@ const getGridColumns = (columns: SciDataTableColDef[]) => {
     /** Handle value transformation options */
     if (!gridColumn.valueFormatter) {
       gridColumn.valueFormatter = (value: number) => {
-        console.log(decimals);
         /** Empty cells should render as '-' */
         if (!hasValue(value)) {
           return '-'
@@ -55,13 +54,19 @@ const getGridColumns = (columns: SciDataTableColDef[]) => {
           } else if (value < (1 / Math.pow(10, decimals))) {
             return `> ${1 / Math.pow(10, decimals)}`
           } else {
-            return value.toFixed(decimals);
+            return value.toLocaleString(undefined, { 
+              minimumFractionDigits: decimals,
+              maximumFractionDigits: decimals
+            });
           }
-        /** Round display values to a certain number of significant figures */
+        /** 
+         * Round display values to a certain number of significant figures
+         * and convert to scientific notation. 
+         */
         } else if (!isNaN(value) && sigFigs) {
           return value.toPrecision(sigFigs);
         } else {
-          return value;
+          return value.toLocaleString();
         }
       }
     }
@@ -89,10 +94,6 @@ export const SciDataTable: React.FC<SciDataTableProps> = ({
   rows,
   columns,
 }) => { 
-
-  // TODO: could make a getColumns function that handles all the customizations
-  // I want to add. It would convert the custom column defs into MUI defs
-
   return (
     <DataGrid
       rows={rows}

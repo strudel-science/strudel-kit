@@ -58,8 +58,8 @@ const columns: SciDataTableColDef[] = [
 ];
 
 const rows = [
-  { id: 1, lastName: 'C29H26ClFN4O4S', firstName: 'Jon', age: 14, stuff: ['one', 'two', 'three', 'two', 'three', 'two', 'three'] },
-  { id: 2, lastName: 'H2O', firstName: 'Cersei', age: 31 },
+  { id: 1, lastName: 'C29H26ClFN4O4S', firstName: 'Jon', age: 14.7575, stuff: ['one', 'two', 'three', 'four', 'five'] },
+  { id: 2, lastName: 'H2O', firstName: 'Cersei', age: 3100000 },
   { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 0 },
   { id: 4, lastName: 'Stark', firstName: 'Arya', age: 0.0000001 },
   { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },

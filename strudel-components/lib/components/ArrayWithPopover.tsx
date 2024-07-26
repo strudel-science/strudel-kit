@@ -35,7 +35,7 @@ export const ArrayWithPopover: React.FC<ArrayWithPopoverProps> = ({ values }) =>
         sx={{ height: '100%' }}
       >
         {values.map((v) => (
-          <Chip label={v} size="small" />
+          <Chip key={v} label={v} size="small" />
         ))}
       </Stack>
       <Popover
@@ -66,7 +66,7 @@ export const ArrayWithPopover: React.FC<ArrayWithPopoverProps> = ({ values }) =>
           }}
         >
           {values.map((v) => (
-            <Grid item>
+            <Grid key={v} item>
               <Chip label={v} size="small" />
             </Grid>
           ))}
