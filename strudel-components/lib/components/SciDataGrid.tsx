@@ -5,18 +5,18 @@ import { hasValue } from './FilterField';
 import { ArrayWithPopover } from './ArrayWithPopover';
 import { Formula } from './Formula';
 
-export type SciDataTableColDef = GridColDef & {
+export type SciDataGridColDef = GridColDef & {
   units?: string;
   decimals?: number;
   sigFigs?: number;
   isFormula?: boolean;
 }
 
-interface SciDataTableProps extends Omit<DataGridProps, 'columns'> {
-  columns: SciDataTableColDef[];
+interface SciDataGridProps extends Omit<DataGridProps, 'columns'> {
+  columns: SciDataGridColDef[];
 }
 
-const getGridColumns = (columns: SciDataTableColDef[]) => {
+const getGridColumns = (columns: SciDataGridColDef[]) => {
   return columns.map((column) => {
     const { 
       units,
@@ -90,7 +90,7 @@ const getGridColumns = (columns: SciDataTableColDef[]) => {
   })
 }
 
-export const SciDataTable: React.FC<SciDataTableProps> = ({
+export const SciDataGrid: React.FC<SciDataGridProps> = ({
   rows,
   columns,
 }) => { 

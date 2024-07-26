@@ -2,7 +2,7 @@ import { CssBaseline, Stack, ThemeProvider, Typography, createTheme } from '@mui
 import { GridColDef, GridColumnHeaderParams } from '@mui/x-data-grid'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import { SciDataTable, SciDataTableColDef } from '../lib/components/SciDataTable'
+import { SciDataGrid, SciDataGridColDef } from '../lib/components/SciDataGrid'
 import { Formula } from '../lib/components/Formula'
 
 function App() {
@@ -15,13 +15,13 @@ function App() {
           <Formula content='H2O2-x' />
           <Formula content='C29H26ClFN4O4S' />
         </Stack>
-        <SciDataTable rows={rows} columns={columns} />
+        <SciDataGrid rows={rows} columns={columns} />
       </ThemeProvider>
     </LocalizationProvider>
   )
 }
 
-const columns: SciDataTableColDef[] = [
+const columns: SciDataGridColDef[] = [
   { field: 'id', headerName: 'ID', width: 90 },
   {
     field: 'firstName',
