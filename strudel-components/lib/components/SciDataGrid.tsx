@@ -1,10 +1,10 @@
-import { Box, Chip, Grid, Popover, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { DataGrid, DataGridProps, GridColDef, GridColumnHeaderParams, GridRenderCellParams } from '@mui/x-data-grid';
 import React, { ReactNode } from 'react';
-import { hasValue } from './FilterField';
 import { ArrayWithPopover } from './ArrayWithPopover';
-import { Formula } from './Formula';
 import { CellWithPopover } from './CellWithPopover';
+import { hasValue } from './FilterField';
+import { Formula } from './Formula';
 
 export type SciDataGridColDef = GridColDef & {
   units?: string;
@@ -115,6 +115,7 @@ const getGridColumns = (columns: SciDataGridColDef[]) => {
 export const SciDataGrid: React.FC<SciDataGridProps> = ({
   rows,
   columns,
+  ...rest
 }) => { 
   return (
     <DataGrid
@@ -135,6 +136,7 @@ export const SciDataGrid: React.FC<SciDataGridProps> = ({
           minHeight: '4rem'
         }
       }}
+      {...rest}
     />
   )
 }
