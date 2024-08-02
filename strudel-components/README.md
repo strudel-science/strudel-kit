@@ -19,17 +19,30 @@ npm install @strudel-science/components
 
 ## Usage
 
-[SciDataGrid](https://github.com/strudel-science/strudel-kit/blob/main/strudel-components/src/examples/SciDataGrid/SciDataGridEx.tsx)
+### [Examples](https://github.com/strudel-science/strudel-kit/tree/main/strudel-components/src/examples)
+
+### Import
+
 ```js
 import { SciDataGrid } from '@strudel-science/components';
 ```
 
-[Filters](https://github.com/strudel-science/strudel-kit/blob/main/strudel-components/src/examples/Filters/FiltersExGroups.tsx)
 ```js
 import { Filters, FilterGroup, FilterField } from '@strudel-science/components';
 ```
 
-[LabelValueTable](https://github.com/strudel-science/strudel-kit/blob/main/strudel-components/src/examples/Filters/FiltersExGroups.tsx)
 ```js
 import { LabelValueTable } from '@strudel-science/components';
+```
+
+```js
+import { Formula } from '@strudel-science/components';
+```
+
+```js
+import { CheckboxList } from '@strudel-science/components';
+```
+
+```js
+import { PageHeader } from '@strudel-science/components';
 ```
