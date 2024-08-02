@@ -1,8 +1,12 @@
 {
-  "name": "strudel-components",
+  "name": "@strudel-science/components",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strudel-science/strudel-kit/tree/main"
+  },
   "scripts": {
     "start": "vite",
     "dev": "vite",
