@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { FilterContext, FilterState } from './FilterContext';
 import { hasValue } from './FilterField';
 
-
 interface FilterPanelProps extends PaperProps {
   onChange?: (filters: FilterState['activeFilters']) => void;
   onClose?: () => any;
@@ -13,6 +12,11 @@ interface FilterPanelProps extends PaperProps {
   grouped?: boolean;
 }
 
+/**
+ * Container panel for FilterField(s) and FilterGroup(s).
+ * Acts as a multi-dimensional input where you can monitor 
+ * the active state of all filters contained inside the component.
+ */
 export const Filters: React.FC<FilterPanelProps> = ({
   header = 'Filters',
   grouped = true,
