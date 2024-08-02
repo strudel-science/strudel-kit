@@ -1,15 +1,12 @@
-import { DataGrid } from "@mui/x-data-grid";
 import { SciDataGrid, SciDataGridColDef } from "../../../lib/components/SciDataGrid";
 
 export const SciDataGridEx = () => {
   return (
-    <>
-      <SciDataGrid 
-        rows={planets} 
-        columns={columns} 
-        getRowId={(row) => row['Name']}
-      />
-    </>
+    <SciDataGrid 
+      rows={planets} 
+      columns={columns} 
+      getRowId={(row) => row['Name']}
+    />
   )
 }
 

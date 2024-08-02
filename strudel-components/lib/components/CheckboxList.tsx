@@ -1,7 +1,7 @@
 import { Checkbox, FormControlLabel, FormGroup, FormGroupProps } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
-type CheckboxOptionValue = string | number;
+export type CheckboxOptionValue = string | number;
 
 export interface CheckboxOption {
   label: string;
@@ -9,7 +9,7 @@ export interface CheckboxOption {
 }
 
 interface CheckboxListProps extends Omit<FormGroupProps, 'onChange'> {
-  values: string[] | number[] | null;
+  values: CheckboxOptionValue[] | null;
   options: CheckboxOption[];
   onChange?: (values: CheckboxOptionValue[] | null) => any;
 }
