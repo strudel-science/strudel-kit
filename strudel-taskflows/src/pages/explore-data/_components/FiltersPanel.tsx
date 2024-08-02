@@ -8,6 +8,7 @@ import { StrudelSlider } from '../../../components/StrudelSlider';
 import { FilterConfig, FilterOperator } from '../../../types/filters.types';
 import { useExploreData } from '../_context/ContextProvider';
 import { setFilter } from '../_context/actions';
+import { taskflow } from '../_config/taskflow.config';
 
 interface FiltersPanelProps {
   onClose: () => any
@@ -90,7 +91,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
         paddingRight: 2
       }}
     >
-      {state.filters.map((f, i) => (
+      {taskflow.pages.index.tableFilters.map((f, i) => (
         <FilterField
           key={`${f.field}-${i}`}
           label={f.displayName}
