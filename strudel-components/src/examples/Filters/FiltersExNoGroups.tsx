@@ -2,7 +2,7 @@ import { FilterState } from "../../../lib/components/FilterContext"
 import { FilterField } from "../../../lib/components/FilterField"
 import { Filters } from "../../../lib/components/Filters"
 
-export const FiltersExGroups: React.FC = () => {
+export const FiltersExNoGroups: React.FC = () => {
   const handleFilterChange = (filters: FilterState['activeFilters']) => {
     console.log(filters);
   }
