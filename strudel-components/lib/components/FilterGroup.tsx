@@ -1,6 +1,6 @@
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import { Accordion, AccordionDetails, AccordionSummary, Chip, Stack, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 import { useFilters } from './FilterContext';
 import { hasValue } from './FilterField';
 
