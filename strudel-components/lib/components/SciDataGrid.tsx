@@ -112,6 +112,10 @@ const getGridColumns = (columns: SciDataGridColDef[]) => {
   })
 }
 
+/**
+ * Extension of the MUI DataGrid that adds extra functionality
+ * and options for scientific data tables.
+ */
 export const SciDataGrid: React.FC<SciDataGridProps> = ({
   rows,
   columns,
