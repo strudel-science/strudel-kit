@@ -14,8 +14,8 @@ function App() {
       <ThemeProvider theme={createTheme()}>
         <CssBaseline />
         {/* <SciDataGridEx /> */}
-        <FiltersExGroups />
-        {/* <FiltersExNoGroups /> */}
+        {/* <FiltersExGroups /> */}
+        <FiltersExNoGroups />
       </ThemeProvider>
     </LocalizationProvider>
   )

@@ -6,6 +6,7 @@ export enum ExploreDataActionType {
   SET_SEARCH = 'SET_SEARCH',
   SET_FILTERED_DATA = 'SET_FILTERED_DATA',
   SET_FILTER = 'SET_FILTER',
+  SET_ACTIVE_FILTERS = 'SET_ACTIVE_FILTERS',
   SET_PREVIEW_ITEM = 'SET_PREVIEW_ITEM'
 }
 
@@ -32,6 +33,11 @@ export const setFilteredData = (data: ExploreDataState['filteredData']): Explore
 export const setFilter = (filter: DataFilter): ExploreDataAction => ({
   type: ExploreDataActionType.SET_FILTER,
   payload: filter,
+});
+
+export const setActiveFilters = (activeFilters: ExploreDataState['activeFilters']): ExploreDataAction => ({
+  type: ExploreDataActionType.SET_ACTIVE_FILTERS,
+  payload: activeFilters,
 });
 
 export const setPreviewItem = (rowItem: ExploreDataState['previewItem']): ExploreDataAction => ({

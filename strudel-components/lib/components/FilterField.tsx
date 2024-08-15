@@ -6,11 +6,16 @@ import { RangeSlider } from './RangeSlider';
 import { DatePicker } from '@mui/x-date-pickers';
 import { useFilters } from './FilterContext';
 
+export type FilterOperator = 'contains' | 'contains-one-of' | 'equals' | 'equals-one-of' | 'between-inclusive' | 'between-dates-inclusive';
+
+export type FilterComponent = 'RangeSlider' | 'CheckboxList' | 'DateRange' | 'TextField';
+
 interface FilterFieldProps extends StackProps {
   label: string;
   field: string;
   tooltip?: string;
-  filterComponent: 'RangeSlider' | 'CheckboxList' | 'DateRange' | 'TextField';
+  operator: FilterOperator;
+  filterComponent: FilterComponent;
   filterProps?: any;
 }
 
@@ -46,13 +51,16 @@ export const FilterField: React.FC<FilterFieldProps> = ({
   label,
   field,
   tooltip,
+  operator,
   filterComponent,
   filterProps,
   ...rest
 }) => {
   const { state, dispatch } = useFilters();
   const [value, setValue] = useState<FilterValue<typeof filterComponent>>(null);
-  const isActive = hasValue(state.activeFilters[field]);
+  console.log(state.activeFilters);
+  const currentFilter = state.activeFilters.find((filter) => filter.field === field);
+  const isActive = hasValue(currentFilter?.value);
 
   /**
    * When a filter is canceled, reset its value to the proper 
@@ -60,9 +68,10 @@ export const FilterField: React.FC<FilterFieldProps> = ({
    * In the activeFilters variable, empty filters will always be marked as null.
    */
   const handleCancelFilter = () => {
+    console.log('cancel');
     switch (filterComponent) {
       case 'CheckboxList':
-        setValue([]);
+        setValue(null);
         break;
       case 'RangeSlider':
         setValue([filterProps.min, filterProps.max]);
@@ -77,7 +86,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
         console.log('Unknown filter type');
     }
       
-    dispatch({ type: 'SET_FILTER', payload: { field: field, value: null } });
+    dispatch({ type: 'SET_FILTER', payload: { field: field, value: null, operator } });
   }
 
   /**
@@ -94,7 +103,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
           <CheckboxList
             values={value as string[] | number[] | null}
             options={filterProps.options}
-            onChange={(values) => dispatch({ type: 'SET_FILTER', payload: { field: field, value: values } })}
+            onChange={(values) => dispatch({ type: 'SET_FILTER', payload: { field: field, value: values, operator } })}
             {...filterProps}
           />
         );
@@ -109,7 +118,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
           if (values[0] === filterProps.min && values[1] === filterProps.max) {
               newValues = null
           }
-          dispatch({ type: 'SET_FILTER', payload: { field: field, value: newValues } })
+          dispatch({ type: 'SET_FILTER', payload: { field: field, value: newValues, operator } })
         };
 
         return (
@@ -126,7 +135,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
         );
       }
       case 'DateRange': {
-        const currentDateRange = state.activeFilters[field];
+        const currentDateRange = state.activeFilters.find((filter) => filter.field === filter.field)?.value;
         const hasValue = currentDateRange && Array.isArray(currentDateRange) && currentDateRange.length === 2;
         const currentMin = hasValue && Array.isArray(currentDateRange) ? currentDateRange[0] : null;
         const currentMax = hasValue && Array.isArray(currentDateRange) ? currentDateRange[1] : null;
@@ -140,7 +149,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
                   actions: ['clear', 'today']
                 }
               }}
-              onChange={(value) => dispatch({ type: 'SET_FILTER', payload: { field: field, value: [value, currentMax] } })}
+              onChange={(value) => dispatch({ type: 'SET_FILTER', payload: { field: field, value: [value, currentMax], operator } })}
             />
             <DatePicker 
               label="To"
@@ -149,7 +158,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
                   actions: ['clear', 'today']
                 }
               }}
-              onChange={(value) => dispatch({ type: 'SET_FILTER', payload: { field: field, value: [currentMin, value] } })}
+              onChange={(value) => dispatch({ type: 'SET_FILTER', payload: { field: field, value: [currentMin, value], operator } })}
             />
           </Stack>
         );
@@ -161,7 +170,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
          */
         useEffect(() => {
           const timeout = setTimeout(() => {
-            dispatch({ type: 'SET_FILTER', payload: { field: field, value: value } })
+            dispatch({ type: 'SET_FILTER', payload: { field: field, value: value, operator } })
           }, 1000);
           return () => {
             clearTimeout(timeout);
@@ -186,7 +195,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
    */
   useEffect(() => {
     if (isActive) {
-      setValue(state.activeFilters[field]);
+      setValue(currentFilter?.value || null);
     } else if (filterComponent === 'RangeSlider') {
       /** RangeSliders should be considered off if both values are min and max */
       if (value && (value[0] !== filterProps.min || value[1] !== filterProps.max)) {
@@ -195,7 +204,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
     } else if (hasValue(value)) {
       handleCancelFilter();
     }
-  },[state.activeFilters]);
+  },[JSON.stringify(state.activeFilters)]);
 
   return (
     <Stack 

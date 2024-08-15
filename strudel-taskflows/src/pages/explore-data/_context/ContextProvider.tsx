@@ -98,6 +98,12 @@ function exploreDataReducer(state: ExploreDataState, action: ExploreDataAction):
         activeFilters
       }
     }
+    case ExploreDataActionType.SET_ACTIVE_FILTERS: {
+      return {
+        ...state,
+        activeFilters: action.payload
+      }
+    }
     case ExploreDataActionType.SET_PREVIEW_ITEM: {
       return {
         ...state,

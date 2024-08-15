@@ -1,29 +1,52 @@
 import React, { PropsWithChildren, useContext, useEffect, useReducer } from 'react';
+import { FilterOperator } from './FilterField';
+
+export interface DataFilter {
+  field: string;
+  value: string | any[] | null;
+  operator: FilterOperator;
+}
 
 export interface FilterState {
-  activeFilters: { [key: string]: any }
+  activeFilters: DataFilter[];
   expandedGroup: string | number | boolean;
 }
 
 const FilterContextAPI = React.createContext<{state: FilterState; dispatch: React.Dispatch<FilterAction>} | undefined>(undefined);
 
 const initialState: FilterState = {
-  activeFilters: {},
+  activeFilters: [],
   expandedGroup: false,
 }
 
 export type FilterAction = 
-  | { type: 'SET_FILTER', payload: { field: string, value: any } }
-  | { type: 'SET_ACTIVE_FILTERS', payload:FilterState['activeFilters'] }
+  | { type: 'SET_FILTER', payload: { field: string, value: any, operator: FilterOperator } }
+  | { type: 'SET_ACTIVE_FILTERS', payload: FilterState['activeFilters'] }
   | { type: 'SET_EXPANDED_GROUP', payload: FilterState['expandedGroup']; }
 
 function filterReducer(state: FilterState, action: FilterAction): FilterState {
   switch (action.type) {
     case 'SET_FILTER': {
+      const filter = action.payload;
+      const existingIndex = state.activeFilters.findIndex((f) => f.field === filter.field);
+      const activeFilters = [...state.activeFilters];
+      if (existingIndex > -1) {
+        if (filter.value) {
+          activeFilters[existingIndex] = filter;
+        } else {
+          activeFilters.splice(existingIndex, 1);
+        }
+      } else if (filter.value) {
+        activeFilters.push(filter);
+      }
       return {
         ...state,
-        activeFilters: { ...state.activeFilters, [action.payload.field]: action.payload.value }
+        activeFilters
       }
+      // return {
+      //   ...state,
+      //   activeFilters: { ...state.activeFilters, [action.payload.field]: action.payload.value }
+      // }
     }
     case 'SET_ACTIVE_FILTERS': {
       return {
@@ -49,7 +72,7 @@ interface FilterContextProps extends PropsWithChildren {
 }
 
 export const FilterContext: React.FC<FilterContextProps> = ({ 
-  activeFilters = {},
+  activeFilters = [],
   onChange = (filters) => null,
   children 
 }) => {
@@ -61,7 +84,7 @@ export const FilterContext: React.FC<FilterContextProps> = ({
    */
   useEffect(() => {
     if (onChange) onChange(state.activeFilters);
-  }, [state.activeFilters]);
+  }, [JSON.stringify(state.activeFilters)]);
 
   /**
    * If activeFilters is changed from outside the context (e.g. filters are reset)

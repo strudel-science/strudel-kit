@@ -73,16 +73,21 @@ export const taskflow: ExploreDataConfig = {
           /**
            * Text to display in the label for the filter.
            */
-          displayName: "Assembly",
+          label: "Assembly",
+          /**
+           * Type of filtering operation to use.
+           * Must be 'contains' | 'contains-one-of' | 'equals' | 'equals-one-of' | 'between-inclusive' | 'between-dates-inclusive'
+           */
+          operator: "contains-one-of",
           /**
            * The kind of filter component and function to use. 
            * Must be "CheckboxList", "Slider", or "date range".
            */
-          filterType: "CheckboxList",
+          filterComponent: "CheckboxList",
           /**
            * Extra options to pass to the filter based on the filter type.
            */
-          props: {
+          filterProps: {
             options: [
               {
                 label: "JGI",
@@ -101,9 +106,10 @@ export const taskflow: ExploreDataConfig = {
         },
         {
           field: "Data Usage Policy",
-          displayName: "Data Usage Policy",
-          filterType: "CheckboxList",
-          props: {
+          label: "Data Usage Policy",
+          operator: "contains-one-of",
+          filterComponent: "CheckboxList",
+          filterProps: {
             options: [
               {
                 label: "restricted",
@@ -118,18 +124,20 @@ export const taskflow: ExploreDataConfig = {
         },
         {
           field: "Euk. BUSCO %",
-          displayName: "Euk. BUSCO %",
-          filterType: "Slider",
-          props: {
+          label: "Euk. BUSCO %",
+          operator: "between-inclusive",
+          filterComponent: "RangeSlider",
+          filterProps: {
             min: 0,
             max: 100
           }
         },
         {
           field: "Emb. BUSCO %",
-          displayName: "Emb. BUSCO %",
-          filterType: "Slider",
-          props: {
+          label: "Emb. BUSCO %",
+          operator: "between-inclusive",
+          filterComponent: "RangeSlider",
+          filterProps: {
             min: 0,
             max: 100
           }

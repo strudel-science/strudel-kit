@@ -1,4 +1,5 @@
 import { GridColDef } from "@mui/x-data-grid"
+import { FilterComponent, FilterOperator } from "@strudel-science/components/dist/components/FilterField"
 
 /**
  * Type definitions for the Compare Data Task Flow config object
@@ -24,9 +25,10 @@ export interface ExploreDataConfig {
       tableColumns: GridColDef[],
       tableFilters: {
         field: string,
-        displayName: string,
-        filterType: 'CheckboxList' | 'Slider' | 'date range',
-        props?: object
+        label: string,
+        operator: FilterOperator
+        filterComponent: FilterComponent,
+        filterProps?: object
       }[]
     }
   }
