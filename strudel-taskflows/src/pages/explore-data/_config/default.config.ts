@@ -6,11 +6,11 @@ export const taskflow: ExploreDataConfig = {
       /**
        * Source of the data for the initial list of items on the main page.
        */
-      source: "https://api.gbif.org/v1/occurrence/search",
+      source: "default/explore-data/genomes.tsv",
       /**
        * Name of the field in the data that represents a unique identifier for each record.
        */
-      idField: "key"
+      idField: "Proteome_ID"
     }
   },
   pages: {
@@ -28,29 +28,39 @@ export const taskflow: ExploreDataConfig = {
        */
       tableColumns: [
         {
-          field: "scientificName",
-          headerName: "Name",
+          field: "Organism",
+          headerName: "Organism",
+          hasPopover: true,
+          units: "test",
           width: 200
         },
         {
-          field: "decimalLatitude",
-          headerName: "Latitude",
+          field: "Common Name",
+          headerName: "Common Name",
+          units: "test",
+          width: 200
+        },
+        {
+          field: "Assembly",
+          headerName: "Assembly",
           width: 150
         },
         {
-          field: "decimalLongitude",
-          headerName: "Longitude",
-          width: 150
+          field: "Data Usage Policy",
+          headerName: "Data Usage Policy",
+          width: 220
         },
         {
-          field: "year",
-          headerName: "Year",
-          width: 150
+          field: "Euk. BUSCO %",
+          headerName: "Euk. BUSCO %",
+          type: "number",
+          width: 200
         },
         {
-          field: "basisOfRecord",
-          headerName: "Basis of Record",
-          width: 150
+          field: "Emb. BUSCO %",
+          headerName: "Emb. BUSCO %",
+          type: "number",
+          width: 200
         }
       ],
       /**

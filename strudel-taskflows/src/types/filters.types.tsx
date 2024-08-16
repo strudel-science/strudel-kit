@@ -6,11 +6,11 @@ export interface DataFilter {
 
 export interface FilterConfig {
   field: string;
-  displayName: string;
-  filterType: string;
+  label: string;
+  filterComponent: string;
   group?: string;
   tooltip?: string;
-  props?: any;
+  filterProps?: any;
 }
 
 export enum FilterOperator {

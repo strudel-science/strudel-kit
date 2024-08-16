@@ -7,6 +7,7 @@ import { PageHeader } from '../../components/PageHeader';
 import { useExploreData } from './_context/ContextProvider';
 import { setPreviewItem } from './_context/actions';
 import { taskflow } from './_config/taskflow.config';
+import { ServerDataTablePanel } from './_components/ServerDataTablePanel';
 
 /**
  * Main explorer page in the explore-data Task Flow.
@@ -49,7 +50,8 @@ const DataExplorer: React.FC = () => {
           </Grid>
         )}
         <Grid item xs={getMainColumnSize(showFiltersPanel, !!state.previewItem)}>
-          <DataTablePanel onToggleFiltersPanel={handleToggleFilters} />
+          {/* <DataTablePanel onToggleFiltersPanel={handleToggleFilters} /> */}
+          <ServerDataTablePanel onToggleFiltersPanel={handleToggleFilters} />
         </Grid>
         {state.previewItem && (
           <Grid item xs={4}>
