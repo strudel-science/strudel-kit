@@ -30,11 +30,14 @@ export const taskflow: ExploreDataConfig = {
         {
           field: "Organism",
           headerName: "Organism",
+          hasPopover: true,
+          units: "test",
           width: 200
         },
         {
           field: "Common Name",
           headerName: "Common Name",
+          units: "test",
           width: 200
         },
         {

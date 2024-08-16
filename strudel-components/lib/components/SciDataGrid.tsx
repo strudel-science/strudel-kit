@@ -1,4 +1,4 @@
-import { Stack, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { DataGrid, DataGridProps, GridColDef, GridColumnHeaderParams, GridRenderCellParams } from '@mui/x-data-grid';
 import React, { ReactNode } from 'react';
 import { ArrayWithPopover } from './ArrayWithPopover';
@@ -40,15 +40,31 @@ const getGridColumns = (columns: SciDataGridColDef[]) => {
       ...gridColumn 
     } = column;
 
-    /** Render unit label underneath the headerName */
-    if (units) {
-      gridColumn.renderHeader = (params: GridColumnHeaderParams) => (
-        <Stack>
-          <Typography fontSize="0.875rem" fontWeight="bold">{params.colDef.headerName}</Typography>
-          <Typography fontSize="small" color="grey.700">{units}</Typography>
-        </Stack>
-      )
-    }
+    /** 
+     * Style column header and render unit label
+     * underneath the headerName if units supplied
+     */
+    gridColumn.renderHeader = (params: GridColumnHeaderParams) => (
+      <Box>
+        <Typography fontSize="0.875rem" fontWeight="bold">{params.colDef.headerName}</Typography>
+        {units && (
+          <Typography 
+            fontSize="small" 
+            color="grey.700"
+            sx={{
+              position: 'absolute',
+              bottom: '4px',
+              left: params.colDef.type !== 'number' ? 0 : 'auto',
+              right: params.colDef.type === 'number' ? 0 : 'auto',
+              transform: 'translate(0, 0)',
+              zIndex: 1000
+            }}
+          >
+            {units}
+          </Typography>
+        )}
+      </Box>
+    )
     
     /** Handle value transformation options */
     if (!gridColumn.valueFormatter) {

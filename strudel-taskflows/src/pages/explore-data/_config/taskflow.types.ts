@@ -1,4 +1,4 @@
-import { GridColDef } from "@mui/x-data-grid"
+import { SciDataGridColDef } from "@strudel-science/components"
 import { FilterComponent, FilterOperator } from "@strudel-science/components/dist/components/FilterField"
 
 /**
@@ -22,7 +22,7 @@ export interface ExploreDataConfig {
     index: {
       title: string,
       description: string,
-      tableColumns: GridColDef[],
+      tableColumns: SciDataGridColDef[],
       tableFilters: {
         field: string,
         label: string,

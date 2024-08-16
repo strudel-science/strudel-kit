@@ -34,6 +34,9 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
       grouped={false}
       onClose={props.onClose}
       onChange={handleFiltersChange}
+      sx={{
+        border: 'none'
+      }}
     >
       {taskflow.pages.index.tableFilters.map((f, i) => (
         <FilterField
