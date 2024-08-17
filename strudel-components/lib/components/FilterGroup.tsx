@@ -27,7 +27,7 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
     if (
       React.isValidElement(child) &&
       child.props.field &&
-      hasValue(state.activeFilters[child.props.field])
+      hasValue(state.activeFilters.find((f: any) => f.field === child.props.field))
     ) {
       return activeChildren++
     }

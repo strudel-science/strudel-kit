@@ -38,7 +38,7 @@ export const Filters: React.FC<FilterPanelProps> = ({
     if (
       React.isValidElement(child) &&
       child.props.field &&
-      hasValue(activeFilters[child.props.field])
+      hasValue(activeFilters.find((f: any) => f.field === child.props.field))
     ) {
       return activeChildren++
     }

@@ -1,7 +1,7 @@
 import FilterListIcon from '@mui/icons-material/FilterList';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
-import { Button, Paper, Stack, TextField, Typography, Grid, Card, CardContent, CardMedia, Link, Pagination, Select, MenuItem, FormControl, InputLabel, Box, LinearProgress } from '@mui/material';
+import { Button, Paper, Stack, TextField, Typography, Grid, Card, CardContent, CardMedia, Link, Pagination, Select, MenuItem, FormControl, InputLabel, Box, LinearProgress, Skeleton } from '@mui/material';
 import { GridEventListener, GridPaginationModel, GridRowParams } from '@mui/x-data-grid';
 import React, { PropsWithChildren, useEffect, useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
@@ -9,7 +9,7 @@ import { useExploreData } from '../_context/ContextProvider';
 import { setPreviewItem, setSearch } from '../_context/actions';
 import { PreviewPanel } from './PreviewPanel';
 import { SciDataGrid } from '@strudel-science/components';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 // Define an interface for the data items
 interface DataItem {
@@ -34,12 +34,13 @@ export const ServerDataTablePanel: React.FC<DataTablePanelProps> = (props) => {
   const [offset, setOffest] = useState(page * pageSize);
 
   // Define query for this page and fetch data items
-  const { isPending, isError, data, error } = useQuery({
+  const { isPending, isFetching, isError, data, error } = useQuery({
     queryKey: ['items', { pageSize, offset }],
     queryFn: async (): Promise<any> => {
       const response = await fetch(`https://api.gbif.org/v1/occurrence/search?limit=${pageSize}&offset=${offset}`);
       return await response.json();
-    }
+    },
+    placeholderData: keepPreviousData,
   });
 
   // State to manage view mode (table or gallery)
@@ -72,6 +73,9 @@ export const ServerDataTablePanel: React.FC<DataTablePanelProps> = (props) => {
 
   // Show a loading icon while the query is pending
   if (isPending) {
+    const emptyRows = new Array(pageSize);
+    emptyRows.fill(null);
+
     return (
       <DataTableWrapper 
         onToggleFiltersPanel={props.onToggleFiltersPanel} 
@@ -83,7 +87,9 @@ export const ServerDataTablePanel: React.FC<DataTablePanelProps> = (props) => {
             padding: 2
           }}
         >
-          <LinearProgress variant="indeterminate" />
+          {emptyRows.map((row) => (
+            <Skeleton height={50} />
+          ))}
         </Box>
       </DataTableWrapper>
     )
@@ -109,6 +115,9 @@ export const ServerDataTablePanel: React.FC<DataTablePanelProps> = (props) => {
       toggleView={toggleView} 
       isGalleryView={isGalleryView}
     >
+      {isFetching && (
+        <LinearProgress variant="indeterminate" />
+      )}
       {isGalleryView ? (
         <>
           {/* Gallery view */}
