@@ -17,7 +17,6 @@ export interface ExploreDataConfig {
       idField: string
     }
   },
-  /** Cool pages */
   pages: {
     index: {
       title: string,
@@ -26,7 +25,9 @@ export interface ExploreDataConfig {
       tableFilters: {
         field: string,
         label: string,
-        operator: FilterOperator
+        operator?: FilterOperator,
+        paramType?: 'standard' | 'repeated' | 'array-string'
+        paramTypeOptions?: any;
         filterComponent: FilterComponent,
         filterProps?: object
       }[]

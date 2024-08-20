@@ -1,15 +1,18 @@
+type ParamType = 'standard' | 'array-string' | 'repeated' | 'minmax';
+
 export interface DataFilter {
   field: string;
   value: string | number | any[] | null;
-  operator: string;
+  operator?: string;
 }
 
 export interface FilterConfig {
   field: string;
   label: string;
+  operator?: string;
+  paramType?: ParamType;
+  paramTypeOptions?: any;
   filterComponent: string;
-  group?: string;
-  tooltip?: string;
   filterProps?: any;
 }
 

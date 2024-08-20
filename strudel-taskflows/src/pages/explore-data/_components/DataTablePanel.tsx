@@ -18,7 +18,7 @@ interface DataTablePanelProps {
 export const DataTablePanel: React.FC<DataTablePanelProps> = (props) => { 
   const {state, dispatch} = useExploreData();
 
-  const handleRowClick: GridEventListener<"rowClick"> = (rowData) => {
+  const handleRowClick = (rowData: any) => {
     dispatch(setPreviewItem(rowData.row));
   };
 

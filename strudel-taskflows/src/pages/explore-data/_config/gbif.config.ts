@@ -51,6 +51,12 @@ export const taskflow: ExploreDataConfig = {
           field: "basisOfRecord",
           headerName: "Basis of Record",
           width: 150
+        },
+        {
+          field: "elevation",
+          headerName: "Elevation",
+          width: 150,
+          type: 'number'
         }
       ],
       /**
@@ -59,66 +65,9 @@ export const taskflow: ExploreDataConfig = {
        */
       tableFilters: [
         {
-          /**
-           * Exact name of the property field in the data to filter on. 
-           */
-          field: "Assembly",
-          /**
-           * Text to display in the label for the filter.
-           */
-          label: "Assembly",
-          /**
-           * Type of filtering operation to use.
-           * Must be 'contains' | 'contains-one-of' | 'equals' | 'equals-one-of' | 'between-inclusive' | 'between-dates-inclusive'
-           */
-          operator: "contains-one-of",
-          /**
-           * The kind of filter component and function to use. 
-           * Must be "CheckboxList", "Slider", or "date range".
-           */
-          filterComponent: "CheckboxList",
-          /**
-           * Extra options to pass to the filter based on the filter type.
-           */
-          filterProps: {
-            options: [
-              {
-                label: "JGI",
-                value: "JGI"
-              },
-              {
-                label: "BYU",
-                value: "BYU"
-              },
-              {
-                label: "AGP",
-                value: "AGP"
-              }
-            ]
-          }
-        },
-        {
-          field: "Data Usage Policy",
-          label: "Data Usage Policy",
-          operator: "contains-one-of",
-          filterComponent: "CheckboxList",
-          filterProps: {
-            options: [
-              {
-                label: "restricted",
-                value: "restricted"
-              },
-              {
-                label: "unrestricted",
-                value: "unrestricted"
-              }
-            ]
-          }
-        },
-        {
-          field: "Euk. BUSCO %",
-          label: "Euk. BUSCO %",
-          operator: "between-inclusive",
+          field: "elevation",
+          label: "Elevation",
+          paramType: "array-string",
           filterComponent: "RangeSlider",
           filterProps: {
             min: 0,
@@ -126,15 +75,40 @@ export const taskflow: ExploreDataConfig = {
           }
         },
         {
-          field: "Emb. BUSCO %",
-          label: "Emb. BUSCO %",
-          operator: "between-inclusive",
-          filterComponent: "RangeSlider",
+          field: "basisOfRecord",
+          label: "Basis of Record",
+          operator: "contains-one-of",
+          paramType: 'repeated',
+          filterComponent: "CheckboxList",
           filterProps: {
-            min: 0,
-            max: 100
+            options: [
+              {
+                label: "PRESERVED_SPECIMEN",
+                value: "PRESERVED_SPECIMEN"
+              },
+              {
+                label: "FOSSIL_SPECIMEN",
+                value: "FOSSIL_SPECIMEN"
+              },
+              {
+                label: "LIVING_SPECIMEN",
+                value: "LIVING_SPECIMEN"
+              },
+              {
+                label: "OBSERVATION",
+                value: "OBSERVATION"
+              },
+              {
+                label: "HUMAN_OBSERVATION",
+                value: "HUMAN_OBSERVATION"
+              },
+              {
+                label: "MACHINE_OBSERVATION",
+                value: "MACHINE_OBSERVATION"
+              }
+            ]
           }
-        }
+        },
       ]
     }
   }

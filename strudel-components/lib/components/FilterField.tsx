@@ -58,7 +58,6 @@ export const FilterField: React.FC<FilterFieldProps> = ({
 }) => {
   const { state, dispatch } = useFilters();
   const [value, setValue] = useState<FilterValue<typeof filterComponent>>(null);
-  console.log(state.activeFilters);
   const currentFilter = state.activeFilters.find((filter) => filter.field === field);
   const isActive = hasValue(currentFilter?.value);
 
@@ -68,7 +67,6 @@ export const FilterField: React.FC<FilterFieldProps> = ({
    * In the activeFilters variable, empty filters will always be marked as null.
    */
   const handleCancelFilter = () => {
-    console.log('cancel');
     switch (filterComponent) {
       case 'CheckboxList':
         setValue(null);

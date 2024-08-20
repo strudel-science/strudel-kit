@@ -10,6 +10,7 @@ import { setPreviewItem, setSearch } from '../_context/actions';
 import { PreviewPanel } from './PreviewPanel';
 import { SciDataGrid } from '@strudel-science/components';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { buildParamsString } from '../../../utils/filters.utils';
 
 // Define an interface for the data items
 interface DataItem {
@@ -33,11 +34,18 @@ export const ServerDataTablePanel: React.FC<DataTablePanelProps> = (props) => {
   const [pageSize, setPageSize] = useState(25);
   const [offset, setOffest] = useState(page * pageSize);
 
+  // Experimenting with filters
+  const filters: any = {};
+  state.activeFilters.forEach((f) => {
+    filters[f.field] = f.value;
+  });
+
   // Define query for this page and fetch data items
   const { isPending, isFetching, isError, data, error } = useQuery({
-    queryKey: ['items', { pageSize, offset }],
+    queryKey: ['items', { pageSize, offset, ...filters }],
     queryFn: async (): Promise<any> => {
-      const response = await fetch(`https://api.gbif.org/v1/occurrence/search?limit=${pageSize}&offset=${offset}`);
+      const filterParams = buildParamsString(state.activeFilters, state.filters);
+      const response = await fetch(`https://api.gbif.org/v1/occurrence/search?limit=${pageSize}&offset=${offset}&${filterParams}`);
       return await response.json();
     },
     placeholderData: keepPreviousData,
@@ -75,6 +83,7 @@ export const ServerDataTablePanel: React.FC<DataTablePanelProps> = (props) => {
   if (isPending) {
     const emptyRows = new Array(pageSize);
     emptyRows.fill(null);
+    const indexedRows = emptyRows.map((row, i) => i);
 
     return (
       <DataTableWrapper 
@@ -87,8 +96,8 @@ export const ServerDataTablePanel: React.FC<DataTablePanelProps> = (props) => {
             padding: 2
           }}
         >
-          {emptyRows.map((row) => (
-            <Skeleton height={50} />
+          {indexedRows.map((row) => (
+            <Skeleton key={row} height={50} />
           ))}
         </Box>
       </DataTableWrapper>
