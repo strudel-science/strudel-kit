@@ -7,8 +7,9 @@ import { DataFilter, FilterConfig, FilterOperator } from '../../../types/filters
 import { useExploreData } from '../_context/ContextProvider';
 import { setActiveFilters, setFilter } from '../_context/actions';
 import { taskflow } from '../_config/taskflow.config';
-import { FilterField, Filters } from '@strudel-science/components';
-import { FilterState } from '@strudel-science/components/dist/components/FilterContext';
+import { Filters } from '../../../components/Filters';
+import { FilterField } from '../../../components/FilterField';
+import { FilterState } from '../../../components/FilterContext';
 
 interface FiltersPanelProps {
   onClose: () => any
@@ -43,7 +44,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
           key={`${f.field}-${i}`}
           field={f.field}
           label={f.label}
-          operator={f.operator}
+          operator={'contains'}
           filterComponent={f.filterComponent}
           filterProps={f.filterProps}
         />

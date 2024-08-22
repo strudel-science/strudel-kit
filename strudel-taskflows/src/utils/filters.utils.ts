@@ -17,9 +17,7 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
   if (filters.length > 0) {
     filteredData = allData.filter((d) => {
       let include = true;
-      /**
-       * All filters have to be matched for a row to be included in the filtered data
-       */
+      // All filters have to be matched for a row to be included in the filtered data
       filters.forEach((f) => {
         let match = false;
         if (include === true) {
@@ -117,99 +115,4 @@ export const initSliderTicks = (ticks: number | null, domain: number[], scale?: 
     return;
   }
 };
-
-// const { isPending, isFetching, isError, data, error } = useQuery({
-//   queryKey: ['items', { pageSize, offset, ...filters }],
-//   queryFn: async (): Promise<any> => {
-//     const response = await fetch(`https://api.gbif.org/v1/occurrence/search?limit=${pageSize}&offset=${offset}`);
-//     return await response.json();
-//   },
-//   placeholderData: keepPreviousData,
-// });
-
-/**
- * I could have something where the param data is all in an object
- * keyed by the name of the param then there would be a separate objected 
- * also keyed by param but instead of having the value it would be an operator name
- * and that would determine how the key-value is parsed into the URL.
- * 
- * Maybe call this buildApiUrl
- */
-export const convertToUrlParams = (params: any, operators: any) => {
-  const paramsString = '';
-  Object.entries(params).forEach(([key, value], i) => {
-    switch(operators[key]) {
-      case 'between-inclusive':
-        if (Array.isArray(value)) {
-          const valueString = `${value[0]},${value[1]}`
-          paramsString.concat(`${key}=${valueString}`);
-        }
-        break;
-      default:
-        paramsString.concat(`${key}=${value}`)
-    }
-    if (i < Object.entries(params).length - 1) {
-      params.concat('&');
-    }
-  })
-}
-
-const toParamArrayString = (filter: DataFilter, filterConfig: FilterConfig) => {
-  if (Array.isArray(filter.value)) {
-    const separator = filterConfig.paramTypeOptions.separator || ',';
-    return `${filter.field}=${filter.value.join(separator)}`
-  } else {
-    return '';
-  }
-}
-
-const toParamRepeated = (filter: DataFilter) => {
-  let paramsString = '';
-  if (Array.isArray(filter.value)) {
-    const valuesLength = filter.value?.length;
-    filter.value.forEach((optionValue, k) => {
-      paramsString = paramsString.concat(`${filter.field}=${optionValue}`);
-      if (k < valuesLength - 1) {
-        paramsString = paramsString.concat('&');
-      }
-    });
-  }
-  console.log(paramsString)
-  return paramsString;
-}
-
-const toParamMinMax = (filter: DataFilter, filterConfig: FilterConfig) => {
-  if (Array.isArray(filter.value) && filterConfig.paramTypeOptions) {
-    const minParamString = `${filterConfig.paramTypeOptions.minParam}=${filter.value[0]}`;
-    const maxParamString = `${filterConfig.paramTypeOptions.maxParam}=${filter.value[1]}`;
-    return `${minParamString}&${maxParamString}`;
-  } else {
-    return '';
-  }
-}
-
-export const buildParamsString = (filters: DataFilter[], filterConfigs: FilterConfig[]) => {
-  let paramsString = '';
-  filters.forEach((filter, i) => {
-    const filterConfig = filterConfigs.find((c) => c.field === filter.field); 
-    console.log(filterConfig);
-    switch(filterConfig?.paramType) {
-      case 'array-string':
-        paramsString = paramsString.concat(toParamArrayString(filter, filterConfig));
-        break;
-      case 'repeated':
-        paramsString = paramsString.concat(toParamRepeated(filter));
-        break;
-      case 'minmax':
-        paramsString = paramsString.concat(toParamMinMax(filter, filterConfig));
-        break;
-      default:
-        paramsString = paramsString.concat(`${filter.field}=${filter.value}`)
-    }
-    if (i < filters.length - 1) {
-      paramsString = paramsString.concat('&');
-    }
-  });
-  return paramsString;
-}
 

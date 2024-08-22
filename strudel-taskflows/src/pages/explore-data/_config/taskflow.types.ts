@@ -1,5 +1,6 @@
-import { SciDataGridColDef } from "@strudel-science/components"
-import { FilterComponent, FilterOperator } from "@strudel-science/components/dist/components/FilterField"
+import { FilterComponent } from "../../../components/FilterField"
+import { SciDataGridColDef } from "../../../components/SciDataGrid"
+import { FilterOperator } from "../../../types/filters.types"
 
 /**
  * Type definitions for the Compare Data Task Flow config object

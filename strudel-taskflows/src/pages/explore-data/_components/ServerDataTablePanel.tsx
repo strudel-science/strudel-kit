@@ -8,9 +8,9 @@ import { DataGrid } from '@mui/x-data-grid';
 import { useExploreData } from '../_context/ContextProvider';
 import { setPreviewItem, setSearch } from '../_context/actions';
 import { PreviewPanel } from './PreviewPanel';
-import { SciDataGrid } from '@strudel-science/components';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import { buildParamsString } from '../../../utils/filters.utils';
+import { SciDataGrid } from '../../../components/SciDataGrid';
+import { buildParamsString } from '../../../utils/queryParams.utils';
 
 // Define an interface for the data items
 interface DataItem {

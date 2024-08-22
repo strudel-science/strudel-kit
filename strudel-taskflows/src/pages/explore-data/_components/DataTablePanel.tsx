@@ -1,10 +1,10 @@
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { Button, Paper, Stack, TextField, Typography } from '@mui/material';
 import { GridEventListener } from '@mui/x-data-grid';
-import { SciDataGrid } from '@strudel-science/components';
 import React from 'react';
 import { useExploreData } from '../_context/ContextProvider';
 import { setPreviewItem, setSearch } from '../_context/actions';
+import { SciDataGrid } from '../../../components/SciDataGrid';
 
 interface DataTablePanelProps {
   onToggleFiltersPanel: () => any

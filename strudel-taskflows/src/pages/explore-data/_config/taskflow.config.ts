@@ -77,7 +77,6 @@ export const taskflow: ExploreDataConfig = {
         {
           field: "basisOfRecord",
           label: "Basis of Record",
-          operator: "contains-one-of",
           paramType: 'repeated',
           filterComponent: "CheckboxList",
           filterProps: {
