@@ -1,6 +1,6 @@
 import { FilterComponent } from "../../../components/FilterField"
 import { SciDataGridColDef } from "../../../components/SciDataGrid"
-import { FilterOperator } from "../../../types/filters.types"
+import { FilterOperator, ParamType } from "../../../types/filters.types"
 
 /**
  * Type definitions for the Compare Data Task Flow config object
@@ -11,11 +11,15 @@ export interface ExploreDataConfig {
   data: {
     items: {
       source: string,
-      idField: string
+      idField: string,
+      queryMode: 'client' | 'server',
+      staticParams?: Record<string, string>
     },
     [key: string]: {
       source: string,
-      idField: string
+      idField: string,
+      queryMode: 'client' | 'server',
+      staticParams?: Record<string, string>
     }
   },
   pages: {
@@ -27,7 +31,7 @@ export interface ExploreDataConfig {
         field: string,
         label: string,
         operator?: FilterOperator,
-        paramType?: 'standard' | 'repeated' | 'array-string'
+        paramType?: ParamType
         paramTypeOptions?: any;
         filterComponent: FilterComponent,
         filterProps?: object

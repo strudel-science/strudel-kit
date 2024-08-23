@@ -12,7 +12,7 @@ export const filterBySearchText = (allData: any[], searchText?: string) => {
   return filteredData;
 };
 
-export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
+export const filterByDataFilters = (allData: any[], filters: DataFilter[], filterConfigs: FilterConfig[]) => {
   let filteredData = allData;
   if (filters.length > 0) {
     filteredData = allData.filter((d) => {
@@ -20,8 +20,9 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
       // All filters have to be matched for a row to be included in the filtered data
       filters.forEach((f) => {
         let match = false;
-        if (include === true) {
-          switch (f.operator) {
+        const filterConfig = filterConfigs.find((c) => c.field === f.field); 
+        if (filterConfig && include === true) {
+          switch (filterConfig.operator) {
             case 'contains': {
               if (d[f.field].indexOf(f.value) > -1) {
                 match = true;
@@ -29,6 +30,7 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
               break;
             }
             case 'contains-one-of': {
+              console.log(f);
               if (Array.isArray(f.value)) {
                 f.value.forEach((v) => {
                   if (!match) {
@@ -100,9 +102,9 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
   return filteredData;
 };
 
-export const filterData = (allData: any[], filters: DataFilter[], searchText?: string) => {
+export const filterData = (allData: any[], filters: DataFilter[], filterConfigs: FilterConfig[], searchText?: string) => {
   const filteredByText = filterBySearchText(allData, searchText);
-  const filteredByTextAndDataFilters = filterByDataFilters(filteredByText, filters);
+  const filteredByTextAndDataFilters = filterByDataFilters(filteredByText, filters, filterConfigs);
   return filteredByTextAndDataFilters;
 }
 

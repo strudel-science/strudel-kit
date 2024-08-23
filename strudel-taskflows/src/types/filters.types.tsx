@@ -1,9 +1,10 @@
-type ParamType = 'standard' | 'array-string' | 'repeated' | 'minmax';
+export type ParamType = 'standard' | 'array-string' | 'repeated' | 'minmax';
+
+export type FilterOperator = 'contains' | 'contains-one-of' | 'equals' | 'equals-one-of' | 'between-inclusive' | 'between-dates-inclusive';
 
 export interface DataFilter {
   field: string;
-  value: string | number | any[] | null;
-  operator?: string;
+  value: string | number | string[] | number[] | null;
 }
 
 export interface FilterConfig {
@@ -14,15 +15,6 @@ export interface FilterConfig {
   paramTypeOptions?: any;
   filterComponent: string;
   filterProps?: any;
-}
-
-export enum FilterOperator {
-  CONTAINS = 'CONTAINS',
-  CONTAINS_ONE_OF = 'CONTAINS_ONE_OF',
-  EQUALS = 'EQUALS',
-  EQUALS_ONE_OF = 'EQUALS_ONE_OF',
-  BETWEEN_INCLUSIVE = 'BETWEEN_INCLUSIVE',
-  BETWEEN_DATES_INCLUSIVE = 'BETWEEN_DATES_INCLUSIVE',
 }
 
 export interface DataCard {

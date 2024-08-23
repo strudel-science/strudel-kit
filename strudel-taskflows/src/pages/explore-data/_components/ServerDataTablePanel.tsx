@@ -1,25 +1,16 @@
 import FilterListIcon from '@mui/icons-material/FilterList';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
-import { Button, Paper, Stack, TextField, Typography, Grid, Card, CardContent, CardMedia, Link, Pagination, Select, MenuItem, FormControl, InputLabel, Box, LinearProgress, Skeleton } from '@mui/material';
-import { GridEventListener, GridPaginationModel, GridRowParams } from '@mui/x-data-grid';
-import React, { PropsWithChildren, useEffect, useState } from 'react';
-import { DataGrid } from '@mui/x-data-grid';
+import { Box, Button, Card, CardContent, CardMedia, FormControl, Grid, InputLabel, LinearProgress, Link, MenuItem, Pagination, Paper, Select, Skeleton, Stack, TextField, Typography } from '@mui/material';
+import { GridPaginationModel } from '@mui/x-data-grid';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import React, { PropsWithChildren, useState } from 'react';
+import { SciDataGrid } from '../../../components/SciDataGrid';
+import { filterData } from '../../../utils/filters.utils';
+import { createFilterParams } from '../../../utils/queryParams.utils';
+import { taskflow } from '../_config/taskflow.config';
 import { useExploreData } from '../_context/ContextProvider';
 import { setPreviewItem, setSearch } from '../_context/actions';
-import { PreviewPanel } from './PreviewPanel';
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import { SciDataGrid } from '../../../components/SciDataGrid';
-import { buildParamsString } from '../../../utils/queryParams.utils';
-
-// Define an interface for the data items
-interface DataItem {
-  scientificName: string;
-  eventDate?: string;
-  country?: string;
-  media?: { identifier: string }[];
-  [key: string]: any; // This allows for additional fields not explicitly defined
-}
 
 interface DataTablePanelProps {
   onToggleFiltersPanel: () => any;
@@ -33,19 +24,30 @@ export const ServerDataTablePanel: React.FC<DataTablePanelProps> = (props) => {
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(25);
   const [offset, setOffest] = useState(page * pageSize);
-
-  // Experimenting with filters
-  const filters: any = {};
-  state.activeFilters.forEach((f) => {
-    filters[f.field] = f.value;
-  });
+  const dataSource = taskflow.data.items.source;
+  const filterConfigs = taskflow.pages.index.tableFilters;
+  const queryMode = taskflow.data.items.queryMode;
+  const staticParams = taskflow.data.items.staticParams;
+  let queryParams = { ...staticParams };
+  if (queryMode === 'server') {
+    queryParams = {
+      limit: pageSize.toString(),
+      offset: offset.toString(),
+      ...createFilterParams(state.activeFilters, state.filters)
+    }
+  }
+  console.log(queryParams)
+  const queryString = new URLSearchParams(queryParams).toString()
 
   // Define query for this page and fetch data items
   const { isPending, isFetching, isError, data, error } = useQuery({
-    queryKey: ['items', { pageSize, offset, ...filters }],
+    // queryKey: ['items', { pageSize, offset, ...filters }],
+    queryKey: ['items', queryParams],
     queryFn: async (): Promise<any> => {
-      const filterParams = buildParamsString(state.activeFilters, state.filters);
-      const response = await fetch(`https://api.gbif.org/v1/occurrence/search?limit=${pageSize}&offset=${offset}&${filterParams}`);
+      // const filterParams = buildParamsString(state.activeFilters, state.filters);
+      // const response = await fetch(`https://api.gbif.org/v1/occurrence/search?limit=${pageSize}&offset=${offset}&${filterParams}`);
+      console.log(queryString)
+      const response = await fetch(`${dataSource}?${queryString}`);
       return await response.json();
     },
     placeholderData: keepPreviousData,
@@ -54,13 +56,9 @@ export const ServerDataTablePanel: React.FC<DataTablePanelProps> = (props) => {
   // State to manage view mode (table or gallery)
   const [isGalleryView, setIsGalleryView] = useState(false);
 
-  // State to manage the visibility of the preview panel
-  const [showPreviewPanel, setShowPreviewPanel] = useState(false);
-
   // Handler for row click event
   const handleRowClick = (rowData: any) => {
     dispatch(setPreviewItem(rowData.row));
-    setShowPreviewPanel(true); // Show the preview panel when a row is clicked
   };
 
   // Handler for pagination model change event
@@ -79,7 +77,7 @@ export const ServerDataTablePanel: React.FC<DataTablePanelProps> = (props) => {
     setIsGalleryView(!isGalleryView);
   };
 
-  // Show a loading icon while the query is pending
+  // Show a loading skeleton while the initial query is pending
   if (isPending) {
     const emptyRows = new Array(pageSize);
     emptyRows.fill(null);
@@ -181,10 +179,10 @@ export const ServerDataTablePanel: React.FC<DataTablePanelProps> = (props) => {
       ) : (
         /* Table view */
         <SciDataGrid
-          rows={data.results}
-          rowCount={data.count}
+          rows={queryMode === 'server' ? data.results : filterData(data, state.activeFilters, filterConfigs, state.searchTerm)}
+          rowCount={queryMode === 'server' ? data.count : undefined}
           pagination
-          paginationMode="server"
+          paginationMode={queryMode}
           onPaginationModelChange={handlePaginationModelChange}
           getRowId={(row) => row[state.dataIdField]}
           columns={state.columns}
@@ -195,19 +193,7 @@ export const ServerDataTablePanel: React.FC<DataTablePanelProps> = (props) => {
           }}
           {...props}
           onRowClick={handleRowClick}
-          sx={{
-            '& .MuiDataGrid-cell:focus-within': {
-              outline: 'none'
-            },
-            '& .MuiDataGrid-overlayWrapper': {
-              minHeight: '4rem'
-            }
-          }}
         />
-      )}
-      {/* Preview panel */}
-      {showPreviewPanel && (
-        <PreviewPanel onClose={() => setShowPreviewPanel(false)} />
       )}
     </DataTableWrapper>
   );
@@ -234,6 +220,7 @@ const DataTableWrapper: React.FC<DataTableWrapperProps> = ({
 
   return (
     <Paper
+    elevation={0}
       sx={{
         minHeight: '600px'
       }}

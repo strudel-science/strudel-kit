@@ -67,7 +67,7 @@ const getGridColumns = (columns: SciDataGridColDef[]) => {
     )
     
     /** Handle value transformation options */
-    if (!gridColumn.valueFormatter) {
+    if (!gridColumn.valueFormatter && gridColumn.type === 'number') {
       gridColumn.valueFormatter = (value: number) => {
         /** Empty cells should render as '-' */
         if (!hasValue(value)) {

@@ -72,3 +72,31 @@ export const buildParamsString = (filters: DataFilter[], filterConfigs: FilterCo
   });
   return paramsString;
 }
+
+export const createFilterParams = (filters: DataFilter[], filterConfigs: FilterConfig[]) => {
+  const params: Record<string, string | number | string[] | number[]> = {};
+  filters.forEach((filter, i) => {
+    const filterConfig = filterConfigs.find((c) => c.field === filter.field); 
+    const options = filterConfig?.paramTypeOptions;
+    switch(filterConfig?.paramType) {
+      case 'array-string':
+        if (Array.isArray(filter.value)) {
+          const separator = options?.separator || ',';
+          params[filter.field] = filter.value.join(separator);
+          console.log(params[filter.field])
+        }
+        break;
+      case 'minmax':
+        if (Array.isArray(filter.value) && options.minParam && options.maxParam) {
+          params[options.minParam] = filter.value[0];
+          params[options.maxParam] = filter.value[1];
+        }
+        break;
+      default:
+        if (filter.value) {
+          params[filter.field] = filter.value
+        }
+    }
+  });
+  return params;
+}

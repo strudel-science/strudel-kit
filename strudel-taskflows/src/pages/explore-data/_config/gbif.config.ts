@@ -10,7 +10,11 @@ export const taskflow: ExploreDataConfig = {
       /**
        * Name of the field in the data that represents a unique identifier for each record.
        */
-      idField: "key"
+      idField: "key",
+      /**
+       * Method by which data should be filtered, either client or server.
+       */
+      queryMode: "server"
     }
   },
   pages: {
