@@ -106,6 +106,7 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[], filte
 };
 
 export const filterData = (allData: any[], filters: DataFilter[], filterConfigs: FilterConfig[], searchText?: string) => {
+  console.log(searchText);
   const filteredByText = filterBySearchText(allData, searchText);
   const filteredByTextAndDataFilters = filterByDataFilters(filteredByText, filters, filterConfigs);
   return filteredByTextAndDataFilters;

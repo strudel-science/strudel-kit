@@ -1,10 +1,10 @@
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { Button, Stack, TextField, Typography } from '@mui/material';
 import React from 'react';
-import { useExploreData } from '../_context/ContextProvider';
-import { setSearch } from '../_context/actions';
 
 interface DataViewHeaderProps {
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
   onToggleFiltersPanel: () => void;
 }
 
@@ -12,12 +12,12 @@ interface DataViewHeaderProps {
  * Data table header section with filters button and search bar
  */
 export const DataViewHeader: React.FC<DataViewHeaderProps> = ({
+  searchTerm,
+  setSearchTerm,
   onToggleFiltersPanel,
 }) => {
-  const { dispatch } = useExploreData();
-
   const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (evt) => {
-    dispatch(setSearch(evt.target.value));
+    setSearchTerm(evt.target.value);
   };
 
   return (
@@ -40,6 +40,7 @@ export const DataViewHeader: React.FC<DataViewHeaderProps> = ({
         variant="outlined"
         label="Search" 
         size="small"
+        value={searchTerm}
         onChange={handleSearch}
       />
     </Stack>

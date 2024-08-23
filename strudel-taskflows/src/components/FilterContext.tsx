@@ -12,7 +12,11 @@ export interface FilterState {
   expandedGroup: string | number | boolean;
 }
 
-const FilterContextAPI = React.createContext<{state: FilterState; dispatch: React.Dispatch<FilterAction>} | undefined>(undefined);
+const FilterContextAPI = React.createContext<{
+  activeFilters: FilterState['activeFilters'];
+  expandedGroup: FilterState['expandedGroup'];
+  dispatch: React.Dispatch<FilterAction>
+} | undefined>(undefined);
 
 const initialState: FilterState = {
   activeFilters: [],
@@ -39,6 +43,7 @@ function filterReducer(state: FilterState, action: FilterAction): FilterState {
       } else if (filter.value) {
         activeFilters.push(filter);
       }
+      console.log(activeFilters);
       return {
         ...state,
         activeFilters
@@ -77,7 +82,11 @@ export const FilterContext: React.FC<FilterContextProps> = ({
   children 
 }) => {
   const [state, dispatch] = useReducer(filterReducer, { ...initialState, activeFilters });
-  const value = { state, dispatch };
+  const value = { 
+    activeFilters: state.activeFilters,
+    expandedGroup: state.expandedGroup, 
+    dispatch 
+  };
 
   /**
    * Emit a change event when state.activeFilters changes
@@ -90,9 +99,9 @@ export const FilterContext: React.FC<FilterContextProps> = ({
    * If activeFilters is changed from outside the context (e.g. filters are reset)
    * then the new value should be dispatched.
    */
-  useEffect(() => {
-    dispatch({ type: 'SET_ACTIVE_FILTERS', payload: activeFilters });
-  }, [activeFilters]);
+  // useEffect(() => {
+  //   dispatch({ type: 'SET_ACTIVE_FILTERS', payload: activeFilters });
+  // }, [activeFilters]);
 
   return (
     <FilterContextAPI.Provider value={value}>

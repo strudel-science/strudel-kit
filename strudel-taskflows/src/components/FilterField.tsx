@@ -56,9 +56,9 @@ export const FilterField: React.FC<FilterFieldProps> = ({
   filterProps,
   ...rest
 }) => {
-  const { state, dispatch } = useFilters();
+  const { activeFilters, dispatch } = useFilters();
   const [value, setValue] = useState<FilterValue<typeof filterComponent>>(null);
-  const currentFilter = state.activeFilters.find((filter) => filter.field === field);
+  const currentFilter = activeFilters.find((filter) => filter.field === field);
   const isActive = hasValue(currentFilter?.value);
 
   /**
@@ -133,7 +133,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
         );
       }
       case 'DateRange': {
-        const currentDateRange = state.activeFilters.find((filter) => filter.field === filter.field)?.value;
+        const currentDateRange = activeFilters.find((filter) => filter.field === filter.field)?.value;
         const hasValue = currentDateRange && Array.isArray(currentDateRange) && currentDateRange.length === 2;
         const currentMin = hasValue && Array.isArray(currentDateRange) ? currentDateRange[0] : null;
         const currentMax = hasValue && Array.isArray(currentDateRange) ? currentDateRange[1] : null;
@@ -202,7 +202,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
     } else if (hasValue(value)) {
       handleCancelFilter();
     }
-  },[JSON.stringify(state.activeFilters)]);
+  },[JSON.stringify(activeFilters)]);
 
   return (
     <Stack 

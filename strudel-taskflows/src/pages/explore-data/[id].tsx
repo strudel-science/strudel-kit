@@ -2,7 +2,7 @@ import { Box, Container, Paper, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { PageHeader } from '../../components/PageHeader';
-import { useExploreData } from './_context/ContextProvider';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * Work in Progress:
@@ -10,16 +10,16 @@ import { useExploreData } from './_context/ContextProvider';
  * Detail view for a selected row from the` <DataExplorer>` in the explore-data Task Flow.
  */
 const DataDetailPage: React.FC = () => {
-  const { state } = useExploreData();
   const params = useParams();
-  const entity = state.data?.find((d) => {
+  const dataIdField = taskflow.data.items.idField;
+  const columns = taskflow.pages.index.tableColumns;
+  const data: any[] = [];
+  const entity = data?.find((d) => {
     if (params.id) {
-      return d[state.dataIdField].toString() === params.id.toString();
+      return d[dataIdField].toString() === params.id.toString();
     }
   });
-  console.log(state);
-  console.log(entity);
-  const entityTitle = entity ? entity[state.columns[0].field] : 'Not Found';
+  const entityTitle = entity ? entity[columns[0].field] : 'Not Found';
 
   /**
    * Content to render on the page for this component
@@ -43,10 +43,10 @@ const DataDetailPage: React.FC = () => {
           >
             <Stack>
               <Typography fontWeight="bold">
-                {state.columns[1].field}
+                {columns[1].field}
               </Typography>
               <Typography>
-                {entity && entity[state.columns[1].field]}
+                {entity && entity[columns[1].field]}
               </Typography>
             </Stack>
           </Paper>

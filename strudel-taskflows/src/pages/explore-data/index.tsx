@@ -1,13 +1,12 @@
 import { Box, Grid, Paper } from '@mui/material';
 import React, { useState } from 'react';
-import { FiltersPanel } from './_components/FiltersPanel';
-import { PreviewPanel } from './_components/PreviewPanel';
+import { FilterContext } from '../../components/FilterContext';
 import { PageHeader } from '../../components/PageHeader';
-import { useExploreData } from './_context/ContextProvider';
-import { setPreviewItem } from './_context/actions';
-import { taskflow } from './_config/taskflow.config';
 import { DataView } from './_components/DataView';
 import { DataViewHeader } from './_components/DataViewHeader';
+import { FiltersPanel } from './_components/FiltersPanel';
+import { PreviewPanel } from './_components/PreviewPanel';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * Main explorer page in the explore-data Task Flow.
@@ -15,7 +14,8 @@ import { DataViewHeader } from './_components/DataViewHeader';
  * main table, and the table row preview panel.
  */
 const DataExplorer: React.FC = () => {
-  const {state, dispatch} = useExploreData();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [previewItem, setPreviewItem] = useState<any>();
   const [showFiltersPanel, setShowFiltersPanel] = useState(true);
 
   const handleCloseFilters = () => {
@@ -27,43 +27,52 @@ const DataExplorer: React.FC = () => {
   }
 
   const handleClosePreview = () => {
-    dispatch(setPreviewItem(null));
+    setPreviewItem(null);
   }
 
   return (
-    <Box>
-      <PageHeader
-        pageTitle={taskflow.pages.index.title}
-        description={taskflow.pages.index.description}
-        sx={{
-          marginBottom: 1,
-          padding: 2,
-        }}
-      />
-      <Grid container spacing={1}>
-        {showFiltersPanel && (
-          <Grid item xs={2}>
-            <FiltersPanel onClose={handleCloseFilters} />
+    <FilterContext>
+      <Box>
+        <PageHeader
+          pageTitle={taskflow.pages.index.title}
+          description={taskflow.pages.index.description}
+          sx={{
+            marginBottom: 1,
+            padding: 2,
+          }}
+        />
+        <Grid container spacing={1}>
+          {showFiltersPanel && (
+            <Grid item xs={2}>
+              <FiltersPanel onClose={handleCloseFilters} />
+            </Grid>
+          )}
+          <Grid item xs={getMainColumnSize(showFiltersPanel, !!previewItem)}>
+            <Paper
+              elevation={0}
+              sx={{
+                minHeight: '600px'
+              }}
+            >
+              <DataViewHeader
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                onToggleFiltersPanel={handleToggleFilters}
+              />
+              <DataView
+                searchTerm={searchTerm}
+                setPreviewItem={setPreviewItem}
+              />
+            </Paper>
           </Grid>
-        )}
-        <Grid item xs={getMainColumnSize(showFiltersPanel, !!state.previewItem)}>
-          <Paper
-            elevation={0}
-            sx={{
-              minHeight: '600px'
-            }}
-          >
-            <DataViewHeader onToggleFiltersPanel={handleToggleFilters} />
-            <DataView />
-          </Paper>
+          {previewItem && (
+            <Grid item xs={4}>
+              <PreviewPanel previewItem={previewItem} onClose={handleClosePreview} />
+            </Grid>
+          )}
         </Grid>
-        {state.previewItem && (
-          <Grid item xs={4}>
-            <PreviewPanel onClose={handleClosePreview} />
-          </Grid>
-        )}
-      </Grid>
-    </Box>
+      </Box>
+    </FilterContext>
   )
 }
 

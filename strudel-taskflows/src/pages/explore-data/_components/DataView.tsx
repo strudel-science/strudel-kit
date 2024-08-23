@@ -6,18 +6,23 @@ import { SciDataGrid } from '../../../components/SciDataGrid';
 import { filterData } from '../../../utils/filters.utils';
 import { createFilterParams } from '../../../utils/queryParams.utils';
 import { taskflow } from '../_config/taskflow.config';
-import { useExploreData } from '../_context/ContextProvider';
-import { setPreviewItem } from '../_context/actions';
+import { useFilters } from '../../../components/FilterContext';
 
+interface DataViewProps {
+  searchTerm: string;
+  setPreviewItem: React.Dispatch<React.SetStateAction<any>>;
+}
 /**
  * Query the data rows and render as an interactive table
  */
-export const DataView: React.FC = () => {
-  const { state, dispatch } = useExploreData();
+export const DataView: React.FC<DataViewProps> = ({ searchTerm, setPreviewItem }) => {
+  const { activeFilters } = useFilters();
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(25);
   const [offset, setOffest] = useState(page * pageSize);
   const dataSource = taskflow.data.items.source;
+  const dataIdField = taskflow.data.items.idField;
+  const columns = taskflow.pages.index.tableColumns;
   const filterConfigs = taskflow.pages.index.tableFilters;
   const queryMode = taskflow.data.items.queryMode;
   const staticParams = taskflow.data.items.staticParams;
@@ -26,7 +31,7 @@ export const DataView: React.FC = () => {
     queryParams = {
       limit: pageSize.toString(),
       offset: offset.toString(),
-      ...createFilterParams(state.activeFilters, state.filters)
+      ...createFilterParams(activeFilters, filterConfigs)
     }
   }
   const queryString = new URLSearchParams(queryParams).toString()
@@ -42,7 +47,7 @@ export const DataView: React.FC = () => {
   });
 
   const handleRowClick = (rowData: any) => {
-    dispatch(setPreviewItem(rowData.row));
+    setPreviewItem(rowData.row);
   };
 
   const handlePaginationModelChange = (model: GridPaginationModel) => {
@@ -88,13 +93,13 @@ export const DataView: React.FC = () => {
         <LinearProgress variant="indeterminate" />
       )}
       <SciDataGrid
-        rows={queryMode === 'server' ? data.results : filterData(data, state.activeFilters, filterConfigs, state.searchTerm)}
+        rows={queryMode === 'server' ? data.results : filterData(data, activeFilters, filterConfigs, searchTerm)}
         rowCount={queryMode === 'server' ? data.count : undefined}
         pagination
         paginationMode={queryMode}
         onPaginationModelChange={handlePaginationModelChange}
-        getRowId={(row) => row[state.dataIdField]}
-        columns={state.columns}
+        getRowId={(row) => row[dataIdField]}
+        columns={columns}
         disableColumnSelector
         autoHeight
         initialState={{

@@ -1,15 +1,8 @@
-import { Box, Stack } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers';
 import React from 'react';
-import { CheckboxList } from '../../../components/CheckboxList';
-import { StrudelSlider } from '../../../components/StrudelSlider';
-import { DataFilter, FilterConfig, FilterOperator } from '../../../types/filters.types';
-import { useExploreData } from '../_context/ContextProvider';
-import { setActiveFilters, setFilter } from '../_context/actions';
-import { taskflow } from '../_config/taskflow.config';
-import { Filters } from '../../../components/Filters';
+import { FilterState, useFilters } from '../../../components/FilterContext';
 import { FilterField } from '../../../components/FilterField';
-import { FilterState } from '../../../components/FilterContext';
+import { Filters } from '../../../components/Filters';
+import { taskflow } from '../_config/taskflow.config';
 
 interface FiltersPanelProps {
   onClose: () => any
@@ -21,11 +14,12 @@ interface FiltersPanelProps {
  * The input values will filter data in the main table.
  */
 export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => { 
-  const {state, dispatch} = useExploreData();
+  const { dispatch: filterDispatch } = useFilters();
 
-  const handleFiltersChange = (filters: FilterState["activeFilters"]) => {
-    dispatch(setActiveFilters(filters as DataFilter[]));
-  }
+  // const handleFiltersChange = (filters: FilterState["activeFilters"]) => {
+  //   filterDispatch({ type: 'SET_ACTIVE_FILTERS', payload: filters });
+  //   // setActiveFilters(filters as DataFilter[])
+  // }
 
   /**
    * Content to render on the page for this component
@@ -34,7 +28,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
     <Filters
       grouped={false}
       onClose={props.onClose}
-      onChange={handleFiltersChange}
+      // onChange={handleFiltersChange}
       sx={{
         border: 'none'
       }}
