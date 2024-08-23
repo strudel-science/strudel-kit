@@ -1,12 +1,13 @@
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Paper } from '@mui/material';
 import React, { useState } from 'react';
 import { FiltersPanel } from './_components/FiltersPanel';
 import { PreviewPanel } from './_components/PreviewPanel';
-import { DataTablePanel } from './_components/DataTablePanel';
 import { PageHeader } from '../../components/PageHeader';
 import { useExploreData } from './_context/ContextProvider';
 import { setPreviewItem } from './_context/actions';
 import { taskflow } from './_config/taskflow.config';
+import { DataView } from './_components/DataView';
+import { DataViewHeader } from './_components/DataViewHeader';
 
 /**
  * Main explorer page in the explore-data Task Flow.
@@ -29,9 +30,6 @@ const DataExplorer: React.FC = () => {
     dispatch(setPreviewItem(null));
   }
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <Box>
       <PageHeader
@@ -49,7 +47,15 @@ const DataExplorer: React.FC = () => {
           </Grid>
         )}
         <Grid item xs={getMainColumnSize(showFiltersPanel, !!state.previewItem)}>
-          <DataTablePanel onToggleFiltersPanel={handleToggleFilters} />
+          <Paper
+            elevation={0}
+            sx={{
+              minHeight: '600px'
+            }}
+          >
+            <DataViewHeader onToggleFiltersPanel={handleToggleFilters} />
+            <DataView />
+          </Paper>
         </Grid>
         {state.previewItem && (
           <Grid item xs={4}>

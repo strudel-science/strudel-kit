@@ -1,5 +1,6 @@
-import { SciDataGridColDef } from "@strudel-science/components"
-import { FilterComponent, FilterOperator } from "@strudel-science/components/dist/components/FilterField"
+import { FilterComponent } from "../../../components/FilterField"
+import { SciDataGridColDef } from "../../../components/SciDataGrid"
+import { FilterOperator, ParamType } from "../../../types/filters.types"
 
 /**
  * Type definitions for the Compare Data Task Flow config object
@@ -10,14 +11,17 @@ export interface ExploreDataConfig {
   data: {
     items: {
       source: string,
-      idField: string
+      idField: string,
+      queryMode: 'client' | 'server',
+      staticParams?: Record<string, string>
     },
     [key: string]: {
       source: string,
-      idField: string
+      idField: string,
+      queryMode: 'client' | 'server',
+      staticParams?: Record<string, string>
     }
   },
-  /** Cool pages */
   pages: {
     index: {
       title: string,
@@ -26,7 +30,9 @@ export interface ExploreDataConfig {
       tableFilters: {
         field: string,
         label: string,
-        operator: FilterOperator
+        operator?: FilterOperator,
+        paramType?: ParamType
+        paramTypeOptions?: any;
         filterComponent: FilterComponent,
         filterProps?: object
       }[]

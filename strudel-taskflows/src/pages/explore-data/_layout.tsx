@@ -11,7 +11,7 @@ import { taskflow } from './_config/taskflow.config';
  * Inner pages are rendered inside the `<Outlet />` component
  */
 const ExploreDataLayout: React.FC = () => {
-  const entities = useDataFromSource(taskflow.data.items.source);
+  // const entities = useDataFromSource(taskflow.data.items.source);
 
   /**
    * Content to render on the page for this component
@@ -23,7 +23,7 @@ const ExploreDataLayout: React.FC = () => {
       </Box>
       <Box>
         <ExploreDataProvider 
-          data={entities} 
+          data={[]} 
           columns={taskflow.pages.index.tableColumns} 
           filters={taskflow.pages.index.tableFilters} 
           dataIdField={taskflow.data.items.idField}

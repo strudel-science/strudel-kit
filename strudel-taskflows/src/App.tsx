@@ -9,6 +9,9 @@ import { AppProvider } from './context/ContextProvider';
 import { ApiModal } from './components/ApiModal';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { config } from '../strudel.config';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient()
 
 const App: React.FC = () => {
   
@@ -19,17 +22,18 @@ const App: React.FC = () => {
     document.title = config.title;
   }, []);
 
-  console.log(import.meta.env);
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <AppProvider>
-          <RouterProvider router={createBrowserRouter(routes, { basename: import.meta.env.VITE_BASE_URL })} />
-          <ApiModal />
-        </AppProvider>
-      </ThemeProvider>
-    </LocalizationProvider>
+    <QueryClientProvider client={queryClient}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <AppProvider>
+            <RouterProvider router={createBrowserRouter(routes, { basename: import.meta.env.VITE_BASE_URL })} />
+            <ApiModal />
+          </AppProvider>
+        </ThemeProvider>
+      </LocalizationProvider>
+    </QueryClientProvider>
   );
 }
 

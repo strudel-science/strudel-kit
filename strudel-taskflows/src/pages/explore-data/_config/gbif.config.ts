@@ -6,19 +6,15 @@ export const taskflow: ExploreDataConfig = {
       /**
        * Source of the data for the initial list of items on the main page.
        */
-      source: "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI",
+      source: "https://api.gbif.org/v1/occurrence/search",
       /**
        * Name of the field in the data that represents a unique identifier for each record.
        */
-      idField: "kepoi_name",
+      idField: "key",
       /**
        * Method by which data should be filtered, either client or server.
        */
-      queryMode: "client",
-      staticParams: {
-        table: 'cumulative',
-        format: 'json'
-      }
+      queryMode: "server"
     }
   },
   pages: {
@@ -36,28 +32,33 @@ export const taskflow: ExploreDataConfig = {
        */
       tableColumns: [
         {
-          field: "kepid",
-          headerName: "Kepler ID",
+          field: "scientificName",
+          headerName: "Name",
           width: 200
         },
         {
-          field: "kepoi_name",
-          headerName: "Name",
+          field: "decimalLatitude",
+          headerName: "Latitude",
           width: 150
         },
         {
-          field: "koi_disposition",
-          headerName: "koi_disposition",
+          field: "decimalLongitude",
+          headerName: "Longitude",
           width: 150
         },
         {
-          field: "koi_pdisposition",
-          headerName: "koi_pdisposition",
+          field: "year",
+          headerName: "Year",
           width: 150
         },
         {
-          field: "koi_period",
-          headerName: "koi_period",
+          field: "basisOfRecord",
+          headerName: "Basis of Record",
+          width: 150
+        },
+        {
+          field: "elevation",
+          headerName: "Elevation",
           width: 150,
           type: 'number'
         }
@@ -68,31 +69,47 @@ export const taskflow: ExploreDataConfig = {
        */
       tableFilters: [
         {
-          field: "koi_disposition",
-          label: "Disposition",
-          operator: "contains-one-of",
-          filterComponent: "CheckboxList",
-          filterProps: {
-            options: [
-              {
-                label: "CONFIRMED",
-                value: "CONFIRMED"
-              },
-              {
-                label: "FALSE POSITIVE",
-                value: "FALSE POSITIVE"
-              }
-            ]
-          }
-        },
-        {
-          field: "koi_period",
-          label: "Period",
-          operator: "between-inclusive",
+          field: "elevation",
+          label: "Elevation",
+          paramType: "array-string",
           filterComponent: "RangeSlider",
           filterProps: {
             min: 0,
             max: 100
+          }
+        },
+        {
+          field: "basisOfRecord",
+          label: "Basis of Record",
+          paramType: 'repeated',
+          filterComponent: "CheckboxList",
+          filterProps: {
+            options: [
+              {
+                label: "PRESERVED_SPECIMEN",
+                value: "PRESERVED_SPECIMEN"
+              },
+              {
+                label: "FOSSIL_SPECIMEN",
+                value: "FOSSIL_SPECIMEN"
+              },
+              {
+                label: "LIVING_SPECIMEN",
+                value: "LIVING_SPECIMEN"
+              },
+              {
+                label: "OBSERVATION",
+                value: "OBSERVATION"
+              },
+              {
+                label: "HUMAN_OBSERVATION",
+                value: "HUMAN_OBSERVATION"
+              },
+              {
+                label: "MACHINE_OBSERVATION",
+                value: "MACHINE_OBSERVATION"
+              }
+            ]
           }
         },
       ]
