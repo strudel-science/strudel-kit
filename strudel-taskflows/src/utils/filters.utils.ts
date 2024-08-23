@@ -15,14 +15,21 @@ export const filterBySearchText = (allData: any[], searchText?: string) => {
 export const filterByDataFilters = (allData: any[], filters: DataFilter[], filterConfigs: FilterConfig[]) => {
   let filteredData = allData;
   if (filters.length > 0) {
+    // Pre build map of filter to operator for performance boost
+    const filterOperatorMap: Record<string, string | undefined> = {};
+    filters.forEach((f) => {
+      if (filterConfigs) {
+        const filterConfig = filterConfigs.find((c) => c.field === f.field);
+        filterOperatorMap[f.field] = filterConfig?.operator;
+      }
+    })
     filteredData = allData.filter((d) => {
       let include = true;
       // All filters have to be matched for a row to be included in the filtered data
       filters.forEach((f) => {
         let match = false;
-        const filterConfig = filterConfigs.find((c) => c.field === f.field); 
-        if (filterConfig && include === true) {
-          switch (filterConfig.operator) {
+        if (include === true) {
+          switch (filterOperatorMap[f.field]) {
             case 'contains': {
               if (d[f.field].indexOf(f.value) > -1) {
                 match = true;
@@ -30,7 +37,6 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[], filte
               break;
             }
             case 'contains-one-of': {
-              console.log(f);
               if (Array.isArray(f.value)) {
                 f.value.forEach((v) => {
                   if (!match) {
@@ -50,8 +56,6 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[], filte
               break;
             }
             case 'equals-one-of': {
-              console.log(f.value);
-              console.log(d[f.field]);
               if (Array.isArray(f.value)) {
                 f.value.forEach((v) => {
                   if (!match) {
@@ -82,7 +86,6 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[], filte
               ) {
                 const dateValue = dayjs(d[f.field]);
                 if (dateValue.isAfter(f.value[0]) && dateValue.isBefore(f.value[1])) {
-                  console.log('match');
                   match = true;
                 }
               } else {

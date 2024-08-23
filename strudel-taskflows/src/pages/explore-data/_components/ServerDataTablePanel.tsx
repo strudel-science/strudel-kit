@@ -36,17 +36,12 @@ export const ServerDataTablePanel: React.FC<DataTablePanelProps> = (props) => {
       ...createFilterParams(state.activeFilters, state.filters)
     }
   }
-  console.log(queryParams)
   const queryString = new URLSearchParams(queryParams).toString()
 
   // Define query for this page and fetch data items
   const { isPending, isFetching, isError, data, error } = useQuery({
-    // queryKey: ['items', { pageSize, offset, ...filters }],
     queryKey: ['items', queryParams],
     queryFn: async (): Promise<any> => {
-      // const filterParams = buildParamsString(state.activeFilters, state.filters);
-      // const response = await fetch(`https://api.gbif.org/v1/occurrence/search?limit=${pageSize}&offset=${offset}&${filterParams}`);
-      console.log(queryString)
       const response = await fetch(`${dataSource}?${queryString}`);
       return await response.json();
     },
