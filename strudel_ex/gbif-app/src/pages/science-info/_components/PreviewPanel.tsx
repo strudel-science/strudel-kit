@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button, IconButton, Link, Paper, Stack, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link as RouterLink } from 'react-router-dom';
 import { LabelValueTable } from '../../../components/LabelValueTable';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useExploreData } from '../_context/ContextProvider';
 
 interface PreviewPanelProps {
-  onClose: () => any
+  onClose: () => any;
 }
 
 /**
@@ -15,7 +15,26 @@ interface PreviewPanelProps {
  * next to the `<DataTablePanel>`.
  */
 export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
-  const {state, dispatch} = useExploreData();
+  const { state } = useExploreData(); // Access the state from the context provider
+  const [relatedRows, setRelatedRows] = useState<any[]>([]); // State to hold related data rows
+
+  // Effect to update relatedRows when state.previewItem changes
+  useEffect(() => {
+    if (state.previewItem) {
+      const emptyRows = Array(1).fill(0); // Create an array with one empty element
+      const rows = emptyRows.map((_, i) => ({
+        id: i,
+        family: state.previewItem['family'], 
+        species: state.previewItem['species'],
+        kingdom: state.previewItem['kingdom'],
+      }));
+      setRelatedRows(rows); // Update relatedRows state with the new data
+    }
+  }, [state.previewItem]); // Re-run effect when state.previewItem changes
+
+  if (!state.previewItem) {
+    return null; // Return null if there is no preview item
+  }
 
   /**
    * Content to render on the page for this component
@@ -33,41 +52,46 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
           <Stack direction="row">
             <Typography variant="h6" component="h3" flex={1}>
               <Link component={RouterLink} to={`${state.previewItem[state.dataIdField]}`} underline="hover">
-                {state.previewItem[state.columns[0].field]}
+                {state.previewItem[state.columns[0].field]} {/* Display the first column field */}
               </Link>
             </Typography>
-            <IconButton size="small" onClick={props.onClose}><CloseIcon /></IconButton>
+            <IconButton size="small" onClick={props.onClose}><CloseIcon /></IconButton> {/* Close button */}
           </Stack>
-          <Typography variant="body2">Row description, subtitle, or helper text.</Typography>
+          <Box>
+            <Typography fontWeight="medium" mb={1}>Common Name & Year of Discovery</Typography>
+            <LabelValueTable 
+              rows={[
+                { label: 'Common Name & YOD', value: state.previewItem['genericName'] }, // Display common name and year of discovery
+              ]}
+            />
+          </Box>
         </Stack>
         <Box>
-          <Typography fontWeight="medium" mb={1}>Property Group 1</Typography>
+          <Typography fontWeight="medium" mb={1}>Parallels</Typography>
           <LabelValueTable 
             rows={[
-              { label: 'Property 1', value: 'value' },
-              { label: 'Property 2', value: 'value' },
-              { label: 'Property 3', value: 'value' },
+              { label: 'Latitude', value: state.previewItem['decimalLatitude'] }, // Display latitude
+              { label: 'Longitude', value: state.previewItem['decimalLongitude'] }, // Display longitude
             ]}
           />
         </Box>
         <Box>
-          <Typography fontWeight="medium" mb={1}>Property Group 2</Typography>
+          <Typography fontWeight="medium" mb={1}>Time and Place</Typography>
           <LabelValueTable 
             rows={[
-              { label: 'Property 4', value: 'value' },
-              { label: 'Property 5', value: 'value' },
+              { label: 'Year', value: state.previewItem['year'] }, // Display year
+              { label: 'Region', value: state.previewItem['gbifRegion'] }, // Display GBIF region
+              { label: 'Country', value: state.previewItem['country'] }, // Display country
             ]}
           />
         </Box>
         <Box>
           <Typography fontWeight="medium" mb={1}>Related Data</Typography>
           <DataGrid
-            rows={relatedRows}
-            columns={relatedColumns}
+            rows={relatedRows} // Set related rows data
+            columns={relatedColumns as GridColDef[]} // Set columns for related data
             disableRowSelectionOnClick
-            initialState={{
-              pagination: { paginationModel: { pageSize: 5 } }
-            }}
+            autoHeight
           />
         </Box>
         <Stack direction="row">
@@ -88,33 +112,27 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
 /**
  * Placeholder columns for related data table
  */
-const relatedColumns = [
+const relatedColumns: GridColDef[] = [
   { 
     field: 'id', 
     headerName: 'ID', 
     width: 50 
   },
   { 
-    field: 'attr1', 
-    headerName: 'Attribute 1', 
+    field: 'family', 
+    headerName: 'Family', 
     width: 100 
   },
   { 
-    field: 'attr2', 
-    headerName: 'Attribute 2', 
+    field: 'species', 
+    headerName: 'Species', 
     width: 100 
   },
   { 
-    field: 'attr3', 
-    headerName: 'Attribute 3', 
+    field: 'kingdom', 
+    headerName: 'Kingdom', 
     width: 100 
   },
 ];
 
-/**
- * Placeholder rows for related data table
- */
-const emptyRows = Array(25).fill(0);
-const relatedRows = emptyRows.map((d, i) => {
-  return { id: i, attr1: 'value', attr2: 'value', attr3: 'value'}
-});
+export default PreviewPanel;
