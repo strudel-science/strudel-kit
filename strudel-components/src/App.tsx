@@ -13,8 +13,8 @@ function App() {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <ThemeProvider theme={createTheme()}>
         <CssBaseline />
-        {/* <SciDataGridEx /> */}
-        <FiltersExGroups />
+        <SciDataGridEx />
+        {/* <FiltersExGroups /> */}
         {/* <FiltersExNoGroups /> */}
       </ThemeProvider>
     </LocalizationProvider>

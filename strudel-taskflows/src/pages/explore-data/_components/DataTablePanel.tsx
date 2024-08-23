@@ -1,8 +1,8 @@
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { Button, Paper, Stack, TextField, Typography } from '@mui/material';
 import { GridEventListener } from '@mui/x-data-grid';
+import { SciDataGrid } from '@strudel-science/components';
 import React from 'react';
-import { DataGrid } from '@mui/x-data-grid';
 import { useExploreData } from '../_context/ContextProvider';
 import { setPreviewItem, setSearch } from '../_context/actions';
 
@@ -18,7 +18,7 @@ interface DataTablePanelProps {
 export const DataTablePanel: React.FC<DataTablePanelProps> = (props) => { 
   const {state, dispatch} = useExploreData();
 
-  const handleRowClick: GridEventListener<'rowClick'> = (rowData) => {
+  const handleRowClick: GridEventListener<"rowClick"> = (rowData) => {
     dispatch(setPreviewItem(rowData.row));
   };
 
@@ -53,9 +53,9 @@ export const DataTablePanel: React.FC<DataTablePanelProps> = (props) => {
           onChange={handleSearch}
         />
       </Stack>
-      <DataGrid
+      <SciDataGrid
         rows={state.filteredData || []}
-        getRowId={(row) => row[state.dataIdField]}
+        getRowId={(row: any) => row[state.dataIdField]}
         columns={state.columns}
         disableColumnSelector
         initialState={{
@@ -64,6 +64,7 @@ export const DataTablePanel: React.FC<DataTablePanelProps> = (props) => {
         {...props}
         onRowClick={handleRowClick}
         sx={{
+          border: 'none',
           '& .MuiDataGrid-cell:focus-within': {
             outline: 'none'
           },

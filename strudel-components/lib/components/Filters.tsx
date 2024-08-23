@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { FilterContext, FilterState } from './FilterContext';
 import { hasValue } from './FilterField';
 
-interface FilterPanelProps extends PaperProps {
-  onChange?: (filters: FilterState['activeFilters']) => void;
+interface FilterPanelProps extends Omit<PaperProps, 'onChange'> {
+  onChange?: (activeFilters: FilterState['activeFilters']) => void;
   onClose?: () => any;
   config?: any;
   header?: React.ReactNode;
@@ -26,7 +26,7 @@ export const Filters: React.FC<FilterPanelProps> = ({
   children,
   ...rest
 }) => { 
-  const [activeFilters, setActiveFilters] = useState<any>({});
+  const [activeFilters, setActiveFilters] = useState<any>([]);
 
   /**
    * Count the number of active filters in this group by using
@@ -49,7 +49,7 @@ export const Filters: React.FC<FilterPanelProps> = ({
   }
 
   const handleReset = () => {
-    setActiveFilters({});
+    setActiveFilters([]);
   }
 
   useEffect(() => {
@@ -63,10 +63,11 @@ export const Filters: React.FC<FilterPanelProps> = ({
         variant="outlined"
         {...rest}
       >
-        <Stack>
+        <Stack spacing={0}>
           {header && (
             <Stack 
               direction="row" 
+              spacing={0}
               alignItems="center"
               sx={{
                 borderBottom: '1px solid',
@@ -100,7 +101,7 @@ export const Filters: React.FC<FilterPanelProps> = ({
             </Stack>
           )}
           {grouped && (
-            <Stack>
+            <Stack spacing={0}>
               {children}
             </Stack>
           )}

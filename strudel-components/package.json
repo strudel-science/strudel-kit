@@ -1,7 +1,7 @@
 {
   "name": "@strudel-science/components",
-  "private": true,
-  "version": "0.0.1",
+  "private": false,
+  "version": "0.0.2",
   "type": "module",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
     "preview": "vite preview",
     "docgen": "react-docgen"
   },
-  "main": "dist/strudel-components.js",
+  "main": "dist/components.js",
   "types": "dist/main.d.ts",
   "files": [
     "dist"
@@ -38,11 +38,11 @@
   },
   "peerDependencies": {
     "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "@mui/icons-material": "^5.15.15",
-    "@mui/material": "^5.15.15",
-    "@mui/x-data-grid": "^7.11.0",
-    "@mui/x-date-pickers": "^7.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.14",
+    "@mui/material": "^5.15.14",
+    "@mui/x-data-grid": "^7.0.0",
+    "@mui/x-date-pickers": "^7.0.0",
     "dayjs": "^1.11.12",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"

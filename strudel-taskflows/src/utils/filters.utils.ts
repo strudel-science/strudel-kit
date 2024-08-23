@@ -24,13 +24,13 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
         let match = false;
         if (include === true) {
           switch (f.operator) {
-            case FilterOperator.CONTAINS: {
+            case 'contains': {
               if (d[f.field].indexOf(f.value) > -1) {
                 match = true;
               }
               break;
             }
-            case FilterOperator.CONTAINS_ONE_OF: {
+            case 'contains-one-of': {
               if (Array.isArray(f.value)) {
                 f.value.forEach((v) => {
                   if (!match) {
@@ -49,7 +49,7 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
               }
               break;
             }
-            case FilterOperator.EQUALS_ONE_OF: {
+            case 'equals-one-of': {
               console.log(f.value);
               console.log(d[f.field]);
               if (Array.isArray(f.value)) {
@@ -63,7 +63,7 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
               }
               break;
             }
-            case FilterOperator.BETWEEN_INCLUSIVE: {
+            case 'between-inclusive': {
               if (Array.isArray(f.value)) {
                 const min = f.value[0];
                 const max = f.value[1];
@@ -73,7 +73,7 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
               }
               break;
             }
-            case FilterOperator.BETWEEN_DATES_INCLUSIVE: {
+            case 'between-dates-inclusive': {
               if (
                 typeof d[f.field] === 'string' 
                 && Array.isArray(f.value)
