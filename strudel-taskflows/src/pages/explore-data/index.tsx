@@ -43,7 +43,7 @@ const DataExplorer: React.FC = () => {
         />
         <Grid container spacing={1}>
           {showFiltersPanel && (
-            <Grid item xs={2}>
+            <Grid item sm={3}>
               <FiltersPanel onClose={handleCloseFilters} />
             </Grid>
           )}
@@ -80,11 +80,11 @@ const getMainColumnSize = (showFiltersPanel: boolean, showPreviewPanel: boolean)
   if (!showFiltersPanel && !showPreviewPanel) {
     return 12;
   } else if (showFiltersPanel && !showPreviewPanel) {
-    return 10;
+    return 9;
   } else if (!showFiltersPanel && showPreviewPanel) {
     return 8;
   } else if (showFiltersPanel && showPreviewPanel) {
-    return 6;
+    return 5;
   }
 }
 
