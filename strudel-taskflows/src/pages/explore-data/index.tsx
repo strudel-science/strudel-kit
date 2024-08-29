@@ -1,4 +1,4 @@
-import { Box, Grid, Paper } from '@mui/material';
+import { Box, Grid, Paper, Stack } from '@mui/material';
 import React, { useState } from 'react';
 import { FilterContext } from '../../components/FilterContext';
 import { PageHeader } from '../../components/PageHeader';
@@ -41,17 +41,23 @@ const DataExplorer: React.FC = () => {
             padding: 2,
           }}
         />
-        <Grid container spacing={1}>
-          {showFiltersPanel && (
-            <Grid item sm={3}>
-              <FiltersPanel onClose={handleCloseFilters} />
-            </Grid>
-          )}
-          <Grid item xs={getMainColumnSize(showFiltersPanel, !!previewItem)}>
+        <Box>
+          <Stack direction="row">
+            {showFiltersPanel && (
+              <Box
+                sx={{
+                  width: '350px'
+                }}
+              >
+                <FiltersPanel onClose={handleCloseFilters} />
+              </Box>
+            )}
             <Paper
               elevation={0}
               sx={{
-                minHeight: '600px'
+                flex: 1,
+                minHeight: '600px',
+                minWidth: 0,
               }}
             >
               <DataViewHeader
@@ -64,28 +70,20 @@ const DataExplorer: React.FC = () => {
                 setPreviewItem={setPreviewItem}
               />
             </Paper>
-          </Grid>
-          {previewItem && (
-            <Grid item xs={4}>
-              <PreviewPanel previewItem={previewItem} onClose={handleClosePreview} />
-            </Grid>
-          )}
-        </Grid>
+            {previewItem && (
+              <Box
+                sx={{
+                  minWidth: '400px'
+                }}
+              >
+                <PreviewPanel previewItem={previewItem} onClose={handleClosePreview} />
+              </Box>
+            )}
+          </Stack>
+        </Box>
       </Box>
     </FilterContext>
   )
-}
-
-const getMainColumnSize = (showFiltersPanel: boolean, showPreviewPanel: boolean) => {
-  if (!showFiltersPanel && !showPreviewPanel) {
-    return 12;
-  } else if (showFiltersPanel && !showPreviewPanel) {
-    return 9;
-  } else if (!showFiltersPanel && showPreviewPanel) {
-    return 8;
-  } else if (showFiltersPanel && showPreviewPanel) {
-    return 5;
-  }
 }
 
 export default DataExplorer;
