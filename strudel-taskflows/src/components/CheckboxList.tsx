@@ -39,8 +39,9 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
   };
 
   useEffect(() => {
-    console.log(checkValues)
-    if (onChange) onChange(checkValues);
+    if (onChange && checkValues?.length !== values?.length) {
+      onChange(checkValues);
+    }
   }, [checkValues]);
 
   useEffect(() => {

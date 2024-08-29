@@ -43,15 +43,10 @@ function filterReducer(state: FilterState, action: FilterAction): FilterState {
       } else if (filter.value) {
         activeFilters.push(filter);
       }
-      console.log(activeFilters);
       return {
         ...state,
         activeFilters
       }
-      // return {
-      //   ...state,
-      //   activeFilters: { ...state.activeFilters, [action.payload.field]: action.payload.value }
-      // }
     }
     case 'SET_ACTIVE_FILTERS': {
       return {
@@ -94,14 +89,6 @@ export const FilterContext: React.FC<FilterContextProps> = ({
   useEffect(() => {
     if (onChange) onChange(state.activeFilters);
   }, [JSON.stringify(state.activeFilters)]);
-
-  /**
-   * If activeFilters is changed from outside the context (e.g. filters are reset)
-   * then the new value should be dispatched.
-   */
-  // useEffect(() => {
-  //   dispatch({ type: 'SET_ACTIVE_FILTERS', payload: activeFilters });
-  // }, [activeFilters]);
 
   return (
     <FilterContextAPI.Provider value={value}>

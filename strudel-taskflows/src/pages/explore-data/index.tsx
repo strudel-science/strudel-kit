@@ -1,4 +1,4 @@
-import { Box, Grid, Paper, Stack } from '@mui/material';
+import { Box, Paper, Stack } from '@mui/material';
 import React, { useState } from 'react';
 import { FilterContext } from '../../components/FilterContext';
 import { PageHeader } from '../../components/PageHeader';
