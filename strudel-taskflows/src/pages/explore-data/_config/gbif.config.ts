@@ -2,9 +2,12 @@ import { ExploreDataConfig } from "./taskflow.types";
 
 export const taskflow: ExploreDataConfig = {
   data: {
+    /**
+     * Data definition for the initial items list
+     */
     items: {
       /**
-       * Source of the data for the initial list of items on the main page.
+       * URL or path to the data source
        */
       source: "https://api.gbif.org/v1/occurrence/search",
       /**
@@ -14,7 +17,20 @@ export const taskflow: ExploreDataConfig = {
       /**
        * Method by which data should be filtered, either client or server.
        */
-      queryMode: "server"
+      queryMode: "server",
+      /**
+       * Key-value object of params that should always be included in the query URL
+       */
+      staticParams: null
+    },
+    /**
+     * Data definition for the item detail page
+     */
+    item: {
+      source: "https://api.gbif.org/v1/occurrence",
+      idField: "key",
+      queryMode: "server",
+      staticParams: null
     }
   },
   pages: {

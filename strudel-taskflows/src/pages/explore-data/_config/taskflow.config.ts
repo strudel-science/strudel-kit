@@ -2,9 +2,12 @@ import { ExploreDataConfig } from "./taskflow.types";
 
 export const taskflow: ExploreDataConfig = {
   data: {
+    /**
+     * Data definition for the initial items list
+     */
     items: {
       /**
-       * Source of the data for the initial list of items on the main page.
+       * URL or path to the data source
        */
       source: "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI",
       /**
@@ -14,6 +17,21 @@ export const taskflow: ExploreDataConfig = {
       /**
        * Method by which data should be filtered, either client or server.
        */
+      queryMode: "client",
+      /**
+       * Key-value object of params that should always be included in the query URL
+       */
+      staticParams: {
+        table: 'cumulative',
+        format: 'json'
+      }
+    },
+    /**
+     * Data definition for the item detail page
+     */
+    item: {
+      source: "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI",
+      idField: "kepoi_name",
       queryMode: "client",
       staticParams: {
         table: 'cumulative',
@@ -42,22 +60,22 @@ export const taskflow: ExploreDataConfig = {
         },
         {
           field: "kepoi_name",
-          headerName: "Name",
+          headerName: "Kepler OI Name",
+          width: 150
+        },
+        {
+          field: "kepler_name",
+          headerName: "Kepler Name",
           width: 150
         },
         {
           field: "koi_disposition",
-          headerName: "koi_disposition",
-          width: 150
-        },
-        {
-          field: "koi_pdisposition",
-          headerName: "koi_pdisposition",
+          headerName: "Disposition",
           width: 150
         },
         {
           field: "koi_period",
-          headerName: "koi_period",
+          headerName: "Period",
           width: 150,
           type: 'number'
         }
