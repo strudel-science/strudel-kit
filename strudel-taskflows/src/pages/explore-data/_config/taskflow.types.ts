@@ -13,13 +13,13 @@ export interface ExploreDataConfig {
       source: string,
       idField: string,
       queryMode: 'client' | 'server',
-      staticParams?: Record<string, string>
+      staticParams?: Record<string, string> | null
     },
     [key: string]: {
       source: string,
       idField: string,
       queryMode: 'client' | 'server',
-      staticParams?: Record<string, string>
+      staticParams?: Record<string, string> | null
     }
   },
   pages: {
