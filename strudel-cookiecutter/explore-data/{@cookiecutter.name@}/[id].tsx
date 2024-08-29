@@ -2,24 +2,49 @@ import { Box, Container, Paper, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { PageHeader } from '../../components/PageHeader';
-import { useExploreData } from './_context/ContextProvider';
+import { taskflow } from './_config/taskflow.config';
+import { useQuery } from '@tanstack/react-query';
+
+interface DataDetailPageProps {
+  item: any
+}
 
 /**
- * Work in Progress:
- * 
  * Detail view for a selected row from the` <DataExplorer>` in the explore-data Task Flow.
  */
-const DataDetailPage: React.FC = () => {
-  const {state, dispatch} = useExploreData();
+const DataDetailPage: React.FC<DataDetailPageProps> = ({ item }) => {
   const params = useParams();
-  const entity = state.data?.find((d) => {
-    if (params.id) {
-      return d[state.dataIdField].toString() === params.id.toString();
+  const dataSource = taskflow.data.item.source;
+  const dataIdField = taskflow.data.items.idField;
+  const columns = taskflow.pages.index.tableColumns;
+  const queryMode = taskflow.data.items.queryMode;
+  const staticParams = taskflow.data.items.staticParams;
+  let queryParams = { ...staticParams };
+  const queryString = new URLSearchParams(queryParams).toString();
+  let queryFn;
+  if (queryMode === 'server') {
+    queryFn = async (): Promise<any> => {
+      const response = await fetch(`${dataSource}/${params.id}?${queryString}`);
+      return await response.json();
     }
+  } else if (queryMode === 'client') {
+    queryFn = async (): Promise<any> => {
+      const response = await fetch(`${dataSource}?${queryString}`);
+      const results = await response.json();
+      return results?.find((d: any) => {
+        if (params.id) {
+          return d[dataIdField].toString() === params.id.toString();
+        }
+      });
+    }
+  }
+
+
+  // Define query for this page and fetch data items
+  const { isPending, isFetching, isError, data, error } = useQuery({
+    queryKey: ['item', params.id, queryParams],
+    queryFn,
   });
-  console.log(state);
-  console.log(entity);
-  const entityTitle = entity ? entity[state.columns[0].field] : 'Not Found';
 
   /**
    * Content to render on the page for this component
@@ -27,7 +52,7 @@ const DataDetailPage: React.FC = () => {
   return (
     <Box>
       <PageHeader
-        pageTitle={entityTitle}
+        pageTitle={data ? data[dataIdField] : ''}
         breadcrumbTitle="Data Detail"
         sx={{
           marginBottom: 1,
@@ -43,19 +68,12 @@ const DataDetailPage: React.FC = () => {
           >
             <Stack>
               <Typography fontWeight="bold">
-                {state.columns[1].field}
+                {columns[1].field}
               </Typography>
               <Typography>
-                {entity && entity[state.columns[1].field]}
+                {data && data[columns[1].field]}
               </Typography>
             </Stack>
-          </Paper>
-          <Paper
-            sx={{
-              padding: 2
-            }}
-          >
-            More coming soon!
           </Paper>
         </Stack>
       </Container>

@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { DataFilter, FilterOperator } from "../types/filters.types";
+import { DataFilter, FilterConfig, FilterOperator } from "../types/filters.types";
 
 export const filterBySearchText = (allData: any[], searchText?: string) => {
   let filteredData = allData;
@@ -12,25 +12,31 @@ export const filterBySearchText = (allData: any[], searchText?: string) => {
   return filteredData;
 };
 
-export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
+export const filterByDataFilters = (allData: any[], filters: DataFilter[], filterConfigs: FilterConfig[]) => {
   let filteredData = allData;
   if (filters.length > 0) {
+    // Pre build map of filter to operator for performance boost
+    const filterOperatorMap: Record<string, string | undefined> = {};
+    filters.forEach((f) => {
+      if (filterConfigs) {
+        const filterConfig = filterConfigs.find((c) => c.field === f.field);
+        filterOperatorMap[f.field] = filterConfig?.operator;
+      }
+    })
     filteredData = allData.filter((d) => {
       let include = true;
-      /**
-       * All filters have to be matched for a row to be included in the filtered data
-       */
+      // All filters have to be matched for a row to be included in the filtered data
       filters.forEach((f) => {
         let match = false;
         if (include === true) {
-          switch (f.operator) {
-            case FilterOperator.CONTAINS: {
+          switch (filterOperatorMap[f.field]) {
+            case 'contains': {
               if (d[f.field].indexOf(f.value) > -1) {
                 match = true;
               }
               break;
             }
-            case FilterOperator.CONTAINS_ONE_OF: {
+            case 'contains-one-of': {
               if (Array.isArray(f.value)) {
                 f.value.forEach((v) => {
                   if (!match) {
@@ -49,9 +55,7 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
               }
               break;
             }
-            case FilterOperator.EQUALS_ONE_OF: {
-              console.log(f.value);
-              console.log(d[f.field]);
+            case 'equals-one-of': {
               if (Array.isArray(f.value)) {
                 f.value.forEach((v) => {
                   if (!match) {
@@ -63,7 +67,7 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
               }
               break;
             }
-            case FilterOperator.BETWEEN_INCLUSIVE: {
+            case 'between-inclusive': {
               if (Array.isArray(f.value)) {
                 const min = f.value[0];
                 const max = f.value[1];
@@ -73,7 +77,7 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
               }
               break;
             }
-            case FilterOperator.BETWEEN_DATES_INCLUSIVE: {
+            case 'between-dates-inclusive': {
               if (
                 typeof d[f.field] === 'string' 
                 && Array.isArray(f.value)
@@ -82,7 +86,6 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
               ) {
                 const dateValue = dayjs(d[f.field]);
                 if (dateValue.isAfter(f.value[0]) && dateValue.isBefore(f.value[1])) {
-                  console.log('match');
                   match = true;
                 }
               } else {
@@ -102,9 +105,10 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
   return filteredData;
 };
 
-export const filterData = (allData: any[], filters: DataFilter[], searchText?: string) => {
+export const filterData = (allData: any[], filters: DataFilter[], filterConfigs: FilterConfig[], searchText?: string) => {
+  console.log(searchText);
   const filteredByText = filterBySearchText(allData, searchText);
-  const filteredByTextAndDataFilters = filterByDataFilters(filteredByText, filters);
+  const filteredByTextAndDataFilters = filterByDataFilters(filteredByText, filters, filterConfigs);
   return filteredByTextAndDataFilters;
 }
 
@@ -117,3 +121,4 @@ export const initSliderTicks = (ticks: number | null, domain: number[], scale?: 
     return;
   }
 };
+

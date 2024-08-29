@@ -14,7 +14,7 @@ import { useSearchDataRepositories } from './_context/ContextProvider';
  * card title or the link in the `<PreviewPanel>`.
  */
 const DatasetDetail: React.FC = () => {
-  const {state, dispatch} = useSearchDataRepositories();
+  const { state } = useSearchDataRepositories();
   const params = useParams();
   const dataset = state.data?.find((d) => {
     if (params.id) {

@@ -1,8 +1,7 @@
-import React, { ReactNode, useEffect, useState } from 'react';
-import { Box, Button, Checkbox, FormControlLabel, FormGroup, FormGroupProps, FormLabel, IconButton, Paper, PaperProps, Stack, TextField, TextFieldProps, Typography } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import { Checkbox, FormControlLabel, FormGroup, FormGroupProps } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 
-type CheckboxOptionValue = string | number;
+export type CheckboxOptionValue = string | number;
 
 export interface CheckboxOption {
   label: string;
@@ -10,6 +9,7 @@ export interface CheckboxOption {
 }
 
 interface CheckboxListProps extends Omit<FormGroupProps, 'onChange'> {
+  values: CheckboxOptionValue[] | null;
   options: CheckboxOption[];
   onChange?: (values: CheckboxOptionValue[] | null) => any;
 }
@@ -17,42 +17,57 @@ interface CheckboxListProps extends Omit<FormGroupProps, 'onChange'> {
 export const CheckboxList: React.FC<CheckboxListProps> = ({
   options = [],
   onChange,
+  values,
+  sx,
   ...rest
 }) => {
-  const [values, setValues] = useState<CheckboxOptionValue[] | null>(null);
+  const [checkValues, setCheckValues] = useState<CheckboxOptionValue[] | null>(values);
   
   const handleChange = (checked: boolean, value: CheckboxOption['value']) => {
-    if (values === null && checked) {
-      setValues([value]);
-    } else if (values !== null && checked) {
-      setValues([...values, value]);
-    } else if (values !== null && !checked) {
-      const newValues = values.filter((v) => v !== value);
+    if (checkValues === null && checked) {
+      setCheckValues([value]);
+    } else if (checkValues !== null && checked) {
+      setCheckValues([...checkValues, value]);
+    } else if (checkValues !== null && !checked) {
+      const newValues = checkValues.filter((v) => v !== value);
       if (newValues.length > 0) {
-        setValues(newValues);
+        setCheckValues(newValues);
       } else {
-        setValues(null);
+        setCheckValues(null);
       }
     }
   };
 
   useEffect(() => {
-    if (onChange) onChange(values);
+    if (onChange && checkValues?.length !== values?.length) {
+      onChange(checkValues);
+    }
+  }, [checkValues]);
+
+  useEffect(() => {
+    setCheckValues(values);
   }, [values]);
 
   return (
-    <FormGroup {...rest}>
+    <FormGroup
+      sx={{
+        display: 'inline-flex',
+        ...sx
+      }}
+      {...rest}
+    >
       {options.map((option, i) => (
         <FormControlLabel
           key={`${option}-${i}`}
           label={option.label}
           control={
-            <Checkbox 
+            <Checkbox
+              checked={!!checkValues && checkValues.indexOf(option.value) > -1}
               value={option.value}
               onChange={(e, checked) => handleChange(checked, option.value)}
               sx={{
                 pr: 1,
-                pl: 0,
+                pl: 1,
                 pb: 0,
                 pt: 0
               }}
