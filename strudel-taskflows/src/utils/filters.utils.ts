@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { DataFilter, FilterConfig, FilterOperator } from "../types/filters.types";
+import { DataFilter, FilterConfig } from "../types/filters.types";
 
 export const filterBySearchText = (allData: any[], searchText?: string) => {
   let filteredData = allData;
