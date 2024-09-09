@@ -94,7 +94,7 @@ export const DataView: React.FC<DataViewProps> = ({ searchTerm, setPreviewItem }
       )}
       <SciDataGrid
         rows={queryMode === 'server' ? data.results : filterData(data, activeFilters, filterConfigs, searchTerm)}
-        rowCount={queryMode === 'server' ? data.count : undefined}
+        rowCount={queryMode === 'server' ? data.count : null}
         pagination
         paginationMode={queryMode}
         onPaginationModelChange={handlePaginationModelChange}
