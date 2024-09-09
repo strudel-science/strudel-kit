@@ -20,12 +20,12 @@ export const DataView: React.FC<DataViewProps> = ({ searchTerm, setPreviewItem }
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(25);
   const [offset, setOffest] = useState(page * pageSize);
-  const dataSource = taskflow.data.items.source;
-  const dataIdField = taskflow.data.items.idField;
+  const dataSource = taskflow.data.list.source;
+  const dataIdField = taskflow.data.list.idField;
   const columns = taskflow.pages.index.tableColumns;
   const filterConfigs = taskflow.pages.index.tableFilters;
-  const queryMode = taskflow.data.items.queryMode;
-  const staticParams = taskflow.data.items.staticParams;
+  const queryMode = taskflow.data.list.queryMode;
+  const staticParams = taskflow.data.list.staticParams;
   let queryParams = { ...staticParams };
   if (queryMode === 'server') {
     queryParams = {
