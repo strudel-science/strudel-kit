@@ -1,0 +1,169 @@
+# US-RSE Tutorial
+
+This is a follow along guide to the US-RSE tutorial conducted over Zoom. Use this guide to follow along with all of the code edits made live during the tutorial demonstration.
+
+## Explore Data Task Flow Template
+
+### Task Flow Configuration
+
+Each Task Flow is configured inside of a file called `taskflow.config.ts`. You can find this file in `src/pages/explore-data/_config` folder.
+
+#### Data List Object
+
+First update the `list` object inside the `data` section of the config:
+
+```js
+{
+  data: {
+    list: { 
+      ... 
+    }
+  }
+}
+```
+
+Update the `source` property to point to the GBIF occurrence search endpoint:
+
+```js
+source: "https://api.gbif.org/v1/occurrence/search",
+```
+
+There are no `staticParams` needed for this example, so set that to null:
+
+```js
+staticParams: null,
+```
+
+Set the `idField` to `"key"` to match the name of the unique identifier field in the GBIF data:
+
+```js
+idField: "key",
+```
+
+The GBIF API uses server-side pagination and filters, so change the `queryMode` to `"server"`:
+
+```js
+queryMode: "server",
+```
+
+#### Data Detail Object
+
+The `detail` object inside the `data` section should have the same values as the `list` object, except the `source` should point to the GBIF occurrence main endpoint (https://api.gbif.org/v1/occurrence) so that it returns a single item instead of a list. Here's what the whole `detail` object should look like:
+
+```js
+detail: {
+  source: "https://api.gbif.org/v1/occurrence",
+  staticParams: null,
+  idField: "key",
+  queryMode: "server",
+}
+```
+
+#### Index Page Titles
+
+Next are the configurations for the content on the index page:
+
+```
+{
+  pages: {
+    index: {
+      ...
+    }
+  }
+}
+```
+
+Update the `title` to better reflect the new app we are building:
+
+```js
+title: "Biodiversity Explorer",
+```
+
+Do the same for the `description` property:
+
+```js
+description: "Explore species observations around the world.",
+```
+
+#### Index Page Columns
+
+Update the column definitions to include four columns from the GBIF occurrence endpoint:
+
+```js
+tableColumns: [
+  {
+    field: "scientificName",
+    headerName: "Name",
+    width: 200
+  },
+  {
+    field: "year",
+    headerName: "Year",
+    width: 150
+  },
+  {
+    field: "basisOfRecord",
+    headerName: "Basis of Record",
+    width: 150
+  },
+  {
+    field: "elevation",
+    headerName: "Elevation",
+    width: 150,
+    type: 'number'
+  }
+],
+```
+
+#### Index Page Filters
+
+Update the filter definitions so that there are two filters: one, a slider, for the elevation field, and two, checkboxes, for the basisOfRecord field:
+
+```js
+tableFilters: [
+  {
+    field: "elevation",
+    label: "Elevation",
+    paramType: "array-string",
+    filterComponent: "RangeSlider",
+    filterProps: {
+      min: 0,
+      max: 100
+    }
+  },
+  {
+    field: "basisOfRecord",
+    label: "Basis of Record",
+    paramType: 'repeated',
+    filterComponent: "CheckboxList",
+    filterProps: {
+      options: [
+        {
+          label: "Preserved Specimen",
+          value: "PRESERVED_SPECIMEN"
+        },
+        {
+          label: "Fossil Specimen",
+          value: "FOSSIL_SPECIMEN"
+        },
+        {
+          label: "Living Specimen",
+          value: "LIVING_SPECIMEN"
+        },
+        {
+          label: "Observation",
+          value: "OBSERVATION"
+        },
+        {
+          label: "Human Observation",
+          value: "HUMAN_OBSERVATION"
+        },
+        {
+          label: "Machine Observation",
+          value: "MACHINE_OBSERVATION"
+        }
+      ]
+    }
+  },
+]
+```
