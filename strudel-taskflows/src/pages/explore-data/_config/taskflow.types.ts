@@ -3,7 +3,7 @@ import { SciDataGridColDef } from "../../../components/SciDataGrid"
 import { FilterOperator, ParamType } from "../../../types/filters.types"
 
 /**
- * Type definitions for the Compare Data Task Flow config object
+ * Type definitions for the Explore Data Task Flow config object
  */
 export interface ExploreDataConfig {
   /** Attributes that are used across the Task Flow */

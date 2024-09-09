@@ -1,5 +1,3 @@
-import { AppState } from './ContextProvider';
-
 export enum AppActionType {
   OPEN_API_MODAL = 'OPEN_API_MODAL',
   CLOSE_API_MODAL = 'CLOSE_API_MODAL'

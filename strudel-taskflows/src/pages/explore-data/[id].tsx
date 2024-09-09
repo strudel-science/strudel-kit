@@ -41,7 +41,7 @@ const DataDetailPage: React.FC<DataDetailPageProps> = ({ item }) => {
 
 
   // Define query for this page and fetch data items
-  const { isPending, isFetching, isError, data, error } = useQuery({
+  const { data } = useQuery({
     queryKey: ['item', params.id, queryParams],
     queryFn,
   });

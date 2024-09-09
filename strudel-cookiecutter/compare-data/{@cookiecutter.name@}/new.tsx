@@ -11,7 +11,7 @@ import { taskflow } from './_config/taskflow.config';
  * the main list in the compare-data Task Flow.
  */
 export const NewScenario: React.FC = () => {
-  const { state, dispatch } = useCompareData();
+  const { dispatch } = useCompareData();
 
   /**
    * Set comparing to true whenever this page renders.

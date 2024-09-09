@@ -1,4 +1,6 @@
-import { GridColDef } from "@mui/x-data-grid"
+import { FilterComponent } from "../../../components/FilterField"
+import { SciDataGridColDef } from "../../../components/SciDataGrid"
+import { FilterOperator, ParamType } from "../../../types/filters.types"
 
 /**
  * Type definitions for the Compare Data Task Flow config object
@@ -9,24 +11,30 @@ export interface ExploreDataConfig {
   data: {
     items: {
       source: string,
-      idField: string
+      idField: string,
+      queryMode: 'client' | 'server',
+      staticParams?: Record<string, string> | null
     },
     [key: string]: {
       source: string,
-      idField: string
+      idField: string,
+      queryMode: 'client' | 'server',
+      staticParams?: Record<string, string> | null
     }
   },
-  /** Cool pages */
   pages: {
     index: {
       title: string,
       description: string,
-      tableColumns: GridColDef[],
+      tableColumns: SciDataGridColDef[],
       tableFilters: {
         field: string,
-        displayName: string,
-        filterType: 'CheckboxList' | 'Slider' | 'date range',
-        props?: object
+        label: string,
+        operator?: FilterOperator,
+        paramType?: ParamType
+        paramTypeOptions?: any;
+        filterComponent: FilterComponent,
+        filterProps?: object
       }[]
     }
   }

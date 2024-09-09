@@ -16,7 +16,7 @@ interface PreviewPanelProps {
  * next to the `<DataListPanel>`.
  */
 export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
-  const {state, dispatch} = useSearchDataRepositories();
+  const { state } = useSearchDataRepositories();
   
   /**
    * Content to render on the page for this component

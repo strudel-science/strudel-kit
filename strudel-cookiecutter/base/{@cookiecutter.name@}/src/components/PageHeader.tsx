@@ -3,7 +3,7 @@ import { PaperProps, Breadcrumbs, Link, Paper, Stack, Typography } from '@mui/ma
 import HomeIcon from '@mui/icons-material/Home';
 
 interface PageHeaderProps extends PaperProps {
-  pageTitle: string;
+  pageTitle: React.ReactNode;
   breadcrumbTitle?: string;
   description?: string;
   actions?: React.ReactNode;

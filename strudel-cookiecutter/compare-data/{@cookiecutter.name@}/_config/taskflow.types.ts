@@ -8,11 +8,8 @@ export type CompareDataConfigColDef = GridColDef & {
  * Type definitions for the Compare Data Task Flow config object
  */
 export interface CompareDataConfig {
-  /** Attributes that are used across the Task Flow */
   properties: {
-    /** Name of entity being compared */
     itemName: string,
-    /** Pluralized version of itemName */
     itemNamePlural: string,
   },
   data: {

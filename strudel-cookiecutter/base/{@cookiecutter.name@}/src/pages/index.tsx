@@ -40,9 +40,9 @@ const HomePage: React.FC = () => {
             }}
           >
             <Typography variant="h6" component="h1" fontWeight="bold">You just built an app with STRUDEL!</Typography>
-            <Typography>
+            <Box>
               Get started by going to <code><AppLink to="playground">/playground</AppLink></code> and editing <Chip size="small" label={<code>src/pages/playground/index.tsx</code>} />
-            </Typography>
+            </Box>
           </Stack>
           <Grid container columnSpacing={4} rowSpacing={4}>
             <Grid item md={12}>

@@ -11,6 +11,13 @@ export const taskflow: ExploreDataConfig = {
        */
       source: "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI",
       /**
+       * Key-value object of params that should always be included in the query URL
+       */
+      staticParams: {
+        table: 'cumulative',
+        format: 'json'
+      },
+      /**
        * Name of the field in the data that represents a unique identifier for each record.
        */
       idField: "kepoi_name",
@@ -18,25 +25,18 @@ export const taskflow: ExploreDataConfig = {
        * Method by which data should be filtered, either client or server.
        */
       queryMode: "client",
-      /**
-       * Key-value object of params that should always be included in the query URL
-       */
-      staticParams: {
-        table: 'cumulative',
-        format: 'json'
-      }
     },
     /**
      * Data definition for the item detail page
      */
     item: {
       source: "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI",
-      idField: "kepoi_name",
-      queryMode: "client",
       staticParams: {
         table: 'cumulative',
         format: 'json'
-      }
+      },
+      idField: "kepoi_name",
+      queryMode: "client",
     }
   },
   pages: {

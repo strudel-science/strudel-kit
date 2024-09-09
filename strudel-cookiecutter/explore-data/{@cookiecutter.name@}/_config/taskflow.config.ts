@@ -2,106 +2,117 @@ import { ExploreDataConfig } from "./taskflow.types";
 
 export const taskflow: ExploreDataConfig = {
   data: {
+    /**
+     * Data definition for the initial items list
+     */
     items: {
-      source: "default/explore-data/genomes.tsv",
-      idField: "Proteome_ID"
+      /**
+       * URL or path to the data source
+       */
+      source: "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI",
+      /**
+       * Name of the field in the data that represents a unique identifier for each record.
+       */
+      idField: "kepoi_name",
+      /**
+       * Method by which data should be filtered, either client or server.
+       */
+      queryMode: "client",
+      /**
+       * Key-value object of params that should always be included in the query URL
+       */
+      staticParams: {
+        table: 'cumulative',
+        format: 'json'
+      }
+    },
+    /**
+     * Data definition for the item detail page
+     */
+    item: {
+      source: "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI",
+      idField: "kepoi_name",
+      queryMode: "client",
+      staticParams: {
+        table: 'cumulative',
+        format: 'json'
+      }
     }
   },
   pages: {
     index: {
+      /**
+       * Title to appear at the top of the main page.
+       */
       title: "Explore Data App Test",
+      /**
+       * Text to appear underneath the title at the top of the main page.
+       */
       description: "Description of this app section",
+      /**
+       * List of column definition objects for the columns in the table on the main page.
+       */
       tableColumns: [
         {
-          field: "Organism",
-          headerName: "Organism",
+          field: "kepid",
+          headerName: "Kepler ID",
           width: 200
         },
         {
-          field: "Common Name",
-          headerName: "Common Name",
-          width: 200
-        },
-        {
-          field: "Assembly",
-          headerName: "Assembly",
+          field: "kepoi_name",
+          headerName: "Kepler OI Name",
           width: 150
         },
         {
-          field: "Data Usage Policy",
-          headerName: "Data Usage Policy",
-          width: 220
+          field: "kepler_name",
+          headerName: "Kepler Name",
+          width: 150
         },
         {
-          field: "Euk. BUSCO %",
-          headerName: "Euk. BUSCO %",
-          type: "number",
-          width: 200
+          field: "koi_disposition",
+          headerName: "Disposition",
+          width: 150
         },
         {
-          field: "Emb. BUSCO %",
-          headerName: "Emb. BUSCO %",
-          type: "number",
-          width: 200
+          field: "koi_period",
+          headerName: "Period",
+          width: 150,
+          type: 'number'
         }
       ],
+      /**
+       * List of filters to display on the main page and use to filter the main table data. 
+       * Each filter has a definition object to determine how it renders and functions.
+       */
       tableFilters: [
         {
-          field: "Assembly",
-          displayName: "Assembly",
-          filterType: "CheckboxList",
-          props: {
+          field: "koi_disposition",
+          label: "Disposition",
+          operator: "contains-one-of",
+          filterComponent: "CheckboxList",
+          filterProps: {
             options: [
               {
-                label: "JGI",
-                value: "JGI"
+                label: "CONFIRMED",
+                value: "CONFIRMED"
               },
               {
-                label: "BYU",
-                value: "BYU"
-              },
-              {
-                label: "AGP",
-                value: "AGP"
+                label: "FALSE POSITIVE",
+                value: "FALSE POSITIVE"
               }
             ]
           }
         },
         {
-          field: "Data Usage Policy",
-          displayName: "Data Usage Policy",
-          filterType: "CheckboxList",
-          props: {
-            options: [
-              {
-                label: "restricted",
-                value: "restricted"
-              },
-              {
-                label: "unrestricted",
-                value: "unrestricted"
-              }
-            ]
-          }
-        },
-        {
-          field: "Euk. BUSCO %",
-          displayName: "Euk. BUSCO %",
-          filterType: "Slider",
-          props: {
+          field: "koi_period",
+          label: "Period",
+          operator: "between-inclusive",
+          filterComponent: "RangeSlider",
+          filterProps: {
             min: 0,
             max: 100
           }
         },
-        {
-          field: "Emb. BUSCO %",
-          displayName: "Emb. BUSCO %",
-          filterType: "Slider",
-          props: {
-            min: 0,
-            max: 100
-          }
-        }
       ]
     }
   }

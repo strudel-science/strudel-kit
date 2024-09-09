@@ -4,18 +4,20 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Link as RouterLink } from 'react-router-dom';
 import { LabelValueTable } from '../../../components/LabelValueTable';
 import { DataGrid } from '@mui/x-data-grid';
-import { useExploreData } from '../_context/ContextProvider';
+import { taskflow } from '../_config/taskflow.config';
 
 interface PreviewPanelProps {
-  onClose: () => any
+  previewItem: any;
+  onClose: () => void;
 }
 
 /**
  * Panel to show extra information about a row in a separate panel
  * next to the `<DataTablePanel>`.
  */
-export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
-  const {state, dispatch} = useExploreData();
+export const PreviewPanel: React.FC<PreviewPanelProps> = ({ previewItem, onClose }) => {
+  const columns = taskflow.pages.index.tableColumns;
+  const dataIdField = taskflow.data.items.idField;
 
   /**
    * Content to render on the page for this component
@@ -32,11 +34,11 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
         <Stack spacing={1}>
           <Stack direction="row">
             <Typography variant="h6" component="h3" flex={1}>
-              <Link component={RouterLink} to={`${state.previewItem[state.dataIdField]}`} underline="hover">
-                {state.previewItem[state.columns[0].field]}
+              <Link component={RouterLink} to={`${previewItem[dataIdField]}`} underline="hover">
+                {previewItem[columns[0].field]}
               </Link>
             </Typography>
-            <IconButton size="small" onClick={props.onClose}><CloseIcon /></IconButton>
+            <IconButton size="small" onClick={onClose}><CloseIcon /></IconButton>
           </Stack>
           <Typography variant="body2">Row description, subtitle, or helper text.</Typography>
         </Stack>
@@ -71,7 +73,7 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
           />
         </Box>
         <Stack direction="row">
-          <Link component={RouterLink} to={`${state.previewItem[state.dataIdField]}`}>
+          <Link component={RouterLink} to={`${previewItem[dataIdField]}`}>
             <Button variant="contained">
               View details
             </Button>
