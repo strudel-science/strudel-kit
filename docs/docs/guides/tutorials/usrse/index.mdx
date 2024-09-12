@@ -139,3 +139,40 @@ tableFilters: [
 
 ## Customizing the Theme
 
+Theming is handled by Material UI's [theme object](https://mui.com/material-ui/customization/theming/). 
+
+You can modify global theme variables in `src/theme.tsx`.
+
+### 1. Change the `palette.primary` colors
+
+```js
+primary: {
+  main: '#23967F',
+  // Exclude light, dark, or contrastText to have them
+  // calculated automatically based on the main color.
+  light: '#7DAF9C',
+  dark: '#1565c0',
+  // contrastText: '#fff',
+},
+```
+
+### 2. Change `palette.mode` to dark
+
+```js
+mode: 'dark',
+```
+
+### 3. Change the `palette.background` colors
+
+```js
+background: {
+  default: '#222',
+  paper: '#333',
+},
+```
+
+### 4. Change the primary font in `typography.fontFamily`
+
+```js
+fontFamily: `"Avenir", "Verdana", "Arial", sans-serif`,
+```
