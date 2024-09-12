@@ -26,6 +26,7 @@ export const DataViewHeader: React.FC<DataViewHeaderProps> = ({
       spacing={2}
       alignItems="center"
       sx={{
+        overflow: 'hidden',
         padding: 2
       }}
     >
