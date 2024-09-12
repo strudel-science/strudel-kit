@@ -1,54 +1,39 @@
 # US-RSE Tutorial
 
+October 9, 2024
+
 This is a follow along guide to the US-RSE tutorial conducted over Zoom. Use this guide to follow along with all of the code edits made live during the tutorial demonstration.
 
-## Explore Data Task Flow Template
+## Helpful Links
 
-### Task Flow Configuration
+- [StackBlitz Code Starter](https://google.com)
+- [StackBlitz Code Live In Progress](https://google.com)
+- [GitHub Code Starter](https://google.com)
+- [GitHub Code Solution](https://google.com)
+- [Slides](https://google.com)
+- [GBIF API Documentation](https://google.com)
+- [Material UI Documentation](https://google.com)
+- [React Cheatsheet](https://google.com)
 
-Each Task Flow is configured inside of a file called `taskflow.config.ts`. You can find this file in `src/pages/explore-data/_config` folder.
 
-#### Data List Object
+## Configuring a STRUDEL Task Flow
 
-First update the `list` object inside the `data` section of the config:
+Each Task Flow is configured inside of its own `taskflow.config.ts` file. We will be configuring the Explore Data Task Flow which has already been included in this project.
+
+You can find the configuration file at `src/pages/explore-data/_config/taskflow.config.ts`
+
+### 1. Update the `data.list` object
 
 ```js
-{
-  data: {
-    list: { 
-      ... 
-    }
-  }
+list: {
+  source: "https://api.gbif.org/v1/occurrence/search",
+  staticParams: null,
+  idField: "key",
+  queryMode: "server",
 }
 ```
 
-Update the `source` property to point to the GBIF occurrence search endpoint:
-
-```js
-source: "https://api.gbif.org/v1/occurrence/search",
-```
-
-There are no `staticParams` needed for this example, so set that to null:
-
-```js
-staticParams: null,
-```
-
-Set the `idField` to `"key"` to match the name of the unique identifier field in the GBIF data:
-
-```js
-idField: "key",
-```
-
-The GBIF API uses server-side pagination and filters, so change the `queryMode` to `"server"`:
-
-```js
-queryMode: "server",
-```
-
-#### Data Detail Object
-
-The `detail` object inside the `data` section should have the same values as the `list` object, except the `source` should point to the GBIF occurrence main endpoint (https://api.gbif.org/v1/occurrence) so that it returns a single item instead of a list. Here's what the whole `detail` object should look like:
+### 2. Update the `data.detail` object
 
 ```js
 detail: {
@@ -59,35 +44,21 @@ detail: {
 }
 ```
 
-#### Index Page Titles
-
-Next are the configurations for the content on the index page:
+### 3. Update page titles in the `pages.index` object
 
 ```
 {
   pages: {
     index: {
+      title: "Biodiversity Explorer",
+      description: "Explore species observations around the world.",
       ...
     }
   }
 }
 ```
 
-Update the `title` to better reflect the new app we are building:
-
-```js
-title: "Biodiversity Explorer",
-```
-
-Do the same for the `description` property:
-
-```js
-description: "Explore species observations around the world.",
-```
-
-#### Index Page Columns
-
-Update the column definitions to include four columns from the GBIF occurrence endpoint:
+### 4. Update the column definitions in `pages.index.tableColumns`
 
 ```js
 tableColumns: [
@@ -115,9 +86,7 @@ tableColumns: [
 ],
 ```
 
-#### Index Page Filters
-
-Update the filter definitions so that there are two filters: one, a slider, for the elevation field, and two, checkboxes, for the basisOfRecord field:
+### 5. Update the filter definitions in `pages.index.tableFilters`
 
 ```js
 tableFilters: [
@@ -167,3 +136,6 @@ tableFilters: [
   },
 ]
 ```
+
+## Customizing the Theme
+
