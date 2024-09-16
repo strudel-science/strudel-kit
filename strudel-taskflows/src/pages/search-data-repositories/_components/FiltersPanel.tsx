@@ -1,13 +1,5 @@
-import { Stack } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers';
 import React from 'react';
-import { CheckboxList } from '../../../components/CheckboxList';
-import { FilterField } from '../../../components/FilterField';
 import { Filters } from '../../../components/Filters';
-import { StrudelSlider } from '../../../components/StrudelSlider';
-import { FilterConfig } from '../../../types/filters.types';
-import { useSearchDataRepositories } from '../_context/ContextProvider';
-import { setFilter } from '../_context/actions';
 
 interface FiltersPanelProps {
   onClose: () => any

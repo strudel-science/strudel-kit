@@ -45,15 +45,15 @@ export const taskflow: SearchDataRepositoriesConfig = {
           /**
            * Text to display in the label for the filter.
            */
-          displayName: "Category",
+          label: "Category",
           /**
            * The kind of filter component and function to use. Must be "CheckboxList", "Slider", or "data range".
            */
-          filterType: "CheckboxList",
+          filterComponent: "CheckboxList",
           /**
            * Extra options to pass to the filter based on the filter type.
            */
-          props: {
+          filterProps: {
             options: [
               {
                 label: "Groundwater",
@@ -76,9 +76,9 @@ export const taskflow: SearchDataRepositoriesConfig = {
         },
         {
           field: "tags",
-          displayName: "Tags",
-          filterType: "CheckboxList",
-          props: {
+          label: "Tags",
+          filterComponent: "CheckboxList",
+          filterProps: {
             options: [
               {
                 label: "Boreal forest",
@@ -97,8 +97,8 @@ export const taskflow: SearchDataRepositoriesConfig = {
         },
         {
           field: "publication_date",
-          displayName: "Publication Date",
-          filterType: "date range"
+          label: "Publication Date",
+          filterComponent: "DateRange"
         }
       ]
     }
