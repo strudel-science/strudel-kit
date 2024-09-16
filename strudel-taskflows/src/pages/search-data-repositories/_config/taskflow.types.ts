@@ -26,9 +26,9 @@ export interface SearchDataRepositoriesConfig {
       },
       cardFilters: {
         field: string,
-        displayName: string,
-        filterType: 'CheckboxList' | 'Slider' | 'date range',
-        props?: object
+        label: string,
+        filterComponent: 'CheckboxList' | 'Slider' | 'DateRange' | 'TextField',
+        filterProps?: object
       }[]
     }
   }

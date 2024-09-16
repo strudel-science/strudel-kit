@@ -122,7 +122,7 @@ export const SearchDataRepositoriesProvider: React.FC<SearchDataRepositoriesProv
 
   useEffect(() => {
     if (state.data) {
-      const filteredData = filterData(state.data, state.activeFilters, state.searchTerm);
+      const filteredData = filterData(state.data, state.activeFilters, state.filters, state.searchTerm);
       dispatch(setFilteredData(filteredData));
     }
   }, [state.data, state.searchTerm, JSON.stringify(state.activeFilters)]);

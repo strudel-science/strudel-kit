@@ -5,7 +5,7 @@ export const taskflow: ExploreDataConfig = {
     /**
      * Data definition for the initial items list
      */
-    items: {
+    list: {
       /**
        * URL or path to the data source
        */
@@ -29,7 +29,7 @@ export const taskflow: ExploreDataConfig = {
     /**
      * Data definition for the item detail page
      */
-    item: {
+    detail: {
       source: "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI",
       staticParams: {
         table: 'cumulative',

@@ -23,7 +23,7 @@ interface PreviewPanelProps {
  */
 export const PreviewPanel: React.FC<PreviewPanelProps> = ({ previewItem, onClose }) => {
   const columns = taskflow.pages.index.tableColumns;
-  const dataIdField = taskflow.data.items.idField;
+  const dataIdField = taskflow.data.list.idField;
 
   /**
    * Content to render on the page for this component

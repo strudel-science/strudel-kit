@@ -74,7 +74,7 @@ export const buildParamsString = (filters: DataFilter[], filterConfigs: FilterCo
 }
 
 export const createFilterParams = (filters: DataFilter[], filterConfigs: FilterConfig[]) => {
-  const params: Record<string, string | number | string[] | number[]> = {};
+  const params = new URLSearchParams();
   filters.forEach((filter, i) => {
     const filterConfig = filterConfigs.find((c) => c.field === filter.field); 
     const options = filterConfig?.paramTypeOptions;
@@ -82,19 +82,25 @@ export const createFilterParams = (filters: DataFilter[], filterConfigs: FilterC
       case 'array-string':
         if (Array.isArray(filter.value)) {
           const separator = options?.separator || ',';
-          params[filter.field] = filter.value.join(separator);
-          console.log(params[filter.field])
+          params.append(filter.field, filter.value.join(separator));
         }
         break;
       case 'minmax':
         if (Array.isArray(filter.value) && options.minParam && options.maxParam) {
-          params[options.minParam] = filter.value[0];
-          params[options.maxParam] = filter.value[1];
+          params.append(options.minParam, filter.value[0].toString());
+          params.append(options.maxParam, filter.value[1].toString());
+        }
+        break;
+      case 'repeated':
+        if (Array.isArray(filter.value)) {
+          filter.value.forEach((value) => {
+            params.append(filter.field, value.toString());
+          });
         }
         break;
       default:
         if (filter.value) {
-          params[filter.field] = filter.value
+          params.append(filter.field, filter.value.toString())
         }
     }
   });
