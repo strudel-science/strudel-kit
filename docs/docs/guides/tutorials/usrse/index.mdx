@@ -1,3 +1,9 @@
+---
+# Display h2 to h5 headings
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+---
+
 # US-RSE Tutorial
 
 October 9, 2024
@@ -6,14 +12,13 @@ This is a follow along guide to the US-RSE tutorial conducted over Zoom. Use thi
 
 ## Helpful Links
 
-- [StackBlitz Code Starter](https://google.com)
-- [StackBlitz Code Live In Progress](https://google.com)
-- [GitHub Code Starter](https://google.com)
-- [GitHub Code Solution](https://google.com)
-- [Slides](https://google.com)
-- [GBIF API Documentation](https://google.com)
-- [Material UI Documentation](https://google.com)
-- [React Cheatsheet](https://google.com)
+- [StackBlitz Code Starter](https://stackblitz.com/edit/vitejs-vite-jjdxuj?file=README.md&terminal=dev)
+- [StackBlitz Code Live In Progress](https://stackblitz.com/edit/vitejs-vite-vlabnt?file=README.md&terminal=dev)
+- [Slides](https://docs.google.com/presentation/d/1CmflcN_H_xCFPRV9qp4IjluHUkOvpW7Il5U5naN_emI/edit#slide=id.g25e5f40b217_0_317)
+- [GBIF API Documentation](https://techdocs.gbif.org/en/openapi/v1/occurrence)
+- [GBIF Occurrence Endpoint Example](https://api.gbif.org/v1/occurrence/search)
+- [Material UI Documentation](https://mui.com/material-ui/all-components/)
+- [React Cheatsheet](https://zerotomastery.io/cheatsheets/react-cheat-sheet/)
 
 
 ## Configuring a STRUDEL Task Flow
@@ -143,26 +148,13 @@ Theming is handled by Material UI's [theme object](https://mui.com/material-ui/c
 
 You can modify global theme variables in `src/theme.tsx`.
 
-### 1. Change the `palette.primary` colors
-
-```js
-primary: {
-  main: '#23967F',
-  // Exclude light, dark, or contrastText to have them
-  // calculated automatically based on the main color.
-  light: '#7DAF9C',
-  dark: '#1565c0',
-  // contrastText: '#fff',
-},
-```
-
-### 2. Change `palette.mode` to dark
+### 1. Change `palette.mode` to dark
 
 ```js
 mode: 'dark',
 ```
 
-### 3. Change the `palette.background` colors
+### 2. Change the `palette.background` colors
 
 ```js
 background: {
@@ -171,8 +163,258 @@ background: {
 },
 ```
 
-### 4. Change the primary font in `typography.fontFamily`
+### 3. Change the `palette.primary` colors
+
+```js
+primary: {
+  main: '#5dffe2',
+  // Exclude light, dark, or contrastText to have them
+  // calculated automatically based on the main color.
+  light: '#99ffec',
+  dark: '#00e0b7',
+  // contrastText: '#fff',
+},
+```
+
+### 4. Change the `shape.borderRadius`
+
+```js
+borderRadius: 0,
+```
+
+### 5. Change the primary font in `typography.fontFamily`
 
 ```js
 fontFamily: `"Avenir", "Verdana", "Arial", sans-serif`,
 ```
+
+## React Basics
+
+Before we start customizing the Explore Data template, we will cover some basics of React and Material UI components.
+
+You may find it helpful to reference the [React syntax cheatsheet](https://zerotomastery.io/cheatsheets/react-cheat-sheet/) during this section.
+
+### 1. Make a new folder and file
+
+Create a new folder inside of `src/pages` called `hello-world`.
+
+Then, create a file inside `hello-world` called `index.tsx`
+
+```
+src
+├── pages
+│  ├── hello-world
+│  │  ├── index.tsx
+```
+
+### 2. Create a `HelloWorldPage` component
+
+```jsx title="src/pages/hello-world/index.tsx"
+const HelloWorldPage: React.FC = () => {
+  return (
+    <div>
+      Hello World!
+    </div>
+  );
+};
+
+export default HelloWorldPage;
+```
+
+### 3. Make a new `_components` folder and component file
+
+Create a new folder inside of `hello-world` called `_components`.
+
+Then, create a file inside `_components` called `TagList.tsx`.
+
+```
+src
+├── pages
+│  ├── hello-world
+│  │  ├── _components
+│  │  │  ├── TagList.tsx
+│  │  ├── index.tsx
+```
+
+### 4. Create a `TagList` component
+
+```jsx title="src/pages/hello-world/_components/TagList.tsx"
+export const TagList: React.FC = () => {
+  return (
+    <ul>
+      <li>Animalia</li>
+      <li>Chordata</li>
+      <li>Mammalia</li>
+    </ul>
+  )
+}
+```
+
+### 5. Import and use the `TagList` component in `HelloWorldPage`
+
+```jsx title="src/pages/hello-world/index.tsx"
+import { TagList } from './_components/TagList';
+
+const HelloWorldPage: React.FC = () => {
+  return (
+    <div>
+      Hello World!
+      <TagList />
+    </div>
+  );
+};
+
+export default HelloWorldPage;
+```
+
+### 6. Add a `tags` prop to the `TagList` component
+
+```jsx title="src/pages/hello-world/_components/TagList.tsx"
+interface TagListProps {
+  tags: string[];
+}
+
+export const TagList: React.FC<TagListProps> = ({ tags }) => {
+  return (
+    <ul>
+      <li>Animalia</li>
+      <li>Chordata</li>
+      <li>Mammalia</li>
+    </ul>
+  )
+}
+```
+
+### 7. Loop through `tags` to render each item
+
+```jsx title="src/pages/hello-world/_components/TagList.tsx"
+export const TagList: React.FC<TagListProps> = ({ tags }) => {
+  return (
+    <ul>
+      {tags.map((tag) => (
+        <li key={tag}>{tag}</li>
+      ))}
+    </ul>
+  )
+}
+```
+
+### 8. Pass values to the `tags` prop on `HelloWorldPage`
+
+```jsx title="src/pages/hello-world/index.tsx"
+const HelloWorldPage: React.FC = () => {
+  return (
+    <div>
+      Hello World!
+      <TagList tags={['Animalia', 'Chordata', 'Mammalia']} />
+    </div>
+  );
+};
+```
+
+## Material UI Basics
+
+Material UI is included in the STRUDEL application by default. It contains many useful components for reusable elements and patterns throughout a web user interface.
+
+See more in the [Materials UI Docs](https://mui.com/material-ui/all-components/).
+
+### 1. Import the `Chip` component to `TagList.tsx`
+
+```jsx title="src/pages/hello-world/_components/TagList.tsx"
+import { Chip } from '@mui/material';
+```
+
+### 2. Replace the `li` elements with `Chip` components
+
+```jsx title="src/pages/hello-world/_components/TagList.tsx"
+export const TagList: React.FC<TagListProps> = ({ tags }) => {
+  return (
+    <ul>
+      {tags.map((tag) => (
+        <Chip key={tag} label={tag} />
+      ))}
+    </ul>
+  )
+}
+```
+
+### 3. Import the `Stack` component to `TagList.tsx`
+
+```jsx title="src/pages/hello-world/_components/TagList.tsx"
+import { Chip, Stack } from '@mui/material';
+```
+
+### 4. Replace the `ul` element with the `Stack` component
+
+```jsx title="src/pages/hello-world/_components/TagList.tsx"
+export const TagList: React.FC<TagListProps> = ({ tags }) => {
+  return (
+    <Stack direction="row" spacing={1}>
+      {tags.map((tag) => (
+        <Chip key={tag} label={tag} />
+      ))}
+    </Stack>
+  )
+}
+```
+
+### 5. Import the `Typography` component to `index.tsx`
+
+```jsx title="src/pages/hello-world/index.tsx"
+import { Typography } from '@mui/material';
+```
+
+### 6. Wrap the title text with the `Typography` component
+
+```jsx title="src/pages/hello-world/index.tsx"
+const HelloWorldPage: React.FC = () => {
+  return (
+    <div>
+      <Typography variant="h3" component="h1">
+        Hello World!
+      </Typography>
+      <TagList tags={['Animalia', 'Chordata', 'Mammalia']} />
+    </div>
+  );
+};
+```
+
+### 7. Import the `Container` component to `index.tsx`
+
+```jsx title="src/pages/hello-world/index.tsx"
+import { Container, Typography } from '@mui/material';
+```
+
+### 6. Replace the `div` element with the `Container` component
+
+```jsx title="src/pages/hello-world/index.tsx"
+const HelloWorldPage: React.FC = () => {
+  return (
+    <Container maxWidth="sm">
+      <Typography variant="h3" component="h1">
+        Hello World!
+      </Typography>
+      <TagList tags={['Animalia', 'Chordata', 'Mammalia']} />
+    </Container>
+  );
+};
+```
+
+### 7. Use the `sx` prop to style `Typography`
+
+```jsx title="src/pages/hello-world/index.tsx"
+<Typography
+  variant="h3"
+  component="h1"
+  sx={{
+    borderBottom: '1px solid',
+    borderBottomColor: 'primary.main',
+    marginBottom: 2,
+    paddingBottom: 2,
+  }}
+>
+  Hello World!
+</Typography>
+```
+
+## Customizing the Task Flow
