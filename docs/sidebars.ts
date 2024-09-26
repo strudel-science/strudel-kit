@@ -65,7 +65,12 @@ const sidebars: SidebarsConfig = {
                     'guides/tutorials/basic-app-with-strudel/customize-home-page',
                     'guides/tutorials/basic-app-with-strudel/continue-learning'
                   ]
-                }
+                },
+                {
+                  type: 'doc',
+                  label: 'US-RSE Follow Along',
+                  id: 'guides/tutorials/usrse'
+                },
               ]
             },
           ],
