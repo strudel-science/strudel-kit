@@ -44,7 +44,7 @@ export const taskflow: ExploreDataConfig = {
       /**
        * Title to appear at the top of the main page.
        */
-      title: "Explore Data App Test",
+      title: "Explore Data App",
       /**
        * Text to appear underneath the title at the top of the main page.
        */

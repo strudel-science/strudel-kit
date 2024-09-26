@@ -418,3 +418,75 @@ const HelloWorldPage: React.FC = () => {
 ```
 
 ## Customizing the Task Flow
+
+Now we will utilize the component we made in the preview panel and add some more custom data to the panel.
+
+For this exercise we will be working inside of `src/pages/explore-data/_components_/PreviewPanel.tsx`
+
+### 1. Import the `TagList` component to `PreviewPanel.tsx`
+
+```jsx title="src/pages/explore-data/_components/PreviewPanel.tsx"
+import { TagList } from '../../hello-world/_components/TagList';
+```
+
+### 2. Replace the row description with a `TagList`
+
+Replace:
+
+```jsx title="src/pages/explore-data/_components/PreviewPanel.tsx"
+<Typography variant="body2">Row description, subtitle, or helper text.</Typography>
+```
+
+With:
+```jsx title="src/pages/explore-data/_components/PreviewPanel.tsx"
+<TagList
+  tags={[
+    previewItem.kingdom,
+    previewItem.phylum,
+    previewItem.class,
+    previewItem.order,
+  ]}
+/>
+```
+
+### 3. Add another `TagList` directly after the first
+
+```jsx title="src/pages/explore-data/_components/PreviewPanel.tsx"
+<TagList
+  tags={[previewItem.family, previewItem.genus, previewItem.species]}
+/>
+```
+
+### 4. Replace Property Group 1 with Location data
+
+```jsx title="src/pages/explore-data/_components/PreviewPanel.tsx"
+<Box>
+  <Typography fontWeight="medium" mb={1}>
+    Location
+  </Typography>
+  <LabelValueTable
+    rows={[
+      { label: 'Continent', value: previewItem.continent },
+      { label: 'Country', value: previewItem.country },
+      { label: 'Municipality', value: previewItem.municipality },
+    ]}
+  />
+</Box>
+```
+
+### 4. Replace Property Group 2 with Record data
+
+```jsx title="src/pages/explore-data/_components/PreviewPanel.tsx"
+<Box>
+  <Typography fontWeight="medium" mb={1}>
+    Record
+  </Typography>
+  <LabelValueTable
+    rows={[
+      { label: 'Basis of Record', value: previewItem.basisOfRecord },
+      { label: 'Protocol', value: previewItem.protocol },
+      { label: 'Status', value: previewItem.occurrenceStatus },
+    ]}
+  />
+</Box>
+```
