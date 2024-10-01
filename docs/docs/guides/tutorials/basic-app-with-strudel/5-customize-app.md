@@ -4,53 +4,90 @@ For most web applications, it is important to include content and alterations th
 
 ## Modify the Global Theme
 
-There are two ways to modify the global theme with STRUDEL. To make some of the most commono modifications, you can use the `theme` object in `strudel.config.ts`. To make more advanced customizations, STRUDEL leverages [MUI](https://mui.com/) theming capabilities which live in the `theme` object in `src/theme.tsx`. To learn more about how MUI theming works, checkout [their documentation on the topic](https://mui.com/material-ui/customization/theming/). For this tutorial, the explanations will be kept brief.
+STRUDEL leverages [MUI](https://mui.com/) theming capabilities to style much of the app. Because STRUDEL uses MUI for its low-level components, using the theme makes it easy to make app-wide changes and keep things consistent. To learn more about how MUI theming works, checkout [their documentation on the topic](https://mui.com/material-ui/customization/theming/). For this tutorial, the explanations will be kept brief.
 
-To get started modifying the theme, open up `strudel.config.ts`. In this file you will find the `theme` object that handles common attributes like palette colors and font families. It has been prepopulated with default values to make editing the theme even simpler.
+To get started modifying the theme, open up the theme file in `src/app/theme.tsx`. In this file you will find the `theme` object. This is where all of the theme values are configured and it has been prepopulated with many default values to make editing the theme simpler.
 
 ### Change the Color Palette
 
 Let's start out by changing the color palette for the app. Right now, the primary color for the app is blue (`#1976d2`). Start by changing the `primary` `main` color to amaranth red (`#dd4050`):
 
 ```js
-primaryColor: '#dd4050',
+primary: {
+  main: '#dd4050',
+  light: '#42a5f5',
+  dark: '#1565c0',
+  contrastText: '#fff',
+},
 ```
 
-Save this file, refresh the page, and see if the blue text and buttons changed to the red tones.
-
-While you are here, also change the `secondary` color to electric blue (`#00e9f5`):
+The essential colors in the palette each have a `main`, `light`, and `dark` version. You can specify the `light` and `dark` versions explicitly or you can remove them and they will be generated automatically based on the `main` color. For now, set the `light` and `dark` versions to bright pink (`#e36370`) and cardinal red (`#bf2231`) respectively.
 
 ```js
-secondaryColor: '#00e9f5',
+primary: {
+  main: '#dd4050',
+  light: '#e36370',
+  dark: '#bf2231',
+  contrastText: '#fff',
+},
+```
+
+Refresh the page and see if the blue text and buttons changed to the red tones.
+
+While you are here, also change the `secondary` colors to electric blue tones. Change `main` to `#00e9f5`, `light` to `#5ef6ff`, and `dark` to `#00c2cc`. Because this is a lighter color in general, also change the `contrastText` to black (`#000`). This controls the color of text that is rendered on top of the color and ensures the contrast is still readable and accessible.
+
+```js
+secondary: {
+  main: '#00e9f5',
+  light: '#5ef6ff',
+  dark: '#00c2cc',
+  contrastText: '#000',
+},
 ```
 
 ### Convert to Dark Mode
 
 The new palette is looking good but what if you want to change the more prevalant base and background colors of the app? Let's convert the whole app to dark mode to demonstrate how to do that.
 
-First, find the `mode` option nested under `theme` in `strudel.config.ts`. This value controls how many of the inner components and various component states are rendered:
+First, find the `mode` option nested under `palette`. This value controls how many of the inner components and various component states are rendered:
+
+```js
+palette: {
+  mode: 'light',
+```
 
 Change the `mode` from `light` to `dark`:
 
 ```js
-mode: 'dark',
+palette: {
+  mode: 'dark',
 ```
 
-You also need to adjust the `default` background color and the `paper` background color. To do this, find those two options nested under `theme`. Set `backgroundColor` to eerie black (`#191919`) and `paperBackgroundColor` to a lighter eerie black (`#232323`):
+You also need to adjust the `default` background color and the `paper` background color. To do this, find those two options nested under `palette.background`. Set `background.default` to eerie black (`#191919`) and `background.paper` to a lighter eerie black (`#232323`):
 
 ```js
-backgroundColor: '#191919',
-paperBackgroundColor: '#232323',
+background: {
+  default: '#191919',
+  paper: '#232323',
+},
 ```
 
 Refresh the page and see how the new dark mode looks.
 
 ### Change the Default Font
 
-The theme also controls the default font used throughout the app. Try changing the default `fontFamily` from `Helvetica` to `Avenir`:
+The theme also controls the default font used throughout the app. All font properties are nested inside of the `typography` property. Try changing the default `fontFamily` from `Helvetica` to `Avenir`:
 
 ```js
-fontFamily: '"Avenir", "Verdana", "Arial", sans-serif',
+typography: {
+  htmlFontSize: 16,
+  fontFamily: '"Avenir", "Verdana", "Arial", sans-serif',
+  fontSize: 14,
+  fontWeightLight: 300,
+  fontWeightRegular: 400,
+  fontWeightMedium: 500,
+  fontWeightBold: 700,
+},
 ```
 
 Refresh the page and see if the font has changed. Some devices may not support `Avenir` and will instead show one of the backup fonts.

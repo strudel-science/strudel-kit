@@ -65,20 +65,22 @@ Refresh your browser and make sure "Physical Characteristics" displays as the se
 
 ### Connect your data to the preview panel using the state variable
 
-Next, you will replace the rows in the `LabelValueTable` with data from the planet that the user has clicked. To do this, you need to access the internal `state` of the Explorer Task Flow. The `state` is an object that React uses to keep track of information about app. Data in the `state` is dynamic. This means that it changes based on actions that the user takes or external events like data requests.
+Next, you will replace the rows in the `LabelValueTable` with data from the planet that the user has clicked. To do this, you need to access the `props` of the `PreviewPanel` component. This component has a prop called `previewItem`. Data in the `previewItem` prop is dynamic. This means that it changes based on actions that the user takes or external events like data requests. In this case, it changes when a user clicks on a row in the main data table.
 
-In the `PreviewPanel` component, the `state` has already been defined near the top of the component:
+In the `PreviewPanel` component, the `previewItem` prop is defined near the top of the component:
 
 ```js
-const {state, dispatch} = useExploreData();
+export const PreviewPanel: React.FC<PreviewPanelProps> = ({ previewItem, onClose }) => {
+  ...
+}
 ```
 
-There are other pieces here, but for now just focus on the `state` variable. When a user clicks on a row in this task flow, the data in that row is stored in `state.previewItem`. Now, replace "Property 1" in the first `LabelValueTable` with the "Diameter" property for the selected planet:
+There are other pieces here, but for now just focus on the `previewItem` variable. When a user clicks on a row in this task flow, the data in that row is stored in `previewItem`. Now, replace "Property 1" in the first `LabelValueTable` with the "Diameter" property for the selected planet:
 
 ```js
 <LabelValueTable 
   rows={[
-    { label: 'Diameter', value: state.previewItem['Diameter'] },
+    { label: 'Diameter', value: previewItem['Diameter'] },
     { label: 'Property 2', value: 'value' },
     { label: 'Property 3', value: 'value' },
   ]}
@@ -92,9 +94,9 @@ Add a few more dynamic rows to the table in this section:
 ```js
 <LabelValueTable 
   rows={[
-    { label: 'Diameter', value: state.previewItem['Diameter'] },
-    { label: 'Mass', value: state.previewItem['Mass'] },
-    { label: 'Surface Gravity', value: state.previewItem['SurfaceGravity'] },
+    { label: 'Diameter', value: previewItem['Diameter'] },
+    { label: 'Mass', value: previewItem['Mass'] },
+    { label: 'Surface Gravity', value: previewItem['SurfaceGravity'] },
   ]}
 />
 ```
@@ -108,12 +110,12 @@ Next, add dynamic rows to the second `LabelValueTable`. Replace the section labe
   <Typography fontWeight="medium" mb={1}>Orbital Characteristics</Typography>
   <LabelValueTable 
     rows={[
-      { label: 'Inclination', value: state.previewItem['Inclination'] },
-      { label: 'Eccentricity', value: state.previewItem['Eccentricity'] },
-      { label: 'Semi Major Axis', value: state.previewItem['Semi_majorAxis'] },
-      { label: 'Orbital Period', value: state.previewItem['OrbitalPeriod'] },
-      { label: 'Sidereal Rotation', value: state.previewItem['SiderealRotation'] },
-      { label: 'Satellites', value: state.previewItem['Satellites'] },
+      { label: 'Inclination', value: previewItem['Inclination'] },
+      { label: 'Eccentricity', value: previewItem['Eccentricity'] },
+      { label: 'Semi Major Axis', value: previewItem['Semi_majorAxis'] },
+      { label: 'Orbital Period', value: previewItem['OrbitalPeriod'] },
+      { label: 'Sidereal Rotation', value: previewItem['SiderealRotation'] },
+      { label: 'Satellites', value: previewItem['Satellites'] },
     ]}
   />
 </Box>
@@ -143,12 +145,12 @@ Replace "Preview Heading" with the name of the planet by accessing the `Name` co
 ```js
 <Typography variant="h6" component="h3" flex={1}>
   <Link component={RouterLink} to="." underline="hover">
-    {state.previewItem['Name']}
+    {previewItem['Name']}
   </Link>
 </Typography>
 ```
 
-Here you are doing the same thing you did in the `LabelValueTable` components, except there is one small difference: the variable is wrapped with curly braces `{...}`. This is necessary because in React, curly braces indicate that a variable or function is going to be used in the component, otherwise it would render the literal text, "state.previewItem['Name']". This wasn't necessary in the `LabelValueTable` because there are already curly braces around the whole `row` prop.
+Here you are doing the same thing you did in the `LabelValueTable` components, except there is one small difference: the variable is wrapped with curly braces `{...}`. This is necessary because in React, curly braces indicate that a variable or function is going to be used in the component, otherwise it would render the literal text, "previewItem['Name']". This wasn't necessary in the `LabelValueTable` because there are already curly braces around the whole `row` prop.
 
 Refresh the page. You should see the planet name at the top of the preview panel.
 
@@ -171,9 +173,9 @@ Now you are ready to start incorporating the images into the preview panel. Open
   <Typography fontWeight="medium" mb={1}>Physical Characteristics</Typography>
   <LabelValueTable 
     rows={[
-      { label: 'Diameter', value: state.previewItem['Diameter'] },
-      { label: 'Mass', value: state.previewItem['Mass'] },
-      { label: 'Surface Gravity', value: state.previewItem['SurfaceGravity'] },
+      { label: 'Diameter', value: previewItem['Diameter'] },
+      { label: 'Mass', value: previewItem['Mass'] },
+      { label: 'Surface Gravity', value: previewItem['SurfaceGravity'] },
     ]}
   />
 </Box>
@@ -182,7 +184,7 @@ Now you are ready to start incorporating the images into the preview panel. Open
 Add an `<img>` tag directly above this section. The `img` tag uses the `src` attribute to tell it which image to display. In this case, you want the image to be different depending on the row that is selected. To do that, you are going to inject the planet's name into the path to the image:
 
 ```js
-<img src={`images/${state.previewItem['Name']}.jpg`}/>
+<img src={`images/${previewItem['Name']}.jpg`}/>
 ```
 
 Here you are using a JavaScript syntax called a _template literal_. Instead of using quotes to wrap the string, you use backticks (`` ` ``) which lets you embed dynamic content inside the string using a dollar sign and curly braces (`${expression}`).
@@ -201,7 +203,7 @@ Then wrap your image with the `ImageWrapper` component and specify a height usin
 
 ```js
 <ImageWrapper height="300px">
-  <img src={`images/${state.previewItem['Name']}.jpg`} />
+  <img src={`images/${previewItem['Name']}.jpg`} />
 </ImageWrapper>
 ```
 
@@ -209,7 +211,7 @@ To make sure the images are accessible, add alt text to the `img` tag. Alt text 
 
 ```js
 <ImageWrapper height="300px">
-  <img src={`images/${state.previewItem['Name']}.jpg`} alt={`Satellite image of ${state.previewItem['Name']}`} />
+  <img src={`images/${previewItem['Name']}.jpg`} alt={`Satellite image of ${previewItem['Name']}`} />
 </ImageWrapper>
 ```
 
