@@ -31,7 +31,7 @@ The first step to getting started with the STRUDEL Kit is to build a base app us
 strudel create-app my-app
 ```
 
-This will generate a new directory called `my-app` with the basic scaffolding for a STRUDEL-powered React app. The name `my-app` can be replaced with any name you like. It's typical to us all lowercase kebab-case for project names.
+This will generate a new directory called `my-app` with the basic scaffolding for a STRUDEL-powered React app. The name `my-app` can be replaced with any name you like. It's typical to use all lowercase kebab-case for project names.
 
 The app comes pre-baked with all libraries in the [STRUDEL Tech Stack](#) as well as a set of custom components that are used across the app and the Task Flow templates. 
 
@@ -81,11 +81,11 @@ Your app should now be running at http://localhost:5173. At this point your app 
 
 ### Configure up your app
 
-STRUDEL Kit makes use of a simple configuration file at the root of your app called `strudel.config.ts`. Here you can set a few basic global options and content items like a site logo, navigation links, and basic theme variables. 
+STRUDEL Kit makes use of a simple configuration file at the root of your app called `strudel.config.ts`. Here you can set a few basic global options and content items like a site logo and navigation links. 
 
 <CodeBlock language="ts" title="strudel.config.ts">{ConfigJson}</CodeBlock>
 
-The theme variables available in the config are only the most common theme customizations. You can make even more customizations in `src/theme.tsx`. See the Theme Customization guide for more info.
+You can also customize the global theme in `src/theme.tsx`. This uses the MUI theme object to make app-wide style adjustments. See [MUI's theme documentation](https://mui.com/material-ui/customization/default-theme/).
 
 ## Add a Task Flow
 
