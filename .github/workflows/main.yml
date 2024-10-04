@@ -18,7 +18,6 @@ jobs:
         with:
           working-directory: strudel-taskflows
           browser: chrome
-          build: npm run build
           start: npm start
         env:
           VITE_BASE_URL: /strudel-kit/demo/
