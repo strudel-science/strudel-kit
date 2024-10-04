@@ -9,6 +9,7 @@ describe('The Explore Data Task Flow', () => {
 
   it('filters by disposition', () => {
     cy.get('span').contains('CONFIRMED').click();
+    cy.wait(5000);
     cy.contains('1–25 of 2743');
   });
 
