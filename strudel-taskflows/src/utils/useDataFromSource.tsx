@@ -22,7 +22,7 @@ export const useDataFromSource = (dataSource: string): any => {
     const fetchData = async () => {
       const fileExtension = dataSource.split('.').pop();
       const isExternal = dataSource.startsWith('http');
-      const dataSourcePath = isExternal ? dataSource : `${basename}/data/${dataSource}`;
+      const dataSourcePath = isExternal ? dataSource : `${basename}/${dataSource}`;
       let data: any = [];
       if (fileExtension === 'csv') {
         data = await d3.csv(dataSourcePath);
