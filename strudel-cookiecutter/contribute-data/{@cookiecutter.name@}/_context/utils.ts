@@ -71,12 +71,8 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
                 && f.value[0]
                 && f.value[1]
               ) {
-                console.log(d[f.field]);
-                console.log(f.value);
-                console.log(dayjs(d[f.field]));
                 const dateValue = dayjs(d[f.field]);
                 if (dateValue.isAfter(f.value[0]) && dateValue.isBefore(f.value[1])) {
-                  console.log('match');
                   match = true;
                 }
               } else {

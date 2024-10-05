@@ -15,7 +15,7 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
   groupId,
   children
 }) => {
-  const { state, dispatch } = useFilters();
+  const { activeFilters, expandedGroup, dispatch } = useFilters();
   
   /**
    * Count the number of active filters in this group by using
@@ -27,7 +27,7 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
     if (
       React.isValidElement(child) &&
       child.props.field &&
-      hasValue(state.activeFilters.find((f: any) => f.field === child.props.field))
+      hasValue(activeFilters.find((f: any) => f.field === child.props.field))
     ) {
       return activeChildren++
     }
@@ -41,7 +41,7 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
     <Accordion 
       disableGutters
       elevation={0}
-      expanded={state.expandedGroup === groupId} 
+      expanded={expandedGroup === groupId} 
       onChange={handleChange(groupId)}
       sx={{
         borderTop: '1px solid',

@@ -33,7 +33,7 @@ export const TopBar: React.FC = () => {
             )}
             {config.navbar.logo && (
               <ImageWrapper height={30}>
-                <img src={config.navbar.logo} />
+                <img src={`${import.meta.env.BASE_URL}/${config.navbar.logo}`} />
               </ImageWrapper>
             )}
           </AppLink>

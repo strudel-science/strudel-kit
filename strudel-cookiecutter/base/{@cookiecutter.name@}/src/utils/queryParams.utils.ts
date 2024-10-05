@@ -1,4 +1,5 @@
 import { DataFilter, FilterConfig } from "../types/filters.types";
+import * as d3 from 'd3-fetch';
 
 /**
  * Convert an array of values to a URL param by
@@ -52,7 +53,6 @@ export const buildParamsString = (filters: DataFilter[], filterConfigs: FilterCo
   let paramsString = '';
   filters.forEach((filter, i) => {
     const filterConfig = filterConfigs.find((c) => c.field === filter.field); 
-    console.log(filterConfig);
     switch(filterConfig?.paramType) {
       case 'array-string':
         paramsString = paramsString.concat(toParamArrayString(filter.field, filter.value, filterConfig.paramTypeOptions.separator));
@@ -74,7 +74,7 @@ export const buildParamsString = (filters: DataFilter[], filterConfigs: FilterCo
 }
 
 export const createFilterParams = (filters: DataFilter[], filterConfigs: FilterConfig[]) => {
-  const params: Record<string, string | number | string[] | number[]> = {};
+  const params = new URLSearchParams();
   filters.forEach((filter, i) => {
     const filterConfig = filterConfigs.find((c) => c.field === filter.field); 
     const options = filterConfig?.paramTypeOptions;
@@ -82,21 +82,56 @@ export const createFilterParams = (filters: DataFilter[], filterConfigs: FilterC
       case 'array-string':
         if (Array.isArray(filter.value)) {
           const separator = options?.separator || ',';
-          params[filter.field] = filter.value.join(separator);
-          console.log(params[filter.field])
+          params.append(filter.field, filter.value.join(separator));
         }
         break;
       case 'minmax':
         if (Array.isArray(filter.value) && options.minParam && options.maxParam) {
-          params[options.minParam] = filter.value[0];
-          params[options.maxParam] = filter.value[1];
+          params.append(options.minParam, filter.value[0].toString());
+          params.append(options.maxParam, filter.value[1].toString());
+        }
+        break;
+      case 'repeated':
+        if (Array.isArray(filter.value)) {
+          filter.value.forEach((value) => {
+            params.append(filter.field, value.toString());
+          });
         }
         break;
       default:
         if (filter.value) {
-          params[filter.field] = filter.value
+          params.append(filter.field, filter.value.toString())
         }
     }
   });
   return params;
+}
+
+export const cleanUrl = (url: string) => {
+  return url.replace(/([^:]\/)\/+/g, "$1");
+}
+
+/**
+ * Fetch data from a local CSV, TSV, or JSON, or an external API
+ * that returns JSON.
+ */
+export const fetchData = async (dataSource: string) => {
+  // Get the base portion of the URL. Will be blank when running locally.
+  const base = document.querySelector('base')?.getAttribute('href') ?? '';
+  // Use the VITE_BASE_URL env variable to specify a path prefix that 
+  // should be added to routes and local requests
+  const basename = base + import.meta.env.VITE_BASE_URL;
+  const fileExtension = dataSource.split('.').pop();
+  const isExternal = dataSource.startsWith('http');
+  const dataSourcePath = isExternal ? cleanUrl(dataSource) : cleanUrl(`${basename}/${dataSource}`);
+  let data: any = [];
+  if (fileExtension === 'csv') {
+    data = await d3.csv(dataSourcePath);
+  } else if (fileExtension === 'tsv') {
+    data = await d3.tsv(dataSourcePath);
+  } else if (fileExtension === 'json' || isExternal) {
+    const response = await fetch(dataSourcePath);
+    data = await response.json();
+  }
+  return data;
 }

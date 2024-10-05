@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
               {config.footer.image && (
                 <AppLink to="/">
                   <ImageWrapper height={60}>
-                    <img src={config.footer.image} />
+                    <img src={`${import.meta.env.BASE_URL}/${config.footer.image}`} />
                   </ImageWrapper>
                 </AppLink>
               )}

@@ -3,23 +3,29 @@ import { SciDataGridColDef } from "../../../components/SciDataGrid"
 import { FilterOperator, ParamType } from "../../../types/filters.types"
 
 /**
- * Type definitions for the Compare Data Task Flow config object
+ * Type definitions for the Explore Data Task Flow config object
  */
 export interface ExploreDataConfig {
   /** Attributes that are used across the Task Flow */
   properties?: Record<string, any>,
   data: {
-    items: {
+    list: {
       source: string,
+      staticParams?: Record<string, string> | null,
       idField: string,
       queryMode: 'client' | 'server',
-      staticParams?: Record<string, string> | null
+    },
+    detail: {
+      source: string,
+      staticParams?: Record<string, string> | null,
+      idField: string,
+      queryMode: 'client' | 'server',
     },
     [key: string]: {
       source: string,
+      staticParams?: Record<string, string> | null,
       idField: string,
       queryMode: 'client' | 'server',
-      staticParams?: Record<string, string> | null
     }
   },
   pages: {
