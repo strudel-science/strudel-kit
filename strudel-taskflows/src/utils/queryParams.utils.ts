@@ -53,7 +53,6 @@ export const buildParamsString = (filters: DataFilter[], filterConfigs: FilterCo
   let paramsString = '';
   filters.forEach((filter, i) => {
     const filterConfig = filterConfigs.find((c) => c.field === filter.field); 
-    console.log(filterConfig);
     switch(filterConfig?.paramType) {
       case 'array-string':
         paramsString = paramsString.concat(toParamArrayString(filter.field, filter.value, filterConfig.paramTypeOptions.separator));

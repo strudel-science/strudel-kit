@@ -53,7 +53,6 @@ export const DataView: React.FC<DataViewProps> = ({ searchTerm, setPreviewItem }
         fullDataSourcePath = `${dataSource}?${queryString}`;
       }
       const results = await fetchData(fullDataSourcePath);
-      console.log(results);
       return results;
     },
     placeholderData: keepPreviousData,
