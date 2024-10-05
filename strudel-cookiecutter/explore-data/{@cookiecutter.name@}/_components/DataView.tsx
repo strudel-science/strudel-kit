@@ -4,7 +4,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { SciDataGrid } from '../../../components/SciDataGrid';
 import { filterData } from '../../../utils/filters.utils';
-import { createFilterParams } from '../../../utils/queryParams.utils';
+import { createFilterParams, fetchData } from '../../../utils/queryParams.utils';
 import { taskflow } from '../_config/taskflow.config';
 import { useFilters } from '../../../components/FilterContext';
 
@@ -20,28 +20,40 @@ export const DataView: React.FC<DataViewProps> = ({ searchTerm, setPreviewItem }
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(25);
   const [offset, setOffest] = useState(page * pageSize);
-  const dataSource = taskflow.data.items.source;
-  const dataIdField = taskflow.data.items.idField;
+  const dataSource = taskflow.data.list.source;
+  const dataIdField = taskflow.data.list.idField;
   const columns = taskflow.pages.index.tableColumns;
   const filterConfigs = taskflow.pages.index.tableFilters;
-  const queryMode = taskflow.data.items.queryMode;
-  const staticParams = taskflow.data.items.staticParams;
-  let queryParams = { ...staticParams };
-  if (queryMode === 'server') {
-    queryParams = {
-      limit: pageSize.toString(),
-      offset: offset.toString(),
-      ...createFilterParams(activeFilters, filterConfigs)
-    }
+  const queryMode = taskflow.data.list.queryMode;
+  const staticParams = taskflow.data.list.staticParams;
+  // If in server mode, create query params from the active filters
+  let queryParams = queryMode === 'server' ? createFilterParams(activeFilters, filterConfigs) : new URLSearchParams();
+  // Tack on the static query params
+  if (staticParams) {
+    Object.keys(staticParams).forEach((param) => {
+      queryParams.append(param, staticParams[param].toString());
+    })
   }
-  const queryString = new URLSearchParams(queryParams).toString()
+  // If in server mode, tack on pagination query params
+  if (queryMode === 'server') {
+    queryParams.append('limit', pageSize.toString());
+    queryParams.append('offset', offset.toString());
+  }
+
+  // The queryKey only needs to change dynamically in server mode
+  const queryKey = queryMode === 'server' ? ['items', { ...activeFilters, pageSize, offset }] : ['items'];
 
   // Define query for this page and fetch data items
   const { isPending, isFetching, isError, data, error } = useQuery({
-    queryKey: ['items', queryParams],
+    queryKey,
     queryFn: async (): Promise<any> => {
-      const response = await fetch(`${dataSource}?${queryString}`);
-      return await response.json();
+      const queryString = queryParams.toString()
+      let fullDataSourcePath = dataSource;
+      if (queryString && queryString.length > 0) {
+        fullDataSourcePath = `${dataSource}?${queryString}`;
+      }
+      const results = await fetchData(fullDataSourcePath);
+      return results;
     },
     placeholderData: keepPreviousData,
   });

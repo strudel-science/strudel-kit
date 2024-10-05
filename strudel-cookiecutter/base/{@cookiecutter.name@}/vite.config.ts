@@ -9,6 +9,10 @@ export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd());
   return {
     plugins: [react(), generouted()],
-    base: env.VITE_BASE_URL
+    base: env.VITE_BASE_URL,
+    server: {
+      port: 5175,
+      strictPort: true,
+    },
   }
 })

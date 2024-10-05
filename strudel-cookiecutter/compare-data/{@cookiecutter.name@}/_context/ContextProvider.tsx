@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer, useContext } from 'react';
 import { CompareDataAction, CompareDataActionType, setComparisonData, setData } from './actions';
 import { CompareDataConfigColDef } from '../_config/taskflow.types';
+import { GridRowSelectionModel } from '@mui/x-data-grid';
 
 interface ComparisonRow {
   [key: string]: number | string | null | undefined;
@@ -8,7 +9,7 @@ interface ComparisonRow {
 
 export interface CompareDataState {
   data: any[];
-  selectedRows: any[];
+  selectedRows: GridRowSelectionModel;
   columns: CompareDataConfigColDef[];
   comparisonColumns: CompareDataConfigColDef[];
   dataIdField: string;

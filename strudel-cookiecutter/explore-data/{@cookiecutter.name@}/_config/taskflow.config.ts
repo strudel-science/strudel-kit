@@ -5,38 +5,32 @@ export const taskflow: ExploreDataConfig = {
     /**
      * Data definition for the initial items list
      */
-    items: {
+    list: {
       /**
        * URL or path to the data source
        */
-      source: "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI",
+      source: "data/default/explore-data/exoplanets.csv",
+      /**
+       * Key-value object of params that should always be included in the query URL
+       */
+      staticParams: null,
       /**
        * Name of the field in the data that represents a unique identifier for each record.
        */
-      idField: "kepoi_name",
+      idField: "Id",
       /**
        * Method by which data should be filtered, either client or server.
        */
       queryMode: "client",
-      /**
-       * Key-value object of params that should always be included in the query URL
-       */
-      staticParams: {
-        table: 'cumulative',
-        format: 'json'
-      }
     },
     /**
      * Data definition for the item detail page
      */
-    item: {
-      source: "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI",
-      idField: "kepoi_name",
+    detail: {
+      source: "data/default/explore-data/exoplanets.csv",
+      staticParams: null,
+      idField: "Id",
       queryMode: "client",
-      staticParams: {
-        table: 'cumulative',
-        format: 'json'
-      }
     }
   },
   pages: {
@@ -44,7 +38,7 @@ export const taskflow: ExploreDataConfig = {
       /**
        * Title to appear at the top of the main page.
        */
-      title: "Explore Data App Test",
+      title: "Explore Data App",
       /**
        * Text to appear underneath the title at the top of the main page.
        */
@@ -54,31 +48,40 @@ export const taskflow: ExploreDataConfig = {
        */
       tableColumns: [
         {
-          field: "kepid",
-          headerName: "Kepler ID",
+          field: "Planet Name",
+          headerName: "Planet Name",
           width: 200
         },
         {
-          field: "kepoi_name",
-          headerName: "Kepler OI Name",
-          width: 150
+          field: "Planet Host",
+          headerName: "Planet Host",
+          width: 200
         },
         {
-          field: "kepler_name",
-          headerName: "Kepler Name",
-          width: 150
+          field: "Discovery Method",
+          headerName: "Discovery Method",
+          width: 200
         },
         {
-          field: "koi_disposition",
-          headerName: "Disposition",
-          width: 150
+          field: "Orbital Period Days",
+          headerName: "Orbital Period",
+          units: 'days',
+          type: 'number',
+          width: 200
         },
         {
-          field: "koi_period",
-          headerName: "Period",
-          width: 150,
-          type: 'number'
-        }
+          field: "Mass",
+          headerName: "Mass",
+          units: 'Earth Mass',
+          type: 'number',
+          width: 200
+        },
+        {
+          field: "Eccentricity",
+          headerName: "Eccentricity",
+          type: 'number',
+          width: 200
+        },
       ],
       /**
        * List of filters to display on the main page and use to filter the main table data. 
@@ -86,31 +89,51 @@ export const taskflow: ExploreDataConfig = {
        */
       tableFilters: [
         {
-          field: "koi_disposition",
-          label: "Disposition",
+          field: "Discovery Method",
+          label: "Discovery Method",
           operator: "contains-one-of",
           filterComponent: "CheckboxList",
           filterProps: {
             options: [
               {
-                label: "CONFIRMED",
-                value: "CONFIRMED"
+                label: "Astrometry",
+                value: "Astrometry"
               },
               {
-                label: "FALSE POSITIVE",
-                value: "FALSE POSITIVE"
-              }
+                label: "Disk Kinematics",
+                value: "Disk Kinematics"
+              },
+              {
+                label: "Eclipse Timing Variations",
+                value: "Eclipse Timing Variations"
+              },
+              {
+                label: "Imaging",
+                value: "Imaging"
+              },
+              {
+                label: "Microlensing",
+                value: "Microlensing"
+              },
+              {
+                label: "Radial Velocity",
+                value: "Radial Velocity"
+              },
+              {
+                label: "Transit",
+                value: "Transit"
+              },
             ]
           }
         },
         {
-          field: "koi_period",
-          label: "Period",
+          field: "Mass",
+          label: "Mass",
           operator: "between-inclusive",
           filterComponent: "RangeSlider",
           filterProps: {
             min: 0,
-            max: 100
+            max: 10000
           }
         },
       ]

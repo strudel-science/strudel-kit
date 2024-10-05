@@ -81,7 +81,6 @@ function searchDataRepositoriesReducer(state: SearchDataRepositoriesState, actio
       }
     }
     case SearchDataRepositoriesActionType.SET_FILTER: {
-      console.log(action);
       const filter = action.payload;
       const existingIndex = state.activeFilters.findIndex((f) => f.field === filter.field);
       const activeFilters = [...state.activeFilters];
@@ -116,13 +115,12 @@ export const SearchDataRepositoriesProvider: React.FC<SearchDataRepositoriesProv
   const value = { state, dispatch };
 
   useEffect(() => {
-    console.log(props.data);
     dispatch(setData(props.data));
   }, [props.data]);
 
   useEffect(() => {
     if (state.data) {
-      const filteredData = filterData(state.data, state.activeFilters, state.searchTerm);
+      const filteredData = filterData(state.data, state.activeFilters, state.filters, state.searchTerm);
       dispatch(setFilteredData(filteredData));
     }
   }, [state.data, state.searchTerm, JSON.stringify(state.activeFilters)]);

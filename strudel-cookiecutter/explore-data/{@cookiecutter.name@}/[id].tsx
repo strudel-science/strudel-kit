@@ -14,11 +14,11 @@ interface DataDetailPageProps {
  */
 const DataDetailPage: React.FC<DataDetailPageProps> = ({ item }) => {
   const params = useParams();
-  const dataSource = taskflow.data.item.source;
-  const dataIdField = taskflow.data.items.idField;
+  const dataSource = taskflow.data.detail.source;
+  const dataIdField = taskflow.data.detail.idField;
   const columns = taskflow.pages.index.tableColumns;
-  const queryMode = taskflow.data.items.queryMode;
-  const staticParams = taskflow.data.items.staticParams;
+  const queryMode = taskflow.data.detail.queryMode;
+  const staticParams = taskflow.data.detail.staticParams;
   let queryParams = { ...staticParams };
   const queryString = new URLSearchParams(queryParams).toString();
   let queryFn;
@@ -41,7 +41,7 @@ const DataDetailPage: React.FC<DataDetailPageProps> = ({ item }) => {
 
 
   // Define query for this page and fetch data items
-  const { isPending, isFetching, isError, data, error } = useQuery({
+  const { data } = useQuery({
     queryKey: ['item', params.id, queryParams],
     queryFn,
   });
