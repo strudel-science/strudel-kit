@@ -112,6 +112,10 @@ export const cleanUrl = (url: string) => {
   return url.replace(/([^:]\/)\/+/g, "$1");
 }
 
+/**
+ * Fetch data from a local CSV, TSV, or JSON, or an external API
+ * that returns JSON.
+ */
 export const fetchData = async (dataSource: string) => {
   // Get the base portion of the URL. Will be blank when running locally.
   const base = document.querySelector('base')?.getAttribute('href') ?? '';

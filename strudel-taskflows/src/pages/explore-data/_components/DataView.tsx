@@ -50,10 +50,9 @@ export const DataView: React.FC<DataViewProps> = ({ searchTerm, setPreviewItem }
       const queryString = queryParams.toString()
       let fullDataSourcePath = dataSource;
       if (queryString && queryString.length > 0) {
-        fullDataSourcePath = `${dataSource}?${queryString}`
+        fullDataSourcePath = `${dataSource}?${queryString}`;
       }
-      // const response = await fetch(`${dataSource}?${queryString}`);
-      const results = await fetchData(fullDataSourcePath)
+      const results = await fetchData(fullDataSourcePath);
       console.log(results);
       return results;
     },
