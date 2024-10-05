@@ -4,7 +4,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { SciDataGrid } from '../../../components/SciDataGrid';
 import { filterData } from '../../../utils/filters.utils';
-import { createFilterParams } from '../../../utils/queryParams.utils';
+import { createFilterParams, fetchData } from '../../../utils/queryParams.utils';
 import { taskflow } from '../_config/taskflow.config';
 import { useFilters } from '../../../components/FilterContext';
 
@@ -48,8 +48,14 @@ export const DataView: React.FC<DataViewProps> = ({ searchTerm, setPreviewItem }
     queryKey,
     queryFn: async (): Promise<any> => {
       const queryString = queryParams.toString()
-      const response = await fetch(`${dataSource}?${queryString}`);
-      return await response.json();
+      let fullDataSourcePath = dataSource;
+      if (queryString && queryString.length > 0) {
+        fullDataSourcePath = `${dataSource}?${queryString}`
+      }
+      // const response = await fetch(`${dataSource}?${queryString}`);
+      const results = await fetchData(fullDataSourcePath)
+      console.log(results);
+      return results;
     },
     placeholderData: keepPreviousData,
   });

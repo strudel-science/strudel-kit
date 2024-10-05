@@ -1,4 +1,5 @@
 import { DataFilter, FilterConfig } from "../types/filters.types";
+import * as d3 from 'd3-fetch';
 
 /**
  * Convert an array of values to a URL param by
@@ -105,4 +106,29 @@ export const createFilterParams = (filters: DataFilter[], filterConfigs: FilterC
     }
   });
   return params;
+}
+
+export const cleanUrl = (url: string) => {
+  return url.replace(/([^:]\/)\/+/g, "$1");
+}
+
+export const fetchData = async (dataSource: string) => {
+  // Get the base portion of the URL. Will be blank when running locally.
+  const base = document.querySelector('base')?.getAttribute('href') ?? '';
+  // Use the VITE_BASE_URL env variable to specify a path prefix that 
+  // should be added to routes and local requests
+  const basename = base + import.meta.env.VITE_BASE_URL;
+  const fileExtension = dataSource.split('.').pop();
+  const isExternal = dataSource.startsWith('http');
+  const dataSourcePath = isExternal ? cleanUrl(dataSource) : cleanUrl(`${basename}/${dataSource}`);
+  let data: any = [];
+  if (fileExtension === 'csv') {
+    data = await d3.csv(dataSourcePath);
+  } else if (fileExtension === 'tsv') {
+    data = await d3.tsv(dataSourcePath);
+  } else if (fileExtension === 'json' || isExternal) {
+    const response = await fetch(dataSourcePath);
+    data = await response.json();
+  }
+  return data;
 }
