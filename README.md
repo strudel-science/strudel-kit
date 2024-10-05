@@ -50,13 +50,13 @@ This generates new template files for your Task Flow in `my-app/src/pages/my-tas
 
 Navigate to http://localhost:5173/my-taskflow to see your new Task Flow.
 
-## Packages
+## Main Packages
 
-### [strudel-cli](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/README.md)
+### [strudel-cli](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/)
 
 The strudel-cli is a command-line tool for bootstrapping web applications based on the STRUDEL Design System. If you're looking to get started building web applications with STRUDEL, this is the best way to start.
 
-### [strudel-demo-app](https://github.com/strudel-science/strudel-kit/tree/main/strudel-demo-app)
+### [strudel-taskflows](https://github.com/strudel-science/strudel-kit/tree/main/strudel-taskflows)
 
 Demo react app that implements each of the STRUDEL task flows. This code is an example of what you can build using the strudel-cli. If you prefer to just copy and paste code from GitHub, this is a good place to start.
 
