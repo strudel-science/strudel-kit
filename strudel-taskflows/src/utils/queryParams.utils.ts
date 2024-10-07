@@ -111,6 +111,10 @@ export const cleanUrl = (url: string) => {
   return url.replace(/([^:]\/)\/+/g, "$1");
 }
 
+export const cleanPath = (url: string) => {
+  return url.replace(/\/\//g, "/");
+}
+
 /**
  * Fetch data from a local CSV, TSV, or JSON, or an external API
  * that returns JSON.
