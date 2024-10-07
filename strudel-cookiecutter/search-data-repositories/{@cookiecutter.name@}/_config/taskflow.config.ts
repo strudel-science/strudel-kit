@@ -6,7 +6,7 @@ export const taskflow: SearchDataRepositoriesConfig = {
       /**
        * Source of the data for the initial list of items on the main page.
        */
-      source: "default/search-data-repositories/datasets.json",
+      source: "data/default/search-data-repositories/datasets.json",
       /**
        * Field name for the unique ID in the data source.
        */

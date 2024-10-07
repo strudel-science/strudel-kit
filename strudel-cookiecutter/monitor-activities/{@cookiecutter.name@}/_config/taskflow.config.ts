@@ -6,7 +6,7 @@ export const taskflow: MonitorActivitiesConfig = {
       /**
        * Source of the data for the initial list of items. 
        */
-      source: "default/monitor-activities/experiments.json",
+      source: "data/default/monitor-activities/experiments.json",
       /**
        * Field name for the unique ID in the data source.
        */

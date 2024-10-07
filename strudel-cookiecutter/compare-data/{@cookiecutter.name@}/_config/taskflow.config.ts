@@ -18,7 +18,7 @@ export const taskflow: CompareDataConfig = {
       /**
        * Source of the data for the initial list of items. 
        */
-      source: "default/compare-data/scenarios.json",
+      source: "data/default/compare-data/scenarios.json",
       /**
        * Field name for the unique ID in the data source.
        */

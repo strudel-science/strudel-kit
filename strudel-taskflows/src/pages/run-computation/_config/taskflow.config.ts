@@ -18,7 +18,7 @@ export const taskflow: RunComputationConfig = {
       /**
        * Source of the data for the initial list of items.
        */
-      source: "default/run-computation/list.json",
+      source: "data/default/run-computation/list.json",
       /**
        * Field name for the unique ID in the data source.
        */
@@ -28,7 +28,7 @@ export const taskflow: RunComputationConfig = {
       /**
        * Source of the data for the table on the inputs page.
        */
-      source: "default/run-computation/inputs.json",
+      source: "data/default/run-computation/inputs.json",
       /**
        * Field name for the unique ID in the data source.
        */
@@ -40,7 +40,7 @@ export const taskflow: RunComputationConfig = {
        * The return format must be compatible with Plotly's data attribue. 
        * See the [Plotly Figure Reference](https://plotly.com/javascript/reference/index/) for more details.
        */
-      source: "default/run-computation/results_line_chart.json"
+      source: "data/default/run-computation/results_line_chart.json"
     },
     barChart: {
       /**
@@ -48,13 +48,13 @@ export const taskflow: RunComputationConfig = {
        * The return format must be compatible with Plotly's data attribue. 
        * See the [Plotly Figure Reference](https://plotly.com/javascript/reference/index/) for more details.
        */
-      source: "default/run-computation/results_bar_chart.json"
+      source: "data/default/run-computation/results_bar_chart.json"
     },
     results: {
       /**
        * Source of the data for the table on the results page.
        */
-      source: "default/run-computation/results_table.json",
+      source: "data/default/run-computation/results_table.json",
       /**
        * Field name for the unique ID in the data source.
        */

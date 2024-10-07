@@ -3,6 +3,7 @@ import React from 'react';
 import { config } from '../../strudel.config';
 import { AppLink } from './AppLink';
 import { ImageWrapper } from './ImageWrapper';
+import { cleanPath } from '../utils/queryParams.utils';
 
 /**
  * Bottom footer component
@@ -38,7 +39,7 @@ export const Footer: React.FC = () => {
               {config.footer.image && (
                 <AppLink to="/">
                   <ImageWrapper height={60}>
-                    <img src={`${import.meta.env.BASE_URL}/${config.footer.image}`} />
+                    <img src={cleanPath(`${import.meta.env.BASE_URL}/${config.footer.image}`)} />
                   </ImageWrapper>
                 </AppLink>
               )}

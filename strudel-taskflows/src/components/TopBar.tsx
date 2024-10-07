@@ -5,6 +5,7 @@ import React from 'react';
 import { AppLink } from './AppLink';
 import { config } from '../../strudel.config';
 import { ImageWrapper } from './ImageWrapper';
+import { cleanPath } from '../utils/queryParams.utils';
 
 /**
  * Top navigation bar component
@@ -33,7 +34,7 @@ export const TopBar: React.FC = () => {
             )}
             {config.navbar.logo && (
               <ImageWrapper height={30}>
-                <img src={`${import.meta.env.BASE_URL}/${config.navbar.logo}`} />
+                <img src={cleanPath(`${import.meta.env.BASE_URL}/${config.navbar.logo}`)} />
               </ImageWrapper>
             )}
           </AppLink>
