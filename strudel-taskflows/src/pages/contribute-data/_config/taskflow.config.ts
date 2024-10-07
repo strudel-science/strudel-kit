@@ -6,7 +6,7 @@ export const taskflow: ContributeDataConfig = {
       /**
        * Source of the data for the initial list of datasets on the portal page. 
        */
-      source: "default/contribute-data/contributor_datasets.json",
+      source: "data/default/contribute-data/contributor_datasets.json",
       /**
        * Name of the field in the data that represents a unique identifier for each record. 
        */
