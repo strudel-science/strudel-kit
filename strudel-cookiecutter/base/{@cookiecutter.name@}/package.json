@@ -44,8 +44,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "gh-pages": "^6.1.1",
-    "typedoc": "^0.25.13",
-    "typedoc-plugin-markdown": "^4.0.0",
     "typescript": "^5.2.2",
     "vite": "^5.2.10"
   },
