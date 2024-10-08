@@ -1,6 +1,6 @@
 # Contributing to STRUDEL
 
-Hi and thank you for being part of the STRUDEL community! This guide will describe the several ways you can contribute to STRUDEL including but not limited to the design, development kit, and website.
+Hi and thank you for being part of the STRUDEL community! This guide will describe the several ways you can contribute to STRUDEL including but not limited to the design, development kit, and website. This guide is a work in progress so check back soon for more information about the many ways you can contribute to STRUDEL.
 
 ## Code of Conduct
 
