@@ -7,6 +7,7 @@ import { PageHeader } from '../../components/PageHeader';
 import { useCompareData } from './_context/ContextProvider';
 import { setSelectedRows } from './_context/actions';
 import { taskflow } from './_config/taskflow.config';
+import { SciDataGrid } from '../../components/SciDataGrid';
   
 /**
  * List page to show comparable items in the compare-data Task Flow.
@@ -27,26 +28,29 @@ const ScenarioList: React.FC = () => {
         actions={
           <Stack direction="row">
             <Box>
-              <Link component={RouterLink} to="compare">
-                {state.selectedRows.length === 0 && (
+              {state.selectedRows.length < 2 && (
+                <Button 
+                  variant="outlined"
+                  disabled
+                  data-testid="compare-button"
+                >
+                  Compare {taskflow.properties.itemNamePlural}
+                </Button>
+              )}
+              {state.selectedRows.length > 1 && (
+                <Link component={RouterLink} to="compare">
                   <Button 
-                    variant="outlined"
-                  >
-                    Compare {taskflow.properties.itemNamePlural}
-                  </Button>
-                )}
-                {state.selectedRows.length > 0 && (
-                  <Button 
-                    variant={state.selectedRows.length > 1 ? 'contained' : 'outlined' }
+                    variant="contained"
+                    data-testid="compare-button"
                   >
                     Compare {taskflow.properties.itemNamePlural} ({state.selectedRows.length})
                   </Button>
-                )}
-              </Link>
+                </Link>
+              )}
             </Box>
             <Box>
               <Link component={RouterLink} to="new">
-                <Button variant="contained">
+                <Button variant="contained" data-testid="new-button">
                   New {taskflow.properties.itemName}
                 </Button>
               </Link>
@@ -61,12 +65,12 @@ const ScenarioList: React.FC = () => {
       <Container
         maxWidth="xl"
         sx={{
-          marginTop: 3,
-          marginBottom: 3,
+          paddingTop: 3,
+          paddingBottom: 3,
         }}
       >
         <Paper>
-          <DataGrid
+          <SciDataGrid
             rows={state.data}
             getRowId={(row) => row[state.dataIdField]}
             columns={state.columns}
@@ -76,6 +80,9 @@ const ScenarioList: React.FC = () => {
             disableRowSelectionOnClick
             disableDensitySelector
             disableColumnFilter
+            initialState={{
+              pagination: { paginationModel: { page: 1, pageSize: 25 } }
+            }}
             slots={{ toolbar: GridToolbar }}
             slotProps={{
               toolbar: {
