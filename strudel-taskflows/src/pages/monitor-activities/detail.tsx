@@ -39,7 +39,7 @@ const ActivityDetail: React.FC = () => {
       <Stack>
         <Stack direction="row" alignItems="center">
           <Link component={RouterLink} to="../">
-            <IconButton>
+            <IconButton data-testid="mna-back-button">
               <ArrowBackIcon />
             </IconButton>
           </Link> 
@@ -75,7 +75,7 @@ const ActivityDetail: React.FC = () => {
                   }}
                 >
                   <Stack>
-                    <Typography>Notes</Typography>
+                    <Typography variant="h6" component="h2">Notes</Typography>
                     {experiment && (
                       <LabelValueTable
                         rows={getNoteRows(experiment.notes)}
