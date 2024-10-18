@@ -2,7 +2,6 @@ import { Box, Button, Container, Link, Paper, Stack } from '@mui/material';
 import { GridToolbar } from '@mui/x-data-grid';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { DataGrid } from '@mui/x-data-grid';
 import { PageHeader } from '../../components/PageHeader';
 import { useCompareData } from './_context/ContextProvider';
 import { setSelectedRows } from './_context/actions';
@@ -32,7 +31,7 @@ const ScenarioList: React.FC = () => {
                 <Button 
                   variant="outlined"
                   disabled
-                  data-testid="compare-button"
+                  data-testid="cpd-compare-button"
                 >
                   Compare {taskflow.properties.itemNamePlural}
                 </Button>
@@ -41,7 +40,7 @@ const ScenarioList: React.FC = () => {
                 <Link component={RouterLink} to="compare">
                   <Button 
                     variant="contained"
-                    data-testid="compare-button"
+                    data-testid="cpd-compare-button"
                   >
                     Compare {taskflow.properties.itemNamePlural} ({state.selectedRows.length})
                   </Button>
@@ -50,7 +49,7 @@ const ScenarioList: React.FC = () => {
             </Box>
             <Box>
               <Link component={RouterLink} to="new">
-                <Button variant="contained" data-testid="new-button">
+                <Button variant="contained" data-testid="cpd-new-button">
                   New {taskflow.properties.itemName}
                 </Button>
               </Link>
