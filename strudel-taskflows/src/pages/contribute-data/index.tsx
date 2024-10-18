@@ -78,7 +78,7 @@ const Register: React.FC = () => {
             </Box>
             <Box>
               <Link component={RouterLink} to="portal">
-                <Button variant="contained">
+                <Button variant="contained" data-testid="ctd-submit-button">
                   Submit Registration
                 </Button>
               </Link>

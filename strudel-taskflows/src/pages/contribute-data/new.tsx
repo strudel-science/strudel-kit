@@ -31,14 +31,14 @@ const NewDataset: React.FC = () => {
           <Stack direction="row">
             <Box>
               <Link component={RouterLink} to="../portal">
-                <Button variant="contained" color="warning">
+                <Button variant="contained" color="warning" data-testid="ctd-cancel-button">
                   Cancel
                 </Button>
               </Link>
             </Box>
             <Box>
               <Link component={RouterLink} to="../review">
-                <Button variant="contained" sx={{ whiteSpace: 'nowrap' }}>
+                <Button variant="contained" data-testid="ctd-save-button" sx={{ whiteSpace: 'nowrap' }}>
                   Save Dataset
                 </Button>
               </Link>
