@@ -150,7 +150,7 @@ const DataInputsPage: React.FC = () => {
         }}
       >
         <Link component={RouterLink} to="../settings">
-          <Button variant="contained">Continue to {taskflow.pages.settings.title}</Button>
+          <Button variant="contained" data-testid="rnc-settings-next-button">Continue to {taskflow.pages.settings.title}</Button>
         </Link>
       </Box>
     </Stack>

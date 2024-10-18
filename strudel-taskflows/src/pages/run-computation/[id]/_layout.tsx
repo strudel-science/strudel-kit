@@ -25,7 +25,7 @@ const ComputationLayout: React.FC = () => {
           <Toolbar variant="dense">
             <Stack direction="row" alignItems="center" sx={{ flexGrow: 1 }}>
               <Breadcrumbs aria-label="breadcrumb" separator={<ChevronRightIcon fontSize="small" />}>
-                <Link underline="hover" color="inherit" to=".." component={RouterLink}>
+                <Link underline="hover" color="inherit" to=".." component={RouterLink} data-testid="rnc-list-link">
                   {taskflow.properties.itemName} List
                 </Link>
                 <Typography color="text.primary">Optimization Scenario 1</Typography>
