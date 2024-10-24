@@ -8,56 +8,58 @@ import { openApiModal } from '../context/actions';
  * Include the local basename if pulling from a local source.
  */
 export const useDataFromSource = (dataSource: string): any => {
-  const { dispatch } = useAppState();
-  const [data, setData] = useState();
-  /** Get the base portion of the URL. Will be blank when running locally. */
-  const base = document.querySelector('base')?.getAttribute('href') ?? '';
-  /** 
-   * Use the VITE_BASE_URL env variable to specify a path prefix that 
-   * should be added to routes and local requests
-   */
-  const basePath = import.meta.env.VITE_BASE_URL || '';
-  const basename = base + basePath;
+	const { dispatch } = useAppState();
+	const [data, setData] = useState();
+	/** Get the base portion of the URL. Will be blank when running locally. */
+	const base = document.querySelector('base')?.getAttribute('href') ?? '';
+	/**
+	 * Use the VITE_BASE_URL env variable to specify a path prefix that
+	 * should be added to routes and local requests
+	 */
+	const basePath = import.meta.env.VITE_BASE_URL || '';
+	const basename = base + basePath;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const fileExtension = dataSource.split('.').pop();
-      const isExternal = dataSource.startsWith('http');
-      const dataSourcePath = isExternal ? dataSource : `${basename}/${dataSource}`;
-      let data: any = [];
-      if (fileExtension === 'csv') {
-        data = await d3.csv(dataSourcePath);
-      } else if (fileExtension === 'tsv') {
-        data = await d3.tsv(dataSourcePath);
-      } else if (fileExtension === 'json' || isExternal) {
-        let headers = new Headers();
-        const apiTokenName = localStorage.getItem('apiTokenName');
-        const apiTokenValue = localStorage.getItem('apiTokenValue');
-        if (apiTokenName && apiTokenValue) {
-          headers = new Headers({
-            [apiTokenName]: apiTokenValue,
-          });
-        }
-        try {
-          const response = await fetch(dataSourcePath, {
-            headers: headers,
-            method: 'GET',
-            redirect: 'follow',
-          });
-          if (!response.ok) {
-            console.log(response);
-            dispatch(openApiModal());
-            throw new Error("unable to fetch");
-          }
-          data = await response.json();
-        } catch (e) {
-          console.log(e);
-        }
-      }
-      setData(data);
-    }
-    fetchData();
-  }, []);
+	useEffect(() => {
+		const fetchData = async () => {
+			const fileExtension = dataSource.split('.').pop();
+			const isExternal = dataSource.startsWith('http');
+			const dataSourcePath = isExternal
+				? dataSource
+				: `${basename}/${dataSource}`;
+			let newData: any = [];
+			if (fileExtension === 'csv') {
+				newData = await d3.csv(dataSourcePath);
+			} else if (fileExtension === 'tsv') {
+				newData = await d3.tsv(dataSourcePath);
+			} else if (fileExtension === 'json' || isExternal) {
+				let headers = new Headers();
+				const apiTokenName = localStorage.getItem('apiTokenName');
+				const apiTokenValue = localStorage.getItem('apiTokenValue');
+				if (apiTokenName && apiTokenValue) {
+					headers = new Headers({
+						[apiTokenName]: apiTokenValue,
+					});
+				}
+				try {
+					const response = await fetch(dataSourcePath, {
+						headers: headers,
+						method: 'GET',
+						redirect: 'follow',
+					});
+					if (!response.ok) {
+						dispatch(openApiModal());
+						throw new Error('unable to fetch');
+					}
+					newData = await response.json();
+				} catch (e) {
+					// eslint-disable-next-line no-console
+					console.log(e);
+				}
+			}
+			setData(newData);
+		};
+		fetchData();
+	}, []);
 
-  return data;
-}
+	return data;
+};

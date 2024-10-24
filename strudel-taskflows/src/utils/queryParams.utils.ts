@@ -75,7 +75,7 @@ export const buildParamsString = (filters: DataFilter[], filterConfigs: FilterCo
 
 export const createFilterParams = (filters: DataFilter[], filterConfigs: FilterConfig[]) => {
   const params = new URLSearchParams();
-  filters.forEach((filter, i) => {
+  filters.forEach((filter) => {
     const filterConfig = filterConfigs.find((c) => c.field === filter.field); 
     const options = filterConfig?.paramTypeOptions;
     switch(filterConfig?.paramType) {

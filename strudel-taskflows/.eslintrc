@@ -1,7 +1,6 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-
   "parserOptions": {
     "project": "./tsconfig.json",
     "ecmaVersion": 2020, // Allows for the parsing of modern JS
@@ -9,11 +8,18 @@
       "jsx": true // Allows for the parsing of JSX
     }
   },
-
+  "ignorePatterns": [
+		"package-lock.json",
+		"!.stylelintrc.json",
+		"*.md",
+		"*.css",
+    "dist"
+	],
   "extends": ["airbnb-typescript", "plugin:prettier/recommended"],
   "plugins": ["@typescript-eslint", "import", "react", "prettier"],
   "rules": {
-    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-explicit-any": "off", // allow any because template often can't predict users' types
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "react/no-danger": "off", // it's self explainatory that no-danger should be used sparingly
     "react/prop-types": "off", // as long as TS strict mode is off this is not required
     "react/function-component-definition": [
