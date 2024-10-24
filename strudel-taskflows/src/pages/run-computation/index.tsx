@@ -55,6 +55,7 @@ export const ListPage: React.FC = () => {
             <Button
               variant="contained"
               onClick={handleNewScenario}
+              data-testid="rnc-new-button"
             >
               New {taskflow.properties.itemName}
             </Button>

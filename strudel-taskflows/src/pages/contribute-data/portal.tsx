@@ -31,7 +31,7 @@ const ContributorPortal: React.FC = () => {
             {taskflow.pages.portal.title}
           </Typography>
           <Link component={RouterLink} to="../new">
-            <Button variant="contained">
+            <Button variant="contained" data-testid="ctd-new-button">
               New Dataset
             </Button>
           </Link>

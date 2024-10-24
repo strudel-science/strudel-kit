@@ -83,7 +83,7 @@ export const NewScenarioModal: React.FC<Props> = ({
         />
         <Box textAlign="right">
           <Link component={RouterLink} to="scenario/data-inputs">
-            <Button variant="contained" >
+            <Button variant="contained" data-testid="rnc-create-button">
               Create
             </Button>
           </Link>

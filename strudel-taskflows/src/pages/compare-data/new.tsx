@@ -36,14 +36,14 @@ export const NewScenario: React.FC = () => {
           <Stack direction="row">
             <Box>
               <Link component={RouterLink} to="..">
-                <Button variant="contained" color="warning">
+                <Button variant="contained" color="warning" data-testid="cpd-cancel-button">
                   Cancel
                 </Button>
               </Link>
             </Box>
             <Box>
               <Link component={RouterLink} to="..">
-                <Button variant="contained">
+                <Button variant="contained" data-testid="cpd-save-button">
                   Save {taskflow.properties.itemName}
                 </Button>
               </Link>

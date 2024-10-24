@@ -128,7 +128,7 @@ const SettingsPage: React.FC = () => {
             )}
             <Box textAlign="right">
               <Link component={RouterLink} to="../running">
-                <Button variant="contained" sx={{ marginTop: 4 }}>
+                <Button variant="contained" data-testid="rnc-run-button" sx={{ marginTop: 4 }}>
                   Run {taskflow.properties.itemName}
                 </Button>
               </Link>

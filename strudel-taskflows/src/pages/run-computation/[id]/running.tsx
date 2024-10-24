@@ -87,7 +87,7 @@ const RunningComputationPage: React.FC = () => {
                 <Typography>Your results are ready to view.</Typography>
               </Box>
               <Link component={RouterLink} to="../results">
-                <Button variant="contained" size="large">Continue to Results</Button>
+                <Button variant="contained" size="large" data-testid="rnc-results-button">Continue to Results</Button>
               </Link>
               <Typography color="neutral.dark">
                 Started 05/24/2023 9:32:33 AM, Ended 05/24/2023 11:47:03 AM

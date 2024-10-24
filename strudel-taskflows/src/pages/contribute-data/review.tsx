@@ -72,7 +72,7 @@ const ReviewDataset: React.FC = () => {
             <Stack direction="row">
               <Box>
                 <Link component={RouterLink} to="../new">
-                  <Button variant="contained" sx={{ whiteSpace: 'nowrap' }}>
+                  <Button variant="contained" data-testid="ctd-edit-button" sx={{ whiteSpace: 'nowrap' }}>
                     Edit Dataset
                   </Button>
                 </Link>
@@ -81,6 +81,7 @@ const ReviewDataset: React.FC = () => {
                 <Button
                   variant="contained"
                   onClick={() => startRunChecks()}
+                  data-testid="ctd-checks-button"
                   sx={{ whiteSpace: 'nowrap' }}
                 >
                   Run Checks
@@ -89,7 +90,7 @@ const ReviewDataset: React.FC = () => {
               {state.checksComplete && (
                 <Box>
                   <Link component={RouterLink} to="../portal">
-                    <Button variant="contained" sx={{ whiteSpace: 'nowrap' }}>
+                    <Button variant="contained" data-testid="ctd-publish-button" sx={{ whiteSpace: 'nowrap' }}>
                       Publish Dataset
                     </Button>
                   </Link>
