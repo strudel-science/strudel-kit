@@ -10,6 +10,7 @@
   },
   "ignorePatterns": [
 		"package-lock.json",
+    "package.json",
 		"!.stylelintrc.json",
 		"*.md",
 		"*.css",

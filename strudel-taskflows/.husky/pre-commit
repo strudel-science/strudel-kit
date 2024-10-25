@@ -1,3 +1,2 @@
 cd strudel-taskflows
-npm run lint:fix
-npm run prettier:fix
+npx lint-staged

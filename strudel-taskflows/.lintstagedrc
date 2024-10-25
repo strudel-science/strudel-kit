@@ -1,0 +1,6 @@
+{
+  "*.{js,jsx,ts,tsx,css,md,mdx}": [
+    "eslint --cache --fix",
+    "prettier --write"
+  ]
+}
