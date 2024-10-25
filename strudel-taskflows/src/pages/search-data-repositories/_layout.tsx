@@ -11,28 +11,28 @@ import { taskflow } from './_config/taskflow.config';
  * Inner pages are rendered inside the `<Outlet />` component
  */
 const SearchDataRepositoriesLayout: React.FC = () => {
-  const datasets = useDataFromSource(taskflow.data.items.source)
+	const datasets = useDataFromSource(taskflow.data.items.source);
 
-  /**
-   * Content to render on the page for this component
-   */
-  return (
-    <Box>
-      <Box sx={{ flexGrow: 1 }}>
-        <TopBar />
-      </Box>
-      <Box>
-        <SearchDataRepositoriesProvider 
-          data={datasets} 
-          dataIdField={taskflow.data.items.idField} 
-          filters={taskflow.pages.index.cardFilters} 
-          cardFields={taskflow.pages.index.cardFields}
-        >
-          <Outlet />
-        </SearchDataRepositoriesProvider>
-      </Box>
-    </Box>
-  )
-}
+	/**
+	 * Content to render on the page for this component
+	 */
+	return (
+		<Box>
+			<Box sx={{ flexGrow: 1 }}>
+				<TopBar />
+			</Box>
+			<Box>
+				<SearchDataRepositoriesProvider
+					data={datasets}
+					dataIdField={taskflow.data.items.idField}
+					filters={taskflow.pages.index.cardFilters}
+					cardFields={taskflow.pages.index.cardFields}
+				>
+					<Outlet />
+				</SearchDataRepositoriesProvider>
+			</Box>
+		</Box>
+	);
+};
 
 export default SearchDataRepositoriesLayout;
