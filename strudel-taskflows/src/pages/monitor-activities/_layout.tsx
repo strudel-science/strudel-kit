@@ -8,16 +8,16 @@ import { TopBar } from '../../components/TopBar';
  * Inner pages are rendered inside the `<Outlet />` component
  */
 const MonitorActivitiesLayout: React.FC = () => {
-  return (
-    <Box>
-      <Box sx={{ flexGrow: 1 }}>
-        <TopBar />
-      </Box>
-      <Box>
-        <Outlet />
-      </Box>
-    </Box>
-  )
-}
+	return (
+		<Box>
+			<Box sx={{ flexGrow: 1 }}>
+				<TopBar />
+			</Box>
+			<Box>
+				<Outlet />
+			</Box>
+		</Box>
+	);
+};
 
 export default MonitorActivitiesLayout;
