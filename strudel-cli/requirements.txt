@@ -2,7 +2,7 @@ arrow==1.2.3
 build==1.0.3
 binaryornot==0.4.4
 Brotli==1.0.9
-certifi==2023.11.17
+certifi==2024.7.4
 cffi==1.16.0
 chardet==4.0.0
 charset-normalizer==2.0.4
