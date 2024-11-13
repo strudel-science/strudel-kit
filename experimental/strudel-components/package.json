@@ -33,7 +33,7 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "react-docgen": "^7.0.3",
     "typescript": "^5.2.2",
-    "vite": "^5.2.0",
+    "vite": "^5.4.11",
     "vite-plugin-dts": "^3.8.2"
   },
   "peerDependencies": {
