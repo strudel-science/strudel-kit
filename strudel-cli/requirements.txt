@@ -26,7 +26,7 @@ python-slugify==5.0.2
 PyYAML==6.0.1
 requests==2.32.2
 rich==13.3.5
-setuptools==68.2.2
+setuptools==70.0.0
 shellingham==1.5.0
 six==1.16.0
 text-unidecode==1.3
