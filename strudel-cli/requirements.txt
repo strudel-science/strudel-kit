@@ -24,7 +24,7 @@ pytest==8.0.0
 python-dateutil==2.8.2
 python-slugify==5.0.2
 PyYAML==6.0.1
-requests==2.31.0
+requests==2.32.2
 rich==13.3.5
 setuptools==68.2.2
 shellingham==1.5.0
