@@ -34,5 +34,5 @@ typer==0.12.1
 typing_extensions==4.9.0
 twine==4.0.2
 Unidecode==1.2.0
-urllib3==1.26.18
+urllib3==1.26.19
 wheel==0.41.2
