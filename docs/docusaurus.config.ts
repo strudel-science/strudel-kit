@@ -160,7 +160,7 @@ const config: Config = {
       // The application ID provided by Algolia
       appId: "CFT2374PW2",
       // Public API key: it is safe to commit it
-      apiKey: "bcc5c2c8126b8fc2f4f7561a4517467a",
+      apiKey: "4a6cd559ed850d61bbe5d942926e97f7",
       indexName: "strudel",
       // Optional: path for search page that enabled by default (`false` to disable it)
       searchPagePath: "search",
