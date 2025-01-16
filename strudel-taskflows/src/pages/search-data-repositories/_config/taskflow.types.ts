@@ -1,3 +1,5 @@
+import { FilterComponent } from '../../../components/FilterField';
+
 /**
  * Type definitions for the Compare Data Task Flow config object
  */
@@ -27,7 +29,7 @@ export interface SearchDataRepositoriesConfig {
 			cardFilters: {
 				field: string;
 				label: string;
-				filterComponent: 'CheckboxList' | 'Slider' | 'DateRange' | 'TextField';
+				filterComponent: FilterComponent;
 				filterProps?: object;
 			}[];
 		};

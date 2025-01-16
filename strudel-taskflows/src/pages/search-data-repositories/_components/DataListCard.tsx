@@ -3,10 +3,11 @@ import { blue } from '@mui/material/colors';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useSearchDataRepositories } from '../_context/ContextProvider';
-import { setPreviewItem } from '../_context/actions';
 
 interface DataListCardProps {
 	item: any;
+	previewItem: any;
+	setPreviewItem: React.Dispatch<React.SetStateAction<any>>;
 }
 
 /**
@@ -14,11 +15,15 @@ interface DataListCardProps {
  * The fields that are displayed in the cards are originally
  * configured in `defintions.cards.main`.
  */
-export const DataListCard: React.FC<DataListCardProps> = ({ item }) => {
-	const { state, dispatch } = useSearchDataRepositories();
+export const DataListCard: React.FC<DataListCardProps> = ({
+	item,
+	previewItem,
+	setPreviewItem,
+}) => {
+	const { state } = useSearchDataRepositories();
 
 	const handleItemClick = () => {
-		dispatch(setPreviewItem(item));
+		setPreviewItem(item);
 	};
 
 	/**
@@ -26,7 +31,7 @@ export const DataListCard: React.FC<DataListCardProps> = ({ item }) => {
 	 */
 	return (
 		<Stack
-			className={state.previewItem?.id === item.id ? 'selected' : ''}
+			className={previewItem?.id === item.id ? 'selected' : ''}
 			direction="row"
 			onClick={() => handleItemClick()}
 			sx={{

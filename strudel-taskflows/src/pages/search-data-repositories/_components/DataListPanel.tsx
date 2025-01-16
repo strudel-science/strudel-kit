@@ -9,13 +9,15 @@ import {
 	TextField,
 	Typography,
 } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import { DataListCard } from './DataListCard';
 import { useSearchDataRepositories } from '../_context/ContextProvider';
-import { setSearch } from '../_context/actions';
+import { taskflow } from '../_config/taskflow.config';
 
 interface DataListPanelProps {
 	onToggleFiltersPanel: () => any;
+	previewItem: any;
+	setPreviewItem: React.Dispatch<React.SetStateAction<any>>;
 }
 
 /**
@@ -23,18 +25,22 @@ interface DataListPanelProps {
  * Cards are filterable by the inputs in `<FiltersPanel>` and clicking a card will
  * display the `<PreviewPanel>`.
  */
-export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
-	const { state, dispatch } = useSearchDataRepositories();
-
+export const DataListPanel: React.FC<DataListPanelProps> = ({
+	onToggleFiltersPanel,
+	previewItem,
+	setPreviewItem,
+}) => {
+	const { state } = useSearchDataRepositories();
+	const [searchTerm, setSearchTerm] = useState('');
 	const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (evt) => {
-		dispatch(setSearch(evt.target.value));
+		setSearchTerm(evt.target.value);
 	};
 
 	/**
 	 * Content to render on the page for this component
 	 */
 	return (
-		<Paper>
+		<Paper elevation={0}>
 			<Stack
 				direction="row"
 				spacing={2}
@@ -43,10 +49,7 @@ export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
 					padding: 2,
 				}}
 			>
-				<Button
-					startIcon={<FilterAltIcon />}
-					onClick={props.onToggleFiltersPanel}
-				>
+				<Button startIcon={<FilterAltIcon />} onClick={onToggleFiltersPanel}>
 					Filters
 				</Button>
 				<Button startIcon={<SortIcon />}>Sort</Button>
@@ -55,6 +58,7 @@ export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
 						variant="outlined"
 						label="Search"
 						size="small"
+						value={searchTerm}
 						fullWidth
 						onChange={handleSearch}
 					/>
@@ -68,10 +72,15 @@ export const DataListPanel: React.FC<DataListPanelProps> = (props) => {
 			>
 				<Stack flex={1}>
 					{state.filteredData?.map((item) => (
-						<DataListCard key={item[state.dataIdField]} item={item} />
+						<DataListCard
+							key={item[taskflow.data.items.idField]}
+							item={item}
+							previewItem={previewItem}
+							setPreviewItem={setPreviewItem}
+						/>
 					))}
 				</Stack>
-				{!state.previewItem && (
+				{!previewItem && (
 					<Box
 						sx={{
 							display: 'flex',

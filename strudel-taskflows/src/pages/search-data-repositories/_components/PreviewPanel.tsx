@@ -51,14 +51,24 @@ const attachedFiles = [
 ];
 
 interface PreviewPanelProps {
-	onClose: () => any;
+	/**
+	 * Data for the selected card from the main list
+	 */
+	previewItem: any;
+	/**
+	 * Function to handle hiding
+	 */
+	onClose: () => void;
 }
 
 /**
  * Panel to show extra information about a card in a separate panel
  * next to the `<DataListPanel>`.
  */
-export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
+export const PreviewPanel: React.FC<PreviewPanelProps> = ({
+	previewItem,
+	onClose,
+}) => {
 	const { state } = useSearchDataRepositories();
 
 	/**
@@ -78,13 +88,13 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
 						<Typography variant="h6" component="h3" flex={1}>
 							<Link
 								component={RouterLink}
-								to={`./${state.previewItem.id}`}
+								to={`./${previewItem.id}`}
 								underline="hover"
 							>
-								{state.previewItem[state.cardFields.title]}
+								{previewItem[state.cardFields.title]}
 							</Link>
 						</Typography>
-						<IconButton size="small" onClick={props.onClose}>
+						<IconButton size="small" onClick={onClose}>
 							<CloseIcon />
 						</IconButton>
 					</Stack>
@@ -118,9 +128,7 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
 						<Typography fontWeight="medium" mb={1}>
 							Summary
 						</Typography>
-						<Typography>
-							{state.previewItem[state.cardFields.content]}
-						</Typography>
+						<Typography>{previewItem[state.cardFields.content]}</Typography>
 					</Box>
 				)}
 				{state.cardFields.tags && (
@@ -129,11 +137,11 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
 							Tags
 						</Typography>
 						<Typography>
-							{state.previewItem[state.cardFields.tags].map(
+							{previewItem[state.cardFields.tags].map(
 								(tag: string, i: number) => {
 									if (
 										state.cardFields.tags &&
-										i < state.previewItem[state.cardFields.tags].length - 1
+										i < previewItem[state.cardFields.tags].length - 1
 									) {
 										return <span key={`${tag}-${i}`}>{`${tag}, `}</span>;
 									} else {
@@ -159,7 +167,7 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = (props) => {
 					/>
 				</Box>
 				<Stack direction="row">
-					<Link component={RouterLink} to={`./${state.previewItem.id}`}>
+					<Link component={RouterLink} to={`./${previewItem.id}`}>
 						<Button variant="contained">View datasets</Button>
 					</Link>
 					<Button variant="outlined">Download files</Button>
