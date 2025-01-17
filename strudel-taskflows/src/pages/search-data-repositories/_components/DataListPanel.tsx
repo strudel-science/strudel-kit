@@ -1,10 +1,12 @@
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SortIcon from '@mui/icons-material/Sort';
 import {
+	Alert,
 	Box,
 	Button,
 	Pagination,
 	Paper,
+	Skeleton,
 	Stack,
 	TextField,
 	Typography,
@@ -13,6 +15,9 @@ import React, { useState } from 'react';
 import { DataListCard } from './DataListCard';
 import { useSearchDataRepositories } from '../_context/ContextProvider';
 import { taskflow } from '../_config/taskflow.config';
+import { useFilters } from '../../../components/FilterContext';
+import { filterData } from '../../../utils/filters.utils';
+import { useDataQuery } from '../../../utils/useDataQuery';
 
 interface DataListPanelProps {
 	onToggleFiltersPanel: () => any;
@@ -31,7 +36,30 @@ export const DataListPanel: React.FC<DataListPanelProps> = ({
 	setPreviewItem,
 }) => {
 	const { state } = useSearchDataRepositories();
+	const { activeFilters } = useFilters();
 	const [searchTerm, setSearchTerm] = useState('');
+	const [page, setPage] = useState(0);
+	const [pageSize, setPageSize] = useState(25);
+	const [offset, setOffest] = useState(page * pageSize);
+	const filterConfigs = taskflow.pages.index.cardFilters;
+	const queryMode = taskflow.data.items.queryMode;
+	const { isPending, isFetching, isError, data, error } = useDataQuery({
+		activeFilters,
+		dataSource: taskflow.data.items.source,
+		filterConfigs,
+		offset,
+		page,
+		pageSize,
+		queryMode: taskflow.data.items.queryMode,
+		staticParams: taskflow.data.items.staticParams,
+	});
+	const cards =
+		queryMode === 'server'
+			? data.results
+			: filterData(data, activeFilters, filterConfigs, searchTerm);
+	const emptyRows = new Array(pageSize).fill(null);
+	const indexedRows = emptyRows.map((row, i) => i);
+
 	const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (evt) => {
 		setSearchTerm(evt.target.value);
 	};
@@ -70,16 +98,40 @@ export const DataListPanel: React.FC<DataListPanelProps> = ({
 					padding: 2,
 				}}
 			>
-				<Stack flex={1}>
-					{state.filteredData?.map((item) => (
-						<DataListCard
-							key={item[taskflow.data.items.idField]}
-							item={item}
-							previewItem={previewItem}
-							setPreviewItem={setPreviewItem}
-						/>
-					))}
-				</Stack>
+				{isPending && (
+					<Box
+						flex={1}
+						sx={{
+							padding: 2,
+						}}
+					>
+						{indexedRows.map((row) => (
+							<Skeleton key={row} height={100} />
+						))}
+					</Box>
+				)}
+				{isError && (
+					<Stack flex={1}>
+						<Alert severity="error">{error.message}</Alert>
+					</Stack>
+				)}
+				{cards && cards.length > 0 && (
+					<Stack flex={1}>
+						{cards?.map((item: any) => (
+							<DataListCard
+								key={item[taskflow.data.items.idField]}
+								item={item}
+								previewItem={previewItem}
+								setPreviewItem={setPreviewItem}
+							/>
+						))}
+					</Stack>
+				)}
+				{cards && cards.length === 0 && (
+					<Stack flex={1}>
+						<Typography>No data matches your search</Typography>
+					</Stack>
+				)}
 				{!previewItem && (
 					<Box
 						sx={{

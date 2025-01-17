@@ -1,4 +1,5 @@
 import { FilterComponent } from '../../../components/FilterField';
+import { FilterOperator } from '../../../types/filters.types';
 
 /**
  * Type definitions for the Compare Data Task Flow config object
@@ -9,11 +10,15 @@ export interface SearchDataRepositoriesConfig {
 	data: {
 		items: {
 			source: string;
+			staticParams?: Record<string, string> | null;
 			idField: string;
+			queryMode: 'client' | 'server';
 		};
 		[key: string]: {
 			source: string;
+			staticParams?: Record<string, string> | null;
 			idField: string;
+			queryMode: 'client' | 'server';
 		};
 	};
 	/** Cool pages */
@@ -29,6 +34,7 @@ export interface SearchDataRepositoriesConfig {
 			cardFilters: {
 				field: string;
 				label: string;
+				operator: FilterOperator;
 				filterComponent: FilterComponent;
 				filterProps?: object;
 			}[];

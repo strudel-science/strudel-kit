@@ -8,9 +8,17 @@ export const taskflow: SearchDataRepositoriesConfig = {
 			 */
 			source: 'data/default/search-data-repositories/datasets.json',
 			/**
+			 * Key-value object of params that should always be included in the query URL
+			 */
+			staticParams: null,
+			/**
 			 * Field name for the unique ID in the data source.
 			 */
 			idField: 'id',
+			/**
+			 * Method by which data should be filtered, either client or server.
+			 */
+			queryMode: 'client',
 		},
 	},
 	pages: {
@@ -46,6 +54,7 @@ export const taskflow: SearchDataRepositoriesConfig = {
 					 * Text to display in the label for the filter.
 					 */
 					label: 'Category',
+					operator: 'contains-one-of',
 					/**
 					 * The kind of filter component and function to use. Must be "CheckboxList", "Slider", or "data range".
 					 */
@@ -77,6 +86,7 @@ export const taskflow: SearchDataRepositoriesConfig = {
 				{
 					field: 'tags',
 					label: 'Tags',
+					operator: 'contains-one-of',
 					filterComponent: 'CheckboxList',
 					filterProps: {
 						options: [
@@ -98,6 +108,7 @@ export const taskflow: SearchDataRepositoriesConfig = {
 				{
 					field: 'publication_date',
 					label: 'Publication Date',
+					operator: 'between-dates-inclusive',
 					filterComponent: 'DateRange',
 				},
 			],
