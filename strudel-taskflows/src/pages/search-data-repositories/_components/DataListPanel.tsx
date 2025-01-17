@@ -11,9 +11,8 @@ import {
 	TextField,
 	Typography,
 } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DataListCard } from './DataListCard';
-import { useSearchDataRepositories } from '../_context/ContextProvider';
 import { taskflow } from '../_config/taskflow.config';
 import { useFilters } from '../../../components/FilterContext';
 import { filterData } from '../../../utils/filters.utils';
@@ -35,22 +34,23 @@ export const DataListPanel: React.FC<DataListPanelProps> = ({
 	previewItem,
 	setPreviewItem,
 }) => {
-	const { state } = useSearchDataRepositories();
 	const { activeFilters } = useFilters();
 	const [searchTerm, setSearchTerm] = useState('');
-	const [page, setPage] = useState(0);
-	const [pageSize, setPageSize] = useState(25);
-	const [offset, setOffest] = useState(page * pageSize);
+	const [page, setPage] = useState(1);
+	const pageSize = 5;
+	const [offset, setOffest] = useState((page - 1) * pageSize);
+	const [total, setTotal] = useState(1);
+	const [paginatedCards, setPaginatedCards] = useState([]);
 	const filterConfigs = taskflow.pages.index.cardFilters;
 	const queryMode = taskflow.data.items.queryMode;
-	const { isPending, isFetching, isError, data, error } = useDataQuery({
+	const { isPending, isError, data, error } = useDataQuery({
 		activeFilters,
 		dataSource: taskflow.data.items.source,
 		filterConfigs,
 		offset,
 		page,
 		pageSize,
-		queryMode: taskflow.data.items.queryMode,
+		queryMode,
 		staticParams: taskflow.data.items.staticParams,
 	});
 	const cards =
@@ -64,9 +64,38 @@ export const DataListPanel: React.FC<DataListPanelProps> = ({
 		setSearchTerm(evt.target.value);
 	};
 
-	/**
-	 * Content to render on the page for this component
-	 */
+	const handlePageChange = (
+		event: React.ChangeEvent<unknown>,
+		value: number
+	) => {
+		setPage(value);
+	};
+
+	// Set total count after cards is populated from query
+	useEffect(() => {
+		if (cards) {
+			setTotal(queryMode === 'server' ? data.total : cards.length);
+		}
+	}, [cards]);
+
+	// Modify the item offset when the page changes
+	useEffect(() => {
+		setOffest((page - 1) * pageSize);
+	}, [page]);
+
+	// Filter cards based on their index when the page and offset change
+	// The paginatedCards list is only relevant/used for client mode apps
+	useEffect(() => {
+		if (cards) {
+			setPaginatedCards(
+				cards.filter((_card: any, i: number) => {
+					return i >= offset && i < offset + pageSize;
+				})
+			);
+		}
+	}, [cards, offset]);
+
+	// Content to render on the page for this component
 	return (
 		<Paper elevation={0}>
 			<Stack
@@ -115,7 +144,19 @@ export const DataListPanel: React.FC<DataListPanelProps> = ({
 						<Alert severity="error">{error.message}</Alert>
 					</Stack>
 				)}
-				{cards && cards.length > 0 && (
+				{queryMode == 'client' && cards && cards.length > 0 && (
+					<Stack flex={1}>
+						{paginatedCards?.map((item: any) => (
+							<DataListCard
+								key={item[taskflow.data.items.idField]}
+								item={item}
+								previewItem={previewItem}
+								setPreviewItem={setPreviewItem}
+							/>
+						))}
+					</Stack>
+				)}
+				{queryMode == 'server' && cards && cards.length > 0 && (
 					<Stack flex={1}>
 						{cards?.map((item: any) => (
 							<DataListCard
@@ -147,7 +188,14 @@ export const DataListPanel: React.FC<DataListPanelProps> = ({
 					</Box>
 				)}
 			</Stack>
-			<Pagination count={10} />
+			<Pagination
+				count={Math.ceil(total / pageSize)}
+				page={page}
+				onChange={handlePageChange}
+				sx={{
+					padding: 2,
+				}}
+			/>
 		</Paper>
 	);
 };
