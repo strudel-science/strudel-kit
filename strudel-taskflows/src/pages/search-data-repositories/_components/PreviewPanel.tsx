@@ -12,8 +12,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Link as RouterLink } from 'react-router-dom';
 import { LabelValueTable } from '../../../components/LabelValueTable';
 import { DataGrid } from '@mui/x-data-grid';
-import { useSearchDataRepositories } from '../_context/ContextProvider';
 import { GridColDef } from '@mui/x-data-grid';
+import { taskflow } from '../_config/taskflow.config';
 
 /**
  * Placeholder columns for attached files table
@@ -69,11 +69,9 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = ({
 	previewItem,
 	onClose,
 }) => {
-	const { state } = useSearchDataRepositories();
+	const cardFields = taskflow.pages.index.cardFields;
 
-	/**
-	 * Content to render on the page for this component
-	 */
+	// Content to render on the page for this component
 	return (
 		<Paper
 			elevation={0}
@@ -91,7 +89,7 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = ({
 								to={`./${previewItem.id}`}
 								underline="hover"
 							>
-								{previewItem[state.cardFields.title]}
+								{previewItem[cardFields.title]}
 							</Link>
 						</Typography>
 						<IconButton size="small" onClick={onClose}>
@@ -123,32 +121,30 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = ({
 						pariatur sunt officia.
 					</Typography>
 				</Box>
-				{state.cardFields.content && (
+				{cardFields.content && (
 					<Box>
 						<Typography fontWeight="medium" mb={1}>
 							Summary
 						</Typography>
-						<Typography>{previewItem[state.cardFields.content]}</Typography>
+						<Typography>{previewItem[cardFields.content]}</Typography>
 					</Box>
 				)}
-				{state.cardFields.tags && (
+				{cardFields.tags && (
 					<Box>
 						<Typography fontWeight="medium" mb={1}>
 							Tags
 						</Typography>
 						<Typography>
-							{previewItem[state.cardFields.tags].map(
-								(tag: string, i: number) => {
-									if (
-										state.cardFields.tags &&
-										i < previewItem[state.cardFields.tags].length - 1
-									) {
-										return <span key={`${tag}-${i}`}>{`${tag}, `}</span>;
-									} else {
-										return <span key={`${tag}-${i}`}>{tag}</span>;
-									}
+							{previewItem[cardFields.tags].map((tag: string, i: number) => {
+								if (
+									cardFields.tags &&
+									i < previewItem[cardFields.tags].length - 1
+								) {
+									return <span key={`${tag}-${i}`}>{`${tag}, `}</span>;
+								} else {
+									return <span key={`${tag}-${i}`}>{tag}</span>;
 								}
-							)}
+							})}
 						</Typography>
 					</Box>
 				)}

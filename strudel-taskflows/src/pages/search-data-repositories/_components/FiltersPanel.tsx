@@ -13,9 +13,7 @@ interface FiltersPanelProps {
  * The input values will filter data in the `<DataListPanel>`.
  */
 export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
-	/**
-	 * Content to render on the page for this component
-	 */
+	// Content to render on the page for this component
 	return (
 		<Filters grouped={false} onClose={props.onClose} sx={{ border: 'none' }}>
 			{taskflow.pages.index.cardFilters.map((f, i) => (

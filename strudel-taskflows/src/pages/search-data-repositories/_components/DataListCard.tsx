@@ -2,7 +2,7 @@ import { Box, Link, Stack, Typography } from '@mui/material';
 import { blue } from '@mui/material/colors';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { useSearchDataRepositories } from '../_context/ContextProvider';
+import { taskflow } from '../_config/taskflow.config';
 
 interface DataListCardProps {
 	item: any;
@@ -20,15 +20,12 @@ export const DataListCard: React.FC<DataListCardProps> = ({
 	previewItem,
 	setPreviewItem,
 }) => {
-	const { state } = useSearchDataRepositories();
-
+	const cardFields = taskflow.pages.index.cardFields;
 	const handleItemClick = () => {
 		setPreviewItem(item);
 	};
 
-	/**
-	 * Content to render on the page for this component
-	 */
+	// Content to render on the page for this component
 	return (
 		<Stack
 			className={previewItem?.id === item.id ? 'selected' : ''}
@@ -60,10 +57,10 @@ export const DataListCard: React.FC<DataListCardProps> = ({
 			<Box flex={1}>
 				<Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>
 					<Link component={RouterLink} to={`./${item.id}`} underline="hover">
-						{item[state.cardFields.title]}
+						{item[cardFields.title]}
 					</Link>
 				</Typography>
-				{state.cardFields.content && (
+				{cardFields.content && (
 					<Typography
 						sx={{
 							WebkitBoxOrient: 'vertical',
@@ -72,10 +69,10 @@ export const DataListCard: React.FC<DataListCardProps> = ({
 							overflow: 'hidden',
 						}}
 					>
-						{item[state.cardFields.content]} test
+						{item[cardFields.content]} test
 					</Typography>
 				)}
-				{state.cardFields.tags && (
+				{cardFields.tags && (
 					<Typography
 						sx={{
 							WebkitBoxOrient: 'vertical',
@@ -85,7 +82,7 @@ export const DataListCard: React.FC<DataListCardProps> = ({
 							overflow: 'hidden',
 						}}
 					>
-						{item[state.cardFields.tags].map((tag: string, i: number) => {
+						{item[cardFields.tags].map((tag: string, i: number) => {
 							if (i < item.tags.length - 1) {
 								return (
 									<Typography
