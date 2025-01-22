@@ -8,7 +8,13 @@ export interface SearchDataRepositoriesConfig {
 	/** Attributes that are used across the Task Flow */
 	properties?: Record<string, any>;
 	data: {
-		items: {
+		list: {
+			source: string;
+			staticParams?: Record<string, string> | null;
+			idField: string;
+			queryMode: 'client' | 'server';
+		};
+		detail: {
 			source: string;
 			staticParams?: Record<string, string> | null;
 			idField: string;

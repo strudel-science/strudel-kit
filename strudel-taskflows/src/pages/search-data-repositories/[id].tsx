@@ -17,7 +17,8 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { LabelValueTable } from '../../components/LabelValueTable';
 import { PageHeader } from '../../components/PageHeader';
-import { useSearchDataRepositories } from './_context/ContextProvider';
+import { useDetailQuery } from '../../utils/useDetailQuery';
+import { taskflow } from './_config/taskflow.config';
 
 /**
  * Attached files data configured in-file for prototyping
@@ -55,14 +56,15 @@ const attachedFilesColumns: GridColDef[] = [
  * card title or the link in the `<PreviewPanel>`.
  */
 const DatasetDetail: React.FC = () => {
-	const { state } = useSearchDataRepositories();
 	const params = useParams();
-	const dataset = state.data?.find((d) => {
-		if (params.id) {
-			return d.id === parseInt(params.id);
-		}
+	const { data } = useDetailQuery({
+		dataSource: taskflow.data.detail.source,
+		dataIdField: taskflow.data.detail.idField,
+		paramId: params.id,
+		queryMode: taskflow.data.detail.queryMode,
+		staticParams: taskflow.data.detail.staticParams,
 	});
-	const datasetTitle = dataset ? dataset.title : 'Not Found';
+	const datasetTitle = data ? data.title : 'Not Found';
 	const [dataTabsValue, setDataTabsValue] = React.useState('1');
 
 	const handleDataTabsChange = (
@@ -87,7 +89,7 @@ const DatasetDetail: React.FC = () => {
 			/>
 			<Container maxWidth="xl">
 				<Grid container spacing={1} sx={{ pt: 1, pr: 2, pb: 2, pl: 2 }}>
-					{dataset && (
+					{data && (
 						<>
 							<Grid item md={8} xs={12}>
 								<Paper sx={{ mb: 1 }}>
@@ -101,10 +103,10 @@ const DatasetDetail: React.FC = () => {
 													rows={[
 														{
 															label: 'Publication',
-															value: dataset.publication_date,
+															value: data.publication_date,
 														},
-														{ label: 'Start Date', value: dataset.start_date },
-														{ label: 'End Date', value: dataset.end_date },
+														{ label: 'Start Date', value: data.start_date },
+														{ label: 'End Date', value: data.end_date },
 													]}
 												/>
 											</Box>
@@ -112,20 +114,20 @@ const DatasetDetail: React.FC = () => {
 												<Typography variant="h6" component="h2" mb={1}>
 													Citation
 												</Typography>
-												<Typography>{dataset.citation}</Typography>
+												<Typography>{data.citation}</Typography>
 											</Box>
 										</Stack>
 										<Box>
 											<Typography variant="h6" component="h2" mb={1}>
 												Summary
 											</Typography>
-											<Typography>{dataset.summary}</Typography>
+											<Typography>{data.summary}</Typography>
 										</Box>
 										<Box>
 											<Typography variant="h6" component="h2" mb={1}>
 												Purpose
 											</Typography>
-											<Typography>{dataset.purpose}</Typography>
+											<Typography>{data.purpose}</Typography>
 										</Box>
 									</Stack>
 								</Paper>
@@ -146,7 +148,7 @@ const DatasetDetail: React.FC = () => {
 												<Button variant="contained">Download all files</Button>
 											</Stack>
 											<DataGrid
-												rows={dataset.attached_files}
+												rows={data.attached_files}
 												getRowId={(row) => row.file_id}
 												columns={attachedFilesColumns}
 												disableColumnSelector
@@ -184,8 +186,8 @@ const DatasetDetail: React.FC = () => {
 											<Typography variant="h6" component="h2" mb={1}>
 												Tags
 											</Typography>
-											{dataset.tags.map((tag: string, i: number) => {
-												if (i < dataset.tags.length - 1) {
+											{data.tags.map((tag: string, i: number) => {
+												if (i < data.tags.length - 1) {
 													return (
 														<Typography
 															key={tag}
@@ -213,7 +215,7 @@ const DatasetDetail: React.FC = () => {
 												Communities
 											</Typography>
 											<ul>
-												{dataset.communities.map((community: any) => (
+												{data.communities.map((community: any) => (
 													<li key={community}>
 														<Link href={community.url} target="_blank">
 															{community.title}
@@ -227,7 +229,7 @@ const DatasetDetail: React.FC = () => {
 												Associated Projects
 											</Typography>
 											<ul>
-												{dataset.associated_projects.map((project: any) => (
+												{data.associated_projects.map((project: any) => (
 													<li key={project}>
 														<Link href={project.url} target="_blank">
 															{project.title}
@@ -244,18 +246,18 @@ const DatasetDetail: React.FC = () => {
 												rows={[
 													{
 														label: 'Point of Contact',
-														value: dataset.point_of_contact,
+														value: data.point_of_contact,
 													},
-													{ label: 'Originator', value: dataset.originator },
+													{ label: 'Originator', value: data.originator },
 													{
 														label: 'Metadata Contact',
-														value: dataset.metadata_contact,
+														value: data.metadata_contact,
 													},
-													{ label: 'Publisher', value: dataset.publisher },
-													{ label: 'Distributor', value: dataset.distributor },
+													{ label: 'Publisher', value: data.publisher },
+													{ label: 'Distributor', value: data.distributor },
 													{
 														label: 'USGS Mission Area',
-														value: dataset.usgs_mission_area,
+														value: data.usgs_mission_area,
 													},
 												]}
 											/>
@@ -265,7 +267,7 @@ const DatasetDetail: React.FC = () => {
 							</Grid>
 						</>
 					)}
-					{!dataset && <Typography>Could not find this dataset</Typography>}
+					{!data && <Typography>Could not find this dataset</Typography>}
 				</Grid>
 			</Container>
 		</Box>

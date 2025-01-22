@@ -42,16 +42,16 @@ export const DataListPanel: React.FC<DataListPanelProps> = ({
 	const [total, setTotal] = useState(1);
 	const [paginatedCards, setPaginatedCards] = useState([]);
 	const filterConfigs = taskflow.pages.index.cardFilters;
-	const queryMode = taskflow.data.items.queryMode;
+	const queryMode = taskflow.data.list.queryMode;
 	const { isPending, isError, data, error } = useDataQuery({
 		activeFilters,
-		dataSource: taskflow.data.items.source,
+		dataSource: taskflow.data.list.source,
 		filterConfigs,
 		offset,
 		page,
 		pageSize,
 		queryMode,
-		staticParams: taskflow.data.items.staticParams,
+		staticParams: taskflow.data.list.staticParams,
 	});
 	const cards =
 		queryMode === 'server'
@@ -148,7 +148,7 @@ export const DataListPanel: React.FC<DataListPanelProps> = ({
 					<Stack flex={1}>
 						{paginatedCards?.map((item: any) => (
 							<DataListCard
-								key={item[taskflow.data.items.idField]}
+								key={item[taskflow.data.list.idField]}
 								item={item}
 								previewItem={previewItem}
 								setPreviewItem={setPreviewItem}
@@ -160,7 +160,7 @@ export const DataListPanel: React.FC<DataListPanelProps> = ({
 					<Stack flex={1}>
 						{cards?.map((item: any) => (
 							<DataListCard
-								key={item[taskflow.data.items.idField]}
+								key={item[taskflow.data.list.idField]}
 								item={item}
 								previewItem={previewItem}
 								setPreviewItem={setPreviewItem}

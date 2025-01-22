@@ -2,7 +2,10 @@ import { SearchDataRepositoriesConfig } from './taskflow.types';
 
 export const taskflow: SearchDataRepositoriesConfig = {
 	data: {
-		items: {
+		/**
+		 * Data definition for the initial items list
+		 */
+		list: {
 			/**
 			 * Source of the data for the initial list of items on the main page.
 			 */
@@ -18,6 +21,15 @@ export const taskflow: SearchDataRepositoriesConfig = {
 			/**
 			 * Method by which data should be filtered, either client or server.
 			 */
+			queryMode: 'client',
+		},
+		/**
+		 * Data definition for the item detail page
+		 */
+		detail: {
+			source: 'data/default/search-data-repositories/datasets.json',
+			staticParams: null,
+			idField: 'id',
 			queryMode: 'client',
 		},
 	},
