@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useFilters } from '../../../components/FilterContext';
 import { SciDataGrid } from '../../../components/SciDataGrid';
 import { filterData } from '../../../utils/filters.utils';
-import { useDataQuery } from '../../../utils/useDataQuery';
+import { useListQuery } from '../../../utils/useListQuery';
 import { taskflow } from '../_config/taskflow.config';
 
 interface DataViewProps {
@@ -26,7 +26,7 @@ export const DataView: React.FC<DataViewProps> = ({
 	const columns = taskflow.pages.index.tableColumns;
 	const filterConfigs = taskflow.pages.index.tableFilters;
 	const queryMode = taskflow.data.list.queryMode;
-	const { isPending, isFetching, isError, data, error } = useDataQuery({
+	const { isPending, isFetching, isError, data, error } = useListQuery({
 		activeFilters,
 		dataSource: taskflow.data.list.source,
 		filterConfigs,

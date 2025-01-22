@@ -216,7 +216,7 @@ const DatasetDetail: React.FC = () => {
 											</Typography>
 											<ul>
 												{data.communities.map((community: any) => (
-													<li key={community}>
+													<li key={community.title}>
 														<Link href={community.url} target="_blank">
 															{community.title}
 														</Link>
@@ -230,7 +230,7 @@ const DatasetDetail: React.FC = () => {
 											</Typography>
 											<ul>
 												{data.associated_projects.map((project: any) => (
-													<li key={project}>
+													<li key={project.title}>
 														<Link href={project.url} target="_blank">
 															{project.title}
 														</Link>

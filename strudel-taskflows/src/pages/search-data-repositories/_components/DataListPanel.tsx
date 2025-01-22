@@ -16,7 +16,7 @@ import { DataListCard } from './DataListCard';
 import { taskflow } from '../_config/taskflow.config';
 import { useFilters } from '../../../components/FilterContext';
 import { filterData } from '../../../utils/filters.utils';
-import { useDataQuery } from '../../../utils/useDataQuery';
+import { useListQuery } from '../../../utils/useListQuery';
 
 interface DataListPanelProps {
 	onToggleFiltersPanel: () => any;
@@ -43,7 +43,7 @@ export const DataListPanel: React.FC<DataListPanelProps> = ({
 	const [paginatedCards, setPaginatedCards] = useState([]);
 	const filterConfigs = taskflow.pages.index.cardFilters;
 	const queryMode = taskflow.data.list.queryMode;
-	const { isPending, isError, data, error } = useDataQuery({
+	const { isPending, isError, data, error } = useListQuery({
 		activeFilters,
 		dataSource: taskflow.data.list.source,
 		filterConfigs,

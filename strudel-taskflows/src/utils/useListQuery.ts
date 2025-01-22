@@ -18,7 +18,7 @@ interface DataQueryConfig {
  * Helper hook that wraps around the useQuery hook and inputs the config
  * options specified in the taskflow config as well as other filtering options.
  */
-export const useDataQuery = (dataQueryConfig: DataQueryConfig): any => {
+export const useListQuery = (dataQueryConfig: DataQueryConfig): any => {
 	// If in server mode, create query params from the active filters
 	let queryParams =
 		dataQueryConfig.queryMode === 'server'
