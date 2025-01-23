@@ -1,9 +1,9 @@
 ---
-title: 'Explore Data'
+title: "Explore Data"
 ---
 
-import CodeBlock from '@theme/CodeBlock';
-import ConfigJson from '!!raw-loader!../../../strudel-taskflows/src/pages/explore-data/_config/taskflow.config';
+import CodeBlock from "@theme/CodeBlock";
+import ConfigJson from "!!raw-loader!../../../strudel-taskflows/src/pages/explore-data/_config/taskflow.config";
 
 # Explore Data
 
@@ -28,15 +28,13 @@ strudel add-taskflow my-taskflow --template explore-data
 ```
 my-taskflow
 ├── _components
-│  ├── DataTablePanel.tsx
+│  ├── DataView.tsx
+│  ├── DataViewHeader.tsx
 │  ├── FiltersPanel.tsx
 │  └── PreviewPanel.tsx
 ├── _config
 │  ├── taskflow.config.ts
 │  └── taskflow.types.ts
-├── _context
-│  ├── ContextProvider.tsx
-│  └── actions.ts
 ├── [id].tsx
 ├── _layout.tsx
 └── index.tsx
@@ -58,4 +56,6 @@ Data detail page of the Explore Data Task Flow. When a user drills into a record
 
 This Task Flow can be configured from the `taskflow.config.ts` file in the `_config` directory of the generated template files.
 
-<CodeBlock language="ts" title="taskflow.config.ts">{ConfigJson}</CodeBlock>
+<CodeBlock language="ts" title="taskflow.config.ts">
+  {ConfigJson}
+</CodeBlock>

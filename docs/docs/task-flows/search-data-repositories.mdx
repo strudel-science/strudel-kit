@@ -1,9 +1,9 @@
 ---
-title: 'Search Data Repositories'
+title: "Search Data Repositories"
 ---
 
-import CodeBlock from '@theme/CodeBlock';
-import ConfigJson from '!!raw-loader!../../../strudel-taskflows/src/pages/search-data-repositories/_config/taskflow.config';
+import CodeBlock from "@theme/CodeBlock";
+import ConfigJson from "!!raw-loader!../../../strudel-taskflows/src/pages/search-data-repositories/_config/taskflow.config";
 
 # Search Data Repositories
 
@@ -35,13 +35,9 @@ my-taskflow
 ├── _config
 │  ├── taskflow.config.ts
 │  └── taskflow.types.ts
-├── _context
-│  ├── ContextProvider.tsx
-│  └── actions.ts
 ├── [id].tsx
 ├── _layout.tsx
 └── index.tsx
-
 ```
 
 ## Pages
@@ -60,4 +56,6 @@ Data detail page of the Search Data Repositories Task Flow. When a user drills i
 
 This Task Flow can be configured from the `taskflow.config.ts` file in the `_config` directory of the generated template files.
 
-<CodeBlock language="ts" title="taskflow.config.ts">{ConfigJson}</CodeBlock>
+<CodeBlock language="ts" title="taskflow.config.ts">
+  {ConfigJson}
+</CodeBlock>
