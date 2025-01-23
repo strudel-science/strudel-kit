@@ -22,16 +22,16 @@ const CompareDataWrapper: React.FC = () => {
         <TopBar />
       </Box>
       <Box>
-        <CompareDataProvider 
-          data={scenarios || []} 
-          columns={taskflow.pages.index.tableColumns} 
-          dataIdField='id'
+        <CompareDataProvider
+          data={scenarios || []}
+          columns={taskflow.pages.index.tableColumns}
+          dataIdField="id"
         >
           <Outlet />
         </CompareDataProvider>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 export default CompareDataWrapper;

@@ -20,7 +20,7 @@ const ContributeDataLayout: React.FC = () => {
         </ContributeDataProvider>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 export default ContributeDataLayout;

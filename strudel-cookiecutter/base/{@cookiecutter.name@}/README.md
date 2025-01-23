@@ -26,7 +26,7 @@ npm start
 
 Open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
 
-Begin modifying the templates in `src/app`.
+Begin modifying the templates in `src/pages`.
 
 ## Learn More
 

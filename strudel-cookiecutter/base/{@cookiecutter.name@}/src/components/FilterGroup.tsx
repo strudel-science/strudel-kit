@@ -1,5 +1,12 @@
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
-import { Accordion, AccordionDetails, AccordionSummary, Chip, Stack, Typography } from '@mui/material';
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Chip,
+  Stack,
+  Typography,
+} from '@mui/material';
 import React from 'react';
 import { useFilters } from './FilterContext';
 import { hasValue } from './FilterField';
@@ -13,14 +20,14 @@ interface FilterGroupProps {
 export const FilterGroup: React.FC<FilterGroupProps> = ({
   label,
   groupId,
-  children
+  children,
 }) => {
   const { activeFilters, expandedGroup, dispatch } = useFilters();
-  
+
   /**
    * Count the number of active filters in this group by using
    * the `field` prop from the FilterField children to look up
-   * that filter in `activeFilters` 
+   * that filter in `activeFilters`
    */
   let activeChildren = 0;
   React.Children.forEach(children, (child) => {
@@ -29,19 +36,24 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
       child.props.field &&
       hasValue(activeFilters.find((f: any) => f.field === child.props.field))
     ) {
-      return activeChildren++
+      return activeChildren++;
     }
-  })
-  
-  const handleChange = (panel: string | number) => (event: React.SyntheticEvent, newExpanded: boolean) => {
-    dispatch({ type: 'SET_EXPANDED_GROUP', payload: newExpanded ? panel : false });
-  };
-  
+  });
+
+  const handleChange =
+    (panel: string | number) =>
+    (event: React.SyntheticEvent, newExpanded: boolean) => {
+      dispatch({
+        type: 'SET_EXPANDED_GROUP',
+        payload: newExpanded ? panel : false,
+      });
+    };
+
   return (
-    <Accordion 
+    <Accordion
       disableGutters
       elevation={0}
-      expanded={expandedGroup === groupId} 
+      expanded={expandedGroup === groupId}
       onChange={handleChange(groupId)}
       sx={{
         borderTop: '1px solid',
@@ -55,8 +67,8 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
       }}
     >
       <AccordionSummary
-        expandIcon={<ArrowForwardIosSharpIcon />} 
-        aria-controls="panel1d-content" 
+        expandIcon={<ArrowForwardIosSharpIcon />}
+        aria-controls="panel1d-content"
         id="panel1d-header"
         sx={{
           flexDirection: 'row-reverse',
@@ -76,20 +88,17 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
         <Stack direction="row" spacing={2} alignItems="center">
           <Typography fontSize="large">{label}</Typography>
           {activeChildren > 0 && (
-            <Chip 
-              label={`${activeChildren} active`} 
-              color="primary" 
-              size="small" 
+            <Chip
+              label={`${activeChildren} active`}
+              color="primary"
+              size="small"
             />
           )}
         </Stack>
       </AccordionSummary>
       <AccordionDetails>
-        <Stack spacing={2}>
-          {children}
-        </Stack>
+        <Stack spacing={2}>{children}</Stack>
       </AccordionDetails>
     </Accordion>
-
-  )
-}
+  );
+};

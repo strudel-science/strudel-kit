@@ -10,7 +10,7 @@ const Playground: React.FC = () => {
 
   const handleIncrement = () => {
     setCount(count + 1);
-  }
+  };
 
   return (
     <Layout>
@@ -24,24 +24,26 @@ const Playground: React.FC = () => {
           marginTop: 3,
         }}
       >
-        {/** 
+        {/**
          * Add your own components here!
          * See MUI's component library: https://mui.com/material-ui/all-components/
          */}
         <h1>Playground</h1>
-        <Stack 
-          direction="row" 
+        <Stack
+          direction="row"
           spacing={2}
           sx={{
-            alignItems: 'center'
+            alignItems: 'center',
           }}
         >
-          <Button variant="contained" onClick={handleIncrement}>Increment</Button>
+          <Button variant="contained" onClick={handleIncrement}>
+            Increment
+          </Button>
           <p>{count}</p>
         </Stack>
       </Container>
     </Layout>
   );
-}
+};
 
 export default Playground;

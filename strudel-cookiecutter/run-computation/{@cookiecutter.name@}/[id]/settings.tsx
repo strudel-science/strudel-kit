@@ -1,11 +1,27 @@
-import { Box, Button, Container, FormControl, Grid, Link, MenuItem, Paper, Select, Stack, Step, StepLabel, Stepper, TextField, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Container,
+  FormControl,
+  Grid,
+  Link,
+  MenuItem,
+  Paper,
+  Select,
+  Stack,
+  Step,
+  StepLabel,
+  Stepper,
+  TextField,
+  Typography,
+} from '@mui/material';
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { taskflow } from '../_config/taskflow.config';
 
 /**
  * Page to configure settings for a computational run.
- * Completing and submitting the form takes users to the 
+ * Completing and submitting the form takes users to the
  * `<RunningComputation>` component.
  */
 const SettingsPage: React.FC = () => {
@@ -25,27 +41,39 @@ const SettingsPage: React.FC = () => {
           backgroundColor: 'white',
           padding: 2,
           borderBottom: '1px solid',
-          borderColor: 'neutral.main'
+          borderColor: 'neutral.main',
         }}
       >
         <Stepper activeStep={1} sx={{ maxWidth: 850 }}>
           <Step key={taskflow.pages.dataInputs.title}>
             <StepLabel>
-              <Link component={RouterLink} to="../data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link
+                component={RouterLink}
+                to="../data-inputs"
+                sx={{ color: 'inherit', textDecoration: 'none' }}
+              >
                 {taskflow.pages.dataInputs.title}
               </Link>
             </StepLabel>
           </Step>
           <Step key={taskflow.pages.settings.title}>
             <StepLabel>
-              <Link component={RouterLink} to="../settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link
+                component={RouterLink}
+                to="../settings"
+                sx={{ color: 'inherit', textDecoration: 'none' }}
+              >
                 {taskflow.pages.settings.title}
               </Link>
             </StepLabel>
           </Step>
           <Step key={taskflow.pages.results.title}>
             <StepLabel>
-              <Link component={RouterLink} to="../results" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link
+                component={RouterLink}
+                to="../results"
+                sx={{ color: 'inherit', textDecoration: 'none' }}
+              >
                 {taskflow.pages.results.title}
               </Link>
             </StepLabel>
@@ -55,7 +83,7 @@ const SettingsPage: React.FC = () => {
       <Container
         maxWidth="md"
         sx={{
-          mt: 4
+          mt: 4,
         }}
       >
         <Paper sx={{ padding: 3 }}>
@@ -92,11 +120,17 @@ const SettingsPage: React.FC = () => {
                 <Typography>Time Constraints</Typography>
               </Grid>
               <Grid item md={9}>
-                <TextField id="time-constraints-field" variant="outlined" fullWidth />
+                <TextField
+                  id="time-constraints-field"
+                  variant="outlined"
+                  fullWidth
+                />
               </Grid>
             </Grid>
             <Box>
-              <Button onClick={handleAdvancedToggle}>{showAdvanced ? 'Hide' : 'Show'} advanced settings</Button>
+              <Button onClick={handleAdvancedToggle}>
+                {showAdvanced ? 'Hide' : 'Show'} advanced settings
+              </Button>
             </Box>
             {showAdvanced && (
               <Grid container rowSpacing={2} alignItems="center">
@@ -128,16 +162,20 @@ const SettingsPage: React.FC = () => {
             )}
             <Box textAlign="right">
               <Link component={RouterLink} to="../running">
-                <Button variant="contained" sx={{ marginTop: 4 }}>
+                <Button
+                  variant="contained"
+                  data-testid="rnc-run-button"
+                  sx={{ marginTop: 4 }}
+                >
                   Run {taskflow.properties.itemName}
                 </Button>
               </Link>
             </Box>
           </Stack>
-        </Paper>  
+        </Paper>
       </Container>
     </Stack>
-  )
-}
+  );
+};
 
 export default SettingsPage;

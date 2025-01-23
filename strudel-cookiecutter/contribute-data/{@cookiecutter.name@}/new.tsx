@@ -1,4 +1,12 @@
-import { Box, Button, Container, Grid, Link, Stack, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Link,
+  Stack,
+  Typography,
+} from '@mui/material';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { DataFilesPanel } from './_components/DataFilesPanel';
@@ -9,7 +17,7 @@ import { taskflow } from './_config/taskflow.config';
  * Page for entering information about a new dataset in the contribute-data Task Flow.
  * Includes the `<MetadataPanel>` and `<DataFilesPanel>` for adding input data.
  */
-const NewDataset: React.FC = () => {  
+const NewDataset: React.FC = () => {
   return (
     <Container
       maxWidth="xl"
@@ -24,21 +32,27 @@ const NewDataset: React.FC = () => {
             <Typography variant="h6" component="h1">
               {taskflow.pages.new.title}
             </Typography>
-            <Typography>
-              {taskflow.pages.new.description}
-            </Typography>
+            <Typography>{taskflow.pages.new.description}</Typography>
           </Stack>
           <Stack direction="row">
             <Box>
               <Link component={RouterLink} to="../portal">
-                <Button variant="contained" color="warning">
+                <Button
+                  variant="contained"
+                  color="warning"
+                  data-testid="ctd-cancel-button"
+                >
                   Cancel
                 </Button>
               </Link>
             </Box>
             <Box>
               <Link component={RouterLink} to="../review">
-                <Button variant="contained" sx={{ whiteSpace: 'nowrap' }}>
+                <Button
+                  variant="contained"
+                  data-testid="ctd-save-button"
+                  sx={{ whiteSpace: 'nowrap' }}
+                >
                   Save Dataset
                 </Button>
               </Link>
@@ -58,6 +72,6 @@ const NewDataset: React.FC = () => {
       </Stack>
     </Container>
   );
-}
+};
 
 export default NewDataset;

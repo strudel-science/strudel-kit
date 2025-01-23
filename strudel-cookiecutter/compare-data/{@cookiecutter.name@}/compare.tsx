@@ -23,10 +23,10 @@ const ScenarioComparison: React.FC = () => {
   useEffect(() => {
     dispatch(setComparing(true));
     return () => {
-      dispatch(setComparing(false))
-    }
+      dispatch(setComparing(false));
+    };
   }, []);
-  
+
   /**
    * Content to render on the page for this component
    */
@@ -69,12 +69,11 @@ const ScenarioComparison: React.FC = () => {
           sx={{
             '& .MuiDataGrid-columnHeader, .MuiDataGrid-cell': {
               borderRight: '1px solid',
-              borderRightColor: 'neutral.main'
+              borderRightColor: 'neutral.main',
             },
             '& .compare-data--metric': {
               fontWeight: 'bold',
             },
-            
           }}
         >
           {state.comparing && (
@@ -91,6 +90,6 @@ const ScenarioComparison: React.FC = () => {
       </Container>
     </Box>
   );
-}
+};
 
 export default ScenarioComparison;

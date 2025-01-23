@@ -1,5 +1,12 @@
 import React from 'react';
-import { PaperProps, Breadcrumbs, Link, Paper, Stack, Typography } from '@mui/material';
+import {
+  PaperProps,
+  Breadcrumbs,
+  Link,
+  Paper,
+  Stack,
+  Typography,
+} from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 
 interface PageHeaderProps extends PaperProps {
@@ -24,19 +31,20 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
             <Link underline="hover" color="inherit" href="/">
               <HomeIcon />
             </Link>
-            <Link
-              underline="hover"
-              color="inherit"
-            >
+            <Link underline="hover" color="inherit">
               ...
             </Link>
-            <Typography color="text.primary">{breadcrumbTitle || pageTitle}</Typography>
+            <Typography color="text.primary">
+              {breadcrumbTitle || pageTitle}
+            </Typography>
           </Breadcrumbs>
-          <Typography variant="h4" component="h1">{pageTitle}</Typography>
+          <Typography variant="h4" component="h1">
+            {pageTitle}
+          </Typography>
           <Typography variant="body2">{description}</Typography>
         </Stack>
         {actions}
       </Stack>
     </Paper>
-  )
-}
+  );
+};

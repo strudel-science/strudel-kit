@@ -13,13 +13,13 @@ export const Footer: React.FC = () => {
     <Box
       sx={{
         backgroundColor: 'white',
-        padding: 4
+        padding: 4,
       }}
     >
       <Container>
         <Grid container>
           <Grid item md={6}>
-            <Stack 
+            <Stack
               direction="row"
               useFlexGap
               sx={{
@@ -39,7 +39,11 @@ export const Footer: React.FC = () => {
               {config.footer.image && (
                 <AppLink to="/">
                   <ImageWrapper height={60}>
-                    <img src={cleanPath(`${import.meta.env.BASE_URL}/${config.footer.image}`)} />
+                    <img
+                      src={cleanPath(
+                        `${import.meta.env.BASE_URL}/${config.footer.image}`
+                      )}
+                    />
                   </ImageWrapper>
                 </AppLink>
               )}
@@ -48,5 +52,5 @@ export const Footer: React.FC = () => {
         </Grid>
       </Container>
     </Box>
-  )
-}
+  );
+};

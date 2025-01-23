@@ -1,6 +1,17 @@
 import AddIcon from '@mui/icons-material/Add';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Box, Button, Container, Grid, IconButton, Link, Paper, Stack, TextField, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  Link,
+  Paper,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
 import { DataGrid, GridColDef, GridComparatorFn } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
 import React from 'react';
@@ -9,6 +20,30 @@ import { Link as RouterLink } from 'react-router-dom';
 import { LabelValueTable } from '../../components/LabelValueTable';
 import { useDataFromSource } from '../../utils/useDataFromSource';
 import { taskflow } from './_config/taskflow.config';
+
+const dateComparator: GridComparatorFn<string> = (v1, v2) => {
+  return dayjs(v1).isAfter(dayjs(v2)) ? 1 : 0;
+};
+
+const columns: GridColDef[] = [
+  {
+    field: 'event_type',
+    headerName: 'Event Type',
+    width: 200,
+  },
+  {
+    field: 'event_time',
+    headerName: 'Event Time',
+    sortComparator: dateComparator,
+    width: 200,
+  },
+  {
+    field: 'confidence',
+    headerName: 'Confidence',
+    type: 'number',
+    width: 200,
+  },
+];
 
 /**
  * Detail view of the selected activity from `<ActivityList>` in monitor-activities Task Flow.
@@ -23,7 +58,7 @@ const ActivityDetail: React.FC = () => {
       note.value = note.content;
       return note;
     });
-  }
+  };
 
   /**
    * Content to render on the page for this component
@@ -39,10 +74,10 @@ const ActivityDetail: React.FC = () => {
       <Stack>
         <Stack direction="row" alignItems="center">
           <Link component={RouterLink} to="../">
-            <IconButton>
+            <IconButton data-testid="mna-back-button">
               <ArrowBackIcon />
             </IconButton>
-          </Link> 
+          </Link>
           <Typography variant="h6" component="h1">
             {experiment?.experiment_name}
           </Typography>
@@ -71,11 +106,13 @@ const ActivityDetail: React.FC = () => {
               <Stack>
                 <Paper
                   sx={{
-                    padding: 2
+                    padding: 2,
                   }}
                 >
                   <Stack>
-                    <Typography>Notes</Typography>
+                    <Typography variant="h6" component="h2">
+                      Notes
+                    </Typography>
                     {experiment && (
                       <LabelValueTable
                         rows={getNoteRows(experiment.notes)}
@@ -84,11 +121,11 @@ const ActivityDetail: React.FC = () => {
                     )}
                     <Box
                       sx={{
-                        position: 'relative'
+                        position: 'relative',
                       }}
                     >
                       <TextField fullWidth multiline minRows={2} />
-                      <Button 
+                      <Button
                         variant="contained"
                         endIcon={<AddIcon />}
                         sx={{
@@ -104,7 +141,7 @@ const ActivityDetail: React.FC = () => {
                 </Paper>
                 <Paper
                   sx={{
-                    padding: 2
+                    padding: 2,
                   }}
                 >
                   <Plot
@@ -112,12 +149,12 @@ const ActivityDetail: React.FC = () => {
                       {
                         x: [1, 2, 3, 4],
                         y: [10, 15, 13, 17],
-                        type: 'scatter'
+                        type: 'scatter',
                       },
                       {
                         x: [1, 2, 3, 4],
                         y: [16, 5, 11, 9],
-                        type: 'scatter'
+                        type: 'scatter',
                       },
                     ]}
                     layout={{ height: 450 }}
@@ -132,30 +169,6 @@ const ActivityDetail: React.FC = () => {
       </Stack>
     </Container>
   );
-}
-
-const dateComparator: GridComparatorFn<string> = (v1, v2) => {
-  return dayjs(v1).isAfter(dayjs(v2)) ? 1 : 0;
 };
-
-const columns: GridColDef[] = [
-  { 
-    field: 'event_type', 
-    headerName: 'Event Type', 
-    width: 200 
-  },
-  { 
-    field: 'event_time', 
-    headerName: 'Event Time',
-    sortComparator: dateComparator,
-    width: 200 
-  },
-  { 
-    field: 'confidence', 
-    headerName: 'Confidence', 
-    type: 'number',
-    width: 200 
-  }
-];
 
 export default ActivityDetail;

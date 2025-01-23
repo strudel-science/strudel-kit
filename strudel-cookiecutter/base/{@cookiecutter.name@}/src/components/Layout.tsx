@@ -10,7 +10,7 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <Stack
       sx={{
-        height: '100%'
+        height: '100%',
       }}
     >
       <TopBar />
@@ -23,5 +23,5 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
       </Box>
       <Footer />
     </Stack>
-  )
-}
+  );
+};

@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from '@mui/material';
 import type {} from '@mui/x-data-grid/themeAugmentation';
 
 /**
@@ -16,7 +16,7 @@ export const theme = createTheme({
     },
     primary: {
       main: '#1976d2',
-      // Exclude light, dark, or contrastText to have them 
+      // Exclude light, dark, or contrastText to have them
       // calculated automatically based on the main color.
       light: '#42a5f5',
       dark: '#1565c0',
@@ -55,7 +55,7 @@ export const theme = createTheme({
     neutral: {
       main: '#DADADA',
       light: '#e0e0e0',
-      dark: '#828282'
+      dark: '#828282',
     },
     common: {
       black: '#000',
@@ -64,8 +64,8 @@ export const theme = createTheme({
     grey: {
       50: '#ddd',
       500: '#999',
-      900: '#444'
-    }
+      900: '#444',
+    },
   },
   // Control the default border radius
   shape: {
@@ -115,7 +115,7 @@ export const theme = createTheme({
           style: {
             backgroundColor: 'white',
             borderColor: '#bdbdbd',
-            color: '#757575'
+            color: '#757575',
           },
         },
       ],
@@ -123,13 +123,13 @@ export const theme = createTheme({
     MuiLink: {
       styleOverrides: {
         root: {
-          textDecoration: 'none'
-        }
-      }
+          textDecoration: 'none',
+        },
+      },
     },
     MuiStack: {
       defaultProps: {
-        spacing: 2
+        spacing: 2,
       },
     },
     MuiDataGrid: {
@@ -137,10 +137,10 @@ export const theme = createTheme({
         root: {
           border: 0,
           '& .MuiDataGrid-cell:focus-within': {
-            outline: 'none'
+            outline: 'none',
           },
           '& .MuiDataGrid-overlayWrapper': {
-            minHeight: '4rem'
+            minHeight: '4rem',
           },
           '& .MuiDataGrid-columnHeaderTitle': {
             color: 'grey.900',
@@ -148,8 +148,8 @@ export const theme = createTheme({
             fontWeight: 'bold',
             textTransform: 'uppercase',
           },
-        }
-      }
-    }
+        },
+      },
+    },
   },
 });

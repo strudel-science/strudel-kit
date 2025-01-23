@@ -4,7 +4,7 @@ describe('The Explore Data Task Flow', () => {
   });
 
   it('successfully loads', () => {
-    cy.contains('Explore Data')
+    cy.contains('Explore Data');
   });
 
   it('filters by checkbox', () => {

@@ -30,15 +30,9 @@ export const Formula: React.FC<FormulaProps> = ({ content, ...rest }) => {
   const splitFormula = content.match(ELEMENTS_SPLIT_REGEX);
   formula = (
     <span>
-      {splitFormula?.map((s, i) => (
-        <span key={i}>{formulaItem(s)}</span>
-      ))}
+      {splitFormula?.map((s, i) => <span key={i}>{formulaItem(s)}</span>)}
     </span>
   );
 
-  return (
-    <span {...rest}>
-      {formula}
-    </span>
-  );
+  return <span {...rest}>{formula}</span>;
 };
