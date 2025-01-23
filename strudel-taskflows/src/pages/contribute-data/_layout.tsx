@@ -9,18 +9,18 @@ import { ContributeDataProvider } from './_context/ContextProvider';
  * Inner pages are rendered inside the `<Outlet />` component
  */
 const ContributeDataLayout: React.FC = () => {
-	return (
-		<Box>
-			<Box sx={{ flexGrow: 1 }}>
-				<TopBar />
-			</Box>
-			<Box>
-				<ContributeDataProvider>
-					<Outlet />
-				</ContributeDataProvider>
-			</Box>
-		</Box>
-	);
+  return (
+    <Box>
+      <Box sx={{ flexGrow: 1 }}>
+        <TopBar />
+      </Box>
+      <Box>
+        <ContributeDataProvider>
+          <Outlet />
+        </ContributeDataProvider>
+      </Box>
+    </Box>
+  );
 };
 
 export default ContributeDataLayout;

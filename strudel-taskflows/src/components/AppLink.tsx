@@ -3,7 +3,7 @@ import { Link, LinkProps } from '@mui/material';
 import { Link as RouterLink, To } from 'react-router-dom';
 
 interface AppLinkProps extends LinkProps {
-	to: To;
+  to: To;
 }
 /**
  * Link component for in-app links.
@@ -12,5 +12,5 @@ interface AppLinkProps extends LinkProps {
  * that in-app links work.
  */
 export const AppLink: React.FC<AppLinkProps> = ({ to, ...rest }) => {
-	return <Link {...rest} to={to} component={RouterLink} />;
+  return <Link {...rest} to={to} component={RouterLink} />;
 };

@@ -1,9 +1,9 @@
 .relative-height {
-	height: 100%;
-	width: auto;
+  height: 100%;
+  width: auto;
 }
 
 .relative-width {
-	height: auto;
-	width: 100%;
+  height: auto;
+  width: 100%;
 }
