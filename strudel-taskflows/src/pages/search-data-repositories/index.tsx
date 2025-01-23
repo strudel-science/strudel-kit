@@ -1,81 +1,89 @@
-import { Box, Grid } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import React, { useState } from 'react';
 import { PageHeader } from '../../components/PageHeader';
 import { DataListPanel } from './_components/DataListPanel';
 import { FiltersPanel } from './_components/FiltersPanel';
 import { PreviewPanel } from './_components/PreviewPanel';
-import { useSearchDataRepositories } from './_context/ContextProvider';
-import { setPreviewItem } from './_context/actions';
 import { taskflow } from './_config/taskflow.config';
-
-const getMainColumnSize = (
-	showFiltersPanel: boolean,
-	showPreviewPanel: boolean
-) => {
-	if (!showFiltersPanel && !showPreviewPanel) {
-		return 12;
-	} else if (showFiltersPanel && !showPreviewPanel) {
-		return 10;
-	} else if (!showFiltersPanel && showPreviewPanel) {
-		return 8;
-	} else if (showFiltersPanel && showPreviewPanel) {
-		return 6;
-	}
-};
+import { FilterContext } from '../../components/FilterContext';
 
 /**
  * The main explore page for the search-data-repositories Task Flow.
  * Displays a page header, `<FiltersPanel>`, `<DataListPanel>`, and `<PreviewPanel>`.
  */
 const DatasetExplorer: React.FC = () => {
-	const { state, dispatch } = useSearchDataRepositories();
-	const [showFiltersPanel, setShowFiltersPanel] = useState(true);
+  const [previewItem, setPreviewItem] = useState<any>();
+  const [showFiltersPanel, setShowFiltersPanel] = useState(true);
 
-	const handleCloseFilters = () => {
-		setShowFiltersPanel(false);
-	};
+  const handleCloseFilters = () => {
+    setShowFiltersPanel(false);
+  };
 
-	const handleToggleFilters = () => {
-		setShowFiltersPanel(!showFiltersPanel);
-	};
+  const handleToggleFilters = () => {
+    setShowFiltersPanel(!showFiltersPanel);
+  };
 
-	const handleClosePreview = () => {
-		dispatch(setPreviewItem(null));
-	};
+  const handleClosePreview = () => {
+    setPreviewItem(null);
+  };
 
-	/**
-	 * Content to render on the page for this component
-	 */
-	return (
-		<Box>
-			<PageHeader
-				pageTitle={taskflow.pages.index.title}
-				description={taskflow.pages.index.description}
-				sx={{
-					marginBottom: 1,
-					padding: 2,
-				}}
-			/>
-			<Grid container spacing={1}>
-				{showFiltersPanel && (
-					<Grid item xs={2}>
-						<FiltersPanel onClose={handleCloseFilters} />
-					</Grid>
-				)}
-				<Grid
-					item
-					xs={getMainColumnSize(showFiltersPanel, !!state.previewItem)}
-				>
-					<DataListPanel onToggleFiltersPanel={handleToggleFilters} />
-				</Grid>
-				{state.previewItem && (
-					<Grid item xs={4}>
-						<PreviewPanel onClose={handleClosePreview} />
-					</Grid>
-				)}
-			</Grid>
-		</Box>
-	);
+  /**
+   * Content to render on the page for this component
+   */
+  return (
+    <FilterContext>
+      <Box>
+        <PageHeader
+          pageTitle={taskflow.pages.index.title}
+          description={taskflow.pages.index.description}
+          sx={{
+            marginBottom: 1,
+            padding: 2,
+          }}
+        />
+        <Box>
+          <Stack direction="row">
+            {showFiltersPanel && (
+              <Box
+                sx={{
+                  width: '350px',
+                }}
+              >
+                <FiltersPanel onClose={handleCloseFilters} />
+              </Box>
+            )}
+            <Box
+              sx={{
+                border: 'none',
+                flex: 1,
+                minHeight: '600px',
+                minWidth: 0,
+              }}
+            >
+              <DataListPanel
+                onToggleFiltersPanel={handleToggleFilters}
+                previewItem={previewItem}
+                setPreviewItem={setPreviewItem}
+              />
+            </Box>
+            {previewItem && (
+              <Box
+                sx={{
+                  maxWidth: '600px',
+                  minWidth: '400px',
+                }}
+              >
+                <PreviewPanel
+                  previewItem={previewItem}
+                  onClose={handleClosePreview}
+                />
+              </Box>
+            )}
+          </Stack>
+        </Box>
+      </Box>
+    </FilterContext>
+  );
 };
 
 export default DatasetExplorer;

@@ -8,42 +8,42 @@ interface RangeSliderProps extends SliderProps {}
  * the user is selecting a range of values.
  */
 export const RangeSlider: React.FC<RangeSliderProps> = ({
-	min = 0,
-	max = 100,
-	...rest
+  min = 0,
+  max = 100,
+  ...rest
 }) => {
-	const [value, setValue] = useState<number[]>([min, max]);
+  const [value, setValue] = useState<number[]>([min, max]);
 
-	const handleChange = (event: Event, v: number | number[]) => {
-		setValue(v as number[]);
-	};
+  const handleChange = (event: Event, v: number | number[]) => {
+    setValue(v as number[]);
+  };
 
-	const marks = [
-		{
-			value: min,
-			label: min,
-		},
-		{
-			value: max,
-			label: max,
-		},
-	];
+  const marks = [
+    {
+      value: min,
+      label: min,
+    },
+    {
+      value: max,
+      label: max,
+    },
+  ];
 
-	return (
-		<Box
-			sx={{
-				paddingLeft: 1,
-				paddingRight: 1,
-			}}
-		>
-			<Slider
-				value={value}
-				onChange={handleChange}
-				min={min}
-				max={max}
-				marks={marks}
-				{...rest}
-			/>
-		</Box>
-	);
+  return (
+    <Box
+      sx={{
+        paddingLeft: 1,
+        paddingRight: 1,
+      }}
+    >
+      <Slider
+        value={value}
+        onChange={handleChange}
+        min={min}
+        max={max}
+        marks={marks}
+        {...rest}
+      />
+    </Box>
+  );
 };

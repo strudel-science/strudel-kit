@@ -14,30 +14,30 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 const queryClient = new QueryClient();
 
 const App: React.FC = () => {
-	/**
-	 * Set the html title for the app using the title in the config.
-	 */
-	useEffect(() => {
-		document.title = config.title;
-	}, []);
+  /**
+   * Set the html title for the app using the title in the config.
+   */
+  useEffect(() => {
+    document.title = config.title;
+  }, []);
 
-	return (
-		<QueryClientProvider client={queryClient}>
-			<LocalizationProvider dateAdapter={AdapterDayjs}>
-				<ThemeProvider theme={theme}>
-					<CssBaseline />
-					<AppProvider>
-						<RouterProvider
-							router={createBrowserRouter(routes, {
-								basename: import.meta.env.VITE_BASE_URL,
-							})}
-						/>
-						<ApiModal />
-					</AppProvider>
-				</ThemeProvider>
-			</LocalizationProvider>
-		</QueryClientProvider>
-	);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <AppProvider>
+            <RouterProvider
+              router={createBrowserRouter(routes, {
+                basename: import.meta.env.VITE_BASE_URL,
+              })}
+            />
+            <ApiModal />
+          </AppProvider>
+        </ThemeProvider>
+      </LocalizationProvider>
+    </QueryClientProvider>
+  );
 };
 
 export default App;
