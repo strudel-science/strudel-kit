@@ -8,17 +8,17 @@ import { TopBar } from '../../components/TopBar';
  * Inner pages are rendered inside the `<Outlet />` component
  */
 const SearchDataRepositoriesLayout: React.FC = () => {
-	// Content to render on the page for this component
-	return (
-		<Box>
-			<Box sx={{ flexGrow: 1 }}>
-				<TopBar />
-			</Box>
-			<Box>
-				<Outlet />
-			</Box>
-		</Box>
-	);
+  // Content to render on the page for this component
+  return (
+    <Box>
+      <Box sx={{ flexGrow: 1 }}>
+        <TopBar />
+      </Box>
+      <Box>
+        <Outlet />
+      </Box>
+    </Box>
+  );
 };
 
 export default SearchDataRepositoriesLayout;
