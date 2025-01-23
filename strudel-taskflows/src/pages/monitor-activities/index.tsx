@@ -6,13 +6,41 @@ import { useNavigate } from 'react-router-dom';
 import { useDataFromSource } from '../../utils/useDataFromSource';
 import { taskflow } from './_config/taskflow.config';
 
+const dateComparator: GridComparatorFn<string> = (v1, v2) => {
+  return dayjs(v1).isAfter(dayjs(v2)) ? 1 : 0;
+};
+
+const columns: GridColDef[] = [
+  {
+    field: 'experiment_name',
+    headerName: 'Experiment Name',
+    width: 200,
+  },
+  {
+    field: 'start_time',
+    headerName: 'Start Time',
+    sortComparator: dateComparator,
+    width: 200,
+  },
+  {
+    field: 'end_time',
+    headerName: 'End Time',
+    width: 200,
+  },
+  {
+    field: 'status',
+    headerName: 'Status',
+    width: 200,
+  },
+];
+
 /**
  * List view of all activities in the monitor-activites Task Flow.
  */
 const ActivityList: React.FC = () => {
   const experiments = useDataFromSource(taskflow.data.items.source);
   const navigate = useNavigate();
-  
+
   /**
    * Content to render on the page for this component
    */
@@ -25,7 +53,11 @@ const ActivityList: React.FC = () => {
       }}
     >
       <Stack>
-        <Stack direction="row" justifyContent="space-between" alignItems="center">
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <Typography variant="h6" component="h1">
             Experiments test
           </Typography>
@@ -48,34 +80,6 @@ const ActivityList: React.FC = () => {
       </Stack>
     </Container>
   );
-}
-
-const dateComparator: GridComparatorFn<string> = (v1, v2) => {
-  return dayjs(v1).isAfter(dayjs(v2)) ? 1 : 0;
-}
-
-const columns: GridColDef[] = [
-  { 
-    field: 'experiment_name', 
-    headerName: 'Experiment Name', 
-    width: 200 
-  },
-  { 
-    field: 'start_time', 
-    headerName: 'Start Time',
-    sortComparator: dateComparator,
-    width: 200 
-  },
-  { 
-    field: 'end_time', 
-    headerName: 'End Time', 
-    width: 200 
-  },
-  { 
-    field: 'status', 
-    headerName: 'Status', 
-    width: 200 
-  }
-];
+};
 
 export default ActivityList;

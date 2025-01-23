@@ -27,20 +27,22 @@ interface FiltersProps extends StackProps {
 //   })
 // };
 
-export const Filters: React.FC<FiltersProps> = ({ 
+export const Filters: React.FC<FiltersProps> = ({
   onClose,
   children,
   ...rest
-}) => { 
+}) => {
   return (
     <Stack {...rest}>
       <Stack direction="row" alignItems="center">
-        <Typography variant="h6" component="h2" flex={1}>FILTERS</Typography>
-        <IconButton onClick={onClose}><CloseIcon /></IconButton>
+        <Typography variant="h6" component="h2" flex={1}>
+          FILTERS
+        </Typography>
+        <IconButton onClick={onClose}>
+          <CloseIcon />
+        </IconButton>
       </Stack>
-      <Stack>
-        {children}
-      </Stack>
+      <Stack>{children}</Stack>
     </Stack>
-  )
-}
+  );
+};

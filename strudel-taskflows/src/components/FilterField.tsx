@@ -1,14 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Stack, StackProps, TextField, Tooltip, Typography } from '@mui/material';
+import {
+  Box,
+  Stack,
+  StackProps,
+  TextField,
+  Tooltip,
+  Typography,
+} from '@mui/material';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { CheckboxList } from './CheckboxList';
 import { RangeSlider } from './RangeSlider';
 import { DatePicker } from '@mui/x-date-pickers';
 import { useFilters } from './FilterContext';
 
-export type FilterOperator = 'contains' | 'contains-one-of' | 'equals' | 'equals-one-of' | 'between-inclusive' | 'between-dates-inclusive';
+export type FilterOperator =
+  | 'contains'
+  | 'contains-one-of'
+  | 'equals'
+  | 'equals-one-of'
+  | 'between-inclusive'
+  | 'between-dates-inclusive';
 
-export type FilterComponent = 'RangeSlider' | 'CheckboxList' | 'DateRange' | 'TextField';
+export type FilterComponent =
+  | 'RangeSlider'
+  | 'CheckboxList'
+  | 'DateRange'
+  | 'TextField';
 
 interface FilterFieldProps extends StackProps {
   label: string;
@@ -22,12 +39,15 @@ interface FilterFieldProps extends StackProps {
 /**
  * The type of the value should be dependent on the filterComponent
  */
-type FilterValue<T> = 
-  T extends 'RangeSlider' ? number[] : 
-  T extends 'CheckboxList' ? string[] | number[] | null : 
-  T extends 'DateRange' ? [Date | null, Date | null] :
-  T extends 'TextField' ? string | null : 
-  never;
+type FilterValue<T> = T extends 'RangeSlider'
+  ? number[]
+  : T extends 'CheckboxList'
+    ? string[] | number[] | null
+    : T extends 'DateRange'
+      ? [Date | null, Date | null]
+      : T extends 'TextField'
+        ? string | null
+        : never;
 
 /**
  * Determine if a value is truthy or falsy in the context of a filter.
@@ -42,10 +62,10 @@ export const hasValue = (value: any) => {
   } else {
     return !!value;
   }
-}
+};
 
 /**
- * 
+ *
  */
 export const FilterField: React.FC<FilterFieldProps> = ({
   label,
@@ -62,7 +82,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
   const isActive = hasValue(currentFilter?.value);
 
   /**
-   * When a filter is canceled, reset its value to the proper 
+   * When a filter is canceled, reset its value to the proper
    * empty or base state depending on the filter type.
    * In the activeFilters variable, empty filters will always be marked as null.
    */
@@ -81,42 +101,52 @@ export const FilterField: React.FC<FilterFieldProps> = ({
         setValue(null);
         break;
       default:
-        console.log('Unknown filter type');
+        throw new Error('Unknown filter type');
     }
-      
-    dispatch({ type: 'SET_FILTER', payload: { field: field, value: null, operator } });
-  }
+
+    dispatch({
+      type: 'SET_FILTER',
+      payload: { field: field, value: null, operator },
+    });
+  };
 
   /**
    * Render filter component based on the `filterComponent` prop.
    */
-  const getFilterComponent = (
-    field: FilterFieldProps['field'],
-    filterComponent: FilterFieldProps['filterComponent'],
-    filterProps: FilterFieldProps['filterProps'],
-  ) => {
+  const getFilterComponent = () => {
     switch (filterComponent) {
       case 'CheckboxList': {
         return (
           <CheckboxList
             values={value as string[] | number[] | null}
             options={filterProps.options}
-            onChange={(values) => dispatch({ type: 'SET_FILTER', payload: { field: field, value: values, operator } })}
+            onChange={(values) =>
+              dispatch({
+                type: 'SET_FILTER',
+                payload: { field: field, value: values, operator },
+              })
+            }
             {...filterProps}
           />
         );
       }
       case 'RangeSlider': {
-        const handleSliderChange = (event: Event | React.SyntheticEvent<Element, Event>, values: number | number[]) => {
+        const handleSliderChange = (
+          event: Event | React.SyntheticEvent<Element, Event>,
+          values: number | number[]
+        ) => {
           if (!Array.isArray(values)) {
             return;
           }
           let newValues: number[] | null = [...values];
           /** Set to null if both ends of slider are at min/max */
           if (values[0] === filterProps.min && values[1] === filterProps.max) {
-              newValues = null
+            newValues = null;
           }
-          dispatch({ type: 'SET_FILTER', payload: { field: field, value: newValues, operator } })
+          dispatch({
+            type: 'SET_FILTER',
+            payload: { field: field, value: newValues, operator },
+          });
         };
 
         return (
@@ -126,53 +156,84 @@ export const FilterField: React.FC<FilterFieldProps> = ({
             min={filterProps.min}
             max={filterProps.max}
             value={value || [filterProps.min, filterProps.max]}
-            onChange={(e, value) => setValue(value as number[])}
+            onChange={(e, v) => setValue(v as number[])}
             onChangeCommitted={handleSliderChange}
             {...filterProps}
           />
         );
       }
       case 'DateRange': {
-        const currentDateRange = activeFilters.find((filter) => filter.field === filter.field)?.value;
-        const hasValue = currentDateRange && Array.isArray(currentDateRange) && currentDateRange.length === 2;
-        const currentMin = hasValue && Array.isArray(currentDateRange) ? currentDateRange[0] : null;
-        const currentMax = hasValue && Array.isArray(currentDateRange) ? currentDateRange[1] : null;
+        const currentDateRange = activeFilters.find(
+          (filter) => filter.field === filter.field
+        )?.value;
+        const hasDateValue =
+          currentDateRange &&
+          Array.isArray(currentDateRange) &&
+          currentDateRange.length === 2;
+        const currentMin =
+          hasDateValue && Array.isArray(currentDateRange)
+            ? currentDateRange[0]
+            : null;
+        const currentMax =
+          hasDateValue && Array.isArray(currentDateRange)
+            ? currentDateRange[1]
+            : null;
 
         return (
           <Stack>
-            <DatePicker 
+            <DatePicker
               label="From"
               slotProps={{
                 actionBar: {
-                  actions: ['clear', 'today']
-                }
+                  actions: ['clear', 'today'],
+                },
               }}
-              onChange={(value) => dispatch({ type: 'SET_FILTER', payload: { field: field, value: [value, currentMax], operator } })}
+              onChange={(v) =>
+                dispatch({
+                  type: 'SET_FILTER',
+                  payload: {
+                    field: field,
+                    value: [v, currentMax],
+                    operator,
+                  },
+                })
+              }
             />
-            <DatePicker 
+            <DatePicker
               label="To"
               slotProps={{
                 actionBar: {
-                  actions: ['clear', 'today']
-                }
+                  actions: ['clear', 'today'],
+                },
               }}
-              onChange={(value) => dispatch({ type: 'SET_FILTER', payload: { field: field, value: [currentMin, value], operator } })}
+              onChange={(v) =>
+                dispatch({
+                  type: 'SET_FILTER',
+                  payload: {
+                    field: field,
+                    value: [currentMin, v],
+                    operator,
+                  },
+                })
+              }
             />
           </Stack>
         );
       }
       case 'TextField': {
-
         /**
          * Debounce the dispatch so that activeFilters isn't rapidly updated.
          */
         useEffect(() => {
           const timeout = setTimeout(() => {
-            dispatch({ type: 'SET_FILTER', payload: { field: field, value: value, operator } })
+            dispatch({
+              type: 'SET_FILTER',
+              payload: { field: field, value: value, operator },
+            });
           }, 1000);
           return () => {
             clearTimeout(timeout);
-          }
+          };
         }, [value]);
 
         return (
@@ -185,7 +246,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
         );
       }
     }
-  }
+  };
 
   /**
    * When activeFilters changes, make sure the value changes accordingly.
@@ -196,16 +257,19 @@ export const FilterField: React.FC<FilterFieldProps> = ({
       setValue(currentFilter?.value || null);
     } else if (filterComponent === 'RangeSlider') {
       /** RangeSliders should be considered off if both values are min and max */
-      if (value && (value[0] !== filterProps.min || value[1] !== filterProps.max)) {
+      if (
+        value &&
+        (value[0] !== filterProps.min || value[1] !== filterProps.max)
+      ) {
         handleCancelFilter();
       }
     } else if (hasValue(value)) {
       handleCancelFilter();
     }
-  },[JSON.stringify(activeFilters)]);
+  }, [JSON.stringify(activeFilters)]);
 
   return (
-    <Stack 
+    <Stack
       spacing={1}
       sx={{
         paddingBottom: 2,
@@ -214,12 +278,12 @@ export const FilterField: React.FC<FilterFieldProps> = ({
         '&:last-child': {
           borderBottom: 'none',
           paddingBottom: 0,
-        }
+        },
       }}
       {...rest}
     >
       <Box display="inline-block">
-        <Stack 
+        <Stack
           direction="row"
           spacing={1}
           onClick={() => handleCancelFilter()}
@@ -236,7 +300,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
                 sx={{
                   textDecoration: 'underline',
                   textDecorationStyle: 'dotted',
-                  textUnderlineOffset: '0.25rem'
+                  textUnderlineOffset: '0.25rem',
                 }}
               >
                 {label}
@@ -251,14 +315,10 @@ export const FilterField: React.FC<FilterFieldProps> = ({
               {label}
             </Typography>
           )}
-          {isActive && (
-            <CancelOutlinedIcon color="primary" />
-          )}
+          {isActive && <CancelOutlinedIcon color="primary" />}
         </Stack>
       </Box>
-      <Box>
-        {getFilterComponent(field, filterComponent, filterProps)}
-      </Box>
+      <Box>{getFilterComponent()}</Box>
     </Stack>
-  )
-}
+  );
+};

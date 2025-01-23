@@ -4,7 +4,7 @@ import { Filters } from '../../../components/Filters';
 import { taskflow } from '../_config/taskflow.config';
 
 interface FiltersPanelProps {
-  onClose: () => any
+  onClose: () => any;
 }
 
 /**
@@ -12,7 +12,7 @@ interface FiltersPanelProps {
  * Filters are generated based on the configurations in definitions.filters.main.
  * The input values will filter data in the main table.
  */
-export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => { 
+export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
   /**
    * Content to render on the page for this component
    */
@@ -21,7 +21,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
       grouped={false}
       onClose={props.onClose}
       sx={{
-        border: 'none'
+        border: 'none',
       }}
     >
       {taskflow.pages.index.tableFilters.map((f, i) => (
@@ -35,5 +35,5 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = (props) => {
         />
       ))}
     </Filters>
-  )
-}
+  );
+};

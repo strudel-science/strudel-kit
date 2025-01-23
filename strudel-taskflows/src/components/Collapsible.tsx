@@ -20,7 +20,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
 
   const handleClick = () => {
     setIsOpenState(!isOpenState);
-  }
+  };
 
   useEffect(() => {
     setIsOpenState(isOpen);
@@ -40,37 +40,33 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
           width: '100%',
           '&:hover': {
             background: 'none',
-            opacity: 0.7
-          }
+            opacity: 0.7,
+          },
         }}
       >
         <Stack spacing={1} direction="row" alignItems="center">
           {!isOpenState && (
-            <KeyboardArrowRightIcon 
-              sx={{ 
+            <KeyboardArrowRightIcon
+              sx={{
                 ml: '-0.5rem',
                 mt: '-0.5rem',
-                mb: '-0.5rem'
-              }} 
+                mb: '-0.5rem',
+              }}
             />
           )}
           {isOpenState && (
-            <KeyboardArrowDownIcon 
-              sx={{ 
+            <KeyboardArrowDownIcon
+              sx={{
                 ml: '-0.5rem',
                 mt: '-0.5rem',
-                mb: '-0.5rem'
-              }} 
+                mb: '-0.5rem',
+              }}
             />
           )}
           <Box flex={1}>{label}</Box>
         </Stack>
       </Box>
-      {isOpenState && (
-        <Box>
-          {children}
-        </Box>
-      )}
+      {isOpenState && <Box>{children}</Box>}
     </Stack>
-  )
-}
+  );
+};

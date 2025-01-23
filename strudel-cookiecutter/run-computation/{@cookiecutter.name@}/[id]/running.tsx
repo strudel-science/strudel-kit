@@ -1,4 +1,16 @@
-import { Box, Button, Container, LinearProgress, Link, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Container,
+  LinearProgress,
+  Link,
+  Paper,
+  Stack,
+  Step,
+  StepLabel,
+  Stepper,
+  Typography,
+} from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { taskflow } from '../_config/taskflow.config';
@@ -16,8 +28,8 @@ const RunningComputationPage: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setRunning(false);
-    }, 2000)
-  })
+    }, 2000);
+  });
 
   /**
    * Content to render on the page for this component
@@ -29,27 +41,39 @@ const RunningComputationPage: React.FC = () => {
           backgroundColor: 'white',
           padding: 2,
           borderBottom: '1px solid',
-          borderColor: 'neutral.main'
+          borderColor: 'neutral.main',
         }}
       >
         <Stepper activeStep={1} sx={{ maxWidth: 850 }}>
           <Step key={taskflow.pages.dataInputs.title}>
             <StepLabel>
-              <Link component={RouterLink} to="../data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link
+                component={RouterLink}
+                to="../data-inputs"
+                sx={{ color: 'inherit', textDecoration: 'none' }}
+              >
                 {taskflow.pages.dataInputs.title}
               </Link>
             </StepLabel>
           </Step>
           <Step key={taskflow.pages.settings.title}>
             <StepLabel>
-              <Link component={RouterLink} to="../settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link
+                component={RouterLink}
+                to="../settings"
+                sx={{ color: 'inherit', textDecoration: 'none' }}
+              >
                 {taskflow.pages.settings.title}
               </Link>
             </StepLabel>
           </Step>
           <Step key={taskflow.pages.results.title}>
             <StepLabel>
-              <Link component={RouterLink} to="../results" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link
+                component={RouterLink}
+                to="../results"
+                sx={{ color: 'inherit', textDecoration: 'none' }}
+              >
                 {taskflow.pages.results.title}
               </Link>
             </StepLabel>
@@ -59,7 +83,7 @@ const RunningComputationPage: React.FC = () => {
       <Container
         maxWidth="md"
         sx={{
-          mt: 4
+          mt: 4,
         }}
       >
         <Paper sx={{ padding: 6, textAlign: 'center' }}>
@@ -70,7 +94,10 @@ const RunningComputationPage: React.FC = () => {
               </Typography>
               <Box color="neutral.dark">
                 <Typography>This could take several minutes.</Typography>
-                <Typography>You may leave this page and return later. Your progress will not be affected.</Typography>
+                <Typography>
+                  You may leave this page and return later. Your progress will
+                  not be affected.
+                </Typography>
               </Box>
               <LinearProgress variant="indeterminate" sx={{ height: 10 }} />
               <Typography color="neutral.dark">
@@ -87,17 +114,23 @@ const RunningComputationPage: React.FC = () => {
                 <Typography>Your results are ready to view.</Typography>
               </Box>
               <Link component={RouterLink} to="../results">
-                <Button variant="contained" size="large">Continue to Results</Button>
+                <Button
+                  variant="contained"
+                  size="large"
+                  data-testid="rnc-results-button"
+                >
+                  Continue to Results
+                </Button>
               </Link>
               <Typography color="neutral.dark">
                 Started 05/24/2023 9:32:33 AM, Ended 05/24/2023 11:47:03 AM
               </Typography>
             </Stack>
           )}
-        </Paper>  
+        </Paper>
       </Container>
     </Stack>
-  )
-}
+  );
+};
 
 export default RunningComputationPage;

@@ -14,23 +14,27 @@ export interface CompareDataAction {
 
 export const setData = (data: CompareDataState['data']): CompareDataAction => ({
   type: CompareDataActionType.SET_DATA,
-  payload: data
+  payload: data,
 });
 
-export const setSelectedRows = (rows: CompareDataState['selectedRows']): CompareDataAction => ({
+export const setSelectedRows = (
+  rows: CompareDataState['selectedRows']
+): CompareDataAction => ({
   type: CompareDataActionType.SET_SELECTED_ROWS,
-  payload: rows
+  payload: rows,
 });
 
 export const setComparisonData = (
-  data: CompareDataState['comparisonData'], 
+  data: CompareDataState['comparisonData'],
   columns: CompareDataState['comparisonColumns']
 ): CompareDataAction => ({
   type: CompareDataActionType.SET_COMPARISON_DATA,
-  payload: { data, columns }
+  payload: { data, columns },
 });
 
-export const setComparing = (comparing: CompareDataState['comparing']): CompareDataAction => ({
+export const setComparing = (
+  comparing: CompareDataState['comparing']
+): CompareDataAction => ({
   type: CompareDataActionType.SET_COMPARING,
-  payload: comparing
+  payload: comparing,
 });

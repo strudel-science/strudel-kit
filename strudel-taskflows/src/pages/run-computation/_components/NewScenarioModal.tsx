@@ -1,23 +1,34 @@
-import { Box, Button, FormControl, InputLabel, Link, MenuItem, Modal, Select, Stack, TextField, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  Link,
+  MenuItem,
+  Modal,
+  Select,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { taskflow } from '../_config/taskflow.config';
 
 interface Props {
   modalOpen: boolean;
-  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 /**
- * Modal to display over the `<ComputationsList>` to fill out a form for creating 
+ * Modal to display over the `<ComputationsList>` to fill out a form for creating
  * a new computation run.
  * Completing the form takes you to the `<DataInputs>` step.
  */
 export const NewScenarioModal: React.FC<Props> = ({
   modalOpen,
-  setModalOpen
+  setModalOpen,
 }) => {
-
   const handleClose = () => {
     setModalOpen(false);
   };
@@ -64,11 +75,7 @@ export const NewScenarioModal: React.FC<Props> = ({
         </FormControl>
         <FormControl fullWidth>
           <InputLabel id="model-select-label">Model</InputLabel>
-          <Select
-            labelId="model-select-label"
-            id="model-select"
-            label="Model"
-          >
+          <Select labelId="model-select-label" id="model-select" label="Model">
             <MenuItem value={10}>Model 1</MenuItem>
             <MenuItem value={20}>Model 2</MenuItem>
             <MenuItem value={30}>Model 3</MenuItem>
@@ -83,12 +90,12 @@ export const NewScenarioModal: React.FC<Props> = ({
         />
         <Box textAlign="right">
           <Link component={RouterLink} to="scenario/data-inputs">
-            <Button variant="contained" >
+            <Button variant="contained" data-testid="rnc-create-button">
               Create
             </Button>
           </Link>
         </Box>
       </Stack>
     </Modal>
-  )
-}
+  );
+};

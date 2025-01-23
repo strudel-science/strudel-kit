@@ -10,7 +10,7 @@ import { taskflow } from './_config/taskflow.config';
 
 /**
  * Main explorer page in the explore-data Task Flow.
- * This page includes the page header, filters panel, 
+ * This page includes the page header, filters panel,
  * main table, and the table row preview panel.
  */
 const DataExplorer: React.FC = () => {
@@ -21,14 +21,14 @@ const DataExplorer: React.FC = () => {
   const handleCloseFilters = () => {
     setShowFiltersPanel(false);
   };
-  
+
   const handleToggleFilters = () => {
     setShowFiltersPanel(!showFiltersPanel);
-  }
+  };
 
   const handleClosePreview = () => {
     setPreviewItem(null);
-  }
+  };
 
   return (
     <FilterContext>
@@ -46,7 +46,7 @@ const DataExplorer: React.FC = () => {
             {showFiltersPanel && (
               <Box
                 sx={{
-                  width: '350px'
+                  width: '350px',
                 }}
               >
                 <FiltersPanel onClose={handleCloseFilters} />
@@ -73,17 +73,20 @@ const DataExplorer: React.FC = () => {
             {previewItem && (
               <Box
                 sx={{
-                  minWidth: '400px'
+                  minWidth: '400px',
                 }}
               >
-                <PreviewPanel previewItem={previewItem} onClose={handleClosePreview} />
+                <PreviewPanel
+                  previewItem={previewItem}
+                  onClose={handleClosePreview}
+                />
               </Box>
             )}
           </Stack>
         </Box>
       </Box>
     </FilterContext>
-  )
-}
+  );
+};
 
 export default DataExplorer;

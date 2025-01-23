@@ -1,6 +1,12 @@
 export type ParamType = 'standard' | 'array-string' | 'repeated' | 'minmax';
 
-export type FilterOperator = 'contains' | 'contains-one-of' | 'equals' | 'equals-one-of' | 'between-inclusive' | 'between-dates-inclusive';
+export type FilterOperator =
+  | 'contains'
+  | 'contains-one-of'
+  | 'equals'
+  | 'equals-one-of'
+  | 'between-inclusive'
+  | 'between-dates-inclusive';
 
 export interface DataFilter {
   field: string;

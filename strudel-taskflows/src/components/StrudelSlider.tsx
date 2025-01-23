@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Slider, SliderProps } from '@mui/material';
 
-interface StrudelSliderProps extends SliderProps {
-
-}
+interface StrudelSliderProps extends SliderProps {}
 
 /**
  * Custom wrapper for the MUI Slider component.
@@ -16,9 +14,9 @@ export const StrudelSlider: React.FC<StrudelSliderProps> = ({
 }) => {
   const [value, setValue] = useState<number[]>([min, max]);
 
-  const handleChange = (event: Event, value: number | number[], activeThumb: number) => {
-    setValue(value as number[])
-  }
+  const handleChange = (event: Event, v: number | number[]) => {
+    setValue(v as number[]);
+  };
 
   const marks = [
     {
@@ -28,9 +26,9 @@ export const StrudelSlider: React.FC<StrudelSliderProps> = ({
     {
       value: max,
       label: max,
-    }
+    },
   ];
-  
+
   return (
     <Slider
       value={value}
@@ -40,5 +38,5 @@ export const StrudelSlider: React.FC<StrudelSliderProps> = ({
       marks={marks}
       {...rest}
     />
-  )
-}
+  );
+};

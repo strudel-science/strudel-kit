@@ -52,3 +52,9 @@ dist-ssr
 
 # Test taskflow configs
 _*.config.ts
+
+# Cypress
+**/cypress/screenshots/
+
+# Cache
+.eslintcache

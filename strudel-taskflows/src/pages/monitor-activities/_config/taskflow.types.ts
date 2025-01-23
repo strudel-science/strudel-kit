@@ -3,16 +3,16 @@
  */
 export interface MonitorActivitiesConfig {
   /** Attributes that are used across the Task Flow */
-  properties?: any
+  properties?: any;
   data: {
     items: {
-      source: string,
-      idField: string
-    },
+      source: string;
+      idField: string;
+    };
     [key: string]: {
-      source: string,
-      idField: string
-    }
-  },
-  pages?: any
+      source: string;
+      idField: string;
+    };
+  };
+  pages?: any;
 }

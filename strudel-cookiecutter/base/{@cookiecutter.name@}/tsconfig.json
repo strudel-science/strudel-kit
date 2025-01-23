@@ -5,7 +5,7 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "types": ["node"],
+    "types": ["node", "cypress"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -21,6 +21,12 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "strudel.config.ts"],
+  "include": [
+    "src",
+    "strudel.config.ts",
+    "cypress",
+    "cypress.config.ts",
+    "vite.config.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

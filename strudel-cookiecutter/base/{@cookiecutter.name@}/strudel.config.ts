@@ -9,9 +9,9 @@ export const config = {
     items: [
       {
         label: 'Playground',
-        path: '/playground'
-      }
-    ]
+        path: '/playground',
+      },
+    ],
   },
   footer: {
     info: 'Describe your project, place a copyright statement, or credit your funding organizations.',
@@ -19,16 +19,8 @@ export const config = {
     links: [
       {
         label: 'Playground',
-        path: '/playground'
+        path: '/playground',
       },
-    ]
+    ],
   },
-  theme: {
-    mode: 'light',
-    primaryColor: '#1976d2',
-    secondaryColor: '#9c27b0',
-    backgroundColor: '#F5F5F6',
-    paperBackgroundColor: '#FFFFFF',
-    fontFamily: '"Helvetica", "Verdana", "Arial", sans-serif'
-  }
-}
+};

@@ -1,4 +1,18 @@
-import { Box, FormControl, FormHelperText, InputLabel, List, ListItem, MenuItem, Paper, Select, SelectChangeEvent, Stack, TextField, Typography } from '@mui/material';
+import {
+  Box,
+  FormControl,
+  FormHelperText,
+  InputLabel,
+  List,
+  ListItem,
+  MenuItem,
+  Paper,
+  Select,
+  SelectChangeEvent,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
 import React, { useState } from 'react';
@@ -11,7 +25,7 @@ export const MetadataPanel: React.FC = () => {
   const [category, setCategory] = useState<string>();
   const [startDate, setStartDate] = useState<dayjs.Dayjs | null>(null);
   const [endDate, setEndDate] = useState<dayjs.Dayjs | null>(null);
-  
+
   const handleCategoryChange = (event: SelectChangeEvent) => {
     setCategory(event.target.value);
   };
@@ -28,10 +42,7 @@ export const MetadataPanel: React.FC = () => {
           borderBottomColor: 'neutral.main',
         }}
       >
-        <Typography
-          fontWeight="bold"
-          component="h2" 
-        >
+        <Typography fontWeight="bold" component="h2">
           Metadata
         </Typography>
       </Box>
@@ -53,11 +64,11 @@ export const MetadataPanel: React.FC = () => {
         </Box>
         <Box
           sx={{
-            padding: 2
+            padding: 2,
           }}
         >
           <Stack>
-            <Stack 
+            <Stack
               spacing={3}
               sx={{
                 borderBottom: '1px solid',
@@ -65,7 +76,9 @@ export const MetadataPanel: React.FC = () => {
                 paddingBottom: 2,
               }}
             >
-              <Typography color="neutral.dark" fontWeight="bold">Overview</Typography>
+              <Typography color="neutral.dark" fontWeight="bold">
+                Overview
+              </Typography>
               <TextField
                 label="Dataset Title"
                 variant="outlined"
@@ -79,7 +92,9 @@ export const MetadataPanel: React.FC = () => {
                 fullWidth
               />
               <FormControl>
-                <InputLabel id="demo-simple-select-helper-label">Category</InputLabel>
+                <InputLabel id="demo-simple-select-helper-label">
+                  Category
+                </InputLabel>
                 <Select
                   labelId="demo-simple-select-helper-label"
                   id="demo-simple-select-helper"
@@ -91,7 +106,9 @@ export const MetadataPanel: React.FC = () => {
                   <MenuItem value="Floods">Floods</MenuItem>
                   <MenuItem value="Groundwater">Groundwater</MenuItem>
                 </Select>
-                <FormHelperText>Select the category most closely associeted with your dataset.</FormHelperText>
+                <FormHelperText>
+                  Select the category most closely associeted with your dataset.
+                </FormHelperText>
               </FormControl>
               <TextField
                 label="Dataset Summary"
@@ -102,7 +119,7 @@ export const MetadataPanel: React.FC = () => {
                 minRows={4}
               />
             </Stack>
-            <Stack 
+            <Stack
               spacing={3}
               sx={{
                 borderBottom: '1px solid',
@@ -110,34 +127,36 @@ export const MetadataPanel: React.FC = () => {
                 paddingBottom: 2,
               }}
             >
-              <Typography color="neutral.dark" fontWeight="bold">Dates</Typography>
+              <Typography color="neutral.dark" fontWeight="bold">
+                Dates
+              </Typography>
               <Stack direction="row">
-                <DatePicker 
-                  value={startDate} 
+                <DatePicker
+                  value={startDate}
                   label="Start Date"
                   slotProps={{
                     actionBar: {
-                      actions: ['clear', 'today']
-                    }
+                      actions: ['clear', 'today'],
+                    },
                   }}
                   onChange={(value) => setStartDate(value)}
                 />
-                <DatePicker 
-                  value={endDate} 
+                <DatePicker
+                  value={endDate}
                   label="End Date"
                   slotProps={{
                     actionBar: {
-                      actions: ['clear', 'today']
-                    }
+                      actions: ['clear', 'today'],
+                    },
                   }}
                   onChange={(value) => setEndDate(value)}
                 />
               </Stack>
             </Stack>
-            <Stack 
-              spacing={3}
-            >
-              <Typography color="neutral.dark" fontWeight="bold">Contacts</Typography>
+            <Stack spacing={3}>
+              <Typography color="neutral.dark" fontWeight="bold">
+                Contacts
+              </Typography>
               <TextField
                 label="Point of Contact"
                 variant="outlined"
@@ -168,4 +187,4 @@ export const MetadataPanel: React.FC = () => {
       </Stack>
     </Paper>
   );
-}
+};

@@ -5,6 +5,7 @@ import React from 'react';
 import { AppLink } from './AppLink';
 import { config } from '../../strudel.config';
 import { ImageWrapper } from './ImageWrapper';
+import { cleanPath } from '../utils/queryParams.utils';
 
 /**
  * Top navigation bar component
@@ -13,11 +14,11 @@ export const TopBar: React.FC = () => {
   return (
     <AppBar color="default" position="static">
       <Toolbar>
-        <Stack 
-          direction="row" 
+        <Stack
+          direction="row"
           sx={{
             alignItems: 'center',
-            flexGrow: 1 ,
+            flexGrow: 1,
           }}
         >
           <AppLink to="/">
@@ -33,7 +34,11 @@ export const TopBar: React.FC = () => {
             )}
             {config.navbar.logo && (
               <ImageWrapper height={30}>
-                <img src={`${import.meta.env.BASE_URL}/${config.navbar.logo}`} />
+                <img
+                  src={cleanPath(
+                    `${import.meta.env.BASE_URL}/${config.navbar.logo}`
+                  )}
+                />
               </ImageWrapper>
             )}
           </AppLink>
@@ -48,14 +53,10 @@ export const TopBar: React.FC = () => {
             </AppLink>
           ))}
         </Stack>
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-        >
+        <IconButton size="large" edge="start" color="inherit">
           <AccountCircleIcon />
         </IconButton>
       </Toolbar>
     </AppBar>
-  )
-}
+  );
+};

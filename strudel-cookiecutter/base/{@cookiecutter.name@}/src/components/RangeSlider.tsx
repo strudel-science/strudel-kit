@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Slider, SliderProps } from '@mui/material';
 
-interface RangeSliderProps extends SliderProps {
-
-}
+interface RangeSliderProps extends SliderProps {}
 
 /**
  * Custom wrapper for the MUI Slider components where
@@ -16,9 +14,9 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
 }) => {
   const [value, setValue] = useState<number[]>([min, max]);
 
-  const handleChange = (event: Event, value: number | number[], activeThumb: number) => {
-    setValue(value as number[])
-  }
+  const handleChange = (event: Event, v: number | number[]) => {
+    setValue(v as number[]);
+  };
 
   const marks = [
     {
@@ -28,9 +26,9 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
     {
       value: max,
       label: max,
-    }
+    },
   ];
-  
+
   return (
     <Box
       sx={{
@@ -47,5 +45,5 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({
         {...rest}
       />
     </Box>
-  )
-}
+  );
+};

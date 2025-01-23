@@ -1,5 +1,10 @@
 import React, { useEffect, useReducer, useContext } from 'react';
-import { CompareDataAction, CompareDataActionType, setComparisonData, setData } from './actions';
+import {
+  CompareDataAction,
+  CompareDataActionType,
+  setComparisonData,
+  setData,
+} from './actions';
 import { CompareDataConfigColDef } from '../_config/taskflow.types';
 import { GridRowSelectionModel } from '@mui/x-data-grid';
 
@@ -14,14 +19,14 @@ export interface CompareDataState {
   comparisonColumns: CompareDataConfigColDef[];
   dataIdField: string;
   comparing?: boolean;
-  comparisonData: ComparisonRow[]
+  comparisonData: ComparisonRow[];
 }
 
 /**
  * CompareDataProvider props are the same as the State except
  * some of the required props in the State are optional props.
  * These props have default values set in the initialState object.
- * 
+ *
  * Switched to using Partial<> so that the props doesn't abide by the same
  * required props as the State, but this leaves it unclear which props are
  * optional when initiating a Provider component. But it is simpler.
@@ -33,7 +38,10 @@ interface CompareDataProviderProps extends Partial<CompareDataState> {
   children: React.ReactNode;
 }
 
-const CompareDataContext = React.createContext<{state: CompareDataState; dispatch: React.Dispatch<CompareDataAction>} | undefined>(undefined);
+const CompareDataContext = React.createContext<
+  | { state: CompareDataState; dispatch: React.Dispatch<CompareDataAction> }
+  | undefined
+>(undefined);
 
 const initialState: CompareDataState = {
   data: [],
@@ -43,51 +51,62 @@ const initialState: CompareDataState = {
   comparing: false,
   comparisonData: [],
   comparisonColumns: [],
-}
-
-const initState = (initialState: CompareDataState, props: CompareDataProviderProps) => {
-  const {children, ...rest} = props;
-  return {
-    ...initialState,
-    ...rest
-  }
 };
 
-function CompareDataReducer(state: CompareDataState, action: CompareDataAction): CompareDataState {
+const initState = (
+  state: CompareDataState,
+  props: CompareDataProviderProps
+) => {
+  const { children, ...rest } = props;
+  return {
+    ...state,
+    ...rest,
+  };
+};
+
+function CompareDataReducer(
+  state: CompareDataState,
+  action: CompareDataAction
+): CompareDataState {
   switch (action.type) {
     case CompareDataActionType.SET_DATA: {
       return {
         ...state,
-        data: action.payload
-      }
+        data: action.payload,
+      };
     }
     case CompareDataActionType.SET_SELECTED_ROWS: {
       return {
         ...state,
-        selectedRows: action.payload
-      }
+        selectedRows: action.payload,
+      };
     }
     case CompareDataActionType.SET_COMPARISON_DATA: {
       return {
         ...state,
         comparisonData: action.payload.data,
         comparisonColumns: action.payload.columns,
-      }
+      };
     }
     case CompareDataActionType.SET_COMPARING: {
       return {
         ...state,
-        comparing: action.payload
-      }
+        comparing: action.payload,
+      };
     }
     default: {
-      throw new Error(`Unhandled action type: ${action.type}`)
+      throw new Error(`Unhandled action type: ${action.type}`);
     }
   }
 }
 
-export const CompareDataProvider: React.FC<CompareDataProviderProps> = (props) => {
-  const [state, dispatch] = useReducer(CompareDataReducer, initState(initialState, props));
+export const CompareDataProvider: React.FC<CompareDataProviderProps> = (
+  props
+) => {
+  const [state, dispatch] = useReducer(
+    CompareDataReducer,
+    initState(initialState, props)
+  );
   const value = { state, dispatch };
 
   useEffect(() => {
@@ -104,14 +123,16 @@ export const CompareDataProvider: React.FC<CompareDataProviderProps> = (props) =
   useEffect(() => {
     if (state.comparing && state.selectedRows.length > 1) {
       const metrics = state.columns.filter((c) => c.isComparisonMetric);
-      const scenarios = state.data.filter((d) => state.selectedRows.indexOf(d.id) > -1);
+      const scenarios = state.data.filter(
+        (d) => state.selectedRows.indexOf(d.id) > -1
+      );
       const comparisonColumns: CompareDataConfigColDef[] = [
         {
           field: 'metric',
           headerName: 'Metric',
           width: 200,
           cellClassName: 'compare-data--metric',
-        }
+        },
       ];
       const comparisonData = metrics.map((m, i) => {
         const row: ComparisonRow = {};
@@ -122,7 +143,7 @@ export const CompareDataProvider: React.FC<CompareDataProviderProps> = (props) =
             comparisonColumns.push({
               field: s.name,
               headerName: s.name,
-              width: 200
+              width: 200,
             });
           }
         });
@@ -136,13 +157,15 @@ export const CompareDataProvider: React.FC<CompareDataProviderProps> = (props) =
     <CompareDataContext.Provider value={value}>
       {props.children}
     </CompareDataContext.Provider>
-  )
-}
+  );
+};
 
 export const useCompareData = () => {
-  const context = useContext(CompareDataContext)
+  const context = useContext(CompareDataContext);
   if (context === undefined) {
-    throw new Error('useCompareData must be used within an CompareDataProvider')
+    throw new Error(
+      'useCompareData must be used within an CompareDataProvider'
+    );
   }
-  return context
-}
+  return context;
+};

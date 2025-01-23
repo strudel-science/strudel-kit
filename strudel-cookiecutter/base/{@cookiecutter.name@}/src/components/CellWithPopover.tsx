@@ -1,5 +1,5 @@
-import { Box, Popover } from "@mui/material";
-import { PropsWithChildren, useState } from "react";
+import { Box, Popover } from '@mui/material';
+import { PropsWithChildren, useState } from 'react';
 
 /**
  * Generic inner cell content with a popover to show the full contents.
@@ -19,13 +19,11 @@ export const CellWithPopover: React.FC<PropsWithChildren> = ({ children }) => {
 
   const open = Boolean(anchorEl);
   return (
-    <Box
-      sx={{ height: '100%' }}
-    >
+    <Box sx={{ height: '100%' }}>
       <Box
         onMouseEnter={handlePopoverOpen}
-        onMouseLeave={handlePopoverClose} 
-        sx={{ 
+        onMouseLeave={handlePopoverClose}
+        sx={{
           height: '100%',
           overflow: 'hidden',
           textOverflow: 'ellipsis',
@@ -61,5 +59,5 @@ export const CellWithPopover: React.FC<PropsWithChildren> = ({ children }) => {
         </Box>
       </Popover>
     </Box>
-  )
-}
+  );
+};

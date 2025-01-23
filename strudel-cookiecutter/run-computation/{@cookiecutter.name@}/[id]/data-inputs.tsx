@@ -1,4 +1,15 @@
-import { Box, Button, Container, Link, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Container,
+  Link,
+  Paper,
+  Stack,
+  Step,
+  StepLabel,
+  Stepper,
+  Typography,
+} from '@mui/material';
 import React, { useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
@@ -8,14 +19,14 @@ import { setInputsTableData } from '../_context/actions';
 import { taskflow } from '../_config/taskflow.config';
 
 /**
- * Page to display input data after creating or selecting an item from 
+ * Page to display input data after creating or selecting an item from
  * the `<ComputationsList>` page in the run-computation Task Flow.
  * Table columns are configured in `definitions.inputs.table.columns`
  */
 const DataInputsPage: React.FC = () => {
   const { state, dispatch } = useRunComputation();
   const inputsData = useDataFromSource(taskflow.data.inputs.source);
-  
+
   /**
    * Set data for the inputs table when the data loads
    */
@@ -35,27 +46,39 @@ const DataInputsPage: React.FC = () => {
           backgroundColor: 'white',
           padding: 2,
           borderBottom: '1px solid',
-          borderColor: 'neutral.main'
+          borderColor: 'neutral.main',
         }}
       >
         <Stepper activeStep={0} sx={{ maxWidth: 850 }}>
           <Step key="Data Inputs">
             <StepLabel>
-              <Link component={RouterLink} to="../data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link
+                component={RouterLink}
+                to="../data-inputs"
+                sx={{ color: 'inherit', textDecoration: 'none' }}
+              >
                 {taskflow.pages.dataInputs.title}
               </Link>
             </StepLabel>
           </Step>
           <Step key="Optimization Settings">
             <StepLabel>
-              <Link component={RouterLink} to="../settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link
+                component={RouterLink}
+                to="../settings"
+                sx={{ color: 'inherit', textDecoration: 'none' }}
+              >
                 {taskflow.pages.settings.title}
               </Link>
             </StepLabel>
           </Step>
           <Step key="Results">
             <StepLabel>
-              <Link component={RouterLink} to="../results" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link
+                component={RouterLink}
+                to="../results"
+                sx={{ color: 'inherit', textDecoration: 'none' }}
+              >
                 {taskflow.pages.results.title}
               </Link>
             </StepLabel>
@@ -75,16 +98,16 @@ const DataInputsPage: React.FC = () => {
             width: 300,
           }}
         >
-          <Typography 
-            component="li" 
+          <Typography
+            component="li"
             fontWeight="bold"
             sx={{
-              marginBottom: 2
+              marginBottom: 2,
             }}
           >
             Categories
           </Typography>
-          <Typography 
+          <Typography
             component="li"
             sx={{
               backgroundColor: '#D9EEFE',
@@ -92,27 +115,27 @@ const DataInputsPage: React.FC = () => {
               borderColor: 'primary.main',
               padding: '1rem 2rem',
               marginLeft: '-2rem !important',
-              marginRight: '-2rem !important'
+              marginRight: '-2rem !important',
             }}
           >
             Input Units
           </Typography>
-          <Typography 
+          <Typography
             component="li"
             sx={{
               padding: '1rem 2rem',
               marginLeft: '-2rem !important',
-              marginRight: '-2rem !important'
+              marginRight: '-2rem !important',
             }}
           >
             Input Streams
           </Typography>
-          <Typography 
-            component="li" 
+          <Typography
+            component="li"
             sx={{
               padding: '1rem 2rem',
               marginLeft: '-2rem !important',
-              marginRight: '-2rem !important'
+              marginRight: '-2rem !important',
             }}
           >
             Unit Costing
@@ -122,7 +145,7 @@ const DataInputsPage: React.FC = () => {
           <Container
             maxWidth="xl"
             sx={{
-              mt: 4
+              mt: 4,
             }}
           >
             <Paper>
@@ -133,7 +156,7 @@ const DataInputsPage: React.FC = () => {
                 disableColumnSelector
                 disableRowSelectionOnClick
               />
-            </Paper>  
+            </Paper>
           </Container>
         </Box>
       </Stack>
@@ -146,15 +169,17 @@ const DataInputsPage: React.FC = () => {
           padding: 2,
           position: 'fixed',
           textAlign: 'right',
-          width: '100%'
+          width: '100%',
         }}
       >
         <Link component={RouterLink} to="../settings">
-          <Button variant="contained">Continue to {taskflow.pages.settings.title}</Button>
+          <Button variant="contained" data-testid="rnc-settings-next-button">
+            Continue to {taskflow.pages.settings.title}
+          </Button>
         </Link>
       </Box>
     </Stack>
-  )
-}
+  );
+};
 
 export default DataInputsPage;

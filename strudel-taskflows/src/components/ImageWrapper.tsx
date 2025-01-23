@@ -9,7 +9,7 @@ interface ImageWrapperProps extends BoxProps {
 
 /**
  * Generic image wrapper component for sizing images relatively
- * based on container sizes. Provide either a height or width and 
+ * based on container sizes. Provide either a height or width and
  * the image will size to that value and maintain its aspect ratio.
  */
 export const ImageWrapper: React.FC<ImageWrapperProps> = ({
@@ -32,9 +32,11 @@ export const ImageWrapper: React.FC<ImageWrapperProps> = ({
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {
           const imgClass = width ? 'relative-width' : 'relative-height';
-          return React.cloneElement(child as React.ReactElement<any>, { className: `${child.props.className} ${imgClass}` });
+          return React.cloneElement(child as React.ReactElement<any>, {
+            className: `${child.props.className} ${imgClass}`,
+          });
         }
       })}
     </Box>
   );
-}
+};

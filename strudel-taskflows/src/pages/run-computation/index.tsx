@@ -1,4 +1,11 @@
-import { Box, Button, Container, Paper, Stack, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Container,
+  Paper,
+  Stack,
+  Typography,
+} from '@mui/material';
 import React, { useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { NewScenarioModal } from './_components/NewScenarioModal';
@@ -7,7 +14,7 @@ import { taskflow } from './_config/taskflow.config';
 
 /**
  * List page for all compuation runs in the run-computation Task Flow.
- * Can open the `<NewScenarioModal>` from here and then proceed to the 
+ * Can open the `<NewScenarioModal>` from here and then proceed to the
  * `<DataInputs>` component for the next step.
  */
 export const ListPage: React.FC = () => {
@@ -23,10 +30,10 @@ export const ListPage: React.FC = () => {
    */
   return (
     <Box>
-      <Container 
+      <Container
         maxWidth="xl"
         sx={{
-          mt: 4
+          mt: 4,
         }}
       >
         <Paper>
@@ -35,30 +42,28 @@ export const ListPage: React.FC = () => {
             spacing={2}
             alignItems="center"
             sx={{
-              padding: 2
+              padding: 2,
             }}
           >
             <Box flex={1}>
-              <Typography 
-                variant="h6" 
-                component="h1" 
-              >
+              <Typography variant="h6" component="h1">
                 {taskflow.pages.index.title}
               </Typography>
-              <Typography 
-                variant="subtitle1" 
-                component="p" 
-              >
+              <Typography variant="subtitle1" component="p">
                 {taskflow.pages.index.description}
               </Typography>
             </Box>
             <Button
               variant="contained"
               onClick={handleNewScenario}
+              data-testid="rnc-new-button"
             >
               New {taskflow.properties.itemName}
             </Button>
-            <NewScenarioModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+            <NewScenarioModal
+              modalOpen={modalOpen}
+              setModalOpen={setModalOpen}
+            />
           </Stack>
           <DataGrid
             rows={state.list.table.data}
@@ -67,10 +72,10 @@ export const ListPage: React.FC = () => {
             disableColumnSelector
             disableRowSelectionOnClick
           />
-        </Paper>  
+        </Paper>
       </Container>
     </Box>
-  )
-}
+  );
+};
 
 export default ListPage;

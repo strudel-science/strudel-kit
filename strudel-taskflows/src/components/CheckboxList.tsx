@@ -1,4 +1,9 @@
-import { Checkbox, FormControlLabel, FormGroup, FormGroupProps } from '@mui/material';
+import {
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  FormGroupProps,
+} from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
 export type CheckboxOptionValue = string | number;
@@ -21,8 +26,10 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
   sx,
   ...rest
 }) => {
-  const [checkValues, setCheckValues] = useState<CheckboxOptionValue[] | null>(values);
-  
+  const [checkValues, setCheckValues] = useState<CheckboxOptionValue[] | null>(
+    values
+  );
+
   const handleChange = (checked: boolean, value: CheckboxOption['value']) => {
     if (checkValues === null && checked) {
       setCheckValues([value]);
@@ -52,7 +59,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
     <FormGroup
       sx={{
         display: 'inline-flex',
-        ...sx
+        ...sx,
       }}
       {...rest}
     >
@@ -69,17 +76,17 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
                 pr: 1,
                 pl: 1,
                 pb: 0,
-                pt: 0
+                pt: 0,
               }}
             />
           }
           sx={{
             '&:not(:last-child)': {
-              mb: 1
-            }
+              mb: 1,
+            },
           }}
         />
       ))}
     </FormGroup>
   );
-}
+};

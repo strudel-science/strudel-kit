@@ -1,8 +1,12 @@
-import { LinearProgress, LinearProgressProps, linearProgressClasses } from '@mui/material';
+import {
+  LinearProgress,
+  LinearProgressProps,
+  linearProgressClasses,
+} from '@mui/material';
 import React from 'react';
 
 /**
- * Styled version of the LinearProgress mui component that can be 
+ * Styled version of the LinearProgress mui component that can be
  * used to show one-dimensional data in a horizontal meter.
  */
 export const LinearMeter: React.FC<LinearProgressProps> = (props) => {
@@ -22,5 +26,5 @@ export const LinearMeter: React.FC<LinearProgressProps> = (props) => {
       }}
       {...props}
     />
-  )
-}
+  );
+};

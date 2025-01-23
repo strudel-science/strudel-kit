@@ -1,5 +1,16 @@
 import CloseIcon from '@mui/icons-material/Close';
-import { Alert, Box, Button, Collapse, Container, Grid, IconButton, Link, Stack, Typography } from '@mui/material';
+import {
+  Alert,
+  Box,
+  Button,
+  Collapse,
+  Container,
+  Grid,
+  IconButton,
+  Link,
+  Stack,
+  Typography,
+} from '@mui/material';
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { DatasetView } from './_components/DatasetView';
@@ -10,7 +21,7 @@ import { taskflow } from './_config/taskflow.config';
 
 /**
  * Page to review a new dataset before submitting it in the contribute-data Task Flow.
- * Users can see read-only data in the `<DatasetView>`, go back to editing, or run checks 
+ * Users can see read-only data in the `<DatasetView>`, go back to editing, or run checks
  * against their uploaded dataset and see validation in the `<ValidationChecks>` component.
  */
 const ReviewDataset: React.FC = () => {
@@ -24,8 +35,8 @@ const ReviewDataset: React.FC = () => {
     dispatch(runChecks());
     setTimeout(() => {
       dispatch(finishChecks());
-    }, 5000)
-  }
+    }, 5000);
+  };
 
   /**
    * Content to render on the page for this component
@@ -47,7 +58,7 @@ const ReviewDataset: React.FC = () => {
               <CloseIcon fontSize="inherit" />
             </IconButton>
           }
-          sx={{ 
+          sx={{
             paddingLeft: 3,
             paddingRight: 3,
           }}
@@ -72,7 +83,11 @@ const ReviewDataset: React.FC = () => {
             <Stack direction="row">
               <Box>
                 <Link component={RouterLink} to="../new">
-                  <Button variant="contained" sx={{ whiteSpace: 'nowrap' }}>
+                  <Button
+                    variant="contained"
+                    data-testid="ctd-edit-button"
+                    sx={{ whiteSpace: 'nowrap' }}
+                  >
                     Edit Dataset
                   </Button>
                 </Link>
@@ -81,6 +96,7 @@ const ReviewDataset: React.FC = () => {
                 <Button
                   variant="contained"
                   onClick={() => startRunChecks()}
+                  data-testid="ctd-checks-button"
                   sx={{ whiteSpace: 'nowrap' }}
                 >
                   Run Checks
@@ -89,7 +105,11 @@ const ReviewDataset: React.FC = () => {
               {state.checksComplete && (
                 <Box>
                   <Link component={RouterLink} to="../portal">
-                    <Button variant="contained" sx={{ whiteSpace: 'nowrap' }}>
+                    <Button
+                      variant="contained"
+                      data-testid="ctd-publish-button"
+                      sx={{ whiteSpace: 'nowrap' }}
+                    >
                       Publish Dataset
                     </Button>
                   </Link>
@@ -111,6 +131,6 @@ const ReviewDataset: React.FC = () => {
       </Container>
     </Box>
   );
-}
+};
 
 export default ReviewDataset;

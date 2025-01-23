@@ -1,11 +1,27 @@
-import { Box, Button, Container, Grid, Link, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Link,
+  Paper,
+  Stack,
+  Step,
+  StepLabel,
+  Stepper,
+  Typography,
+} from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import React, { useEffect } from 'react';
 import Plot from 'react-plotly.js';
 import { Link as RouterLink } from 'react-router-dom';
 import { useDataFromSource } from '../../../utils/useDataFromSource';
 import { useRunComputation } from '../_context/ContextProvider';
-import { setResultsBarChartData, setResultsLineChartData, setResultsTableData } from '../_context/actions';
+import {
+  setResultsBarChartData,
+  setResultsLineChartData,
+  setResultsTableData,
+} from '../_context/actions';
 import { taskflow } from '../_config/taskflow.config';
 
 /**
@@ -31,7 +47,10 @@ const ResultsPage: React.FC = () => {
    * Set data for the results line chart when the data loads
    */
   useEffect(() => {
-    if (!state.results.lineChart.data || state.results.lineChart.data.length === 0) {
+    if (
+      !state.results.lineChart.data ||
+      state.results.lineChart.data.length === 0
+    ) {
       dispatch(setResultsLineChartData(lineData));
     }
   }, [lineData]);
@@ -40,7 +59,10 @@ const ResultsPage: React.FC = () => {
    * Set data for the results bar chart when the data loads
    */
   useEffect(() => {
-    if (!state.results.barChart.data || state.results.barChart.data.length === 0) {
+    if (
+      !state.results.barChart.data ||
+      state.results.barChart.data.length === 0
+    ) {
       dispatch(setResultsBarChartData(barData));
     }
   }, [barData]);
@@ -55,27 +77,39 @@ const ResultsPage: React.FC = () => {
           backgroundColor: 'white',
           padding: 2,
           borderBottom: '1px solid',
-          borderColor: 'neutral.main'
+          borderColor: 'neutral.main',
         }}
       >
         <Stepper activeStep={2} sx={{ maxWidth: 850 }}>
           <Step key="Data Inputs">
             <StepLabel>
-              <Link component={RouterLink} to="../data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link
+                component={RouterLink}
+                to="../data-inputs"
+                sx={{ color: 'inherit', textDecoration: 'none' }}
+              >
                 {taskflow.pages.dataInputs.title}
               </Link>
             </StepLabel>
           </Step>
           <Step key="Optimization Settings">
             <StepLabel>
-              <Link component={RouterLink} to="../settings" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link
+                component={RouterLink}
+                to="../settings"
+                sx={{ color: 'inherit', textDecoration: 'none' }}
+              >
                 {taskflow.pages.settings.title}
               </Link>
             </StepLabel>
           </Step>
           <Step key="Results">
             <StepLabel>
-              <Link component={RouterLink} to="../results" sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link
+                component={RouterLink}
+                to="../results"
+                sx={{ color: 'inherit', textDecoration: 'none' }}
+              >
                 {taskflow.pages.results.title}
               </Link>
             </StepLabel>
@@ -95,16 +129,16 @@ const ResultsPage: React.FC = () => {
             width: 300,
           }}
         >
-          <Typography 
-            component="li" 
+          <Typography
+            component="li"
             fontWeight="bold"
             sx={{
-              marginBottom: 2
+              marginBottom: 2,
             }}
           >
             Categories
           </Typography>
-          <Typography 
+          <Typography
             component="li"
             sx={{
               backgroundColor: '#D9EEFE',
@@ -112,27 +146,27 @@ const ResultsPage: React.FC = () => {
               borderColor: 'primary.main',
               padding: '1rem 2rem',
               marginLeft: '-2rem !important',
-              marginRight: '-2rem !important'
+              marginRight: '-2rem !important',
             }}
           >
             Summary
           </Typography>
-          <Typography 
+          <Typography
             component="li"
             sx={{
               padding: '1rem 2rem',
               marginLeft: '-2rem !important',
-              marginRight: '-2rem !important'
+              marginRight: '-2rem !important',
             }}
           >
             System Costing
           </Typography>
-          <Typography 
-            component="li" 
+          <Typography
+            component="li"
             sx={{
               padding: '1rem 2rem',
               marginLeft: '-2rem !important',
-              marginRight: '-2rem !important'
+              marginRight: '-2rem !important',
             }}
           >
             System Metrics
@@ -142,24 +176,18 @@ const ResultsPage: React.FC = () => {
           <Container
             maxWidth="xl"
             sx={{
-              mt: 4
+              mt: 4,
             }}
           >
             <Grid container spacing={4}>
               <Grid item sm={6}>
                 <Paper>
-                  <Plot
-                    data={state.results.lineChart.data}
-                    layout={{}}
-                  />
+                  <Plot data={state.results.lineChart.data} layout={{}} />
                 </Paper>
               </Grid>
               <Grid item sm={6}>
                 <Paper>
-                  <Plot
-                    data={state.results.barChart.data}
-                    layout={{}}
-                  />
+                  <Plot data={state.results.barChart.data} layout={{}} />
                 </Paper>
               </Grid>
               <Grid item xs={12}>
@@ -173,7 +201,7 @@ const ResultsPage: React.FC = () => {
                   />
                 </Paper>
               </Grid>
-            </Grid>  
+            </Grid>
           </Container>
         </Box>
       </Stack>
@@ -185,15 +213,17 @@ const ResultsPage: React.FC = () => {
           bottom: 0,
           padding: 2,
           position: 'fixed',
-          width: '100%'
+          width: '100%',
         }}
       >
         <Link component={RouterLink} to="../settings">
-          <Button variant="contained">Back to {taskflow.pages.settings.title}</Button>
+          <Button variant="contained">
+            Back to {taskflow.pages.settings.title}
+          </Button>
         </Link>
       </Box>
     </Stack>
-  )
-}
+  );
+};
 
 export default ResultsPage;

@@ -9,9 +9,9 @@ export const config = {
     items: [
       {
         label: 'Playground',
-        path: '/playground'
-      }
-    ]
+        path: '/playground',
+      },
+    ],
   },
   footer: {
     info: 'Describe your project, place a copyright statement, or credit your funding organizations.',
@@ -19,8 +19,8 @@ export const config = {
     links: [
       {
         label: 'Playground',
-        path: '/playground'
+        path: '/playground',
       },
-    ]
-  }
-}
+    ],
+  },
+};

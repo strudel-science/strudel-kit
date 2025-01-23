@@ -6,7 +6,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 /**
  * Work in Progress:
- * 
+ *
  * Page to see all activities by day in a calendar view in the monitor-activities Task Flow.
  */
 const ActivityCalendar: React.FC = () => {
@@ -29,7 +29,7 @@ const ActivityCalendar: React.FC = () => {
         List
       </Link>
     </Container>
-  )
-}
+  );
+};
 
 export default ActivityCalendar;

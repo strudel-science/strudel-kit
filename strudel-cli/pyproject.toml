@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "strudel-cli"
-version = "0.1.0"
+version = "0.1.2"
 authors = [
   { name="Cody O'Donnell", email="ctodonnell@lbl.gov" },
   { name="Dan Gunter", email="dkgunter@lbl.gov" },

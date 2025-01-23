@@ -1,5 +1,5 @@
-import dayjs from "dayjs";
-import { DataFilter } from "./ContextProvider";
+import dayjs from 'dayjs';
+import { DataFilter } from './ContextProvider';
 
 export const filterBySearchText = (allData: any[], searchText?: string) => {
   let filteredData = allData;
@@ -66,17 +66,16 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
             }
             case 'date range': {
               if (
-                typeof d[f.field] === 'string' 
-                && Array.isArray(f.value)
-                && f.value[0]
-                && f.value[1]
+                typeof d[f.field] === 'string' &&
+                Array.isArray(f.value) &&
+                f.value[0] &&
+                f.value[1]
               ) {
-                console.log(d[f.field]);
-                console.log(f.value);
-                console.log(dayjs(d[f.field]));
                 const dateValue = dayjs(d[f.field]);
-                if (dateValue.isAfter(f.value[0]) && dateValue.isBefore(f.value[1])) {
-                  console.log('match');
+                if (
+                  dateValue.isAfter(f.value[0]) &&
+                  dateValue.isBefore(f.value[1])
+                ) {
                   match = true;
                 }
               } else {
@@ -96,13 +95,24 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[]) => {
   return filteredData;
 };
 
-export const filterData = (allData: any[], filters: DataFilter[], searchText?: string) => {
+export const filterData = (
+  allData: any[],
+  filters: DataFilter[],
+  searchText?: string
+) => {
   const filteredByText = filterBySearchText(allData, searchText);
-  const filteredByTextAndDataFilters = filterByDataFilters(filteredByText, filters);
+  const filteredByTextAndDataFilters = filterByDataFilters(
+    filteredByText,
+    filters
+  );
   return filteredByTextAndDataFilters;
-}
+};
 
-export const initSliderTicks = (ticks: number | null, domain: number[], scale?: any) => {
+export const initSliderTicks = (
+  ticks: number | null,
+  domain: number[],
+  scale?: any
+) => {
   if (ticks === 2) {
     return domain;
   } else if (ticks !== null) {

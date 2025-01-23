@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { useAppState } from '../context/ContextProvider';
 import { closeApiModal } from '../context/actions';
-import { Button, Modal, Paper, Stack, TextField, Typography } from '@mui/material';
+import {
+  Button,
+  Modal,
+  Paper,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
 import { useState } from 'react';
 
 export const ApiModal: React.FC = () => {
@@ -11,13 +18,13 @@ export const ApiModal: React.FC = () => {
 
   const handleClose = () => {
     app.dispatch(closeApiModal());
-  }
+  };
 
   const handleSubmit = () => {
     localStorage.setItem('apiTokenName', name);
     localStorage.setItem('apiTokenValue', value);
     window.location.reload();
-  }
+  };
 
   return (
     <div>
@@ -27,7 +34,7 @@ export const ApiModal: React.FC = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Paper 
+        <Paper
           sx={{
             left: '50%',
             p: 4,
@@ -42,27 +49,25 @@ export const ApiModal: React.FC = () => {
               API Authentication Required
             </Typography>
             <Typography>
-              Enter the name of your API token (e.g. X-ApiToken) and the value of your API token (e.g. abc123).
+              Enter the name of your API token (e.g. X-ApiToken) and the value
+              of your API token (e.g. abc123).
             </Typography>
-            <TextField 
-              value={name} 
+            <TextField
+              value={name}
               label="Name"
               onChange={(event) => {
                 setName(event.target.value);
               }}
             />
-            <TextField 
-              value={value} 
+            <TextField
+              value={value}
               label="Value"
               type="password"
               onChange={(event) => {
                 setValue(event.target.value);
               }}
             />
-            <Button 
-              variant="contained" 
-              onClick={handleSubmit}
-            >
+            <Button variant="contained" onClick={handleSubmit}>
               Submit
             </Button>
           </Stack>
@@ -70,4 +75,4 @@ export const ApiModal: React.FC = () => {
       </Modal>
     </div>
   );
-}
+};

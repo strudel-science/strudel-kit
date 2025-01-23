@@ -7,7 +7,7 @@ import { setComparing } from './_context/actions';
 import { taskflow } from './_config/taskflow.config';
 
 /**
- * Page for filling out a form for adding a new item to 
+ * Page for filling out a form for adding a new item to
  * the main list in the compare-data Task Flow.
  */
 export const NewScenario: React.FC = () => {
@@ -20,10 +20,10 @@ export const NewScenario: React.FC = () => {
   useEffect(() => {
     dispatch(setComparing(true));
     return () => {
-      dispatch(setComparing(false))
-    }
+      dispatch(setComparing(false));
+    };
   }, []);
-  
+
   /**
    * Content to render on the page for this component
    */
@@ -36,14 +36,18 @@ export const NewScenario: React.FC = () => {
           <Stack direction="row">
             <Box>
               <Link component={RouterLink} to="..">
-                <Button variant="contained" color="warning">
+                <Button
+                  variant="contained"
+                  color="warning"
+                  data-testid="cpd-cancel-button"
+                >
                   Cancel
                 </Button>
               </Link>
             </Box>
             <Box>
               <Link component={RouterLink} to="..">
-                <Button variant="contained">
+                <Button variant="contained" data-testid="cpd-save-button">
                   Save {taskflow.properties.itemName}
                 </Button>
               </Link>
@@ -73,6 +77,6 @@ export const NewScenario: React.FC = () => {
       </Container>
     </Box>
   );
-}
+};
 
 export default NewScenario;

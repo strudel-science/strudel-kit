@@ -1,5 +1,5 @@
-import dayjs from "dayjs";
-import { DataFilter, FilterConfig } from "../types/filters.types";
+import dayjs from 'dayjs';
+import { DataFilter, FilterConfig } from '../types/filters.types';
 
 export const filterBySearchText = (allData: any[], searchText?: string) => {
   let filteredData = allData;
@@ -12,7 +12,11 @@ export const filterBySearchText = (allData: any[], searchText?: string) => {
   return filteredData;
 };
 
-export const filterByDataFilters = (allData: any[], filters: DataFilter[], filterConfigs: FilterConfig[]) => {
+export const filterByDataFilters = (
+  allData: any[],
+  filters: DataFilter[],
+  filterConfigs: FilterConfig[]
+) => {
   let filteredData = allData;
   if (filters.length > 0) {
     // Pre build map of filter to operator for performance boost
@@ -22,7 +26,7 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[], filte
         const filterConfig = filterConfigs.find((c) => c.field === f.field);
         filterOperatorMap[f.field] = filterConfig?.operator;
       }
-    })
+    });
     filteredData = allData.filter((d) => {
       let include = true;
       // All filters have to be matched for a row to be included in the filtered data
@@ -49,7 +53,6 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[], filte
                         match = true;
                       }
                     }
-                    
                   }
                 });
               }
@@ -79,13 +82,16 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[], filte
             }
             case 'between-dates-inclusive': {
               if (
-                typeof d[f.field] === 'string' 
-                && Array.isArray(f.value)
-                && f.value[0]
-                && f.value[1]
+                typeof d[f.field] === 'string' &&
+                Array.isArray(f.value) &&
+                f.value[0] &&
+                f.value[1]
               ) {
                 const dateValue = dayjs(d[f.field]);
-                if (dateValue.isAfter(f.value[0]) && dateValue.isBefore(f.value[1])) {
+                if (
+                  dateValue.isAfter(f.value[0]) &&
+                  dateValue.isBefore(f.value[1])
+                ) {
                   match = true;
                 }
               } else {
@@ -105,14 +111,26 @@ export const filterByDataFilters = (allData: any[], filters: DataFilter[], filte
   return filteredData;
 };
 
-export const filterData = (allData: any[], filters: DataFilter[], filterConfigs: FilterConfig[], searchText?: string) => {
-  console.log(searchText);
+export const filterData = (
+  allData: any[],
+  filters: DataFilter[],
+  filterConfigs: FilterConfig[],
+  searchText?: string
+) => {
   const filteredByText = filterBySearchText(allData, searchText);
-  const filteredByTextAndDataFilters = filterByDataFilters(filteredByText, filters, filterConfigs);
+  const filteredByTextAndDataFilters = filterByDataFilters(
+    filteredByText,
+    filters,
+    filterConfigs
+  );
   return filteredByTextAndDataFilters;
-}
+};
 
-export const initSliderTicks = (ticks: number | null, domain: number[], scale?: any) => {
+export const initSliderTicks = (
+  ticks: number | null,
+  domain: number[],
+  scale?: any
+) => {
   if (ticks === 2) {
     return domain;
   } else if (ticks !== null) {
@@ -121,4 +139,3 @@ export const initSliderTicks = (ticks: number | null, domain: number[], scale?: 
     return;
   }
 };
-

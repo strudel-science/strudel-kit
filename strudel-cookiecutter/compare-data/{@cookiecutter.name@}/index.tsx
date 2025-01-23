@@ -2,20 +2,20 @@ import { Box, Button, Container, Link, Paper, Stack } from '@mui/material';
 import { GridToolbar } from '@mui/x-data-grid';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { DataGrid } from '@mui/x-data-grid';
 import { PageHeader } from '../../components/PageHeader';
 import { useCompareData } from './_context/ContextProvider';
 import { setSelectedRows } from './_context/actions';
 import { taskflow } from './_config/taskflow.config';
-  
+import { SciDataGrid } from '../../components/SciDataGrid';
+
 /**
  * List page to show comparable items in the compare-data Task Flow.
- * Items in this table are selectable and can be sent to the `<ScenarioComparison>` 
- * page to be rendered in the comparison table. 
+ * Items in this table are selectable and can be sent to the `<ScenarioComparison>`
+ * page to be rendered in the comparison table.
  */
 const ScenarioList: React.FC = () => {
   const { state, dispatch } = useCompareData();
-  
+
   /**
    * Content to render on the page for this component
    */
@@ -27,26 +27,27 @@ const ScenarioList: React.FC = () => {
         actions={
           <Stack direction="row">
             <Box>
-              <Link component={RouterLink} to="compare">
-                {state.selectedRows.length === 0 && (
-                  <Button 
-                    variant="outlined"
-                  >
-                    Compare {taskflow.properties.itemNamePlural}
+              {state.selectedRows.length < 2 && (
+                <Button
+                  variant="outlined"
+                  disabled
+                  data-testid="cpd-compare-button"
+                >
+                  Compare {taskflow.properties.itemNamePlural}
+                </Button>
+              )}
+              {state.selectedRows.length > 1 && (
+                <Link component={RouterLink} to="compare">
+                  <Button variant="contained" data-testid="cpd-compare-button">
+                    Compare {taskflow.properties.itemNamePlural} (
+                    {state.selectedRows.length})
                   </Button>
-                )}
-                {state.selectedRows.length > 0 && (
-                  <Button 
-                    variant={state.selectedRows.length > 1 ? 'contained' : 'outlined' }
-                  >
-                    Compare {taskflow.properties.itemNamePlural} ({state.selectedRows.length})
-                  </Button>
-                )}
-              </Link>
+                </Link>
+              )}
             </Box>
             <Box>
               <Link component={RouterLink} to="new">
-                <Button variant="contained">
+                <Button variant="contained" data-testid="cpd-new-button">
                   New {taskflow.properties.itemName}
                 </Button>
               </Link>
@@ -61,21 +62,26 @@ const ScenarioList: React.FC = () => {
       <Container
         maxWidth="xl"
         sx={{
-          marginTop: 3,
-          marginBottom: 3,
+          paddingTop: 3,
+          paddingBottom: 3,
         }}
       >
         <Paper>
-          <DataGrid
+          <SciDataGrid
             rows={state.data}
             getRowId={(row) => row[state.dataIdField]}
             columns={state.columns}
             checkboxSelection
             rowSelectionModel={state.selectedRows}
-            onRowSelectionModelChange={(rows) => dispatch(setSelectedRows(rows))}
+            onRowSelectionModelChange={(rows) =>
+              dispatch(setSelectedRows(rows))
+            }
             disableRowSelectionOnClick
             disableDensitySelector
             disableColumnFilter
+            initialState={{
+              pagination: { paginationModel: { page: 1, pageSize: 25 } },
+            }}
             slots={{ toolbar: GridToolbar }}
             slotProps={{
               toolbar: {
@@ -85,15 +91,15 @@ const ScenarioList: React.FC = () => {
             sx={{
               '& .MuiDataGrid-toolbarContainer': {
                 padding: 2,
-                paddingBottom: 0
-              }
+                paddingBottom: 0,
+              },
             }}
           />
         </Paper>
       </Container>
     </Box>
   );
-}
+};
 
 // const ScenarioList: React.FC = () => {
 //   const { state, dispatch } = useCompareData();

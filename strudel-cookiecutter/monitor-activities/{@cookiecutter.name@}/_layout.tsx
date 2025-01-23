@@ -17,7 +17,7 @@ const MonitorActivitiesLayout: React.FC = () => {
         <Outlet />
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 export default MonitorActivitiesLayout;

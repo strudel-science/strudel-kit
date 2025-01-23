@@ -26,23 +26,23 @@ export const DataViewHeader: React.FC<DataViewHeaderProps> = ({
       spacing={2}
       alignItems="center"
       sx={{
-        padding: 2
+        overflow: 'hidden',
+        padding: 2,
       }}
     >
-      <Typography variant="h6" component="h2" flex={1}>Entity List</Typography>
-      <Button
-        startIcon={<FilterListIcon />}
-        onClick={onToggleFiltersPanel}
-      >
+      <Typography variant="h6" component="h2" flex={1}>
+        Entity List
+      </Typography>
+      <Button startIcon={<FilterListIcon />} onClick={onToggleFiltersPanel}>
         Filters
       </Button>
-      <TextField 
+      <TextField
         variant="outlined"
-        label="Search" 
+        label="Search"
         size="small"
         value={searchTerm}
         onChange={handleSearch}
       />
     </Stack>
-  )
-}
+  );
+};
