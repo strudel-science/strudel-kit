@@ -80,6 +80,11 @@ const sidebars: SidebarsConfig = {
             },
           ],
         },
+        {
+          type: "doc",
+          label: "External Resources",
+          id: "external-resources",
+        },
       ],
     },
     {
