@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkstrudel_docs=self.webpackChunkstrudel_docs||[]).push([[8913],{8913:(s,e,u)=>{u.r(e)}}]);
