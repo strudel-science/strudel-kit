@@ -28,15 +28,13 @@ First let's break down the new files that were added:
 ```py
 solar-system
 ├── _components
-│  ├── DataTablePanel.tsx # Data table on the main page
+│  ├── DataView.tsx # Data table on the main page
+│  ├── DataViewHeader.tsx # Header over the data table on the main page
 │  ├── FiltersPanel.tsx # Filters panel on the main page
 │  └── PreviewPanel.tsx # Preview panel on the main page
 ├── _config
 │  ├── taskflow.config.ts # Task Flow configuration file
 │  └── taskflow.types.ts
-├── _context
-│  ├── ContextProvider.tsx
-│  └── actions.ts
 ├── [id].tsx # Data detail page component
 ├── _layout.tsx # Layout wrapper component
 └── index.tsx # Main page component
@@ -79,17 +77,37 @@ Replace the `data` object at the top of the file with the following:
 
 ```js
 data: {
-  items: {
     /**
-     * Source of the data for the initial list of items on the main page.
+     * Data definition for the initial items list
      */
-    source: "planets.csv",
+    list: {
+      /**
+       * URL or path to the data source
+       */
+      source: "data/planets.csv",
+      /**
+       * Key-value object of params that should always be included in the query URL
+       */
+      staticParams: null,
+      /**
+       * Name of the field in the data that represents a unique identifier for each record.
+       */
+      idField: "Name",
+      /**
+       * Method by which data should be filtered, either client or server.
+       */
+      queryMode: "client",
+    },
     /**
-     * Name of the field in the data that represents a unique identifier for each record.
+     * Data definition for the item detail page
      */
-    idField: "Name"
-  }
-},
+    detail: {
+      source: "data/planets.csv",
+      staticParams: null,
+      idField: "Name",
+      queryMode: "client",
+    }
+  },
 ```
 
 Now instead of pointing to the default dataset, your Task Flow points to the planets dataset you made. Next, we need to change the page titles, table columns, and filters for the main `index` page.
@@ -144,9 +162,9 @@ pages: {
     tableFilters: [
       {
         field: "Diameter",
-        displayName: "Diameter (km)",
-        filterType: "Slider",
-        props: {
+        label: "Diameter (km)",
+        filterComponent: "Slider",
+        filterProps: {
           min: 4000,
           max: 150000
         }

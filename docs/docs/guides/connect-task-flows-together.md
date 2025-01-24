@@ -1,17 +1,12 @@
 ---
-title: 'Connecting Task Flows'
+title: "Connecting Task Flows"
 ---
-
-:::warning
-
-This tutorial was written for v0.0.2 through v0.0.9 of strudel-kit. It is currently in the process of being updated for v0.1.0. 
-:::
 
 ## How to Connect Task Flows Together
 
 Task Flows don't always exist in isolation inside apps. Instead, Task Flows often fit together in various ways. In this article you will learn how to connect steps from two different task flows into a larger flow.
 
-In this example, you will connect an Explore Data Task Flow with a Run Computation Task Flow. For your app you want to have an explorer page like the one in Explore Data but you also want to be able to run different computations based on a selected row from the explorer.
+In this example, you will connect an Explore Data Task Flow with a Run Computation Task Flow. For this new app, you want to have an explorer page like the one in Explore Data but you also want to be able to run different computations based on a selected row from the explorer.
 
 ### 1. Add both Task Flows to your app
 
@@ -22,33 +17,27 @@ strudel add-taskflow explore -t explore-data
 strudel add-taskflow compute -t run-computation
 ```
 
-Ensure both Task Flows also have route objects implemeted in `routes.tsx`.
-
 ### 2. Plan the page flow
 
 First, you need to determine how the user should flow through the pages of the two apps. Where will a user go from one Task Flow to another? Are there any pages you should skip or eliminate? In this example, you want users to be able to click on a row and run a compuation for that row by clicking a new button in the `<PreviewPanel>` of the `<DataExplorer>`. Then you want users to be able to enter in some parameters, initiate the computation, and see some results.
 
 ### 3. Add direct links between pages from two Task Flows.
 
-For this flow, you want users to go from the `<PreviewPanel>` in the Explore Data Task Flow to the `<Settings>` page in the Run Computation Task Flow. The first thing you need to do is create a new button link in the `<PreviewPanel>` that links to the `<Settings>` page. Open up `PreviewPanel.tsx` and add a new link and button right next to the "View Details" button:
+For this flow, you want users to go from the `<PreviewPanel>` in the Explore Data Task Flow to the `<Settings>` page in the Run Computation Task Flow. The first thing you need to do is create a new button link in the `<PreviewPanel>` that links to the `<Settings>` page. Open up `PreviewPanel.tsx` inside the `_components` folder of the explore page and add a new link and button right next to the "View Details" button:
 
-```jsx
+```jsx title="PreviewPanel.tsx"
 <Link component={RouterLink} to="/compute/scenario/settings">
-  <Button variant="contained">
-    Analyze
-  </Button>
+  <Button variant="contained">Analyze</Button>
 </Link>
 ```
 
 In the `to` prop, you will notice that we are linking to the route of the settings page. Now, clicking this button will take us directly to that step. This is the most straightforward way to connect two Task Flows with STRUDEL Kit.
 
-To add a link back to the `<DataExplorer>` page from the `<Settings>` page, open up `Scenario.tsx`, delete the whole `<Breadcrumbs>` component and replace it with a link button:
+To add a link back to the explore page from the settings page, open up `[id]/_layout.tsx` in the compute Task Flow folder, delete the whole `<Breadcrumbs>...</Breadcrumbs>` component, and replace it with a link button:
 
-```jsx
+```jsx title="_layout.tsx"
 <Link component={RouterLink} to="/explore">
-  <Button variant="contained">
-    Back to Explorer
-  </Button>
+  <Button variant="contained">Back to Explorer</Button>
 </Link>
 ```
 
@@ -56,92 +45,26 @@ To add a link back to the `<DataExplorer>` page from the `<Settings>` page, open
 
 ### Remove unused pages and elements
 
-If you do not need to keep the original Run Computation Task Flow intact, then you can safely delete the unused pages/components from the routes tree and the file system. 
+If you do not need to keep the original Run Computation Task Flow intact, then you can safely delete the unused pages/components from the file system.
 
-In this example, you are no longer using the `<DataInputs>` step or the original `<ComputationsList>`, so let's first remove those pages from the route tree in `routes.tsx`:
+In this example, you are no longer using the `data-inputs.tsx` page or the `index.tsx` page in the compute Task Flow directory. At this point you can safely delete those two files.
 
-```jsx
-{
-  path: "/compute",
-  element: <RunComputationWrapper />,
-  children: [
-    {
-      path: "scenario",
-      element: <Scenario />,
-      children: [
-        {
-          path: 'settings',
-          element: <Settings />
-        },
-        {
-          path: 'running',
-          element: <RunningComputation />
-        },
-        {
-          path: 'results',
-          element: <Results />
-        }
-      ]
-    },
-  ]
-},
-```
-
-Also, remove the import statements for `DataInputs` and `ComputationsList`:
+You should also delete the "Data Inputs" step from the `<Stepper>` component in `[id]/settings.tsx`, `[id]/running.tsx`, and `[id]/results.tsx`:
 
 ```jsx
-// Delete these two lines
-import { ComputationsList } from "./compute/ComputationsList";
-import { DataInputs } from "./compute/DataInputs";
-```
-
-Now you can safely remove `DataInputs.tsx` and `ComputationsList.tsx` from the `compute` directory (or whatever the name of your Run Computation directory is).
-
-You should also delete the "Data Inputs" step from the `<Stepper>` component in `Settings.tsx`, `RunningComputation.tsx`, and `Results.tsx`:
-
-```jsx
-// Remove this code from Settings.tsx, RunningComputation.tsx, and Results.tsx
-<Step key="Data Inputs">
+// Remove this code from `[id]/settings.tsx`, `[id]/running.tsx`, and `[id]/results.tsx`
+<Step key={taskflow.pages.dataInputs.title}>
   <StepLabel>
-    <Link component={RouterLink} to="/run-computation/scenario/data-inputs" sx={{ color: 'inherit', textDecoration: 'none' }}>
-      Test Data Inputs
+    <Link
+      component={RouterLink}
+      to="../data-inputs"
+      sx={{ color: "inherit", textDecoration: "none" }}
+    >
+      {taskflow.pages.dataInputs.title}
     </Link>
   </StepLabel>
 </Step>
 ```
-
-### Update route structure
-
-You may also prefer that the URL route for the compute steps are nested under the "explore" route. The easiest way to do that is to simply change the compute route from `/compute` to `/explore/compute`. Then, the subpages of the compute route will append to the new string, instead of just `/compute`:
-
-```jsx
-{
-  path: "/explore/compute",
-  element: <RunComputationWrapper />,
-  children: [
-    {
-      path: "scenario",
-      element: <Scenario />,
-      children: [
-        {
-          path: 'settings',
-          element: <Settings />
-        },
-        {
-          path: 'running',
-          element: <RunningComputation />
-        },
-        {
-          path: 'results',
-          element: <Results />
-        }
-      ]
-    },
-  ]
-},
-```
-
-To read more about how to set up the route structure, check out the [React Router docs and tutorials](https://reactrouter.com/en/main/start/overview).
 
 ## Limitations and Next Steps
 
