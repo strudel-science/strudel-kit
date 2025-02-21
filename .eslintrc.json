@@ -9,13 +9,14 @@
     }
   },
   "ignorePatterns": [
-		"package-lock.json",
+    "docs",
+    "package-lock.json",
     "package.json",
-		"!.stylelintrc.json",
-		"*.md",
-		"*.css",
+    "!.stylelintrc.json",
+    "*.md",
+    "*.css",
     "dist"
-	],
+  ],
   "extends": ["airbnb-typescript", "plugin:prettier/recommended"],
   "plugins": ["@typescript-eslint", "import", "react", "prettier"],
   "rules": {
@@ -24,14 +25,14 @@
     "react/no-danger": "off", // it's self explainatory that no-danger should be used sparingly
     "react/prop-types": "off", // as long as TS strict mode is off this is not required
     "react/function-component-definition": [
-			2,
-			{
-				"namedComponents": "arrow-function",
-				"unnamedComponents": "arrow-function"
-			}
-		],
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
     "react/jsx-props-no-spreading": "off",
-		"react/react-in-jsx-scope": "off",
+    "react/react-in-jsx-scope": "off",
     "no-console": "error", // no console statements allowed,
     "no-plusplus": "off",
     "prettier/prettier": "off" // don't show prettier errors as it will be fixed when saved anyway
