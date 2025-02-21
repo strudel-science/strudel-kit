@@ -14,19 +14,13 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
       - name: Install taskflow dependencies
-        run: |
-          cd strudel-taskflows
-          npm install
+        run: npm install
       - name: Run ESLint
-        run: |
-          cd strudel-taskflows
-          npm run lint:fix
+        run: npm run lint:fix
       - name: Run Prettier
-        run: |
-          cd strudel-taskflows
-          npm run prettier:fix
+        run: npm run prettier:fix
   cypress-tests:
     runs-on: ubuntu-22.04
     steps:
@@ -37,6 +31,5 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          working-directory: strudel-taskflows
           browser: chrome
           start: npm start

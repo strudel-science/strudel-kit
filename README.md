@@ -1,65 +1,37 @@
-# STRUDEL Kit (Beta)
+# STRUDEL Kit
 
 STRUDEL Kit is a React-based JavaScript library for building scientific UIs based on the STRUDEL Design System and Task Flows. Visit [strudel.science](https://strudel.science) for more information about the STRUDEL project.
 
 This library provides a suite of templates to implement UIs for various different task flows common to the scientific domain. The app is intended to be used as a starting point for building out a web app that includes one or more of the task flows provided.
 
-### [Browse the Docs](https://strudel.science/strudel-kit/docs/)
+[Browse the Docs](https://strudel.science/strudel-kit/docs/)
 
-## Quickstart
+## Getting Started
 
-Install strudel-cli from PyPi:
+Clone the strudel-kit repository from github:
 
-```bash
-pip install strudel-cli
+```
+git clone git@github.com:strudel-science/strudel-kit.git
 ```
 
-Create a strudel base app:
+Install the dependencies:
 
-```bash
-strudel create-app my-app
 ```
-
-This will generate a base web application in a new directory called `my-app`. Go into the new directory:
-
-```bash
-cd my-app
-```
-
-Install the app dependencies:
-
-```bash
 npm install
 ```
 
-Start up your app locally:
+Start up the app:
 
-```bash
+```
 npm start
 ```
 
-Open your app in the browser at http://localhost:5173
+Open [http://localhost:5175](http://localhost:5175) to view the app in the browser.
 
-Add a Task Flow to your app:
+Begin modifying the templates in `src/pages`.
 
-```bash
-strudel add-taskflow my-taskflow --template compare-data
-```
+## Learn More
 
-This generates new template files for your Task Flow in `my-app/src/pages/my-taskflow`. Check out the [First Steps](https://strudel.science/strudel-kit/docs/getting-started/first-steps) and [Configuration](https://strudel.science/strudel-kit/docs/task-flows/overview) page for the template you are using to learn how to customize it.
+STRUDEL Kit is built on top of the Material UI (MUI) component library. [Read more about how to use MUI](https://mui.com/material-ui/getting-started/).
 
-Navigate to http://localhost:5173/my-taskflow to see your new Task Flow.
-
-## Main Packages
-
-### [strudel-cli](https://github.com/strudel-science/strudel-kit/blob/main/strudel-cli/)
-
-The strudel-cli is a command-line tool for bootstrapping web applications based on the STRUDEL Design System. If you're looking to get started building web applications with STRUDEL, this is the best way to start.
-
-### [strudel-taskflows](https://github.com/strudel-science/strudel-kit/tree/main/strudel-taskflows)
-
-Demo react app that implements each of the STRUDEL task flows. This code is an example of what you can build using the strudel-cli. If you prefer to just copy and paste code from GitHub, this is a good place to start.
-
-### [strudel-cookiecutter](https://github.com/strudel-science/strudel-kit/tree/main/strudel-cookiecutter)
-
-Templates designed for the [cookiecutter](https://cookiecutter.readthedocs.io/en/latest/README.html) tool. These templates are what strudel-cli uses to generate apps/task-flows. This package is not intended to be interacted with directly. It's best to use the strudel-cli.
+[strudel.science](https://strudel.science)
