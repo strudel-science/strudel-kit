@@ -15,7 +15,7 @@
     "lint:fix": "eslint . --fix '**/*.{js,jsx,ts,tsx}'",
     "prettier": "prettier . --check '**/*.{js,jsx,ts,tsx}'",
     "prettier:fix": "prettier . --write '**/*.{js,jsx,ts,tsx}'",
-    "prepare": "cd ../ && husky ./strudel-taskflows/.husky"
+    "prepare": "husky ./.husky"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
