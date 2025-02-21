@@ -3,7 +3,7 @@ title: 'Contribute Data'
 ---
 
 import CodeBlock from '@theme/CodeBlock';
-import ConfigJson from '!!raw-loader!../../../strudel-taskflows/src/pages/contribute-data/_config/taskflow.config';
+import ConfigJson from '!!raw-loader!../../../src/pages/contribute-data/_config/taskflow.config';
 
 # Contribute Data
 
@@ -61,7 +61,7 @@ User portal page of the Contribute Data Task Flow. Displays a list of the user's
 #### `new.tsx`
 
 **URL Route**: `/new`  
-New dataset page of the Contribute Data Task Flow. Displays a metadata form and data upload panel for adding new data contributions. 
+New dataset page of the Contribute Data Task Flow. Displays a metadata form and data upload panel for adding new data contributions.
 
 #### `review.tsx`
 
@@ -72,4 +72,6 @@ Review new dataset page of the Contribute Data Task Flow. Displays a preview of 
 
 This Task Flow can be configured from the `taskflow.config.ts` file in the `_config` directory of the generated template files.
 
-<CodeBlock language="ts" title="taskflow.config.ts">{ConfigJson}</CodeBlock>
+<CodeBlock language="ts" title="taskflow.config.ts">
+  {ConfigJson}
+</CodeBlock>
