@@ -1,19 +1,24 @@
 import { Box, Paper, Stack } from '@mui/material';
-import React, { useState } from 'react';
+import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
 import { FilterContext } from '../../components/FilterContext';
 import { PageHeader } from '../../components/PageHeader';
-import { DataView } from './_components/DataView';
-import { DataViewHeader } from './_components/DataViewHeader';
-import { FiltersPanel } from './_components/FiltersPanel';
-import { PreviewPanel } from './_components/PreviewPanel';
-import { taskflow } from './_config/taskflow.config';
+import { DataView } from '../../features/explore-data/DataView';
+import { DataViewHeader } from '../../features/explore-data/DataViewHeader';
+import { FiltersPanel } from '../../features/explore-data/FiltersPanel';
+import { PreviewPanel } from '../../features/explore-data/PreviewPanel';
+import { taskflow } from '../../pages/explore-data/_config/taskflow.config';
+
+export const Route = createFileRoute('/explore-data/')({
+  component: DataExplorer,
+});
 
 /**
  * Main explorer page in the explore-data Task Flow.
  * This page includes the page header, filters panel,
  * main table, and the table row preview panel.
  */
-const DataExplorer: React.FC = () => {
+function DataExplorer() {
   const [searchTerm, setSearchTerm] = useState('');
   const [previewItem, setPreviewItem] = useState<any>();
   const [showFiltersPanel, setShowFiltersPanel] = useState(true);
@@ -87,6 +92,4 @@ const DataExplorer: React.FC = () => {
       </Box>
     </FilterContext>
   );
-};
-
-export default DataExplorer;
+}

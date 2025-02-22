@@ -1,7 +1,7 @@
 import React from 'react';
-import { FilterField } from '../../../components/FilterField';
-import { Filters } from '../../../components/Filters';
-import { taskflow } from '../_config/taskflow.config';
+import { FilterField } from '../../components/FilterField';
+import { Filters } from '../../components/Filters';
+import { taskflow } from '../../pages/explore-data/_config/taskflow.config';
 
 interface FiltersPanelProps {
   onClose: () => any;

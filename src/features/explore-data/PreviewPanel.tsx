@@ -3,16 +3,15 @@ import {
   Box,
   Button,
   IconButton,
-  Link,
   Paper,
   Stack,
   Typography,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { Link as RouterLink } from 'react-router-dom';
-import { LabelValueTable } from '../../../components/LabelValueTable';
+import { LabelValueTable } from '../../components/LabelValueTable';
 import { DataGrid } from '@mui/x-data-grid';
-import { taskflow } from '../_config/taskflow.config';
+import { taskflow } from '../../pages/explore-data/_config/taskflow.config';
+import { AppLink } from '../../components/AppLink';
 
 /**
  * Placeholder columns for related data table
@@ -85,13 +84,12 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = ({
         <Stack spacing={1}>
           <Stack direction="row">
             <Typography variant="h6" component="h3" flex={1}>
-              <Link
-                component={RouterLink}
-                to={`${previewItem[dataIdField]}`}
-                underline="hover"
+              <AppLink
+                to={`/explore-data/$id`}
+                params={previewItem[dataIdField]}
               >
                 {previewItem[columns[0].field]}
-              </Link>
+              </AppLink>
             </Typography>
             <IconButton size="small" onClick={onClose}>
               <CloseIcon />
@@ -138,9 +136,9 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = ({
           />
         </Box>
         <Stack direction="row">
-          <Link component={RouterLink} to={`${previewItem[dataIdField]}`}>
+          <AppLink to={`/explore-data/$id`} params={previewItem[dataIdField]}>
             <Button variant="contained">View details</Button>
-          </Link>
+          </AppLink>
           <Button variant="outlined">Export data</Button>
         </Stack>
       </Stack>
