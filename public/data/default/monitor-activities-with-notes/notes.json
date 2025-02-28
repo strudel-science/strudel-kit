@@ -1,0 +1,27 @@
+[
+{
+    "text": "this is an interesting record",
+    "record_id": "67923c82d2ba1c43b091680a",
+    "timestamp": 1740423991.1088312,
+    "creator": "tony@gmail.com",
+    "resolved": false,
+    "deleted": false,
+    "lastUpdated": 1740423991.1088314,
+    "replies": [1],
+    "isReply": false,
+    "lastUpdatedUser": "tony@gmail.com"
+},
+{
+    "text": "I agree",
+    "record_id": "67923c82d2ba1c43b091680a",
+    "timestamp": 1740424029.0507326,
+    "creator": "bobby@gmail.com",
+    "resolved": false,
+    "deleted": false,
+    "lastUpdated": 1740424029.0507329,
+    "replies": [],
+    "isReply": true,
+    "lastUpdatedUser": "bobby@gmail.com",
+    "repliesTo": 1
+}
+]
