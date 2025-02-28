@@ -15,7 +15,9 @@
     "lint:fix": "eslint . --fix '**/*.{js,jsx,ts,tsx}'",
     "prettier": "prettier . --check '**/*.{js,jsx,ts,tsx}'",
     "prettier:fix": "prettier . --write '**/*.{js,jsx,ts,tsx}'",
-    "prepare": "husky ./.husky"
+    "prepare": "husky ./.husky",
+    "cy:open": "cypress open",
+    "cy:test": "cypress run"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",

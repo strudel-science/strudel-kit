@@ -1,6 +1,6 @@
 describe('The Explore Data Task Flow', () => {
   beforeEach(() => {
-    cy.visit('/explore-data');
+    cy.visit('/task-flows/explore-data');
   });
 
   it('successfully loads', () => {

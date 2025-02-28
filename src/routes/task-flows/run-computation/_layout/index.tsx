@@ -10,7 +10,6 @@ import { useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { NewScenarioModal } from '../-components/NewScenarioModal';
 import { useRunComputation } from '../-context/ContextProvider';
-import { taskflow } from '../../../../pages/run-computation/_config/taskflow.config';
 import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/task-flows/run-computation/_layout/')({
@@ -52,10 +51,11 @@ function ListPage() {
           >
             <Box flex={1}>
               <Typography variant="h6" component="h1">
-                {taskflow.pages.index.title}
+                Scenario List
               </Typography>
               <Typography variant="subtitle1" component="p">
-                {taskflow.pages.index.description}
+                Scenarios represent a set of analysis inputs / parameters /
+                settings and the results of that analysis.
               </Typography>
             </Box>
             <Button
@@ -63,7 +63,7 @@ function ListPage() {
               onClick={handleNewScenario}
               data-testid="rnc-new-button"
             >
-              New {taskflow.properties.itemName}
+              New Scenario
             </Button>
             <NewScenarioModal
               modalOpen={modalOpen}

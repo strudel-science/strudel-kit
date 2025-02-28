@@ -1,6 +1,6 @@
 describe('The Monitor Activities Task Flow', () => {
   beforeEach(() => {
-    cy.visit('/monitor-activities');
+    cy.visit('/task-flows/monitor-activities');
   });
 
   it('successfully loads', () => {

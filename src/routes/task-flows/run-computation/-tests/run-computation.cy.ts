@@ -1,6 +1,6 @@
 describe('The Run Computation Task Flow', () => {
   beforeEach(() => {
-    cy.visit('/run-computation');
+    cy.visit('/task-flows/run-computation');
   });
 
   it('successfully loads', () => {
