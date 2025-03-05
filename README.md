@@ -34,4 +34,8 @@ Begin modifying the templates in `src/pages`.
 
 STRUDEL Kit is built on top of the Material UI (MUI) component library. [Read more about how to use MUI](https://mui.com/material-ui/getting-started/).
 
+## Contributions
+
+STRUDEL Kit welcomes contributions of all kinds! Learn how to submit suggestions and changes in [CONTRIBUTING.md](CONTRIBUTING.md).
+
 [strudel.science](https://strudel.science)
