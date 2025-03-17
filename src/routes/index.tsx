@@ -8,6 +8,7 @@ import {
   getNameFromPath,
   getTopLevelRoutes,
 } from '../utils/string.utils';
+import { ImageWrapper } from '../components/ImageWrapper';
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -36,25 +37,34 @@ function Index() {
   );
 
   return (
-    <Container
-      maxWidth="lg"
-      sx={{
-        marginTop: 3,
-        marginBottom: 3,
-      }}
-    >
-      <Box>
-        <Stack
-          sx={{
-            marginBottom: 4,
-          }}
-        >
-          <Typography variant="h6" component="h1" fontWeight="bold">
-            You just built an app with STRUDEL!
-          </Typography>
-        </Stack>
+    <Box>
+      <Box
+        sx={{
+          backgroundColor: 'primary.dark',
+          color: 'primary.contrastText',
+          height: '250px',
+        }}
+      >
+        <Container maxWidth="lg" sx={{ height: '100%' }}>
+          <Stack alignItems="center" justifyContent="center" height="100%">
+            <ImageWrapper height={60}>
+              <img src="strudel-logo-icon.png" />
+            </ImageWrapper>
+            <Typography variant="h6" component="h1">
+              You just started an app with STRUDEL!
+            </Typography>
+          </Stack>
+        </Container>
+      </Box>
+      <Container
+        maxWidth="lg"
+        sx={{
+          marginTop: 3,
+          marginBottom: 3,
+        }}
+      >
         <Stack spacing={3}>
-          <Typography variant="h4" component="h2">
+          <Typography variant="h5" component="h2">
             Top Level Pages
           </Typography>
           <Box>
@@ -105,7 +115,7 @@ function Index() {
               ))}
             </Grid>
           </Box>
-          <Typography variant="h4" component="h2">
+          <Typography variant="h5" component="h2">
             Task Flow Templates
           </Typography>
           <Box>
@@ -140,7 +150,7 @@ function Index() {
               <Typography>No Task Flows configured in your app.</Typography>
             )}
           </Box>
-          <Typography variant="h4" component="h2">
+          <Typography variant="h5" component="h2">
             Examples
           </Typography>
           <Box>
@@ -176,7 +186,7 @@ function Index() {
             )}
           </Box>
         </Stack>
-      </Box>
-    </Container>
+      </Container>
+    </Box>
   );
 }

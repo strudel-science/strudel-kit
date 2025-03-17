@@ -1,6 +1,5 @@
 import { Box, Stack } from '@mui/material';
 import { createRootRoute, Outlet } from '@tanstack/react-router';
-import { Footer } from '../components/Footer';
 import { TopBar } from '../components/TopBar';
 
 /**
@@ -16,13 +15,14 @@ export const Route = createRootRoute({
     >
       <TopBar />
       <Box
+        component="main"
         sx={{
           flex: 1,
+          paddingBottom: 4,
         }}
       >
         <Outlet />
       </Box>
-      <Footer />
     </Stack>
   ),
 });
