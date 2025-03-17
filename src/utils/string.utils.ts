@@ -13,9 +13,9 @@ export const fromKebabCase = (str: string) => {
   return words.join(' ');
 };
 
-export const getTaskFlowNameFromPath = (path: string) => {
+export const getNameFromPath = (path: string) => {
   const pathParts = path.split('/').filter((d: string) => d);
-  return fromKebabCase(pathParts[1]);
+  return fromKebabCase(pathParts[pathParts.length - 1]);
 };
 
 export const getSubRoutes = (flatRoutes: AnyRoute[], subRouteName: string) => {
@@ -25,6 +25,21 @@ export const getSubRoutes = (flatRoutes: AnyRoute[], subRouteName: string) => {
     if (
       pathParts.length === 2 &&
       pathParts[0] === subRouteName &&
+      lastCharacter === '/'
+    ) {
+      return route;
+    }
+  });
+};
+
+export const getTopLevelRoutes = (flatRoutes: AnyRoute[]) => {
+  return flatRoutes.filter((route: AnyRoute) => {
+    const pathParts = route.fullPath.split('/').filter((d: string) => d);
+    const lastCharacter = route.fullPath[route.fullPath.length - 1];
+    if (
+      pathParts.length === 1 &&
+      pathParts[0] !== 'task-flows' &&
+      pathParts[0] !== 'examples' &&
       lastCharacter === '/'
     ) {
       return route;

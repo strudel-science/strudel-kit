@@ -12,7 +12,17 @@ import { cleanPath } from '../utils/queryParams.utils';
  */
 export const TopBar: React.FC = () => {
   return (
-    <AppBar color="default" position="static">
+    <AppBar
+      color="default"
+      position="static"
+      component="nav"
+      sx={{
+        backgroundColor: 'white',
+        borderBottom: '1px solid',
+        borderBottomColor: 'grey.300',
+        boxShadow: 'none',
+      }}
+    >
       <Toolbar>
         <Stack
           direction="row"

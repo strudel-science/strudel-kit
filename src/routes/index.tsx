@@ -3,7 +3,11 @@ import { createFileRoute } from '@tanstack/react-router';
 import { PropsWithChildren } from 'react';
 import { router } from '../App';
 import { AppLink } from '../components/AppLink';
-import { getSubRoutes, getTaskFlowNameFromPath } from '../utils/string.utils';
+import {
+  getSubRoutes,
+  getNameFromPath,
+  getTopLevelRoutes,
+} from '../utils/string.utils';
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -13,6 +17,7 @@ export const Route = createFileRoute('/')({
  * Home page component that renders at the root route /
  */
 function Index() {
+  const topLevelRoutes = getTopLevelRoutes(router.flatRoutes);
   const taskflowRoutes = getSubRoutes(router.flatRoutes, 'task-flows');
   const exampleRoutes = getSubRoutes(router.flatRoutes, 'examples');
 
@@ -49,6 +54,9 @@ function Index() {
           </Typography>
         </Stack>
         <Stack spacing={3}>
+          <Typography variant="h4" component="h2">
+            Top Level Pages
+          </Typography>
           <Box>
             <Grid container spacing={1}>
               <Grid item sm={6}>
@@ -72,31 +80,33 @@ function Index() {
                   </PaperWithHover>
                 </AppLink>
               </Grid>
-              <Grid item sm={6}>
-                <AppLink to="/playground">
-                  <PaperWithHover>
-                    <Stack>
-                      <Typography
-                        variant="h5"
-                        component="h3"
-                        fontWeight="bold"
-                        color="primary.main"
-                      >
-                        Playground
-                      </Typography>
-                      <Box>
-                        <Typography fontSize="small">
-                          <code>{`/src/routes/playground/index.tsx`}</code>
+              {topLevelRoutes.map((route) => (
+                <Grid key={route.id} item sm={6}>
+                  <AppLink to={route.fullPath}>
+                    <PaperWithHover>
+                      <Stack>
+                        <Typography
+                          variant="h5"
+                          component="h3"
+                          fontWeight="bold"
+                          color="primary.main"
+                        >
+                          {getNameFromPath(route.fullPath)}
                         </Typography>
-                      </Box>
-                    </Stack>
-                  </PaperWithHover>
-                </AppLink>
-              </Grid>
+                        <Box>
+                          <Typography fontSize="small">
+                            <code>{`/src/routes${route.id}index.tsx`}</code>
+                          </Typography>
+                        </Box>
+                      </Stack>
+                    </PaperWithHover>
+                  </AppLink>
+                </Grid>
+              ))}
             </Grid>
           </Box>
           <Typography variant="h4" component="h2">
-            Task Flows
+            Task Flow Templates
           </Typography>
           <Box>
             {taskflowRoutes.length > 0 && (
@@ -112,7 +122,7 @@ function Index() {
                             fontWeight="bold"
                             color="primary.main"
                           >
-                            {getTaskFlowNameFromPath(route.fullPath)}
+                            {getNameFromPath(route.fullPath)}
                           </Typography>
                           <Box>
                             <Typography fontSize="small">
@@ -147,7 +157,7 @@ function Index() {
                             fontWeight="bold"
                             color="primary.main"
                           >
-                            {getTaskFlowNameFromPath(route.fullPath)}
+                            {getNameFromPath(route.fullPath)}
                           </Typography>
                           <Box>
                             <Typography fontSize="small">
