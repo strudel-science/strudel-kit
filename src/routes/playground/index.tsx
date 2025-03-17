@@ -1,7 +1,6 @@
 import { Button, Container, Stack } from '@mui/material';
-import { useState } from 'react';
-import { Layout } from '../../components/Layout';
 import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
 
 export const Route = createFileRoute('/playground/')({
   component: Playground,
@@ -18,35 +17,33 @@ function Playground() {
   };
 
   return (
-    <Layout>
-      <Container
-        maxWidth="xl"
-        /**
-         * Style STRUDEL and MUI components using the `sx` prop.
-         */
+    <Container
+      maxWidth="xl"
+      /**
+       * Style STRUDEL and MUI components using the `sx` prop.
+       */
+      sx={{
+        marginBottom: 3,
+        marginTop: 3,
+      }}
+    >
+      {/**
+       * Add your own components here!
+       * See MUI's component library: https://mui.com/material-ui/all-components/
+       */}
+      <h1>Playground</h1>
+      <Stack
+        direction="row"
+        spacing={2}
         sx={{
-          marginBottom: 3,
-          marginTop: 3,
+          alignItems: 'center',
         }}
       >
-        {/**
-         * Add your own components here!
-         * See MUI's component library: https://mui.com/material-ui/all-components/
-         */}
-        <h1>Playground</h1>
-        <Stack
-          direction="row"
-          spacing={2}
-          sx={{
-            alignItems: 'center',
-          }}
-        >
-          <Button variant="contained" onClick={handleIncrement}>
-            Increment
-          </Button>
-          <p>{count}</p>
-        </Stack>
-      </Container>
-    </Layout>
+        <Button variant="contained" onClick={handleIncrement}>
+          Increment
+        </Button>
+        <p>{count}</p>
+      </Stack>
+    </Container>
   );
 }
