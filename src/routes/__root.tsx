@@ -9,6 +9,7 @@ import { TopBar } from '../components/TopBar';
 export const Route = createRootRoute({
   component: () => (
     <Stack
+      spacing={0}
       sx={{
         height: '100%',
       }}

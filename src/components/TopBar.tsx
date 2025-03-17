@@ -43,15 +43,10 @@ export const TopBar: React.FC = () => {
             )}
           </AppLink>
           <AppLink to="/">
-            <Typography variant="h6" component="div">
+            <Typography variant="h6" component="div" fontWeight="bold">
               {config.navbar.title}
             </Typography>
           </AppLink>
-          {config.navbar.items.map((item, i) => (
-            <AppLink key={`${item.path}-${i}`} to={item.path}>
-              {item.label}
-            </AppLink>
-          ))}
         </Stack>
         <IconButton size="large" edge="start" color="inherit">
           <AccountCircleIcon />

@@ -1,5 +1,9 @@
 import { Box, Container, Grid, Paper, Stack, Typography } from '@mui/material';
 import { createFileRoute } from '@tanstack/react-router';
+import { PropsWithChildren } from 'react';
+import { router } from '../App';
+import { AppLink } from '../components/AppLink';
+import { getSubRoutes, getTaskFlowNameFromPath } from '../utils/string.utils';
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -9,6 +13,23 @@ export const Route = createFileRoute('/')({
  * Home page component that renders at the root route /
  */
 function Index() {
+  const taskflowRoutes = getSubRoutes(router.flatRoutes, 'task-flows');
+  const exampleRoutes = getSubRoutes(router.flatRoutes, 'examples');
+
+  const PaperWithHover: React.FC<PropsWithChildren> = ({ children }) => (
+    <Paper
+      sx={{
+        padding: 2,
+        transition: '0.25s',
+        '&:hover': {
+          backgroundColor: 'grey.200',
+        },
+      }}
+    >
+      {children}
+    </Paper>
+  );
+
   return (
     <Container
       maxWidth="lg"
@@ -27,33 +48,124 @@ function Index() {
             You just built an app with STRUDEL!
           </Typography>
         </Stack>
-        <Grid container columnSpacing={4} rowSpacing={4}>
-          <Grid item md={12}>
-            <Stack>
-              <Typography variant="h5" component="h2">
-                Registered Pages
-              </Typography>
-              <Typography>
-                Below are all of the pages that are registered in your app. As
-                you add new top-level pages and Task Flows to your app, they
-                will show up here.
-              </Typography>
-            </Stack>
-          </Grid>
-          <Grid item md={12}>
-            <Stack>
-              <Typography variant="h5" component="h2">
-                What's Next?
-              </Typography>
-              <Typography variant="h6" component="h3">
-                Add Task Flows
-              </Typography>
-              <Paper elevation={0} sx={{ padding: 2 }}>
-                <code>strudel add-taskflow my-taskflow -t explore-data</code>
-              </Paper>
-            </Stack>
-          </Grid>
-        </Grid>
+        <Stack spacing={3}>
+          <Box>
+            <Grid container spacing={1}>
+              <Grid item sm={6}>
+                <AppLink to="/">
+                  <PaperWithHover>
+                    <Stack>
+                      <Typography
+                        variant="h5"
+                        component="h3"
+                        fontWeight="bold"
+                        color="primary.main"
+                      >
+                        Home
+                      </Typography>
+                      <Box>
+                        <Typography fontSize="small">
+                          <code>{`/src/routes/index.tsx`}</code>
+                        </Typography>
+                      </Box>
+                    </Stack>
+                  </PaperWithHover>
+                </AppLink>
+              </Grid>
+              <Grid item sm={6}>
+                <AppLink to="/playground">
+                  <PaperWithHover>
+                    <Stack>
+                      <Typography
+                        variant="h5"
+                        component="h3"
+                        fontWeight="bold"
+                        color="primary.main"
+                      >
+                        Playground
+                      </Typography>
+                      <Box>
+                        <Typography fontSize="small">
+                          <code>{`/src/routes/playground/index.tsx`}</code>
+                        </Typography>
+                      </Box>
+                    </Stack>
+                  </PaperWithHover>
+                </AppLink>
+              </Grid>
+            </Grid>
+          </Box>
+          <Typography variant="h4" component="h2">
+            Task Flows
+          </Typography>
+          <Box>
+            {taskflowRoutes.length > 0 && (
+              <Grid container spacing={1}>
+                {taskflowRoutes.map((route) => (
+                  <Grid key={route.id} item sm={6}>
+                    <AppLink to={route.fullPath}>
+                      <PaperWithHover>
+                        <Stack>
+                          <Typography
+                            variant="h5"
+                            component="h3"
+                            fontWeight="bold"
+                            color="primary.main"
+                          >
+                            {getTaskFlowNameFromPath(route.fullPath)}
+                          </Typography>
+                          <Box>
+                            <Typography fontSize="small">
+                              <code>{`/src/routes${route.id}index.tsx`}</code>
+                            </Typography>
+                          </Box>
+                        </Stack>
+                      </PaperWithHover>
+                    </AppLink>
+                  </Grid>
+                ))}
+              </Grid>
+            )}
+            {taskflowRoutes.length === 0 && (
+              <Typography>No Task Flows configured in your app.</Typography>
+            )}
+          </Box>
+          <Typography variant="h4" component="h2">
+            Examples
+          </Typography>
+          <Box>
+            {exampleRoutes.length > 0 && (
+              <Grid container spacing={1}>
+                {taskflowRoutes.map((route) => (
+                  <Grid key={route.id} item sm={6}>
+                    <AppLink to={route.fullPath}>
+                      <PaperWithHover>
+                        <Stack>
+                          <Typography
+                            variant="h5"
+                            component="h3"
+                            fontWeight="bold"
+                            color="primary.main"
+                          >
+                            {getTaskFlowNameFromPath(route.fullPath)}
+                          </Typography>
+                          <Box>
+                            <Typography fontSize="small">
+                              <code>{`/src/routes${route.id}index.tsx`}</code>
+                            </Typography>
+                          </Box>
+                        </Stack>
+                      </PaperWithHover>
+                    </AppLink>
+                  </Grid>
+                ))}
+              </Grid>
+            )}
+            {exampleRoutes.length === 0 && (
+              <Typography>No examples configured in your app.</Typography>
+            )}
+          </Box>
+        </Stack>
       </Box>
     </Container>
   );
