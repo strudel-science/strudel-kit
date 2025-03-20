@@ -40,8 +40,7 @@ function Index() {
     <Box>
       <Box
         sx={{
-          backgroundColor: 'primary.dark',
-          color: 'primary.contrastText',
+          backgroundColor: 'grey.200',
           height: '250px',
         }}
       >
