@@ -30,9 +30,7 @@ export const Route = createFileRoute(
  */
 function DataInputsPage() {
   const { state, dispatch } = useRunComputation();
-  const inputsData = useDataFromSource(
-    'data/default/run-computation/inputs.json'
-  );
+  const inputsData = useDataFromSource('dummy-data/inputs.json');
 
   /**
    * Set data for the inputs table when the data loads

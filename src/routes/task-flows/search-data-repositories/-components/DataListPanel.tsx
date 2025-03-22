@@ -46,7 +46,7 @@ export const DataListPanel: React.FC<DataListPanelProps> = ({
   const queryMode: 'client' | 'server' = 'client';
   const { isPending, isError, data, error } = useListQuery({
     activeFilters,
-    dataSource: 'data/default/search-data-repositories/datasets.json',
+    dataSource: 'dummy-data/datasets.json',
     filterConfigs,
     offset,
     page,

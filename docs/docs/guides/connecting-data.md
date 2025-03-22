@@ -1,5 +1,5 @@
 ---
-title: "Connecting Data"
+title: 'Connecting Data'
 ---
 
 ## Configuring Data Sources
@@ -14,7 +14,7 @@ Each Task Flow has at least one set of data that is incorporated into the flowâ€
       /**
        * Source of the data for the initial list of items.
        */
-      source: 'data/default/compare-data/scenarios.json',
+      source: 'dummy-data/scenarios.json',
       /**
        * Field name for the unique ID in the data source.
        */

@@ -28,7 +28,7 @@ export const DataView: React.FC<DataViewProps> = ({
   const queryMode = 'client';
   const { isPending, isFetching, isError, data, error } = useListQuery({
     activeFilters,
-    dataSource: 'data/default/explore-data/exoplanets.csv',
+    dataSource: 'dummy-data/exoplanets.csv',
     filterConfigs,
     offset,
     page,

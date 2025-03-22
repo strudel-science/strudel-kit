@@ -16,7 +16,7 @@ export const Route = createFileRoute('/task-flows/run-computation/_layout')({
  * Inner pages are rendered inside the `<Outlet />` component
  */
 function RunComputationLayout() {
-  const listItems = useDataFromSource('data/default/run-computation/list.json');
+  const listItems = useDataFromSource('dummy-data/list.json');
 
   /**
    * Content to render on the page for this component

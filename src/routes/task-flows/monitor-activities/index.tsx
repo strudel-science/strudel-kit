@@ -40,9 +40,7 @@ const columns: GridColDef[] = [
  * List view of all activities in the monitor-activites Task Flow.
  */
 function ActivityList() {
-  const experiments = useDataFromSource(
-    'data/default/monitor-activities/experiments.json'
-  );
+  const experiments = useDataFromSource('dummy-data/experiments.json');
   const navigate = useNavigate();
 
   /**

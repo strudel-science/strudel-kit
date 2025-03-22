@@ -63,7 +63,7 @@ const attachedFilesColumns: GridColDef[] = [
 function DatasetDetail() {
   const { id } = Route.useParams();
   const { data } = useDetailQuery({
-    dataSource: 'data/default/search-data-repositories/datasets.json',
+    dataSource: 'dummy-data/datasets.json',
     dataIdField: 'id',
     paramId: id,
     queryMode: 'client',

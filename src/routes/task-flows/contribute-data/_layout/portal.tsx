@@ -64,9 +64,7 @@ const columns: GridColDef[] = [
  * Also allows users to start a new dataset which sends them to the `<NewDataset>` component.
  */
 function ContributorPortal() {
-  const datasets = useDataFromSource(
-    'data/default/contribute-data/contributor_datasets.json'
-  );
+  const datasets = useDataFromSource('dummy-data/contributor_datasets.json');
 
   /**
    * Content to render on the page for this component

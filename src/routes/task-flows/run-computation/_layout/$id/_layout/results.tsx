@@ -35,15 +35,9 @@ export const Route = createFileRoute(
  */
 function ResultsPage() {
   const { state, dispatch } = useRunComputation();
-  const tableData = useDataFromSource(
-    'data/default/run-computation/results_table.json'
-  );
-  const lineData = useDataFromSource(
-    'data/default/run-computation/results_line_chart.json'
-  );
-  const barData = useDataFromSource(
-    'data/default/run-computation/results_bar_chart.json'
-  );
+  const tableData = useDataFromSource('dummy-data/results_table.json');
+  const lineData = useDataFromSource('dummy-data/results_line_chart.json');
+  const barData = useDataFromSource('dummy-data/results_bar_chart.json');
 
   /**
    * Set data for the results table when the data loads

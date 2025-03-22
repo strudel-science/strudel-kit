@@ -52,9 +52,7 @@ const columns: GridColDef[] = [
  * The two components are not currently hooked together.
  */
 function ActivityDetail() {
-  const experiment = useDataFromSource(
-    'data/default/monitor-activities/experiment_detail.json'
-  );
+  const experiment = useDataFromSource('dummy-data/experiment_detail.json');
 
   const getNoteRows = (notes: any[]) => {
     return notes.map((note) => {

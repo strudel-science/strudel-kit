@@ -20,7 +20,8 @@ Your new task flow was built in /some/path/to/learning-strudel/planets-app/src/p
 ```
 
 You should notice two new things:
-1. A new directory called `solar-system` inside `src/pages` 
+
+1. A new directory called `solar-system` inside `src/pages`
 2. A new link on the home page to `/solar-system`
 
 First let's break down the new files that were added:
@@ -46,7 +47,7 @@ Next, if you click on the new `/solar-system` link on the home page, you will be
 
 ### Add a data source
 
-Right now the Task Flow you created is pulling its data from the `public/data/default/explore-data/` directory. Let's instead create a new new data file that we will use for our Task Flow. 
+Right now the Task Flow you created is pulling its data from the `public/dummy-data/` directory. Let's instead create a new new data file that we will use for our Task Flow.
 
 Open up a blank file and paste in the following content:
 
@@ -156,7 +157,7 @@ pages: {
       }
     ],
     /**
-     * List of filters to display on the main page and use to filter the main table data. 
+     * List of filters to display on the main page and use to filter the main table data.
      * Each filter has a definition object to determine how it renders and functions.
      */
     tableFilters: [

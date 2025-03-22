@@ -15,7 +15,7 @@ function DataDetailPage() {
 
   // Define query for this page and fetch data item
   const { data } = useDetailQuery({
-    dataSource: 'data/default/explore-data/exoplanets.csv',
+    dataSource: 'dummy-data/exoplanets.csv',
     dataIdField: 'Id',
     paramId: id,
     queryMode: 'client',
