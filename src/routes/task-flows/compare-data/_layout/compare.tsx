@@ -33,18 +33,18 @@ function ScenarioComparison() {
     };
   }, []);
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <Box>
       <PageHeader
+        // CUSTOMIZE: the title that displays at the top of the page
         pageTitle="Compare Data App"
+        // CUSTOMIZE: the subtitle that displays underneath the title
         description="Description of this app section"
         actions={
           <Stack direction="row">
             <Box>
               <AppLink to="..">
+                {/* CUSTOMIZE: the back button text */}
                 <Button variant="contained" startIcon={<ArrowBackIcon />}>
                   Back to scenarios
                 </Button>
@@ -52,6 +52,7 @@ function ScenarioComparison() {
             </Box>
             <Box>
               <AppLink to="/task-flows/compare-data/new">
+                {/* CUSTOMIZE: the new button text */}
                 <Button variant="contained">New scenario</Button>
               </AppLink>
             </Box>

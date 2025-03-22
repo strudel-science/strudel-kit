@@ -19,13 +19,12 @@ export const Route = createFileRoute('/task-flows/compare-data/_layout/')({
 function ScenarioList() {
   const { state, dispatch } = useCompareData();
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <Box>
       <PageHeader
+        // CUSTOMIZE: the title that displays at the top of the page
         pageTitle="Compare Data App"
+        // CUSTOMIZE: the subtitle that displays underneath the title
         description="Description of this app section"
         actions={
           <Stack direction="row">
@@ -41,6 +40,7 @@ function ScenarioList() {
               )}
               {state.selectedRows.length > 1 && (
                 <AppLink to="/task-flows/compare-data/compare">
+                  {/* CUSTOMIZE: the compare button text */}
                   <Button variant="contained" data-testid="cpd-compare-button">
                     Compare scenarios ({state.selectedRows.length})
                   </Button>
@@ -49,6 +49,7 @@ function ScenarioList() {
             </Box>
             <Box>
               <AppLink to="/task-flows/compare-data/new">
+                {/* CUSTOMIZE: the new button text */}
                 <Button variant="contained" data-testid="cpd-new-button">
                   New scenario
                 </Button>

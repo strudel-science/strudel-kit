@@ -31,7 +31,9 @@ function NewScenario() {
   return (
     <Box>
       <PageHeader
+        // CUSTOMIZE: the title that displays at the top of the page
         pageTitle="New Scenario"
+        // CUSTOMIZE: the subtitle that displays underneath the title
         description="Description of this app section"
         actions={
           <Stack direction="row">
@@ -48,6 +50,7 @@ function NewScenario() {
             </Box>
             <Box>
               <AppLink to="..">
+                {/* CUSTOMIZE: the save button text */}
                 <Button variant="contained" data-testid="cpd-save-button">
                   Save scenario
                 </Button>
