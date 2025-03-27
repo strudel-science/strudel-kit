@@ -26,10 +26,16 @@ function NewDataset() {
       <Stack>
         <Stack direction="row" justifyContent="space-between">
           <Stack>
+            {/* CUSTOMIZE: the new dataset page title */}
             <Typography variant="h6" component="h1">
               Upload a new dataset
             </Typography>
-            <Typography>Description of this app section</Typography>
+            {/* CUSTOMIZE: the new dataset page description */}
+            <Typography>
+              Mention the data contribution steps in brief, and also major
+              requirements if any. Also give links to detailed documentation of
+              steps, requirements and guidelines. Link to documentation.
+            </Typography>
           </Stack>
           <Stack direction="row">
             <Box>

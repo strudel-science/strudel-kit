@@ -22,7 +22,7 @@ const HomePage: React.FC = () => {
           marginBottom: 3,
         }}
       >
-        
+
       </Container>
     </Layout>
   )
@@ -49,14 +49,16 @@ Then add a `Typography` title component inside of the `<Container>` component:
     marginBottom: 3,
   }}
 >
-  <Typography variant="h1">Planets of the Solar System</Typography>  
+  <Typography variant="h1">Planets of the Solar System</Typography>
 </Container>
 ```
 
 The `variant` prop is used to specify the kind of text to display in the component. The `h1` option stands for "Heading 1" and it's used for top-level page headings. If you look at the new title in the browser, you may notice that the default `h1` size is quite large. Make it smaller by setting `fontSize` to `2rem`.
 
 ```js
-<Typography variant="h1" fontSize="2rem">Planets of the Solar System</Typography>
+<Typography variant="h1" fontSize="2rem">
+  Planets of the Solar System
+</Typography>
 ```
 
 That looks better. Now, let's add a description section underneath. For this section you are going to use two new components: `Paper` and `Stack`. These are both components from MUI. The `Paper` component is used to wrap content in an elevated panel and the `Stack` component is used to organize content in vertical or horizontal layouts with equal spacing. Learn detailed information about [Paper](https://mui.com/material-ui/react-paper/) and [Stack](https://mui.com/material-ui/react-stack/) in the MUI docs.
@@ -76,11 +78,17 @@ Then add a new `Paper` component underneath the title's `Typography` and embed a
 ```js
 <Paper
   sx={{
-    padding: 2
+    padding: 2,
   }}
 >
   <Typography>
-    The Solar System is the gravitationally bound system of the Sun and the objects that orbit it. The largest of these objects are the eight planets, which in order from the Sun are four terrestrial planets (Mercury, Venus, Earth and Mars); two gas giants (Jupiter and Saturn); and two ice giants (Uranus and Neptune). The Solar System developed 4.6 billion years ago when a dense region of a molecular cloud collapsed, forming the Sun and a protoplanetary disc.
+    The Solar System is the gravitationally bound system of the Sun and the
+    objects that orbit it. The largest of these objects are the eight planets,
+    which in order from the Sun are four terrestrial planets (Mercury, Venus,
+    Earth and Mars); two gas giants (Jupiter and Saturn); and two ice giants
+    (Uranus and Neptune). The Solar System developed 4.6 billion years ago when
+    a dense region of a molecular cloud collapsed, forming the Sun and a
+    protoplanetary disc.
   </Typography>
 </Paper>
 ```
@@ -95,14 +103,22 @@ Then wrap both components inside of a `Stack`:
 
 ```js
 <Stack>
-  <Typography variant="h1" fontSize="2rem">Planets of the Solar System</Typography>
+  <Typography variant="h1" fontSize="2rem">
+    Planets of the Solar System
+  </Typography>
   <Paper
     sx={{
-      padding: 2
+      padding: 2,
     }}
   >
     <Typography>
-      The Solar System is the gravitationally bound system of the Sun and the objects that orbit it. The largest of these objects are the eight planets, which in order from the Sun are four terrestrial planets (Mercury, Venus, Earth and Mars); two gas giants (Jupiter and Saturn); and two ice giants (Uranus and Neptune). The Solar System developed 4.6 billion years ago when a dense region of a molecular cloud collapsed, forming the Sun and a protoplanetary disc.
+      The Solar System is the gravitationally bound system of the Sun and the
+      objects that orbit it. The largest of these objects are the eight planets,
+      which in order from the Sun are four terrestrial planets (Mercury, Venus,
+      Earth and Mars); two gas giants (Jupiter and Saturn); and two ice giants
+      (Uranus and Neptune). The Solar System developed 4.6 billion years ago
+      when a dense region of a molecular cloud collapsed, forming the Sun and a
+      protoplanetary disc.
     </Typography>
   </Paper>
 </Stack>

@@ -4,7 +4,7 @@ slug: create-app
 
 # Create a Base App
 
-We will now start to create your first STRUDEL app using the strudel-cli you installed in the previous step. The `strudel` command has several sub-commands to do different tasks; to create an app named *planets-app* use the `create-app` sub-command like this:
+We will now start to create your first STRUDEL app using the strudel-cli you installed in the previous step. The `strudel` command has several sub-commands to do different tasks; to create an app named _planets-app_ use the `create-app` sub-command like this:
 
 ```
 strudel create-app planets-app
@@ -53,7 +53,7 @@ npm install
 
 This will produce a fair amount of output as the NPM tool fetches and installs all the JavaScript dependencies that STRUDEL uses. It will print out some warnings about deprecated packages and security vulnerabilities. This is normal. For a real-world deployment, you would need to look at these warnings and vulnerabilities more closely, but you can safely ignore them for now.
 
-Assuming you didn't get any errors in the  step above, you can now run your app from the same directory:
+Assuming you didn't get any errors in the step above, you can now run your app from the same directory:
 
 ```
 npm start

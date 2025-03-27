@@ -107,8 +107,8 @@ There are many ways to modify the styles of the elements in a component or on a 
 To change the background color of the `AppBar` add the `sx` prop and set the `backgroundColor` property to `primary.main`:
 
 ```js
-<AppBar 
-  color="default" 
+<AppBar
+  color="default"
   position="static"
   sx={{
     backgroundColor: 'primary.main'
@@ -121,9 +121,9 @@ The `primary.main` string is a reference to the value in the `theme.palette` obj
 You may have noticed that the color of the navigation bar changed, but now the links are not very readable because they are also red. Use the `sx` prop to change the text of each `AppLink` component to white (`#FFFFFF`):
 
 ```js
-<AppLink 
-  to="/" 
-  sx={{ 
+<AppLink
+  to="/"
+  sx={{
     color: '#FFFFFF'
   }}
 >
@@ -143,9 +143,9 @@ You may have noticed that the color of the navigation bar changed, but now the l
     </ImageWrapper>
   )}
 </AppLink>
-<AppLink 
-  to="/" 
-  sx={{ 
+<AppLink
+  to="/"
+  sx={{
     color: '#FFFFFF'
   }}
 >
@@ -154,10 +154,10 @@ You may have noticed that the color of the navigation bar changed, but now the l
   </Typography>
 </AppLink>
 {config.navbar.items.map((item, i) => (
-  <AppLink 
-    key={`${item.path}-${i}`} 
+  <AppLink
+    key={`${item.path}-${i}`}
     to={item.path}
-    sx={{ 
+    sx={{
       color: '#FFFFFF'
     }}
   >
@@ -173,20 +173,22 @@ You can also use the `sx` prop to make advanced style changes like changing the 
 Add a hover state style to the dynamic navbar items' `AppLink` so that their color is `secondary.light` on hover:
 
 ```js
-{config.navbar.items.map((item, i) => (
-  <AppLink 
-    key={`${item.path}-${i}`} 
-    to={item.path}
-    sx={{ 
-      color: '#FFFFFF',
-      '&:hover': {
-        color: 'secondary.light',
-      }
-    }}
-  >
-    {item.label}
-  </AppLink>
-))}
+{
+  config.navbar.items.map((item, i) => (
+    <AppLink
+      key={`${item.path}-${i}`}
+      to={item.path}
+      sx={{
+        color: '#FFFFFF',
+        '&:hover': {
+          color: 'secondary.light',
+        },
+      }}
+    >
+      {item.label}
+    </AppLink>
+  ));
+}
 ```
 
 Refresh the page and watch the Explore link change color when you mouse over it.

@@ -29,6 +29,7 @@ function ScenarioList() {
         actions={
           <Stack direction="row">
             <Box>
+              {/* CUSTOMIZE: the compare button text */}
               {state.selectedRows.length < 2 && (
                 <Button
                   variant="outlined"
@@ -40,7 +41,6 @@ function ScenarioList() {
               )}
               {state.selectedRows.length > 1 && (
                 <AppLink to="/task-flows/compare-data/compare">
-                  {/* CUSTOMIZE: the compare button text */}
                   <Button variant="contained" data-testid="cpd-compare-button">
                     Compare scenarios ({state.selectedRows.length})
                   </Button>

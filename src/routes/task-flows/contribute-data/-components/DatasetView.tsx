@@ -5,9 +5,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { LabelValueTable } from '../../../../components/LabelValueTable';
 import { files } from './DataFilesPanel';
 
-/**
- * Define column definitions in-file for prototyping
- */
+// CUSTOMIZE: columns for the dataset files table
 const columns: GridColDef[] = [
   {
     field: 'filename',
@@ -45,9 +43,11 @@ export const DatasetView: React.FC = () => {
       }}
     >
       <Stack>
+        {/* CUSTOMIZE: the dataset title */}
         <Typography component="h2" variant="h6">
           My Dataset
         </Typography>
+        {/* CUSTOMIZE: the dataset description */}
         <Typography>
           Laboris incididunt ullamco dolore ex. Non ad aute cillum excepteur.
           Quis exercitation duis quis ad. Laborum eiusmod incididunt magna dolor
@@ -55,6 +55,7 @@ export const DatasetView: React.FC = () => {
           incididunt et qui dolore dolor. Ut aute dolore magna ea commodo
           ullamco velit in aliquip sunt id ea.
         </Typography>
+        {/* CUSTOMIZE: the dataset metadata */}
         <LabelValueTable
           rows={[
             {
@@ -80,7 +81,9 @@ export const DatasetView: React.FC = () => {
             Dataset Files
           </Typography>
           <DataGrid
+            // CUSTOMIZE: the data source for the dataset files table
             rows={files}
+            // CUSTOMIZE: the data id field
             getRowId={(row) => row.id}
             columns={columns}
             disableColumnSelector

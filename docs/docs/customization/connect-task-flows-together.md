@@ -1,5 +1,5 @@
 ---
-title: "Connecting Task Flows"
+title: 'Connecting Task Flows'
 ---
 
 ## How to Connect Task Flows Together
@@ -58,7 +58,7 @@ You should also delete the "Data Inputs" step from the `<Stepper>` component in 
     <Link
       component={RouterLink}
       to="../data-inputs"
-      sx={{ color: "inherit", textDecoration: "none" }}
+      sx={{ color: 'inherit', textDecoration: 'none' }}
     >
       {taskflow.pages.dataInputs.title}
     </Link>

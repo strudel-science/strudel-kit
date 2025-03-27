@@ -5,9 +5,7 @@ import { GridActionsCellItem, GridColDef } from '@mui/x-data-grid';
 import React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 
-/**
- * Define files table data in-file for prototyping
- */
+// CUSTOMIZE: data for the files table
 export const files = [
   {
     id: 0,
@@ -46,9 +44,7 @@ export const files = [
   },
 ];
 
-/**
- * Define column definitions in-file for prototyping
- */
+// CUSTOMIZE: columns for the files table
 const columns: GridColDef[] = [
   {
     field: 'filename',
@@ -109,6 +105,7 @@ export const DataFilesPanel: React.FC = () => {
       </Stack>
       <DataGrid
         rows={files}
+        // CUSTOMIZE: data id field
         getRowId={(row) => row.id}
         columns={columns}
         disableColumnSelector

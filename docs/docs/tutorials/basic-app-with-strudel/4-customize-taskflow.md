@@ -16,13 +16,15 @@ Next, find the code that renders the "Related Data" section:
 
 ```js
 <Box>
-  <Typography fontWeight="medium" mb={1}>Related Data</Typography>
+  <Typography fontWeight="medium" mb={1}>
+    Related Data
+  </Typography>
   <DataGrid
     rows={relatedRows}
     columns={relatedColumns}
     disableRowSelectionOnClick
     initialState={{
-      pagination: { paginationModel: { pageSize: 5 } }
+      pagination: { paginationModel: { pageSize: 5 } },
     }}
   />
 </Box>
@@ -40,8 +42,10 @@ With `PreviewPanel.tsx` open, find the code that renders the "Property Group 1" 
 
 ```js
 <Box>
-  <Typography fontWeight="medium" mb={1}>Property Group 1</Typography>
-  <LabelValueTable 
+  <Typography fontWeight="medium" mb={1}>
+    Property Group 1
+  </Typography>
+  <LabelValueTable
     rows={[
       { label: 'Property 1', value: 'value' },
       { label: 'Property 2', value: 'value' },
@@ -51,14 +55,16 @@ With `PreviewPanel.tsx` open, find the code that renders the "Property Group 1" 
 </Box>
 ```
 
-Just like the "Related Data" section, there is a `Box` component and a `Typography` component but there is also a `LabelValueTable` component. This component renders a list of properties and their values in a readable two-column format. 
+Just like the "Related Data" section, there is a `Box` component and a `Typography` component but there is also a `LabelValueTable` component. This component renders a list of properties and their values in a readable two-column format.
 
 ### Replace the Section Label
 
 For this first section, let's display the physical characteristics of the planet. Replace "Property Group 1" with "Physical Characteristics".
 
 ```js
-<Typography fontWeight="medium" mb={1}>Physical Characteristics</Typography>
+<Typography fontWeight="medium" mb={1}>
+  Physical Characteristics
+</Typography>
 ```
 
 Refresh your browser and make sure "Physical Characteristics" displays as the section label.
@@ -78,7 +84,7 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = ({ previewItem, onClose
 There are other pieces here, but for now just focus on the `previewItem` variable. When a user clicks on a row in this task flow, the data in that row is stored in `previewItem`. Now, replace "Property 1" in the first `LabelValueTable` with the "Diameter" property for the selected planet:
 
 ```js
-<LabelValueTable 
+<LabelValueTable
   rows={[
     { label: 'Diameter', value: previewItem['Diameter'] },
     { label: 'Property 2', value: 'value' },
@@ -92,7 +98,7 @@ Here you have replaced the first label with "Diameter" and replaced the value wi
 Add a few more dynamic rows to the table in this section:
 
 ```js
-<LabelValueTable 
+<LabelValueTable
   rows={[
     { label: 'Diameter', value: previewItem['Diameter'] },
     { label: 'Mass', value: previewItem['Mass'] },
@@ -107,8 +113,10 @@ Next, add dynamic rows to the second `LabelValueTable`. Replace the section labe
 
 ```js
 <Box>
-  <Typography fontWeight="medium" mb={1}>Orbital Characteristics</Typography>
-  <LabelValueTable 
+  <Typography fontWeight="medium" mb={1}>
+    Orbital Characteristics
+  </Typography>
+  <LabelValueTable
     rows={[
       { label: 'Inclination', value: previewItem['Inclination'] },
       { label: 'Eccentricity', value: previewItem['Eccentricity'] },
@@ -127,7 +135,9 @@ Let's clean up the preview panel so that there's no more placeholder content. Fi
 
 ```js
 // Delete this line
-<Typography variant="body2">Row description, subtitle, or helper text.</Typography>
+<Typography variant="body2">
+  Row description, subtitle, or helper text.
+</Typography>
 ```
 
 Now find the code that renders the "Preview Heading":
@@ -162,7 +172,7 @@ Then, download the `planets.zip` file using the link below:
 
 [Click to download planets.zip](/img/tutorial/planets.zip)
 
-Double-click the `planets.zip` file you downloaded to unpack the files, then drill into the `planets` directory and copy the 8 files. There should be one file for each planet. 
+Double-click the `planets.zip` file you downloaded to unpack the files, then drill into the `planets` directory and copy the 8 files. There should be one file for each planet.
 
 Paste the 8 planet images into `public/images`.
 
@@ -170,8 +180,10 @@ Now you are ready to start incorporating the images into the preview panel. Open
 
 ```js
 <Box>
-  <Typography fontWeight="medium" mb={1}>Physical Characteristics</Typography>
-  <LabelValueTable 
+  <Typography fontWeight="medium" mb={1}>
+    Physical Characteristics
+  </Typography>
+  <LabelValueTable
     rows={[
       { label: 'Diameter', value: previewItem['Diameter'] },
       { label: 'Mass', value: previewItem['Mass'] },
@@ -184,7 +196,7 @@ Now you are ready to start incorporating the images into the preview panel. Open
 Add an `<img>` tag directly above this section. The `img` tag uses the `src` attribute to tell it which image to display. In this case, you want the image to be different depending on the row that is selected. To do that, you are going to inject the planet's name into the path to the image:
 
 ```js
-<img src={`images/${previewItem['Name']}.jpg`}/>
+<img src={`images/${previewItem['Name']}.jpg`} />
 ```
 
 Here you are using a JavaScript syntax called a _template literal_. Instead of using quotes to wrap the string, you use backticks (`` ` ``) which lets you embed dynamic content inside the string using a dollar sign and curly braces (`${expression}`).
@@ -211,7 +223,10 @@ To make sure the images are accessible, add alt text to the `img` tag. Alt text 
 
 ```js
 <ImageWrapper height="300px">
-  <img src={`images/${previewItem['Name']}.jpg`} alt={`Satellite image of ${previewItem['Name']}`} />
+  <img
+    src={`images/${previewItem['Name']}.jpg`}
+    alt={`Satellite image of ${previewItem['Name']}`}
+  />
 </ImageWrapper>
 ```
 

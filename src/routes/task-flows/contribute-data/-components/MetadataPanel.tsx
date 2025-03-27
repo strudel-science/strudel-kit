@@ -55,6 +55,7 @@ export const MetadataPanel: React.FC = () => {
             width: '150px',
           }}
         >
+          {/* CUSTOMIZE: the metadata groups */}
           <List>
             <ListItem>Overview</ListItem>
             <ListItem>Dates</ListItem>
@@ -76,6 +77,7 @@ export const MetadataPanel: React.FC = () => {
                 paddingBottom: 2,
               }}
             >
+              {/* CUSTOMIZE: the metdata fields */}
               <Typography color="neutral.dark" fontWeight="bold">
                 Overview
               </Typography>

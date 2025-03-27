@@ -13,9 +13,7 @@ export const Route = createFileRoute(
   component: ContributorPortal,
 });
 
-/**
- * Define column definitions in-file for prototyping
- */
+// CUSTOMIZE: the columns for the uploads table
 const columns: GridColDef[] = [
   {
     field: 'title',
@@ -64,11 +62,9 @@ const columns: GridColDef[] = [
  * Also allows users to start a new dataset which sends them to the `<NewDataset>` component.
  */
 function ContributorPortal() {
+  // CUSTOMIZE: the data source for the contributed datasets table
   const datasets = useDataFromSource('dummy-data/contributor_datasets.json');
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <Container
       maxWidth="xl"
@@ -82,10 +78,12 @@ function ContributorPortal() {
           justifyContent="space-between"
           alignItems="center"
         >
+          {/* CUSTOMIZE: the page title */}
           <Typography variant="h6" component="h1">
             Your Dataset Uploads
           </Typography>
           <AppLink to="/task-flows/contribute-data/new">
+            {/* CUSTOMIZE: the button for creating a new entry */}
             <Button variant="contained" data-testid="ctd-new-button">
               New Dataset
             </Button>
@@ -94,6 +92,7 @@ function ContributorPortal() {
         <Paper>
           <DataGrid
             rows={datasets || []}
+            // CUSTOMIZE: the data ID field
             getRowId={(row) => row.id}
             columns={columns}
             disableColumnSelector

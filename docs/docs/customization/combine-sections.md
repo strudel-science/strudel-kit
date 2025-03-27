@@ -1,5 +1,5 @@
 ---
-title: "Combining Sections"
+title: 'Combining Sections'
 ---
 
 ## How to Combine Sections from Different Task Flows
@@ -69,12 +69,12 @@ Let's say you want to put these new components underneath the comparison data ta
 >
   <Paper
     sx={{
-      "& .MuiDataGrid-columnHeader, .MuiDataGrid-cell": {
-        borderRight: "1px solid",
-        borderRightColor: "neutral.main",
+      '& .MuiDataGrid-columnHeader, .MuiDataGrid-cell': {
+        borderRight: '1px solid',
+        borderRightColor: 'neutral.main',
       },
-      "& .compare-data--metric": {
-        fontWeight: "bold",
+      '& .compare-data--metric': {
+        fontWeight: 'bold',
       },
     }}
   >
@@ -134,8 +134,8 @@ import {
   Link,
   Paper,
   Stack,
-} from "@mui/material";
-import Plot from "react-plotly.js";
+} from '@mui/material';
+import Plot from 'react-plotly.js';
 ```
 
 Almost there. Now we just need to add source data to the new table, line chart, and bar chart.
@@ -152,17 +152,17 @@ Here is the line chart component with some example data plugged in:
     {
       x: [1, 2, 3, 4],
       y: [10, 15, 13, 17],
-      type: "scatter",
+      type: 'scatter',
     },
     {
       x: [1, 2, 3, 4],
       y: [16, 5, 11, 9],
-      type: "scatter",
+      type: 'scatter',
     },
     {
       x: [1, 2, 3, 4],
       y: [21, 17, 4, 10],
-      type: "scatter",
+      type: 'scatter',
     },
   ]}
   layout={{}}
@@ -175,9 +175,9 @@ And here is bar chart component with some example data plugged in:
 <Plot
   data={[
     {
-      x: ["Tulip", "Orchid", "Sunflower"],
+      x: ['Tulip', 'Orchid', 'Sunflower'],
       y: [20, 14, 23],
-      type: "bar",
+      type: 'bar',
     },
   ]}
   layout={{}}
@@ -191,67 +191,67 @@ And finally, populate the `rows` prop and the `columns` prop of the `<DataGrid>`
   rows={[
     {
       sample_id: 0,
-      type: "tulip",
+      type: 'tulip',
       latitude: 37.8715,
       longitude: -122.2727,
-      "elevation (m)": 52,
-      notes: "healthy growth",
+      'elevation (m)': 52,
+      notes: 'healthy growth',
     },
     {
       sample_id: 1,
-      type: "tulip",
+      type: 'tulip',
       latitude: 38.2341,
       longitude: -121.4875,
-      "elevation (m)": 52,
-      notes: "healthy growth",
+      'elevation (m)': 52,
+      notes: 'healthy growth',
     },
     {
       sample_id: 2,
-      type: "sunflower",
+      type: 'sunflower',
       latitude: 37.2338,
       longitude: -121.4899,
-      "elevation (m)": 52,
-      notes: "unhealthy coloration",
+      'elevation (m)': 52,
+      notes: 'unhealthy coloration',
     },
     {
       sample_id: 3,
-      type: "orchid",
+      type: 'orchid',
       latitude: 37.8758,
       longitude: -122.2732,
-      "elevation (m)": 52,
-      notes: "healthy growth",
+      'elevation (m)': 52,
+      notes: 'healthy growth',
     },
     {
       sample_id: 4,
-      type: "orchid",
+      type: 'orchid',
       latitude: 37.8715,
       longitude: -122.2727,
-      "elevation (m)": 52,
-      notes: "fungal infection",
+      'elevation (m)': 52,
+      notes: 'fungal infection',
     },
   ]}
-  getRowId={(row) => row["sample_id"]}
+  getRowId={(row) => row['sample_id']}
   columns={[
     {
-      field: "sample_id",
+      field: 'sample_id',
     },
     {
-      field: "type",
+      field: 'type',
     },
     {
-      field: "latitude",
-      type: "number",
+      field: 'latitude',
+      type: 'number',
     },
     {
-      field: "longitude",
-      type: "number",
+      field: 'longitude',
+      type: 'number',
     },
     {
-      field: "elevation (m)",
-      type: "number",
+      field: 'elevation (m)',
+      type: 'number',
     },
     {
-      field: "notes",
+      field: 'notes',
     },
   ]}
   disableColumnSelector

@@ -75,7 +75,7 @@ function NewScenario() {
             padding: 2,
           }}
         >
-          {/* TODO: add form */}
+          {/* CUSTOMIZE: form elements */}
           Work in progress
         </Paper>
       </Container>

@@ -10,9 +10,6 @@ import { useContributeData } from '../-context/ContextProvider';
 export const ValidationChecks: React.FC = () => {
   const { state } = useContributeData();
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <Paper
       sx={{
@@ -21,9 +18,11 @@ export const ValidationChecks: React.FC = () => {
       }}
     >
       <Stack>
+        {/* CUSTOMIZE: the validation panel title */}
         <Typography component="h2" variant="h6">
           Validation Checks
         </Typography>
+        {/* CUSTOMIZE: the validation panel description */}
         <Typography>
           Running the dataset metadata and datafile against our standard set of
           metadata, data and congruency checks helps to validate the data and

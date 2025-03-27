@@ -33,6 +33,7 @@ function Register() {
         }}
       >
         <Stack spacing={4}>
+          {/* CUSTOMIZE: the registration page title */}
           <Typography variant="h6" component="h1">
             Register as a data contributor
           </Typography>
@@ -40,7 +41,7 @@ function Register() {
             <Typography fontWeight="medium" mb={1}>
               Description
             </Typography>
-            {/* TODO: Make it easier to render text as multiple paragraphs (maybe support markdown in certain components) */}
+            {/* CUSTOMIZE: the registration page description */}
             <Stack>
               <Typography>
                 Explain data contribution process in brief, with links to proper
@@ -58,6 +59,7 @@ function Register() {
             <Typography fontWeight="medium" mb={1}>
               Summary of Steps
             </Typography>
+            {/* CUSTOMIZE: the summary of registration steps */}
             <LabelValueTable
               rows={[
                 {
@@ -82,6 +84,7 @@ function Register() {
             <Typography fontWeight="medium" mb={2}>
               Registration Form
             </Typography>
+            {/* CUSTOMIZE: the registration form inputs */}
             <Stack>
               <TextField
                 id="email"

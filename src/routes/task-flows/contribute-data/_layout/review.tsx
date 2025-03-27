@@ -81,6 +81,7 @@ function ReviewDataset() {
         <Stack>
           <Stack direction="row" justifyContent="space-between">
             <Stack>
+              {/* CUSTOMIZE: the review page title */}
               <Typography variant="h6" component="h1">
                 Review your new dataset
               </Typography>
