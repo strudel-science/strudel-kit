@@ -43,7 +43,7 @@
     "@types/react-plotly.js": "^2.6.3",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@vitejs/plugin-react": "^4.3.4",
     "cypress": "^13.15.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
@@ -59,7 +59,7 @@
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "typescript": "^5.2.2",
-    "vite": "^5.4.14"
+    "vite": "^6.2.5"
   },
   "engines": {
     "node": "^18.18.0 || >=20.0.0"
