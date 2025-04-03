@@ -15,18 +15,22 @@ function DataDetailPage() {
 
   // Define query for this page and fetch data item
   const { data } = useDetailQuery({
+    // CUSTOMIZE: detail data source
     dataSource: 'dummy-data/exoplanets.csv',
+    // CUSTOMIZE: detail data unique ID field
     dataIdField: 'Id',
     paramId: id,
+    // CUSTOMIZE: query mode, 'client' or 'server'
     queryMode: 'client',
     staticParams: null,
   });
 
-  // Content to render on the page for this component
   return (
     <Box>
       <PageHeader
+        // CUSTOMIZE: page header field
         pageTitle={data ? data['Planet Name'] : ''}
+        // CUSTOMIZE: breadcrumb title text
         breadcrumbTitle="Data Detail"
         sx={{
           marginBottom: 1,
@@ -35,6 +39,7 @@ function DataDetailPage() {
       />
       <Container maxWidth="xl">
         <Stack>
+          {/* CUSTOMIZE: detail page content */}
           <Paper
             sx={{
               padding: 2,

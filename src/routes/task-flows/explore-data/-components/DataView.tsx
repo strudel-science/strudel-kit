@@ -24,10 +24,13 @@ export const DataView: React.FC<DataViewProps> = ({
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(25);
   const [offset, setOffest] = useState(page * pageSize);
+  // CUSTOMIZE: the unique ID field for the data source
   const dataIdField = 'Id';
+  // CUSTOMIZE: query mode, 'client' or 'server'
   const queryMode = 'client';
   const { isPending, isFetching, isError, data, error } = useListQuery({
     activeFilters,
+    // CUSTOMIZE: the table data source
     dataSource: 'dummy-data/exoplanets.csv',
     filterConfigs,
     offset,
@@ -83,6 +86,7 @@ export const DataView: React.FC<DataViewProps> = ({
         paginationMode={queryMode}
         onPaginationModelChange={handlePaginationModelChange}
         getRowId={(row) => row[dataIdField]}
+        // CUSTOMIZE: the table columns
         columns={[
           {
             field: 'Planet Name',

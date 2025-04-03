@@ -35,7 +35,7 @@ export interface DataFilter {
 export interface FilterConfig {
   field: string;
   label: string;
-  operator?: string;
+  operator?: FilterOperator;
   paramType?: ParamType;
   paramTypeOptions?: any;
   filterComponent: FilterComponent;

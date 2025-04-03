@@ -13,6 +13,7 @@ export const Route = createFileRoute('/task-flows/explore-data/')({
   component: DataExplorer,
 });
 
+// CUSTOMIZE: the filter definitions
 const filterConfigs: FilterConfig[] = [
   {
     field: 'Discovery Method',
