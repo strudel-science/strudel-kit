@@ -12,6 +12,7 @@ const dateComparator: GridComparatorFn<string> = (v1, v2) => {
   return dayjs(v1).isAfter(dayjs(v2)) ? 1 : 0;
 };
 
+// CUSTOMIZE: list view table columns
 const columns: GridColDef[] = [
   {
     field: 'experiment_name',
@@ -40,12 +41,10 @@ const columns: GridColDef[] = [
  * List view of all activities in the monitor-activites Task Flow.
  */
 function ActivityList() {
+  // CUSTOMIZE: list view data source
   const experiments = useDataFromSource('dummy-data/experiments.json');
   const navigate = useNavigate();
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <Container
       maxWidth="xl"
@@ -67,8 +66,10 @@ function ActivityList() {
         <Paper>
           <DataGrid
             rows={experiments || []}
+            // CUSTOMIZE: data source unique ID field
             getRowId={(row) => row.id}
             columns={columns}
+            // CUSTOMIZE: initial sort field
             initialState={{
               sorting: {
                 sortModel: [{ field: 'start_time', sort: 'desc' }],

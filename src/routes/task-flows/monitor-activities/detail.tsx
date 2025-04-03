@@ -27,6 +27,7 @@ const dateComparator: GridComparatorFn<string> = (v1, v2) => {
   return dayjs(v1).isAfter(dayjs(v2)) ? 1 : 0;
 };
 
+// CUSTOMIZE: events table columns
 const columns: GridColDef[] = [
   {
     field: 'event_type',
@@ -52,6 +53,7 @@ const columns: GridColDef[] = [
  * The two components are not currently hooked together.
  */
 function ActivityDetail() {
+  // CUSTOMIZE: detail data source
   const experiment = useDataFromSource('dummy-data/experiment_detail.json');
 
   const getNoteRows = (notes: any[]) => {
@@ -62,9 +64,6 @@ function ActivityDetail() {
     });
   };
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <Container
       maxWidth="xl"
@@ -81,6 +80,7 @@ function ActivityDetail() {
             </IconButton>
           </AppLink>
           <Typography variant="h6" component="h1">
+            {/* CUSTOMIZE: title field */}
             {experiment?.experiment_name}
           </Typography>
         </Stack>
@@ -91,6 +91,7 @@ function ActivityDetail() {
                 {experiment && (
                   <DataGrid
                     rows={experiment.events}
+                    // CUSTOMIZE: events data source unique ID field
                     getRowId={(row) => row.id}
                     columns={columns}
                     initialState={{
@@ -147,6 +148,7 @@ function ActivityDetail() {
                   }}
                 >
                   <Plot
+                    // CUSTOMIZE: plot data
                     data={[
                       {
                         x: [1, 2, 3, 4],
