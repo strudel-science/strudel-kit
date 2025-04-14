@@ -16,11 +16,9 @@ export const Route = createFileRoute('/task-flows/run-computation/_layout')({
  * Inner pages are rendered inside the `<Outlet />` component
  */
 function RunComputationLayout() {
+  // CUSTOMIZE: index page data source
   const listItems = useDataFromSource('dummy-data/list.json');
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <Box>
       <Box>
@@ -28,7 +26,9 @@ function RunComputationLayout() {
           list={{
             table: {
               data: listItems,
+              // CUSTOMIZE: index page data source unique ID field
               dataIdField: 'id',
+              // CUSTOMIZE: index page columns
               columns: [
                 {
                   field: 'name',
@@ -73,7 +73,9 @@ function RunComputationLayout() {
           inputs={{
             table: {
               data: [],
+              // CUSTOMIZE: inputs table unique ID field
               dataIdField: 'id',
+              // CUSTOMIZE: inputs table columns
               columns: [
                 {
                   field: 'name',
@@ -108,7 +110,9 @@ function RunComputationLayout() {
           results={{
             table: {
               data: [],
+              // CUSTOMIZE: results table unique ID field
               dataIdField: 'id',
+              // CUSTOMIZE: results table columns
               columns: [
                 {
                   field: 'name',

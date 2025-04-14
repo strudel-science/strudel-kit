@@ -36,9 +36,6 @@ function RunningComputationPage() {
     }, 2000);
   });
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <Stack spacing={0} flex={1}>
       <Box
@@ -95,9 +92,11 @@ function RunningComputationPage() {
           {running && (
             <Stack spacing={6}>
               <Typography variant="h6" component="h2">
+                {/* CUSTOMIZE: in progress title */}
                 Running Optimization
               </Typography>
               <Box color="neutral.dark">
+                {/* CUSTOMIZE: in progress description */}
                 <Typography>This could take several minutes.</Typography>
                 <Typography>
                   You may leave this page and return later. Your progress will

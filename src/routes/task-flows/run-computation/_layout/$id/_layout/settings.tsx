@@ -36,9 +36,6 @@ function SettingsPage() {
     setShowAdvanced(!showAdvanced);
   };
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <Stack spacing={0} flex={1}>
       <Box
@@ -94,9 +91,11 @@ function SettingsPage() {
         <Paper sx={{ padding: 3 }}>
           <Stack>
             <Typography variant="h6" component="h2">
+              {/* CUSTOMIZE: settings page title */}
               Optimization Settings
             </Typography>
             <Grid container rowSpacing={2} alignItems="center">
+              {/* CUSTOMIZE: settings form elements */}
               <Grid item md={3}>
                 <Typography>Solver</Typography>
               </Grid>
@@ -170,6 +169,7 @@ function SettingsPage() {
                 to="/task-flows/run-computation/$id/running"
                 params={{ id: 'new' }}
               >
+                {/* CUSTOMIZE: run button */}
                 <Button
                   variant="contained"
                   data-testid="rnc-run-button"

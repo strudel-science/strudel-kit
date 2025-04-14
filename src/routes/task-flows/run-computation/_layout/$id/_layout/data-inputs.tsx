@@ -30,6 +30,7 @@ export const Route = createFileRoute(
  */
 function DataInputsPage() {
   const { state, dispatch } = useRunComputation();
+  // CUSTOMIZE: inputs table data source
   const inputsData = useDataFromSource('dummy-data/inputs.json');
 
   /**
@@ -41,9 +42,6 @@ function DataInputsPage() {
     }
   }, [inputsData]);
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <Stack spacing={0} flex={1}>
       <Box

@@ -56,9 +56,10 @@ export const NewScenarioModal: React.FC<Props> = ({
         }}
       >
         <Typography id="modal-modal-title" variant="h6" component="h2">
-          {/* strudel-kit-variable-next-line */}
+          {/* CUSTOMIZE: new item modal title */}
           New Analysis Scenario
         </Typography>
+        {/* CUSTOMIZE: new item form components */}
         <FormControl fullWidth>
           <InputLabel id="analysis-type-select-label">Analysis Type</InputLabel>
           <Select

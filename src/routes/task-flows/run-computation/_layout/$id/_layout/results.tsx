@@ -35,8 +35,11 @@ export const Route = createFileRoute(
  */
 function ResultsPage() {
   const { state, dispatch } = useRunComputation();
+  // CUSTOMIZE: results table data source
   const tableData = useDataFromSource('dummy-data/results_table.json');
+  // CUSTOMIZE: results line chart data source
   const lineData = useDataFromSource('dummy-data/results_line_chart.json');
+  // CUSTOMIZE: results bar chart data source
   const barData = useDataFromSource('dummy-data/results_bar_chart.json');
 
   /**
@@ -72,9 +75,6 @@ function ResultsPage() {
     }
   }, [barData]);
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <Stack spacing={0} flex={1}>
       <Box
@@ -225,6 +225,7 @@ function ResultsPage() {
           to="/task-flows/run-computation/$id/settings"
           params={{ id: 'new' }}
         >
+          {/* CUSTOMIZE: back to settings button */}
           <Button variant="contained">Back to Optimization Settings</Button>
         </AppLink>
       </Box>

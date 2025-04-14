@@ -46,9 +46,11 @@ function ComputationLayout() {
                   to=".."
                   data-testid="rnc-list-link"
                 >
+                  {/* CUSTOMIZE: breadcrumb link */}
                   Scenario List
                 </AppLink>
                 <Typography color="text.primary">
+                  {/* CUSTOMIZE: breadcrumb label */}
                   Optimization Scenario 1
                 </Typography>
               </Breadcrumbs>

@@ -51,13 +51,16 @@ function ListPage() {
           >
             <Box flex={1}>
               <Typography variant="h6" component="h1">
+                {/* CUSTOMIZE: page title */}
                 Scenario List
               </Typography>
               <Typography variant="subtitle1" component="p">
+                {/* CUSTOMIZE: page description */}
                 Scenarios represent a set of analysis inputs / parameters /
                 settings and the results of that analysis.
               </Typography>
             </Box>
+            {/* CUSTOMIZE: new scenario button */}
             <Button
               variant="contained"
               onClick={handleNewScenario}
