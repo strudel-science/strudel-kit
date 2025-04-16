@@ -43,7 +43,7 @@ function ComputationLayout() {
                 <AppLink
                   underline="hover"
                   color="inherit"
-                  to=".."
+                  to="/task-flows/run-computation"
                   data-testid="rnc-list-link"
                 >
                   {/* CUSTOMIZE: breadcrumb link */}
