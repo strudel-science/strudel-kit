@@ -32,14 +32,28 @@ export const getSubRoutes = (flatRoutes: AnyRoute[], subRouteName: string) => {
   });
 };
 
+export const getTaskFlowRoutes = (flatRoutes: AnyRoute[]) => {
+  return flatRoutes.filter((route: AnyRoute) => {
+    const pathParts = route.fullPath.split('/').filter((d: string) => d);
+    const lastCharacter = route.fullPath[route.fullPath.length - 1];
+    if (
+      pathParts.length === 1 &&
+      pathParts[0] !== 'playground' &&
+      pathParts[0] !== undefined &&
+      lastCharacter === '/'
+    ) {
+      return route;
+    }
+  });
+};
+
 export const getTopLevelRoutes = (flatRoutes: AnyRoute[]) => {
   return flatRoutes.filter((route: AnyRoute) => {
     const pathParts = route.fullPath.split('/').filter((d: string) => d);
     const lastCharacter = route.fullPath[route.fullPath.length - 1];
     if (
       pathParts.length === 1 &&
-      pathParts[0] !== 'task-flows' &&
-      pathParts[0] !== 'examples' &&
+      (pathParts[0] === 'playground' || pathParts[0] === undefined) &&
       lastCharacter === '/'
     ) {
       return route;
