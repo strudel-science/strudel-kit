@@ -22,31 +22,49 @@ npx degit strudel-science/strudel-kit/src/pages/search-data-repositories my-sear
 
 ## File Structure
 
-```
-my-taskflow
-├── _components
-│  ├── DataListCard.tsx
-│  ├── DataListPanel.tsx
-│  ├── FiltersPanel.tsx
-│  └── PreviewPanel.tsx
-├── _config
-│  ├── taskflow.config.ts
-│  └── taskflow.types.ts
-├── [id].tsx
-├── _layout.tsx
-└── index.tsx
+```py
+search-data-repositories
+├── -components
+│  ├── DataListCard.tsx # Card component for each data item
+│  ├── DataListPanel.tsx # Panel to contain the data cards
+│  ├── FiltersPanel.tsx # Left side panel of filters
+│  └── PreviewPanel.tsx # Right panel displayable on row-click
+├── $id.tsx # Detail page for a single data item
+└── index.tsx # Data search and explore page
 ```
 
-## Pages
+## Pages and Layouts
 
-#### `index.tsx`
+### `index.tsx`
 
-**URL Route**: `/`  
 First page of the Search Data Repositories Task Flow. Displays a list of data cards, filters panel, and a data preview panel.
 
-#### `[id].tsx`
+<CodeAndPreviewButtons codeUrl="#" previewUrl="#" />
 
-**URL Route**: `/:id`  
+#### Customizable items
+
+- Filter definitions
+- `DataListPanel.tsx`
+  - Main data source
+  - Query mode (client or server)
+- `DataListCard.tsx`
+  - Data item title field
+  - Data item summary field
+  - Data item tags field
+- `PreviewPanel.tsx`
+  - Preview content
+
+<Divider />
+
+### `$id.tsx`
+
 Data detail page of the Search Data Repositories Task Flow. When a user drills into a record from the main page, the detail page shows more data about the selected item.
 
-## Customization
+<CodeAndPreviewButtons codeUrl="#" previewUrl="#" />
+
+#### Customizable items
+
+- Detail page data source
+- Unique ID field for the detail page data source
+- Detail page query mode (client or server)
+- Detail page content

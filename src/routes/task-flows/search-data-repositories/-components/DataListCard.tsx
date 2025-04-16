@@ -23,7 +23,6 @@ export const DataListCard: React.FC<DataListCardProps> = ({
     setPreviewItem(item);
   };
 
-  // Content to render on the page for this component
   return (
     <Stack
       className={previewItem?.id === item.id ? 'selected' : ''}
@@ -59,6 +58,7 @@ export const DataListCard: React.FC<DataListCardProps> = ({
             params={{ id: item.id }}
             underline="hover"
           >
+            {/* CUSTOMIZE: item title field */}
             {item.title}
           </AppLink>
         </Typography>
@@ -71,7 +71,8 @@ export const DataListCard: React.FC<DataListCardProps> = ({
               overflow: 'hidden',
             }}
           >
-            {item.summary} test
+            {/* CUSTOMIZE: item summary field */}
+            {item.summary}
           </Typography>
         )}
         {item.tags && (
@@ -84,6 +85,7 @@ export const DataListCard: React.FC<DataListCardProps> = ({
               overflow: 'hidden',
             }}
           >
+            {/* CUSTOMIZE: item tags field */}
             {item.tags.map((tag: string, i: number) => {
               if (i < item.tags.length - 1) {
                 return (

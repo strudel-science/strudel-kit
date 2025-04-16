@@ -12,6 +12,7 @@ export const Route = createFileRoute('/task-flows/search-data-repositories/')({
   component: DatasetExplorer,
 });
 
+// CUSTOMIZE: the filter definitions
 const filterConfigs: FilterConfig[] = [
   {
     /**
@@ -101,9 +102,6 @@ function DatasetExplorer() {
     setPreviewItem(null);
   };
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <FilterContext>
       <Box>

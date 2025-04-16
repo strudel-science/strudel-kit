@@ -63,9 +63,12 @@ const attachedFilesColumns: GridColDef[] = [
 function DatasetDetail() {
   const { id } = Route.useParams();
   const { data } = useDetailQuery({
+    // CUSTOMIZE: the detail page data source
     dataSource: 'dummy-data/datasets.json',
+    // CUSTOMIZE: the unique ID field for the detail page data source
     dataIdField: 'id',
     paramId: id,
+    // CUSTOMIZE: the query mode (client or server)
     queryMode: 'client',
     staticParams: null,
   });
@@ -79,9 +82,6 @@ function DatasetDetail() {
     setDataTabsValue(newValue);
   };
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <Box>
       <PageHeader

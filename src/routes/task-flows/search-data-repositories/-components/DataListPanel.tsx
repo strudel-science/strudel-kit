@@ -43,9 +43,11 @@ export const DataListPanel: React.FC<DataListPanelProps> = ({
   const [offset, setOffest] = useState((page - 1) * pageSize);
   const [total, setTotal] = useState(1);
   const [paginatedCards, setPaginatedCards] = useState<any[]>([]);
+  // CUSTOMIZE: the query mode
   const queryMode: 'client' | 'server' = 'client';
   const { isPending, isError, data, error } = useListQuery({
     activeFilters,
+    // CUSTOMIZE: the main data source
     dataSource: 'dummy-data/datasets.json',
     filterConfigs,
     offset,
@@ -93,7 +95,6 @@ export const DataListPanel: React.FC<DataListPanelProps> = ({
     }
   }, [cards, offset]);
 
-  // Content to render on the page for this component
   return (
     <Paper elevation={0}>
       <Stack
