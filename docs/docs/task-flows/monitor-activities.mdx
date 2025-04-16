@@ -2,8 +2,8 @@
 title: 'Monitor Activities'
 ---
 
-import CodeBlock from '@theme/CodeBlock';
-import ConfigJson from '!!raw-loader!../../../src/pages/monitor-activities/_config/taskflow.config';
+import Divider from '@mui/material/Divider';
+import { CodeAndPreviewButtons } from '@site/src/components/CodeAndPreviewButtons';
 
 # Monitor Activities
 
@@ -15,48 +15,59 @@ import ConfigJson from '!!raw-loader!../../../src/pages/monitor-activities/_conf
 
 ## Use this Task Flow
 
-Before continuing, make sure you have followed the instructions to [install the strudel-cli](/strudel-kit/docs/getting-started/installation).
-
-From the root of your app, run the following on the command line:
-
 ```
-strudel add-taskflow my-taskflow --template monitor-activities
+cd src/pages
+npx degit strudel-science/strudel-kit/src/pages/monitor-activities my-monitor-activities
 ```
 
-## Generated Files
+## File Structure
 
-```
-my-taskflow
-├── _config
-│  ├── taskflow.config.ts
-│  └── taskflow.types.ts
-├── _layout.tsx
-├── calendar.tsx
-├── detail.tsx
-└── index.tsx
+```py
+monitor-activities
+├── -tests
+│  └── monitor-activities.cy.ts # End-to-end test for this Task Flow
+├── calendar.tsx # Calendar view of all activities (work in progress)
+├── detail.tsx # Detail page for a given activity
+└── index.tsx # List view of activities
 ```
 
-## Pages
+## Pages and Layouts
 
-#### `index.tsx`
+### `index.tsx`
 
-**URL Route**: `/`  
 First page of the Monitor Activities Task Flow. Displays a list of records that a user can drill into.
 
-#### `detail.tsx`
+<CodeAndPreviewButtons codeUrl="#" previewUrl="#" />
 
-**URL Route**: `/detail`  
+#### Customizable items
+
+- List view table columns
+- List view data source
+- Data source unique ID field
+- Initial sort field
+
+<Divider />
+
+### `detail.tsx`
+
 Detail page of the Monitor Activities Task Flow. When a user drills into a record, this page displays a more data about that particular activity.
 
-#### `calendar.tsx`
+<CodeAndPreviewButtons codeUrl="#" previewUrl="#" />
 
-**URL Route**: `/calendar`  
+#### Customizable items
+
+- Detail data source
+- Events table columns
+- Events data unique ID field
+- Title field
+- Plot data
+
+<Divider />
+
+### `calendar.tsx`
+
 (Work in progress) Calendar page of the Monitor Activities Task Flow. Displays all activities by date in a calendar visualization.
 
-## Configuration
+<CodeAndPreviewButtons codeUrl="#" previewUrl="#" />
 
-This Task Flow can be configured from the `taskflow.config.ts` file in the `_config` directory of the generated template files.
-
-<CodeBlock language="ts" title="taskflow.config.ts">
-  {ConfigJson}
-</CodeBlock>
+#### Customizable items

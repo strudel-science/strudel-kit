@@ -12,7 +12,17 @@ import { cleanPath } from '../utils/queryParams.utils';
  */
 export const TopBar: React.FC = () => {
   return (
-    <AppBar color="default" position="static">
+    <AppBar
+      color="default"
+      position="static"
+      component="nav"
+      sx={{
+        backgroundColor: 'white',
+        borderBottom: '1px solid',
+        borderBottomColor: 'grey.300',
+        boxShadow: 'none',
+      }}
+    >
       <Toolbar>
         <Stack
           direction="row"
@@ -43,15 +53,10 @@ export const TopBar: React.FC = () => {
             )}
           </AppLink>
           <AppLink to="/">
-            <Typography variant="h6" component="div">
+            <Typography variant="h6" component="div" fontWeight="bold">
               {config.navbar.title}
             </Typography>
           </AppLink>
-          {config.navbar.items.map((item, i) => (
-            <AppLink key={`${item.path}-${i}`} to={item.path}>
-              {item.label}
-            </AppLink>
-          ))}
         </Stack>
         <IconButton size="large" edge="start" color="inherit">
           <AccountCircleIcon />
