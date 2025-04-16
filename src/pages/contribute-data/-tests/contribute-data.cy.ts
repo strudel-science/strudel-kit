@@ -1,6 +1,6 @@
 describe('The Contribute Data Task Flow', () => {
   beforeEach(() => {
-    cy.visit('/task-flows/contribute-data');
+    cy.visit('/contribute-data');
   });
 
   it('successfully loads', () => {
