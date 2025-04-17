@@ -26,6 +26,7 @@ export const DataListCard: React.FC<DataListCardProps> = ({
   return (
     <Stack
       className={previewItem?.id === item.id ? 'selected' : ''}
+      data-testid="sdr-data-list-card"
       direction="row"
       onClick={() => handleItemClick()}
       sx={{
