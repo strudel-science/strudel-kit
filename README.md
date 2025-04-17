@@ -63,7 +63,7 @@ Push your code to the `my-repo` remote repository on GitHub with
 git push my-repo <branch-name>
 ```
 
-When pushing for the first time, this will trigger an authorization flow.
+When pushing for the first time, this will trigger a device flow. Follow the onscreen instructions to authorize your GitHub account.
 
 ## Learn More
 
