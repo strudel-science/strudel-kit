@@ -16,6 +16,6 @@ describe('The Search Data Repositories Task Flow', () => {
   it('opens the preview panel', () => {
     cy.wait(3000);
     cy.get('div[data-testid="sdr-data-list-card"]').first().click();
-    cy.contains('Summary');
+    cy.contains('Data from Decadal Change');
   });
 });
