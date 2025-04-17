@@ -8,7 +8,7 @@ This library provides a suite of templates to implement UIs for various differen
 
 ## Getting Started on the 2i2c Workshop Hub
 
-Pull the strudel-kit repository from GitHub into the 2i2c workshop hub by clicking the following nbgitpuller link:
+Pull the [strudel-kit](https://github.com/strudel-science/strudel-kit) repository from GitHub into the 2i2c workshop hub by clicking the following nbgitpuller link:
 
 - [nbgitpuller](https://strudel.2i2c.cloud/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fstrudel-science%2Fstrudel-kit&urlpath=vscode%2F%3Ffolder%3D%2Fhome%2Fjovyan%2Fstrudel-kit&branch=main)
 
@@ -29,6 +29,41 @@ npm start
 Follow the port forwarding to [https://strudel.2i2c.cloud/user/<your-username>/proxy/absolute/5175/](https://strudel.2i2c.cloud/user-redirect/proxy/absolute/5175/) to view the app in the browser.
 
 Begin modifying the templates in `src/pages`.
+
+## Push your code to GitHub
+
+### Create a remote repository
+
+From the [strudel-kit](https://github.com/strudel-science/strudel-kit) GitHub repository, click on the _Use this template_ button to create your own copy of the code in your GitHub account.
+
+Choose a repository name, e.g. `strudel-kit`, and click _Create repository_.
+
+Once the repository is created, make a note of your GitHub remote HTTPS URL by clicking the _Code_ button, e.g. `https://github.com/<your-username>/strudel-kit.git`.
+
+### Add the remote repository in the 2i2c workshop hub
+
+In the 2i2c workshop hub, add the remote repository you have just created with
+
+```bash
+git remote add my-repo https://github.com/<your-username>/strudel-kit.git
+```
+
+Git add any changes to the codebase as normal.
+
+When signing your commits for the first time, you may need to set
+
+```bash
+git config --global user.email "<your-email-address>"
+git config --global user.name "<your-github-username>"
+```
+
+Push your code to the `my-repo` remote repository on GitHub with
+
+```bash
+git push my-repo <branch-name>
+```
+
+When pushing for the first time, this will trigger an authorization flow.
 
 ## Learn More
 
