@@ -13,6 +13,7 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 5175,
       strictPort: true,
+      allowedHosts: ['.strudel.2i2c.cloud'],
     },
   };
 });

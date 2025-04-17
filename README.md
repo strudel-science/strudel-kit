@@ -6,13 +6,13 @@ This library provides a suite of templates to implement UIs for various differen
 
 [Browse the Docs](https://strudel.science/strudel-kit/docs/)
 
-## Getting Started
+## Getting Started on the 2i2c Workshop Hub
 
-Clone the strudel-kit repository from github:
+Pull the strudel-kit repository from GitHub into the 2i2c workshop hub by clicking the following nbgitpuller link:
 
-```
-git clone git@github.com:strudel-science/strudel-kit.git
-```
+- [nbgitpuller](https://strudel.2i2c.cloud/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fstrudel-science%2Fstrudel-kit&urlpath=vscode%2F%3Ffolder%3D%2Fhome%2Fjovyan%2Fstrudel-kit&branch=main)
+
+Log into the hub by choosing a username and entering the shared password for the workshop hub (ask your instructor for this password).
 
 Install the dependencies:
 
@@ -26,7 +26,7 @@ Start up the app:
 npm start
 ```
 
-Open [http://localhost:5175](http://localhost:5175) to view the app in the browser.
+Follow the port forwarding to [https://strudel.2i2c.cloud/user/<your-username>/proxy/absolute/5175/](https://strudel.2i2c.cloud/user-redirect/proxy/absolute/5175/) to view the app in the browser.
 
 Begin modifying the templates in `src/pages`.
 
