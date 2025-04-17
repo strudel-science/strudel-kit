@@ -6,12 +6,7 @@ export const config = {
   navbar: {
     title: 'My Project',
     logo: 'strudel-logo-icon.png',
-    items: [
-      {
-        label: 'Playground',
-        path: '/playground',
-      },
-    ],
+    items: [],
   },
   footer: {
     info: 'Describe your project, place a copyright statement, or credit your funding organizations.',

@@ -2,8 +2,8 @@
 title: 'Compare Data'
 ---
 
-import CodeBlock from '@theme/CodeBlock';
-import ConfigJson from '!!raw-loader!../../../src/pages/compare-data/_config/taskflow.config';
+import Divider from '@mui/material/Divider';
+import { CodeAndPreviewButtons } from '@site/src/components/CodeAndPreviewButtons';
 
 # Compare Data
 
@@ -13,53 +13,77 @@ import ConfigJson from '!!raw-loader!../../../src/pages/compare-data/_config/tas
 - [Live example](https://strudel.science/strudel-kit/#/compare-data)
 - [Source code](https://github.com/strudel-science/strudel-kit/tree/main/strudel-taskflows/src/pages/compare-data)
 
-## Use this Task Flow
+## File Structure
 
-Before continuing, make sure you have followed the instructions to [install the strudel-cli](/strudel-kit/docs/getting-started/installation).
-
-From the root of your app, run the following on the command line:
-
-```
-strudel add-taskflow my-taskflow --template compare-data
-```
-
-## Generated Files
-
-```
-my-taskflow
-├── _config
-│  ├── taskflow.config.ts
-│  └── taskflow.types.ts
-├── _context
-│  ├── ContextProvider.tsx
-│  └── actions.ts
-├── _layout.tsx
-├── compare.tsx
-├── index.tsx
-└── new.tsx
+```py
+compare-data
+├── -context
+│  ├── ContextProvider.tsx # State management for this Task Flow
+│  └── actions.ts # Action functions that control the state
+├── -tests
+│  └── compare-data.cy.ts # End-to-end test for this Task Flow
+├── _layout
+│  ├── compare.tsx # Compare data page
+│  ├── index.tsx # Initial list view page
+│  └── new.tsx # Adding a new item page
+└── _layout.tsx # Layout wrapper for the pages
 ```
 
-## Pages
+## Pages and Layouts
 
-#### `index.tsx`
+### `_layout.tsx`
 
-**URL Route**: `/`  
+Layout wrapper for the three Task Flow pages.
+
+<CodeAndPreviewButtons codeUrl="#" />
+
+#### Customizable items
+
+- Data source for the main data table
+- Data ID field for the main data table
+- Columns for the main data table
+
+<Divider />
+
+### `_layout/index.tsx`
+
 First page of the Compare Data Task Flow. Displays a list of selectable records for a user to compare.
 
-#### `compare.tsx`
+<CodeAndPreviewButtons codeUrl="#" previewUrl="#" />
 
-**URL Route**: `/compare`  
+#### Customizable items
+
+- List page title
+- List page description
+- Compare button
+- New button
+
+<Divider />
+
+### `_layout/compare.tsx`
+
 Compare page of the Compare Data Task Flow. When a user selects records to compare and initiates a comparison, this page displays a specialized table for comparing the selected records.
 
-#### `new.tsx`
+<CodeAndPreviewButtons codeUrl="#" previewUrl="#" />
 
-**URL Route**: `/new`  
+#### Customizable items
+
+- Compare page title
+- Compare page description
+- Back button
+- New button
+
+<Divider />
+
+### `_layout/new.tsx`
+
 New record page of the Compare Data Task Flow. Displays a form for generating a new record in the data.
 
-## Configuration
+<CodeAndPreviewButtons codeUrl="#" previewUrl="#" />
 
-This Task Flow can be configured from the `taskflow.config.ts` file in the `_config` directory of the generated template files.
+#### Customizable items
 
-<CodeBlock language="ts" title="taskflow.config.ts">
-  {ConfigJson}
-</CodeBlock>
+- New page title
+- New page description
+- Save button
+- Form elements

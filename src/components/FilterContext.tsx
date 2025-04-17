@@ -4,7 +4,7 @@ import React, {
   useEffect,
   useReducer,
 } from 'react';
-import { FilterOperator } from './FilterField';
+import { FilterOperator } from '../types/filters.types';
 
 export interface DataFilter {
   field: string;
