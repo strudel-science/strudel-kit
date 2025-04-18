@@ -77,3 +77,7 @@ STRUDEL Kit is built on top of the Material UI (MUI) component library. [Read mo
 STRUDEL Kit welcomes contributions of all kinds! Learn how to submit suggestions and changes in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 [strudel.science](https://strudel.science)
+
+### Maintaining the workshop hub branch
+
+The `workshop-hub` branch can fall out of sync with the `main` branch over time. Keep the `workshop-hub` branch up to date by periodically merging in changes from the `main` branch.
