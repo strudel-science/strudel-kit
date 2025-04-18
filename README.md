@@ -48,7 +48,7 @@ Once the repository is created, make a note of your GitHub remote HTTPS URL by c
 In the 2i2c workshop hub, add the remote repository you have just created with
 
 ```bash
-git remote add <remote-name> https://github.com/<your-username>/strudel-kit.git
+git remote set-url origin <https://github.com/<your-username>/strudel-kit.git
 ```
 
 Git add any changes to the codebase as normal.
