@@ -81,3 +81,7 @@ STRUDEL Kit welcomes contributions of all kinds! Learn how to submit suggestions
 ### Maintaining the workshop hub branch
 
 The `workshop-hub` branch can fall out of sync with the `main` branch over time. Keep the `workshop-hub` branch up to date by periodically merging in changes from the `main` branch.
+
+### Maintaining the workshop hub (for instructors)
+
+After each workshop, please contact the hub champion (@codytodonnell) to reset the shared password to access the hub.
