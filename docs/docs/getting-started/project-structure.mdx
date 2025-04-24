@@ -59,7 +59,18 @@ There are quite a few directories and files that are part of the project structu
 └── vite.config.ts # Vite configuration
 ```
 
+The primary areas for customization purposes are `src/pages` and `src/components`. The `src/pages` directory contains all of the unique pages and routing structure in the app. Each Task Flow template is a top-level directory in `src/pages`. To see a breakdown of a specific Task Flow, go to its page in the docs under the "Task Flows" section.
+
+You can also customize the global theme in `src/theme.tsx`. This uses the MUI theme object to make app-wide style adjustments. See [MUI's theme documentation](https://mui.com/material-ui/customization/default-theme/).
+
 <Grid container columnSpacing={2} rowSpacing={2} marginBottom={2}>
+  <Grid item sm={4}>
+    <LinkCard
+      href="/strudel-kit/docs/task-flows/overview"
+      target="_self"
+      label="Task Flows"
+    />
+  </Grid>
   <Grid item sm={4}>
     <LinkCard
       href="/strudel-kit/docs/guides/tutorials/basic-app-with-strudel/customize-taskflow"
