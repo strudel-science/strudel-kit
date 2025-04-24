@@ -31,7 +31,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'getting-started/installation',
             'getting-started/quickstart',
-            'getting-started/first-steps',
+            'getting-started/project-structure',
           ],
         },
         {
