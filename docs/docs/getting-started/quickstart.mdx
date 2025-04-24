@@ -5,19 +5,13 @@ title: 'Quickstart'
 import { Grid } from '@mui/material';
 import { LinkCard } from '@site/src/components/LinkCard';
 
-Install strudel-cli from PyPi:
+Download the strudel-kit code:
 
 ```bash
-pip install strudel-cli
+npx degit strudel-science/strudel-kit my-app
 ```
 
-Create a strudel base app:
-
-```bash
-strudel create-app my-app
-```
-
-This will generate a base web application in a new directory called `my-app`. Go into the new directory:
+This will generate a base web application with all of the Task Flow Templates in a new directory called `my-app`. Go into the new directory:
 
 ```bash
 cd my-app
@@ -35,17 +29,9 @@ Start up your app locally:
 npm start
 ```
 
-Open your app in the browser at http://localhost:5173
+Open your app in the browser at http://localhost:5175
 
-Add a Task Flow to your app:
-
-```bash
-strudel add-taskflow my-taskflow --template compare-data
-```
-
-This generates new template files for your Task Flow in `my-app/src/pages/my-taskflow`. Check out the [First Steps](/strudel-kit/docs/getting-started/first-steps) and [Configuration](/strudel-kit/docs/task-flows/overview) page for the template you are using to learn how to customize it.
-
-Navigate to http://localhost:5173/my-taskflow to see your new Task Flow.
+Customize Task Flow templates in `src/pages`.
 
 ## Learn more
 
@@ -56,14 +42,14 @@ Navigate to http://localhost:5173/my-taskflow to see your new Task Flow.
       target="_self"
       label="First Steps"
       description="Learn the basics with some guidance"
-    /> 
+    />
   </Grid>
   <Grid item sm={4}>
     <LinkCard
       href="/strudel-kit/docs/task-flows/overview"
       target="_self"
       label="Task Flows"
-      description="Learn how to configure Task Flows"
-    /> 
+      description="Learn how to customize Task Flows"
+    />
   </Grid>
 </Grid>
