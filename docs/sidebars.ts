@@ -45,11 +45,6 @@ const sidebars: SidebarsConfig = {
             },
             {
               type: 'doc',
-              label: 'Columns',
-              id: 'customization/columns',
-            },
-            {
-              type: 'doc',
               label: 'Combining Sections',
               id: 'customization/combine-sections',
             },
@@ -57,6 +52,11 @@ const sidebars: SidebarsConfig = {
               type: 'doc',
               label: 'Connecting Task Flows',
               id: 'customization/connect-task-flows-together',
+            },
+            {
+              type: 'doc',
+              label: 'Columns',
+              id: 'customization/columns',
             },
           ],
         },
