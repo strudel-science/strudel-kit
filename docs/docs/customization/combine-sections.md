@@ -13,13 +13,14 @@ In this example, you will copy the charts and table from the Results page in the
 If you haven't already, add both the Run Computation and Compare Data Task Flows into your app:
 
 ```
-strudel add-taskflow first-taskflow -t run-computation
-strudel add-taskflow second-taskflow -t compare-data
+cd src/pages
+npx degit strudel-science/strudel-kit/src/pages/run-computation first-taskflow
+npx degit strudel-science/strudel-kit/src/pages/compare-data second-taskflow
 ```
 
 ### 2. Locate the file with the desired components
 
-The table and charts live in `[id]/results.tsx` inside the Task Flow folder that uses the Run Computation template. In this example that directory would be named `first-taskflow`.
+The table and charts live in `_layout/$id/_layout/results.tsx` inside the Task Flow folder that uses the Run Computation template. In this example that directory would be named `first-taskflow`.
 
 ### 3. Copy the components
 
@@ -53,7 +54,7 @@ Scan the components and elements in the final `return` statement for the compone
 
 ### 4. Locate the destination file
 
-The comparison page of the Compare Data Task Flow lives in `compare.tsx`. In this example its parent directory would be named `second-taskflow`. Open this file. This is where we want to paste our new components.
+The comparison page of the Compare Data Task Flow lives in `_layout/compare.tsx`. In this example its parent directory would be named `second-taskflow`. Open this file. This is where we want to paste our new components.
 
 ### 5. Paste the components
 
