@@ -226,18 +226,27 @@ You should now have a fully functioning Explore Data Task Flow page when you nav
 
 This is great, but it would be good to be able to access this page from the navbar instead. Let's add a link to the Solar System page in the top navigation bar.
 
-## Update the Navigation
+## Update the Navigation Bar
+
+Open the file located at `src/components/TopBar.tsx`. This component controls the contents of the top navigation bar.
+
+Locate the last closing `</AppLink>` and add another `<AppLink>` component directly after:
+
+```jsx title="TopBar.tsx"
+<AppLink to="/solar-system">Solar System</AppLink>
+```
+
+You may also want to update the title in the previous `<AppLink>` to say something other than "My Project":
+
+```jsx title="TopBar.tsx"
+<AppLink to="/">
+  <Typography variant="h6" component="div" fontWeight="bold">
+    Planets
+  </Typography>
+</AppLink>
+```
 
 To do this we are going to open the global strudel configuration file `strudel.config.ts` located at the root of our app.
-
-Right now there is one item, `Playground`, in the list of items to render in the `navbar`. We don't need this item so let's replace it with a link to our solar system page:
-
-```js
-{
-  label: 'Solar System',
-  path: '/solar-system'
-}
-```
 
 Save that file and you should see a new "Solar System" link in the navbar.
 
