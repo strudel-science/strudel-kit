@@ -4,31 +4,30 @@ STRUDEL generates a default home page in `src/pages/index.tsx`. In this section 
 
 First, let's remove the contents of the existing home page. Replace the contents of `src/pages/index.tsx` with the following barebones component:
 
-```jsx
+```jsx title="index.tsx"
 import { Container } from '@mui/material';
-import { Layout } from '../components/Layout';
+import { createFileRoute } from '@tanstack/react-router';
+
+export const Route = createFileRoute('/')({
+  component: Index,
+});
 
 /**
- * Home page component
+ * Home page component that renders at the root route /
  */
-const HomePage: React.FC = () => {
-
+function Index() {
   return (
-    <Layout>
-      <Container
-        maxWidth="lg"
-        sx={{
-          marginTop: 3,
-          marginBottom: 3,
-        }}
-      >
-
-      </Container>
-    </Layout>
-  )
+    <Container
+      maxWidth="lg"
+      sx={{
+        marginTop: 3,
+        marginBottom: 3,
+      }}
+    >
+      My home page
+    </Container>
+  );
 }
-
-export default HomePage;
 ```
 
 Now, let's add a title. To add a title, use the `Typography` component from MUI. This is a general component for different variations of text. You can read more about the `Typography` component on the[ MUI `Typography` documentation page](https://mui.com/material-ui/react-typography/).
