@@ -1,9 +1,8 @@
 import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import React from 'react';
-import { config } from '../../strudel.config';
+import { cleanPath } from '../utils/queryParams.utils';
 import { AppLink } from './AppLink';
 import { ImageWrapper } from './ImageWrapper';
-import { cleanPath } from '../utils/queryParams.utils';
 
 /**
  * Bottom footer component
@@ -26,27 +25,24 @@ export const Footer: React.FC = () => {
                 flexWrap: 'wrap',
               }}
             >
-              {config.footer.links.map((link, i) => (
-                <AppLink key={`${link.path}-${i}`} to={link.path}>
-                  {link.label}
-                </AppLink>
-              ))}
+              <AppLink to="/">Home</AppLink>
             </Stack>
           </Grid>
           <Grid item md={6}>
             <Stack alignItems="center">
-              <Typography>{config.footer.info}</Typography>
-              {config.footer.image && (
-                <AppLink to="/">
-                  <ImageWrapper height={60}>
-                    <img
-                      src={cleanPath(
-                        `${import.meta.env.BASE_URL}/${config.footer.image}`
-                      )}
-                    />
-                  </ImageWrapper>
-                </AppLink>
-              )}
+              <Typography>
+                Describe your project, place a copyright statement, or credit
+                your funding organizations.
+              </Typography>
+              <AppLink to="/">
+                <ImageWrapper height={60}>
+                  <img
+                    src={cleanPath(
+                      `${import.meta.env.BASE_URL}/strudel-logo-header.png`
+                    )}
+                  />
+                </ImageWrapper>
+              </AppLink>
             </Stack>
           </Grid>
         </Grid>

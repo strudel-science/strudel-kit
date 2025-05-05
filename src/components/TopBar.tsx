@@ -1,11 +1,9 @@
-import { AppBar, IconButton, Toolbar, Typography, Stack } from '@mui/material';
-import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { AppBar, IconButton, Stack, Toolbar, Typography } from '@mui/material';
 import React from 'react';
-import { AppLink } from './AppLink';
-import { config } from '../../strudel.config';
-import { ImageWrapper } from './ImageWrapper';
 import { cleanPath } from '../utils/queryParams.utils';
+import { AppLink } from './AppLink';
+import { ImageWrapper } from './ImageWrapper';
 
 /**
  * Top navigation bar component
@@ -32,29 +30,17 @@ export const TopBar: React.FC = () => {
           }}
         >
           <AppLink to="/">
-            {!config.navbar.logo && (
-              <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-              >
-                <HomeIcon />
-              </IconButton>
-            )}
-            {config.navbar.logo && (
-              <ImageWrapper height={30}>
-                <img
-                  src={cleanPath(
-                    `${import.meta.env.BASE_URL}/${config.navbar.logo}`
-                  )}
-                />
-              </ImageWrapper>
-            )}
+            <ImageWrapper height={30}>
+              <img
+                src={cleanPath(
+                  `${import.meta.env.BASE_URL}/strudel-logo-icon.png`
+                )}
+              />
+            </ImageWrapper>
           </AppLink>
           <AppLink to="/">
             <Typography variant="h6" component="div" fontWeight="bold">
-              {config.navbar.title}
+              My Project
             </Typography>
           </AppLink>
         </Stack>
