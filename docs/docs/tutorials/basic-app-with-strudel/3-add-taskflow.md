@@ -1,51 +1,64 @@
-# Add a Task Flow to Your App
+# Configure a Task Flow
 
-### Introduction
+## Introduction
 
-Task Flows are are a set of steps (represented by a series of screens) that help a user accomplish a task and represent how a user progresses through a UI. STRUDEL has several Task Flow templates that can be added into a base app as a new set of pages. In this example, you will add the Task Flow called "Explore Data".
+Task Flows are are a set of steps (represented by a series of screens) that help a user accomplish a task and represent how a user progresses through a UI. STRUDEL has several Task Flow templates that built into a the starter app. In this example, you will work with the Task Flow called "Explore Data". Let's configure this Task Flow so that users can search and filter data about planets in the Solar System.
 
-### Add a Task Flow
+## Remove Unused Task Flows
 
-Let's extend your base app to include a new section where users search and filter data about planets in the Solar System. The first thing you will do is add a new Task Flow called `solar-system` that uses the `explore-data` template. Make sure your terminal is in the directory of your app (i.e., `learning-strudel/planets-app` in this example), then, run this command:
+Before we start working with the Explore Data Task Flow, let's remove the Task Flows that we aren't going to be working with. Go to the `src/pages` directory and delete the following folders (don't worry, you can bring them back using the command-line later if you wish):
 
-```
-strudel add-taskflow solar-system --template explore-data
-```
+- `compare-data`
+- `contribute-data`
+- `monitor-activities`
+- `playground`
+- `run-computation`
+- `search-data-repositories`
 
-If this succeeds, then the you will see a message in the terminal like:
+:::info Reference
+To re-add or duplicate a Task Flow, you can navigate to the `src/pages` directory and run:
 
-```
-Successfully added a task flow to your strudel app!
-Your new task flow was built in /some/path/to/learning-strudel/planets-app/src/pages/solar-system
-```
+`npx degit strudel-science/strudel-kit/src/pages/TASK-FLOW-NAME`
+:::
 
-You should notice two new things:
+## Rename Your Task Flow
 
-1. A new directory called `solar-system` inside `src/pages`
-2. A new link on the home page to `/solar-system`
+Let's rename the Explore Data Task Flow something that is more appropriate for our example. Inside the `src/pages` directory, rename the `explore-data` directory `solar-system`. Doing this will change the URL route to this Task Flow's page. It will also update the link to the Task Flow on the home page. You should now be able to navigate to your Task Flow template at http://localhost:5175/solar-system.
 
-First let's break down the new files that were added:
+If you followed that link, you will be taken to the default Explore Data page. Right now it is configured with default data and settings. Let's keep going to configure this Task Flow for own usecase.
+
+## Task Flow Breakdown
+
+Let's look at the contents of `src/pages/solar-system`, the directory that holds the Explore Data Task Flow template:
 
 ```py
 solar-system
-├── _components
-│  ├── DataView.tsx # Data table on the main page
-│  ├── DataViewHeader.tsx # Header over the data table on the main page
-│  ├── FiltersPanel.tsx # Filters panel on the main page
-│  └── PreviewPanel.tsx # Preview panel on the main page
-├── _config
-│  ├── taskflow.config.ts # Task Flow configuration file
-│  └── taskflow.types.ts
-├── [id].tsx # Data detail page component
-├── _layout.tsx # Layout wrapper component
-└── index.tsx # Main page component
+├── -components
+│  ├── DataView.tsx # Data grid component
+│  ├── DataViewHeader.tsx # Header above data table
+│  ├── FiltersPanel.tsx # Left side panel of filters
+│  └── PreviewPanel.tsx # Panel displayable on row-click
+├── -tests
+│  └── explore-data.cy.ts # End-to-end test for this Task Flow
+├── $id.tsx # Detail page for a single row
+└── index.tsx # Data explorer page
 ```
 
-These files are from the Explore Data Task Flow template. They include four main pieces: page components, a configuration file, a layout component, and inner page components. If you want to read about each of these in detail, check out the [Task Flows](/strudel-kit/docs/task-flows/overview) page. Right now, we will cover the basics as each piece comes up.
+There are three types of files in this template:
 
-Next, if you click on the new `/solar-system` link on the home page, you will be taken to the default Explore Data page. Right now it is configured with default data and settings. Let's keep going to configure this Task Flow for own usecase.
+1. Page components
+2. Sub-components
+3. Tests
 
-### Add a data source
+The page components are the files that aren't inside a directory prefixed with `-`. In this template that includes `$id.tsx` and `index.tsx`. These define the pages and URL routes that exist in our application. The strudel-kit uses TanStack Router to handle this. You may find it useful to scan their [documentation and conventions](https://tanstack.com/router/latest/docs/framework/react/routing/file-based-routing).
+
+Sub-components are the files nested inside of the `-components` directory. These are pieces of pages that are broken into their own files for brevity. Typically these are used inside page components.
+
+The last type of file in this template is a test. This tests the basic functionality and flow of the Task Flow.
+
+You can read more about the structure of Task Flow templates on the Task Flows [Overview](/strudel-kit/docs/task-flows/overview) page in the strudel-kit docs.
+
+## Add a Data Source
 
 Right now the Task Flow you created is pulling its data from the `public/dummy-data/` directory. Let's instead create a new new data file that we will use for our Task Flow.
 
@@ -65,121 +78,155 @@ Neptune,49572, 1.024×10^26, 1.76917, 0.00859048, 30.06992276, 11, 164.79, 0.671
 
 Save this file in `public/data` and name it `planets.csv`.
 
-### Edit the Task Flow Configuration
+### Edit the Task Flow Data Source
 
-Now you need to tell the Task Flow to use the new data source you just created. Open up the solar-system Task Flow's configuration file in `src/pages/solar-system/_config/taskflow.config.ts`.
+Now you need to tell the Task Flow to use the new data source you just created. For this template, the data source is referenced inside the file `solar-system/-components/DataView.tsx`.
 
 :::info Reference
 
-`taskflow.config.ts` contains configurable properties for your Task Flow. Read more about this file on the [Task Flows](/strudel-kit/docs/task-flows/overview) page.
+The primary configurable portions of a Task Flow template are marked with comments that say `CUSTOMIZE:`. You might find it useful to do a project-wide search for this phrase when you are setting up a new Task Flow.
 :::
 
-Replace the `data` object at the top of the file with the following:
+Inside `DataView.tsx`, locate the following line of code:
 
-```js
-data: {
-    /**
-     * Data definition for the initial items list
-     */
-    list: {
-      /**
-       * URL or path to the data source
-       */
-      source: "data/planets.csv",
-      /**
-       * Key-value object of params that should always be included in the query URL
-       */
-      staticParams: null,
-      /**
-       * Name of the field in the data that represents a unique identifier for each record.
-       */
-      idField: "Name",
-      /**
-       * Method by which data should be filtered, either client or server.
-       */
-      queryMode: "client",
-    },
-    /**
-     * Data definition for the item detail page
-     */
-    detail: {
-      source: "data/planets.csv",
-      staticParams: null,
-      idField: "Name",
-      queryMode: "client",
-    }
-  },
+```jsx
+dataSource: 'dummy-data/exoplanets.csv',
+```
+
+Now change this to reflect the path to your newly created CSV file:
+
+```jsx
+dataSource: 'data/planets.csv',
+```
+
+Then locate `dataIdField` and change this to `Name` (the unique column in your new dataset):
+
+```jsx
+const dataIdField = 'Id';
+```
+
+Becomes:
+
+```jsx
+const dataIdField = 'Name';
 ```
 
 Now instead of pointing to the default dataset, your Task Flow points to the planets dataset you made. Next, we need to change the page titles, table columns, and filters for the main `index` page.
 
-Replace the `pages` object with the following:
+## Modify Page Elements
 
-```js
-pages: {
-  index: {
-    /**
-     * Title to appear at the top of the main page.
-     */
-    title: "Solar System Explorer",
-    /**
-     * Text to appear underneath the title at the top of the main page.
-     */
-    description: "Explore data about the planets that orbit the Sun.",
-    /**
-     * List of column definition objects for the columns in the table on the main page.
-     */
-    tableColumns: [
-      {
-        field: "Name",
-        headerName: "Name",
-        width: 200
-      },
-      {
-        field: "Diameter",
-        headerName: "Diameter (km)",
-        width: 150
-      },
-      {
-        field: "Mass",
-        headerName: "Mass (kg)",
-        width: 150
-      },
-      {
-        field: "Inclination",
-        headerName: "Inclination (deg)",
-        width: 150
-      },
-      {
-        field: "Eccentricity",
-        headerName: "Eccentricity",
-        width: 150
-      }
-    ],
-    /**
-     * List of filters to display on the main page and use to filter the main table data.
-     * Each filter has a definition object to determine how it renders and functions.
-     */
-    tableFilters: [
-      {
-        field: "Diameter",
-        label: "Diameter (km)",
-        filterComponent: "Slider",
-        filterProps: {
-          min: 4000,
-          max: 150000
-        }
-      }
-    ]
-  }
-}
+Let's first start simple by changing the page titles for this Task Flow.
+
+### Page Titles
+
+Open up `src/pages/solar-system/index.tsx`. This is the initial page of the Task Flow. Scan this file for the `<PageHeader />` component:
+
+```jsx title="index.tsx"
+<PageHeader
+  // CUSTOMIZE: the page title
+  pageTitle="Explore Data App"
+  // CUSTOMIZE: the page description
+  description="Description of this app"
+  sx={{
+    marginBottom: 1,
+    padding: 2,
+  }}
+/>
 ```
 
-Save this file. You should now have a fully functioning Explore Data Task Flow page when you navigate to the `/solar-system` route. Test this out by navigating your browser to http://localhost:5173/solar-system.
+Replace the `pageTitle` prop value with `"Solar System Explorer"` and the `description` prop value with `"Explore data about the planets that orbit the Sun."`.
+
+:::info Reference
+
+A prop is like an input or argument for a React component. They are used to make components more reusable and dynamic.
+:::
+
+Your component should now look like this:
+
+```jsx title="index.tsx"
+<PageHeader
+  // CUSTOMIZE: the page title
+  pageTitle="Solar System Explorer"
+  // CUSTOMIZE: the page description
+  description="Explore data about the planets that orbit the Sun."
+  sx={{
+    marginBottom: 1,
+    padding: 2,
+  }}
+/>
+```
+
+Save this file and you should see the new page titles in your browser at http://localhost:5175/solar-system.
+
+### Filters
+
+The filters are also defined in the `index.tsx` file so keep that file open for this next step. Locate the array towards the top of the file called `filterConfigs`. This array defines which filters to render, how they should render, and how they should connect to the data.
+
+Replace that whole array definition with one that works with our new data source:
+
+```jsx title="index.tsx"
+// CUSTOMIZE: the filter definitions
+const filterConfigs: FilterConfig[] = [
+  {
+    field: "Diameter",
+    label: "Diameter (km)",
+    filterComponent: "Slider",
+    filterProps: {
+      min: 4000,
+      max: 150000
+    }
+  }
+];
+```
+
+Save this file and you should see the new filter in your browser at http://localhost:5175/solar-system.
+
+### Columns
+
+The columns to display in the table are defined in the `DataView.tsx` component inside the `-components` directory (the same one where we defined the data source). Open up that file and locate the `<SciDataGrid />` component.
+
+Inside this component is a prop called `columns`. Replace the value of this prop with an array of column definitions for our new dataset:
+
+```jsx title="DataView.tsx"
+// CUSTOMIZE: the table columns
+columns={[
+  {
+    field: "Name",
+    headerName: "Name",
+    width: 200
+  },
+  {
+    field: "Diameter",
+    headerName: "Diameter (km)",
+    width: 150
+  },
+  {
+    field: "Mass",
+    headerName: "Mass (kg)",
+    width: 150
+  },
+  {
+    field: "Inclination",
+    headerName: "Inclination (deg)",
+    width: 150
+  },
+  {
+    field: "Eccentricity",
+    headerName: "Eccentricity",
+    width: 150
+  }
+]}
+```
+
+Save this file and you should see the new columns show up in the table in your browser at http://localhost:5175/solar-system.
+
+You should now have a fully functioning Explore Data Task Flow page when you navigate to the `/solar-system` route!
 
 ![Screenshot of solar system Task Flow in a browser](/img/tutorial/start-explore-data-2.png)
 
 This is great, but it would be good to be able to access this page from the navbar instead. Let's add a link to the Solar System page in the top navigation bar.
+
+## Update the Navigation
 
 To do this we are going to open the global strudel configuration file `strudel.config.ts` located at the root of our app.
 
