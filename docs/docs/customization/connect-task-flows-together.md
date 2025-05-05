@@ -13,8 +13,9 @@ In this example, you will connect an Explore Data Task Flow with a Run Computati
 If you haven't already, add both the Explore Data and Run Computation Task Flows into your app:
 
 ```
-strudel add-taskflow explore -t explore-data
-strudel add-taskflow compute -t run-computation
+cd src/pages
+npx degit strudel-science/strudel-kit/src/pages/explore-data explore
+npx degit strudel-science/strudel-kit/src/pages/run-computation compute
 ```
 
 ### 2. Plan the page flow
@@ -26,19 +27,19 @@ First, you need to determine how the user should flow through the pages of the t
 For this flow, you want users to go from the `<PreviewPanel>` in the Explore Data Task Flow to the `<Settings>` page in the Run Computation Task Flow. The first thing you need to do is create a new button link in the `<PreviewPanel>` that links to the `<Settings>` page. Open up `PreviewPanel.tsx` inside the `_components` folder of the explore page and add a new link and button right next to the "View Details" button:
 
 ```jsx title="PreviewPanel.tsx"
-<Link component={RouterLink} to="/compute/scenario/settings">
+<AppLink to="/compute/scenario/settings">
   <Button variant="contained">Analyze</Button>
-</Link>
+</AppLink>
 ```
 
 In the `to` prop, you will notice that we are linking to the route of the settings page. Now, clicking this button will take us directly to that step. This is the most straightforward way to connect two Task Flows with STRUDEL Kit.
 
-To add a link back to the explore page from the settings page, open up `[id]/_layout.tsx` in the compute Task Flow folder, delete the whole `<Breadcrumbs>...</Breadcrumbs>` component, and replace it with a link button:
+To add a link back to the explore page from the settings page, open up `compute/_layout/$id/_layout.tsx` in the compute Task Flow folder, delete the whole `<Breadcrumbs>...</Breadcrumbs>` component, and replace it with a link button:
 
 ```jsx title="_layout.tsx"
-<Link component={RouterLink} to="/explore">
+<AppLink to="/explore">
   <Button variant="contained">Back to Explorer</Button>
-</Link>
+</AppLink>
 ```
 
 ## Optional Steps
@@ -49,23 +50,23 @@ If you do not need to keep the original Run Computation Task Flow intact, then y
 
 In this example, you are no longer using the `data-inputs.tsx` page or the `index.tsx` page in the compute Task Flow directory. At this point you can safely delete those two files.
 
-You should also delete the "Data Inputs" step from the `<Stepper>` component in `[id]/settings.tsx`, `[id]/running.tsx`, and `[id]/results.tsx`:
+You should also delete the "Data Inputs" step from the `<Stepper>` component in `settings.tsx`, `running.tsx`, and `results.tsx` which all live in `compute/_layout/$id/_layout`:
 
 ```jsx
-// Remove this code from `[id]/settings.tsx`, `[id]/running.tsx`, and `[id]/results.tsx`
+// Remove this code from `settings.tsx`, `running.tsx`, and `results.tsx`
 <Step key={taskflow.pages.dataInputs.title}>
   <StepLabel>
-    <Link
-      component={RouterLink}
-      to="../data-inputs"
+    <AppLink
+      to="/run-computation/$id/data-inputs"
+      params={{ id: 'new' }}
       sx={{ color: 'inherit', textDecoration: 'none' }}
     >
-      {taskflow.pages.dataInputs.title}
-    </Link>
+      Data Inputs
+    </AppLink>
   </StepLabel>
 </Step>
 ```
 
 ## Limitations and Next Steps
 
-These instructions have helped you connect the user interfaces of two different Task Flows but they did not cover how to connect the _data_ between two Task Flows. This is absolutely possible and necessary but requires more knowledge of the React state. If you would like help passing data between app sections and loading data dynamically based on URL parameters, check out the Telerik article on [React Basics: How to Use React Router v6](https://www.telerik.com/blogs/react-basics-how-to-use-react-router-v6), and Kent C. Dodds' article on [Application State Management in React](https://kentcdodds.com/blog/application-state-management-with-react).
+These instructions have helped you connect the user interfaces of two different Task Flows but they did not cover how to connect the _data_ between two Task Flows. This is absolutely possible and necessary but requires more knowledge of the React state. If you would like help passing data between app sections and loading data dynamically based on URL parameters, check out the Kent C. Dodds' article on [Application State Management in React](https://kentcdodds.com/blog/application-state-management-with-react).

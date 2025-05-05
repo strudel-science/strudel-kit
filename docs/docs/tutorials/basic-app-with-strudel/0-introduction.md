@@ -1,6 +1,6 @@
 # Tutorial Introduction
 
-In this tutorial you will learn the basics of how to build a web application using the STRUDEL Task Flow templates and STRUDEL CLI. By the end you will have your own customized version of the [Explore Data Task Flow](https://strudel.science/design-system/task-flows/explore-data/) running in a web browser on your computer.
+In this tutorial you will learn the basics of how to build a web application using the STRUDEL Task Flow templates. By the end you will have your own customized version of the [Explore Data Task Flow](https://strudel.science/design-system/task-flows/explore-data/) running in a web browser on your computer.
 
 ### Who is this tutorial for?
 

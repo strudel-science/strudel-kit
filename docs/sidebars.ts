@@ -31,7 +31,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'getting-started/installation',
             'getting-started/quickstart',
-            'getting-started/first-steps',
+            'getting-started/project-structure',
           ],
         },
         {
@@ -45,11 +45,6 @@ const sidebars: SidebarsConfig = {
             },
             {
               type: 'doc',
-              label: 'Columns',
-              id: 'customization/columns',
-            },
-            {
-              type: 'doc',
               label: 'Combining Sections',
               id: 'customization/combine-sections',
             },
@@ -57,6 +52,11 @@ const sidebars: SidebarsConfig = {
               type: 'doc',
               label: 'Connecting Task Flows',
               id: 'customization/connect-task-flows-together',
+            },
+            {
+              type: 'doc',
+              label: 'Columns',
+              id: 'customization/columns',
             },
           ],
         },
@@ -70,8 +70,7 @@ const sidebars: SidebarsConfig = {
               items: [
                 'tutorials/basic-app-with-strudel/introduction',
                 'tutorials/basic-app-with-strudel/setup',
-                'tutorials/basic-app-with-strudel/create-app',
-                'tutorials/basic-app-with-strudel/add-taskflow',
+                'tutorials/basic-app-with-strudel/configure-taskflow',
                 'tutorials/basic-app-with-strudel/customize-taskflow',
                 'tutorials/basic-app-with-strudel/customize-app',
                 'tutorials/basic-app-with-strudel/customize-home-page',
@@ -113,11 +112,6 @@ const sidebars: SidebarsConfig = {
             'components/LabelValueTable',
             'components/LinearMeter',
           ],
-        },
-        {
-          type: 'doc',
-          label: 'CLI',
-          id: 'cli/reference',
         },
       ],
     },

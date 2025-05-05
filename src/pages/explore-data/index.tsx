@@ -91,7 +91,9 @@ function DataExplorer() {
     <FilterContext>
       <Box>
         <PageHeader
+          // CUSTOMIZE: the page title
           pageTitle="Explore Data App"
+          // CUSTOMIZE: the page description
           description="Description of this app"
           sx={{
             marginBottom: 1,

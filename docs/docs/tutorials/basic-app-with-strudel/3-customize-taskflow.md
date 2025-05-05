@@ -6,7 +6,7 @@ Now that you have set up your initial task flow let's customize some of the cont
 
 Often you won't want to use all of the page elements that come with a Task Flow. For this tutorial, you remove the "Related Data" table in the preview panel that displays when you click on a row. Because you don't have any nested or linked data for each planet in the table, this element isn't useful to the UI right now.
 
-First, look inside the `src/app/solar-system/` directory that was generated when you first added your task flow:
+First, look inside the `src/pages/solar-system/` directory that was generated when you first added your task flow.
 
 These are the files that determine how this specific Task Flow will be rendered in the UI. Some of these files reference other components that are common to the whole app, but these components are specific to the `solar-system` Task Flow.
 

@@ -86,7 +86,7 @@ function Index() {
                       </Typography>
                       <Box>
                         <Typography fontSize="small">
-                          <code>{`/src/routes/index.tsx`}</code>
+                          <code>{`/src/pages/index.tsx`}</code>
                         </Typography>
                       </Box>
                     </Stack>
@@ -108,7 +108,7 @@ function Index() {
                         </Typography>
                         <Box>
                           <Typography fontSize="small">
-                            <code>{`/src/routes${route.id}index.tsx`}</code>
+                            <code>{`/src/pages${route.id}index.tsx`}</code>
                           </Typography>
                         </Box>
                       </Stack>
@@ -137,7 +137,7 @@ function Index() {
                           </Typography>
                           <Box>
                             <Typography fontSize="small">
-                              <code>{`/src/routes${route.id}index.tsx`}</code>
+                              <code>{`/src/pages${route.id}index.tsx`}</code>
                             </Typography>
                           </Box>
                         </Stack>

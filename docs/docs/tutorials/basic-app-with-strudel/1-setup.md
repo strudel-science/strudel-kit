@@ -1,60 +1,53 @@
-# Setup
+# Setup Your Project
 
-The current interface to using the STRUDEL Design System is a command-line tool written in Python. To use this tool, you need to set up a development environment that lets you invoke Python commands from a terminal.
+The first step is to start a terminal program. The rest of this tutorial will assume you are using a standard MacOS, UNIX, or [Windows PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) (not command.exe) terminal. This ensures that all the command line steps follow the same syntax.
 
-## Prerequisites
-
-STRUDEL Kit requires Python to run the CLI and Node.js with NPM to run the web applications you build. If you don't already have these tools on your system, use the links below to install them:
-
-- [Python 3.8+](https://www.python.org/downloads/)
-- [Node.js 18+ with NPM](https://nodejs.org/en/download)
-
-Confirm your NodeJS and NPM installation:
+Then, make sure you have followed the instructions on the [Installation](/strudel-kit/docs/getting-started/installation) page so that you have node, npm, and npx installed on your system. You can confirm you have these tools using the commands below:
 
 ```
 node --version
 npm --version
+npx --version
 ```
 
-### Open a Terminal Window
+## Generate a New Project
 
-The first step is to start a terminal program. The rest of this tutorial will assume you are using a standard MacOS, UNIX, or [Windows PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) (not command.exe) terminal. This ensures that all the command line steps follow the same syntax. The exact shell interpreter should not matter, as most of the work is done by the Python script. Thus, you need to have a supported [version](https://devguide.python.org/versions/) of Python installed on your system (Python 3.8 or above at the time of this writing). We recommend using a Python "environment" such as [miniconda](https://docs.anaconda.com/free/miniconda/index.html) or [pyenv](https://github.com/pyenv/pyenv) to isolate any changes you make here from your system Python installation. Please look at the documentation for these tools for more information.
-
-### Create an Isolated Environment with Conda
-
-Once you have these base requirements installed, create a new environment and a working directory. Here is an example of the steps you would use to set up a new environment with _miniconda_:
+Start a new project named `planets-app` using the strudel-kit code:
 
 ```
- conda create -y -n strudel-learn-env -c python=3.9 pip
- conda activate strudel-learn-env
+npx degit strudel-science/strudel-kit planets-app
 ```
 
-Once you have the environment set up, create a working directory and move into it:
+Note that this may prompt you to install degit from npm. Make sure you click select "yes" to install it.
 
-```
- mkdir learning-strudel
- cd learning-strudel
-```
+Once installed, this will generate a new folder called `planets-app` with the strudel-kit base app and Task Flow templates embedded in it. See the [Project Structure](/strudel-kit/docs/getting-started/project-structure) page to get a breakdown of all the generated files.
 
-### Install strudel-cli using pip
+## Run Your Project
 
-Once this is setup, use the "pip" Python package manager tool, which is standard with any modern Python installation, to install the STRUDEL command-line tools:
+Go into the new directory:
 
-```
-pip install strudel-cli
+```bash
+cd planets-app
 ```
 
-### Test strudel-cli Installation
+Install the app dependencies:
 
-If all the above steps went well (!) you should be able to run the `strudel` command in your current environment.
-
-```
-❯ strudel --version
-strudel-cli 0.0.2
+```bash
+npm install
 ```
 
-If this fails, some common problems are that you are running in a terminal where you have not activated the (e.g., _miniconda_) Python environment into which you installed strudel-cli (you must do this every time you start a new terminal), or the installation somehow did not complete. Feel free to reach out to the team at [strudel@lbl.gov](mailto:strudel@lbl.gov) for help.
+Start up your app locally:
 
-## Next Steps
+```bash
+npm start
+```
 
-Now that you have the CLI installed, you can start building your first STRUDEL application.
+Open your app in the browser at http://localhost:5175
+
+In the future, when you run your app, you will not need to perform the install step -- just `npm start`. In fact, the development server that this runs is able to update the app "live" as you change the code in this directory, so you don't need to stop and restart the app for each change.
+
+## Open Your Application Code
+
+For the rest of the tutorial you will need a code editor to make changes to the files in your app. We recommend [VSCode](https://code.visualstudio.com/) but any editor will do.
+
+From your code editor, open the `planets-app` folder.
