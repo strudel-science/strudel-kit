@@ -113,11 +113,6 @@ const sidebars: SidebarsConfig = {
             'components/LinearMeter',
           ],
         },
-        {
-          type: 'doc',
-          label: 'CLI',
-          id: 'cli/reference',
-        },
       ],
     },
   ],
