@@ -34,13 +34,13 @@ Now, let's add a title. To add a title, use the `Typography` component from MUI.
 
 Add the `Typography` component to the `'@mui/material'` import:
 
-```js
+```jsx title="index.tsx"
 import { Container, Typography } from '@mui/material';
 ```
 
 Then add a `Typography` title component inside of the `<Container>` component:
 
-```js
+```jsx title="index.tsx"
 <Container
   maxWidth="lg"
   sx={{
@@ -54,7 +54,7 @@ Then add a `Typography` title component inside of the `<Container>` component:
 
 The `variant` prop is used to specify the kind of text to display in the component. The `h1` option stands for "Heading 1" and it's used for top-level page headings. If you look at the new title in the browser, you may notice that the default `h1` size is quite large. Make it smaller by setting `fontSize` to `2rem`.
 
-```js
+```jsx title="index.tsx"
 <Typography variant="h1" fontSize="2rem">
   Planets of the Solar System
 </Typography>
@@ -68,13 +68,13 @@ Here is the text to use for the description section (from [Wikipedia](https://en
 
 First add `Paper` to the `'@material/ui'` imports:
 
-```js
+```jsx title="index.tsx"
 import { Container, Paper, Typography } from '@mui/material';
 ```
 
 Then add a new `Paper` component underneath the title's `Typography` and embed a `Typography` component with the description text from above:
 
-```js
+```jsx title="index.tsx"
 <Paper
   sx={{
     padding: 2,
@@ -94,13 +94,13 @@ Then add a new `Paper` component underneath the title's `Typography` and embed a
 
 Now create some space between the `Paper` and title `Typography` components by wrapping them in a `Stack` component. First add `Stack` to the `'@material/ui'` imports:
 
-```js
+```jsx title="index.tsx"
 import { Container, Paper, Stack, Typography } from '@mui/material';
 ```
 
 Then wrap both components inside of a `Stack`:
 
-```js
+```jsx title="index.tsx"
 <Stack>
   <Typography variant="h1" fontSize="2rem">
     Planets of the Solar System

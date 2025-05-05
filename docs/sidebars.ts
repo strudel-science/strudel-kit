@@ -70,8 +70,7 @@ const sidebars: SidebarsConfig = {
               items: [
                 'tutorials/basic-app-with-strudel/introduction',
                 'tutorials/basic-app-with-strudel/setup',
-                'tutorials/basic-app-with-strudel/create-app',
-                'tutorials/basic-app-with-strudel/add-taskflow',
+                'tutorials/basic-app-with-strudel/configure-taskflow',
                 'tutorials/basic-app-with-strudel/customize-taskflow',
                 'tutorials/basic-app-with-strudel/customize-app',
                 'tutorials/basic-app-with-strudel/customize-home-page',

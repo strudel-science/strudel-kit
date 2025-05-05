@@ -1,4 +1,4 @@
-# Setup
+# Setup Your Project
 
 The first step is to start a terminal program. The rest of this tutorial will assume you are using a standard MacOS, UNIX, or [Windows PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) (not command.exe) terminal. This ensures that all the command line steps follow the same syntax.
 
