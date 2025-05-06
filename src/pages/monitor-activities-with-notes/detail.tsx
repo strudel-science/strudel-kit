@@ -1,15 +1,15 @@
-import AddIcon from '@mui/icons-material/Add';
+// import AddIcon from '@mui/icons-material/Add';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {
   Box,
-  Button,
+  // Button,
   Container,
   Grid,
   IconButton,
   Link,
   Paper,
   Stack,
-  TextField,
+  // TextField,
   Typography,
 } from '@mui/material';
 import { DataGrid, GridColDef, GridComparatorFn } from '@mui/x-data-grid';
@@ -17,11 +17,10 @@ import dayjs from 'dayjs';
 import React from 'react';
 import Plot from 'react-plotly.js';
 import { Link as RouterLink } from 'react-router-dom';
-import { LabelValueTable } from '../../components/LabelValueTable';
+// import { LabelValueTable } from '../../components/LabelValueTable';
 import { useDataFromSource } from '../../utils/useDataFromSource';
 import { taskflow } from './_config/taskflow.config';
 import NotesDialog from '../../components/NotesDialog';
-import { useState } from 'react';
 
 const dateComparator: GridComparatorFn<string> = (v1, v2) => {
   return dayjs(v1).isAfter(dayjs(v2)) ? 1 : 0;
@@ -54,15 +53,14 @@ const columns: GridColDef[] = [
 const ActivityDetail: React.FC = () => {
   const experiment = useDataFromSource(taskflow.data.detail.source);
   const defaultNotes = useDataFromSource(taskflow.data.notes.source);
-  const [openNotes, setOpenNotes] = useState(false);
 
-  const getNoteRows = (notes: any[]) => {
-    return notes.map((note) => {
-      note.label = note.created_time;
-      note.value = note.content;
-      return note;
-    });
-  };
+  // const getNoteRows = (notes: any[]) => {
+  //   return notes.map((note) => {
+  //     note.label = note.created_time;
+  //     note.value = note.content;
+  //     return note;
+  //   });
+  // };
 
   /**
    * Content to render on the page for this component
@@ -114,34 +112,12 @@ const ActivityDetail: React.FC = () => {
                   }}
                 >
                   <Stack>
-                    <Typography variant="h6" component="h2">
-                      Notes
-                    </Typography>
-                    {experiment && (
-                      <LabelValueTable
-                        rows={getNoteRows(experiment.notes)}
-                        labelWidth={200}
-                      />
-                    )}
-                    <Box
-                      sx={{
-                        position: 'relative',
-                      }}
-                    >
-                      <TextField fullWidth multiline minRows={2} />
-                      <Button
-                        variant="contained"
-                        endIcon={<AddIcon />}
-                        sx={{
-                          position: 'absolute',
-                          bottom: '0.5rem',
-                          right: '0.5rem',
-                        }}
-                        onClick={() => setOpenNotes(true)}
-                      >
-                        Add
-                      </Button>
-                    </Box>
+                    <NotesDialog
+                      record_id="test_id"
+                      open={true}
+                      userEmail="paulie@gmail.com"
+                      initialNotes={defaultNotes}
+                    />
                   </Stack>
                 </Paper>
                 <Paper
@@ -172,13 +148,6 @@ const ActivityDetail: React.FC = () => {
           </Grid>
         </Box>
       </Stack>
-      <NotesDialog
-        record_id="test_id"
-        open={openNotes}
-        userEmail="paulie@gmail.com"
-        initialNotes={defaultNotes}
-        onClose={() => setOpenNotes(false)}
-      />
     </Container>
   );
 };

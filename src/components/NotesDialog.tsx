@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Dialog, DialogTitle, DialogContent } from '@mui/material';
 import {
   IconButton,
   Tooltip,
@@ -10,7 +9,6 @@ import {
   Typography,
   Divider,
 } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
 import ReplyIcon from '@mui/icons-material/Reply';
 import CheckIcon from '@mui/icons-material/Check';
@@ -317,7 +315,11 @@ interface NotesDialogProps {
   open: boolean;
   userEmail: string;
   initialNotes: Note[];
-  onClose: (record_id?: string, newNotes?: Note[], submitted?: boolean) => void;
+  onClose?: (
+    record_id?: string,
+    newNotes?: Note[],
+    submitted?: boolean
+  ) => void;
   onUpdateNote?: (
     updateType: string,
     index: number,
@@ -343,7 +345,6 @@ interface Note {
 const NotesDialog = ({
   record_id,
   open,
-  onClose,
   userEmail,
   initialNotes,
   onUpdateNote,
@@ -357,8 +358,6 @@ const NotesDialog = ({
   const [loading, setLoading] = useState(true);
   const [showResolved, setShowResolved] = useState(false);
   const descriptionElementRef = useRef<HTMLDivElement | null>(null);
-  const dialogHeight = '80vh';
-  const dialogWidth = '35vw';
 
   const reset = (newNotes?: Note[]) => {
     setReplyToIdx(undefined);
@@ -378,7 +377,7 @@ const NotesDialog = ({
         descriptionElement.focus();
       }
       if (initialNotes !== undefined) {
-        setNotes(initialNotes || []);
+        setNotes(initialNotes);
         setLoading(false);
       }
     } else reset();
@@ -441,10 +440,6 @@ const NotesDialog = ({
 
   const styles = {
     dialogPaper: {
-      minHeight: dialogHeight,
-      maxHeight: dialogHeight,
-      minWidth: dialogWidth,
-      maxWidth: dialogWidth,
       display: 'flex',
       flexDirection: 'column',
     },
@@ -456,6 +451,7 @@ const NotesDialog = ({
     },
     boxTop: {
       overflow: 'scroll',
+      maxHeight: '25vh',
     },
     boxBottom: {
       marginTop: 2,
@@ -553,29 +549,11 @@ const NotesDialog = ({
   };
 
   return (
-    <Dialog
-      open={open}
-      onClose={() => onClose(record_id, notes)}
-      scroll={'paper'}
-      aria-labelledby="new-dg-dialog"
-      aria-describedby="new-dg-dialog-description"
-      PaperProps={{
-        sx: styles.dialogPaper,
-      }}
-    >
-      <DialogTitle id="new-dg-dialog-title">Notes</DialogTitle>
-      <IconButton
-        aria-label="close"
-        onClick={() => onClose(record_id, notes)}
-        sx={{
-          position: 'absolute',
-          right: 0,
-          top: 8,
-        }}
-      >
-        <CloseIcon />
-      </IconButton>
-      <DialogContent sx={styles.dialogContent}>
+    <Box sx={styles.dialogPaper}>
+      <Stack direction="row" justifyContent="space-between" alignItems="center">
+        <Typography variant="h6">Notes</Typography>
+      </Stack>
+      <Box sx={styles.dialogContent}>
         {/* Top content */}
         <Box sx={styles.boxTop}>
           {!loading &&
@@ -689,8 +667,8 @@ const NotesDialog = ({
           buttonVariant="contained"
           width={400}
         />
-      </DialogContent>
-    </Dialog>
+      </Box>
+    </Box>
   );
 };
 
