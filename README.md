@@ -77,4 +77,3 @@ We kindly ask that you take two steps to attribute this repo if you find it usef
 2. Credit the STRUDEL project and strudel-kit repo in your README.
 
 > This project utilized the [strudel-kit](https://github.com/strudel-science/strudel-kit/tree/main) repository. Read more about [STRUDEL](https://strudel.science).
-
