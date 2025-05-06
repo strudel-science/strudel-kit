@@ -12,20 +12,11 @@ import { CheckboxList } from './CheckboxList';
 import { RangeSlider } from './RangeSlider';
 import { DatePicker } from '@mui/x-date-pickers';
 import { useFilters } from './FilterContext';
-
-export type FilterOperator =
-  | 'contains'
-  | 'contains-one-of'
-  | 'equals'
-  | 'equals-one-of'
-  | 'between-inclusive'
-  | 'between-dates-inclusive';
-
-export type FilterComponent =
-  | 'RangeSlider'
-  | 'CheckboxList'
-  | 'DateRange'
-  | 'TextField';
+import {
+  FilterComponent,
+  FilterOperator,
+  FilterValue,
+} from '../types/filters.types';
 
 interface FilterFieldProps extends StackProps {
   label: string;
@@ -35,19 +26,6 @@ interface FilterFieldProps extends StackProps {
   filterComponent: FilterComponent;
   filterProps?: any;
 }
-
-/**
- * The type of the value should be dependent on the filterComponent
- */
-type FilterValue<T> = T extends 'RangeSlider'
-  ? number[]
-  : T extends 'CheckboxList'
-    ? string[] | number[] | null
-    : T extends 'DateRange'
-      ? [Date | null, Date | null]
-      : T extends 'TextField'
-        ? string | null
-        : never;
 
 /**
  * Determine if a value is truthy or falsy in the context of a filter.
