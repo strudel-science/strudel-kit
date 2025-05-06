@@ -1,15 +1,21 @@
-import { Container, Link, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import { DateCalendar, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { AppLink } from '../../components/AppLink';
+import { createFileRoute } from '@tanstack/react-router';
+
+export const Route = createFileRoute('/monitor-activities-with-notes/calendar')(
+  {
+    component: ActivityCalendar,
+  }
+);
 
 /**
  * Work in Progress:
  *
  * Page to see all activities by day in a calendar view in the monitor-activities Task Flow.
  */
-const ActivityCalendar: React.FC = () => {
+function ActivityCalendar() {
   return (
     <Container
       maxWidth="md"
@@ -25,11 +31,7 @@ const ActivityCalendar: React.FC = () => {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar readOnly />
       </LocalizationProvider>
-      <Link component={RouterLink} to="../">
-        List
-      </Link>
+      <AppLink to="..">List</AppLink>
     </Container>
   );
-};
-
-export default ActivityCalendar;
+}

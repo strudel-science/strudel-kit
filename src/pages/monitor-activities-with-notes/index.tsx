@@ -1,15 +1,17 @@
 import { Container, Paper, Stack, Typography } from '@mui/material';
 import { DataGrid, GridColDef, GridComparatorFn } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDataFromSource } from '../../utils/useDataFromSource';
-import { taskflow } from './_config/taskflow.config';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { useDataFromSource } from '../../hooks/useDataFromSource';
+export const Route = createFileRoute('/monitor-activities-with-notes/')({
+  component: ActivityList,
+});
 
 const dateComparator: GridComparatorFn<string> = (v1, v2) => {
   return dayjs(v1).isAfter(dayjs(v2)) ? 1 : 0;
 };
 
+// CUSTOMIZE: list view table columns
 const columns: GridColDef[] = [
   {
     field: 'experiment_name',
@@ -37,13 +39,12 @@ const columns: GridColDef[] = [
 /**
  * List view of all activities in the monitor-activites Task Flow.
  */
-const ActivityList: React.FC = () => {
-  const experiments = useDataFromSource(taskflow.data.items.source);
+function ActivityList() {
+  // CUSTOMIZE: list view data source
+  const experiments = useDataFromSource('dummy-data/experiments.json');
+
   const navigate = useNavigate();
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <Container
       maxWidth="xl"
@@ -65,14 +66,18 @@ const ActivityList: React.FC = () => {
         <Paper>
           <DataGrid
             rows={experiments || []}
+            // CUSTOMIZE: data source unique ID field
             getRowId={(row) => row.id}
             columns={columns}
+            // CUSTOMIZE: initial sort field
             initialState={{
               sorting: {
                 sortModel: [{ field: 'start_time', sort: 'desc' }],
               },
             }}
-            onRowClick={() => navigate('detail')}
+            onRowClick={() =>
+              navigate({ to: '/monitor-activities-with-notes/detail' })
+            }
             disableColumnSelector
             disableRowSelectionOnClick
           />
@@ -80,6 +85,4 @@ const ActivityList: React.FC = () => {
       </Stack>
     </Container>
   );
-};
-
-export default ActivityList;
+}
