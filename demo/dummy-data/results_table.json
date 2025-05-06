@@ -1,0 +1,42 @@
+[
+  {
+    "id": 0,
+    "name": "value",
+    "unitType": "value",
+    "lowerBound": 0,
+    "upperBound": 1,
+    "constraints": "value"
+  },
+  {
+    "id": 1,
+    "name": "value",
+    "unitType": "value",
+    "lowerBound": 0,
+    "upperBound": 1,
+    "constraints": "value"
+  },
+  {
+    "id": 2,
+    "name": "value",
+    "unitType": "value",
+    "lowerBound": 0,
+    "upperBound": 1,
+    "constraints": "value"
+  },
+  {
+    "id": 3,
+    "name": "value",
+    "unitType": "value",
+    "lowerBound": 0,
+    "upperBound": 1,
+    "constraints": "value"
+  },
+  {
+    "id": 4,
+    "name": "value",
+    "unitType": "value",
+    "lowerBound": 0,
+    "upperBound": 1,
+    "constraints": "value"
+  }
+]
