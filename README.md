@@ -18,9 +18,9 @@ This library provides a suite of templates to implement UIs for various differen
 - [**Cypress**](https://www.cypress.io/): End-to-end tests for built-in templates.
 - [**Task Flow Templates**](https://strudel.science/design-system/task-flows/overview/): Six template flows based on common patterns. 
 
-[Home page](images/home.png)
+![Home page](images/home.png)
 
-[Run Computation results page](images/run-computation-results.png)
+![Run Computation results page](images/run-computation-results.png)
 
 ## Getting Started
 
