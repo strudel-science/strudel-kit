@@ -18,7 +18,7 @@ export const filterByDataFilters = (
   filterConfigs: FilterConfig[]
 ) => {
   let filteredData = allData;
-  if (filters.length > 0) {
+  if (allData && filters.length > 0) {
     // Pre build map of filter to operator for performance boost
     const filterOperatorMap: Record<string, string | undefined> = {};
     filters.forEach((f) => {
