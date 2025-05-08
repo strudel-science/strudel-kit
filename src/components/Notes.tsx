@@ -310,7 +310,7 @@ const IndividualNote = ({
   );
 };
 
-interface NotesDialogProps {
+interface NotesProps {
   record_id?: string;
   open: boolean;
   userEmail: string;
@@ -342,13 +342,13 @@ interface Note {
   repliesTo?: number; // the index that this comment replies to, if this is a reply
 }
 
-const NotesDialog = ({
+const Notes = ({
   record_id,
   open,
   userEmail,
   initialNotes,
   onUpdateNote,
-}: NotesDialogProps) => {
+}: NotesProps) => {
   const [notes, setNotes] = useState([] as Note[]);
   const [replyToIdx, setReplyToIdx] = useState<number>();
   const [editIdx, setEditIdx] = useState<number>();
@@ -672,4 +672,4 @@ const NotesDialog = ({
   );
 };
 
-export default NotesDialog;
+export default Notes;

@@ -15,7 +15,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useDataFromSource } from '../../hooks/useDataFromSource';
 import { AppLink } from '../../components/AppLink';
 // import { LabelValueTable } from '../../components/LabelValueTable';
-import NotesDialog from '../../components/NotesDialog';
+import Notes from '../../components/Notes';
 
 export const Route = createFileRoute('/monitor-activities-with-notes/detail')({
   component: ActivityDetail,
@@ -115,7 +115,7 @@ function ActivityDetail() {
                   }}
                 >
                   <Stack>
-                    <NotesDialog
+                    <Notes
                       record_id="test_id"
                       open={true}
                       userEmail="paulie@gmail.com"
