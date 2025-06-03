@@ -115,6 +115,15 @@ const sidebars: SidebarsConfig = {
         },
       ],
     },
+    {
+      type: 'category',
+      label: 'Examples',
+      collapsible: false,
+      items: [
+        'examples/basic-sandbox',
+        'examples/climate-data-analysis-platform',
+      ],
+    },
   ],
 };
 
