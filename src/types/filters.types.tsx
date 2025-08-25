@@ -8,6 +8,25 @@ export type FilterOperator =
   | 'between-inclusive'
   | 'between-dates-inclusive';
 
+export type FilterComponent =
+  | 'RangeSlider'
+  | 'CheckboxList'
+  | 'DateRange'
+  | 'TextField';
+
+/**
+ * The type of the value should be dependent on the filterComponent
+ */
+export type FilterValue<T> = T extends 'RangeSlider'
+  ? number[]
+  : T extends 'CheckboxList'
+    ? string[] | number[] | null
+    : T extends 'DateRange'
+      ? [Date | null, Date | null]
+      : T extends 'TextField'
+        ? string | null
+        : never;
+
 export interface DataFilter {
   field: string;
   value: string | number | string[] | number[] | null;
@@ -16,10 +35,10 @@ export interface DataFilter {
 export interface FilterConfig {
   field: string;
   label: string;
-  operator?: string;
+  operator?: FilterOperator;
   paramType?: ParamType;
   paramTypeOptions?: any;
-  filterComponent: string;
+  filterComponent: FilterComponent;
   filterProps?: any;
 }
 

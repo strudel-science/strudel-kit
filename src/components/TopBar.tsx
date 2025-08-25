@@ -1,18 +1,26 @@
-import { AppBar, IconButton, Toolbar, Typography, Stack } from '@mui/material';
-import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { AppBar, IconButton, Stack, Toolbar, Typography } from '@mui/material';
 import React from 'react';
-import { AppLink } from './AppLink';
-import { config } from '../../strudel.config';
-import { ImageWrapper } from './ImageWrapper';
 import { cleanPath } from '../utils/queryParams.utils';
+import { AppLink } from './AppLink';
+import { ImageWrapper } from './ImageWrapper';
 
 /**
  * Top navigation bar component
  */
 export const TopBar: React.FC = () => {
   return (
-    <AppBar color="default" position="static">
+    <AppBar
+      color="default"
+      position="static"
+      component="nav"
+      sx={{
+        backgroundColor: 'white',
+        borderBottom: '1px solid',
+        borderBottomColor: 'grey.300',
+        boxShadow: 'none',
+      }}
+    >
       <Toolbar>
         <Stack
           direction="row"
@@ -22,36 +30,19 @@ export const TopBar: React.FC = () => {
           }}
         >
           <AppLink to="/">
-            {!config.navbar.logo && (
-              <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-              >
-                <HomeIcon />
-              </IconButton>
-            )}
-            {config.navbar.logo && (
-              <ImageWrapper height={30}>
-                <img
-                  src={cleanPath(
-                    `${import.meta.env.BASE_URL}/${config.navbar.logo}`
-                  )}
-                />
-              </ImageWrapper>
-            )}
+            <ImageWrapper height={30}>
+              <img
+                src={cleanPath(
+                  `${import.meta.env.BASE_URL}/strudel-logo-icon.png`
+                )}
+              />
+            </ImageWrapper>
           </AppLink>
           <AppLink to="/">
-            <Typography variant="h6" component="div">
-              {config.navbar.title}
+            <Typography variant="h6" component="div" fontWeight="bold">
+              My Project
             </Typography>
           </AppLink>
-          {config.navbar.items.map((item, i) => (
-            <AppLink key={`${item.path}-${i}`} to={item.path}>
-              {item.label}
-            </AppLink>
-          ))}
         </Stack>
         <IconButton size="large" edge="start" color="inherit">
           <AccountCircleIcon />

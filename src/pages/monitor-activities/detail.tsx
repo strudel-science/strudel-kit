@@ -6,7 +6,6 @@ import {
   Container,
   Grid,
   IconButton,
-  Link,
   Paper,
   Stack,
   TextField,
@@ -14,17 +13,21 @@ import {
 } from '@mui/material';
 import { DataGrid, GridColDef, GridComparatorFn } from '@mui/x-data-grid';
 import dayjs from 'dayjs';
-import React from 'react';
 import Plot from 'react-plotly.js';
-import { Link as RouterLink } from 'react-router-dom';
+import { createFileRoute } from '@tanstack/react-router';
+import { useDataFromSource } from '../../hooks/useDataFromSource';
+import { AppLink } from '../../components/AppLink';
 import { LabelValueTable } from '../../components/LabelValueTable';
-import { useDataFromSource } from '../../utils/useDataFromSource';
-import { taskflow } from './_config/taskflow.config';
+
+export const Route = createFileRoute('/monitor-activities/detail')({
+  component: ActivityDetail,
+});
 
 const dateComparator: GridComparatorFn<string> = (v1, v2) => {
   return dayjs(v1).isAfter(dayjs(v2)) ? 1 : 0;
 };
 
+// CUSTOMIZE: events table columns
 const columns: GridColDef[] = [
   {
     field: 'event_type',
@@ -49,8 +52,9 @@ const columns: GridColDef[] = [
  * Detail view of the selected activity from `<ActivityList>` in monitor-activities Task Flow.
  * The two components are not currently hooked together.
  */
-const ActivityDetail: React.FC = () => {
-  const experiment = useDataFromSource(taskflow.data.detail.source);
+function ActivityDetail() {
+  // CUSTOMIZE: detail data source
+  const experiment = useDataFromSource('dummy-data/experiment_detail.json');
 
   const getNoteRows = (notes: any[]) => {
     return notes.map((note) => {
@@ -60,9 +64,6 @@ const ActivityDetail: React.FC = () => {
     });
   };
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <Container
       maxWidth="xl"
@@ -73,12 +74,13 @@ const ActivityDetail: React.FC = () => {
     >
       <Stack>
         <Stack direction="row" alignItems="center">
-          <Link component={RouterLink} to="../">
+          <AppLink to="..">
             <IconButton data-testid="mna-back-button">
               <ArrowBackIcon />
             </IconButton>
-          </Link>
+          </AppLink>
           <Typography variant="h6" component="h1">
+            {/* CUSTOMIZE: title field */}
             {experiment?.experiment_name}
           </Typography>
         </Stack>
@@ -89,6 +91,7 @@ const ActivityDetail: React.FC = () => {
                 {experiment && (
                   <DataGrid
                     rows={experiment.events}
+                    // CUSTOMIZE: events data source unique ID field
                     getRowId={(row) => row.id}
                     columns={columns}
                     initialState={{
@@ -145,6 +148,7 @@ const ActivityDetail: React.FC = () => {
                   }}
                 >
                   <Plot
+                    // CUSTOMIZE: plot data
                     data={[
                       {
                         x: [1, 2, 3, 4],
@@ -169,6 +173,4 @@ const ActivityDetail: React.FC = () => {
       </Stack>
     </Container>
   );
-};
-
-export default ActivityDetail;
+}

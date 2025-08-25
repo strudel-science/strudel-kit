@@ -3,36 +3,53 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Box } from '@mui/material';
 import { GridActionsCellItem } from '@mui/x-data-grid';
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import { TopBar } from '../../components/TopBar';
-import { useDataFromSource } from '../../utils/useDataFromSource';
-import { RunComputationProvider } from './_context/ContextProvider';
-import { taskflow } from './_config/taskflow.config';
+import { useDataFromSource } from '../../hooks/useDataFromSource';
+import { RunComputationProvider } from './-context/ContextProvider';
+import { createFileRoute, Outlet } from '@tanstack/react-router';
+
+export const Route = createFileRoute('/run-computation/_layout')({
+  component: RunComputationLayout,
+});
 
 /**
  * Top-level wrapper for the run-computation Task Flow templates.
  * Inner pages are rendered inside the `<Outlet />` component
  */
-const RunComputationLayout: React.FC = () => {
-  const listItems = useDataFromSource(taskflow.data.items.source);
+function RunComputationLayout() {
+  // CUSTOMIZE: index page data source
+  const listItems = useDataFromSource('dummy-data/list.json');
 
-  /**
-   * Content to render on the page for this component
-   */
   return (
     <Box>
-      <Box sx={{ flexGrow: 1 }}>
-        <TopBar />
-      </Box>
       <Box>
         <RunComputationProvider
           list={{
             table: {
               data: listItems,
-              dataIdField: taskflow.data.items.idField,
+              // CUSTOMIZE: index page data source unique ID field
+              dataIdField: 'id',
+              // CUSTOMIZE: index page columns
               columns: [
-                ...taskflow.pages.index.tableColumns,
+                {
+                  field: 'name',
+                  headerName: 'Scenario Name',
+                  width: 200,
+                },
+                {
+                  field: 'analysisType',
+                  headerName: 'Analysis Type',
+                  width: 200,
+                },
+                {
+                  field: 'createdDate',
+                  headerName: 'Date Created',
+                  width: 200,
+                },
+                {
+                  field: 'status',
+                  headerName: 'Status',
+                  width: 200,
+                },
                 {
                   field: 'actions',
                   headerName: 'Actions',
@@ -56,15 +73,75 @@ const RunComputationLayout: React.FC = () => {
           inputs={{
             table: {
               data: [],
-              dataIdField: taskflow.data.inputs.idField,
-              columns: taskflow.pages.dataInputs.tableColumns,
+              // CUSTOMIZE: inputs table unique ID field
+              dataIdField: 'id',
+              // CUSTOMIZE: inputs table columns
+              columns: [
+                {
+                  field: 'name',
+                  headerName: 'Unit Name',
+                  width: 200,
+                },
+                {
+                  field: 'unitType',
+                  headerName: 'Unit Type',
+                  width: 200,
+                },
+                {
+                  field: 'constraints',
+                  headerName: 'Constraints',
+                  width: 200,
+                },
+                {
+                  field: 'lowerBound',
+                  headerName: 'Lower Bound',
+                  width: 200,
+                  type: 'number',
+                },
+                {
+                  field: 'upperBound',
+                  headerName: 'Upper Bound',
+                  width: 200,
+                  type: 'number',
+                },
+              ],
             },
           }}
           results={{
             table: {
               data: [],
-              dataIdField: taskflow.data.results.idField,
-              columns: taskflow.pages.results.tableColumns,
+              // CUSTOMIZE: results table unique ID field
+              dataIdField: 'id',
+              // CUSTOMIZE: results table columns
+              columns: [
+                {
+                  field: 'name',
+                  headerName: 'Unit Name',
+                  width: 200,
+                },
+                {
+                  field: 'unitType',
+                  headerName: 'Unit Type',
+                  width: 200,
+                },
+                {
+                  field: 'constraints',
+                  headerName: 'Constraints',
+                  width: 200,
+                },
+                {
+                  field: 'lowerBound',
+                  headerName: 'Lower Bound',
+                  width: 200,
+                  type: 'number',
+                },
+                {
+                  field: 'upperBound',
+                  headerName: 'Upper Bound',
+                  width: 200,
+                  type: 'number',
+                },
+              ],
             },
           }}
         >
@@ -73,6 +150,4 @@ const RunComputationLayout: React.FC = () => {
       </Box>
     </Box>
   );
-};
-
-export default RunComputationLayout;
+}

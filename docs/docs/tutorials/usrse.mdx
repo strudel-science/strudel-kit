@@ -1,0 +1,492 @@
+---
+# Display h2 to h5 headings
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+---
+
+# US-RSE Tutorial
+
+October 9, 2024
+
+This is a follow along guide to the US-RSE tutorial conducted over Zoom. Use this guide to follow along with all of the code edits made live during the tutorial demonstration.
+
+## Helpful Links
+
+- [StackBlitz Code Starter](https://stackblitz.com/edit/vitejs-vite-jjdxuj?file=README.md&terminal=dev)
+- [StackBlitz Code Live In Progress](https://stackblitz.com/edit/vitejs-vite-eykdvw?file=README.md)
+- [Slides](https://docs.google.com/presentation/d/1CmflcN_H_xCFPRV9qp4IjluHUkOvpW7Il5U5naN_emI/edit#slide=id.g25e5f40b217_0_317)
+- [GBIF API Documentation](https://techdocs.gbif.org/en/openapi/v1/occurrence)
+- [GBIF Occurrence Endpoint Example](https://api.gbif.org/v1/occurrence/search)
+- [Material UI Documentation](https://mui.com/material-ui/all-components/)
+- [React Cheatsheet](https://zerotomastery.io/cheatsheets/react-cheat-sheet/)
+
+## Configuring a STRUDEL Task Flow
+
+Each Task Flow is configured inside of its own `taskflow.config.ts` file. We will be configuring the Explore Data Task Flow which has already been included in this project.
+
+You can find the configuration file at `src/pages/explore-data/_config/taskflow.config.ts`
+
+### 1. Update the `data.list` object
+
+```js
+list: {
+  source: "https://api.gbif.org/v1/occurrence/search",
+  staticParams: null,
+  idField: "key",
+  queryMode: "server",
+}
+```
+
+### 2. Update the `data.detail` object
+
+```js
+detail: {
+  source: "https://api.gbif.org/v1/occurrence",
+  staticParams: null,
+  idField: "key",
+  queryMode: "server",
+}
+```
+
+### 3. Update page titles in the `pages.index` object
+
+```
+{
+  pages: {
+    index: {
+      title: "Biodiversity Explorer",
+      description: "Explore species observations around the world.",
+      ...
+    }
+  }
+}
+```
+
+### 4. Update the column definitions in `pages.index.tableColumns`
+
+```js
+tableColumns: [
+  {
+    field: "scientificName",
+    headerName: "Name",
+    width: 200
+  },
+  {
+    field: "year",
+    headerName: "Year",
+    width: 150
+  },
+  {
+    field: "basisOfRecord",
+    headerName: "Basis of Record",
+    width: 150
+  },
+  {
+    field: "elevation",
+    headerName: "Elevation",
+    width: 150,
+    type: 'number'
+  }
+],
+```
+
+### 5. Update the filter definitions in `pages.index.tableFilters`
+
+```js
+tableFilters: [
+  {
+    field: 'elevation',
+    label: 'Elevation',
+    paramType: 'array-string',
+    filterComponent: 'RangeSlider',
+    filterProps: {
+      min: 0,
+      max: 100,
+    },
+  },
+  {
+    field: 'basisOfRecord',
+    label: 'Basis of Record',
+    paramType: 'repeated',
+    filterComponent: 'CheckboxList',
+    filterProps: {
+      options: [
+        {
+          label: 'Preserved Specimen',
+          value: 'PRESERVED_SPECIMEN',
+        },
+        {
+          label: 'Fossil Specimen',
+          value: 'FOSSIL_SPECIMEN',
+        },
+        {
+          label: 'Living Specimen',
+          value: 'LIVING_SPECIMEN',
+        },
+        {
+          label: 'Observation',
+          value: 'OBSERVATION',
+        },
+        {
+          label: 'Human Observation',
+          value: 'HUMAN_OBSERVATION',
+        },
+        {
+          label: 'Machine Observation',
+          value: 'MACHINE_OBSERVATION',
+        },
+      ],
+    },
+  },
+];
+```
+
+## Customizing the Theme
+
+Theming is handled by Material UI's [theme object](https://mui.com/material-ui/customization/theming/).
+
+You can modify global theme variables in `src/theme.tsx`.
+
+### 1. Change `palette.mode` to dark
+
+```js
+mode: 'dark',
+```
+
+### 2. Change the `palette.background` colors
+
+```js
+background: {
+  default: '#222',
+  paper: '#333',
+},
+```
+
+### 3. Change the `palette.primary` colors
+
+```js
+primary: {
+  main: '#5dffe2',
+  // Exclude light, dark, or contrastText to have them
+  // calculated automatically based on the main color.
+  light: '#99ffec',
+  dark: '#00e0b7',
+  // contrastText: '#fff',
+},
+```
+
+### 4. Change the `shape.borderRadius`
+
+```js
+borderRadius: 0,
+```
+
+### 5. Change the primary font in `typography.fontFamily`
+
+```js
+fontFamily: `"Avenir", "Verdana", "Arial", sans-serif`,
+```
+
+## React Basics
+
+Before we start customizing the Explore Data template, we will cover some basics of React and Material UI components.
+
+You may find it helpful to reference the [React syntax cheatsheet](https://zerotomastery.io/cheatsheets/react-cheat-sheet/) during this section.
+
+### 1. Make a new folder and file
+
+Create a new folder inside of `src/pages` called `hello-world`.
+
+Then, create a file inside `hello-world` called `index.tsx`
+
+```
+src
+├── pages
+│  ├── hello-world
+│  │  ├── index.tsx
+```
+
+### 2. Create a `HelloWorldPage` component
+
+```jsx title="src/pages/hello-world/index.tsx"
+const HelloWorldPage: React.FC = () => {
+  return (
+    <div>
+      Hello World!
+    </div>
+  );
+};
+
+export default HelloWorldPage;
+```
+
+### 3. Make a new `_components` folder and component file
+
+Create a new folder inside of `hello-world` called `_components`.
+
+Then, create a file inside `_components` called `TagList.tsx`.
+
+```
+src
+├── pages
+│  ├── hello-world
+│  │  ├── _components
+│  │  │  ├── TagList.tsx
+│  │  ├── index.tsx
+```
+
+### 4. Create a `TagList` component
+
+```jsx title="src/pages/hello-world/_components/TagList.tsx"
+export const TagList: React.FC = () => {
+  return (
+    <ul>
+      <li>Animalia</li>
+      <li>Chordata</li>
+      <li>Mammalia</li>
+    </ul>
+  )
+}
+```
+
+### 5. Import and use the `TagList` component in `HelloWorldPage`
+
+```jsx title="src/pages/hello-world/index.tsx"
+import { TagList } from './_components/TagList';
+
+const HelloWorldPage: React.FC = () => {
+  return (
+    <div>
+      Hello World!
+      <TagList />
+    </div>
+  );
+};
+
+export default HelloWorldPage;
+```
+
+### 6. Add a `tags` prop to the `TagList` component
+
+```jsx title="src/pages/hello-world/_components/TagList.tsx"
+interface TagListProps {
+  tags: string[];
+}
+
+export const TagList: React.FC<TagListProps> = ({ tags }) => {
+  return (
+    <ul>
+      <li>Animalia</li>
+      <li>Chordata</li>
+      <li>Mammalia</li>
+    </ul>
+  )
+}
+```
+
+### 7. Loop through `tags` to render each item
+
+```jsx title="src/pages/hello-world/_components/TagList.tsx"
+export const TagList: React.FC<TagListProps> = ({ tags }) => {
+  return (
+    <ul>
+      {tags.map((tag) => (
+        <li key={tag}>{tag}</li>
+      ))}
+    </ul>
+  )
+}
+```
+
+### 8. Pass values to the `tags` prop on `HelloWorldPage`
+
+```jsx title="src/pages/hello-world/index.tsx"
+const HelloWorldPage: React.FC = () => {
+  return (
+    <div>
+      Hello World!
+      <TagList tags={['Animalia', 'Chordata', 'Mammalia']} />
+    </div>
+  );
+};
+```
+
+## Material UI Basics
+
+Material UI is included in the STRUDEL application by default. It contains many useful components for reusable elements and patterns throughout a web user interface.
+
+See more in the [Materials UI Docs](https://mui.com/material-ui/all-components/).
+
+### 1. Import the `Chip` component to `TagList.tsx`
+
+```jsx title="src/pages/hello-world/_components/TagList.tsx"
+import { Chip } from '@mui/material';
+```
+
+### 2. Replace the `li` elements with `Chip` components
+
+```jsx title="src/pages/hello-world/_components/TagList.tsx"
+export const TagList: React.FC<TagListProps> = ({ tags }) => {
+  return (
+    <ul>
+      {tags.map((tag) => (
+        <Chip key={tag} label={tag} />
+      ))}
+    </ul>
+  )
+}
+```
+
+### 3. Import the `Stack` component to `TagList.tsx`
+
+```jsx title="src/pages/hello-world/_components/TagList.tsx"
+import { Chip, Stack } from '@mui/material';
+```
+
+### 4. Replace the `ul` element with the `Stack` component
+
+```jsx title="src/pages/hello-world/_components/TagList.tsx"
+export const TagList: React.FC<TagListProps> = ({ tags }) => {
+  return (
+    <Stack direction="row" spacing={1}>
+      {tags.map((tag) => (
+        <Chip key={tag} label={tag} />
+      ))}
+    </Stack>
+  )
+}
+```
+
+### 5. Import the `Typography` component to `index.tsx`
+
+```jsx title="src/pages/hello-world/index.tsx"
+import { Typography } from '@mui/material';
+```
+
+### 6. Wrap the title text with the `Typography` component
+
+```jsx title="src/pages/hello-world/index.tsx"
+const HelloWorldPage: React.FC = () => {
+  return (
+    <div>
+      <Typography variant="h3" component="h1">
+        Hello World!
+      </Typography>
+      <TagList tags={['Animalia', 'Chordata', 'Mammalia']} />
+    </div>
+  );
+};
+```
+
+### 7. Import the `Container` component to `index.tsx`
+
+```jsx title="src/pages/hello-world/index.tsx"
+import { Container, Typography } from '@mui/material';
+```
+
+### 6. Replace the `div` element with the `Container` component
+
+```jsx title="src/pages/hello-world/index.tsx"
+const HelloWorldPage: React.FC = () => {
+  return (
+    <Container maxWidth="sm">
+      <Typography variant="h3" component="h1">
+        Hello World!
+      </Typography>
+      <TagList tags={['Animalia', 'Chordata', 'Mammalia']} />
+    </Container>
+  );
+};
+```
+
+### 7. Use the `sx` prop to style `Typography`
+
+```jsx title="src/pages/hello-world/index.tsx"
+<Typography
+  variant="h3"
+  component="h1"
+  sx={{
+    borderBottom: '1px solid',
+    borderBottomColor: 'primary.main',
+    marginBottom: 2,
+    paddingBottom: 2,
+  }}
+>
+  Hello World!
+</Typography>
+```
+
+## Customizing the Task Flow
+
+Now we will utilize the component we made in the preview panel and add some more custom data to the panel.
+
+For this exercise we will be working inside of `src/pages/explore-data/_components_/PreviewPanel.tsx`
+
+### 1. Import the `TagList` component to `PreviewPanel.tsx`
+
+```jsx title="src/pages/explore-data/_components/PreviewPanel.tsx"
+import { TagList } from '../../hello-world/_components/TagList';
+```
+
+### 2. Replace the row description with a `TagList`
+
+Replace:
+
+```jsx title="src/pages/explore-data/_components/PreviewPanel.tsx"
+<Typography variant="body2">
+  Row description, subtitle, or helper text.
+</Typography>
+```
+
+With:
+
+```jsx title="src/pages/explore-data/_components/PreviewPanel.tsx"
+<TagList
+  tags={[
+    previewItem.kingdom,
+    previewItem.phylum,
+    previewItem.class,
+    previewItem.order,
+  ]}
+/>
+```
+
+### 3. Add another `TagList` directly after the first
+
+```jsx title="src/pages/explore-data/_components/PreviewPanel.tsx"
+<TagList tags={[previewItem.family, previewItem.genus, previewItem.species]} />
+```
+
+### 4. Replace Property Group 1 with Location data
+
+```jsx title="src/pages/explore-data/_components/PreviewPanel.tsx"
+<Box>
+  <Typography fontWeight="medium" mb={1}>
+    Location
+  </Typography>
+  <LabelValueTable
+    rows={[
+      { label: 'Continent', value: previewItem.continent },
+      { label: 'Country', value: previewItem.country },
+      { label: 'Municipality', value: previewItem.municipality },
+    ]}
+  />
+</Box>
+```
+
+### 4. Replace Property Group 2 with Record data
+
+```jsx title="src/pages/explore-data/_components/PreviewPanel.tsx"
+<Box>
+  <Typography fontWeight="medium" mb={1}>
+    Record
+  </Typography>
+  <LabelValueTable
+    rows={[
+      { label: 'Basis of Record', value: previewItem.basisOfRecord },
+      { label: 'Protocol', value: previewItem.protocol },
+      { label: 'Status', value: previewItem.occurrenceStatus },
+    ]}
+  />
+</Box>
+```

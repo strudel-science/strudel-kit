@@ -1,43 +1,67 @@
-import { routes } from '@generouted/react-router';
 import {
   Box,
-  Chip,
   Container,
+  Divider,
   Grid,
   Paper,
   Stack,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
   Typography,
 } from '@mui/material';
-import React from 'react';
+import { createFileRoute } from '@tanstack/react-router';
+import { PropsWithChildren } from 'react';
+import { router } from '../App';
 import { AppLink } from '../components/AppLink';
-import { Layout } from '../components/Layout';
+import {
+  getNameFromPath,
+  getTopLevelRoutes,
+  getTaskFlowRoutes,
+} from '../utils/string.utils';
+import { ImageWrapper } from '../components/ImageWrapper';
+
+export const Route = createFileRoute('/')({
+  component: Index,
+});
 
 /**
  * Home page component that renders at the root route /
  */
-const HomePage: React.FC = () => {
-  /**
-   * Sort routes alphabetically by path
-   */
-  routes[0].children?.sort((a, b) => {
-    const pathA = a.path || '';
-    const pathB = b.path || '';
+function Index() {
+  const topLevelRoutes = getTopLevelRoutes(router.flatRoutes);
+  const taskflowRoutes = getTaskFlowRoutes(router.flatRoutes);
 
-    if ((pathA === 'playground' && pathB !== '/') || pathA < pathB) {
-      return -1;
-    } else if (pathA > pathB) {
-      return 1;
-    } else {
-      return 0;
-    }
-  });
+  const PaperWithHover: React.FC<PropsWithChildren> = ({ children }) => (
+    <Paper
+      sx={{
+        padding: 2,
+        transition: '0.25s',
+        '&:hover': {
+          backgroundColor: 'grey.200',
+        },
+      }}
+    >
+      {children}
+    </Paper>
+  );
 
   return (
-    <Layout>
+    <Box>
+      <Box
+        sx={{
+          backgroundColor: 'grey.200',
+          height: '250px',
+        }}
+      >
+        <Container maxWidth="lg" sx={{ height: '100%' }}>
+          <Stack alignItems="center" justifyContent="center" height="100%">
+            <ImageWrapper height={60}>
+              <img src="strudel-logo-icon.png" />
+            </ImageWrapper>
+            <Typography variant="h6" component="h1">
+              You just started an app with STRUDEL!
+            </Typography>
+          </Stack>
+        </Container>
+      </Box>
       <Container
         maxWidth="lg"
         sx={{
@@ -45,116 +69,90 @@ const HomePage: React.FC = () => {
           marginBottom: 3,
         }}
       >
-        <Box>
-          <Stack
-            sx={{
-              marginBottom: 4,
-            }}
-          >
-            <Typography variant="h6" component="h1" fontWeight="bold">
-              You just built an app with STRUDEL!
-            </Typography>
-            <Box>
-              Get started by going to{' '}
-              <code>
-                <AppLink to="playground">/playground</AppLink>
-              </code>{' '}
-              and editing{' '}
-              <Chip
-                size="small"
-                label={<code>src/pages/playground/index.tsx</code>}
-              />
-            </Box>
-          </Stack>
-          <Grid container columnSpacing={4} rowSpacing={4}>
-            <Grid item md={12}>
-              <Stack>
-                <Typography variant="h5" component="h2">
-                  Registered Pages
-                </Typography>
-                <Typography>
-                  Below are all of the pages that are registered in your app. As
-                  you add new top-level pages and Task Flows to your app, they
-                  will show up here.
-                </Typography>
-                <Stack
-                  spacing={0}
-                  sx={{
-                    border: '1px solid',
-                    borderColor: 'grey.50',
-                    padding: 2,
-                  }}
-                >
-                  <Table size="small">
-                    <TableBody>
-                      {routes[0].children?.map((route) => {
-                        if (route.path === '/') {
-                          return (
-                            <TableRow key={route.path}>
-                              <TableCell>
-                                <code>
-                                  <AppLink to={route.path || ''}>/</AppLink>
-                                </code>
-                              </TableCell>
-                              <TableCell>
-                                <code>
-                                  <Chip
-                                    size="small"
-                                    label={<code>src/pages/index.tsx</code>}
-                                  />
-                                </code>
-                              </TableCell>
-                            </TableRow>
-                          );
-                        } else if (route.path !== '*') {
-                          return (
-                            <TableRow key={route.path}>
-                              <TableCell>
-                                <code>
-                                  <AppLink to={route.path || ''}>
-                                    /{route.path}
-                                  </AppLink>
-                                </code>
-                              </TableCell>
-                              <TableCell>
-                                <code>
-                                  <Chip
-                                    size="small"
-                                    label={
-                                      <code>
-                                        src/pages/{route.path}/index.tsx
-                                      </code>
-                                    }
-                                  />
-                                </code>
-                              </TableCell>
-                            </TableRow>
-                          );
-                        }
-                      })}
-                    </TableBody>
-                  </Table>
-                </Stack>
-              </Stack>
+        <Stack spacing={3}>
+          <Box>
+            <Grid container spacing={1}>
+              <Grid item sm={6}>
+                <AppLink to="/">
+                  <PaperWithHover>
+                    <Stack>
+                      <Typography
+                        variant="h5"
+                        component="h3"
+                        fontWeight="bold"
+                        color="primary.main"
+                      >
+                        Home
+                      </Typography>
+                      <Box>
+                        <Typography fontSize="small">
+                          <code>{`/src/pages/index.tsx`}</code>
+                        </Typography>
+                      </Box>
+                    </Stack>
+                  </PaperWithHover>
+                </AppLink>
+              </Grid>
+              {topLevelRoutes.map((route) => (
+                <Grid key={route.id} item sm={6}>
+                  <AppLink to={route.fullPath}>
+                    <PaperWithHover>
+                      <Stack>
+                        <Typography
+                          variant="h5"
+                          component="h3"
+                          fontWeight="bold"
+                          color="primary.main"
+                        >
+                          {getNameFromPath(route.fullPath)}
+                        </Typography>
+                        <Box>
+                          <Typography fontSize="small">
+                            <code>{`/src/pages${route.id}index.tsx`}</code>
+                          </Typography>
+                        </Box>
+                      </Stack>
+                    </PaperWithHover>
+                  </AppLink>
+                </Grid>
+              ))}
             </Grid>
-            <Grid item md={12}>
-              <Stack>
-                <Typography variant="h5" component="h2">
-                  What's Next?
-                </Typography>
-                <Typography variant="h6" component="h3">
-                  Add Task Flows
-                </Typography>
-                <Paper elevation={0} sx={{ padding: 2 }}>
-                  <code>strudel add-taskflow my-taskflow -t explore-data</code>
-                </Paper>
-              </Stack>
-            </Grid>
-          </Grid>
-        </Box>
+          </Box>
+          <Divider />
+          <Box>
+            {taskflowRoutes.length > 0 && (
+              <Grid container spacing={1}>
+                {taskflowRoutes.map((route) => (
+                  <Grid key={route.id} item sm={6}>
+                    <AppLink to={route.fullPath}>
+                      <PaperWithHover>
+                        <Stack>
+                          <Typography
+                            variant="h5"
+                            component="h3"
+                            fontWeight="bold"
+                            color="primary.main"
+                          >
+                            {getNameFromPath(route.fullPath)}
+                          </Typography>
+                          <Box>
+                            <Typography fontSize="small">
+                              <code>{`/src/pages${route.id}index.tsx`}</code>
+                            </Typography>
+                          </Box>
+                        </Stack>
+                      </PaperWithHover>
+                    </AppLink>
+                  </Grid>
+                ))}
+              </Grid>
+            )}
+            {taskflowRoutes.length === 0 && (
+              <Typography>No Task Flows configured in your app.</Typography>
+            )}
+          </Box>
+        </Stack>
       </Container>
-    </Layout>
+    </Box>
   );
-};
-
-export default HomePage;
+}

@@ -4,47 +4,26 @@ title: 'Installation'
 
 ## Prerequisites
 
-STRUDEL Kit requires Python to run the CLI and Node.js with NPM to run the web applications you build. If you don't already have these tools on your system, use the links below to install them:
+STRUDEL Kit requires Node.js with npm to run the web applications you build. If you don't already have these tools on your system, use the link below to install them:
 
-- [Python 3.8+](https://www.python.org/downloads/)
-- [Node.js 18+ with NPM](https://nodejs.org/en/download)
+- [Node.js 18+ with npm and npx](https://nodejs.org/en/download)
 
-## Install strudel-cli with pip
+**Mac and Linux Users**: It is recommended to use nvm to install node, npm, and npx.
 
-The strudel-cli can be installed from PyPi via the `pip` package installer for Python.
+**Windows Users**: You have two recommended options for installing node and npm. If you use Powershell, the recommended way is to install using fnm. If you do not use Powershell, the recommended way is to download and run the Windows Installer from the nodejs download page. After running the installer, you will need to either completely reboot your terminal application or run `SET PATH=C:\Program Files\nodejs;%PATH%` in order to use the node and npm commands on the command line.
 
-It is recommended that **before** you install strudel-cli, you use either conda or pipx to install it inside of an isolated virtual environment. See below how to install strudel-cli using either of these options.
-
-### Install strudel-cli inside a conda environment
-
-Run the following commands on the command line:
+## Option 1 (recommended): Clone strudel-kit with degit
 
 ```
-conda create -y -n strudel-cli-env -c python pip
-conda activate strudel-cli-env
-pip install strudel-cli
+npx degit strudel-science/strudel-kit my-app
 ```
 
-After executing the above commands, the `strudel` command can be used on any command line where you activate `strudel-cli-env`.
+This will clone the whole strudel-kit repository into a directory called `my-app`. By using `degit` instead of `git clone` you get all the files without any of the git history from the main strudel-kit repository. Note that you will have to connect this to your own remote repository.
 
-### Install strudel-cli using pipx
+## Option 2: Use the strudel-kit template on GitHub
 
-pipx is an extension of pip that will install command-line tools in isolated environments so you can safely run them from any terminal. Install pipx by following the [instructions in their documentation](https://pipx.pypa.io/stable/installation/).
+Navigate to the [strudel-kit repository GitHub page](https://github.com/strudel-science/strudel-kit/tree/main), click the green "Use this template" button, then click "Create a new repository." Follow the instructions on the screen to create a new repository on GitHub. This will create a brand new repository that contains all of the files in strudel-kit but does not include any of the git history.
 
-Once you have pipx installed, run the following command on the command line:
+## Option 3: Fork strudel-kit on GitHub
 
-```
-pipx install strudel-cli
-```
-
-After completing the above, the `strudel` command can be used on any command line for the current user.
-
-## Install strudel-cli from GitHub
-
-If you want the freshly baked code right from the main repository instead, use the following recipe:
-
-```
-# note: use only if you want 'freshly baked' code from GitHub main branch
-git clone https://github.com/strudel-science/strudel-kit
-pip install strudel-kit/strudel-cli
-```
+This option makes the most sense for people that want to contribute work back into the main strudel-kit repository. Navigate to the [strudel-kit repository GitHub page](https://github.com/strudel-science/strudel-kit/tree/main), then click the grey "Fork" button. Follow the instructions on the screen to create your own fork of strudel-kit.
