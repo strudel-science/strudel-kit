@@ -62,7 +62,7 @@
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "typescript": "^5.2.2",
-    "vite": "^6.2.1"
+    "vite": "^6.4.0"
   },
   "engines": {
     "node": "^18.18.0 || >=20.0.0"
