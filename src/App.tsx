@@ -33,10 +33,7 @@ const App: React.FC = () => {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <AppProvider>
-            <RouterProvider
-              router={router}
-              basepath={import.meta.env.BASE_URL}
-            />
+            <RouterProvider router={router} />
             <ApiModal />
           </AppProvider>
         </ThemeProvider>
