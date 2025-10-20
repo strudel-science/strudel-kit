@@ -2,6 +2,7 @@ import * as d3 from 'd3-fetch';
 import { useAppState } from '../context/ContextProvider';
 import { useEffect, useState } from 'react';
 import { openApiModal } from '../context/actions';
+import { cleanPath } from '../utils/queryParams.utils';
 
 /**
  * Get data from a local source or REST API.
@@ -18,7 +19,7 @@ export const useDataFromSource = (dataSource: string): any => {
    */
   const basePath = import.meta.env.VITE_BASE_URL || '';
   const leadingSlash = basePath ? '/' : '';
-  const basename = leadingSlash + base + basePath;
+  const basename = cleanPath(leadingSlash + base + basePath);
 
   useEffect(() => {
     const fetchData = async () => {

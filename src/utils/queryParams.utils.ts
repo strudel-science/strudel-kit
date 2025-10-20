@@ -160,7 +160,7 @@ export const fetchData = async (dataSource: string) => {
   // should be added to routes and local requests
   const basePath = import.meta.env.VITE_BASE_URL || '';
   const leadingSlash = basePath ? '/' : '';
-  const basename = leadingSlash + base + basePath;
+  const basename = cleanPath(leadingSlash + base + basePath);
   const fileExtension = dataSource.split('.').pop();
   const isExternal = dataSource.startsWith('http');
   const dataSourcePath = isExternal
