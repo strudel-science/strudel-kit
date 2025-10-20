@@ -50,10 +50,6 @@ jobs:
         run: npm run build
         env:
           VITE_BASE_URL: /strudel-kit/demo/
-      # This is necessary to fix a bug in GitHub Pages
-      # See https://github.com/storybookjs/storybook/issues/20564
-      - name: Add .nojekyll file
-        run: touch dist/.nojekyll
       - name: Deploy docs
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
@@ -67,3 +63,13 @@ jobs:
           npx gh-pages -d dist -e demo -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # This is necessary to fix a bug in GitHub Pages
+      # See https://github.com/storybookjs/storybook/issues/20564
+      - name: Ensure .nojekyll at gh-pages root
+        run: |
+          git fetch origin gh-pages || true
+          git checkout gh-pages || git checkout --orphan gh-pages
+          touch .nojekyll
+          git add .nojekyll
+          git commit -m "Add .nojekyll" || true
+          git push origin gh-pages
