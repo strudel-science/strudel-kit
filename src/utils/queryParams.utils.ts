@@ -159,7 +159,8 @@ export const fetchData = async (dataSource: string) => {
   // Use the VITE_BASE_URL env variable to specify a path prefix that
   // should be added to routes and local requests
   const basePath = import.meta.env.VITE_BASE_URL || '';
-  const basename = base + basePath;
+  const leadingSlash = basePath ? '/' : '';
+  const basename = leadingSlash + base + basePath;
   const fileExtension = dataSource.split('.').pop();
   const isExternal = dataSource.startsWith('http');
   const dataSourcePath = isExternal

@@ -17,7 +17,8 @@ export const useDataFromSource = (dataSource: string): any => {
    * should be added to routes and local requests
    */
   const basePath = import.meta.env.VITE_BASE_URL || '';
-  const basename = base + basePath;
+  const leadingSlash = basePath ? '/' : '';
+  const basename = leadingSlash + base + basePath;
 
   useEffect(() => {
     const fetchData = async () => {
