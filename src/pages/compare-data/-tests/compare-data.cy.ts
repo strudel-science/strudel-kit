@@ -1,6 +1,6 @@
 describe('The Compare Data Task Flow', () => {
   beforeEach(() => {
-    cy.visit('/compare-data');
+    cy.visit('#/compare-data');
   });
 
   it('successfully loads', () => {

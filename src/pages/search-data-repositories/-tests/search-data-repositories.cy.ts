@@ -1,6 +1,6 @@
 describe('The Search Data Repositories Task Flow', () => {
   beforeEach(() => {
-    cy.visit('/search-data-repositories');
+    cy.visit('#/search-data-repositories');
   });
 
   it('successfully loads', () => {
