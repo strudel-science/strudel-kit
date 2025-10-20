@@ -50,6 +50,10 @@ jobs:
         run: npm run build
         env:
           VITE_BASE_URL: /strudel-kit/demo/
+      # This is necessary to fix a bug in GitHub Pages
+      # See https://github.com/storybookjs/storybook/issues/20564
+      - name: Add .nojekyll file
+        run: touch dist/.nojekyll
       - name: Deploy docs
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
