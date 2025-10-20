@@ -67,6 +67,8 @@ jobs:
       # See https://github.com/storybookjs/storybook/issues/20564
       - name: Ensure .nojekyll at gh-pages root
         run: |
+          git config user.name "github-actions-bot"
+          git config user.email "support+actions@github.com"
           git fetch origin gh-pages || true
           git checkout gh-pages || git checkout --orphan gh-pages
           touch .nojekyll
