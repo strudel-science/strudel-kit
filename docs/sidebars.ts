@@ -81,6 +81,11 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'doc',
+          label: 'Usage with AI Assistants',
+          id: 'usage-with-ai',
+        },
+        {
+          type: 'doc',
           label: 'External Resources',
           id: 'external-resources',
         },
