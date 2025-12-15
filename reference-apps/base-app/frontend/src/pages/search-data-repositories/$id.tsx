@@ -1,6 +1,5 @@
 import DownloadIcon from '@mui/icons-material/Download';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import { TabContext, TabList, TabPanel } from '@mui/lab';
 import {
   Box,
   Button,
@@ -10,6 +9,7 @@ import {
   Paper,
   Stack,
   Tab,
+  Tabs,
   Typography,
 } from '@mui/material';
 import { DataGrid, GridActionsCellItem, GridColDef } from '@mui/x-data-grid';
@@ -18,6 +18,7 @@ import { LabelValueTable } from '../../components/LabelValueTable';
 import { PageHeader } from '../../components/PageHeader';
 import { useDetailQuery } from '../../hooks/useDetailQuery';
 import { createFileRoute } from '@tanstack/react-router';
+import { TabPanel } from '../../components/TabPanel';
 
 export const Route = createFileRoute('/search-data-repositories/$id')({
   component: DatasetDetail,
@@ -94,7 +95,7 @@ function DatasetDetail() {
         <Grid container spacing={1} sx={{ pt: 1, pr: 2, pb: 2, pl: 2 }}>
           {data && (
             <>
-              <Grid item md={8} xs={12}>
+              <Grid size={{ md: 8, xs: 12}}>
                 <Paper sx={{ mb: 1 }}>
                   <Stack p={2}>
                     <Stack direction="row">
@@ -135,38 +136,37 @@ function DatasetDetail() {
                   </Stack>
                 </Paper>
                 <Paper>
-                  <TabContext value={dataTabsValue}>
-                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                      <TabList
-                        onChange={handleDataTabsChange}
-                        aria-label="lab API tabs example"
-                      >
-                        <Tab label="Data Files" value="1" />
-                        <Tab label="Data Types" value="2" />
-                        <Tab label="Metadata" value="3" />
-                      </TabList>
-                    </Box>
-                    <TabPanel value="1">
-                      <Stack direction="row" justifyContent="flex-end">
-                        <Button variant="contained">Download all files</Button>
-                      </Stack>
-                      <DataGrid
-                        rows={data.attached_files}
-                        getRowId={(row) => row.file_id}
-                        columns={attachedFilesColumns}
-                        disableColumnSelector
-                        disableRowSelectionOnClick
-                        sx={{
-                          border: 'none',
-                        }}
-                      />
-                    </TabPanel>
-                    <TabPanel value="2">Tab Two Content</TabPanel>
-                    <TabPanel value="3">Tab Three Content</TabPanel>
-                  </TabContext>
+                  <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                    <Tabs
+                      value={dataTabsValue}
+                      onChange={handleDataTabsChange}
+                      aria-label="lab API tabs example"
+                    >
+                      <Tab label="Data Files" value="1" />
+                      <Tab label="Data Types" value="2" />
+                      <Tab label="Metadata" value="3" />
+                    </Tabs>
+                  </Box>
+                  <TabPanel value={1} index={0}>
+                    <Stack direction="row" justifyContent="flex-end">
+                      <Button variant="contained">Download all files</Button>
+                    </Stack>
+                    <DataGrid
+                      rows={data.attached_files}
+                      getRowId={(row) => row.file_id}
+                      columns={attachedFilesColumns}
+                      disableColumnSelector
+                      disableRowSelectionOnClick
+                      sx={{
+                        border: 'none',
+                      }}
+                    />
+                  </TabPanel>
+                  <TabPanel value={2} index={1}>Tab Two Content</TabPanel>
+                  <TabPanel value={3} index={2}>Tab Three Content</TabPanel>
                 </Paper>
               </Grid>
-              <Grid item md={4} xs={12}>
+              <Grid size={{ md: 4, xs: 12}}>
                 <Paper>
                   <Stack p={2}>
                     <Box>

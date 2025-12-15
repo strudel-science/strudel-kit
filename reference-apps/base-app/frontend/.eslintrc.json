@@ -2,7 +2,7 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json",
+    "project": true,
     "ecmaVersion": 2020, // Allows for the parsing of modern JS
     "ecmaFeatures": {
       "jsx": true // Allows for the parsing of JSX

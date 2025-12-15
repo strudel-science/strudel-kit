@@ -57,3 +57,5 @@ _*.config.ts
 
 # Cache
 .eslintcache
+
+.tanstack

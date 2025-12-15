@@ -26,8 +26,8 @@ export const Route = createFileRoute('/')({
  * Home page component that renders at the root route /
  */
 function Index() {
-  const topLevelRoutes = getTopLevelRoutes(router.flatRoutes);
-  const taskflowRoutes = getTaskFlowRoutes(router.flatRoutes);
+  const topLevelRoutes = getTopLevelRoutes(Object.values(router.routesById));
+  const taskflowRoutes = getTaskFlowRoutes(Object.values(router.routesById));
 
   const PaperWithHover: React.FC<PropsWithChildren> = ({ children }) => (
     <Paper
@@ -72,7 +72,7 @@ function Index() {
         <Stack spacing={3}>
           <Box>
             <Grid container spacing={1}>
-              <Grid item sm={6}>
+              <Grid size={{ sm: 6 }}>
                 <AppLink to="/">
                   <PaperWithHover>
                     <Stack>
@@ -94,7 +94,7 @@ function Index() {
                 </AppLink>
               </Grid>
               {topLevelRoutes.map((route) => (
-                <Grid key={route.id} item sm={6}>
+                <Grid key={route.id} size={{ sm: 6 }}>
                   <AppLink to={route.fullPath}>
                     <PaperWithHover>
                       <Stack>
@@ -123,7 +123,7 @@ function Index() {
             {taskflowRoutes.length > 0 && (
               <Grid container spacing={1}>
                 {taskflowRoutes.map((route) => (
-                  <Grid key={route.id} item sm={6}>
+                  <Grid key={route.id} size={{ sm: 6 }}>
                     <AppLink to={route.fullPath}>
                       <PaperWithHover>
                         <Stack>
