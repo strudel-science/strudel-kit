@@ -1,11 +1,11 @@
 import { Box, Button, Container, Paper, Stack } from '@mui/material';
 import { GridToolbar } from '@mui/x-data-grid';
 import { PageHeader } from '../../../components/PageHeader';
-import { SciDataGrid } from '../../../components/SciDataGrid';
 import { AppLink } from '../../../components/AppLink';
 import { createFileRoute } from '@tanstack/react-router';
 import { useCompareData } from '../-context/ContextProvider';
 import { setSelectedRows } from '../-context/actions';
+import { ScientificDataGrid } from '@strudel-science/components';
 
 export const Route = createFileRoute('/compare-data/_layout/')({
   component: ScenarioList,
@@ -30,7 +30,7 @@ function ScenarioList() {
           <Stack direction="row">
             <Box>
               {/* CUSTOMIZE: the compare button text */}
-              {state.selectedRows.length < 2 && (
+              {state.selectedRows.ids?.size < 2 && (
                 <Button
                   variant="outlined"
                   disabled
@@ -39,10 +39,10 @@ function ScenarioList() {
                   Compare scenarios
                 </Button>
               )}
-              {state.selectedRows.length > 1 && (
+              {state.selectedRows.ids?.size > 1 && (
                 <AppLink to="/compare-data/compare">
                   <Button variant="contained" data-testid="cpd-compare-button">
-                    Compare scenarios ({state.selectedRows.length})
+                    Compare scenarios ({state.selectedRows.ids?.size})
                   </Button>
                 </AppLink>
               )}
@@ -70,7 +70,7 @@ function ScenarioList() {
         }}
       >
         <Paper>
-          <SciDataGrid
+          <ScientificDataGrid
             rows={state.data}
             getRowId={(row) => row[state.dataIdField]}
             columns={state.columns}
@@ -82,10 +82,8 @@ function ScenarioList() {
             disableRowSelectionOnClick
             disableDensitySelector
             disableColumnFilter
-            initialState={{
-              pagination: { paginationModel: { page: 1, pageSize: 25 } },
-            }}
-            slots={{ toolbar: GridToolbar }}
+            paginationModel={{ page: 0, pageSize: 25 }}
+            slots={{ toolbar: GridToolbar as any }}
             slotProps={{
               toolbar: {
                 showQuickFilter: true,

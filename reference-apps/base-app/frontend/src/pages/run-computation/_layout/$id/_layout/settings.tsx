@@ -96,10 +96,10 @@ function SettingsPage() {
             </Typography>
             <Grid container rowSpacing={2} alignItems="center">
               {/* CUSTOMIZE: settings form elements */}
-              <Grid item md={3}>
+              <Grid size={{ md: 3 }}>
                 <Typography>Solver</Typography>
               </Grid>
-              <Grid item md={9}>
+              <Grid size={{ md: 9 }}>
                 <FormControl fullWidth>
                   <Select id="solver-select">
                     <MenuItem value={10}>Solver 1</MenuItem>
@@ -108,10 +108,10 @@ function SettingsPage() {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item md={3}>
+              <Grid size={{ md: 3 }}>
                 <Typography>Objective</Typography>
               </Grid>
-              <Grid item md={9}>
+              <Grid size={{ md: 9 }}>
                 <FormControl fullWidth>
                   <Select id="objective-select">
                     <MenuItem value={10}>Objective 1</MenuItem>
@@ -120,10 +120,10 @@ function SettingsPage() {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item md={3}>
+              <Grid size={{ md: 3 }}>
                 <Typography>Time Constraints</Typography>
               </Grid>
-              <Grid item md={9}>
+              <Grid size={{ md: 9 }}>
                 <TextField
                   id="time-constraints-field"
                   variant="outlined"
@@ -138,10 +138,10 @@ function SettingsPage() {
             </Box>
             {showAdvanced && (
               <Grid container rowSpacing={2} alignItems="center">
-                <Grid item md={3}>
+                <Grid size={{ md: 3 }}>
                   <Typography>Another Setting</Typography>
                 </Grid>
-                <Grid item md={9}>
+                <Grid size={{ md: 9 }}>
                   <FormControl fullWidth>
                     <Select id="another-select">
                       <MenuItem value={10}>Another Setting 1</MenuItem>
@@ -150,10 +150,10 @@ function SettingsPage() {
                     </Select>
                   </FormControl>
                 </Grid>
-                <Grid item md={3}>
+                <Grid size={{ md: 3 }}>
                   <Typography>Another Setting</Typography>
                 </Grid>
-                <Grid item md={9}>
+                <Grid size={{ md: 9 }}>
                   <FormControl fullWidth>
                     <Select id="another-2-select">
                       <MenuItem value={10}>Another Setting 1</MenuItem>

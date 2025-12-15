@@ -10,7 +10,7 @@ import {
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import React from 'react';
 import { AppLink } from '../../../components/AppLink';
-import { LabelValueTable } from '../../../components/LabelValueTable';
+import { LabelValueTable } from '@strudel-science/components';
 
 /**
  * Placeholder columns for attached files table

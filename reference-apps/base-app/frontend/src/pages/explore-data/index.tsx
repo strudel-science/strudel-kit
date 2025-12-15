@@ -1,13 +1,11 @@
 import { Box, Paper, Stack } from '@mui/material';
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
-import { FilterContext } from '../../components/FilterContext';
 import { PageHeader } from '../../components/PageHeader';
 import { DataView } from './-components/DataView';
 import { DataViewHeader } from './-components/DataViewHeader';
-import { FiltersPanel } from './-components/FiltersPanel';
 import { PreviewPanel } from './-components/PreviewPanel';
-import { FilterConfig } from '../../types/filters.types';
+import { FilterConfig, FilterContext, FiltersPanel } from '@strudel-science/components';
 
 export const Route = createFileRoute('/explore-data/')({
   component: DataExplorer,

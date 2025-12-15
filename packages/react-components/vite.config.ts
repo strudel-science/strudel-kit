@@ -19,7 +19,11 @@ export default defineConfig({
     react(),
     dts({
       include: ['src/**/*'],
-      exclude: ['src/**/*.stories.tsx', 'src/**/*.test.tsx', 'src/stories/**/*'],
+      exclude: ['src/**/*.stories.tsx', 'src/**/*.test.tsx', 'src/stories/**/*', 'src/main.tsx', 'src/App.tsx'],
+      outDir: 'dist',
+      tsconfigPath: './tsconfig.app.json',
+      rollupTypes: true,
+      entryRoot: 'src',
     }),
   ],
   build: {

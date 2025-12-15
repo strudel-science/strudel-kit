@@ -1,11 +1,9 @@
 import { Alert, Box, LinearProgress, Skeleton } from '@mui/material';
 import { GridPaginationModel } from '@mui/x-data-grid';
 import React, { useState } from 'react';
-import { useFilters } from '../../../components/FilterContext';
-import { SciDataGrid } from '../../../components/SciDataGrid';
 import { filterData } from '../../../utils/filters.utils';
 import { useListQuery } from '../../../hooks/useListQuery';
-import { FilterConfig } from '../../../types/filters.types';
+import { FilterConfig, ScientificDataGrid, useFilters } from '@strudel-science/components';
 
 interface DataViewProps {
   filterConfigs: FilterConfig[];
@@ -80,7 +78,7 @@ export const DataView: React.FC<DataViewProps> = ({
   return (
     <>
       {isFetching && <LinearProgress variant="indeterminate" />}
-      <SciDataGrid
+      <ScientificDataGrid
         rows={filterData(data, activeFilters, filterConfigs, searchTerm)}
         pagination
         paginationMode={queryMode}

@@ -14,11 +14,11 @@ import {
 } from '@mui/material';
 import { DataGrid, GridActionsCellItem, GridColDef } from '@mui/x-data-grid';
 import React from 'react';
-import { LabelValueTable } from '../../components/LabelValueTable';
 import { PageHeader } from '../../components/PageHeader';
 import { useDetailQuery } from '../../hooks/useDetailQuery';
 import { createFileRoute } from '@tanstack/react-router';
 import { TabPanel } from '../../components/TabPanel';
+import { LabelValueTable } from '@strudel-science/components';
 
 export const Route = createFileRoute('/search-data-repositories/$id')({
   component: DatasetDetail,

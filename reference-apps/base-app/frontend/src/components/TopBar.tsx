@@ -3,7 +3,7 @@ import { AppBar, IconButton, Stack, Toolbar, Typography } from '@mui/material';
 import React from 'react';
 import { cleanPath } from '../utils/queryParams.utils';
 import { AppLink } from './AppLink';
-import { ImageWrapper } from './ImageWrapper';
+import { ImageWrapper } from '@strudel-science/components';
 
 /**
  * Top navigation bar component

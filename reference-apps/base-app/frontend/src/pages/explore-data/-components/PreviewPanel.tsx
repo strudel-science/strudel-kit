@@ -8,9 +8,9 @@ import {
   Typography,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { LabelValueTable } from '../../../components/LabelValueTable';
 import { DataGrid } from '@mui/x-data-grid';
 import { AppLink } from '../../../components/AppLink';
+import { LabelValueTable } from '@strudel-science/components';
 
 /**
  * Placeholder columns for related data table

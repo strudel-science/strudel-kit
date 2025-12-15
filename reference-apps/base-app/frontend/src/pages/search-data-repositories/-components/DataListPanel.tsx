@@ -12,11 +12,11 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { useFilters } from '../../../components/FilterContext';
 import { FilterConfig } from '../../../types/filters.types';
 import { filterData } from '../../../utils/filters.utils';
 import { useListQuery } from '../../../hooks/useListQuery';
 import { DataListCard } from './DataListCard';
+import { useFilters } from '@strudel-science/components';
 
 interface DataListPanelProps {
   filterConfigs: FilterConfig[];

@@ -4,6 +4,7 @@ export { CellWithPopover } from './components/CellWithPopover';
 export { CheckboxList } from './components/CheckboxList';
 export { ChemicalFormula } from './components/ChemicalFormula';
 export { FilterContext } from './components/FilterContext';
+export { useFilters } from './components/FilterContext/useFilters';
 export { FilterField } from './components/FilterField';
 export { FilterGroup } from './components/FilterGroup';
 export { Filters } from './components/Filters';

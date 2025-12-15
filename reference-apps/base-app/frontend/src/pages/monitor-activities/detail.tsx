@@ -17,7 +17,7 @@ import Plot from 'react-plotly.js';
 import { createFileRoute } from '@tanstack/react-router';
 import { useDataFromSource } from '../../hooks/useDataFromSource';
 import { AppLink } from '../../components/AppLink';
-import { LabelValueTable } from '../../components/LabelValueTable';
+import { LabelValueTable } from '@strudel-science/components';
 
 export const Route = createFileRoute('/monitor-activities/detail')({
   component: ActivityDetail,
@@ -86,7 +86,7 @@ function ActivityDetail() {
         </Stack>
         <Box>
           <Grid container spacing={2}>
-            <Grid item md={6}>
+            <Grid size={{ md: 6 }}>
               <Paper>
                 {experiment && (
                   <DataGrid
@@ -105,7 +105,7 @@ function ActivityDetail() {
                 )}
               </Paper>
             </Grid>
-            <Grid item md={6}>
+            <Grid size={{ md: 6 }}>
               <Stack>
                 <Paper
                   sx={{

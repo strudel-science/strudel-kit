@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import { createFileRoute } from '@tanstack/react-router';
 import { AppLink } from '../../../components/AppLink';
-import { LabelValueTable } from '../../../components/LabelValueTable';
+import { LabelValueTable } from '@strudel-science/components';
 
 export const Route = createFileRoute('/contribute-data/_layout/')({
   component: Register,

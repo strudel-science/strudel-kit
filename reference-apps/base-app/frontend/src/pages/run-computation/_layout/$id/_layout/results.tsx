@@ -185,17 +185,17 @@ function ResultsPage() {
             }}
           >
             <Grid container spacing={4}>
-              <Grid item sm={6}>
+              <Grid size={{ sm: 6 }}>
                 <Paper>
                   <Plot data={state.results.lineChart.data} layout={{}} />
                 </Paper>
               </Grid>
-              <Grid item sm={6}>
+              <Grid size={{ sm: 6 }}>
                 <Paper>
                   <Plot data={state.results.barChart.data} layout={{}} />
                 </Paper>
               </Grid>
-              <Grid item xs={12}>
+              <Grid size={{ xs: 12 }}>
                 <Paper>
                   <DataGrid
                     rows={state.results.table.data || []}

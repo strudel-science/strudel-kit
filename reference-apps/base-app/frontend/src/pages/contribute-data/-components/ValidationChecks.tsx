@@ -1,7 +1,7 @@
 import { Box, LinearProgress, Paper, Stack, Typography } from '@mui/material';
 import React from 'react';
-import { LinearMeter } from '../../../components/LinearMeter';
 import { useContributeData } from '../-context/ContextProvider';
+import { LinearMeter } from '@strudel-science/components';
 
 /**
  * Panel to display information and status of validation checks in the contribute-data Task Flow.

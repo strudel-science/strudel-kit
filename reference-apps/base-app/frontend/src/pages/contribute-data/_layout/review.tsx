@@ -123,10 +123,10 @@ function ReviewDataset() {
           </Stack>
           <Box>
             <Grid container spacing={2}>
-              <Grid item md={8} sm={12}>
+              <Grid size={{ md: 8, sm: 12 }}>
                 <DatasetView />
               </Grid>
-              <Grid item md={4} sm={12}>
+              <Grid size={{ md: 4, sm: 12 }}>
                 <ValidationChecks />
               </Grid>
             </Grid>

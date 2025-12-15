@@ -1,12 +1,11 @@
 import { Box, Stack } from '@mui/material';
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
-import { FilterContext } from '../../components/FilterContext';
 import { PageHeader } from '../../components/PageHeader';
-import { FiltersPanel } from './-components/FiltersPanel';
 import { DataListPanel } from './-components/DataListPanel';
 import { PreviewPanel } from './-components/PreviewPanel';
 import { FilterConfig } from '../../types/filters.types';
+import { FilterContext, FiltersPanel } from '@strudel-science/components';
 
 export const Route = createFileRoute('/search-data-repositories/')({
   component: DatasetExplorer,

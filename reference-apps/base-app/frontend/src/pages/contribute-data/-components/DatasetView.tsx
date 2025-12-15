@@ -2,8 +2,8 @@ import { Box, Paper, Stack, Typography } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
 import React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { LabelValueTable } from '../../../components/LabelValueTable';
 import { files } from './DataFilesPanel';
+import { LabelValueTable } from '@strudel-science/components';
 
 // CUSTOMIZE: columns for the dataset files table
 const columns: GridColDef[] = [

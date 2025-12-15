@@ -7,6 +7,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
+import { ImageWrapper } from '@strudel-science/components';
 import { createFileRoute } from '@tanstack/react-router';
 import { PropsWithChildren } from 'react';
 import { router } from '../App';
@@ -16,7 +17,6 @@ import {
   getTopLevelRoutes,
   getTaskFlowRoutes,
 } from '../utils/string.utils';
-import { ImageWrapper } from '../components/ImageWrapper';
 
 export const Route = createFileRoute('/')({
   component: Index,

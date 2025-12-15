@@ -22,7 +22,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -36,7 +36,7 @@
     "@mui/x-data-grid": "^8.22.0",
     "@mui/x-date-pickers": "^8.22.0",
     "dayjs": "^1.11.19",
-    "react": "^19.2.0",
+    "react": "^19.2.3",
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
