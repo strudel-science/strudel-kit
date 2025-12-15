@@ -1,6 +1,7 @@
+import { Typography, TypographyProps } from "@mui/material";
 import { ELEMENTS_REGEX, ELEMENTS_SPLIT_REGEX } from "../../utils";
 
-interface ChemicalFormulaProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface ChemicalFormulaProps extends TypographyProps {
   content: string;
 }
 
@@ -24,5 +25,5 @@ export const ChemicalFormula: React.FC<ChemicalFormulaProps> = ({ content, ...re
     </span>
   );
 
-  return <span {...rest}>{formula}</span>;
+  return <Typography {...rest}>{formula}</Typography>;
 };

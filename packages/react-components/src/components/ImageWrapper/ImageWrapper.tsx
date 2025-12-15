@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Box, BoxProps } from '@mui/material';
 import React from 'react';
 import './ImageWrapper.css';
@@ -33,7 +34,7 @@ export const ImageWrapper: React.FC<ImageWrapperProps> = ({
         if (React.isValidElement(child)) {
           const imgClass = width ? 'relative-width' : 'relative-height';
           return React.cloneElement(child as React.ReactElement<any>, {
-            className: `${child.props.className} ${imgClass}`,
+            className: `${(child.props as any).className} ${imgClass}`,
           });
         }
       })}

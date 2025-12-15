@@ -66,7 +66,7 @@ export const ArrayWithPopover: React.FC<ArrayWithPopoverProps> = ({
           }}
         >
           {values.map((v) => (
-            <Grid key={v} item>
+            <Grid key={v}>
               <Chip label={v} size="small" />
             </Grid>
           ))}

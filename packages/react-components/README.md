@@ -1,73 +1,123 @@
-# React + TypeScript + Vite
+# @strudel-science/components
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React component library for scientific data visualization and exploration.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install @strudel-science/components
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Peer Dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+This library requires the following peer dependencies:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- `react` (^19.2.0)
+- `react-dom` (^19.2.0)
+- `@mui/material` (^7.3.6)
+- `@mui/icons-material` (^7.3.6)
+- `@mui/x-data-grid` (^8.22.0)
+- `@mui/x-date-pickers` (^8.22.0)
+- `@emotion/react` (^11.14.0)
+- `@emotion/styled` (^11.14.1)
+- `dayjs` (^1.11.19)
+
+Install them with:
+
+```bash
+npm install react react-dom @mui/material @mui/icons-material @mui/x-data-grid @mui/x-date-pickers @emotion/react @emotion/styled dayjs
 ```
+
+## Usage
+
+Import components from the library:
+
+```tsx
+import { 
+  ScientificDataGrid, 
+  ChemicalFormula, 
+  LabelValueTable,
+  FilterContext,
+  FiltersPanel
+} from '@strudel-science/components';
+
+function MyApp() {
+  return (
+    <div>
+      <ChemicalFormula content="H2O" />
+      <ScientificDataGrid data={myData} columns={myColumns} />
+    </div>
+  );
+}
+```
+
+## Available Components
+
+### Data Display
+- **ScientificDataGrid** - Data grid with scientific notation support
+- **LabelValueTable** - Simple label-value pair table
+- **ArrayWithPopover** - Display arrays with expandable popover
+- **CellWithPopover** - Table cell with popover details
+- **ImageWrapper** - Responsive image wrapper
+- **LinearMeter** - Progress meter component
+
+### Filters
+- **FilterContext** - Context provider for filters
+- **FilterField** - Individual filter field
+- **FilterGroup** - Group of related filters
+- **Filters** - Main filters component
+- **FiltersPanel** - Panel for filter controls
+- **CheckboxList** - Checkbox list filter
+- **RangeSlider** - Range slider filter
+
+### Scientific
+- **ChemicalFormula** - Render chemical formulas with proper formatting
+
+## Types
+
+The library also exports TypeScript types:
+
+```tsx
+import type { 
+  FilterConfig, 
+  DataFilter, 
+  FilterOperator,
+  FilterComponent,
+  FilterValue,
+  DataCard 
+} from '@strudel-science/components';
+```
+
+## Utilities
+
+Utility functions for chemical formulas and filtering:
+
+```tsx
+import { 
+  VALID_ELEMENTS, 
+  ELEMENTS_REGEX, 
+  ELEMENTS_SPLIT_REGEX,
+  hasValue,
+  rangeHasValue 
+} from '@strudel-science/components';
+```
+
+## Building the Library
+
+```bash
+npm run build
+```
+
+This will generate the library bundle in the `dist/` directory.
+
+## Development
+
+Run Storybook for component development:
+
+```bash
+npm run storybook
+```
+
+## License
+
+See LICENSE file for details.

@@ -16,6 +16,11 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* Library mode */
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": false,
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
@@ -24,5 +29,6 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/**/*.stories.tsx", "src/**/*.test.tsx", "src/stories/**/*"]
 }

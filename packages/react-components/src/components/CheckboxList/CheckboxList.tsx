@@ -16,9 +16,14 @@ export interface CheckboxOption {
 interface CheckboxListProps extends Omit<FormGroupProps, 'onChange'> {
   values: CheckboxOptionValue[] | null;
   options: CheckboxOption[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChange?: (values: CheckboxOptionValue[] | null) => any;
 }
 
+/**
+ * Generate a list of checkboxes from an array of options
+ * and control the selected values as an array.
+ */
 export const CheckboxList: React.FC<CheckboxListProps> = ({
   options = [],
   onChange,
@@ -49,6 +54,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
     if (onChange && checkValues?.length !== values?.length) {
       onChange(checkValues);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checkValues]);
 
   useEffect(() => {
@@ -71,7 +77,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
             <Checkbox
               checked={!!checkValues && checkValues.indexOf(option.value) > -1}
               value={option.value}
-              onChange={(e, checked) => handleChange(checked, option.value)}
+              onChange={(_e, checked) => handleChange(checked, option.value)}
               sx={{
                 pr: 1,
                 pl: 1,
