@@ -2,19 +2,20 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import CloseIcon from '@mui/icons-material/Close';
 import {
-  Box,
   Button,
   Chip,
   IconButton,
   Paper,
   PaperProps,
   Stack,
+  Typography,
 } from '@mui/material';
 import React from 'react';
-import { FilterState, useFilters } from './FilterContext';
+import { FilterState } from '../FilterContext/FilterContext';
+import { useFilters } from '../FilterContext/useFilters';
 import { hasValue } from '../../utils';
 
-interface FilterPanelProps extends Omit<PaperProps, 'onChange'> {
+export interface FilterPanelProps extends Omit<PaperProps, 'onChange'> {
   onChange?: (activeFilters: FilterState['activeFilters']) => void;
   onClose?: () => any;
   config?: any;
@@ -23,7 +24,7 @@ interface FilterPanelProps extends Omit<PaperProps, 'onChange'> {
 }
 
 /**
- * Container panel for FilterField(s) and FilterGroup(s).
+ * Composable container for `FilterField`(s) and `FilterGroup`(s).
  * Acts as a multi-dimensional input where you can monitor
  * the active state of all filters contained inside the component.
  */
@@ -76,7 +77,7 @@ export const Filters: React.FC<FilterPanelProps> = ({
             }}
           >
             <Stack direction="row" spacing={2} flex={1}>
-              <Box>{header}</Box>
+              <Typography>{header}</Typography>
               {activeChildren > 0 && (
                 <Chip
                   label={`${activeChildren} active`}

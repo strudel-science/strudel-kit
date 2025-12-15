@@ -1,10 +1,10 @@
 import React, {
   PropsWithChildren,
-  useContext,
   useEffect,
   useReducer,
 } from 'react';
 import { FilterOperator } from '../../types/filters.types';
+import { FilterContextAPI } from './useFilters';
 
 export interface DataFilter {
   field: string;
@@ -17,15 +17,6 @@ export interface FilterState {
   activeFilters: DataFilter[];
   expandedGroup: string | number | boolean;
 }
-
-const FilterContextAPI = React.createContext<
-  | {
-      activeFilters: FilterState['activeFilters'];
-      expandedGroup: FilterState['expandedGroup'];
-      dispatch: React.Dispatch<FilterAction>;
-    }
-  | undefined
->(undefined);
 
 const initialState: FilterState = {
   activeFilters: [],
@@ -114,13 +105,4 @@ export const FilterContext: React.FC<FilterContextProps> = ({
       {children}
     </FilterContextAPI.Provider>
   );
-};
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const useFilters = () => {
-  const context = useContext(FilterContextAPI);
-  if (context === undefined) {
-    throw new Error('useFilters must be used within a FilterContext');
-  }
-  return context;
 };

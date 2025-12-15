@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export type ParamType = 'standard' | 'array-string' | 'repeated' | 'minmax';
 
 export type FilterOperator =
@@ -35,6 +36,8 @@ export interface DataFilter {
 export interface FilterConfig {
   field: string;
   label: string;
+  tooltip?: string;
+  units?: string;
   operator?: FilterOperator;
   paramType?: ParamType;
   paramTypeOptions?: any;

@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import { Box, Slider, SliderProps } from '@mui/material';
 
-interface RangeSliderProps extends SliderProps {}
-
 /**
  * Custom wrapper for the MUI Slider components where
  * the user is selecting a range of values.
  */
-export const RangeSlider: React.FC<RangeSliderProps> = ({
+export const RangeSlider: React.FC<SliderProps> = ({
   min = 0,
   max = 100,
   ...rest
 }) => {
   const [value, setValue] = useState<number[]>([min, max]);
 
-  const handleChange = (event: Event, v: number | number[]) => {
+  const handleChange = (_event: Event, v: number | number[]) => {
     setValue(v as number[]);
   };
 

@@ -11,7 +11,7 @@ import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { CheckboxList } from '../CheckboxList';
 import { RangeSlider } from '../RangeSlider';
 import { DatePicker } from '@mui/x-date-pickers';
-import { useFilters } from './FilterContext';
+import { useFilters } from '../FilterContext/useFilters';
 import {
   FilterComponent,
   FilterOperator,
@@ -19,10 +19,11 @@ import {
 } from '../../types/filters.types';
 import { hasValue } from '../../utils';
 
-interface FilterFieldProps extends StackProps {
+export interface FilterFieldProps extends StackProps {
   label: string;
   field: string;
   tooltip?: string;
+  units?: string;
   operator: FilterOperator;
   filterComponent: FilterComponent;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -36,13 +37,21 @@ export const FilterField: React.FC<FilterFieldProps> = ({
   label,
   field,
   tooltip,
+  units,
   operator,
   filterComponent,
   filterProps,
   ...rest
 }) => {
   const { activeFilters, dispatch } = useFilters();
-  const [value, setValue] = useState<FilterValue<typeof filterComponent>>(null);
+  const [value, setValue] = useState<FilterValue<typeof filterComponent>>(() => {
+    if (filterComponent === 'RangeSlider') {
+      return [filterProps.min, filterProps.max] as FilterValue<
+        typeof filterComponent
+      >;
+    }
+    return null as FilterValue<typeof filterComponent>;
+  });
   const currentFilter = activeFilters.find((filter) => filter.field === field);
   const isActive = hasValue(currentFilter?.value);
 
@@ -60,7 +69,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
         setValue([filterProps.min, filterProps.max]);
         break;
       case 'DateRange':
-        setValue([filterProps.min || null, filterProps.max || null]);
+        setValue([filterProps?.min || null, filterProps?.max || null]);
         break;
       case 'TextField':
         setValue(null);
@@ -120,7 +129,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
             valueLabelDisplay="auto"
             min={filterProps.min}
             max={filterProps.max}
-            value={value || [filterProps.min, filterProps.max]}
+            value={value}
             onChange={(_e, v) => setValue(v as number[])}
             onChangeCommitted={handleSliderChange}
             {...filterProps}
@@ -189,7 +198,12 @@ export const FilterField: React.FC<FilterFieldProps> = ({
         return (
           <TextField
             value={value || ''}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => 
+              dispatch({
+                type: 'SET_FILTER',
+                payload: { field: field, value: e.target.value, operator },
+              })
+            }
             fullWidth
             {...filterProps}
           />
@@ -204,7 +218,6 @@ export const FilterField: React.FC<FilterFieldProps> = ({
    */
   useEffect(() => {
     if (isActive) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setValue(currentFilter?.value || null);
     } else if (filterComponent === 'RangeSlider') {
       /** RangeSliders should be considered off if both values are min and max */
@@ -217,22 +230,8 @@ export const FilterField: React.FC<FilterFieldProps> = ({
     } else if (hasValue(value)) {
       handleCancelFilter();
     }
-  }, [currentFilter?.value, filterComponent, filterProps.max, filterProps.min, handleCancelFilter, isActive, value]);
-
-  /**
-   * Debounce the dispatch so that activeFilters isn't rapidly updated.
-   */
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      dispatch({
-        type: 'SET_FILTER',
-        payload: { field: field, value: value, operator },
-      });
-    }, 1000);
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [dispatch, field, operator, value]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentFilter?.value, filterComponent, filterProps?.max, filterProps?.min, handleCancelFilter, isActive]);
 
   return (
     <Stack
@@ -279,6 +278,11 @@ export const FilterField: React.FC<FilterFieldProps> = ({
               color={isActive ? 'primary' : 'default'}
             >
               {label}
+            </Typography>
+          )}
+          {units && (
+            <Typography color="grey.700" fontSize="small">
+              ({units})
             </Typography>
           )}
           {isActive && <CancelOutlinedIcon color="primary" />}

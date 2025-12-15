@@ -8,8 +8,9 @@ import {
   Typography,
 } from '@mui/material';
 import React from 'react';
-import { useFilters } from './FilterContext';
-import { hasValue } from './Filters/FilterField';
+import { useFilters } from '../FilterContext/useFilters';
+import { hasValue } from '../../utils';
+import { FilterFieldProps } from '../FilterField/FilterField';
 
 interface FilterGroupProps {
   label?: React.ReactNode;
@@ -33,8 +34,8 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
   React.Children.forEach(children, (child) => {
     if (
       React.isValidElement(child) &&
-      child.props.field &&
-      hasValue(activeFilters.find((f: any) => f.field === child.props.field))
+     (child.props as FilterFieldProps).field &&
+      hasValue(activeFilters.find((f) => f.field === (child.props as FilterFieldProps).field))
     ) {
       return activeChildren++;
     }
@@ -42,7 +43,7 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
 
   const handleChange =
     (panel: string | number) =>
-    (event: React.SyntheticEvent, newExpanded: boolean) => {
+    (_event: React.SyntheticEvent, newExpanded: boolean) => {
       dispatch({
         type: 'SET_EXPANDED_GROUP',
         payload: newExpanded ? panel : false,
