@@ -57,3 +57,7 @@ _*.config.ts
 
 # Cache
 .eslintcache
+
+.venv
+
+*.db

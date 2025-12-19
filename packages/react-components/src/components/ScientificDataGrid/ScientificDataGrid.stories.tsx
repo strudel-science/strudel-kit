@@ -29,20 +29,20 @@ const rowsWithArray = [
 
 const columns = [
   { field: 'name', headerName: 'Name', width: 150 },
-  { field: 'value', headerName: 'Value', width: 100, decimals: 2, type: 'number' as const, units: 'grams',  },
   { field: 'formula', headerName: 'Formula', width: 200, isFormula: true },
+  { field: 'value', headerName: 'Value', width: 100, decimals: 2, type: 'number' as const, units: 'grams',  },
 ];
 
 const columnsWithSigFigs = [
   { field: 'name', headerName: 'Name', width: 150 },
-  { field: 'value', headerName: 'Value', width: 100, sigFigs: 4, type: 'number' as const, units: 'grams',  },
   { field: 'formula', headerName: 'Formula', width: 200, isFormula: true },
+  { field: 'value', headerName: 'Value', width: 100, sigFigs: 4, type: 'number' as const, units: 'grams',  },
 ];
 
 const columnsWithArray = [
   { field: 'name', headerName: 'Name', width: 150 },
-  { field: 'value', headerName: 'Value', width: 100, hasPopover: true,  },
   { field: 'description', headerName: 'Description', width: 200, hasPopover: true },
+  { field: 'value', headerName: 'Value', width: 100, hasPopover: true,  },
 ];
 
 export const Default: Story = {
