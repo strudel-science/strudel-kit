@@ -28,6 +28,10 @@ export const ImageWrapper: React.FC<ImageWrapperProps> = ({
         height: height || 'auto',
         overflow: 'hidden',
         width: width || 'auto',
+        '& > img': {
+          height: '100%',
+          width: '100%',
+        },
       }}
     >
       {React.Children.map(children, (child) => {

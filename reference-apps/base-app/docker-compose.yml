@@ -29,5 +29,14 @@ services:
     volumes:
       - ./backend/app:/app/app
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "${FRONTEND_PORT}:80"
+    depends_on:
+      - backend
+
 volumes:
   postgres_data:
