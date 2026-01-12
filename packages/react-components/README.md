@@ -1,6 +1,6 @@
 # @strudel-science/components
 
-A React component library for scientific data visualization and exploration.
+A React component library for scientific web applications.
 
 ## Installation
 

@@ -1,7 +1,7 @@
 {
   "name": "@strudel-science/components",
   "private": false,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/strudel-science/strudel-kit/tree/main"
+    "url": "git+https://github.com/strudel-science/strudel-kit.git#main"
   },
   "scripts": {
     "dev": "vite",
