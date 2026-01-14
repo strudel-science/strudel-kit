@@ -1,7 +1,6 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import { DataFilter } from '../components/FilterContext';
-import { FilterConfig } from '../types/filters.types';
 import { createFilterParams, fetchData } from '../utils/queryParams.utils';
+import { DataFilter, FilterConfig } from '@strudel-science/components';
 
 interface DataQueryConfig {
   activeFilters: DataFilter[];

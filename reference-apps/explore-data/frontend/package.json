@@ -26,7 +26,7 @@
     "@mui/material": "^7.3.6",
     "@mui/x-data-grid": "^8.22.0",
     "@mui/x-date-pickers": "^8.22.0",
-    "@strudel-science/components": "file:../../../packages/react-components",
+    "@strudel-science/components": "^1.0.0",
     "@tanstack/react-query": "^5.90.12",
     "@tanstack/react-router": "^1.141.2",
     "d3-fetch": "^3.0.1",

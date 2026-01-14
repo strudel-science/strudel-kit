@@ -45,7 +45,7 @@ const CompareDataContext = React.createContext<
 const initialState: CompareDataState = {
   data: [],
   columns: [],
-  selectedRows: [],
+  selectedRows: { type: 'include', ids: new Set() },
   dataIdField: 'id',
   comparing: false,
   comparisonData: [],
@@ -120,10 +120,10 @@ export const CompareDataProvider: React.FC<CompareDataProviderProps> = (
    * the comparison table based on the selected scenarios.
    */
   useEffect(() => {
-    if (state.comparing && state.selectedRows.length > 1) {
+    if (state.comparing && state.selectedRows.ids.size > 1) {
       const metrics = state.columns.filter((c) => c.isComparisonMetric);
       const scenarios = state.data.filter(
-        (d) => state.selectedRows.indexOf(d.id) > -1
+        (d) => state.selectedRows.ids.has(d.id)
       );
       const comparisonColumns: any[] = [
         {

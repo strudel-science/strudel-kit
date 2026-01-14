@@ -62,10 +62,10 @@ function NewDataset() {
         </Stack>
         <Box>
           <Grid container spacing={2}>
-            <Grid item lg={7} md={12}>
+            <Grid size={{ md: 12, lg: 7 }}>
               <MetadataPanel />
             </Grid>
-            <Grid item lg={5} md={12}>
+            <Grid size={{ md: 12, lg: 5 }}>
               <DataFilesPanel />
             </Grid>
           </Grid>
