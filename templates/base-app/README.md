@@ -1,6 +1,16 @@
 # STRUDEL Base App
 
-This is a fullstack web application template designed for scientific apps.
+This is a generic base app for a fullstack web application template designed for scientific apps. This app is used as the base scaffolding for all of the templates in STRUDEL. If you want to start with a more specialized template, check out one of the other templates at https://github.com/strudel-science/strudel-kit/tree/main/templates.
+
+## Use this template
+
+Install the [Node](https://nodejs.org/en/download) and [degit](https://github.com/Rich-Harris/degit).
+
+Generate this template by running:
+
+```
+degit strudel-science/strudel-kit#main/templates/base-app
+```
 
 ## Technology Stack
 **Backend**
@@ -60,8 +70,6 @@ docker compose down
 ```
 
 ## Developing
-
-
 
 ### Backend Development
 

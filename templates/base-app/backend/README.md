@@ -16,7 +16,13 @@ You can also start the backend locally using uv and FastAPI.
 
 First, [install uv](https://docs.astral.sh/uv/getting-started/installation/).
 
-From the `backend` directory, install the backend dependencies:
+First, make sure you are in the `backend` directory:
+
+```
+cd backend
+```
+
+Next, install the backend dependencies:
 
 ```
 uv sync
@@ -42,12 +48,24 @@ If you are running the backend inside of docker, you would run:
 docker compose exec backend uv run alembic revision --autogenerate -m "Description of model change"
 ```
 
+If you are running the app locally (outside of docker), from the `backend` directory you would just run:
+
+```
+uv run alembic revision --autogenerate -m "Description of model change
+```
+
 This will create a new file inside of `./app/migrations/versions` which will describe how the database is changing with this revision.
 
 Lastly, run the new (latest) migration: 
 
 ```
 docker compose exec backend uv run alembic upgrade head
+```
+
+Or if you are running the app locally (outside of docker):
+
+```
+uv run alembic upgrade head
 ```
 
 ## Changing the API endpoints
