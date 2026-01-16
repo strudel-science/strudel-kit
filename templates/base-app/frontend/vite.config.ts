@@ -18,7 +18,6 @@ export default defineConfig(({ mode }) => {
     base: env.VITE_BASE_URL,
     server: {
       port: 5175,
-      strictPort: true,
     },
   };
 });

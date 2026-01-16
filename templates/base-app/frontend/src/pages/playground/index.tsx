@@ -19,18 +19,11 @@ function Playground() {
   return (
     <Container
       maxWidth="xl"
-      /**
-       * Style STRUDEL and MUI components using the `sx` prop.
-       */
       sx={{
         marginBottom: 3,
         marginTop: 3,
       }}
     >
-      {/**
-       * Add your own components here!
-       * See MUI's component library: https://mui.com/material-ui/all-components/
-       */}
       <h1>Playground</h1>
       <Stack
         direction="row"
