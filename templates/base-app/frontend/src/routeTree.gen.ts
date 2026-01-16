@@ -12,6 +12,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './pages/__root'
 import { Route as IndexRouteImport } from './pages/index'
+import { Route as UsersIndexRouteImport } from './pages/users/index'
 import { Route as SearchDataRepositoriesIndexRouteImport } from './pages/search-data-repositories/index'
 import { Route as PlaygroundIndexRouteImport } from './pages/playground/index'
 import { Route as MonitorActivitiesIndexRouteImport } from './pages/monitor-activities/index'
@@ -62,6 +63,11 @@ const CompareDataRoute = CompareDataRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UsersIndexRoute = UsersIndexRouteImport.update({
+  id: '/users/',
+  path: '/users/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SearchDataRepositoriesIndexRoute =
@@ -212,6 +218,7 @@ export interface FileRoutesByFullPath {
   '/monitor-activities': typeof MonitorActivitiesIndexRoute
   '/playground': typeof PlaygroundIndexRoute
   '/search-data-repositories': typeof SearchDataRepositoriesIndexRoute
+  '/users': typeof UsersIndexRoute
   '/compare-data/compare': typeof CompareDataLayoutCompareRoute
   '/compare-data/new': typeof CompareDataLayoutNewRoute
   '/contribute-data/new': typeof ContributeDataLayoutNewRoute
@@ -239,6 +246,7 @@ export interface FileRoutesByTo {
   '/monitor-activities': typeof MonitorActivitiesIndexRoute
   '/playground': typeof PlaygroundIndexRoute
   '/search-data-repositories': typeof SearchDataRepositoriesIndexRoute
+  '/users': typeof UsersIndexRoute
   '/compare-data/compare': typeof CompareDataLayoutCompareRoute
   '/compare-data/new': typeof CompareDataLayoutNewRoute
   '/contribute-data/new': typeof ContributeDataLayoutNewRoute
@@ -267,6 +275,7 @@ export interface FileRoutesById {
   '/monitor-activities/': typeof MonitorActivitiesIndexRoute
   '/playground/': typeof PlaygroundIndexRoute
   '/search-data-repositories/': typeof SearchDataRepositoriesIndexRoute
+  '/users/': typeof UsersIndexRoute
   '/compare-data/_layout/compare': typeof CompareDataLayoutCompareRoute
   '/compare-data/_layout/new': typeof CompareDataLayoutNewRoute
   '/contribute-data/_layout/new': typeof ContributeDataLayoutNewRoute
@@ -297,6 +306,7 @@ export interface FileRouteTypes {
     | '/monitor-activities'
     | '/playground'
     | '/search-data-repositories'
+    | '/users'
     | '/compare-data/compare'
     | '/compare-data/new'
     | '/contribute-data/new'
@@ -324,6 +334,7 @@ export interface FileRouteTypes {
     | '/monitor-activities'
     | '/playground'
     | '/search-data-repositories'
+    | '/users'
     | '/compare-data/compare'
     | '/compare-data/new'
     | '/contribute-data/new'
@@ -351,6 +362,7 @@ export interface FileRouteTypes {
     | '/monitor-activities/'
     | '/playground/'
     | '/search-data-repositories/'
+    | '/users/'
     | '/compare-data/_layout/compare'
     | '/compare-data/_layout/new'
     | '/contribute-data/_layout/new'
@@ -380,6 +392,7 @@ export interface RootRouteChildren {
   MonitorActivitiesIndexRoute: typeof MonitorActivitiesIndexRoute
   PlaygroundIndexRoute: typeof PlaygroundIndexRoute
   SearchDataRepositoriesIndexRoute: typeof SearchDataRepositoriesIndexRoute
+  UsersIndexRoute: typeof UsersIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -410,6 +423,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/users/': {
+      id: '/users/'
+      path: '/users'
+      fullPath: '/users'
+      preLoaderRoute: typeof UsersIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/search-data-repositories/': {
@@ -723,6 +743,7 @@ const rootRouteChildren: RootRouteChildren = {
   MonitorActivitiesIndexRoute: MonitorActivitiesIndexRoute,
   PlaygroundIndexRoute: PlaygroundIndexRoute,
   SearchDataRepositoriesIndexRoute: SearchDataRepositoriesIndexRoute,
+  UsersIndexRoute: UsersIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

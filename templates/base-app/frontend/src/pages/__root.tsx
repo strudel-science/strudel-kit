@@ -1,11 +1,16 @@
 import { Box, Stack } from '@mui/material';
-import { createRootRoute, Outlet } from '@tanstack/react-router';
+import { createRootRouteWithContext, Outlet } from '@tanstack/react-router';
+import { QueryClient } from '@tanstack/react-query';
 import { TopBar } from '../components/TopBar';
+
+interface RouterContext {
+  queryClient: QueryClient;
+}
 
 /**
  * Basic layout with navbar and footer
  */
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext<RouterContext>()({
   component: () => (
     <Stack
       spacing={0}

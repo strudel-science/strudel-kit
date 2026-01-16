@@ -1,4 +1,4 @@
-import { Button, Container, Stack } from '@mui/material';
+import { Button, Container, Stack, Typography } from '@mui/material';
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 
@@ -24,12 +24,13 @@ function Playground() {
         marginTop: 3,
       }}
     >
-      <h1>Playground</h1>
+      <Typography component="h1" variant="h3">Playground</Typography>
       <Stack
         direction="row"
         spacing={2}
         sx={{
           alignItems: 'center',
+          marginTop: 2,
         }}
       >
         <Button variant="contained" onClick={handleIncrement}>
