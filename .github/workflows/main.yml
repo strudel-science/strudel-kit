@@ -6,8 +6,11 @@ on:
     types: [opened, reopened]
 
 jobs:
-  lint:
+  frontend-lint:
     runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: templates/base-app/frontend
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,6 +26,9 @@ jobs:
         run: npm run prettier:fix
   cypress-tests:
     runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: templates/base-app/frontend
     steps:
       - name: Checkout
         uses: actions/checkout@v4
