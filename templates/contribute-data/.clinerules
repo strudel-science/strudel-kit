@@ -1,0 +1,15 @@
+# General Rules
+- Always ignore the `docs` folder at the root of the project unless explicitly told not to.
+- Ask for extra context or input if the user does not supply enough information for you to accurately complete the task.
+- As much as possible, utilize the dependencies in package.json before bringing in any new dependencies.
+- Use Material UI Components as much as possible.
+- If bringing in a new library, explicitly tell the user what library you are using to complete the task.
+- The directories directly underneath the `pages` directory make be referred to as task flows, for example, the compare data task flow.
+
+# UI/UX
+- Adhere to best practices in UI and UX design.
+- Particularly take into account the guidelines listed for each Task Flow on https://strudel.science/design-system/task-flows/overview/.
+
+# Data Connection
+- If a user has a static data file, like a CSV or JSON file, instruct them to upload it to the `public/data` directory.
+- If the user has a REST API, instruct them to provide a link to the documentation if they haven't already.
