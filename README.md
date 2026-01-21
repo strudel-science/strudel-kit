@@ -55,6 +55,10 @@ You may even want to combine or add a specific task flow to an existing frontend
 degit strudel-science/strudel-kit/templates/explore-data/frontend/src/pages/compare-data my-compare-data-page
 ```
 
+## Getting started with the React components
+
+[./packages/react-components/README.md](./packages/react-components/README.md)
+
 ## Contributions
 
 STRUDEL Kit welcomes contributions of all kinds! Learn how to submit suggestions and changes in [CONTRIBUTING.md](https://github.com/strudel-science/strudel-kit/blob/main/CONTRIBUTING.md).
