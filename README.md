@@ -1,65 +1,59 @@
 # STRUDEL Kit
 
-STRUDEL Kit is a React and TypeScript-based starter kit for building scientific UIs based on the STRUDEL Design System and Task Flows. Visit [strudel.science](https://strudel.science) for more information about the STRUDEL project.
-
-This library provides a suite of templates to implement UIs for various different task flows common to the scientific domain. The app is intended to be used as a starting point for building out a modern single-page web app for scientific-type UIs.
+STRUDEL Kit is a set of modern fullstack templates and components for building scientific apps based on the STRUDEL Design System and Task Flows. Visit [strudel.science](https://strudel.science) for more information about the STRUDEL project.
 
 [Browse the full docs](https://strudel.science/strudel-kit/docs/)
 
-## What's included?
-- [**React**](https://react.dev/): A component-based JavaScript library for building UIs.
+## Technology Stack
+**Backend**
+- [**Python**](https://www.python.org/) Programming language popular for scientific and data analysis
+- [**FastApi**](https://fastapi.tiangolo.com/) Backend framework for building REST APIs
+- [**SQLAlchemy**](https://www.sqlalchemy.org/) SQL toolkit and ORM
+- [**Alembic**](https://alembic.sqlalchemy.org/en/latest/) Database migration tool
+- [**uv**](https://docs.astral.sh/uv/) Python package and project manager
+
+**Frontend**
 - [**TypeScript**](https://www.typescriptlang.org/): A typed superset of JavaScript that compiles to plain JavaScript.
+- [**React**](https://react.dev/): A component-based JavaScript library for building UIs.
 - [**Vite**](https://vite.dev/): A fast, opinionated frontend build tool.
 - [**Material UI**](https://mui.com/material-ui/getting-started/): Open-source React component library based on Google's Material Design.
 - [**TanStack Router**](https://tanstack.com/router/latest): A fully type-safe router with built-in data fetching, first-class search-param APIs, and more.
 - [**ESLint**](https://eslint.org/): The pluggable linting utility for JavaScript and JSX.
 - [**Prettier**](https://prettier.io/): An opinionated code formatter.
-- [**Husky**](https://typicode.github.io/husky/): Runs a pre-commit hook to lint and style staged code.
 - [**Cypress**](https://www.cypress.io/): End-to-end tests for built-in templates.
-- [**Task Flow Templates**](https://strudel.science/design-system/task-flows/overview/): Six template flows based on common patterns. 
-
-![Home page](images/home.png)
 
 ![Run Computation results page](images/run-computation-results.png)
 
-## Getting Started
+## Getting started with a template
 
-### Option 1: Use this template
+This library provides a suite of templates to implement UIs for various different task flows common to the scientific domain. Each template lives in the `templates` directory and is built on top of the main `base-app` template.
 
-Click the green "Use this template" button on the [strudel-kit GitHub page](https://github.com/strudel-science/strudel-kit). Create your own repository from the strudel-kit code and give it a name.
+### Requirements
+- [Node](https://nodejs.org/en/download)
+- [degit](https://github.com/Rich-Harris/degit)
+- [Docker](https://www.docker.com/get-started/)
 
-Clone the strudel-kit repository from your new repo.
+### Copy a template
 
-### Option 2: degit
+Open a terminal and navigate to the directory where you want your app to live.
 
-Generate a new project from strudel-kit using [degit](https://github.com/Rich-Harris/degit):
-```
-npx degit strudel-science/strudel-kit my-app
-```
-
-### Option 3: Fork this repo
-
-Especially if you want to contribute back, you can click the Fork button to create a fork of this repo from the [strudel-kit GitHub page](https://github.com/strudel-science/strudel-kit).
-
-Clone the strudel-kit repository from your new fork.
-
-### Install and Start
-
-Install the dependencies:
+Copy your template of choice (e.g. `explore-data`):
 
 ```
-npm install
+degit strudel-science/strudel-kit/templates/explore-data my-app
 ```
 
-Start up the app:
+You can also copy sections of a fullstack template if you don't need the whole backend and frontend:
 
 ```
-npm start
+degit strudel-science/strudel-kit/templates/explore-data/frontend my-frontend-app
 ```
 
-Open [http://localhost:5175](http://localhost:5175) to view the app in the browser.
+You may even want to combine or add a specific task flow to an existing frontend:
 
-Begin modifying the templates in `src/pages`.
+```
+degit strudel-science/strudel-kit/templates/explore-data/frontend/src/pages/compare-data my-compare-data-page
+```
 
 ## Contributions
 
