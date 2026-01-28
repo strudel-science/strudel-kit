@@ -7,10 +7,13 @@ assignees: ''
 
 ---
 
-### New Task Flow/ New Variation Summary
-
 **Motivation Brief:**
-[Summary of the motivation and user needs]
+[Summary of the motivation and user needs for this Task Flow/ Variation]
+
+
+
+### Summary
+**[Add following in a new comment while closing the issue:]**
 
 **Details:**
 - Specific motivation and user needs: [Details]
