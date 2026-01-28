@@ -29,9 +29,6 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: packages/react-components
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -39,14 +36,31 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Install component dependencies
+      - name: Install docs dependencies
+        run: |
+          cd docs
+          npm install
+      - name: Install demo dependencies
         run: npm install
-      - name: Build storybook docs
-        run: npm run build-storybook
+      - name: Build docs
+        run: |
+          cd docs
+          npm run build
+      - name: Build demo
+        run: npm run build
+        env:
+          VITE_BASE_URL: /strudel-kit/demo/
       - name: Deploy docs
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npx gh-pages -d storybook-static -e docs -u "github-actions-bot <support+actions@github.com>"
+          cd docs
+          npx gh-pages -d build -e docs -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy demo
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npx gh-pages -d dist -e demo -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # This is necessary to fix a bug in GitHub Pages
