@@ -1,0 +1,63 @@
+# name: Deploy Storybook to GitHub Pages
+
+# on:
+#   # Runs on pushes to the main branch
+#   push:
+#     branches: ['main']
+
+#   # Allows you to run this workflow manually from the Actions tab
+#   workflow_dispatch:
+
+# # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# permissions:
+#   contents: write
+#   pages: write
+#   id-token: write
+
+# # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# concurrency:
+#   group: 'pages'
+#   cancel-in-progress: false
+
+# # Default to bash
+# defaults:
+#   run:
+#     shell: bash
+
+# jobs:
+#   # Build job
+#   build:
+#     runs-on: ubuntu-latest
+#     defaults:
+#       run:
+#         working-directory: packages/react-components
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+#       - name: Setup Node
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: '20'
+#       - name: Install component dependencies
+#         run: npm install
+#       - name: Build storybook docs
+#         run: npm run build-storybook
+#       - name: Deploy docs
+#         run: |
+#           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+#           npx gh-pages -d storybook-static -e docs -u "github-actions-bot <support+actions@github.com>"
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       # This is necessary to fix a bug in GitHub Pages
+#       # See https://github.com/storybookjs/storybook/issues/20564
+#       - name: Ensure .nojekyll at gh-pages root
+#         run: |
+#           git config user.name "github-actions-bot"
+#           git config user.email "support+actions@github.com"
+#           git fetch origin gh-pages || true
+#           git checkout gh-pages || git checkout --orphan gh-pages
+#           touch .nojekyll
+#           git add .nojekyll
+#           git commit -m "Add .nojekyll" || true
+#           git push origin gh-pages
