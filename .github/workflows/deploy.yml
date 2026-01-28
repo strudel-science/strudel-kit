@@ -62,6 +62,7 @@ jobs:
       - name: Deploy storybook docs
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          cd packages/react-components
           npx gh-pages -d storybook-static -e storybook -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
