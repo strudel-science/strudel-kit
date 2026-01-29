@@ -1,21 +1,22 @@
 ---
-name: New Task Flow
+name: "[Design] New Task Flow/ Variation"
 about: Design suggestion for new task flow or new variation of existing task flow
 title: "[New Design]"
-labels: ''
+labels: design
 assignees: ''
 
 ---
 
-**Motivation Brief:**
+**Effort Summary:**
+Write a brief description of what you would be working towards.
+
+
+---**[👇 After completing the effort - add following in a new comment while closing the issue 👇]:**---
+
+**Task Flow/ Variation Motivation**
 [Summary of the motivation and user needs for this Task Flow/ Variation]
 
-
-
-### Summary
-**[Add following in a new comment while closing the issue:]**
-
-**Details:**
+**(Optional) Details: **
 - Specific motivation and user needs: [Details]
 - Key features: [List of features with purpose]
 - Task Flow steps: [Flow description of different steps to complete the task]
