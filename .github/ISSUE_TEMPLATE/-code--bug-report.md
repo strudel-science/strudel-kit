@@ -2,7 +2,7 @@
 name: "[Code] Bug report"
 about: Create a report to help us improve
 title: "[Code Bug]"
-labels: ''
+labels: reference example
 assignees: ''
 
 ---
