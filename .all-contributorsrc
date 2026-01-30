@@ -16,6 +16,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "sspoon",
+      "name": "Sarah Poon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5075865?v=4",
+      "profile": "https://github.com/sspoon",
+      "contributions": [
+        "design",
+        "mentoring",
+        "ideas"
+      ]
     }
   ]
 }
