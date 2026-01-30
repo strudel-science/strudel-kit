@@ -16,6 +16,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "jnywong",
+      "name": "Jenny Wong",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45105935?v=4",
+      "profile": "http://jnywong.github.io",
+      "contributions": [
+        "infra"
+      ]
     }
   ]
 }
