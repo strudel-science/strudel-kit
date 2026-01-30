@@ -16,6 +16,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ErinBecker",
+      "name": "Erin Becker",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19176319?v=4",
+      "profile": "https://github.com/ErinBecker",
+      "contributions": [
+        "projectManagement",
+        "doc"
+      ]
     }
   ]
 }
