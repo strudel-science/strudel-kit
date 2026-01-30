@@ -16,6 +16,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "pained",
+      "name": "Drew Paine",
+      "avatar_url": "https://avatars.githubusercontent.com/u/254765?v=4",
+      "profile": "https://drewpaine.net",
+      "contributions": [
+        "research",
+        "projectManagement"
+      ]
     }
   ]
 }
