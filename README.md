@@ -72,6 +72,7 @@ STRUDEL Kit welcomes contributions of all kinds! Learn how to submit suggestions
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://codonn.com"><img src="https://avatars.githubusercontent.com/u/1907045?v=4?s=100" width="100px;" alt="Cody O'Donnell"/><br /><sub><b>Cody O'Donnell</b></sub></a><br /><a href="#code-codytodonnell" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ErinBecker"><img src="https://avatars.githubusercontent.com/u/19176319?v=4?s=100" width="100px;" alt="Erin Becker"/><br /><sub><b>Erin Becker</b></sub></a><br /><a href="#projectManagement-ErinBecker" title="Project Management">📆</a> <a href="#doc-ErinBecker" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
