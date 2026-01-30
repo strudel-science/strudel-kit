@@ -26,6 +26,134 @@
         "research",
         "projectManagement"
       ]
-    }
+    },
+    {
+      "login": "LRamakrishnan",
+      "name": "LRamakrishnan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2665794?v=4",
+      "profile": "https://github.com/LRamakrishnan",
+      "contributions": [
+        "mentoring",
+        "projectManagement",
+        "fundingFinding"
+      ]
+    },
+    {
+      "login": "georgiamoon",
+      "name": "georgia bullen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/941210?v=4",
+      "profile": "https://georgiabullen.com",
+      "contributions": [
+        "projectManagement",
+        "fundingFinding",
+        "eventOrganizing"
+      ]
+    },
+    {
+      "login": "oilsinwater",
+      "name": "Philliph Drummond",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23019793?v=4",
+      "profile": "https://github.com/oilsinwater",
+      "contributions": [
+        "code",
+        "example"
+      ]
+    },
+    {
+      "login": "lea100x",
+      "name": "Anh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174823027?v=4",
+      "profile": "https://github.com/lea100x",
+      "contributions": [
+        "eventOrganizing"
+      ]
+    },
+    {
+      "login": "Erioldoesdesign",
+      "name": "Eriol Fox",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11681324?v=4",
+      "profile": "https://erioldoesdesign.github.io/",
+      "contributions": [
+        "eventOrganizing"
+      ]
+    },
+    {
+      "login": "colliand",
+      "name": "James Colliander",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1879041?v=4",
+      "profile": "http://colliand.com",
+      "contributions": [
+        "infra",
+        "projectManagement"
+      ]
+    },
+    {
+      "login": "agoose77",
+      "name": "Angus Hollands",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1248413?v=4",
+      "profile": "https://oieltd.com",
+      "contributions": [
+        "infra"
+      ]
+    },
+    {
+      "login": "jnywong",
+      "name": "Jenny Wong",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45105935?v=4",
+      "profile": "http://jnywong.github.io",
+      "contributions": [
+        "infra"
+      ]
+    },
+    {
+      "login": "maryamv",
+      "name": "Maryam Vareth",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25520845?v=4",
+      "profile": "https://github.com/maryamv",
+      "contributions": [
+        "projectManagement",
+        "ideas"
+      ]
+    },
+    {
+      "login": "Rjdesh",
+      "name": "Rajshree Deshmukh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/131914510?v=4",
+      "profile": "https://github.com/Rjdesh",
+      "contributions": [
+        "code",
+        "design",
+        "research"
+      ]
+    },
+    {
+      "login": "jlcohoon",
+      "name": "Hannah Cohoon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4965832?v=4",
+      "profile": "https://github.com/jlcohoon",
+      "contributions": [
+        "research",
+        "code",
+        "doc"
+    },
+    {
+      "login": "dangunter",
+      "name": "Dan Gunter",
+      "avatar_url": "https://avatars.githubusercontent.com/u/420923?v=4",
+      "profile": "http://crd.lbl.gov/departments/data-science-and-technology/idf/staff/daniel-gunter/",
+      "contributions": [
+        "code",
+        "mentoring",
+        "ideas"
+    },
+    {
+      "login": "ErinBecker",
+      "name": "Erin Becker",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19176319?v=4",
+      "profile": "https://github.com/ErinBecker",
+      "contributions": [
+        "projectManagement",
+        "doc"
+    },
   ]
 }
