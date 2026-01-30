@@ -16,6 +16,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "georgiamoon",
+      "name": "georgia bullen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/941210?v=4",
+      "profile": "https://georgiabullen.com",
+      "contributions": [
+        "projectManagement",
+        "fundingFinding",
+        "eventOrganizing"
+      ]
     }
   ]
 }
