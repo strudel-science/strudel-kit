@@ -157,6 +157,7 @@
         "research",
         "code",
         "doc"
+      ]
     },
     {
       "login": "dangunter",
@@ -167,6 +168,7 @@
         "code",
         "mentoring",
         "ideas"
+      ]
     },
     {
       "login": "ErinBecker",
@@ -176,6 +178,7 @@
       "contributions": [
         "projectManagement",
         "doc"
+      ]
     },
   ]
 }
