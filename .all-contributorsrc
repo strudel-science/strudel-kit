@@ -1,4 +1,21 @@
 {
   "projectName": "strudel-kit",
-  "projectOwner": "strudel-science"
+  "projectOwner": "strudel-science",
+  "files": [
+    "README.md"
+  ],
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributorsPerLine": 7,
+  "contributors": [
+    {
+      "login": "codytodonnell",
+      "name": "Cody O'Donnell",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1907045?v=4",
+      "profile": "https://codonn.com",
+      "contributions": [
+        "code"
+      ]
+    }
+  ]
 }
