@@ -4,37 +4,38 @@ import { LinkCard } from '../../components/LinkCard';
 
 <Meta title="Getting Started/Quickstart" />
 
-Download the strudel-kit code:
+Copy your template of choice (e.g. `explore-data`):
 
-```bash
-npx degit strudel-science/strudel-kit my-app
 ```
-
-This will generate a base web application with all of the Task Flow templates in a new directory called `my-app`. The name `my-app` can be replaced with any name you like. It's typical to use all lowercase kebab-case for project names.
+degit strudel-science/strudel-kit/templates/explore-data my-app
+```
 
 Go into the new directory:
 
-```bash
+```
 cd my-app
 ```
 
-Install the app dependencies:
+At the root of this project exists a file called .env.example. This represents all of the environment variables used by docker-compose.yml.
 
-```bash
-npm install
+Copy the .env.example file, paste a copy at the root of the project, and name it .env.
+
+```
+cp .env.example .env
 ```
 
-Start up your app locally:
+Start the docker stack:
 
-```bash
-npm start
+```
+docker compose up -d
 ```
 
-Open your app in the browser at http://localhost:5175
+To check that everything is working you should be able to access:
 
-Customize Task Flow templates in `src/pages`.
+- The backend API docs: [http://localhost:8000/docs](http://localhost:8000/docs)
+- The frontend UI: [http://localhost:5174](http://localhost:5174)
 
-## Learn more
+## Next Steps
 
 <Grid container columnSpacing={2} rowSpacing={2} marginBottom={2}>
   <Grid item sm={4}>
