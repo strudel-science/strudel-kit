@@ -43,6 +43,10 @@ At the root of this project exists a file called `.env.example`. This represents
 
 Copy the `.env.example` file, paste a copy at the root of the project, and name it `.env`.
 
+```
+cp .env.example .env
+```
+
 ### Starting the stack using the Docker Compose
 
 Open a terminal at the project root.
