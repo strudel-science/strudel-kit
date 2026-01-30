@@ -6,92 +6,46 @@ import { LinkCard } from '../components/LinkCard';
 
 # STRUDEL Kit
 
-Welcome to the STRUDEL Kit Docs! STRUDEL Kit is a web development toolkit for building scientific UIs based on the [STRUDEL Design System and Task Flows](https://strudel.science/design-system/overview/). The toolkit helps users build out scientific Task Flows as usable web applications. It consists of a full React-based starter template with a suite of inner demos for common UI patterns in scientific apps. Apps built with STRUDEL are pre-baked with much of the setup you need to turn complex Task Flows into efficient and highly usable experiences for your users.
+Welcome to the STRUDEL Kit Docs! STRUDEL Kit is a web development toolkit for building scientific UIs based on the [STRUDEL Design System and Task Flows](https://strudel.science/design-system/overview/). The toolkit helps users build out scientific Task Flows as usable web applications. It consists of fullstack web application templates with a focus on UI flows common to scientific apps. Apps built with STRUDEL are pre-baked with much of the setup you need to turn complex Task Flows into efficient and highly usable experiences for your users.
 
 Visit [strudel.science](https://strudel.science) for more information about the STRUDEL project.
 
 ### Key Features
 
 - Base scaffolding for a modern, modular React web application project
-- Fully customizable templates for common Task Flows in scientific software
-- Consistent user experience
+- Base scaffolding for a modern backend with FastAPI
+- Fully customizable frontend templates for common Task Flows in scientific software
+- Reusable React components built specifically for scientific UIs
 - Automated file-based routing with TanStack Router
 
 ## How does it work?
 
-STRUDEL Kit brings together multiple open source tools as well as its own set of templates and lightweight components to offer a cohesive system in which someone can quickly jump in and start developing a modern, usable scientific web app. There are two main pieces to web applications built with STRUDEL Kit: the base app and the Task Flow templates.
+STRUDEL Kit brings together multiple open source tools as well as its own set of templates and lightweight components to offer a cohesive system in which someone can quickly jump in and start developing a modern, usable scientific web app. The STRUDEL Kit contains a suite of fullstack web application templates with each template focusing on a common pattern found in scientific web apps. There are two main pieces to each template in the STRUDEL Kit: the FastAPI backend and the React frontend. The backend is responsible for handling data processing, storage, and any server-side logic. The frontend is where the user interface lives and where users interact with the application.
 
-The **base app** provides the basic scaffolding you need to get started building a web app. It consists of a preconfigured architecture of open source tools and custom components. Here's what's included:
+> **Note!**  
+> The backend templates are still in active development and the current focus of STRUDEL Kit is on the frontend templates. Currently, the backend templates provide a basic starting point for building out your own backend but do not include full Task Flow implementations.
 
-<Grid container columnSpacing={2} rowSpacing={2} marginBottom={2}>
-  <Grid item sm={4}>
-    <LinkCard
-      href="https://react.dev/"
-      image={<img src="img/react.png" />}
-      label="React"
-      description="Component-based web UI library"
-    />
-  </Grid>
-  <Grid item sm={4}>
-    <LinkCard
-      href="https://www.typescriptlang.org/"
-      image={<img src="img/typescript.svg" />}
-      label="TypeScript"
-      description="JavaScript with syntax for types"
-    />
-  </Grid>
-  <Grid item sm={4}>
-    <LinkCard
-      href="https://vitejs.dev/"
-      image={<img src="img/vite.png" />}
-      label="Vite"
-      description="Modern frontend build tool"
-    />
-  </Grid>
-  <Grid item sm={4}>
-    <LinkCard
-      href="https://tanstack.com/router/latest"
-      image={<img src="img/tanstack.png" />}
-      label="TanStack Router"
-      description="Automated file-based routing library"
-    />
-  </Grid>
-  <Grid item sm={4}>
-    <LinkCard
-      href="#"
-      image={<img src="img/strudel-logo-icon.png" />}
-      label="STRUDEL Components"
-      description="Custom first-party components"
-    />
-  </Grid>
-  <Grid item sm={4}>
-    <LinkCard
-      href="https://mui.com/"
-      image={<img src="img/material-ui.png" />}
-      label="Material UI"
-      description="Low-level component library"
-    />
-  </Grid>
-  <Grid item sm={4}>
-    <LinkCard
-      href="https://plotly.com/javascript/"
-      image={<img src="img/plotly.png" />}
-      label="Plotly.js"
-      description="Declarative data visualization library"
-    />
-  </Grid>
-  <Grid item sm={4}>
-    <LinkCard
-      href="https://react.dev/reference/react/useContext"
-      label="React Context API"
-      description="React's first-party state management"
-    />
-  </Grid>
-</Grid>
+The **frontend** provides the basic scaffolding you need to get started building a web app UI with React. It consists of a preconfigured architecture of open source tools and custom components. Here's what's included:
 
-The **Task Flow templates** are pre-built flows of React components for common patterns in scientific UIs. The template components are configured to plug right into the base app but you can also plug them into existing React apps with a little bit of restructuring.
+- [**TypeScript**](https://www.typescriptlang.org/): A typed superset of JavaScript that compiles to plain JavaScript.
+- [**React**](https://react.dev/): A component-based JavaScript library for building UIs.
+- [**Vite**](https://vite.dev/): A fast, opinionated frontend build tool.
+- [**Material UI**](https://mui.com/material-ui/getting-started/): Open-source React component library based on Google's Material Design.
+- [**STRUDEL Components**](#): Custom first-party components.
+- [**TanStack Router**](https://tanstack.com/router/latest): A fully type-safe router with built-in data fetching, first-class search-param APIs, and more.
+- [**ESLint**](https://eslint.org/): The pluggable linting utility for JavaScript and JSX.
+- [**Prettier**](https://prettier.io/): An opinionated code formatter.
+- [**Cypress**](https://www.cypress.io/): End-to-end tests for built-in templates.
 
-Once you have generated your base app and the inner Task Flows, you have full reign to customize the app. STRUDEL Kit is a great way to get your app started but in most cases you will have project-specific customizations and requirements. For this reason, STRUDEL Kit does not lock you into any particular tool and gives you full freedom to edit the templates as you see fit. You can add in new libraries, replace ones that came with the Kit, or just keep building within the system you set up with STRUDEL Kit.
+The **backend** provides the basic scaffolding you need to get started building a backend with FastAPI. It consists of an architecture of open source tools for running a modern scientific backend. Here's what's included:
+
+- [**Python**](https://www.python.org/): Programming language popular for scientific and data analysis
+- [**FastApi**](https://fastapi.tiangolo:.com/) Backend framework for building REST APIs
+- [**SQLAlchemy**](https://www.sqlalchemy:.org/) SQL toolkit and ORM
+- [**Alembic**](https://alembic.sqlalchemy:.org/en/latest/) Database migration tool
+- [**uv**](https://docs.astral.sh/uv/): Python package and project manager
+
+Once you have generated your starter app from one of the templates, you have full reign to customize the app. STRUDEL Kit is a great way to get your app started but in most cases you will have project-specific customizations and requirements. For this reason, STRUDEL Kit does not lock you into any particular tool and gives you full freedom to edit the templates as you see fit. You can add in new libraries, replace ones that came with the Kit, or just keep building within the system you set up with STRUDEL Kit.
 
 ## Motivation
 
