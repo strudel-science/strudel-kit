@@ -2,32 +2,44 @@ import { Meta } from "@storybook/addon-docs/blocks";
 import { Grid } from '@mui/material';
 import { LinkCard } from '../../components/LinkCard';
 
-<Meta title="Getting Started/Project Structure" />
+<Meta title="Getting Started/Template Structure" />
 
-After creating a new project from the strudel-kit code, you will have the basic scaffolding for a STRUDEL-powered React app.
+# Project Structure
 
-The app comes pre-baked with all libraries in the STRUDEL Tech Stack, all the Task Flow templates currently available, a set of custom components that are used across the app, and some handy development and CI tools.
+After creating a new project from the strudel-kit code, you will have the basic scaffolding for a STRUDEL-powered app.
+
+The app comes pre-baked with all libraries in the STRUDEL Tech Stack, the specified Task Flow template, a set of custom components that are used across the app, and some handy development and CI tools.
 
 There are quite a few directories and files that are part of the project structure. These handle things such as pages, shared components, routing, configurations, and continuous integration. Below is a breakdown of the project structure:
 
-```py
-├── .github # GitHub actions and templates
-├── .husky # Pre-commit hook to run before "git commit"
+### Root
+
+```yaml
+├── backend # Backend scaffolding using FastAPI
+├── frontend # Frontend scaffolding using React
+├── .clinerules # Rules to be followed by the Cline coding assistant
+├── .env.example # Example values to be copied into a .env file for local development
+├── .gitignore # Files for git to ignore
+├── COPYRIGHT.md # Copyright notice for STRUDEL
+├── docker-compose.yml # Configuration for locally running the backend and frontend
+├── LICENSE # Open source license for STRUDEL
+├── README.md # Project overview and instructions
+```
+
+### Frontend
+
+```yaml
 ├── cypress # End-to-end testing
-├── docs # Docs app, can be deleted or replaced with your own docs
 ├── public # Static files e.g. images, data, favicon
 ├── src
+│  ├── api # Utility functions for making API calls to the backend
 │  ├── components # Components that are shared across the app
 │  ├── context # State variables and actions shared across the app
 │  ├── hooks # Custom React functions for data fetching and more
 │  ├── pages # File-based router entry point (TanStack Router)
-│  │  ├── compare-data # Task Flow template (/compare-data page)
-│  │  ├── contribute-data # Task Flow template (/contribute-data page)
-│  │  ├── explore-data # Task Flow template (/explore-data page)
-│  │  ├── monitor-activities # Task Flow template (/monitor-activites page)
+│  │  ├── compare-data # Task Flow template specified in degit command (/compare-data page)
 │  │  ├── playground # Playground template (/playground page)
-│  │  ├── run-computation # Task Flow template (/run-computation page)
-│  │  ├── search-data-repositories # Task Flow template (/search-data-repositories page)
+│  │  ├── users # Users template (/users page)
 │  │  ├── __root.tsx # Wrapper component for all pages
 │  │  └── index.tsx # Home page (/ page)
 │  ├── types # TypeScript definitions used across the app
@@ -38,20 +50,16 @@ There are quite a few directories and files that are part of the project structu
 │  ├── main.tsx # App entry point
 │  ├── routeTree.gen.ts # Auto-generated route tree by TanStack Router (do not edit manually)
 │  ├── theme.tsx # Full MUI theme configuration
-│  └── vite-env.d.ts
+│  └── vite-env.d.ts # Vite environment type definitions (import.meta.env)
 ├── .eslintrc.json # ESLint configuration
 ├── .gitignore # Files for git to ignore
-├── .lintstagedrc.json # Linstaged configuration (executed on precommit)
 ├── .prettierrc.json # Prettier configuration for code formatting
-├── CODE_OF_CONDUCT.md
-├── CONTRIBUTING.md
-├── COPYRIGHT.md
-├── LICENSE
-├── README.md
 ├── cypress.config.ts # Testing configuration
+├── Dockerfile # Docker configuration for building the frontend
 ├── index.html # HTML entry point
 ├── package-lock.json # Full dependency list
 ├── package.json # Dependencies and project metadata
+├── README.md # Frontend overview and instructions
 ├── tsconfig.json # TypeScript configuration
 ├── tsconfig.node.json # Vite-level TypeScript configuration
 ├── tsr.config.json # TanStack Router configuration
@@ -61,6 +69,26 @@ There are quite a few directories and files that are part of the project structu
 The primary areas for customization purposes are `src/pages` and `src/components`. The `src/pages` directory contains all of the unique pages and routing structure in the app. Each Task Flow template is a top-level directory in `src/pages`. To see a breakdown of a specific Task Flow, go to its page in the docs under the "Task Flows" section.
 
 You can also customize the global theme in `src/theme.tsx`. This uses the MUI theme object to make app-wide style adjustments. See [MUI's theme documentation](https://mui.com/material-ui/customization/default-theme/).
+
+### Backend
+
+```yaml
+├── app # Top-level FastAPI app
+│  ├── migrations # Database migration files managed by Alembic
+│  ├── __init__.py # App package initializer
+│  ├── api.py # API route definitions
+│  ├── crud.py # Create, Read, Update, Delete operations for database models
+│  ├── database.py # Database connection and session management
+│  ├── main.py # App entry point
+│  └── models.py # Database model definitions
+├── .gitignore # Files for git to ignore
+├── .python-version # Python version for pyenv
+├── Dockerfile # Docker configuration for building the backend
+├── README.md # Backend overview and instructions
+├── alembic.ini # Alembic configuration for database migrations
+├── pyproject.toml # Python dependencies and project metadata
+└── uv.lock # Full Python dependency list
+```
 
 <Grid container columnSpacing={2} rowSpacing={2} marginBottom={2}>
   <Grid item sm={4}>
