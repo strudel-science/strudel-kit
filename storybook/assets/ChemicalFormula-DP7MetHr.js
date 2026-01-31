@@ -1,2 +1,0 @@
-import{j as s}from"./jsx-runtime-u17CrQMm.js";import{E as m,a as i}from"./utils-DAUAx4Fn.js";import{T as l}from"./Typography-5YrRGSyO.js";const p=r=>!r.match(/\(|\)|\*/g)&&!r.match(i)?s.jsx("sub",{children:r}):s.jsx("span",{children:r}),c=({content:r,...e})=>{const a=r.match(m),n=s.jsx("span",{children:a?.map((o,t)=>s.jsx("span",{children:p(o)},t))});return s.jsx(l,{...e,children:n})};c.__docgenInfo={description:`Render a formula string with proper subscripts.
-Non-elements will be interpreted as subscripts.`,methods:[],displayName:"ChemicalFormula"};export{c as C};
