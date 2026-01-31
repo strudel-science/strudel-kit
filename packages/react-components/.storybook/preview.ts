@@ -6,9 +6,9 @@ const preview: Preview = {
       storySort: {
         order: [
           'Getting Started', 
-          ['Introduction', 'Installation', 'Quickstart', 'Project Structure', 'Usage with AI', 'External Resources'], 
-          'Pages', 
-          ['Home', 'Login', 'Admin'], 
+          ['Introduction', 'Installation', 'Quickstart', 'Template Structure', 'Usage with AI', 'External Resources'], 
+          'Customization', 
+          ['Connecting Data', 'Combining Sections', 'Connecting Task Flows', 'Columns'], 
           'Components'
         ],
       },
