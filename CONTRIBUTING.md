@@ -192,38 +192,43 @@ Once your code is ready, [open a pull request to the \`main\` branch](https://do
 
 Remember to [read our license](https://github.com/strudel-science/strudel-kit/blob/main/LICENSE) so you understand how code in the kit can be shared and used. This is a public, free, and open source project so any code you contribute will be too.
 
-
 ## About the Repository
 
-### Framework and Languages
+### Structure
 
-The strudel-kit app templates are written in TypeScript using the React web development framework. Below are all of the relevant technologies used in the app:
+There are currently two main sections of the repository to be aware of as a contributor: the `templates` directory and the `packages/react-components` directory. 
 
-* [TypeScript](https://www.typescriptlang.org/)  
-* [React](https://react.dev/)  
-* [Vite](https://vite.dev/)  
-* [Material UI](https://mui.com/)  
-* [Generouted](https://github.com/oedotme/generouted)  
-* [PlotlyJS](https://plotly.com/javascript/)
+#### `templates`
 
-### Page Routing
+The `templates` directory contains fullstack templates that are intended to be copied by users with [degit](https://github.com/Rich-Harris/degit). Each directory within `templates` is considered a different Task Flow with the exception of the `base-app`. The `base-app` is the generic scaffolding that each Task Flow template starts out as.
 
-This app used Generouted to automatically create routes based on the folders and files in `src/pages`. Read more about how this works in the [Generouted docs](https://github.com/oedotme/generouted?tab=readme-ov-file#conventions).
+Each template has a `backend` directory and a `frontend` directory. The backend houses the FastAPI app and the frontend house the React app.
+
+On the frontend, each Task Flow template has a unique UI template inside of `frontend/src/pages` for that Task Flow (e.g. `frontend/src/pages/explore-data`). 
+
+It may also be helpful to checkout the [Template Structure](https://strudel.science/strudel-kit/storybook/?path=/docs/getting-started-template-structure--docs) page in the docs.
+
+#### `packages/react-components`
+
+The `packages/react-components` directory contains the React component library that gets used by all the templates. It also contains the Storybook docs site.
 
 ### Testing
 
-This app uses [Cypress](https://www.cypress.io/) for testing the different Task Flows. Each Task Flow directory contains a `_tests` directory which has at least one test for that Task Flow. Each test is intended to test the general UI flow and functionality of that part of the template.
+This app uses [Cypress](https://www.cypress.io/) for testing the different Task Flow UIs. Each frontend Task Flow directory contains a `-tests` directory which has at least one test for that Task Flow. Each test is intended to test the general UI flow and functionality of that part of the template.
+
+We currently do not have any testing setup for the backend. This would be a welcome contribution.
 
 ### Linting and Code Styling
 
-This repository uses [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) to lint and format code in the repository. Any changes you make will run through the linter before being committed and you may have errors and warnings to fix before you can successfully commit code. This ensures that all the code follows similar guidelines. We generally follow the [AirBnB React Style Guide](https://github.com/airbnb/javascript/tree/master/react), but the ESLint warnings on the command line should guide you to how to fix the problem. 
+This repository uses [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) to lint and format code in the repository. Any changes you make will run through the linter before being merged and you may have errors and warnings to fix before you can successfully merge code. This ensures that all the code follows similar guidelines. We generally follow the [AirBnB React Style Guide](https://github.com/airbnb/javascript/tree/master/react), but the ESLint warnings on the command line should guide you to how to fix the problem. 
 
 We request that you include lots of comments so that our maintainers, other contributors, and STRUDEL Kit users can work with your code easily too. 
+
+We currently do not have any linting setup for the backend. This would be a welcome contribution. We do prefer you follow the [PEP 8 Style Guide](https://peps.python.org/pep-0008/).
 
 ### License
 
 The code in this repository is free and open source under an agreement with the Lawrence Berkeley National Lab. [Read the full license](https://github.com/strudel-science/strudel-kit/blob/main/LICENSE).
-
 
 ## Setting up a Local Development Environment
 
