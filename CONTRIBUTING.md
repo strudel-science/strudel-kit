@@ -279,6 +279,10 @@ Run storybook:
 npm run storybook
 ```
 
+#### STRUDEL Website ([https://strudel.science](https://strudel.science))
+
+See the [Installing Locally](https://github.com/strudel-science/strudel-web?tab=readme-ov-file#installing-locally) section of the [strudel-web](https://github.com/strudel-science/strudel-web) repo's README.
+
 ## Issues and Discussions
 
 STRUDEL has two means of communication for the community to propose improvements and discuss STRUDEL: issues and discussions. The line between these is blurry but here we will provide some guidelines for you to use if you are uncertain which is right for you. 
