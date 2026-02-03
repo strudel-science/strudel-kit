@@ -30,16 +30,6 @@ This guide is a work in progress; feel free to propose revisions by [opening an 
 
 [About the Repository](#about-the-repository)
 
-&nbsp;&nbsp;&nbsp;&nbsp;[Framework and Languages](#framework-and-languages)
-
-&nbsp;&nbsp;&nbsp;&nbsp;[Page Routing](#page-routing)
-
-&nbsp;&nbsp;&nbsp;&nbsp;[Testing](#testing)
-
-&nbsp;&nbsp;&nbsp;&nbsp;[Linting and Code Styling](#linting-and-code-styling)
-
-&nbsp;&nbsp;&nbsp;&nbsp;[License](#license)
-
 [Setting up a Local Development Environment](#setting-up-a-local-development-environment)
 
 &nbsp;&nbsp;&nbsp;&nbsp;[Prerequisites](#prerequisites)
