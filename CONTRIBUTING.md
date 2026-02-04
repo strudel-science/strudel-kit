@@ -222,9 +222,10 @@ The code in this repository is free and open source under an agreement with the 
 
 ## Setting up a Local Development Environment
 
-If you are trying to develop a new UI feature or fix a bug in the code, you will need to set up a local development environment that can run a template app, the storybook docs site, and/or just the components.
+If you are trying to develop a new UI feature, fix a bug in the code or add to documentation website, you will need to set up a local development environment that can run a template app, the storybook docs site, and/or just the components.
 
 ### Prerequisites
+Please download the tools listed below required to set up the Local Development Environment:
 
 * [Git](https://git-scm.com/downloads)
 * [Add an SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
@@ -232,7 +233,7 @@ If you are trying to develop a new UI feature or fix a bug in the code, you will
 * [Docker](https://www.docker.com/get-started/)
 * Code editor such as [VSCode](https://code.visualstudio.com/download)
 
-### Instructions
+### Setup Instructions
 
 Fork the [strudel-kit](https://github.com/strudel-science/strudel-kit) repository from GitHub.
 
@@ -248,40 +249,41 @@ Navigate to the newly created `strudel-kit` directory.
 cd strudel-kit
 ```
 
-#### Template Apps
+   #### 1. Developing for Task Flow Template Apps
+   
+   If you are developing a change to one of the template apps, navigate to the desired folder in the `templates` directory. For example:
+   
+   ```
+   cd templates/explore-data
+   ```
+   
+   Then follow the [instructions in the template's READMEs](https://github.com/strudel-science/strudel-kit/blob/main/templates/base-app/README.md#getting-started-with-docker) to start the app with Docker.
 
-If you are developing a change to one of the template apps, navigate to the desired folder in the `templates` directory. For example:
 
-```
-cd templates/explore-data
-```
+   #### 2. Developing for React Components and Storybook Documentation
+   
+   If you are developing a change to the react components or Storybook documentation site, navigate to the `react-components` package:
+   
+   ```
+   cd packages/react-components
+   ```
+   
+   Install the dependencies:
+   
+   ```
+   npm install
+   ```
+   
+   Run storybook:
+   
+   ```
+   npm run storybook
+   ```
 
-Then follow the [instructions in the template's READMEs](https://github.com/strudel-science/strudel-kit/blob/main/templates/base-app/README.md#getting-started-with-docker) to start the app with Docker.
+   #### 3. Developing for STRUDEL Website ([https://strudel.science](https://strudel.science))
 
+   See the [Installing Locally](https://github.com/strudel-science/strudel-web?tab=readme-ov-file#installing-locally) section of the [strudel-web](https://github.com/strudel-science/strudel-web) repo's README.
 
-#### React Components and Storybook Documentation
-
-If you are developing a change to the react components or Storybook documentation site, navigate to the `react-components` package:
-
-```
-cd packages/react-components
-```
-
-Install the dependencies:
-
-```
-npm install
-```
-
-Run storybook:
-
-```
-npm run storybook
-```
-
-#### STRUDEL Website ([https://strudel.science](https://strudel.science))
-
-See the [Installing Locally](https://github.com/strudel-science/strudel-web?tab=readme-ov-file#installing-locally) section of the [strudel-web](https://github.com/strudel-science/strudel-web) repo's README.
 
 ## Issues and Discussions
 
