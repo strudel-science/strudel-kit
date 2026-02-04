@@ -4,7 +4,9 @@
 
 STRUDEL Kit is a set of modern fullstack templates and components for building scientific apps based on the STRUDEL Design System and Task Flows. Visit [strudel.science](https://strudel.science) for more information about the STRUDEL project.
 
-[Browse the full docs](https://strudel.science/strudel-kit/storybook/)
+[Browse the new docs!](https://strudel.science/strudel-kit/storybook/)
+
+[(Legacy docs)](https://strudel.science/strudel-kit/docs/)
 
 ## Technology Stack
 **Backend**
