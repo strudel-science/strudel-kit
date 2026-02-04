@@ -11,9 +11,9 @@ STRUDEL Kit is a set of modern fullstack templates and components for building s
 ## Technology Stack
 **Backend**
 - [**Python**](https://www.python.org/): Programming language popular for scientific and data analysis
-- [**FastApi**](https://fastapi.tiangolo:.com/) Backend framework for building REST APIs
-- [**SQLAlchemy**](https://www.sqlalchemy:.org/) SQL toolkit and ORM
-- [**Alembic**](https://alembic.sqlalchemy:.org/en/latest/) Database migration tool
+- [**FastApi**](https://fastapi.tiangolo.com/): Backend framework for building REST APIs
+- [**SQLAlchemy**](https://www.sqlalchemy.org/): SQL toolkit and ORM
+- [**Alembic**](https://alembic.sqlalchemy.org/en/latest/): Database migration tool
 - [**uv**](https://docs.astral.sh/uv/): Python package and project manager
 
 **Frontend**
