@@ -1,5 +1,5 @@
 ---
-name: "[Example] Pattern example"
+name: "[Example] GUI/ CLI Pattern Example"
 about: Example of UIs for task flow pattern as inspiration
 title: "[Example]"
 labels: reference example
