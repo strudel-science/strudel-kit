@@ -34,7 +34,7 @@ This guide is a work in progress; feel free to propose revisions by [opening an 
 
 &nbsp;&nbsp;&nbsp;&nbsp;[Prerequisites](#prerequisites)
 
-&nbsp;&nbsp;&nbsp;&nbsp;[Instructions](#instructions)
+&nbsp;&nbsp;&nbsp;&nbsp;[Setup Instructions](#setup-instructions)
 
 [Issues and Discussions](#issues-and-discussions)
 
@@ -249,40 +249,40 @@ Navigate to the newly created `strudel-kit` directory.
 cd strudel-kit
 ```
 
-   #### 1. Developing for Task Flow Template Apps
-   
-   If you are developing a change to one of the template apps, navigate to the desired folder in the `templates` directory. For example:
-   
-   ```
-   cd templates/explore-data
-   ```
-   
-   Then follow the [instructions in the template's READMEs](https://github.com/strudel-science/strudel-kit/blob/main/templates/base-app/README.md#getting-started-with-docker) to start the app with Docker.
+#### 1. Developing for Task Flow Template Apps
+
+If you are developing a change to one of the template apps, navigate to the desired folder in the `templates` directory. For example:
+
+```
+cd templates/explore-data
+```
+
+Then follow the [instructions in the template's READMEs](https://github.com/strudel-science/strudel-kit/blob/main/templates/base-app/README.md#getting-started-with-docker) to start the app with Docker.
 
 
-   #### 2. Developing for React Components and Storybook Documentation
-   
-   If you are developing a change to the react components or Storybook documentation site, navigate to the `react-components` package:
-   
-   ```
-   cd packages/react-components
-   ```
-   
-   Install the dependencies:
-   
-   ```
-   npm install
-   ```
-   
-   Run storybook:
-   
-   ```
-   npm run storybook
-   ```
+#### 2. Developing for React Components and Storybook Documentation
 
-   #### 3. Developing for STRUDEL Website ([https://strudel.science](https://strudel.science))
+If you are developing a change to the react components or Storybook documentation site, navigate to the `react-components` package:
 
-   See the [Installing Locally](https://github.com/strudel-science/strudel-web?tab=readme-ov-file#installing-locally) section of the [strudel-web](https://github.com/strudel-science/strudel-web) repo's README.
+```
+cd packages/react-components
+```
+
+Install the dependencies:
+
+```
+npm install
+```
+
+Run storybook:
+
+```
+npm run storybook
+```
+
+#### 3. Developing for STRUDEL Website ([https://strudel.science](https://strudel.science))
+
+See the [Installing Locally](https://github.com/strudel-science/strudel-web?tab=readme-ov-file#installing-locally) section of the [strudel-web](https://github.com/strudel-science/strudel-web) repo's README.
 
 
 ## Issues and Discussions
@@ -368,7 +368,7 @@ Github allows users to create an issue from a discussion thread. Doing so would 
 
 ## Filing or Fixing a Bug
 
-If there is a problem with the STRUDEL Kit, you can [file a bug](#opening-an-issue) to say so. If you want to fix a bug yourself, [say so in the relevant issue](#commenting-on-an-issue) and follow the same steps as those described in the [General Procedures](#general-procedures-for-version-controlled-changes) section. 
+If there is a problem with the STRUDEL Kit, you can [file a bug](https://github.com/strudel-science/strudel-kit/issues/new?template=-code--bug-report.md) to say so. If you want to fix a bug yourself, [comment in the relevant issue](#commenting-on-an-issue) and follow the same steps as those described in the [General Procedures](#general-procedures-for-version-controlled-changes) section. 
 
 
 ## Improving the Code
@@ -382,7 +382,7 @@ Depending on the type of idea you have and interest in coding the changes yourse
 
 * If you don’t want to implement any changes yourself but want to propose a new feature, we suggest [opening a discussion](#opening-a-discussion).    
 * If you want to add a new Task Flow, different to those included in the STRUDEL Kit, [see that section](#proposing-or-adding-a-new-task-flow).   
-* If the change you have in mind is any other kind of new capability and you have a clear proposal, you should follow the steps described in the [General Procedures](#general-procedures-for-version-controlled-changes) section. If you open an issue yourself when following those steps, use the [Feature Request issue template](https://github.com/strudel-science/strudel-kit/issues/new?template=feature_request.md).
+* If the change you have in mind is any other kind of new capability and you have a clear proposal, you should follow the steps described in the [General Procedures](#general-procedures-for-version-controlled-changes) section. If you open an issue yourself when following those steps, use the [Feature Request issue template](https://github.com/strudel-science/strudel-kit/issues/new?template=-code--feature-request.md).
 
 
 ## Proposing or Adding a New Task Flow
@@ -393,7 +393,9 @@ You may be interested in contributing an idea, a design, code, or feedback on a 
 
 If you have an idea for a new Task Flow, the first thing you should do is make a post about it in the [Propose a Task Flow discussion thread](https://github.com/orgs/strudel-science/discussions/42). This helps socialize your ideas immediately and prevent duplicate efforts. The top post in that thread indicates what goes into proposing a Task Flow: the name of the flow, the scientific motivation, and any examples that exist in current software. Examples could be something you have built or not, as long as they help communicate the common pattern you want to encapsulate into a Task Flow template.
 
-Once you have made a post in the thread, other members of the community can [upvote or comment on](#contributing-to-a-discussion) your proposed Task Flow. This helps us vet and iterate on Task Flows while they are in the ideation phase. If there is consensus in the thread that this Task Flow is worth building out, one of the [maintainers](#maintainers) will indicate so in the thread and create an issue for the Task Flow using the New Task Flow issue template. If you want to lead the creation of this Task Flow, you can say so in the body of the issue. This doesn’t necessarily mean that you have to do all the work on the Task Flow, but it means that you are making sure the necessary steps are taken to take the Task Flow from idea to design to code.
+Once you have made a post in the thread, other members of the community can [upvote or comment on](#contributing-to-a-discussion) your proposed Task Flow. This helps us vet and iterate on Task Flows while they are in the ideation phase. If there is consensus in the thread that this Task Flow is worth building out, one of the [maintainers](#maintainers) will indicate so in the thread and create an issue for the Task Flow using the New Task Flow issue template. If you want to lead the creation of this Task Flow, you can say so in the body of the issue. This doesn’t necessarily mean that you have to do all the work on the Task Flow, but it means that you are making sure the necessary steps are taken to take the Task Flow from idea to design to code. 
+
+If you prefer, feel free to skip the discussion and open a new issue directly using the [New Taskflow/ Variation/ Component Issue template](https://github.com/strudel-science/strudel-kit/issues/new?template=new-task-flow--variation--component.md). Please include any relevant details or examples of existing patterns related to your proposal. The team will review your submission and discuss the next steps for developing the design.
 
 ### Designing a Task Flow
 
@@ -405,17 +407,14 @@ Whichever approach you use, once finished, you should attach screenshots of your
 
 Approaches you may use to designing a Task Flow include:
 
-*Creating a Figma File*
+- *Creating a Figma File*: [Figma](https://www.figma.com/) is the tool our team has used to design all of the existing Task Flows and is a great option for building your own Task Flow design. We use the MUI for Figma plugin for all the low-level components. You can create contribute using your own Figma file and attach it to the issue or use the [STRUDEL Working Figma](https://www.figma.com/design/uSi5MyL8B1x7PzEhGeBwPz/STRUDEL-Task-Flows---Working-File?node-id=159-17437&t=VtEa2Lr0BtlUKheQ-1) file (password : STRUDEL-02-26-workshop)"
 
-[Figma](https://www.figma.com/) is the tool our team has used to design all of the existing Task Flows and is a great option for building your own Task Flow design. We use the MUI for Figma plugin for all the low-level components.
+- *Create using Generating AI*: Create images using AI tools like Builder.io or Figma Make to illustrate the task flow UIs in whole or specific parts/ features. You can add the generated UI as images/ screenshots along with motivation brief and feature descriptions to the Github issue in a new comment. 
+Since many AI tools generate code along with UI, if you want, you can continue working further to get this generated code cleaned up and in acceptable format for contribution into STRUDEL-Kit using the same issue. 
 
-*Creating Sketches*
+- *Creating Sketches*: Pen and paper sketches are another effective way to share your designs. Feel free to use this method and attach photos to the issue.
 
-Pen and paper sketches are another effective way to share your designs. Feel free to use this method and attach photos to the issue.
-
-*Using a Different Program*
-
-There are many other programs you can use to make designs such as [Adobe Illustrator](https://www.adobe.com/products/illustrator.html), [Sketch](https://www.sketch.com/), [Inkscape (free)](https://inkscape.org/), or even PowerPoint or Keynote. Feel free to use any tool that you are comfortable with and share either exported images or screenshots in the associated issue.
+- *Using a Different Program*: There are many other programs you can use to make designs such as [Adobe Illustrator](https://www.adobe.com/products/illustrator.html), [Sketch](https://www.sketch.com/), [Inkscape (free)](https://inkscape.org/), or even PowerPoint or Keynote. Feel free to use any tool that you are comfortable with and share either exported images or screenshots in the associated issue.
 
 ### Design Review
 
@@ -445,7 +444,7 @@ The app uses a library called [Generouted](https://github.com/oedotme/generouted
 
 Improving and maintaining the documentation for STRUDEL Kit is a welcome contribution. [New examples](#adding-an-example), [improved guides and tutorials](#improving-guides), typo fixes, better and more complete explanations are all helpful. 
 
-The strudel-kit docs are built using [Docusaurus](https://docusaurus.io/), a Markdown-based documentation builder. You can find the markdown files for the doc pages in the `docs/docs` directory. You will make changes to the documentation by following the [General Procedures for making changes](#general-procedures-for-version-controlled-changes). 
+The strudel-kit docs are built using [Docusaurus](https://docusaurus.io/), a Markdown-based documentation builder. You can find the markdown files for the doc pages in the `docs/docs` directory.  If you would like to make a change to docs, open a [Docs Content Improvement Issue](https://github.com/strudel-science/strudel-kit/issues/new?template=-docs--documentation-content-improvement.md). If you choose to address the issue yourself, you can edit the appropriate `.mdx` file under `packages/react-components`.
 
 If you would like to make additions or changes to the documentation, please keep the following in mind:
 
@@ -455,21 +454,20 @@ If you would like to make additions or changes to the documentation, please keep
 4. Use consistent language and formatting. Follow these tips:  
    1. Use [title case](https://en.wikipedia.org/wiki/Title_case) for section titles.  
    2. Capitalize STRUDEL, STRUDEL Kit, and Task Flows.  
-   3. Capitalize General Procedures when referring to [the usual steps](#general-procedures-for-version-controlled-changes) you would follow to make a change to the STRUDEL Kit  
-   4. Do not capitalize repositories (e.g. strudel-kit).  
-   5. Avoid acronyms and abbreviations. Say “pull request” not “PR.” Say “repository,” not “repo.”  
-   6. When describing a step by step process, make each step a paragraph.  
+   3. Do not capitalize repositories (e.g. strudel-kit).  
+   4. Avoid acronyms and abbreviations. Say “pull request” not “PR.” Say “repository,” not “repo.”  
+   5. When describing a step by step process, make each step a paragraph.  
 
 ### Improving Guides
 
-There are several guides for working with the STRUDEL Kit in our documentation. If you would like to improve them, follow the [General Procedures for making a change](#general-procedures-for-version-controlled-changes). If you choose to address the issue yourself, you can edit the appropriate `.mdx` file under `docs/docs/guides`. 
+There are several guides for working with the STRUDEL Kit in our documentation. If you would like to improve them, open a [Docs Content Improvement Issue](https://github.com/strudel-science/strudel-kit/issues/new?template=-docs--documentation-content-improvement.md). If you choose to address the issue yourself, you can edit the appropriate `.mdx` file under `packages/react-components`. 
 
-If you have feedback about any of the tutorials but don’t have a specific change to the content in mind, we’d still love to hear from you. Make a post in our Discussions page under [Tutorials](https://github.com/orgs/strudel-science/discussions/categories/q-a).
+If you have feedback about any of the tutorials but don’t have a specific change to the content in mind, we’d still love to hear from you. Make a post in our Discussions page under [Tutorials](https://github.com/orgs/strudel-science/discussions/categories/q-a). 
 
 
 ## Adding an Example
 
-A big to-do item for STRUDEL is to compile and share example implementations. We plan to add information to this guide on how you might share images, code, or interactive examples of the STRUDEL Kit put to use. For now, please share your example [in a discussion thread](#opening-a-discussion) under the [Show and Tell category](https://github.com/orgs/strudel-science/discussions/categories/show-and-tell?discussions_q=is%3Aopen+category%3A%22Show+and+tell%22). 
+A big to-do item for STRUDEL is to compile and share example implementations. We plan to add information to this guide on how you might share images, code, or interactive examples of the STRUDEL Kit put to use. You can add examples via [Pattern Example Issue Template](https://github.com/strudel-science/strudel-kit/issues/new?template=-example--pattern-example.md) or simply discuss your example [in a discussion thread](#opening-a-discussion) under the [Show and Tell category](https://github.com/orgs/strudel-science/discussions/categories/show-and-tell?discussions_q=is%3Aopen+category%3A%22Show+and+tell%22). 
 
 
 ## Sharing UX Resources or Principles
