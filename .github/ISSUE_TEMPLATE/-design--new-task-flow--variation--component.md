@@ -1,5 +1,5 @@
 ---
-name: New Task Flow/ Variation/ Component
+name: "[Design] New Task Flow/ Variation/ Component"
 about: Design suggestion for new task flow or new variation of existing task flow
 title: "[New Design]"
 labels: design
