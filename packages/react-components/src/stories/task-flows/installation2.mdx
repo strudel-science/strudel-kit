@@ -1,0 +1,87 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { Grid } from '@mui/material';
+import { LinkCard } from '../../components/LinkCard';
+
+<Meta title="task-flows/Compare Data" />
+
+# Compare Data
+
+comparison differences analysis
+
+## Intent
+Enables users to scan and compare multiple complex entities with similar information categories to support decision making based on the differences.  
+
+Comparison may be between just two entities requiring a dedicated focus on differences in values, shown visually or numerically. Comparison may also be between multiple attributes — requiring a soft highlight on all differences and other visual representations.  
+
+
+<Grid container columnSpacing={2} rowSpacing={2} marginBottom={2}>
+  <Grid item sm={4}>
+    <LinkCard
+      href="figma.com/file/UQT4iRirRG9lrgzayfzswY/STRUDEL-task-flows?type=design&node-id=10%3A65420&mode=design&t=w7GGrEXSOV1T8UCr-1"
+      target="_blank"
+      label="Design Templates"
+      description="Figma design templates"
+    />
+  </Grid>
+  <Grid item sm={4}>
+    <LinkCard
+      href="https://strudel.science/strudel-kit/#/compare-data"
+      target="_blank"
+      label="Live Demo"
+      description="Live demo of the taskflow"
+    />
+  </Grid>
+  <Grid item sm={4}>
+    <LinkCard
+      href="https://strudel.science/strudel-kit/docs/task-flows/compare-data/"
+      target="_blank"
+      label="< > Code"
+      description="Code for template"
+    />
+  </Grid>
+</Grid>
+
+
+## Overview
+Three images should be here
+<Grid container columnSpacing={2} rowSpacing={2} marginBottom={2}>
+  <Grid item sm={4}>
+    <img src="https://strudel.science/static/baeb7842ae1a5112bbf059bd48ce8057/751eb/1.Initiate-task-from-list-view-action.png" alt="initiate task from list view action" />
+  </Grid>
+  <Grid item sm={4}>
+    <img src="https://strudel.science/static/3cb5c92b5f61891dc40cfb1564a27d40/751eb/2.Select-scenarios-to-compare.png" alt="select scenarios to compare" />
+  </Grid>
+  <Grid item sm={4}>
+    <img src="https://strudel.science/static/bc186266c49d6db6fa88dc8cec06968f/751eb/3.Comparison-view.png" alt="comparison view" />
+  </Grid>
+</Grid>
+
+### Guidelines for adapting the Task Flow
+* Consider whether the users would want to compare 2 sets of attributes or more than 2 sets.
+  * When comparing 2 sets of attributes, you can represent the differences between the sets as a subtraction between values or showing side by side values. These deltas can also be represented as a plot.
+  * When comparing more than 2 sets of attributes, you can consider displaying values of each set as columns in a table. Also consider visualizations to aid in comparison.
+* Data visualizations like graphs and charts can help to highlight the differences and similarities between sets being compared.
+* Prioritize the attributes which are critical for comparison instead of exposing all of the attributes in a single view.
+* If there are too many attributes to compare, allow users to prioritize comparisons by providing ways to search & filter the attributes. This makes it easier for them to focus on their interests instead of getting overwhelmed by a large comparison matrix.
+* Consider offering an expanded view of a selected set or attribute to view additional related details, data tables, or diagrams. The expanded view could be displayed in a pop-up or a vertical or horizontal slide out panel.
+* Consider providing the ability to save or export comparison results.
+
+## Related Task Flows
+<Grid container columnSpacing={2} rowSpacing={2} marginBottom={2}>
+  <Grid item sm={4}>
+    <LinkCard
+      href="/strudel-kit/docs/task-flows/explore-data"
+      target="_self"
+      label="Explore Data"
+      description="Taskflow for exploring data in a tabular or visual format"
+    />
+  </Grid>
+  <Grid item sm={4}>
+    <LinkCard
+      href="/strudel-kit/docs/task-flows/contribute-data"
+      target="_self"
+      label="Contribute Data"
+      description="Taskflow for contributing data to the system"
+    />
+  </Grid>
+</Grid>
