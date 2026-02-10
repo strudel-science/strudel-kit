@@ -1,9 +1,10 @@
 from fastapi import APIRouter, HTTPException
+
 from app.crud import get_user_by_id, get_users
 from app.database import SessionDep
 
-
 router = APIRouter()
+
 
 @router.get("/me")
 async def read_current_user(db: SessionDep, user_id: int):
