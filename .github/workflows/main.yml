@@ -8,9 +8,23 @@ on:
 jobs:
   frontend-lint:
     runs-on: ubuntu-22.04
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - packages/react-components
+          - templates/base-app/frontend
+          - templates/compare-data/frontend
+          - templates/contribute-data/frontend
+          - templates/explore-data/frontend
+          - templates/monitor-activities/frontend
+          - templates/run-computation/frontend
+          - templates/search-data-repositories/frontend
+
     defaults:
       run:
-        working-directory: templates/base-app/frontend
+        working-directory: ${{ matrix.package }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,14 +35,26 @@ jobs:
       - name: Install taskflow dependencies
         run: npm install
       - name: Run ESLint
-        run: npm run lint:fix
+        run: npm run lint
       - name: Run Prettier
-        run: npm run prettier:fix
+        if: ${{ matrix.package != 'packages/react-components' }}
+        run: npm run prettier
   cypress-tests:
     runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - templates/base-app/frontend
+          - templates/compare-data/frontend
+          - templates/contribute-data/frontend
+          - templates/explore-data/frontend
+          - templates/monitor-activities/frontend
+          - templates/run-computation/frontend
+          - templates/search-data-repositories/frontend
     defaults:
       run:
-        working-directory: templates/base-app/frontend
+        working-directory: ${{ matrix.package }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
