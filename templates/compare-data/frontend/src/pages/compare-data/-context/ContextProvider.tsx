@@ -122,8 +122,8 @@ export const CompareDataProvider: React.FC<CompareDataProviderProps> = (
   useEffect(() => {
     if (state.comparing && state.selectedRows.ids.size > 1) {
       const metrics = state.columns.filter((c) => c.isComparisonMetric);
-      const scenarios = state.data.filter(
-        (d) => state.selectedRows.ids.has(d.id)
+      const scenarios = state.data.filter((d) =>
+        state.selectedRows.ids.has(d.id)
       );
       const comparisonColumns: any[] = [
         {

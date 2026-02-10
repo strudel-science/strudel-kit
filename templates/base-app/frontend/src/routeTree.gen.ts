@@ -8,80 +8,80 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './pages/__root'
-import { Route as IndexRouteImport } from './pages/index'
-import { Route as UsersIndexRouteImport } from './pages/users/index'
-import { Route as PlaygroundIndexRouteImport } from './pages/playground/index'
+import { Route as rootRouteImport } from './pages/__root';
+import { Route as IndexRouteImport } from './pages/index';
+import { Route as UsersIndexRouteImport } from './pages/users/index';
+import { Route as PlaygroundIndexRouteImport } from './pages/playground/index';
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const UsersIndexRoute = UsersIndexRouteImport.update({
   id: '/users/',
   path: '/users/',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const PlaygroundIndexRoute = PlaygroundIndexRouteImport.update({
   id: '/playground/',
   path: '/playground/',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/playground': typeof PlaygroundIndexRoute
-  '/users': typeof UsersIndexRoute
+  '/': typeof IndexRoute;
+  '/playground': typeof PlaygroundIndexRoute;
+  '/users': typeof UsersIndexRoute;
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/playground': typeof PlaygroundIndexRoute
-  '/users': typeof UsersIndexRoute
+  '/': typeof IndexRoute;
+  '/playground': typeof PlaygroundIndexRoute;
+  '/users': typeof UsersIndexRoute;
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/playground/': typeof PlaygroundIndexRoute
-  '/users/': typeof UsersIndexRoute
+  __root__: typeof rootRouteImport;
+  '/': typeof IndexRoute;
+  '/playground/': typeof PlaygroundIndexRoute;
+  '/users/': typeof UsersIndexRoute;
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/playground' | '/users'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/playground' | '/users'
-  id: '__root__' | '/' | '/playground/' | '/users/'
-  fileRoutesById: FileRoutesById
+  fileRoutesByFullPath: FileRoutesByFullPath;
+  fullPaths: '/' | '/playground' | '/users';
+  fileRoutesByTo: FileRoutesByTo;
+  to: '/' | '/playground' | '/users';
+  id: '__root__' | '/' | '/playground/' | '/users/';
+  fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  PlaygroundIndexRoute: typeof PlaygroundIndexRoute
-  UsersIndexRoute: typeof UsersIndexRoute
+  IndexRoute: typeof IndexRoute;
+  PlaygroundIndexRoute: typeof PlaygroundIndexRoute;
+  UsersIndexRoute: typeof UsersIndexRoute;
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+      id: '/';
+      path: '/';
+      fullPath: '/';
+      preLoaderRoute: typeof IndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/users/': {
-      id: '/users/'
-      path: '/users'
-      fullPath: '/users'
-      preLoaderRoute: typeof UsersIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+      id: '/users/';
+      path: '/users';
+      fullPath: '/users';
+      preLoaderRoute: typeof UsersIndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/playground/': {
-      id: '/playground/'
-      path: '/playground'
-      fullPath: '/playground'
-      preLoaderRoute: typeof PlaygroundIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+      id: '/playground/';
+      path: '/playground';
+      fullPath: '/playground';
+      preLoaderRoute: typeof PlaygroundIndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
   }
 }
 
@@ -89,7 +89,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PlaygroundIndexRoute: PlaygroundIndexRoute,
   UsersIndexRoute: UsersIndexRoute,
-}
+};
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+  ._addFileTypes<FileRouteTypes>();

@@ -5,7 +5,11 @@ import { PageHeader } from '../../components/PageHeader';
 import { DataView } from './-components/DataView';
 import { DataViewHeader } from './-components/DataViewHeader';
 import { PreviewPanel } from './-components/PreviewPanel';
-import { FilterConfig, FilterContext, FiltersPanel } from '@strudel-science/components';
+import {
+  FilterConfig,
+  FilterContext,
+  FiltersPanel,
+} from '@strudel-science/components';
 
 export const Route = createFileRoute('/explore-data/')({
   component: DataExplorer,

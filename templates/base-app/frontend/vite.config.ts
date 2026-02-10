@@ -11,9 +11,9 @@ export default defineConfig(({ mode }) => {
     plugins: [
       tanstackRouter({
         target: 'react',
-        autoCodeSplitting: true
-      }), 
-      react()
+        autoCodeSplitting: true,
+      }),
+      react(),
     ],
     base: env.VITE_BASE_URL,
     server: {

@@ -24,7 +24,9 @@ function Playground() {
         marginTop: 3,
       }}
     >
-      <Typography component="h1" variant="h3">Playground</Typography>
+      <Typography component="h1" variant="h3">
+        Playground
+      </Typography>
       <Stack
         direction="row"
         spacing={2}

@@ -95,7 +95,7 @@ function DatasetDetail() {
         <Grid container spacing={1} sx={{ pt: 1, pr: 2, pb: 2, pl: 2 }}>
           {data && (
             <>
-              <Grid size={{ md: 8, xs: 12}}>
+              <Grid size={{ md: 8, xs: 12 }}>
                 <Paper sx={{ mb: 1 }}>
                   <Stack p={2}>
                     <Stack direction="row">
@@ -162,11 +162,15 @@ function DatasetDetail() {
                       }}
                     />
                   </TabPanel>
-                  <TabPanel value={2} index={1}>Tab Two Content</TabPanel>
-                  <TabPanel value={3} index={2}>Tab Three Content</TabPanel>
+                  <TabPanel value={2} index={1}>
+                    Tab Two Content
+                  </TabPanel>
+                  <TabPanel value={3} index={2}>
+                    Tab Three Content
+                  </TabPanel>
                 </Paper>
               </Grid>
-              <Grid size={{ md: 4, xs: 12}}>
+              <Grid size={{ md: 4, xs: 12 }}>
                 <Paper>
                   <Stack p={2}>
                     <Box>
