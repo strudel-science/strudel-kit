@@ -1,6 +1,7 @@
 from sqlalchemy import select
-from app.models import User
+
 from app.database import SessionDep
+from app.models import User
 
 
 def get_user_by_id(db: SessionDep, user_id: int) -> User | None:
