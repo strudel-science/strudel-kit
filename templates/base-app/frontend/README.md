@@ -45,4 +45,3 @@ Pages, or routes, for the app live in `src/pages`. This app uses Tanstack Router
 ## Components
 
 There are several local components that live in `src/components`. Many components, however, are pulled from our [shared component library](https://github.com/strudel-science/strudel-kit/tree/main/packages/react-components). If you want to make a change to one of the shared components, you will need to modify the code there and submit a pull request.
-
