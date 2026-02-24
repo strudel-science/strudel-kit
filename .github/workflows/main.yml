@@ -8,9 +8,23 @@ on:
 jobs:
   frontend-lint:
     runs-on: ubuntu-22.04
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - packages/react-components
+          - templates/base-app/frontend
+          - templates/compare-data/frontend
+          - templates/contribute-data/frontend
+          - templates/explore-data/frontend
+          - templates/monitor-activities/frontend
+          - templates/run-computation/frontend
+          - templates/search-data-repositories/frontend
+
     defaults:
       run:
-        working-directory: templates/base-app/frontend
+        working-directory: ${{ matrix.package }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,14 +35,26 @@ jobs:
       - name: Install taskflow dependencies
         run: npm install
       - name: Run ESLint
-        run: npm run lint:fix
+        run: npm run lint
       - name: Run Prettier
-        run: npm run prettier:fix
+        if: ${{ matrix.package != 'packages/react-components' }}
+        run: npm run prettier
   cypress-tests:
     runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - templates/base-app/frontend
+          - templates/compare-data/frontend
+          - templates/contribute-data/frontend
+          - templates/explore-data/frontend
+          - templates/monitor-activities/frontend
+          - templates/run-computation/frontend
+          - templates/search-data-repositories/frontend
     defaults:
       run:
-        working-directory: templates/base-app/frontend
+        working-directory: ${{ matrix.package }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,3 +66,29 @@ jobs:
           working-directory: templates/base-app/frontend
           browser: chrome
           start: npm start
+  backend-lint:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - templates/base-app/backend
+          - templates/compare-data/backend
+          - templates/contribute-data/backend
+          - templates/explore-data/backend
+          - templates/monitor-activities/backend
+          - templates/run-computation/backend
+          - templates/search-data-repositories/backend
+    defaults:
+      run:
+        working-directory: ${{ matrix.package }}
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install uv
+      uses: astral-sh/setup-uv@v7
+    - name: Install dependencies
+      run: uv sync --extra dev
+    - name: Lint with ruff
+      run: uv run ruff check .
+    - name: Format with ruff
+      run: uv run  ruff format . --check

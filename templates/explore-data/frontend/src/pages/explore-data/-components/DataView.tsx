@@ -3,7 +3,11 @@ import { GridPaginationModel } from '@mui/x-data-grid';
 import React, { useState } from 'react';
 import { filterData } from '../../../utils/filters.utils';
 import { useListQuery } from '../../../hooks/useListQuery';
-import { FilterConfig, ScientificDataGrid, useFilters } from '@strudel-science/components';
+import {
+  FilterConfig,
+  ScientificDataGrid,
+  useFilters,
+} from '@strudel-science/components';
 
 interface DataViewProps {
   filterConfigs: FilterConfig[];

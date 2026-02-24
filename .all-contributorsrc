@@ -87,7 +87,10 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/174823027?v=4",
       "profile": "https://github.com/lea100x",
       "contributions": [
-        "eventOrganizing"
+        "eventOrganizing",
+        "content",
+        "ideas",
+        "projectManagement"
       ]
     },
     {
@@ -181,6 +184,17 @@
       ]
     },
     {
+      "login": "lucy-dwr",
+      "name": "Lucy Andrews",
+      "avatar_url": "https://avatars.githubusercontent.com/u/182827155?v=4",
+      "profile": "https://github.com/lucy-dwr",
+      "contributions": [
+        "maintenance",
+        "content",
+        "design"
+      ]
+    },
+    {
       "login": "kirstiejane",
       "name": "Kirstie Whitaker",
       "avatar_url": "https://avatars.githubusercontent.com/u/3626306?v=4",
@@ -196,6 +210,16 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/68081958?v=4",
       "profile": "https://github.com/amyawu",
       "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "sufikaur",
+      "name": "Sufi Kaur",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56102473?v=4",
+      "profile": "https://github.com/sufikaur",
+      "contributions": [
+        "design",
         "ideas"
       ]
     }
