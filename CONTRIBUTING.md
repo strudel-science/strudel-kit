@@ -110,21 +110,11 @@ We also wish to acknowledge attendees at the STRUDEL inaugural hackathon in 2024
 
 ### Maintainers
 
-STRUDEL-kit and the STRUDEL Design System are maintained by the Design System Working Group. This working group is responsible for developing and sustaining the STRUDEL Design System. They must:
-- Keep the STRUDEL Design System usable by the community. This includes stewardship of the STRUDEL Kit, Task Flow designs, tutorials, and documentation.  
-- Monitor issues, emails, and pull requests, even if they are not the primary contact point for a given issue, email, or pull request  
-- Ensure a maintainer replies to new issues, emails, and pull requests promptly, ideally within two days  
-- Ensure other contributors have adequate opportunity to engage  
-- Define and maintaining a product [roadmap](README.md)
+STRUDEL-kit and the STRUDEL Design System are maintained by the [Design System Working Group](WORKING-GROUP.md).
 
 Working group members are contributors that have a formal responsibility to STRUDEL—these people are employed or have otherwise agreed to add to, revise, and update the various repositories. If you reach out to the STRUDEL team via Github or email, it is likely you will get a response from one of our maintainers. You do not have to be a working group member to contribute to this repo. Read on to learn how you can get involved without joining the working group and becoming a formal maintainer.
 
-Design System Working Group currently include:  
-Cody O’Donnell, @codytodonnell  
-Rajshree Deshmukh, @Rjdesh
-
 To read more about the governance system that applies to the Design System Working Group, [see here](https://github.com/strudel-science/.github).
-
 
 ## Code of Conduct
 
