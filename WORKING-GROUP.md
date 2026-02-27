@@ -5,7 +5,9 @@ Design System maintainers are responsible for developing and sustaining the [STR
 - Monitor issues, emails, and pull requests, even if they are not the primary contact point for a given issue, email, or pull request  
 - Ensure a maintainer replies to new issues, emails, and pull requests promptly, ideally within two days  
 - Ensure other contributors have adequate opportunity to engage  
-- Define and maintaining a product roadmap  
+- Define and maintaining a product roadmap
+
+Read about STRUDEL's full governance system [here](https://github.com/strudel-science/.github/blob/main/README.md).
 
 ## Roadmap
 *Current priorities:*
