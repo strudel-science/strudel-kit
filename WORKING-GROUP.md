@@ -28,3 +28,6 @@ Read about STRUDEL's full governance system [here](https://github.com/strudel-sc
 Design System Working Group currently include:  
 Cody O’Donnell, @codytodonnell  
 Rajshree Deshmukh, @Rjdesh
+
+If you would like to become a working group member, [open an issue in this repo](https://github.com/strudel-science/strudel-kit/issues) indicating your interest.
+You can [contribute without becoming a working group member](https://github.com/carpentries-incubator/rapid-usability-tutorial/blob/main/CONTRIBUTING.md#what-and-how-to-contribute) as well. 
