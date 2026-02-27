@@ -110,6 +110,9 @@ STRUDEL Kit welcomes contributions of all kinds! Learn how to submit suggestions
       <td align="center" valign="top" width="14.28%"><a href="http://david.lyon.is"><img src="https://avatars.githubusercontent.com/u/5115845?v=4?s=100" width="100px;" alt="David Lyon"/><br /><sub><b>David Lyon</b></sub></a><br /><a href="#design-dauglyon" title="Design">🎨</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/CCL82"><img src="https://avatars.githubusercontent.com/u/196363996?v=4?s=100" width="100px;" alt="CCL82"/><br /><sub><b>CCL82</b></sub></a><br /><a href="#code-CCL82" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/CopyDemon"><img src="https://avatars.githubusercontent.com/u/27743177?v=4?s=100" width="100px;" alt="Sheng Pang"/><br /><sub><b>Sheng Pang</b></sub></a><br /><a href="#code-CopyDemon" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 
