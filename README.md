@@ -114,6 +114,21 @@ STRUDEL Kit welcomes contributions of all kinds! Learn how to submit suggestions
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
+## Roadmap
+*Current priorities:*
+- Review and refine contribution guidelines and governance procedures
+- Evaluate processes and tools to ensure sustainable, low‑effort contributions
+- Design for AI capabilities in Task Flows (existing and new)
+  
+*Near future priorities:*
+- Consolidate STRUDEL resources in STRUDEL website
+- Refine onboarding pathways for different STRUDEL users
+  
+*Long term priorities:*
+- Refine and expand existing guidelines and Task Flows, incorporating new variations and evolving user needs
+- Develop a STRUDEL components library to enable more granular, flexible, and reusable UI elements
+- Expand the task flow code to include minimal backends to act as templates and reference apps
+
 ## License 
 
 This software is licensed through the [Lawrence Berkeley National Lab](https://www.lbl.gov/) and can be used, modified, and shared at absolutely no cost. [Read the full license](https://github.com/strudel-science/strudel-kit/blob/main/LICENSE).
