@@ -108,6 +108,7 @@ STRUDEL Kit welcomes contributions of all kinds! Learn how to submit suggestions
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Hungoliann"><img src="https://avatars.githubusercontent.com/u/160803597?v=4?s=100" width="100px;" alt="Hungoliann"/><br /><sub><b>Hungoliann</b></sub></a><br /><a href="#code-Hungoliann" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://luxaritas.com"><img src="https://avatars.githubusercontent.com/u/18635705?v=4?s=100" width="100px;" alt="Jonathan Romano"/><br /><sub><b>Jonathan Romano</b></sub></a><br /><a href="#code-luxaritas" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://david.lyon.is"><img src="https://avatars.githubusercontent.com/u/5115845?v=4?s=100" width="100px;" alt="David Lyon"/><br /><sub><b>David Lyon</b></sub></a><br /><a href="#design-dauglyon" title="Design">🎨</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/CCL82"><img src="https://avatars.githubusercontent.com/u/196363996?v=4?s=100" width="100px;" alt="CCL82"/><br /><sub><b>CCL82</b></sub></a><br /><a href="#code-CCL82" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
