@@ -107,6 +107,7 @@ STRUDEL Kit welcomes contributions of all kinds! Learn how to submit suggestions
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/sufikaur"><img src="https://avatars.githubusercontent.com/u/56102473?v=4?s=100" width="100px;" alt="Sufi Kaur"/><br /><sub><b>Sufi Kaur</b></sub></a><br /><a href="#design-sufikaur" title="Design">🎨</a> <a href="#ideas-sufikaur" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Hungoliann"><img src="https://avatars.githubusercontent.com/u/160803597?v=4?s=100" width="100px;" alt="Hungoliann"/><br /><sub><b>Hungoliann</b></sub></a><br /><a href="#code-Hungoliann" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://luxaritas.com"><img src="https://avatars.githubusercontent.com/u/18635705?v=4?s=100" width="100px;" alt="Jonathan Romano"/><br /><sub><b>Jonathan Romano</b></sub></a><br /><a href="#code-luxaritas" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://david.lyon.is"><img src="https://avatars.githubusercontent.com/u/5115845?v=4?s=100" width="100px;" alt="David Lyon"/><br /><sub><b>David Lyon</b></sub></a><br /><a href="#design-dauglyon" title="Design">🎨</a></td>
     </tr>
   </tbody>
 </table>
