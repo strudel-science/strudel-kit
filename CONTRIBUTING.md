@@ -128,7 +128,7 @@ To read more about the governance system that applies to the Design System Worki
 
 ## Code of Conduct
 
-We want everyone to have a positive experience both using and contributing to this library. In choosing to participate and contribute to STRUDEL, you are agreeing to abide by our [Code of Conduct](https://github.com/strudel-science/strudel-kit/blob/main/CODE_OF_CONDUCT.md) which follows the [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
+We want everyone to have a positive experience both using and contributing to this library. In choosing to participate and contribute to STRUDEL, you are agreeing to abide by our [Code of Conduct](https://github.com/strudel-science/.github/blob/main/CODE-OF-CONDUCT.md).
 
 
 ## Engaging and Contributing
