@@ -102,9 +102,10 @@ STRUDEL Kit welcomes contributions of all kinds! Learn how to submit suggestions
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/yacechu"><img src="https://avatars.githubusercontent.com/u/46580542?v=4?s=100" width="100px;" alt="KC"/><br /><sub><b>KC</b></sub></a><br /><a href="#ideas-yacechu" title="Ideas, Planning, & Feedback">🤔</a></td>
     </tr>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/sufikaur"><img src="https://avatars.githubusercontent.com/u/56102473?v=4?s=100" width="100px;" alt="Sufi Kaur"/><br /><sub><b>Sufi Kaur</b></sub></a><br /><a href="#design-sufikaur" title="Design">🎨</a> <a href="#ideas-sufikaur" title="Ideas, Planning, & Feedback">🤔</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/amyawu"><img src="https://avatars.githubusercontent.com/u/68081958?v=4?s=100" width="100px;" alt="amyawu"/><br /><sub><b>amyawu</b></sub></a><br /><a href="#ideas-amyawu" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/yashorri"><img src="https://avatars.githubusercontent.com/u/260739294?v=4?s=100" width="100px;" alt="yashorri"/><br /><sub><b>yashorri</b></sub></a><br /><a href="#ideas-yashorri" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/amyawu"><img src="https://avatars.githubusercontent.com/u/68081958?v=4?s=100" width="100px;" alt="amyawu"/><br /><sub><b>amyawu</b></sub></a><br /><a href="#ideas-amyawu" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/sufikaur"><img src="https://avatars.githubusercontent.com/u/56102473?v=4?s=100" width="100px;" alt="Sufi Kaur"/><br /><sub><b>Sufi Kaur</b></sub></a><br /><a href="#design-sufikaur" title="Design">🎨</a> <a href="#ideas-sufikaur" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Hungoliann"><img src="https://avatars.githubusercontent.com/u/160803597?v=4?s=100" width="100px;" alt="Hungoliann"/><br /><sub><b>Hungoliann</b></sub></a><br /><a href="#code-Hungoliann" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
