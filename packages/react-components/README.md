@@ -33,12 +33,12 @@ npm install react react-dom @mui/material @mui/icons-material @mui/x-data-grid @
 Import components from the library:
 
 ```tsx
-import { 
-  ScientificDataGrid, 
-  ChemicalFormula, 
+import {
+  ScientificDataGrid,
+  ChemicalFormula,
   LabelValueTable,
   FilterContext,
-  FiltersPanel
+  FiltersPanel,
 } from '@strudel-science/components';
 
 function MyApp() {
@@ -54,6 +54,7 @@ function MyApp() {
 ## Available Components
 
 ### Data Display
+
 - **ScientificDataGrid** - Data grid with scientific notation support
 - **LabelValueTable** - Simple label-value pair table
 - **ArrayWithPopover** - Display arrays with expandable popover
@@ -62,6 +63,7 @@ function MyApp() {
 - **LinearMeter** - Progress meter component
 
 ### Filters
+
 - **FilterContext** - Context provider for filters
 - **FilterField** - Individual filter field
 - **FilterGroup** - Group of related filters
@@ -71,6 +73,7 @@ function MyApp() {
 - **RangeSlider** - Range slider filter
 
 ### Scientific
+
 - **ChemicalFormula** - Render chemical formulas with proper formatting
 
 ## Types
@@ -78,13 +81,13 @@ function MyApp() {
 The library also exports TypeScript types:
 
 ```tsx
-import type { 
-  FilterConfig, 
-  DataFilter, 
+import type {
+  FilterConfig,
+  DataFilter,
   FilterOperator,
   FilterComponent,
   FilterValue,
-  DataCard 
+  DataCard,
 } from '@strudel-science/components';
 ```
 
@@ -93,12 +96,12 @@ import type {
 Utility functions for chemical formulas and filtering:
 
 ```tsx
-import { 
-  VALID_ELEMENTS, 
-  ELEMENTS_REGEX, 
+import {
+  VALID_ELEMENTS,
+  ELEMENTS_REGEX,
   ELEMENTS_SPLIT_REGEX,
   hasValue,
-  rangeHasValue 
+  rangeHasValue,
 } from '@strudel-science/components';
 ```
 

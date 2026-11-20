@@ -1,6 +1,6 @@
-import React from "react";
-import { useContext } from "react";
-import { FilterAction, FilterState } from "./FilterContext";
+import React from 'react';
+import { useContext } from 'react';
+import { FilterAction, FilterState } from './FilterContext';
 
 export const FilterContextAPI = React.createContext<
   | {

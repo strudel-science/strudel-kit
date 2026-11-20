@@ -54,7 +54,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
     if (onChange && checkValues?.length !== values?.length) {
       onChange(checkValues);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checkValues]);
 
   useEffect(() => {

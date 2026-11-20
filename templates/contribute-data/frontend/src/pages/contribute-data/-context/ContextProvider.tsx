@@ -17,8 +17,10 @@ export interface ContributeDataState {
  * some of the required props in the State are optional props.
  * These props have default values set in the initialState object.
  */
-interface ContributeDataProviderProps
-  extends Omit<ContributeDataState, 'runningChecks'> {
+interface ContributeDataProviderProps extends Omit<
+  ContributeDataState,
+  'runningChecks'
+> {
   children: React.ReactNode;
 }
 

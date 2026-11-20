@@ -5,13 +5,36 @@ const preview: Preview = {
     options: {
       storySort: {
         order: [
-          'Getting Started', 
-          ['Introduction', 'Installation', 'Quickstart', 'Template Structure', 'Usage with AI', 'External Resources'], 
+          'Getting Started',
+          [
+            'Introduction',
+            'Installation',
+            'Quickstart',
+            'Template Structure',
+            'Usage with AI',
+            'External Resources',
+          ],
           'Tutorials',
-          ['Get Started With Strudel', ['Introductions', 'Setup', 'Configure Taskflow', 'Customize Taskflow', 'Customize App', 'Customize Home Page', 'Continue Learning']],
-          'Customization', 
-          ['Connecting Data', 'Combining Sections', 'Connecting Task Flows', 'Columns'], 
-          'Components'
+          [
+            'Get Started With Strudel',
+            [
+              'Introductions',
+              'Setup',
+              'Configure Taskflow',
+              'Customize Taskflow',
+              'Customize App',
+              'Customize Home Page',
+              'Continue Learning',
+            ],
+          ],
+          'Customization',
+          [
+            'Connecting Data',
+            'Combining Sections',
+            'Connecting Task Flows',
+            'Columns',
+          ],
+          'Components',
         ],
       },
     },
