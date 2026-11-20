@@ -1,0 +1,11 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "tabWidth": 2,
+  "useTabs": false,
+  "printWidth": 80,
+  "semi": true,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "endOfLine": "lf",
+  "ignorePatterns": ["dist", "storybook-static", "package-lock.json", "*.mdx"]
+}
