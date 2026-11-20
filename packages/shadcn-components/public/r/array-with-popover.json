@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "array-with-popover",
+  "title": "Array With Popover",
+  "description": "Display arrays of values with an expandable MUI Popover for overflow items.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "files": [
+    {
+      "path": "src/components/ArrayWithPopover/ArrayWithPopover.tsx",
+      "content": "import { Box, Stack, Chip, Popover, Grid } from '@mui/material';\nimport { useState } from 'react';\n\ninterface ArrayWithPopoverProps {\n  values: string[] | number[];\n}\n\n/**\n * Array of Chips with a popover to show the full list.\n * This is used to render arrays in table cells where the\n * list is cut off by the edge of the cell.\n */\nexport const ArrayWithPopover: React.FC<ArrayWithPopoverProps> = ({\n  values,\n}) => {\n  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);\n\n  const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {\n    setAnchorEl(event.currentTarget);\n  };\n\n  const handlePopoverClose = () => {\n    setAnchorEl(null);\n  };\n\n  const open = Boolean(anchorEl);\n  return (\n    <Box sx={{ height: '100%' }}>\n      <Stack\n        direction=\"row\"\n        spacing={1}\n        alignItems=\"center\"\n        onMouseEnter={handlePopoverOpen}\n        onMouseLeave={handlePopoverClose}\n        sx={{ height: '100%' }}\n      >\n        {values.map((v) => (\n          <Chip key={v} label={v} size=\"small\" />\n        ))}\n      </Stack>\n      <Popover\n        id=\"mouse-over-popover\"\n        sx={{\n          pointerEvents: 'none',\n        }}\n        open={open}\n        anchorEl={anchorEl}\n        anchorOrigin={{\n          vertical: 'top',\n          horizontal: 'left',\n        }}\n        transformOrigin={{\n          vertical: 'top',\n          horizontal: 'left',\n        }}\n        onClose={handlePopoverClose}\n        disableRestoreFocus\n      >\n        <Grid\n          container\n          rowGap={1}\n          columnGap={1}\n          sx={{\n            maxWidth: '300px',\n            padding: 2,\n          }}\n        >\n          {values.map((v) => (\n            <Grid key={v}>\n              <Chip label={v} size=\"small\" />\n            </Grid>\n          ))}\n        </Grid>\n      </Popover>\n    </Box>\n  );\n};\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/ArrayWithPopover/index.tsx",
+      "content": "export { ArrayWithPopover } from './ArrayWithPopover';\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

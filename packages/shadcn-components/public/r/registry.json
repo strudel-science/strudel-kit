@@ -1,0 +1,347 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "strudel",
+  "homepage": "https://strudel.science/strudel-kit",
+  "items": [
+    {
+      "name": "strudel-utils",
+      "type": "registry:lib",
+      "title": "STRUDEL Utilities",
+      "description": "Utility functions and constants for chemical formula parsing and filter value checks.",
+      "files": [
+        {
+          "path": "src/lib/strudel-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "filter-types",
+      "type": "registry:lib",
+      "title": "Filter Types",
+      "description": "TypeScript types for STRUDEL filter configurations, operators, and data cards.",
+      "files": [
+        {
+          "path": "src/lib/filters.types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "array-with-popover",
+      "type": "registry:component",
+      "title": "Array With Popover",
+      "description": "Display arrays of values with an expandable MUI Popover for overflow items.",
+      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
+      "files": [
+        {
+          "path": "src/components/ArrayWithPopover/ArrayWithPopover.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/ArrayWithPopover/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "cell-with-popover",
+      "type": "registry:component",
+      "title": "Cell With Popover",
+      "description": "Table cell wrapper that reveals full cell content in a MUI Popover on click.",
+      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
+      "files": [
+        {
+          "path": "src/components/CellWithPopover/CellWithPopover.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/CellWithPopover/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-list",
+      "type": "registry:component",
+      "title": "Checkbox List",
+      "description": "MUI checkbox list filter control with multi-select support.",
+      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
+      "files": [
+        {
+          "path": "src/components/CheckboxList/CheckboxList.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/CheckboxList/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "chemical-formula",
+      "type": "registry:component",
+      "title": "Chemical Formula",
+      "description": "Render chemical formulas with properly formatted subscripts using MUI Typography.",
+      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
+      "registryDependencies": [
+        "https://strudel.science/strudel-kit/r/strudel-utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ChemicalFormula/ChemicalFormula.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/ChemicalFormula/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "filter-context",
+      "type": "registry:component",
+      "title": "Filter Context",
+      "description": "React context provider and useFilters hook for managing active filter state.",
+      "registryDependencies": [
+        "https://strudel.science/strudel-kit/r/filter-types.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/FilterContext/FilterContext.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/FilterContext/useFilters.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/FilterContext/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "range-slider",
+      "type": "registry:component",
+      "title": "Range Slider",
+      "description": "MUI dual-thumb range slider filter control.",
+      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
+      "files": [
+        {
+          "path": "src/components/RangeSlider/RangeSlider.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/RangeSlider/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "filter-field",
+      "type": "registry:component",
+      "title": "Filter Field",
+      "description": "Individual filter field supporting CheckboxList, RangeSlider, DateRange, and TextField controls.",
+      "dependencies": [
+        "@mui/material",
+        "@mui/icons-material",
+        "@mui/x-date-pickers",
+        "@emotion/react",
+        "@emotion/styled",
+        "dayjs"
+      ],
+      "registryDependencies": [
+        "https://strudel.science/strudel-kit/r/checkbox-list.json",
+        "https://strudel.science/strudel-kit/r/range-slider.json",
+        "https://strudel.science/strudel-kit/r/filter-context.json",
+        "https://strudel.science/strudel-kit/r/filter-types.json",
+        "https://strudel.science/strudel-kit/r/strudel-utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/FilterField/FilterField.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/FilterField/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "filter-group",
+      "type": "registry:component",
+      "title": "Filter Group",
+      "description": "Collapsible MUI accordion group for organizing related FilterField controls.",
+      "dependencies": [
+        "@mui/material",
+        "@mui/icons-material",
+        "@emotion/react",
+        "@emotion/styled"
+      ],
+      "registryDependencies": [
+        "https://strudel.science/strudel-kit/r/filter-context.json",
+        "https://strudel.science/strudel-kit/r/filter-field.json",
+        "https://strudel.science/strudel-kit/r/strudel-utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/FilterGroup/FilterGroup.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/FilterGroup/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "filters",
+      "type": "registry:component",
+      "title": "Filters",
+      "description": "Container component for filter controls with active count, reset, and optional close action.",
+      "dependencies": [
+        "@mui/material",
+        "@mui/icons-material",
+        "@emotion/react",
+        "@emotion/styled"
+      ],
+      "registryDependencies": [
+        "https://strudel.science/strudel-kit/r/filter-context.json",
+        "https://strudel.science/strudel-kit/r/strudel-utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/Filters/Filters.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/Filters/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "filters-panel",
+      "type": "registry:component",
+      "title": "Filters Panel",
+      "description": "Config-driven filter panel that renders Filters and FilterField components from FilterConfig definitions.",
+      "registryDependencies": [
+        "https://strudel.science/strudel-kit/r/filters.json",
+        "https://strudel.science/strudel-kit/r/filter-field.json",
+        "https://strudel.science/strudel-kit/r/filter-types.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/FiltersPanel/FiltersPanel.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/FiltersPanel/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "image-wrapper",
+      "type": "registry:component",
+      "title": "Image Wrapper",
+      "description": "Responsive MUI Box wrapper for scaling images by relative width or height.",
+      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
+      "files": [
+        {
+          "path": "src/components/ImageWrapper/ImageWrapper.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/ImageWrapper/ImageWrapper.css",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/ImageWrapper/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "label-value-table",
+      "type": "registry:component",
+      "title": "Label Value Table",
+      "description": "Two-column MUI Table for displaying flat lists of label-value pairs.",
+      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
+      "files": [
+        {
+          "path": "src/components/LabelValueTable/LabelValueTable.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/LabelValueTable/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "linear-meter",
+      "type": "registry:component",
+      "title": "Linear Meter",
+      "description": "Segmented horizontal progress meter built with MUI Box and Stack.",
+      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
+      "files": [
+        {
+          "path": "src/components/LinearMeter/LinearMeter.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/LinearMeter/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "link-card",
+      "type": "registry:component",
+      "title": "Link Card",
+      "description": "Clickable MUI Card with optional image, label, and description.",
+      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
+      "files": [
+        {
+          "path": "src/components/LinkCard/LinkCard.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/LinkCard/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "scientific-data-grid",
+      "type": "registry:component",
+      "title": "Scientific Data Grid",
+      "description": "MUI X DataGrid enhanced with units, significant figures, chemical formulas, and popover cells.",
+      "dependencies": [
+        "@mui/material",
+        "@mui/x-data-grid",
+        "@emotion/react",
+        "@emotion/styled"
+      ],
+      "registryDependencies": [
+        "https://strudel.science/strudel-kit/r/array-with-popover.json",
+        "https://strudel.science/strudel-kit/r/cell-with-popover.json",
+        "https://strudel.science/strudel-kit/r/chemical-formula.json",
+        "https://strudel.science/strudel-kit/r/strudel-utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ScientificDataGrid/ScientificDataGrid.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/ScientificDataGrid/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}

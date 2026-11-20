@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label-value-table",
+  "title": "Label Value Table",
+  "description": "Two-column MUI Table for displaying flat lists of label-value pairs.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "files": [
+    {
+      "path": "src/components/LabelValueTable/LabelValueTable.tsx",
+      "content": "import React from 'react';\nimport {\n  Table,\n  TableBody,\n  TableCell,\n  TableProps,\n  TableRow,\n} from '@mui/material';\n\ninterface LabelValuePair {\n  label: React.ReactNode;\n  value: React.ReactNode;\n}\n\nexport interface LabelValueTableProps extends TableProps {\n  rows?: LabelValuePair[];\n  labelWidth?: number;\n}\n\n/**\n * Component for displaying a flat list of label-value pairs\n * in a two column table.\n */\nexport const LabelValueTable: React.FC<LabelValueTableProps> = ({\n  rows,\n  labelWidth = 150,\n  ...rest\n}) => {\n  return (\n    <Table size=\"small\" aria-label=\"label value table\" {...rest}>\n      <TableBody>\n        {rows?.map((row, i) => (\n          <TableRow key={`${row.label}-${i}`} sx={{ border: 0 }}>\n            <TableCell\n              width={labelWidth}\n              component=\"th\"\n              scope=\"row\"\n              sx={{\n                border: 0,\n                color: 'neutral.dark',\n                pl: 0,\n              }}\n            >\n              {row.label}\n            </TableCell>\n            <TableCell\n              align=\"left\"\n              sx={{\n                border: 0,\n                pl: 0,\n              }}\n            >\n              {row.value}\n            </TableCell>\n          </TableRow>\n        ))}\n      </TableBody>\n    </Table>\n  );\n};\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/LabelValueTable/index.tsx",
+      "content": "export { LabelValueTable } from './LabelValueTable';\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

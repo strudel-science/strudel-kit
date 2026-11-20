@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "range-slider",
+  "title": "Range Slider",
+  "description": "MUI dual-thumb range slider filter control.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "files": [
+    {
+      "path": "src/components/RangeSlider/RangeSlider.tsx",
+      "content": "import React, { useState } from 'react';\nimport { Box, Slider, SliderProps } from '@mui/material';\n\n/**\n * Custom wrapper for the MUI Slider components where\n * the user is selecting a range of values.\n */\nexport const RangeSlider: React.FC<SliderProps> = ({\n  min = 0,\n  max = 100,\n  ...rest\n}) => {\n  const [value, setValue] = useState<number[]>([min, max]);\n\n  const handleChange = (_event: Event, v: number | number[]) => {\n    setValue(v as number[]);\n  };\n\n  const marks = [\n    {\n      value: min,\n      label: min,\n    },\n    {\n      value: max,\n      label: max,\n    },\n  ];\n\n  return (\n    <Box\n      sx={{\n        paddingLeft: 1,\n        paddingRight: 1,\n      }}\n    >\n      <Slider\n        value={value}\n        onChange={handleChange}\n        min={min}\n        max={max}\n        marks={marks}\n        {...rest}\n      />\n    </Box>\n  );\n};\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/RangeSlider/index.tsx",
+      "content": "export { RangeSlider } from './RangeSlider';\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

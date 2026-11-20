@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "link-card",
+  "title": "Link Card",
+  "description": "Clickable MUI Card with optional image, label, and description.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "files": [
+    {
+      "path": "src/components/LinkCard/LinkCard.tsx",
+      "content": "import React, { ReactNode } from 'react';\nimport {\n  Box,\n  Card,\n  CardActionArea,\n  CardContent,\n  Stack,\n  Typography,\n} from '@mui/material';\n\nexport interface LinkCardProps {\n  href?: string;\n  target?: React.HTMLAttributeAnchorTarget;\n  label?: ReactNode;\n  image?: ReactNode;\n  description?: ReactNode;\n}\n\n/**\n * Component for displaying a flat list of label-value pairs\n * in a two column table.\n */\nexport const LinkCard: React.FC<LinkCardProps> = ({\n  href = '#',\n  target = '_blank',\n  label,\n  image,\n  description,\n}) => {\n  return (\n    <Card\n      sx={{\n        background: 'none',\n        border: '1px solid',\n        height: '100%',\n        '.MuiCardActionArea-root:hover': {\n          textDecoration: 'none',\n        },\n      }}\n    >\n      <CardActionArea href={href} target={target} sx={{ height: '100%' }}>\n        <CardContent>\n          <Stack spacing={1}>\n            <Stack direction=\"row\" spacing={1} alignItems=\"center\">\n              {image && (\n                <Box\n                  sx={{\n                    height: '40px',\n                    position: 'relative',\n                    img: {\n                      height: '100%',\n                      width: 'auto',\n                    },\n                  }}\n                >\n                  {image}\n                </Box>\n              )}\n              <Typography gutterBottom variant=\"h6\" component=\"div\">\n                {label}\n              </Typography>\n            </Stack>\n            {description && (\n              <Typography variant=\"body2\" color=\"text.secondary\">\n                {description}\n              </Typography>\n            )}\n          </Stack>\n        </CardContent>\n      </CardActionArea>\n    </Card>\n  );\n};\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/LinkCard/index.tsx",
+      "content": "export { LinkCard } from './LinkCard';\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

@@ -1,0 +1,84 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { Grid } from '@mui/material';
+import { LinkCard } from '../../components/LinkCard';
+
+<Meta title="Getting Started/Installation" />
+
+# Installation
+
+Follow the instructions below to get started with one of the STRUDEL Kit templates.
+
+## Requirements
+
+#### [Node.js 24+ with npm and npx](https://nodejs.org/en/download)
+
+Node.js is required to run the frontend templates included in STRUDEL Kit. Installing Node.js will also install npm (Node Package Manager) and npx (Node Package Executor), which are required to manage and run JavaScript packages.
+
+**Mac and Linux Users**: It is recommended to use nvm to install node, npm, and npx.
+
+**Windows Users**: You have two recommended options for installing node and npm. If you use Powershell, the recommended way is to install using fnm. If you do not use Powershell, the recommended way is to download and run the Windows Installer from the nodejs download page. After running the installer, you will need to either completely reboot your terminal application or run `SET PATH=C:\Program Files\nodejs;%PATH%` in order to use the node and npm commands on the command line.
+
+#### [Degit](https://github.com/Rich-Harris/degit)
+
+Degit is a tool for cloning repositories and scaffolding projects without including the git history. It is recommended to install degit globally using npm.
+
+#### [Docker](https://www.docker.com/get-started/)
+
+Docker is required to run the backend templates included in STRUDEL Kit. Follow the instructions on the Docker website to install Docker for your operating system.
+
+## Copy a template
+
+Open a terminal and navigate to the directory where you want your app to live.
+
+#### Fullstack Template
+
+Copy your template of choice (e.g. `explore-data`):
+
+```
+degit strudel-science/strudel-kit/templates/explore-data my-app
+```
+
+#### Frontend Template
+
+You can also copy sections of a fullstack template if you don't need the whole backend and frontend:
+
+```
+degit strudel-science/strudel-kit/templates/explore-data/frontend my-frontend-app
+```
+
+#### Task Flow Template
+
+You may even want to combine or add a specific task flow to an existing frontend:
+
+```
+degit strudel-science/strudel-kit/templates/explore-data/frontend/src/pages/compare-data my-compare-data-page
+```
+
+## Start the Fullstack App with Docker
+
+Follow the instructions in the [top-level README](https://github.com/strudel-science/strudel-kit/blob/main/templates/base-app/README.md#getting-started-with-docker) of your template to start the whole app with Docker.
+
+## Start the Frontend
+
+Follow the instructions in the [frontend README](https://github.com/strudel-science/strudel-kit/blob/main/templates/base-app/frontend/README.md) to start up just the frontend of your app.
+
+## Next Steps
+
+<Grid container columnSpacing={2} rowSpacing={2} marginBottom={2}>
+  <Grid item sm={4}>
+    <LinkCard
+      href="/strudel-kit/docs/getting-started/first-steps"
+      target="_self"
+      label="First Steps"
+      description="Learn the basics with some guidance"
+    />
+  </Grid>
+  <Grid item sm={4}>
+    <LinkCard
+      href="/strudel-kit/docs/task-flows/overview"
+      target="_self"
+      label="Task Flows"
+      description="Learn how to customize Task Flows"
+    />
+  </Grid>
+</Grid>

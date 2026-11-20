@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cell-with-popover",
+  "title": "Cell With Popover",
+  "description": "Table cell wrapper that reveals full cell content in a MUI Popover on click.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "files": [
+    {
+      "path": "src/components/CellWithPopover/CellWithPopover.tsx",
+      "content": "import { Box, Popover } from '@mui/material';\nimport { PropsWithChildren, useState } from 'react';\n\n/**\n * Generic inner cell content with a popover to show the full contents.\n * This is used to render cells with too much content to display\n * inside a single cell. Full content is displayed on hover in a popover box.\n */\nexport const CellWithPopover: React.FC<PropsWithChildren> = ({ children }) => {\n  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);\n\n  const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {\n    setAnchorEl(event.currentTarget);\n  };\n\n  const handlePopoverClose = () => {\n    setAnchorEl(null);\n  };\n\n  const open = Boolean(anchorEl);\n  return (\n    <Box sx={{ height: '100%' }}>\n      <Box\n        onMouseEnter={handlePopoverOpen}\n        onMouseLeave={handlePopoverClose}\n        sx={{\n          height: '100%',\n          overflow: 'hidden',\n          textOverflow: 'ellipsis',\n        }}\n      >\n        {children}\n      </Box>\n      <Popover\n        id=\"mouse-over-popover\"\n        sx={{\n          pointerEvents: 'none',\n        }}\n        open={open}\n        anchorEl={anchorEl}\n        anchorOrigin={{\n          vertical: 'top',\n          horizontal: 'left',\n        }}\n        transformOrigin={{\n          vertical: 'top',\n          horizontal: 'left',\n        }}\n        onClose={handlePopoverClose}\n        disableRestoreFocus\n      >\n        <Box\n          sx={{\n            maxWidth: '300px',\n            padding: 2,\n          }}\n        >\n          {children}\n        </Box>\n      </Popover>\n    </Box>\n  );\n};\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/CellWithPopover/index.tsx",
+      "content": "export { CellWithPopover } from './CellWithPopover';\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}
