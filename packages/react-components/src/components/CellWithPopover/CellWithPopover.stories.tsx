@@ -22,7 +22,8 @@ export const Default: Story = {
   render: () => (
     <BoxWrapper sx={{ width: 250, height: 30, overflow: 'hidden' }}>
       <CellWithPopover>
-        This is a very long content that should trigger the popover when it overflows the cell.
+        This is a very long content that should trigger the popover when it
+        overflows the cell.
       </CellWithPopover>
     </BoxWrapper>
   ),

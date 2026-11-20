@@ -1,7 +1,14 @@
 {
   "name": "@strudel-science/components",
+  "version": "1.0.1",
   "private": false,
-  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strudel-science/strudel-kit.git#main"
+  },
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -13,20 +20,37 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": [
-    "dist"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/strudel-science/strudel-kit.git#main"
-  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^4.1.3",
+    "@storybook/addon-a11y": "^10.1.8",
+    "@storybook/addon-docs": "^10.1.8",
+    "@storybook/addon-vitest": "^10.1.8",
+    "@storybook/react-vite": "^10.1.8",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "@vitest/browser-playwright": "^4.0.15",
+    "@vitest/coverage-v8": "^4.0.15",
+    "oxfmt": "^0.79.0",
+    "oxlint": "^1.94.0",
+    "playwright": "^1.57.0",
+    "storybook": "^10.1.8",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^4.0.15"
   },
   "peerDependencies": {
     "@emotion/react": "^11.14.0",
@@ -38,31 +62,5 @@
     "dayjs": "^1.11.19",
     "react": "^19.2.3",
     "react-dom": "^19.2.0"
-  },
-  "devDependencies": {
-    "@chromatic-com/storybook": "^4.1.3",
-    "@eslint/js": "^9.39.1",
-    "@storybook/addon-a11y": "^10.1.8",
-    "@storybook/addon-docs": "^10.1.8",
-    "@storybook/addon-vitest": "^10.1.8",
-    "@storybook/react-vite": "^10.1.8",
-    "@types/node": "^24.10.1",
-    "@types/react": "^19.2.7",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.1",
-    "@vitest/browser-playwright": "^4.0.15",
-    "@vitest/coverage-v8": "^4.0.15",
-    "eslint": "^9.39.1",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.24",
-    "eslint-plugin-storybook": "^10.1.8",
-    "globals": "^16.5.0",
-    "playwright": "^1.57.0",
-    "storybook": "^10.1.8",
-    "typescript": "~5.9.3",
-    "typescript-eslint": "^8.46.4",
-    "vite": "^7.2.4",
-    "vite-plugin-dts": "^4.5.4",
-    "vitest": "^4.0.15"
   }
 }

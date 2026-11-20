@@ -11,7 +11,7 @@ interface FiltersPanelProps extends FilterPanelProps {
 
 /**
  * Panel of filters built from a JSON configuration.
- * Uses the `Filters` component internally and renders 
+ * Uses the `Filters` component internally and renders
  * filter objects as `FilterField` components.
  */
 export const FiltersPanel: React.FC<FiltersPanelProps> = ({
@@ -20,11 +20,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = ({
   ...rest
 }) => {
   return (
-    <Filters
-      grouped={false}
-      onClose={onClose}
-      {...rest}
-    >
+    <Filters grouped={false} onClose={onClose} {...rest}>
       {filterConfigs.map((f, i) => (
         <FilterField
           key={`${f.field}-${i}`}

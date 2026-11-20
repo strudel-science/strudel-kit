@@ -44,14 +44,16 @@ export const FilterField: React.FC<FilterFieldProps> = ({
   ...rest
 }) => {
   const { activeFilters, dispatch } = useFilters();
-  const [value, setValue] = useState<FilterValue<typeof filterComponent>>(() => {
-    if (filterComponent === 'RangeSlider') {
-      return [filterProps.min, filterProps.max] as FilterValue<
-        typeof filterComponent
-      >;
+  const [value, setValue] = useState<FilterValue<typeof filterComponent>>(
+    () => {
+      if (filterComponent === 'RangeSlider') {
+        return [filterProps.min, filterProps.max] as FilterValue<
+          typeof filterComponent
+        >;
+      }
+      return null as FilterValue<typeof filterComponent>;
     }
-    return null as FilterValue<typeof filterComponent>;
-  });
+  );
   const currentFilter = activeFilters.find((filter) => filter.field === field);
   const isActive = hasValue(currentFilter?.value);
 
@@ -198,7 +200,7 @@ export const FilterField: React.FC<FilterFieldProps> = ({
         return (
           <TextField
             value={value || ''}
-            onChange={(e) => 
+            onChange={(e) =>
               dispatch({
                 type: 'SET_FILTER',
                 payload: { field: field, value: e.target.value, operator },
@@ -231,7 +233,14 @@ export const FilterField: React.FC<FilterFieldProps> = ({
       handleCancelFilter();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentFilter?.value, filterComponent, filterProps?.max, filterProps?.min, handleCancelFilter, isActive]);
+  }, [
+    currentFilter?.value,
+    filterComponent,
+    filterProps?.max,
+    filterProps?.min,
+    handleCancelFilter,
+    isActive,
+  ]);
 
   return (
     <Stack

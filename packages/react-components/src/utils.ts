@@ -27,13 +27,19 @@ export const hasValue = (value: unknown) => {
 /**
  * Determine if a range value has a meaningful value.
  */
-export const rangeHasValue = (value: [number, number] | null, min: number, max: number) => {
+export const rangeHasValue = (
+  value: [number, number] | null,
+  min: number,
+  max: number
+) => {
   if (
     value &&
-    (value[0] !== null && value[0] !== min) &&
-    (value[1] !== null && value[1] !== max)
+    value[0] !== null &&
+    value[0] !== min &&
+    value[1] !== null &&
+    value[1] !== max
   ) {
     return true;
   }
   return false;
-}
+};

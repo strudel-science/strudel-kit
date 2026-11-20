@@ -1,5 +1,5 @@
-import { Typography, TypographyProps } from "@mui/material";
-import { ELEMENTS_REGEX, ELEMENTS_SPLIT_REGEX } from "../../utils";
+import { Typography, TypographyProps } from '@mui/material';
+import { ELEMENTS_REGEX, ELEMENTS_SPLIT_REGEX } from '../../utils';
 
 export interface ChemicalFormulaProps extends TypographyProps {
   content: string;
@@ -17,11 +17,16 @@ const formulaItem = (str: string) => {
  * Render a formula string with proper subscripts.
  * Non-elements will be interpreted as subscripts.
  */
-export const ChemicalFormula: React.FC<ChemicalFormulaProps> = ({ content, ...rest }) => {
+export const ChemicalFormula: React.FC<ChemicalFormulaProps> = ({
+  content,
+  ...rest
+}) => {
   const splitFormula = content.match(ELEMENTS_SPLIT_REGEX);
   const formula = (
     <span>
-      {splitFormula?.map((s, i) => <span key={i}>{formulaItem(s)}</span>)}
+      {splitFormula?.map((s, i) => (
+        <span key={i}>{formulaItem(s)}</span>
+      ))}
     </span>
   );
 

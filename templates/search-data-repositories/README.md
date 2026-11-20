@@ -26,8 +26,8 @@ degit strudel-science/strudel-kit/templates/search-data-repositories
 - [**Vite**](https://vite.dev/): A fast, opinionated frontend build tool.
 - [**Material UI**](https://mui.com/material-ui/getting-started/): Open-source React component library based on Google's Material Design.
 - [**TanStack Router**](https://tanstack.com/router/latest): A fully type-safe router with built-in data fetching, first-class search-param APIs, and more.
-- [**ESLint**](https://eslint.org/): The pluggable linting utility for JavaScript and JSX.
-- [**Prettier**](https://prettier.io/): An opinionated code formatter.
+- [**Oxlint**](https://oxc.rs/docs/guide/usage/linter): A fast JavaScript and TypeScript linter.
+- [**Oxfmt**](https://oxc.rs/docs/guide/usage/formatter): A fast, Prettier-compatible code formatter.
 - [**Cypress**](https://www.cypress.io/): End-to-end tests for built-in templates.
 
 ## Getting started with Docker

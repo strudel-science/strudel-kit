@@ -1,5 +1,12 @@
 import React, { ReactNode } from 'react';
-import { Box, Card, CardActionArea, CardContent, Stack, Typography } from '@mui/material';
+import {
+  Box,
+  Card,
+  CardActionArea,
+  CardContent,
+  Stack,
+  Typography,
+} from '@mui/material';
 
 export interface LinkCardProps {
   href?: string;
@@ -7,7 +14,6 @@ export interface LinkCardProps {
   label?: ReactNode;
   image?: ReactNode;
   description?: ReactNode;
-
 }
 
 /**
@@ -19,18 +25,19 @@ export const LinkCard: React.FC<LinkCardProps> = ({
   target = '_blank',
   label,
   image,
-  description
+  description,
 }) => {
   return (
     <Card
-      sx={{ 
+      sx={{
         background: 'none',
         border: '1px solid',
         height: '100%',
         '.MuiCardActionArea-root:hover': {
-          textDecoration: 'none'
-        }
-      }}>
+          textDecoration: 'none',
+        },
+      }}
+    >
       <CardActionArea href={href} target={target} sx={{ height: '100%' }}>
         <CardContent>
           <Stack spacing={1}>
@@ -40,10 +47,10 @@ export const LinkCard: React.FC<LinkCardProps> = ({
                   sx={{
                     height: '40px',
                     position: 'relative',
-                    'img': {
+                    img: {
                       height: '100%',
-                      width: 'auto'
-                    }
+                      width: 'auto',
+                    },
                   }}
                 >
                   {image}
@@ -62,5 +69,5 @@ export const LinkCard: React.FC<LinkCardProps> = ({
         </CardContent>
       </CardActionArea>
     </Card>
-  )
-}
+  );
+};

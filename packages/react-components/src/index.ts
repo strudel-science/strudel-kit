@@ -27,4 +27,10 @@ export type {
 } from './types/filters.types';
 
 // Utilities
-export { VALID_ELEMENTS, ELEMENTS_REGEX, ELEMENTS_SPLIT_REGEX, hasValue, rangeHasValue } from './utils';
+export {
+  VALID_ELEMENTS,
+  ELEMENTS_REGEX,
+  ELEMENTS_SPLIT_REGEX,
+  hasValue,
+  rangeHasValue,
+} from './utils';

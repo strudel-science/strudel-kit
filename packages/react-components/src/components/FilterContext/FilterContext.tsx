@@ -1,8 +1,4 @@
-import React, {
-  PropsWithChildren,
-  useEffect,
-  useReducer,
-} from 'react';
+import React, { PropsWithChildren, useEffect, useReducer } from 'react';
 import { FilterOperator } from '../../types/filters.types';
 import { FilterContextAPI } from './useFilters';
 
@@ -97,7 +93,7 @@ export const FilterContext: React.FC<FilterContextProps> = ({
    */
   useEffect(() => {
     if (onChange) onChange(state.activeFilters);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(state.activeFilters)]);
 
   return (

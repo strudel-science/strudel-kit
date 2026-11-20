@@ -55,7 +55,4 @@ _*.config.ts
 # Cypress
 **/cypress/screenshots/
 
-# Cache
-.eslintcache
-
 .tanstack
