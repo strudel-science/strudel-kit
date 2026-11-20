@@ -36,29 +36,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Install docs dependencies
-        run: |
-          cd docs
-          npm install
       - name: Install component dependencies
         run: |
           cd packages/react-components
           npm install
-      - name: Build docs
-        run: |
-          cd docs
-          npm run build
       - name: Build storybook docs
         run: |
           cd packages/react-components
           npm run build-storybook
-      - name: Deploy docs
-        run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          cd docs
-          npx gh-pages -d build -e docs -u "github-actions-bot <support+actions@github.com>"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy storybook docs
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
