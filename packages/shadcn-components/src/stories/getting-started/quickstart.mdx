@@ -1,0 +1,59 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { Grid } from '@mui/material';
+import { LinkCard } from '../../components/LinkCard';
+
+<Meta title="Getting Started/Quickstart" />
+
+# Quickstart
+
+Copy your template of choice (e.g. `explore-data`):
+
+```
+degit strudel-science/strudel-kit/templates/explore-data my-app
+```
+
+Go into the new directory:
+
+```
+cd my-app
+```
+
+At the root of this project exists a file called .env.example. This represents all of the environment variables used by docker-compose.yml.
+
+Copy the .env.example file, paste a copy at the root of the project, and name it .env.
+
+```
+cp .env.example .env
+```
+
+Start the docker stack:
+
+```
+docker compose up -d
+```
+
+To check that everything is working you should be able to access:
+
+- The backend API docs: [http://localhost:8000/docs](http://localhost:8000/docs)
+- The frontend UI: [http://localhost:5174](http://localhost:5174)
+
+## Next Steps
+
+<Grid container columnSpacing={2} rowSpacing={2} marginBottom={2}>
+  <Grid item sm={4}>
+    <LinkCard
+      href="/strudel-kit/docs/getting-started/first-steps"
+      target="_self"
+      label="First Steps"
+      description="Learn the basics with some guidance"
+    />
+  </Grid>
+  <Grid item sm={4}>
+    <LinkCard
+      href="/strudel-kit/docs/task-flows/overview"
+      target="_self"
+      label="Task Flows"
+      description="Learn how to customize Task Flows"
+    />
+  </Grid>
+</Grid>

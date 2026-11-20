@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "filters",
+  "title": "Filters",
+  "description": "Container component for filter controls with active count, reset, and optional close action.",
+  "dependencies": [
+    "@mui/material",
+    "@mui/icons-material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "https://strudel.science/strudel-kit/r/filter-context.json",
+    "https://strudel.science/strudel-kit/r/strudel-utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/Filters/Filters.tsx",
+      "content": "/* eslint-disable @typescript-eslint/no-explicit-any */\n/* eslint-disable @typescript-eslint/no-unused-vars */\nimport CloseIcon from '@mui/icons-material/Close';\nimport {\n  Button,\n  Chip,\n  IconButton,\n  Paper,\n  PaperProps,\n  Stack,\n  Typography,\n} from '@mui/material';\nimport React from 'react';\nimport { FilterState } from '@/components/FilterContext/FilterContext';\nimport { useFilters } from '@/components/FilterContext/useFilters';\nimport { hasValue } from '@/lib/strudel-utils';\n\nexport interface FilterPanelProps extends Omit<PaperProps, 'onChange'> {\n  onChange?: (activeFilters: FilterState['activeFilters']) => void;\n  onClose?: () => any;\n  config?: any;\n  header?: React.ReactNode;\n  grouped?: boolean;\n}\n\n/**\n * Composable container for `FilterField`(s) and `FilterGroup`(s).\n * Acts as a multi-dimensional input where you can monitor\n * the active state of all filters contained inside the component.\n */\nexport const Filters: React.FC<FilterPanelProps> = ({\n  header = 'Filters',\n  grouped = true,\n  onChange,\n  onClose,\n  config,\n  children,\n  ...rest\n}) => {\n  const { activeFilters, dispatch } = useFilters();\n\n  /**\n   * Count the number of active filters in this group by using\n   * the `field` prop from the FilterField children to look up\n   * that filter in `activeFilters`\n   */\n  let activeChildren = 0;\n  React.Children.forEach(children, (child) => {\n    if (\n      React.isValidElement(child) &&\n      (child.props as any).field &&\n      hasValue(\n        activeFilters.find((f: any) => f.field === (child.props as any).field)\n      )\n    ) {\n      return activeChildren++;\n    }\n  });\n\n  const handleReset = () => {\n    dispatch({ type: 'SET_ACTIVE_FILTERS', payload: [] });\n  };\n\n  return (\n    <Paper elevation={0} variant=\"outlined\" {...rest}>\n      <Stack spacing={0}>\n        {header && (\n          <Stack\n            direction=\"row\"\n            spacing={0}\n            alignItems=\"center\"\n            sx={{\n              borderBottom: '1px solid',\n              borderBottomColor: 'grey.300',\n              paddingLeft: 2,\n              paddingRight: 2,\n              paddingTop: 1,\n              paddingBottom: 1,\n            }}\n          >\n            <Stack direction=\"row\" spacing={2} flex={1}>\n              <Typography>{header}</Typography>\n              {activeChildren > 0 && (\n                <Chip\n                  label={`${activeChildren} active`}\n                  color=\"primary\"\n                  size=\"small\"\n                />\n              )}\n            </Stack>\n            <Button\n              variant=\"outlined\"\n              onClick={handleReset}\n              sx={{\n                marginRight: 1,\n              }}\n            >\n              Reset\n            </Button>\n            <IconButton onClick={onClose}>\n              <CloseIcon />\n            </IconButton>\n          </Stack>\n        )}\n        {grouped && <Stack spacing={0}>{children}</Stack>}\n        {!grouped && (\n          <Stack spacing={2} sx={{ padding: 2 }}>\n            {children}\n          </Stack>\n        )}\n      </Stack>\n    </Paper>\n  );\n};\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/Filters/index.tsx",
+      "content": "export { Filters } from './Filters';\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

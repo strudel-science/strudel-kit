@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-wrapper",
+  "title": "Image Wrapper",
+  "description": "Responsive MUI Box wrapper for scaling images by relative width or height.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "files": [
+    {
+      "path": "src/components/ImageWrapper/ImageWrapper.tsx",
+      "content": "/* eslint-disable @typescript-eslint/no-explicit-any */\nimport { Box, BoxProps } from '@mui/material';\nimport React from 'react';\nimport './ImageWrapper.css';\n\ninterface ImageWrapperProps extends BoxProps {\n  height?: string | number;\n  width?: string | number;\n}\n\n/**\n * Generic image wrapper component for sizing images relatively\n * based on container sizes. Provide either a height or width and\n * the image will size to that value and maintain its aspect ratio.\n */\nexport const ImageWrapper: React.FC<ImageWrapperProps> = ({\n  height,\n  width,\n  sx,\n  children,\n  ...rest\n}) => {\n  return (\n    <Box\n      {...rest}\n      sx={{\n        ...sx,\n        height: height || 'auto',\n        overflow: 'hidden',\n        width: width || 'auto',\n        '& > img': {\n          height: '100%',\n          width: '100%',\n        },\n      }}\n    >\n      {React.Children.map(children, (child) => {\n        if (React.isValidElement(child)) {\n          const imgClass = width ? 'relative-width' : 'relative-height';\n          return React.cloneElement(child as React.ReactElement<any>, {\n            className: `${(child.props as any).className} ${imgClass}`,\n          });\n        }\n      })}\n    </Box>\n  );\n};\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/ImageWrapper/ImageWrapper.css",
+      "content": ".relative-height {\n  height: 100%;\n  width: auto;\n}\n\n.relative-width {\n  height: auto;\n  width: 100%;\n}\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/ImageWrapper/index.tsx",
+      "content": "export { ImageWrapper } from './ImageWrapper';\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

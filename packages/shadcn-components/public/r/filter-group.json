@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "filter-group",
+  "title": "Filter Group",
+  "description": "Collapsible MUI accordion group for organizing related FilterField controls.",
+  "dependencies": [
+    "@mui/material",
+    "@mui/icons-material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "https://strudel.science/strudel-kit/r/filter-context.json",
+    "https://strudel.science/strudel-kit/r/filter-field.json",
+    "https://strudel.science/strudel-kit/r/strudel-utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/FilterGroup/FilterGroup.tsx",
+      "content": "import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';\nimport {\n  Accordion,\n  AccordionDetails,\n  AccordionSummary,\n  Chip,\n  Stack,\n  Typography,\n} from '@mui/material';\nimport React from 'react';\nimport { useFilters } from '@/components/FilterContext/useFilters';\nimport { hasValue } from '@/lib/strudel-utils';\nimport { FilterFieldProps } from '@/components/FilterField/FilterField';\n\ninterface FilterGroupProps {\n  label?: React.ReactNode;\n  groupId: string | number;\n  children: React.ReactNode;\n}\n\nexport const FilterGroup: React.FC<FilterGroupProps> = ({\n  label,\n  groupId,\n  children,\n}) => {\n  const { activeFilters, expandedGroup, dispatch } = useFilters();\n\n  /**\n   * Count the number of active filters in this group by using\n   * the `field` prop from the FilterField children to look up\n   * that filter in `activeFilters`\n   */\n  let activeChildren = 0;\n  React.Children.forEach(children, (child) => {\n    if (\n      React.isValidElement(child) &&\n      (child.props as FilterFieldProps).field &&\n      hasValue(\n        activeFilters.find(\n          (f) => f.field === (child.props as FilterFieldProps).field\n        )\n      )\n    ) {\n      return activeChildren++;\n    }\n  });\n\n  const handleChange =\n    (panel: string | number) =>\n    (_event: React.SyntheticEvent, newExpanded: boolean) => {\n      dispatch({\n        type: 'SET_EXPANDED_GROUP',\n        payload: newExpanded ? panel : false,\n      });\n    };\n\n  return (\n    <Accordion\n      disableGutters\n      elevation={0}\n      expanded={expandedGroup === groupId}\n      onChange={handleChange(groupId)}\n      sx={{\n        borderTop: '1px solid',\n        borderTopColor: 'grey.300',\n        '&:first-of-type': {\n          borderTop: 'none',\n        },\n        '&::before': {\n          display: 'none',\n        },\n      }}\n    >\n      <AccordionSummary\n        expandIcon={<ArrowForwardIosSharpIcon />}\n        aria-controls=\"panel1d-content\"\n        id=\"panel1d-header\"\n        sx={{\n          flexDirection: 'row-reverse',\n          '& .MuiAccordionSummary-expandIconWrapper .MuiSvgIcon-root': {\n            fontSize: '1rem',\n          },\n          '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {\n            transform: 'rotate(90deg)',\n          },\n          '& .MuiAccordionSummary-content': {\n            marginLeft: 1,\n            marginTop: 2,\n            marginBottom: 2,\n          },\n        }}\n      >\n        <Stack direction=\"row\" spacing={2} alignItems=\"center\">\n          <Typography fontSize=\"large\">{label}</Typography>\n          {activeChildren > 0 && (\n            <Chip\n              label={`${activeChildren} active`}\n              color=\"primary\"\n              size=\"small\"\n            />\n          )}\n        </Stack>\n      </AccordionSummary>\n      <AccordionDetails>\n        <Stack spacing={2}>{children}</Stack>\n      </AccordionDetails>\n    </Accordion>\n  );\n};\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/FilterGroup/index.tsx",
+      "content": "export { FilterGroup } from './FilterGroup';\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

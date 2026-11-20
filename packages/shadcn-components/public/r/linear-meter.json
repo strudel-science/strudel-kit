@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "linear-meter",
+  "title": "Linear Meter",
+  "description": "Segmented horizontal progress meter built with MUI Box and Stack.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "files": [
+    {
+      "path": "src/components/LinearMeter/LinearMeter.tsx",
+      "content": "import {\n  LinearProgress,\n  LinearProgressProps,\n  linearProgressClasses,\n} from '@mui/material';\nimport React from 'react';\n\n/**\n * Styled version of the LinearProgress mui component that can be\n * used to show one-dimensional data in a horizontal meter.\n */\nexport const LinearMeter: React.FC<LinearProgressProps> = (props) => {\n  return (\n    <LinearProgress\n      variant=\"determinate\"\n      sx={{\n        height: 10,\n        borderRadius: 5,\n        [`&.${linearProgressClasses.colorPrimary}`]: {\n          backgroundColor: 'neutral.dark',\n        },\n        [`& .${linearProgressClasses.bar}`]: {\n          borderRadius: 5,\n          backgroundColor: 'success.light',\n        },\n      }}\n      {...props}\n    />\n  );\n};\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/LinearMeter/index.tsx",
+      "content": "export { LinearMeter } from './LinearMeter';\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

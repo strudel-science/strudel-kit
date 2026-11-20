@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chemical-formula",
+  "title": "Chemical Formula",
+  "description": "Render chemical formulas with properly formatted subscripts using MUI Typography.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "https://strudel.science/strudel-kit/r/strudel-utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ChemicalFormula/ChemicalFormula.tsx",
+      "content": "import { Typography, TypographyProps } from '@mui/material';\nimport { ELEMENTS_REGEX, ELEMENTS_SPLIT_REGEX } from '@/lib/strudel-utils';\n\nexport interface ChemicalFormulaProps extends TypographyProps {\n  content: string;\n}\n\nconst formulaItem = (str: string) => {\n  if (!str.match(/\\(|\\)|\\*/g) && !str.match(ELEMENTS_REGEX)) {\n    return <sub>{str}</sub>;\n  } else {\n    return <span>{str}</span>;\n  }\n};\n\n/**\n * Render a formula string with proper subscripts.\n * Non-elements will be interpreted as subscripts.\n */\nexport const ChemicalFormula: React.FC<ChemicalFormulaProps> = ({\n  content,\n  ...rest\n}) => {\n  const splitFormula = content.match(ELEMENTS_SPLIT_REGEX);\n  const formula = (\n    <span>\n      {splitFormula?.map((s, i) => (\n        <span key={i}>{formulaItem(s)}</span>\n      ))}\n    </span>\n  );\n\n  return <Typography {...rest}>{formula}</Typography>;\n};\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/ChemicalFormula/index.tsx",
+      "content": "export { ChemicalFormula } from './ChemicalFormula';\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

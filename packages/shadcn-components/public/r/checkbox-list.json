@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-list",
+  "title": "Checkbox List",
+  "description": "MUI checkbox list filter control with multi-select support.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "files": [
+    {
+      "path": "src/components/CheckboxList/CheckboxList.tsx",
+      "content": "import {\n  Checkbox,\n  FormControlLabel,\n  FormGroup,\n  FormGroupProps,\n} from '@mui/material';\nimport React, { useEffect, useState } from 'react';\n\nexport type CheckboxOptionValue = string | number;\n\nexport interface CheckboxOption {\n  label: string;\n  value: CheckboxOptionValue;\n}\n\ninterface CheckboxListProps extends Omit<FormGroupProps, 'onChange'> {\n  values: CheckboxOptionValue[] | null;\n  options: CheckboxOption[];\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  onChange?: (values: CheckboxOptionValue[] | null) => any;\n}\n\n/**\n * Generate a list of checkboxes from an array of options\n * and control the selected values as an array.\n */\nexport const CheckboxList: React.FC<CheckboxListProps> = ({\n  options = [],\n  onChange,\n  values,\n  sx,\n  ...rest\n}) => {\n  const [checkValues, setCheckValues] = useState<CheckboxOptionValue[] | null>(\n    values\n  );\n\n  const handleChange = (checked: boolean, value: CheckboxOption['value']) => {\n    if (checkValues === null && checked) {\n      setCheckValues([value]);\n    } else if (checkValues !== null && checked) {\n      setCheckValues([...checkValues, value]);\n    } else if (checkValues !== null && !checked) {\n      const newValues = checkValues.filter((v) => v !== value);\n      if (newValues.length > 0) {\n        setCheckValues(newValues);\n      } else {\n        setCheckValues(null);\n      }\n    }\n  };\n\n  useEffect(() => {\n    if (onChange && checkValues?.length !== values?.length) {\n      onChange(checkValues);\n    }\n    // eslint-disable-next-line react-hooks/exhaustive-deps\n  }, [checkValues]);\n\n  useEffect(() => {\n    setCheckValues(values);\n  }, [values]);\n\n  return (\n    <FormGroup\n      sx={{\n        display: 'inline-flex',\n        ...sx,\n      }}\n      {...rest}\n    >\n      {options.map((option, i) => (\n        <FormControlLabel\n          key={`${option}-${i}`}\n          label={option.label}\n          control={\n            <Checkbox\n              checked={!!checkValues && checkValues.indexOf(option.value) > -1}\n              value={option.value}\n              onChange={(_e, checked) => handleChange(checked, option.value)}\n              sx={{\n                pr: 1,\n                pl: 1,\n                pb: 0,\n                pt: 0,\n              }}\n            />\n          }\n          sx={{\n            '&:not(:last-child)': {\n              mb: 1,\n            },\n          }}\n        />\n      ))}\n    </FormGroup>\n  );\n};\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/CheckboxList/index.tsx",
+      "content": "export { CheckboxList } from './CheckboxList';\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

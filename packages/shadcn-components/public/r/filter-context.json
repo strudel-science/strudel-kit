@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "filter-context",
+  "title": "Filter Context",
+  "description": "React context provider and useFilters hook for managing active filter state.",
+  "registryDependencies": [
+    "https://strudel.science/strudel-kit/r/filter-types.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/FilterContext/FilterContext.tsx",
+      "content": "import React, { PropsWithChildren, useEffect, useReducer } from 'react';\nimport { FilterOperator } from '@/lib/filters.types';\nimport { FilterContextAPI } from './useFilters';\n\nexport interface DataFilter {\n  field: string;\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  value: string | any[] | null;\n  operator: FilterOperator;\n}\n\nexport interface FilterState {\n  activeFilters: DataFilter[];\n  expandedGroup: string | number | boolean;\n}\n\nconst initialState: FilterState = {\n  activeFilters: [],\n  expandedGroup: false,\n};\n\nexport type FilterAction =\n  | {\n      type: 'SET_FILTER';\n      // eslint-disable-next-line @typescript-eslint/no-explicit-any\n      payload: { field: string; value: any; operator: FilterOperator };\n    }\n  | { type: 'SET_ACTIVE_FILTERS'; payload: FilterState['activeFilters'] }\n  | { type: 'SET_EXPANDED_GROUP'; payload: FilterState['expandedGroup'] };\n\nfunction filterReducer(state: FilterState, action: FilterAction): FilterState {\n  switch (action.type) {\n    case 'SET_FILTER': {\n      const filter = action.payload;\n      const existingIndex = state.activeFilters.findIndex(\n        (f) => f.field === filter.field\n      );\n      const activeFilters = [...state.activeFilters];\n      if (existingIndex > -1) {\n        if (filter.value) {\n          activeFilters[existingIndex] = filter;\n        } else {\n          activeFilters.splice(existingIndex, 1);\n        }\n      } else if (filter.value) {\n        activeFilters.push(filter);\n      }\n      return {\n        ...state,\n        activeFilters,\n      };\n    }\n    case 'SET_ACTIVE_FILTERS': {\n      return {\n        ...state,\n        activeFilters: action.payload,\n      };\n    }\n    case 'SET_EXPANDED_GROUP': {\n      return {\n        ...state,\n        expandedGroup: action.payload,\n      };\n    }\n    default: {\n      throw new Error(`Unhandled action type`);\n    }\n  }\n}\n\ninterface FilterContextProps extends PropsWithChildren {\n  activeFilters?: FilterState['activeFilters'];\n  onChange?: (filters: FilterState['activeFilters']) => void;\n}\n\nexport const FilterContext: React.FC<FilterContextProps> = ({\n  activeFilters = [],\n  onChange = () => null,\n  children,\n}) => {\n  const [state, dispatch] = useReducer(filterReducer, {\n    ...initialState,\n    activeFilters,\n  });\n  const value = {\n    activeFilters: state.activeFilters,\n    expandedGroup: state.expandedGroup,\n    dispatch,\n  };\n\n  /**\n   * Emit a change event when state.activeFilters changes\n   */\n  useEffect(() => {\n    if (onChange) onChange(state.activeFilters);\n    // eslint-disable-next-line react-hooks/exhaustive-deps\n  }, [JSON.stringify(state.activeFilters)]);\n\n  return (\n    <FilterContextAPI.Provider value={value}>\n      {children}\n    </FilterContextAPI.Provider>\n  );\n};\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/FilterContext/useFilters.ts",
+      "content": "import React from 'react';\nimport { useContext } from 'react';\nimport { FilterAction, FilterState } from './FilterContext';\n\nexport const FilterContextAPI = React.createContext<\n  | {\n      activeFilters: FilterState['activeFilters'];\n      expandedGroup: FilterState['expandedGroup'];\n      dispatch: React.Dispatch<FilterAction>;\n    }\n  | undefined\n>(undefined);\n\nexport const useFilters = () => {\n  const context = useContext(FilterContextAPI);\n  if (context === undefined) {\n    throw new Error('useFilters must be used within a FilterContext');\n  }\n  return context;\n};\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/FilterContext/index.tsx",
+      "content": "export { FilterContext } from './FilterContext';\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

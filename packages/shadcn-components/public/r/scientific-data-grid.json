@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scientific-data-grid",
+  "title": "Scientific Data Grid",
+  "description": "MUI X DataGrid enhanced with units, significant figures, chemical formulas, and popover cells.",
+  "dependencies": [
+    "@mui/material",
+    "@mui/x-data-grid",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [
+    "https://strudel.science/strudel-kit/r/array-with-popover.json",
+    "https://strudel.science/strudel-kit/r/cell-with-popover.json",
+    "https://strudel.science/strudel-kit/r/chemical-formula.json",
+    "https://strudel.science/strudel-kit/r/strudel-utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ScientificDataGrid/ScientificDataGrid.tsx",
+      "content": "import { Box, Typography } from '@mui/material';\nimport {\n  DataGrid,\n  DataGridProps,\n  GridColDef,\n  GridColumnHeaderParams,\n  GridRenderCellParams,\n} from '@mui/x-data-grid';\nimport React, { ReactNode } from 'react';\nimport { ArrayWithPopover } from '@/components/ArrayWithPopover';\nimport { CellWithPopover } from '@/components/CellWithPopover';\nimport { hasValue } from '@/lib/strudel-utils';\nimport { ChemicalFormula } from '@/components/ChemicalFormula';\n\nexport type ScientificDataGridColDef = GridColDef & {\n  units?: string;\n  decimals?: number;\n  sigFigs?: number;\n  isFormula?: boolean;\n  hasPopover?: boolean;\n};\n\ninterface ScientificDataGridProps extends Omit<DataGridProps, 'columns'> {\n  columns: ScientificDataGridColDef[];\n}\n\nconst CellWrapper: React.FC<{ hasPopover?: boolean; children: ReactNode }> = ({\n  hasPopover,\n  children,\n}) => {\n  if (hasPopover) {\n    return <CellWithPopover>{children}</CellWithPopover>;\n  } else {\n    return children;\n  }\n};\n\nconst getGridColumns = (columns: ScientificDataGridColDef[]) => {\n  return columns.map((column) => {\n    const { units, decimals, sigFigs, isFormula, hasPopover, ...gridColumn } =\n      column;\n\n    /**\n     * Style column header and render unit label\n     * underneath the headerName if units supplied\n     */\n    gridColumn.renderHeader = (params: GridColumnHeaderParams) => (\n      <Box>\n        <Typography fontSize=\"0.875rem\" fontWeight=\"bold\">\n          {params.colDef.headerName}\n        </Typography>\n        {units && (\n          <Typography\n            fontSize=\"small\"\n            color=\"grey.700\"\n            sx={{\n              position: 'absolute',\n              top: '1rem',\n              left: params.colDef.type !== 'number' ? 0 : 'auto',\n              right: params.colDef.type === 'number' ? 0 : 'auto',\n              transform: 'translate(0, 0)',\n              zIndex: 1000,\n            }}\n          >\n            {units}\n          </Typography>\n        )}\n      </Box>\n    );\n\n    /** Handle value transformation options */\n    if (!gridColumn.valueFormatter && gridColumn.type === 'number') {\n      gridColumn.valueFormatter = (value: number) => {\n        /** Empty cells should render as '-' */\n        if (!hasValue(value)) {\n          return '-';\n          /**\n           * Round display values to nearest n decimals.\n           * Exactly zero should display as just 0.\n           * Values that would require more decimals to display\n           * a non-zero digit should display \"> 0.001\" (decimals would be based on decimals value).\n           */\n        } else if ((!isNaN(value) && decimals) || decimals === 0) {\n          if (value === 0) {\n            return value;\n          } else if (value < 1 / Math.pow(10, decimals)) {\n            return `> ${1 / Math.pow(10, decimals)}`;\n          } else {\n            return value.toLocaleString(undefined, {\n              minimumFractionDigits: decimals,\n              maximumFractionDigits: decimals,\n            });\n          }\n          /**\n           * Round display values to a certain number of significant figures\n           * and convert to scientific notation.\n           */\n        } else if (!isNaN(value) && sigFigs) {\n          return value.toPrecision(sigFigs);\n        } else {\n          return value.toLocaleString();\n        }\n      };\n    }\n\n    /** Handle value transformation options */\n    if (!gridColumn.renderCell) {\n      gridColumn.renderCell = (params: GridRenderCellParams) => {\n        if (Array.isArray(params.value)) {\n          return <ArrayWithPopover values={params.value} />;\n        }\n        if (isFormula) {\n          return (\n            <CellWrapper hasPopover={hasPopover}>\n              <ChemicalFormula content={params.value} />\n            </CellWrapper>\n          );\n        } else {\n          return (\n            <CellWrapper hasPopover={hasPopover}>\n              {params.formattedValue}\n            </CellWrapper>\n          );\n        }\n      };\n    }\n\n    return gridColumn;\n  });\n};\n\n/**\n * Extension of the MUI DataGrid that adds extra functionality\n * and options for scientific data tables.\n */\nexport const ScientificDataGrid: React.FC<ScientificDataGridProps> = ({\n  rows,\n  columns,\n  ...rest\n}) => {\n  return (\n    <DataGrid\n      rows={rows}\n      columns={getGridColumns(columns)}\n      disableColumnSelector\n      initialState={{\n        pagination: { paginationModel: { page: 0, pageSize: 5 } },\n      }}\n      sx={{\n        '& .MuiDataGrid-columnHeaderTitle': {\n          fontWeight: 'bold',\n        },\n        '& .MuiDataGrid-columnHeaderTitleContainerContent': {\n          position: 'relative',\n          overflow: 'visible',\n        },\n        '& .MuiDataGrid-cell:focus-within': {\n          outline: 'none',\n        },\n        '& .MuiDataGrid-overlayWrapper': {\n          minHeight: '4rem',\n        },\n      }}\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/ScientificDataGrid/index.tsx",
+      "content": "export { ScientificDataGrid } from './ScientificDataGrid';\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

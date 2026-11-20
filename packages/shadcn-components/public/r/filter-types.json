@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "filter-types",
+  "title": "Filter Types",
+  "description": "TypeScript types for STRUDEL filter configurations, operators, and data cards.",
+  "files": [
+    {
+      "path": "src/lib/filters.types.ts",
+      "content": "/* eslint-disable @typescript-eslint/no-explicit-any */\nexport type ParamType = 'standard' | 'array-string' | 'repeated' | 'minmax';\n\nexport type FilterOperator =\n  | 'contains'\n  | 'contains-one-of'\n  | 'equals'\n  | 'equals-one-of'\n  | 'between-inclusive'\n  | 'between-dates-inclusive';\n\nexport type FilterComponent =\n  | 'RangeSlider'\n  | 'CheckboxList'\n  | 'DateRange'\n  | 'TextField';\n\n/**\n * The type of the value should be dependent on the filterComponent\n */\nexport type FilterValue<T> = T extends 'RangeSlider'\n  ? number[]\n  : T extends 'CheckboxList'\n    ? string[] | number[] | null\n    : T extends 'DateRange'\n      ? [Date | null, Date | null]\n      : T extends 'TextField'\n        ? string | null\n        : never;\n\nexport interface DataFilter {\n  field: string;\n  value: string | number | string[] | number[] | null;\n}\n\nexport interface FilterConfig {\n  field: string;\n  label: string;\n  tooltip?: string;\n  units?: string;\n  operator?: FilterOperator;\n  paramType?: ParamType;\n  paramTypeOptions?: any;\n  filterComponent: FilterComponent;\n  filterProps?: any;\n}\n\nexport interface DataCard {\n  title: string;\n  content?: string;\n  tags?: string;\n}\n",
+      "type": "registry:lib"
+    }
+  ],
+  "type": "registry:lib"
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "filters-panel",
+  "title": "Filters Panel",
+  "description": "Config-driven filter panel that renders Filters and FilterField components from FilterConfig definitions.",
+  "registryDependencies": [
+    "https://strudel.science/strudel-kit/r/filters.json",
+    "https://strudel.science/strudel-kit/r/filter-field.json",
+    "https://strudel.science/strudel-kit/r/filter-types.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/FiltersPanel/FiltersPanel.tsx",
+      "content": "import React from 'react';\nimport { FilterConfig } from '@/lib/filters.types';\nimport { FilterPanelProps, Filters } from '@/components/Filters/Filters';\nimport { FilterField } from '@/components/FilterField/FilterField';\n\ninterface FiltersPanelProps extends FilterPanelProps {\n  filterConfigs: FilterConfig[];\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  onClose?: () => any;\n}\n\n/**\n * Panel of filters built from a JSON configuration.\n * Uses the `Filters` component internally and renders\n * filter objects as `FilterField` components.\n */\nexport const FiltersPanel: React.FC<FiltersPanelProps> = ({\n  filterConfigs,\n  onClose,\n  ...rest\n}) => {\n  return (\n    <Filters grouped={false} onClose={onClose} {...rest}>\n      {filterConfigs.map((f, i) => (\n        <FilterField\n          key={`${f.field}-${i}`}\n          field={f.field}\n          label={f.label}\n          tooltip={f.tooltip}\n          units={f.units}\n          operator={'contains'}\n          filterComponent={f.filterComponent}\n          filterProps={f.filterProps}\n        />\n      ))}\n    </Filters>\n  );\n};\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/FiltersPanel/index.tsx",
+      "content": "export { FiltersPanel } from './FiltersPanel';\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}
