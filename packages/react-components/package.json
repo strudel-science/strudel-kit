@@ -52,10 +52,6 @@
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.1.12"
   },
-  "overrides": {
-    "glob": ">=14.0.2",
-    "minimatch": ">=11.0.1"
-  },
   "peerDependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
@@ -66,5 +62,9 @@
     "dayjs": "^1.11.19",
     "react": "^19.2.3",
     "react-dom": "^19.2.0"
+  },
+  "overrides": {
+    "glob": ">=14.0.2",
+    "minimatch": ">=11.0.1"
   }
 }
