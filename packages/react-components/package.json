@@ -41,8 +41,8 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
-    "@vitest/browser-playwright": "^4.0.15",
-    "@vitest/coverage-v8": "^4.0.15",
+    "@vitest/browser-playwright": "^4.1.12",
+    "@vitest/coverage-v8": "^4.1.12",
     "oxfmt": "^0.79.0",
     "oxlint": "^1.94.0",
     "playwright": "^1.57.0",
@@ -50,7 +50,7 @@
     "typescript": "~5.9.3",
     "vite": "^7.3.8",
     "vite-plugin-dts": "^4.5.4",
-    "vitest": "^4.0.15"
+    "vitest": "^4.1.12"
   },
   "peerDependencies": {
     "@emotion/react": "^11.14.0",
@@ -62,5 +62,9 @@
     "dayjs": "^1.11.19",
     "react": "^19.2.3",
     "react-dom": "^19.2.0"
+  },
+  "overrides": {
+    "glob": ">=14.0.2",
+    "minimatch": ">=11.0.1"
   }
 }
