@@ -1,0 +1,1 @@
+function r(t){return t&&t.ownerDocument||document}function u(t,e){if(!t||!e)return!1;if(t.contains(e))return!0;const o=e.getRootNode?.();if(o&&o instanceof ShadowRoot){let n=e;for(;n;){if(t===n)return!0;n=n.parentNode??n.host??null}}return!1}function a(t){let e=t.activeElement;for(;e?.shadowRoot?.activeElement!=null;)e=e.shadowRoot.activeElement;return e}export{a,u as c,r as o};
