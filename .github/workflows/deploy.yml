@@ -72,9 +72,11 @@ jobs:
         run: |
           git config user.name "github-actions-bot"
           git config user.email "support+actions@github.com"
-          git fetch origin gh-pages || true
-          git checkout gh-pages || git checkout --orphan gh-pages
+          git fetch origin gh-pages
+          git checkout -B gh-pages FETCH_HEAD
           touch .nojekyll
           git add .nojekyll
-          git commit -m "Add .nojekyll" || true
-          git push origin gh-pages
+          if ! git diff --cached --quiet; then
+            git commit -m "Add .nojekyll"
+            git push origin gh-pages
+          fi
