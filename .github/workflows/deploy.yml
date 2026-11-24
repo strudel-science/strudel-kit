@@ -39,11 +39,11 @@ jobs:
       - name: Install docs dependencies
         run: |
           cd docs
-          npm install
+          npm ci
       - name: Install component dependencies
         run: |
           cd packages/react-components
-          npm install
+          npm ci
       - name: Build docs
         run: |
           cd docs
@@ -73,7 +73,7 @@ jobs:
           git config user.name "github-actions-bot"
           git config user.email "support+actions@github.com"
           git fetch origin gh-pages
-          git checkout -B gh-pages FETCH_HEAD
+          git checkout -f -B gh-pages FETCH_HEAD
           touch .nojekyll
           git add .nojekyll
           if ! git diff --cached --quiet; then
